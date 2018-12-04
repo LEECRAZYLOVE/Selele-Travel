@@ -22,16 +22,26 @@ namespace SeleleTravel.Classes
             this.consultant_no = consultant_no;
             makeQuote_no();
         }
-
+        /// <summary>
+        /// It generates a new quote number
+        /// </summary>
         private void makeQuote_no()
         {
-            timeQuoted = DateTime.Now;
-            string _totalQts = totalQuotes.ToString();
+            timeQuoted = DateTime.Now; // Assignes the timeQuoted to the current time
+            string _totalQts = totalQuotes.ToString(); // assigns the static value to the string
             while (_totalQts.Length < 6)
             {
+                // It adds a zero once to the left of the current string
                 _totalQts = _totalQts.PadLeft(1, '0');
             }
+            // generates the quote number using the time and string generated above
             quote_no = $"{timeQuoted}{_totalQts}";
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+
         }
 
     }
