@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SeleleTravel.Classes
 {
@@ -53,6 +54,10 @@ namespace SeleleTravel.Classes
             password = newPassword;
 
             //Reflect the changes on the database
+
+            //Displaying to user
+            string message = "Password successfully updated!";
+            MessageBox.Show(message, "Alert..", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
         /// <summary>
         /// Changes the username of this employee. Status : incomplete
@@ -63,6 +68,15 @@ namespace SeleleTravel.Classes
             username = newUsername;
 
             //Make the necessary changes on the database
+
+            //Displaying to user
+            string message = "Password successfully updated!";
+            MessageBox.Show(message, "Alert..", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
+        }
+        public override string ToString()
+        {
+            return names + " " + surname;
         }
         public Employee(string names, string surname, string location = "East London")
         {
