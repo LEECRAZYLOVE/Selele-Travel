@@ -22,12 +22,13 @@
                 <TabItem Header="Client Details">
                     <Grid Background="#FFE5E5E5">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="195*"/>
-                            <ColumnDefinition Width="197*"/>
+                            <ColumnDefinition Width="125*"/>
+                            <ColumnDefinition Width="265*"/>
+                            <ColumnDefinition Width="394*"/>
                         </Grid.ColumnDefinitions>
-                        <Canvas x:Name="cvsNewClient" Height="342" VerticalAlignment="Top" HorizontalAlignment="Left" Width="390">
+                        <Canvas x:Name="cvsNewClient" Height="342" VerticalAlignment="Top" HorizontalAlignment="Left" Width="390" Grid.ColumnSpan="2">
                             <TextBox x:Name="txbNewClient_address" HorizontalAlignment="Left" Height="58" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="310" Canvas.Left="70" Canvas.Top="138"/>
-                            <CheckBox x:Name="ckbIndividual" Content="Individual" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="166" Canvas.Top="103"/>
+                            <CheckBox x:Name="ckbIndividual" Content="Individual" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="166" Canvas.Top="103" Checked="selectionChanged"/>
                             <Label x:Name="label1" Content="New Client" Canvas.Left="169" Canvas.Top="26" RenderTransformOrigin="0.5,0.5">
                                 <Label.RenderTransform>
                                     <TransformGroup>
@@ -42,14 +43,14 @@
                             <TextBox x:Name="txbNewClient_name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="70"/>
                             <TextBox x:Name="txbNewClient_surname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="71"/>
                             <Label x:Name="label4" Content="Surname:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="201" Canvas.Top="67"/>
-                            <CheckBox x:Name="ckbBusiness" Content="Business" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="70" Canvas.Top="103"/>
+                            <CheckBox x:Name="ckbBusiness" Content="Business" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="70" Canvas.Top="103" Checked="selectionChanged"/>
                             <Label x:Name="label5" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="134"/>
                             <TextBox x:Name="txbNewClient_city" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="213"/>
                             <Label x:Name="label6" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.038" Canvas.Left="227" Canvas.Top="210"/>
                             <Label x:Name="label7" Content="Province:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="210"/>
                             <TextBox x:Name="txbNewClient_province" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="214"/>
                         </Canvas>
-                        <Canvas x:Name="cvsOldClient" Grid.Column="1" HorizontalAlignment="Right" Width="394">
+                        <Canvas x:Name="cvsOldClient" Grid.Column="2" HorizontalAlignment="Right" Width="394">
                             <Label x:Name="label2" Content="Already A Client" Canvas.Left="149" Canvas.Top="24" Width="96"/>
                         </Canvas>
                     </Grid>

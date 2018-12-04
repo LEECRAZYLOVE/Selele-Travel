@@ -30,7 +30,6 @@ namespace SeleleTravel.Classes
             MessageBox.Show(message, "Alert..", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 
         }
-C:\Users\Simphiwe\Source\Repos\Selele-Travel\SeleleTravel\App.config
         
         public Boss(string names = "Pumla Patricia", string surname ="Nyangiwe", string location = "East London")
             :base(names, surname, location)
