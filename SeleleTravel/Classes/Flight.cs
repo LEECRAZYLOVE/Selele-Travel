@@ -52,7 +52,15 @@ namespace SeleleTravel.Classes
 
         public override string ToString()
         {
-            return base.ToString();
+            string output = $"Thank you for choosing Selele Travel & Accomodation these are your flight details belows\n" +
+                            $"{airline}\n" +
+                            $"From {from} to {to}\n" +
+                            $"Check in time: {CheckInTime}\n" +
+                            $"Departure time: {departure}\n" +
+                            $"Arrival time: {arrival}\n" +
+                            $"Number of bags: {numberOfbags}" +
+                            $"Safe travels.\n";
+            return output;
         }
     }
 }
