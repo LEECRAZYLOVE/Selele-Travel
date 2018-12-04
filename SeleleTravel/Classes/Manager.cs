@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SeleleTravel.Classes
 {
@@ -32,13 +33,19 @@ namespace SeleleTravel.Classes
         /// </summary>
         public static List<Manager> AllManagers = new List<Manager>();
         /// <summary>
-        /// Fires an employee.
+        /// Fires an employee. Status : incomplete
         /// </summary>
         /// <param name="employee"></param>
         public void fire(Employee employee)
         {
             if (employees.Contains(employee))
                 employees.Remove(employee);
+
+            //Remove employee from database
+
+            //This is for displaying to the user
+            string message = employee.names + " has been successfully fired.";
+            MessageBox.Show(message, "Alert..", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         /// <summary>
         /// Adds an new employee to the database.
@@ -51,6 +58,10 @@ namespace SeleleTravel.Classes
             Employee.hiredEmployees.Add(employee);
 
             //Append changes to database
+
+            //This part here is for alerting the user
+            string message = employee.names + " has been successfully hired.";
+            MessageBox.Show(message, "Alert..", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         public Manager(string names, string surname, string location = "East London") : base(names, surname, location)
         {
