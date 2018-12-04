@@ -6,41 +6,29 @@ using System.Threading.Tasks;
 
 namespace SeleleTravel.Classes
 {
-    class Boss
+    class Boss : Manager
     {
-        public string name { get; set; } = "Pumla Patricia";
-        public string surname { get; set; } = "Nyangiwe";
-        public string username { get; protected set; }
-        public string password { get; protected set; }
-        public List<Employee> employees { get => Employee.AllEmployees; }
-        public void fire(Employee employee)
-        {
-            if (employees.Contains(employee))
-                    employees.Remove(employee);
-        }
+        
+        public override List<Employee> employees { get => Employee.hiredEmployees; }
+        
+        /// <summary>
+        /// Makes a given employee a manager.
+        /// </summary>
+        /// <param name="employee"></param>
         public void promote(Employee employee)
         {
             fire(employee);
             Manager manager = new Manager(employee.names, employee.surname, employee.location);
+            manager.employeeID = employee.employeeID;
             manager.timeHired = employee.timeHired;
         }
-        public void updatePassword(string newPassword)
+        
+        public Boss(string names = "Pumla Patricia", string surname ="Nyangiwe", string location = "East London")
+            :base(names, surname, location)
         {
-            password = newPassword;
-        }
-
-        public void updateUsername(string newUsername)
-        {
-            username = newUsername;
-        }
-        public Boss()
-        {
-
-        }
-        public Boss(string name, string surname)
-        {
-            this.name = name;
+            this.names = names;
             this.surname = surname;
+            this.location = location;
         }
     }
 }

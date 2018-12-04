@@ -11,7 +11,7 @@ namespace SeleleTravel.Classes
         /// <summary>
         /// Employees under this specific manager.
         /// </summary>
-        public List<Employee> employees;
+        public virtual List<Employee> employees { get; protected set; }
         /// <summary>
         /// Each manager manages in a specific location,
         /// so this method gets all the employees of that location,
@@ -19,7 +19,7 @@ namespace SeleleTravel.Classes
         /// </summary>
         private void getEmployees()
         {
-            foreach (Employee e in Employee.AllEmployees)
+            foreach (Employee e in Employee.hiredEmployees)
             {
                 if (e.location == location)
                 {
@@ -39,6 +39,17 @@ namespace SeleleTravel.Classes
         {
             if (employees.Contains(employee))
                 employees.Remove(employee);
+        }
+        /// <summary>
+        /// Adds an new employee to the database.
+        /// Status : incomplete
+        /// </summary>
+        /// <param name="employee"></param>
+        public void hire(Employee employee)
+        {
+            Employee.hiredEmployees.Add(employee);
+
+            //Append changes to database
         }
         public Manager(string names, string surname, string location = "East London") : base(names, surname, location)
         {
