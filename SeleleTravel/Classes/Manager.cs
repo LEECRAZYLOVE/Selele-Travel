@@ -47,6 +47,7 @@ namespace SeleleTravel.Classes
         /// <param name="employee"></param>
         public void hire(Employee employee)
         {
+            employee.timeHired = DateTime.Now;
             Employee.hiredEmployees.Add(employee);
 
             //Append changes to database

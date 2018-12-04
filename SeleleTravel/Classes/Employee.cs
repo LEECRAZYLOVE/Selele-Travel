@@ -44,14 +44,25 @@ namespace SeleleTravel.Classes
         /// </summary>
         public string location;    
 
+        /// <summary>
+        /// Changes the password of this employee. Status : Incomplete
+        /// </summary>
+        /// <param name="newPassword"></param>
         public void updatePassword(string newPassword)
         {
             password = newPassword;
-        }
 
+            //Reflect the changes on the database
+        }
+        /// <summary>
+        /// Changes the username of this employee. Status : incomplete
+        /// </summary>
+        /// <param name="newUsername"></param>
         public void updateUsername(string newUsername)
         {
             username = newUsername;
+
+            //Make the necessary changes on the database
         }
         public Employee(string names, string surname, string location = "East London")
         {
