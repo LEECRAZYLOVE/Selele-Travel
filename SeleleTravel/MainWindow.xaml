@@ -5,18 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" SizeToContent="WidthAndHeight" WindowStartupLocation="Manual" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="{x:Null}" Foreground="{x:Null}">
     <Grid>
-        <Canvas x:Name="Main_Window" Height="409" VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Right" Width="792" d:IsHidden="True">
-            <Image x:Name="image" Height="356" Canvas.Left="215" Canvas.Top="-65" Width="391" RenderTransformOrigin="0.137,0.003" Source="Selele Travel LOGO.png" Stretch="Fill" ClipToBounds="True"/>
-            <Button x:Name="btn_consultantSide" Content="Consultant" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="578" Canvas.Top="236"/>
+        <Canvas x:Name="Main_Window" Height="409" VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Right" Width="792" Background="White" d:IsHidden="True">
+            <Image x:Name="image" Height="363" Canvas.Left="206" Canvas.Top="-78" Width="418" Source="Selele Travel LOGO.png" Stretch="Fill"/>
 
-            <Button x:Name="btn_managerSide" Content="Manager" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="338" Canvas.Top="236"/>
-            <Button x:Name="btn_bossSide" Content="Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="99" Canvas.Top="236"/>
+            <Button x:Name="btn_consultantSide" Content="Consultant" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="578" Canvas.Top="236" Background="#FFD8B827"/>
+
+            <Button x:Name="btn_managerSide" Content="Manager" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="338" Canvas.Top="236" Background="#FFEE1717"/>
+            <Button x:Name="btn_bossSide" Content="Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="99" Canvas.Top="236" Background="#FF3E9EFD"/>
         </Canvas>
-        <Canvas x:Name="Consultant_Side" Height="419" VerticalAlignment="Top" HorizontalAlignment="Left" Width="792">
-            <Label x:Name="label" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="131"/>
-            <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Canvas.Left="685" Canvas.Top="10"/>
+        <Canvas x:Name="Consultant_Side" Height="419" VerticalAlignment="Top" HorizontalAlignment="Left" Width="792" Background="#FFECEC41" Visibility="Visible" ClipToBounds="True">
+            <Label x:Name="lblConsultantName" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="131"/>
+            <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Canvas.Left="685" Canvas.Top="10"/>
             <TabControl x:Name="Consultant_tabControl" Height="370" Canvas.Left="2" Canvas.Top="50" Width="790">
                 <TabItem Header="Client Details">
                     <Grid Background="#FFE5E5E5">
@@ -25,6 +26,8 @@
                             <ColumnDefinition Width="197*"/>
                         </Grid.ColumnDefinitions>
                         <Canvas x:Name="cvsNewClient" Height="342" VerticalAlignment="Top" HorizontalAlignment="Left" Width="390">
+                            <TextBox x:Name="txbNewClient_address" HorizontalAlignment="Left" Height="58" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="310" Canvas.Left="70" Canvas.Top="138"/>
+                            <CheckBox x:Name="ckbIndividual" Content="Individual" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="166" Canvas.Top="103"/>
                             <Label x:Name="label1" Content="New Client" Canvas.Left="169" Canvas.Top="26" RenderTransformOrigin="0.5,0.5">
                                 <Label.RenderTransform>
                                     <TransformGroup>
@@ -35,28 +38,38 @@
                                     </TransformGroup>
                                 </Label.RenderTransform>
                             </Label>
+                            <Label x:Name="label3" Content="Name:" Canvas.Left="10" Canvas.Top="67"/>
+                            <TextBox x:Name="txbNewClient_name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="70"/>
+                            <TextBox x:Name="txbNewClient_surname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="71"/>
+                            <Label x:Name="label4" Content="Surname:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="201" Canvas.Top="67"/>
+                            <CheckBox x:Name="ckbBusiness" Content="Business" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="70" Canvas.Top="103"/>
+                            <Label x:Name="label5" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="134"/>
+                            <TextBox x:Name="txbNewClient_city" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="213"/>
+                            <Label x:Name="label6" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.038" Canvas.Left="227" Canvas.Top="210"/>
+                            <Label x:Name="label7" Content="Province:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="210"/>
+                            <TextBox x:Name="txbNewClient_province" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="214"/>
                         </Canvas>
                         <Canvas x:Name="cvsOldClient" Grid.Column="1" HorizontalAlignment="Right" Width="394">
                             <Label x:Name="label2" Content="Already A Client" Canvas.Left="149" Canvas.Top="24" Width="96"/>
                         </Canvas>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Car Hire" d:IsHidden="True">
+                <TabItem Header="Car Hire">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
-                <TabItem Header="Accommodation" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" d:IsHidden="True">
+                <TabItem Header="Accommodation" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
-                <TabItem Header="Flight" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" d:IsHidden="True">
+                <TabItem Header="Flight" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
-                <TabItem Header="Conference" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" d:IsHidden="True">
+                <TabItem Header="Conference" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
-                <TabItem Header="Quote Details" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" d:IsHidden="True">
+                <TabItem Header="Quote Details" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
-                <TabItem Header="Orders" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" d:IsHidden="True">
+                <TabItem Header="Orders" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96">
                     <Grid Background="#FFE5E5E5" Width="800" Margin="0,0,-16,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="466*"/>
@@ -64,7 +77,7 @@
                         </Grid.ColumnDefinitions>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Search" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" d:IsHidden="True">
+                <TabItem Header="Search" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
             </TabControl>
