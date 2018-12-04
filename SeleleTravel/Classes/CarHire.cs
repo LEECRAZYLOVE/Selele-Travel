@@ -48,7 +48,15 @@ namespace SeleleTravel.Classes
 
         public override string ToString()
         {
-            return base.ToString();
+            string output = $"Thank you for choosing Selele Travel & Accomodation these are your car hire details\n" +
+                            $"Agency name: {agencyName}\n" +
+                            $"Pick up location: {pickUpLocation}\n" +
+                            $"Drop off location: {dropOffLocation}\n" +
+                            $"Period of hire\n" +
+                            $"From: {timeOfHire}\n" +
+                            $"Till: {expectedEndTime}\n" +
+                            $"Safe travels.\n";
+            return output;
         }
     }
 }
