@@ -64,8 +64,12 @@
     </Compile>
     <Compile Include="Classes\Accommodation.cs" />
     <Compile Include="Classes\Boss.cs" />
+    <Compile Include="Classes\Client.cs" />
     <Compile Include="Classes\Employee.cs" />
     <Compile Include="Classes\Manager.cs" />
+    <Compile Include="Classes\Order.cs" />
+    <Compile Include="Classes\Quote.cs" />
+    <Compile Include="Classes\Service.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -96,12 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Selele Travel LOGO.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
