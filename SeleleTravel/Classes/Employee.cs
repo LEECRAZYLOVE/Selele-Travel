@@ -6,10 +6,31 @@ using System.Threading.Tasks;
 
 namespace SeleleTravel.Classes
 {
-    class Employee : IStaffMember
+    class Employee
     {
-        public string username { get; set; }
-        public string password { get; set; }
+        public string username { get; protected set; }
+        public string password { get; protected set; }
+
+        public string names;
+        public string surname;
+
+        public string employeeID { get; protected set; }
+        static int numberOfEmployees = 0;
+        public DateTime timeHired;
+        private string makeEmployeeID()
+        {
+            string idEnding = numberOfEmployees.ToString();
+            while(idEnding.Length < 4)
+            {
+                idEnding = idEnding.PadLeft(1, '0');
+            }
+            return timeHired.Year + surname[0] + idEnding;
+        }
+        /// <summary>
+        /// A refernce to all the employees of the company.
+        /// </summary>
+        public static List<Employee> AllEmployees;
+        public string location;    //This is where the employee works
 
         public void updatePassword(string newPassword)
         {
@@ -20,10 +41,13 @@ namespace SeleleTravel.Classes
         {
             username = newUsername;
         }
-        public Employee(string username, string password)
+        public Employee(string names, string surname, string location = "East London")
         {
-            this.username = username;
-            this.password = password;
+            this.names = names;
+            this.surname = surname;
+            this.location = location;
+            AllEmployees.Add(this);
+            numberOfEmployees++;
         }
     }
 }
