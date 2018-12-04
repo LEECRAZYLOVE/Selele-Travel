@@ -64,6 +64,10 @@ namespace SeleleTravel.Classes
             clientID = names.Replace(" ", "_") + endOfId;
         }
 
+        public override string ToString()
+        {
+            return names;
+        }
         public Client(string names, ClientType clientType)
         {
             this.names = names;

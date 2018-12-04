@@ -74,6 +74,10 @@ namespace SeleleTravel.Classes
             MessageBox.Show(message, "Alert..", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 
         }
+        public override string ToString()
+        {
+            return names + " " + surname;
+        }
         public Employee(string names, string surname, string location = "East London")
         {
             this.names = names;
