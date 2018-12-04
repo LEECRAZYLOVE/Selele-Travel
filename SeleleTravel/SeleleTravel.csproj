@@ -100,5 +100,8 @@
   <ItemGroup>
     <Folder Include="Interfaces\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Selele Travel LOGO.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

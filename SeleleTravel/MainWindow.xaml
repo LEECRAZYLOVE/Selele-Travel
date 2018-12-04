@@ -7,6 +7,68 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Canvas x:Name="Main_Window" Height="409" VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Right" Width="792" d:IsHidden="True">
+            <Image x:Name="image" Height="356" Canvas.Left="215" Canvas.Top="-65" Width="391" RenderTransformOrigin="0.137,0.003" Source="Selele Travel LOGO.png" Stretch="Fill" ClipToBounds="True"/>
+            <Button x:Name="btn_consultantSide" Content="Consultant" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="578" Canvas.Top="236"/>
+
+            <Button x:Name="btn_managerSide" Content="Manager" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="338" Canvas.Top="236"/>
+            <Button x:Name="btn_bossSide" Content="Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="99" Canvas.Top="236"/>
+        </Canvas>
+        <Canvas x:Name="Consultant_Side" Height="419" VerticalAlignment="Top" HorizontalAlignment="Left" Width="792">
+            <Label x:Name="label" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="131"/>
+            <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Canvas.Left="685" Canvas.Top="10"/>
+            <TabControl x:Name="Consultant_tabControl" Height="370" Canvas.Left="2" Canvas.Top="50" Width="790">
+                <TabItem Header="Client Details">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="195*"/>
+                            <ColumnDefinition Width="197*"/>
+                        </Grid.ColumnDefinitions>
+                        <Canvas x:Name="cvsNewClient" Height="342" VerticalAlignment="Top" HorizontalAlignment="Left" Width="390">
+                            <Label x:Name="label1" Content="New Client" Canvas.Left="169" Canvas.Top="26" RenderTransformOrigin="0.5,0.5">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="0.397"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Label.RenderTransform>
+                            </Label>
+                        </Canvas>
+                        <Canvas x:Name="cvsOldClient" Grid.Column="1" HorizontalAlignment="Right" Width="394">
+                            <Label x:Name="label2" Content="Already A Client" Canvas.Left="149" Canvas.Top="24" Width="96"/>
+                        </Canvas>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Car Hire" d:IsHidden="True">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="Accommodation" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" d:IsHidden="True">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="Flight" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" d:IsHidden="True">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="Conference" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" d:IsHidden="True">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="Quote Details" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" d:IsHidden="True">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="Orders" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" d:IsHidden="True">
+                    <Grid Background="#FFE5E5E5" Width="800" Margin="0,0,-16,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="466*"/>
+                            <ColumnDefinition Width="549*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Search" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" d:IsHidden="True">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+            </TabControl>
+        </Canvas>
+
     </Grid>
 </Window>
