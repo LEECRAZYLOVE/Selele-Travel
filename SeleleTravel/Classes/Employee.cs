@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SeleleTravel.Classes
 {
@@ -44,14 +45,34 @@ namespace SeleleTravel.Classes
         /// </summary>
         public string location;    
 
+        /// <summary>
+        /// Changes the password of this employee. Status : Incomplete
+        /// </summary>
+        /// <param name="newPassword"></param>
         public void updatePassword(string newPassword)
         {
             password = newPassword;
-        }
 
+            //Reflect the changes on the database
+
+            //Displaying to user
+            string message = "Password successfully updated!";
+            MessageBox.Show(message, "Alert..", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+        }
+        /// <summary>
+        /// Changes the username of this employee. Status : incomplete
+        /// </summary>
+        /// <param name="newUsername"></param>
         public void updateUsername(string newUsername)
         {
             username = newUsername;
+
+            //Make the necessary changes on the database
+
+            //Displaying to user
+            string message = "Password successfully updated!";
+            MessageBox.Show(message, "Alert..", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
         }
         public Employee(string names, string surname, string location = "East London")
         {

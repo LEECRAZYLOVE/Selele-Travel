@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace SeleleTravel.Classes
 {
     enum AccommodationType { self_catering, BnB, hotel, lodge}
-    class Accommodation : Service
+    class Accommodation //: Service
     {
         /// <summary>
         /// Name of the place.
