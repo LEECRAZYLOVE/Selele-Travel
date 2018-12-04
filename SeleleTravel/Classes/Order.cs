@@ -25,10 +25,5 @@ namespace SeleleTravel.Classes
             orderNumber = _orderNumber;
             timeOrdered = DateTime.Now;
         }
-
-        public override string ToString()
-        {
-            return base.ToString();
-        }
     }
 }

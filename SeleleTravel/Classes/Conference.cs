@@ -30,7 +30,11 @@ namespace SeleleTravel.Classes
 
         public override string ToString()
         {
-            return base.ToString();
+            string output = $"Thank you for choosing Selele Travel & Accomodation these are your conference details\n" +
+                            $"Venue of conference: {venueOfConference}\n" +
+                            $"Name of conference: {nameOfConference}\n" +
+                            $"Time of conference: {timeOfConference}\n";
+            return output;
         }
     }
 }
