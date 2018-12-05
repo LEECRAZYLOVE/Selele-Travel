@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SeleleTravel.Classes;
 
 namespace SeleleTravel
 {
@@ -23,31 +24,50 @@ namespace SeleleTravel
 
         public MainWindow()
         {
-      
+            InitializeComponent();
         }
-
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        /// <summary>
+        /// This just makes sure that only one type is chosen between business and individual.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void selectionChanged(object sender, RoutedEventArgs e)
         {
+            //Making sure that only one checkbox is selected at a time
+            CheckBox reference = (CheckBox)sender;
+            if (reference == ckbBusiness)
+            {
+                ckbIndividual.IsChecked = !ckbBusiness.IsChecked;
+            }
+            else ckbBusiness.IsChecked = !ckbIndividual.IsChecked;
 
+           
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void createNewClient_Click(object sender, RoutedEventArgs e)
         {
-            Main_Window.Visibility = Visibility.Visible;
-            Log_In_Side.Visibility = Visibility.Hidden;
-            Consultant_Side.Visibility = Visibility.Hidden;
+            string names = txbNewClient_name.Text + " " + txbNewClient_surname;
+
+            ClientType clientType = (bool)(ckbBusiness.IsChecked) ? ClientType.Business : ClientType.Individual;
+            Client client = new Client(names, clientType);
+            client.location = txbNewClient_address.Text + '\n' + txbNewClient_city.Text
+                + '\n' + txbNewClient_province.Text;
+        }
+        private void nameAndSurnameTextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+            string acceptedCharacters = " qwertyuioplkjhgfdsazxcvbnm";
+            TextBox reference = (TextBox)sender;
+            if (reference.Text.Length <= 0) return;
+
+            string letterEntered = reference.Text.Last().ToString().ToLower();
+            if (!acceptedCharacters.Contains(letterEntered))
+            {
+                reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
+                reference.SelectionStart = reference.Text.Length;
+                MessageBox.Show("'" + letterEntered + "' is not an accepted character for a name or a surname!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-        private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
-        {
-            Main_Window.Visibility = Visibility.Hidden;
-            Log_In_Side.Visibility = Visibility.Visible;
-        }
-
-        private void btnLogIn_Click(object sender, RoutedEventArgs e)
-        {
-            Log_In_Side.Visibility = Visibility.Hidden;
-            Consultant_Side.Visibility = Visibility.Visible;
-        }
+        
     }
 }

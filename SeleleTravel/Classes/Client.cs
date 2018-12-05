@@ -17,6 +17,10 @@ namespace SeleleTravel.Classes
         /// A unique identifier of the client.
         /// </summary>
         public string clientID;
+        /// <summary>
+        /// This is where the client is situated.
+        /// </summary>
+        public string location;
         public List<Service> services;
         /// <summary>
         /// The type of client. This field will be useful when searching for clients.
