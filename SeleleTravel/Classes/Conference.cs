@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeleleTravel.Classes
+namespace SeleleTravel
 {/// <summary>
 /// This the Conference service.
 /// It takes in the venueOfConference, nameOfConference, and timeOfConference

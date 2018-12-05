@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace SeleleTravel.Classes
+namespace SeleleTravel
 {
     class Manager : Employee
     {

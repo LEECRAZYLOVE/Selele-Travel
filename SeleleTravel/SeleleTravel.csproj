@@ -68,6 +68,7 @@
     <Compile Include="Classes\CarHire.cs" />
     <Compile Include="Classes\Client.cs" />
     <Compile Include="Classes\Conference.cs" />
+    <Compile Include="Classes\ContactDetails.cs" />
     <Compile Include="Classes\Employee.cs" />
     <Compile Include="Classes\Flight.cs" />
     <Compile Include="Classes\Manager.cs" />

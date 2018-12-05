@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeleleTravel.Classes
+namespace SeleleTravel
 {/// <summary>
 /// The Order classs
 /// This class takes info that is required for the order to be placed

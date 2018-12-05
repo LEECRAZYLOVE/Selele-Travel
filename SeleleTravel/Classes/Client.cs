@@ -4,15 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeleleTravel.Classes
+namespace SeleleTravel
 {
-    enum ClientType { Individual, Business};
+    enum ClientType { Individual, Business };
     class Client
     {
         /// <summary>
         /// The names of the individual or Business.
         /// </summary>
         public string names;
+        /// <summary>
+        /// The contact details in arranged in array in the order:
+        /// cellphone (index 0), telephone (index 1), email (index 2), fax (index 3).
+        /// </summary>
+        public ContactDetails contactDetails;
         /// <summary>
         /// A unique identifier of the client.
         /// </summary>
@@ -76,6 +81,14 @@ namespace SeleleTravel.Classes
         {
             this.names = names;
             this.clientType = clientType;
+        }
+        public Client(string names, ClientType clientType, string cellphoneNumber) : this(names, clientType)
+        {
+            contactDetails = new ContactDetails(cellphoneNumber);
+        }
+        public Client(string names, ClientType clientType, ContactDetails contactDetails) : this (names, clientType)
+        {
+            this.contactDetails = contactDetails;
         }
     }
 }
