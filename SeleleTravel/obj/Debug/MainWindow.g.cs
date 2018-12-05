@@ -1112,6 +1112,69 @@ namespace SeleleTravel {
             }
             this._contentLoaded = true;
         }
+
+        internal System.Windows.Controls.Label label21;
+        internal System.Windows.Controls.Label label18;
+        internal System.Windows.Controls.Label label15;
+        internal System.Windows.Controls.Label label16;
+        internal System.Windows.Controls.Label label17;
+        internal System.Windows.Controls.Label label19;
+        internal System.Windows.Controls.Label label20;
+        internal System.Windows.Controls.Label label22;
+        internal System.Windows.Controls.TextBox txbCarHire_numCars;
+        internal System.Windows.Controls.Label label23;
+        internal System.Windows.Controls.Button btnFlight_addPassenger;
+        internal System.Windows.Controls.TextBox txbFlight_airline;
+        internal System.Windows.Controls.TextBox txbFlight_passengers;
+        internal System.Windows.Controls.TextBox txbFlight_to;
+        internal System.Windows.Controls.TextBox txbFlight_from;
+        internal System.Windows.Controls.DatePicker dpFlight_departure;
+        internal System.Windows.Controls.DatePicker dpFlight_arrival;
+        internal System.Windows.Controls.TextBox txbFlight_numBags;
+        internal System.Windows.Controls.TextBox txbFlight_specifications;
+        internal System.Windows.Controls.Label label24;
+        internal System.Windows.Controls.TextBox txbFlight_time;
+        internal System.Windows.Controls.ListBox ltbFlight_passengersOutput;
+        internal System.Windows.Controls.Label label25;
+        internal System.Windows.Controls.Label label26;
+        internal System.Windows.Controls.Label label27;
+        internal System.Windows.Controls.Label label28;
+        internal System.Windows.Controls.Label label29;
+        internal System.Windows.Controls.Label label30;
+        internal System.Windows.Controls.Label label31;
+        internal System.Windows.Controls.TextBox txbCab_agency;
+        internal System.Windows.Controls.TextBox txbCab_pickUp;
+        internal System.Windows.Controls.TextBox txbCab_dropOff;
+        internal System.Windows.Controls.TextBox txbCab_specifications;
+        internal System.Windows.Controls.TextBox txbCab_driver;
+        internal System.Windows.Controls.TextBox txbCab_pickUpTime;
+        internal System.Windows.Controls.DatePicker dpCab_pickUpDate;
+        internal System.Windows.Controls.Label label32;
+        internal System.Windows.Controls.TextBox txbCab_numCabs;
+        internal System.Windows.Controls.Label label33;
+        internal System.Windows.Controls.TextBox txbCarHire_total;
+        internal System.Windows.Controls.Button btnCarHire_Done;
+        internal System.Windows.Controls.Label label34;
+        internal System.Windows.Controls.TextBox txbCab_total;
+        internal System.Windows.Controls.Label label35;
+        internal System.Windows.Controls.TextBox txbFlight_total;
+        internal System.Windows.Controls.Button btnFlight_done;
+        internal System.Windows.Controls.Button btnCab_done;
+        internal System.Windows.Controls.Label label36;
+        internal System.Windows.Controls.Label label37;
+        internal System.Windows.Controls.Label label38;
+        internal System.Windows.Controls.Label label39;
+        internal System.Windows.Controls.Label label40;
+        internal System.Windows.Controls.Label label41;
+        internal System.Windows.Controls.TextBox txbAccommodation_name;
+        internal System.Windows.Controls.TextBox txbAccommodation_numGuests;
+        internal System.Windows.Controls.DatePicker dpAccommodation_checkIn;
+        internal System.Windows.Controls.DatePicker dpAccommodation_checkOut;
+        internal System.Windows.Controls.TextBox txbAccommodation_specifications;
+        internal System.Windows.Controls.TextBox txbAccommodation_numRooms;
+        internal System.Windows.Controls.Label label42;
+        internal System.Windows.Controls.Button button;
+        internal System.Windows.Controls.TextBox txbAccommodation_total;
     }
 }
 
