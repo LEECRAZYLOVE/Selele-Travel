@@ -26,7 +26,7 @@
             <Label x:Name="lblConsultantID" Content="LabeloutputID" Canvas.Top="24" Canvas.Left="2"/>
             <Label x:Name="lblConsultantName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="104" Canvas.Left="2"/>
             <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Canvas.Left="685" Canvas.Top="10"/>
-            <TabControl x:Name="Consultant_tabControl" Height="370" Canvas.Left="2" Canvas.Top="50" Width="790" d:IsHidden="True">
+            <TabControl x:Name="Consultant_tabControl" Height="370" Canvas.Left="2" Canvas.Top="50" Width="790">
                 <TabItem Header="Client Details">
                     <Grid Background="#FFE5E5E5">
                         <Grid.ColumnDefinitions>
@@ -186,8 +186,22 @@
                         <Button x:Name="button" Content="DONE" HorizontalAlignment="Left" Margin="423,300,0,0" VerticalAlignment="Top" Width="75"/>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Conference" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96">
-                    <Grid Background="#FFE5E5E5"/>
+                <TabItem Header="Conference" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" Margin="-1,0,0,0">
+                    <Grid Background="#FFE5E5E5">
+                        <Label x:Name="label43" Content="Name:" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="label44" Content="Venue:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,68,0,0"/>
+                        <Label x:Name="label45" Content="Date:" HorizontalAlignment="Left" Margin="49,118,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="label46" Content="Specifications:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="394,10,0,0"/>
+                        <Label x:Name="label47" Content="Time:" HorizontalAlignment="Left" Margin="242,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.526,0.115"/>
+                        <TextBox x:Name="txbConference_name" HorizontalAlignment="Left" Height="23" Margin="99,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266"/>
+                        <TextBox x:Name="txbConference_specifications" HorizontalAlignment="Left" Height="318" Margin="484,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278"/>
+                        <TextBox x:Name="txbConference_venue" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266" Margin="99,71,0,0"/>
+                        <TextBox x:Name="txbConference_time" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" Margin="285,120,0,0"/>
+                        <DatePicker x:Name="dpConference_date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,119,0,0" Width="120"/>
+                        <Label x:Name="label48" Content="TOTAL:" HorizontalAlignment="Left" Margin="394,258,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txbConference_total" HorizontalAlignment="Left" Height="23" Margin="394,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="75"/>
+                        <Button x:Name="btnConference_done" Content="DONE" HorizontalAlignment="Left" Margin="394,312,0,0" VerticalAlignment="Top" Width="75"/>
+                    </Grid>
                 </TabItem>
                 <TabItem Header="Events" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="54">
                     <Grid Background="#FFE5E5E5"/>
