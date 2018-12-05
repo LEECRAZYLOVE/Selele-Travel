@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="Classes\Accommodation.cs" />
     <Compile Include="Classes\Boss.cs" />
+    <Compile Include="Classes\Cab.cs" />
     <Compile Include="Classes\CarHire.cs" />
     <Compile Include="Classes\Client.cs" />
     <Compile Include="Classes\Conference.cs" />

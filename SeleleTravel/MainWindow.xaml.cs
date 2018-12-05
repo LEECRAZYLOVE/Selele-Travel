@@ -24,17 +24,24 @@ namespace SeleleTravel
 
         public MainWindow()
         {
-
             InitializeComponent();
         }
+        /// <summary>
+        /// This just makes sure that only one type is chosen between business and individual.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void selectionChanged(object sender, RoutedEventArgs e)
         {
+            //Making sure that only one checkbox is selected at a time
             CheckBox reference = (CheckBox)sender;
             if (reference == ckbBusiness)
             {
                 ckbIndividual.IsChecked = !ckbBusiness.IsChecked;
             }
             else ckbBusiness.IsChecked = !ckbIndividual.IsChecked;
+
+           
         }
         private void createNewClient_Click(object sender, RoutedEventArgs e)
         {
@@ -45,5 +52,22 @@ namespace SeleleTravel
             client.location = txbNewClient_address.Text + '\n' + txbNewClient_city.Text
                 + '\n' + txbNewClient_province.Text;
         }
+        private void nameAndSurnameTextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+            string acceptedCharacters = " qwertyuioplkjhgfdsazxcvbnm";
+            TextBox reference = (TextBox)sender;
+            if (reference.Text.Length <= 0) return;
+
+            string letterEntered = reference.Text.Last().ToString().ToLower();
+            if (!acceptedCharacters.Contains(letterEntered))
+            {
+                reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
+                reference.SelectionStart = reference.Text.Length;
+                MessageBox.Show("'" + letterEntered + "' is not an accepted character for a name or a surname!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        
     }
 }

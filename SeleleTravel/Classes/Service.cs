@@ -14,7 +14,7 @@ namespace SeleleTravel.Classes
         public List<Order> serviceOrder;
         /// <summary>
         /// double Check
-        /// It checks if the servie order has been approved on not
+        /// It checks if the service order has been approved on not
         /// </summary>
         /// <param name="_serviceOrder"></param>
         /// <returns></returns>

@@ -39,10 +39,10 @@
                                     </TransformGroup>
                                 </Label.RenderTransform>
                             </Label>
-                            <Label x:Name="label3" Content="Name:" Canvas.Left="10" Canvas.Top="67"/>
-                            <TextBox x:Name="txbNewClient_name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="70"/>
-                            <TextBox x:Name="txbNewClient_surname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="71"/>
-                            <Label x:Name="label4" Content="Surname:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="201" Canvas.Top="67"/>
+                            <Label x:Name="nameLbl" Content="Name:" Canvas.Left="10" Canvas.Top="67"/>
+                            <TextBox x:Name="txbNewClient_name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="70" TextChanged="nameAndSurnameTextChanged"/>
+                            <TextBox x:Name="txbNewClient_surname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="71" TextChanged="nameAndSurnameTextChanged"/>
+                            <Label x:Name="surnamLbl" Content="Surname:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="201" Canvas.Top="67"/>
                             <CheckBox x:Name="ckbBusiness" Content="Business" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="70" Canvas.Top="103" Checked="selectionChanged"/>
                             <Label x:Name="label5" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="134"/>
                             <TextBox x:Name="txbNewClient_city" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="213"/>
