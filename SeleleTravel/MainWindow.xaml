@@ -14,7 +14,7 @@
             <Button x:Name="btnLogIn" Content="LOG IN" Canvas.Left="375" Canvas.Top="188" Width="75" Click="btnLogIn_Click"/>
             <PasswordBox x:Name="pdbLogIn_password" Canvas.Left="300" Canvas.Top="127" Width="228" Height="23"/>
         </Canvas>
-        <Canvas x:Name="Main_Window" Height="409" VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Right" Width="792" Background="White" d:IsHidden="True">
+        <Canvas x:Name="Main_Window" Height="409" VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Right" Width="792" Background="White">
             <Image x:Name="image" Height="363" Canvas.Left="206" Canvas.Top="-78" Width="418" Source="Selele Travel LOGO.png" Stretch="Fill"/>
 
             <Button x:Name="btn_consultantSide" Content="Consultant" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="578" Canvas.Top="236" Background="#FFD8B827" Click="btn_consultantSide_Click"/>
@@ -22,11 +22,11 @@
             <Button x:Name="btn_managerSide" Content="Manager" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="338" Canvas.Top="236" Background="#FFEE1717"/>
             <Button x:Name="btn_bossSide" Content="Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="99" Canvas.Top="236" Background="#FF3E9EFD"/>
         </Canvas>
-        <Canvas x:Name="Consultant_Side" Height="419" VerticalAlignment="Top" HorizontalAlignment="Left" Width="792" Background="#FFECEC41" Visibility="Visible" ClipToBounds="True">
+        <Canvas x:Name="Consultant_Side" Height="419" VerticalAlignment="Top" HorizontalAlignment="Left" Width="792" Background="#FFECEC41" Visibility="Visible" ClipToBounds="True" d:IsHidden="True">
             <Label x:Name="lblConsultantID" Content="LabeloutputID" Canvas.Top="24" Canvas.Left="2"/>
             <Label x:Name="lblConsultantName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="104" Canvas.Left="2"/>
             <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Canvas.Left="685" Canvas.Top="10"/>
-            <TabControl x:Name="Consultant_tabControl" Height="370" Canvas.Left="2" Canvas.Top="50" Width="790" d:IsHidden="True">
+            <TabControl x:Name="Consultant_tabControl" Height="370" Canvas.Left="2" Canvas.Top="50" Width="790">
                 <TabItem Header="Client Details">
                     <Grid Background="#FFE5E5E5">
                         <Grid.ColumnDefinitions>
@@ -35,7 +35,7 @@
                         </Grid.ColumnDefinitions>
                         <Canvas x:Name="cvsNewClient1" Height="342" VerticalAlignment="Top" HorizontalAlignment="Left" Width="390">
                             <TextBox x:Name="txbNewClient_address" HorizontalAlignment="Left" Height="58" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="310" Canvas.Left="70" Canvas.Top="103"/>
-                            <CheckBox x:Name="ckbIndividual" Content="Individual" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="80"/>
+                            <CheckBox x:Name="ckbIndividual" Content="Individual" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="80" Checked="selectionChanged"/>
                             <Label x:Name="label8" Content="New Client" Canvas.Left="169" Canvas.Top="10" RenderTransformOrigin="0.542,-0.193">
                                 <Label.RenderTransform>
                                     <TransformGroup>
@@ -50,7 +50,7 @@
                             <TextBox x:Name="txbNewClient_name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="43"/>
                             <TextBox x:Name="txbNewClient_surname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="43"/>
                             <Label x:Name="label10" Content="Surname:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="201" Canvas.Top="40"/>
-                            <CheckBox x:Name="ckbBusiness" Content="Business" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="70" Canvas.Top="80"/>
+                            <CheckBox x:Name="ckbBusiness" Content="Business" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="70" Canvas.Top="80" Checked="selectionChanged"/>
                             <Label x:Name="label11" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="103"/>
                             <TextBox x:Name="txbNewClient_city" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="183"/>
                             <Label x:Name="label12" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.038" Canvas.Left="222" Canvas.Top="180"/>

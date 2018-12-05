@@ -25,8 +25,9 @@ namespace SeleleTravel
         {
             InitializeComponent();
         }
+        
         #region Client Display
-            #region newClient Display
+        #region newClient Display
         /// <summary>
         /// This just makes sure that only one type is chosen between business and individual.
         /// </summary>
@@ -97,7 +98,23 @@ namespace SeleleTravel
         #endregion
 
         #region Log in Screen
-        
+        private void btnLogIn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         #endregion
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Main_Window.Visibility = Visibility.Visible;
+            Consultant_Side.Visibility = Visibility.Hidden;
+            Log_In_Side.Visibility = Visibility.Hidden;
+        }
+
+        private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
+        {
+            Log_In_Side.Visibility = Visibility.Visible;
+            Main_Window.Visibility = Visibility.Hidden;
+        }
     }
 }
