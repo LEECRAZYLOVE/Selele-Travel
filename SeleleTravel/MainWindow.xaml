@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" SizeToContent="WidthAndHeight" WindowStartupLocation="Manual" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="{x:Null}" Foreground="{x:Null}" Loaded="Window_Loaded">
     <Grid>
-        <Canvas x:Name="Log_In_Side" HorizontalAlignment="Left" Width="792" Height="419" VerticalAlignment="Top" Background="#FFE8DF2A">
+        <Canvas x:Name="Log_In_Side" HorizontalAlignment="Left" Width="792" Height="419" VerticalAlignment="Top" Background="#FFE8DF2A" d:IsHidden="True">
             <TextBox x:Name="txbLogIn_staffID" TextWrapping="Wrap" Text="" Height="23" Canvas.Left="300" Canvas.Top="53" Width="228"/>
             <Label x:Name="label1" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="217" Canvas.Top="124" RenderTransformOrigin="0.632,1.231"/>
             <Label x:Name="label" Content="Staff ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="217" Canvas.Top="50"/>
@@ -22,8 +22,9 @@
             <Button x:Name="btn_managerSide" Content="Manager" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="338" Canvas.Top="236" Background="#FFEE1717"/>
             <Button x:Name="btn_bossSide" Content="Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Canvas.Left="99" Canvas.Top="236" Background="#FF3E9EFD"/>
         </Canvas>
-        <Canvas x:Name="Consultant_Side" Height="419" VerticalAlignment="Top" HorizontalAlignment="Left" Width="792" Background="#FFECEC41" Visibility="Visible" ClipToBounds="True" d:IsHidden="True">
-            <Label x:Name="lblConsultantName" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="131"/>
+        <Canvas x:Name="Consultant_Side" Height="419" VerticalAlignment="Top" HorizontalAlignment="Left" Width="792" Background="#FFECEC41" Visibility="Visible" ClipToBounds="True">
+            <Label x:Name="lblConsultantID" Content="LabeloutputID" Canvas.Top="24" Canvas.Left="2"/>
+            <Label x:Name="lblConsultantName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="104" Canvas.Left="2"/>
             <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Canvas.Left="685" Canvas.Top="10"/>
             <TabControl x:Name="Consultant_tabControl" Height="370" Canvas.Left="2" Canvas.Top="50" Width="790" d:IsHidden="True">
                 <TabItem Header="Client Details">
@@ -78,17 +79,80 @@
                     </Grid>
                 </TabItem>
                 <TabItem Header="Car Hire">
-                    <Grid Background="#FFE5E5E5" Height="342" VerticalAlignment="Top" HorizontalAlignment="Left" Width="784"/>
+                    <Grid Background="#FFE5E5E5" Height="342" VerticalAlignment="Top" HorizontalAlignment="Left" Width="784" Margin="0,1,0,-1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="151*"/>
+                            <ColumnDefinition Width="633*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="label2" Content="Agency:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.605,1.577" Margin="18,23,0,0"/>
+                        <Label x:Name="label3" Content="Pick Up:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,67,0,0"/>
+                        <Label x:Name="label4" Content="Drop Off:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="217,67,0,0" Grid.Column="1"/>
+                        <Label x:Name="label5" Content="Start Day:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,122,0,0"/>
+                        <Label x:Name="label6" Content="End Day:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220,122,0,0" Grid.Column="1"/>
+                        <TextBox x:Name="txbCarHire_agency" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="575" Margin="117,26,0,0" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="txbCarHire_pickUp" HorizontalAlignment="Left" Height="23" Margin="117,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="txbCarHire_dropOff" HorizontalAlignment="Left" Height="23" Margin="281,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Grid.Column="1"/>
+                        <DatePicker x:Name="dpCarHire_startDay" HorizontalAlignment="Left" Margin="117,122,0,0" VerticalAlignment="Top" Width="115" Grid.ColumnSpan="2"/>
+                        <DatePicker x:Name="dpCarHire_endDay" HorizontalAlignment="Left" Margin="281,124,0,0" VerticalAlignment="Top" Width="115" Grid.Column="1"/>
+                        <Label x:Name="label7" Content="Specifications:" HorizontalAlignment="Left" Margin="18,239,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txbCarHire_specifications" HorizontalAlignment="Left" Height="82" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="575" Margin="119,239,0,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+                            <TextBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-0.244"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBox.RenderTransform>
+                        </TextBox>
+                        <Label x:Name="label22" Content="Number of cars:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,197,0,0"/>
+                        <TextBox x:Name="txbCarHire_numCars" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="117,201,0,0" Grid.ColumnSpan="2"/>
+                    </Grid>
                 </TabItem>
-                <TabItem Header="Flight" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="56" Margin="-2,0,0,0">
-                    <Grid Background="#FFE5E5E5"/>
+                <TabItem Header="Taxi Cab" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="56" Margin="-2,0,0,0">
+                    <Grid Background="#FFE5E5E5">
+                        <Label x:Name="label25" Content="Agency:" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="label26" Content="Driver:" HorizontalAlignment="Left" Margin="374,10,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="label27" Content="Pick Up:" HorizontalAlignment="Left" Margin="31,73,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="label28" Content="Time:" HorizontalAlignment="Left" Margin="374,73,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="label29" Content="Date:" HorizontalAlignment="Left" Margin="516,71,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="label30" Content="Drop Off:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,144,0,0"/>
+                        <Label x:Name="label31" Content="Specifications:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.579,3.192" Margin="10,216,0,0"/>
+                        <TextBox x:Name="txbCab_agency" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267" Margin="102,14,0,0"/>
+                        <TextBox x:Name="txbCab_pickUp" HorizontalAlignment="Left" Height="23" Margin="102,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="139"/>
+                        <TextBox x:Name="txbCab_dropOff" HorizontalAlignment="Left" Height="23" Margin="102,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="139"/>
+                        <TextBox x:Name="txbCab_specifications" HorizontalAlignment="Left" Height="98" Margin="102,216,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267"/>
+                        <TextBox x:Name="txbCab_driver" HorizontalAlignment="Left" Height="23" Margin="417,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267"/>
+                        <TextBox x:Name="txbCab_pickUpTime" HorizontalAlignment="Left" Height="23" Margin="417,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85"/>
+                        <DatePicker x:Name="dpCab_pickUpDate" HorizontalAlignment="Left" Margin="559,73,0,0" VerticalAlignment="Top" Width="125"/>
+                    </Grid>
                 </TabItem>
-                <TabItem Header="Taxi Cab" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="61" Margin="-2,0,-5,0">
+                <TabItem Header="Flight" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="61" Margin="-2,0,-5,0">
                     <Grid Background="#FFE5E5E5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="155*"/>
                             <ColumnDefinition Width="237*"/>
                         </Grid.ColumnDefinitions>
+                        <Label x:Name="label21" Content="Airline:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,11,0,0"/>
+                        <Label x:Name="label18" Content="Passengers:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="128,11,0,0"/>
+                        <Label x:Name="label15" Content="To:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="255,62,0,0"/>
+                        <Label x:Name="label16" Content="From:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,62,0,0"/>
+                        <Label x:Name="label17" Content="Arrival:" VerticalAlignment="Top" Margin="236,115,28,0" RenderTransformOrigin="0.842,0.615"/>
+                        <Label x:Name="label19" Content="Departure:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,115,0,0"/>
+                        <Label x:Name="label20" Content="Number of bags:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,209,0,0"/>
+                        <TextBox x:Name="txbFlight_airline" HorizontalAlignment="Left" Height="23" Margin="116,15,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="txbFlight_passengers" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="204,15,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="txbFlight_to" HorizontalAlignment="Left" Height="23" Margin="287,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="txbFlight_from" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="116,65,0,0"/>
+                        <DatePicker x:Name="dpFlight_departure" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="116,117,0,0" Width="115"/>
+                        <DatePicker x:Name="dpFlight_arrival" HorizontalAlignment="Left" Margin="287,117,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="120"/>
+                        <TextBox x:Name="txbFlight_numBags" HorizontalAlignment="Left" Height="23" Margin="116,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="39"/>
+                        <Label x:Name="label23" Content="Specifications:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,260,0,0"/>
+                        <TextBox x:Name="txbFlight_specifications" HorizontalAlignment="Left" Height="72" Margin="116,260,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" Grid.ColumnSpan="2"/>
+                        <ListBox x:Name="ltbFlight_passengersOutput" Grid.Column="1" HorizontalAlignment="Left" Height="270" Margin="204,62,0,0" VerticalAlignment="Top" Width="230"/>
+                        <Button x:Name="btnFlight_addPassenger" Content="ADD" Grid.Column="1" HorizontalAlignment="Left" Margin="359,14,0,0" VerticalAlignment="Top" Width="75"/>
+                        <Label x:Name="label24" Content="Preferred time:" HorizontalAlignment="Left" Margin="192,209,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txbFlight_time" HorizontalAlignment="Left" Height="23" Margin="287,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Accommodation" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="110" Margin="-1,0,0,0">
