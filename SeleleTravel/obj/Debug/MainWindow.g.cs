@@ -740,6 +740,32 @@ namespace SeleleTravel
         internal System.Windows.Controls.TextBox txbCab_driver;
         internal System.Windows.Controls.TextBox txbCab_pickUpTime;
         internal System.Windows.Controls.DatePicker dpCab_pickUpDate;
+        internal System.Windows.Controls.Label label32;
+        internal System.Windows.Controls.TextBox txbCab_numCabs;
+        internal System.Windows.Controls.Label label33;
+        internal System.Windows.Controls.TextBox txbCarHire_total;
+        internal System.Windows.Controls.Button btnCarHire_Done;
+        internal System.Windows.Controls.Label label34;
+        internal System.Windows.Controls.TextBox txbCab_total;
+        internal System.Windows.Controls.Label label35;
+        internal System.Windows.Controls.TextBox txbFlight_total;
+        internal System.Windows.Controls.Button btnFlight_done;
+        internal System.Windows.Controls.Button btnCab_done;
+        internal System.Windows.Controls.Label label36;
+        internal System.Windows.Controls.Label label37;
+        internal System.Windows.Controls.Label label38;
+        internal System.Windows.Controls.Label label39;
+        internal System.Windows.Controls.Label label40;
+        internal System.Windows.Controls.Label label41;
+        internal System.Windows.Controls.TextBox txbAccommodation_name;
+        internal System.Windows.Controls.TextBox txbAccommodation_numGuests;
+        internal System.Windows.Controls.DatePicker dpAccommodation_checkIn;
+        internal System.Windows.Controls.DatePicker dpAccommodation_checkOut;
+        internal System.Windows.Controls.TextBox txbAccommodation_specifications;
+        internal System.Windows.Controls.TextBox txbAccommodation_numRooms;
+        internal System.Windows.Controls.Label label42;
+        internal System.Windows.Controls.Button button;
+        internal System.Windows.Controls.TextBox txbAccommodation_total;
     }
 }
 
