@@ -714,7 +714,6 @@ namespace SeleleTravel
         internal System.Windows.Controls.Label label22;
         internal System.Windows.Controls.TextBox txbCarHire_numCars;
         internal System.Windows.Controls.Label label23;
-        internal System.Windows.Controls.ListBox listBox;
         internal System.Windows.Controls.Button btnFlight_addPassenger;
         internal System.Windows.Controls.TextBox txbFlight_airline;
         internal System.Windows.Controls.TextBox txbFlight_passengers;
@@ -724,6 +723,23 @@ namespace SeleleTravel
         internal System.Windows.Controls.DatePicker dpFlight_arrival;
         internal System.Windows.Controls.TextBox txbFlight_numBags;
         internal System.Windows.Controls.TextBox txbFlight_specifications;
+        internal System.Windows.Controls.Label label24;
+        internal System.Windows.Controls.TextBox txbFlight_time;
+        internal System.Windows.Controls.ListBox ltbFlight_passengersOutput;
+        internal System.Windows.Controls.Label label25;
+        internal System.Windows.Controls.Label label26;
+        internal System.Windows.Controls.Label label27;
+        internal System.Windows.Controls.Label label28;
+        internal System.Windows.Controls.Label label29;
+        internal System.Windows.Controls.Label label30;
+        internal System.Windows.Controls.Label label31;
+        internal System.Windows.Controls.TextBox txbCab_agency;
+        internal System.Windows.Controls.TextBox txbCab_pickUp;
+        internal System.Windows.Controls.TextBox txbCab_dropOff;
+        internal System.Windows.Controls.TextBox txbCab_specifications;
+        internal System.Windows.Controls.TextBox txbCab_driver;
+        internal System.Windows.Controls.TextBox txbCab_pickUpTime;
+        internal System.Windows.Controls.DatePicker dpCab_pickUpDate;
     }
 }
 
