@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeleleTravel.Classes
+namespace SeleleTravel
 {/// <summary>
 /// The CareHire
 /// It takes in the required information for a successful carhire

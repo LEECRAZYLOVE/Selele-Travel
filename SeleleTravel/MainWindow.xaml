@@ -25,7 +25,7 @@
         <Canvas x:Name="Consultant_Side" Height="419" VerticalAlignment="Top" HorizontalAlignment="Left" Width="792" Background="#FFECEC41" Visibility="Visible" ClipToBounds="True" d:IsHidden="True">
             <Label x:Name="lblConsultantName" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="131"/>
             <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Canvas.Left="685" Canvas.Top="10"/>
-            <TabControl x:Name="Consultant_tabControl" Height="370" Canvas.Left="2" Canvas.Top="50" Width="790">
+            <TabControl x:Name="Consultant_tabControl" Height="370" Canvas.Left="2" Canvas.Top="50" Width="790" d:IsHidden="True">
                 <TabItem Header="Client Details">
                     <Grid Background="#FFE5E5E5">
                         <Grid.ColumnDefinitions>
@@ -33,8 +33,8 @@
                             <ColumnDefinition Width="197*"/>
                         </Grid.ColumnDefinitions>
                         <Canvas x:Name="cvsNewClient1" Height="342" VerticalAlignment="Top" HorizontalAlignment="Left" Width="390">
-                            <TextBox x:Name="txbNewClient_address1" HorizontalAlignment="Left" Height="58" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="310" Canvas.Left="70" Canvas.Top="103"/>
-                            <CheckBox x:Name="ckbIndividual1" Content="Individual" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="80"/>
+                            <TextBox x:Name="txbNewClient_address" HorizontalAlignment="Left" Height="58" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="310" Canvas.Left="70" Canvas.Top="103"/>
+                            <CheckBox x:Name="ckbIndividual" Content="Individual" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="80"/>
                             <Label x:Name="label8" Content="New Client" Canvas.Left="169" Canvas.Top="10" RenderTransformOrigin="0.542,-0.193">
                                 <Label.RenderTransform>
                                     <TransformGroup>
@@ -46,12 +46,12 @@
                                 </Label.RenderTransform>
                             </Label>
                             <Label x:Name="label9" Content="Name:" Canvas.Left="10" Canvas.Top="40"/>
-                            <TextBox x:Name="txbNewClient_name1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="43"/>
-                            <TextBox x:Name="txbNewClient_surname1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="43"/>
+                            <TextBox x:Name="txbNewClient_name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="43"/>
+                            <TextBox x:Name="txbNewClient_surname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="43"/>
                             <Label x:Name="label10" Content="Surname:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="201" Canvas.Top="40"/>
-                            <CheckBox x:Name="ckbBusiness1" Content="Business" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="70" Canvas.Top="80"/>
+                            <CheckBox x:Name="ckbBusiness" Content="Business" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="70" Canvas.Top="80"/>
                             <Label x:Name="label11" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="103"/>
-                            <TextBox x:Name="txbNewClient_city1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="183"/>
+                            <TextBox x:Name="txbNewClient_city" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="183"/>
                             <Label x:Name="label12" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.038" Canvas.Left="222" Canvas.Top="180"/>
                             <Label x:Name="label13" Content="Province:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="7" Canvas.Top="180"/>
                             <TextBox x:Name="txbNewClient_province" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="183"/>
@@ -65,7 +65,7 @@
                             <TextBox x:Name="txbNewClient_fax" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="257"/>
                             <Label Content="email:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="4" Canvas.Top="285"/>
                             <TextBox x:Name="txbNewClient_email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="310" Canvas.Left="70" Canvas.Top="289"/>
-                            <Button x:Name="btnNewClient_add" Content="Add" Canvas.Left="70" Canvas.Top="317" Width="75"/>
+                            <Button x:Name="btnNewClient_add" Content="Add" Canvas.Left="70" Canvas.Top="317" Width="75" Click="createNewClient_Click"/>
                             <Label x:Name="lblNewClient_clientID" Content="labelOutput" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="315"/>
                         </Canvas>
                         <Canvas x:Name="cvsOldClient1" Grid.Column="1" HorizontalAlignment="Right" Width="394">

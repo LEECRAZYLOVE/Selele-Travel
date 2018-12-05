@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeleleTravel.Classes
+namespace SeleleTravel
 {/// <summary>
 /// The flight service
 /// it takes in the airline name, from(location) and to(location)
