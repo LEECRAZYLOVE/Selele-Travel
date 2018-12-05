@@ -44,7 +44,7 @@ namespace SeleleTravel
             Log_In_Side.Visibility = Visibility.Visible;
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void btnLogIn_Click(object sender, RoutedEventArgs e)
         {
             Log_In_Side.Visibility = Visibility.Hidden;
             Consultant_Side.Visibility = Visibility.Visible;
