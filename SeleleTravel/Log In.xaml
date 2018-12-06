@@ -7,12 +7,19 @@
         mc:Ignorable="d"
         Title="Log_In" Height="450" Width="800">
     <Grid Background="#FF526BDE">
-        <TextBox x:Name="txbLogIn_staffID" TextWrapping="Wrap" Text="" Margin="300,53,264,343"/>
-        <Label x:Name="label1" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.632,1.231" Margin="217,124,0,0"/>
-        <Label x:Name="label" Content="Staff ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="217,50,0,0"/>
-        <Button x:Name="btnLogIn" Content="LOG IN" Click="btnLogIn_Click" Margin="375,188,342,211"/>
-        <PasswordBox x:Name="pdbLogIn_password" Margin="300,127,264,269"/>
-        <Label x:Name="label2" Content="Enter Your Credentials" HorizontalAlignment="Left" Margin="346,10,0,0" VerticalAlignment="Top"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="233*"/>
+            <ColumnDefinition Width="96*"/>
+            <ColumnDefinition Width="291*"/>
+            <ColumnDefinition Width="162*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="txbLogIn_staffID" TextWrapping="Wrap" Text="" Margin="57,53,102,343" Grid.ColumnSpan="2" Grid.Column="2"/>
+        <Label x:Name="label1" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.632,1.231" Margin="206.638,124,0,0" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Label x:Name="label" Content="Staff ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="206.638,50,0,0" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Button x:Name="btnLogIn" Content="LOG IN" Click="btnLogIn_Click" Margin="36,188,180,211" Grid.Column="3"/>
+        <PasswordBox x:Name="pdbLogIn_password" Margin="57,127,102,269" Grid.ColumnSpan="2" Grid.Column="2"/>
+        <Label x:Name="label2" Content="Enter Your Credentials" HorizontalAlignment="Left" Margin="7,10,0,0" VerticalAlignment="Top" Grid.Column="3"/>
 
     </Grid>
 </Window>

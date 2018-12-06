@@ -137,7 +137,7 @@ namespace SeleleTravel
         #endregion
 
         #region Flight tab
-        public List<string> _passangers;
+        public List<string> _passengers;
         private void BtnFlight_done_Click(object sender, RoutedEventArgs e)
         {
             string airlineName = txbFlight_airline.Text;
@@ -148,9 +148,8 @@ namespace SeleleTravel
             string numberOfBags = txbFlight_numBags.Text;
             string preferedTime = txbFlight_time.Text;
             string flightSpecs = txbFlight_specifications.Text;
-            
-
-            Flight flight = new Flight(airlineName,fromLoc,toLoc,departureDate,numberOfBags,)
+           
+            Flight flight = new Flight(airlineName, fromLoc, toLoc, departureDate, Convert.ToInt32(numberOfBags), _passengers);
         }
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
@@ -158,7 +157,7 @@ namespace SeleleTravel
             string passangerName = txbFlight_passengers.Text;
             ltbFlight_passengersOutput.Items.Add(passangerName);
             ltbFlight_passengersOutput.Items.Refresh();
-            ltbFlight_passengersOutput.Items.CopyTo(_passangers.ToArray(), 0);
+            ltbFlight_passengersOutput.Items.CopyTo(_passengers.ToArray(), 0);
         }
         #endregion
 

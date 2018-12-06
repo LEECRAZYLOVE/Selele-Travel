@@ -1,11 +1,11 @@
-﻿<Window x:Class="SeleleTravel.Manager_Home"
+﻿<Window x:Name="Manager_Home1" x:Class="SeleleTravel.Manager_Home"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Manager_Home" Height="450" Width="800">
+        Title="Manager_home" Height="450" Width="800">
     <Grid Background="#FFFF1D1D">
         <Label x:Name="lblManagerID" Content="LabeloutputID" Margin="2,24,705,369"/>
         <Label x:Name="lblManagerName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="104" Margin="2,0,0,0"/>

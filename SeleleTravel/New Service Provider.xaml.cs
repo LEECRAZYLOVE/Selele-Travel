@@ -22,6 +22,12 @@ namespace SeleleTravel
         public New_Service_Provider()
         {
             InitializeComponent();
+            //this.WindowState = WindowState.Maximized;
+        }
+
+        private void createNewClient_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
