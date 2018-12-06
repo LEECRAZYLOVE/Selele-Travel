@@ -22,6 +22,15 @@ namespace SeleleTravel
         public Log_In()
         {
             InitializeComponent();
+            //this.WindowState = WindowState.Maximized;
+        }
+
+        private void btnLogIn_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            MainWindow.consultantWindow.Show(); //if consultant details correspond with the database
+           // MainWindow.managerWindow.Show(); //if manager details correspond with the database
+           // MainWindow.ownerWindow.Show(); //if owner details correspond with the database
         }
     }
 }
