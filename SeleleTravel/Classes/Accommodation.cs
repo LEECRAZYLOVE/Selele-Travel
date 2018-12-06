@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace SeleleTravel
 {
-    enum AccommodationType { self_catering, BnB, hotel, lodge}
-    class Accommodation //: Service
+    class Accommodation : Service
     {
         /// <summary>
         /// Name of the place.
@@ -26,17 +25,20 @@ namespace SeleleTravel
         /// The number of people that need accommodation.
         /// </summary>
         public string numberOfPeople;
-        public AccommodationType accommodationType;
+        string accommodationSpecifications;
+        string numberOFRooms;
+        string amount;
 
         public Accommodation(string name, DateTime checkIn, 
-            DateTime checkOut, string numberOfPeople, 
-            AccommodationType accommodationType)
+            DateTime checkOut, string numberOfPeople, string numberOFRooms, string accommodationSpecifications, string amount)
         {
             this.name = name;
             this.checkIn = checkIn;
             this.checkOut = checkOut;
             this.numberOfPeople = numberOfPeople;
-            this.accommodationType = accommodationType;
+            this.accommodationSpecifications = accommodationSpecifications;
+            this.numberOFRooms = numberOFRooms;
+            this.amount = amount;
         }
     }
 }
