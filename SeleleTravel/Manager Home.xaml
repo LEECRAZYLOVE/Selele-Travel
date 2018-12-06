@@ -6,7 +6,5 @@
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
         Title="Manager_Home" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Grid/>
 </Window>
