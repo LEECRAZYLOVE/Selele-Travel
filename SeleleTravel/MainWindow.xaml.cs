@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Npgsql;
+//using Npgsql;
 
 namespace SeleleTravel
 {
@@ -28,29 +28,38 @@ namespace SeleleTravel
             conn = new NpgsqlConnection("Server=127.0.0.1;Port=1998;Database=Selele;User Id=postgres;Password=Linnomtha;");
             conn.Open();
         }
-        
+
         #region Client Display
+        #endregion
         #region newClient Display
         /// <summary>
         /// This just makes sure that only one type is chosen between business and individual.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-       
+
+        #endregion
+
+        #region Log in Screen
+        private void btnLogIn_Click(object sender, RoutedEventArgs e)
+        {
+            Log_In_Side.Visibility = Visibility.Visible;
+            Consultant_Side.Visibility = Visibility.Visible;
+        }
         #endregion
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Main_Window.Visibility = Visibility.Visible;
-            Consultant_Side.Visibility = Visibility.Hidden;
-            Log_In_Side.Visibility = Visibility.Hidden;
+            //Main_Window.Visibility = Visibility.Visible;
+            //Consultant_Side.Visibility = Visibility.Hidden;
+            //Log_In_Side.Visibility = Visibility.Hidden;
         }
 
         private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
         {
-            Log_In.IsVisibleProperty.
-            Log_In_Side.Visibility = Visibility.Visible;
-            Main_Window.Visibility = Visibility.Hidden;
+            //Log_In.IsVisibleProperty.
+            //Log_In_Side.Visibility = Visibility.Visible;
+            //Main_Window.Visibility = Visibility.Hidden;
         }
 
         Npgsql.NpgsqlConnection conn;
