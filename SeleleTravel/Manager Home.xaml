@@ -7,6 +7,26 @@
         mc:Ignorable="d"
         Title="Manager_Home" Height="450" Width="800">
     <Grid>
-        
+        <Label x:Name="lblManagerID" Content="LabeloutputID" Margin="2,24,705,369"/>
+        <Label x:Name="lblManagerName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="104" Margin="2,0,0,0"/>
+        <Button x:Name="btnManager_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Margin="685,10,0,0"/>
+        <TabControl x:Name="Manager_tabControl" HorizontalAlignment="Left" Height="324" VerticalAlignment="Top" Width="792" Margin="0,95,0,0">
+            <TabItem Header="Quote Summary">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Compose Message">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Quote Verfications" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="111" Margin="-1,0,0,0">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Authorizations" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Search" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>
