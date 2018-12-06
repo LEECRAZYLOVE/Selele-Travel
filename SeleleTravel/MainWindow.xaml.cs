@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Npgsql;
+//using Npgsql;
 
 namespace SeleleTravel
 {
@@ -25,78 +25,18 @@ namespace SeleleTravel
         public MainWindow()
         {
             InitializeComponent();
-            //conn = new NpgsqlConnection("Server=127.0.0.1;Port=1998;Database=Selele;User Id=postgres;Password=Linnomtha;");
-            //conn.Open();
+            conn = new NpgsqlConnection("Server=127.0.0.1;Port=1998;Database=Selele;User Id=postgres;Password=Linnomtha;");
+            conn.Open();
         }
-        
+
         #region Client Display
+        #endregion
         #region newClient Display
         /// <summary>
         /// This just makes sure that only one type is chosen between business and individual.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void selectionChanged(object sender, RoutedEventArgs e)
-        {
-            //Making sure that only one checkbox is selected at a time
-            CheckBox reference = (CheckBox)sender;
-            if (reference == ckbBusiness)
-            {
-                ckbIndividual.IsChecked = !ckbBusiness.IsChecked;
-            }
-            else ckbBusiness.IsChecked = !ckbIndividual.IsChecked;
-        }
-        //Status : Incomplete
-        private void createNewClient_Click(object sender, RoutedEventArgs e)
-        {
-            string names = txbNewClient_name.Text + " " + txbNewClient_surname;
-            //Retrieving clientType
-            ClientType clientType = (bool)(ckbBusiness.IsChecked) ? ClientType.Business : ClientType.Individual;
-
-            //Get contact details
-            string cellphone = txbNewClient_cellphone.Text;
-            string fax = txbNewClient_fax.Text;
-            string email = txbNewClient_email.Text;
-            string telephone = txbNewClient_telephone.Text;
-            ContactDetails contactDetails = new ContactDetails(cellphone, email, telephone, fax);
-
-            //Get location details
-            string address = txbNewClient_address.Text;
-            string city = txbNewClient_city.Text;
-            string areaCode = txbNewClient_areaCode.Text;
-            string province = txbNewClient_province.Text;
-                //use this in initialisation of client
-            string _location = address + '\n' + city + '\n' + areaCode + '\n' + province;
-            //Initialize Client instance
-            Client client = new Client(names, clientType, contactDetails)
-            {
-                location = _location
-            };
-
-
-            //Add client to database
-
-        }
-        private void nameAndSurnameTextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-            string acceptedCharacters = " qwertyuioplkjhgfdsazxcvbnm";
-            TextBox reference = (TextBox)sender;
-            if (reference.Text.Length <= 0) return;
-
-            string letterEntered = reference.Text.Last().ToString().ToLower();
-            if (!acceptedCharacters.Contains(letterEntered))
-            {
-                reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
-                reference.SelectionStart = reference.Text.Length;
-                MessageBox.Show("'" + letterEntered + "' is not an accepted character for a name or a surname!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-        #endregion
-
-        #region Already a Client Display
-
-        #endregion
 
         #endregion
 
@@ -110,47 +50,41 @@ namespace SeleleTravel
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Main_Window.Visibility = Visibility.Visible;
-            Consultant_Side.Visibility = Visibility.Hidden;
-            Log_In_Side.Visibility = Visibility.Hidden;
+            //Main_Window.Visibility = Visibility.Visible;
+            //Consultant_Side.Visibility = Visibility.Hidden;
+            //Log_In_Side.Visibility = Visibility.Hidden;
         }
 
         private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
         {
-            Log_In_Side.Visibility = Visibility.Visible;
-            Main_Window.Visibility = Visibility.Hidden;
+            //Log_In.IsVisibleProperty.
+            //Log_In_Side.Visibility = Visibility.Visible;
+            //Main_Window.Visibility = Visibility.Hidden;
         }
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        Npgsql.NpgsqlConnection conn;
+
+        private void button1_Click(object sender, RoutedEventArgs e)
         {
-
+            using (Npgsql.NpgsqlCommand cmd = new NpgsqlCommand("select * from myTable where name=" + Name))
+            { // '' or 1=1
+              // select * from myTable where name ='' or 1=1
+                cmd.CommandText = "select date,name from quote where quote_no = @mynum";
+                cmd.Parameters.Add("mynum", 7);
+                // for ins/upd:
+                cmd.ExecuteNonQuery();
+                // for single value:
+                cmd.ExecuteScalar();
+                using (Npgsql.NpgsqlDataReader r = cmd.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        var x = r.GetDate(0);
+                        string b = r.GetString(1);
+                        // do whatever
+                    }
+                }
+            }
         }
-
-
-
-        //Npgsql.NpgsqlConnection conn;
-
-        //private void button1_Click(object sender, RoutedEventArgs e)
-        //{
-        //    using (Npgsql.NpgsqlCommand cmd = new NpgsqlCommand("select * from myTable where name=" + Name))
-        //    { // '' or 1=1
-        //      // select * from myTable where name ='' or 1=1
-        //        cmd.CommandText = "select date,name from quote where quote_no = @mynum";
-        //        cmd.Parameters.Add("mynum", 7);
-        //        // for ins/upd:
-        //        cmd.ExecuteNonQuery();
-        //        // for single value:
-        //        cmd.ExecuteScalar();
-        //        using (Npgsql.NpgsqlDataReader r = cmd.ExecuteReader())
-        //        {
-        //            while (r.Read())
-        //            {
-        //                var x = r.GetDate(0);
-        //                string b = r.GetString(1);
-        //                // do whatever
-        //            }
-        //        }
-        //    }
-        //}
     }
 }

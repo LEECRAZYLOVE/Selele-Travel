@@ -17,7 +17,7 @@ namespace SeleleTravel
         public DateTime departure, arrival, CheckInTime;
         public string flightNumber;
         public int numberOfbags;
-
+        public List<string> passengers;
         /// <summary>
         /// Flight
         /// Takes in info that is required for flight booking
@@ -27,13 +27,15 @@ namespace SeleleTravel
         /// <param name="to"></param>
         /// <param name="departure"></param>
         /// <param name="numberOfbags"></param>
-        public Flight(string airline, string from, string to, DateTime departure, int numberOfbags)
+        /// /// <param name="passengers"></param>
+        public Flight(string airline, string from, string to, DateTime departure, int numberOfbags, List<string> passengers)
         {
             this.airline = airline;
             this.from = from;
             this.to = to;
             this.departure = departure;
             this.numberOfbags = numberOfbags;
+            this.passengers = passengers;
         }
 
         /// <summary>
