@@ -13,19 +13,26 @@ namespace SeleleTravel
     {
         public string venueOfConference;
         public string nameOfConference;
-        public DateTime timeOfConference;
+        public DateTime dateOfConference;
+        public string timeOfConference;
+        public string amountOfConference;
+        public string conferenceSpecs;
 
         /// <summary>
         /// Takes in info required for Conference booking
         /// </summary>
         /// <param name="venueOfConference"></param>
         /// <param name="nameOfConference"></param>
+        /// /// <param name="dateOfConference"></param>
         /// <param name="timeOfConference"></param>
-        public Conference(string venueOfConference, string nameOfConference, DateTime timeOfConference)
+        public Conference(string venueOfConference, string nameOfConference, DateTime dateOfConference, string timeOfConference, string amountOfConference, string conferenceSpecs)
         {
             this.venueOfConference = venueOfConference;
             this.nameOfConference = nameOfConference;
+            this.dateOfConference = dateOfConference;
             this.timeOfConference = timeOfConference;
+            this.amountOfConference = amountOfConference;
+            this.conferenceSpecs = conferenceSpecs;
         }
 
         public override string ToString()

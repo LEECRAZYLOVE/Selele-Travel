@@ -79,11 +79,89 @@ namespace SeleleTravel
                 MessageBox.Show("'" + letterEntered + "' is not an accepted character for a name or a surname!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-#endregion
 
         #region Already a Client Display
 
         #endregion
+
+        #region Event tab
+        private void _done(object sender, RoutedEventArgs e)
+        {
+            string nameOfEvent = txbEvents_name.Text;
+            string eventSpecs = txbEvents_specifications.Text;
+            string eventAmount = txbEvents_total.Text;
+            Events event_selele = new Events(nameOfEvent, eventSpecs, eventAmount);
+
+            // Todo sql insertion
+            // ...
+        }
+
+        #endregion
+
+        #region Conference tab
+        private void BtnConference_done_Click(object sender, RoutedEventArgs e)
+        {
+            string conferenceName = txbConference_name.Text;
+            string conferenceVenue = txbConference_venue.Text;
+            DateTime dateOfConference = dpConference_date.DisplayDate;
+            string conferenceTime = txbConference_time.Text;
+            string specsOfConference = txbConference_specifications.Text;
+            string amountOfconf = txbConference_total.Text;
+            Conference selele_Conference = new Conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
+            
+            // Todo sql insertion
+            // ...
+        }
+        
+        #endregion
+
+        #region Taxi cab
+        private void BtnCab_done_Click(object sender, RoutedEventArgs e)
+        {
+            string _agencyName = txbCab_agency.Text;
+            string _driverName = txbCab_driver.Text;
+            string _pickUpLocation = txbCab_pickUp.Text;
+            string _dropOffLocation = txbCab_dropOff.Text;
+            string _timeOfPickUp = txbCab_pickUpTime.Text;
+            DateTime _dateOfPickup = dpCab_pickUpDate.DisplayDate;
+            string _numberOfPassengers = txbCab_numCabs.Text;
+            string _taxicabSpecs = txbCab_specifications.Text;
+            string _totalAmount = txbCab_total.Text;
+
+            Cab taxiCab = new Cab(_agencyName,_driverName,_pickUpLocation,_dropOffLocation,_timeOfPickUp,_dateOfPickup,_numberOfPassengers,_taxicabSpecs,_totalAmount);
+            
+            // Todo sql insertion
+            // ...
+        }
+
+        #endregion
+
+        #region Flight tab
+        public List<string> _passangers;
+        private void BtnFlight_done_Click(object sender, RoutedEventArgs e)
+        {
+            string airlineName = txbFlight_airline.Text;
+            string fromLoc = txbFlight_from.Text;
+            string toLoc = txbFlight_to.Text;
+            DateTime departureDate = dpFlight_departure.DisplayDate;
+            DateTime arrivalDate = dpFlight_arrival.DisplayDate;
+            string numberOfBags = txbFlight_numBags.Text;
+            string preferedTime = txbFlight_time.Text;
+            string flightSpecs = txbFlight_specifications.Text;
+            
+
+            Flight flight = new Flight(airlineName,fromLoc,toLoc,departureDate,numberOfBags,)
+        }
+
+        private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
+        {
+            string passangerName = txbFlight_passengers.Text;
+            ltbFlight_passengersOutput.Items.Add(passangerName);
+            ltbFlight_passengersOutput.Items.Refresh();
+            ltbFlight_passengersOutput.Items.CopyTo(_passangers.ToArray(), 0);
+        }
+        #endregion
+
 
     }
 }
