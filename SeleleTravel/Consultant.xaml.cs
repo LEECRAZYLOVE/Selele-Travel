@@ -64,9 +64,9 @@ namespace SeleleTravel
             //Add client to database
 
         }
+
         private void nameAndSurnameTextChanged(object sender, TextChangedEventArgs e)
         {
-
             string acceptedCharacters = " qwertyuioplkjhgfdsazxcvbnm";
             TextBox reference = (TextBox)sender;
             if (reference.Text.Length <= 0) return;
@@ -87,15 +87,31 @@ namespace SeleleTravel
         #region Event tab
         private void _done(object sender, RoutedEventArgs e)
         {
+            // create variables and assign to textbox values
             string nameOfEvent = txbEvents_name.Text;
             string eventSpecs = txbEvents_specifications.Text;
             string eventAmount = txbEvents_total.Text;
+
+            // creates an instance of an event
             Events event_selele = new Events(nameOfEvent, eventSpecs, eventAmount);
+
+            // Verifying input from user
+            if(nameOfEvent == "")
+            {
+                MessageBox.Show("Please enter the name of the event.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if(eventSpecs == "")
+            {
+                MessageBox.Show("Please enter the specifications of the event.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if(eventAmount == "")
+            {
+                MessageBox.Show("Please enter the total amount of the event.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
             // Todo sql insertion
             // ...
         }
-
         #endregion
 
         #region Conference tab
@@ -145,12 +161,12 @@ namespace SeleleTravel
             string toLoc = txbFlight_to.Text;
             DateTime departureDate = dpFlight_departure.DisplayDate;
             DateTime arrivalDate = dpFlight_arrival.DisplayDate;
-            string numberOfBags = txbFlight_numBags.Text;
+            int numberOfBags = Convert.ToInt32(txbFlight_numBags.Text);
             string preferedTime = txbFlight_time.Text;
             string flightSpecs = txbFlight_specifications.Text;
-            
 
-            Flight flight = new Flight(airlineName,fromLoc,toLoc,departureDate,numberOfBags,)
+
+            Flight flight = new Flight(airlineName, fromLoc, toLoc, departureDate,numberOfBags,_passangers);
         }
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
@@ -160,8 +176,45 @@ namespace SeleleTravel
             ltbFlight_passengersOutput.Items.Refresh();
             ltbFlight_passengersOutput.Items.CopyTo(_passangers.ToArray(), 0);
         }
+
         #endregion
 
+        #region Accomodation Tab
+        private void BtnAccommodation_done_Click(object sender, RoutedEventArgs e)
+        {
+            string nameOfAgency = txbAccommodation_name.Text;
+            string accomodationSpecs = txbAccommodation_specifications.Text;
+            string numberOfGuests = txbAccommodation_numGuests.Text;
+            string numberOfRooms = txbAccommodation_numRooms.Text;
+            string amountOfAccomodation = txbAccommodation_total.Text;
 
+            DateTime checkInTime = dpAccommodation_checkIn.DisplayDate;
+            DateTime checkOutTime = dpAccommodation_checkOut.DisplayDate;
+            
+            Accommodation accommodation = new Accommodation(nameOfAgency, checkInTime, checkOutTime, numberOfGuests,numberOfRooms, accomodationSpecs,amountOfAccomodation);
+
+            // Todo sql insertion
+            // ...
+        }
+
+
+        #endregion
+
+        #region CarHire
+        private void BtnCarHire_Done_Click(object sender, RoutedEventArgs e)
+        {
+            string agencyName = txbCarHire_agency.Text;
+            string pickUpLoc = txbCarHire_pickUp.Text;
+            string dropUpLoc = txbCarHire_dropOff.Text;
+            DateTime pickUpDate = dpCarHire_startDay.DisplayDate;
+            DateTime dropOffDate = dpCarHire_endDay.DisplayDate;
+            int numberOfCars = Convert.ToInt32(txbCarHire_numCars.Text);
+            string carhireSpecs = txbCarHire_specifications.Text;
+            string totalAmount = txbCarHire_total.Text;
+
+
+
+        }
+        #endregion region 
     }
 }
