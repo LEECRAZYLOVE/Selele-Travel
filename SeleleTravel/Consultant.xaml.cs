@@ -144,11 +144,21 @@ namespace SeleleTravel
 
         #region Conference tab
 
-        public void ConferenceErrorMessage(string name, string venue, DateTime date, string time, string specs, string amount)
+        private void TxbConference_total_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (name == "" || specs == "")
+            txbConference_total = validateAmount(txbConference_total);
+        }
+
+        public void conferenceErrorMessage(string name, string venue, DateTime date, string time, string specs)
+        {
+            if (name == "" || specs == "" || time == "" || specs == "")
             {
                 MessageBox.Show("Please enter valid text!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            if (date == null || date.ToString() == null || date.ToString() == "")
+            {
+                MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -162,12 +172,21 @@ namespace SeleleTravel
             string specsOfConference = txbConference_specifications.Text;
             string amountOfconf = txbConference_total.Text;
             Conference selele_Conference = new Conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
-            
+
             // Data Verification:
             // check if the variables are empty
-            
+            conferenceErrorMessage(conferenceName, conferenceVenue, dateOfConference, conferenceTime, specsOfConference);
+
+            // reset texbox values to empty
+            txbConference_name.Text = "";
+            txbConference_venue.Text = "";
+            txbConference_time.Text = "";
+            txbConference_specifications.Text = "";
+            txbConference_total.Text = "";
+
             // Todo sql insertion
             // ...
+
         }
         
         #endregion
@@ -219,6 +238,7 @@ namespace SeleleTravel
 
 
         #endregion
+
         
     }
 }

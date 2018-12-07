@@ -189,7 +189,7 @@
                     <TextBox x:Name="txbConference_time" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" Margin="285,120,0,0"/>
                     <DatePicker x:Name="dpConference_date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,119,0,0" Width="120"/>
                     <Label x:Name="label48" Content="TOTAL:" HorizontalAlignment="Left" Margin="375,251,0,0" VerticalAlignment="Top" Width="94"/>
-                    <TextBox x:Name="txbConference_total" TextChanged="TxbEvents_total_TextChanged" HorizontalAlignment="Left" Height="23" Margin="399,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"/>
+                    <TextBox x:Name="txbConference_total" TextChanged="TxbConference_total_TextChanged" HorizontalAlignment="Left" Height="23" Margin="399,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"/>
                     <Button x:Name="btnConference_done" Content="DONE" HorizontalAlignment="Left" Margin="394,312,0,0" VerticalAlignment="Top" Width="75" Click="BtnConference_done_Click"/>
                     <Button x:Name="btnConference_update" Content="UPDATE" HorizontalAlignment="Left" Margin="394,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden"/>
                     <Label Content="R" HorizontalAlignment="Left" Margin="375,284,0,0" VerticalAlignment="Top" Height="23"/>
