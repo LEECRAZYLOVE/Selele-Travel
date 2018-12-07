@@ -159,8 +159,17 @@ namespace SeleleTravel
             ltbFlight_passengersOutput.Items.Refresh();
             ltbFlight_passengersOutput.Items.CopyTo(_passengers.ToArray(), 0);
         }
+
         #endregion
 
+        private void BtnAccommodation_done_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void BtnCarHire_Done_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
