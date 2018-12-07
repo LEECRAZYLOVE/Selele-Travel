@@ -11,6 +11,7 @@
         <Button x:Name="btn_consultantSide" Content="Consultant" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFD8B827" Click="btn_consultantSide_Click" Margin="644,295,0,0"/>
         <Button x:Name="btn_managerSide" Content="Manager" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFEE1717" Margin="380,295,0,0" Click="btn_managerSide_Click"/>
         <Button x:Name="btn_bossSide" Content="Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FF3E9EFD" Margin="99,295,0,0" Click="btn_bossSide_Click"/>
+        <Viewbox HorizontalAlignment="Left" Height="154" Margin="84,282,0,0" VerticalAlignment="Top" Width="702"/>
 
     </Grid>
 </Window>
