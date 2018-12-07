@@ -145,7 +145,7 @@ namespace SeleleTravel
         #endregion
 
         #region Conference tab
-<<<<<<< HEAD
+
         private void TxbConference_total_TextChanged(object sender, TextChangedEventArgs e)
         {
             txbConference_total = validateAmount(txbConference_total);
@@ -163,9 +163,7 @@ namespace SeleleTravel
                 MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-=======
->>>>>>> da7e03a93886dbc42a641a8348a6ea0ab3fdf3fe
+        
         private void BtnConference_done_Click(object sender, RoutedEventArgs e)
         {
             string conferenceName = txbConference_name.Text;
@@ -175,7 +173,6 @@ namespace SeleleTravel
             string specsOfConference = txbConference_specifications.Text;
             string amountOfconf = txbConference_total.Text;
             Conference selele_Conference = new Conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
-<<<<<<< HEAD
 
             // Data Verification:
             // check if the variables are empty
@@ -187,10 +184,7 @@ namespace SeleleTravel
             txbConference_time.Text = "";
             txbConference_specifications.Text = "";
             txbConference_total.Text = "";
-
-=======
             
->>>>>>> da7e03a93886dbc42a641a8348a6ea0ab3fdf3fe
             // Todo sql insertion
             // ...
 
