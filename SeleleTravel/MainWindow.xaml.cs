@@ -96,5 +96,11 @@ namespace SeleleTravel
         //        }
         //    }
         //}
+
+        public string MakeQuoteSummmary () //function that will display the final information for the quote
+        {
+
+            return "";
+        }
     }
 }
