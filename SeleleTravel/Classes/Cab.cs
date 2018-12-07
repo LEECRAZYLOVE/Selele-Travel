@@ -17,9 +17,9 @@ namespace SeleleTravel
         string dropOffLocation;
         string timeOfPickUp;
         DateTime dateOfPickup;
-        string numberOfPassengers;
+        int numberOfCabs;
         string taxicabSpecs;
-        string totalAmount;
+        double totalAmount;
 
         /// <summary>
         /// Cab: It takes in info required to book a cab.
@@ -30,10 +30,10 @@ namespace SeleleTravel
         /// <param name="dropOffLocation"></param>
         /// <param name="timeOfPickUp"></param>
         /// <param name="dateOfPickup"></param>
-        /// <param name="numberOfPassengers"></param>
+        /// <param name="numberOfCabs"></param>
         /// <param name="taxicabSpecs"></param>
         /// <param name="totalAmount"></param>
-        public Cab(string agencyName, string driverName, string pickUpLocation, string dropOffLocation, string timeOfPickUp, DateTime dateOfPickup, string numberOfPassengers, string taxicabSpecs, string totalAmount)
+        public Cab(string agencyName, string driverName, string pickUpLocation, string dropOffLocation, string timeOfPickUp, DateTime dateOfPickup, int numberOfCabs, string taxicabSpecs, double totalAmount)
         {
             this.agencyName = agencyName;
             this.driverName = driverName;
@@ -41,7 +41,7 @@ namespace SeleleTravel
             this.dropOffLocation = dropOffLocation;
             this.timeOfPickUp = timeOfPickUp;
             this.dateOfPickup = dateOfPickup;
-            this.numberOfPassengers = numberOfPassengers;
+            this.numberOfCabs = numberOfCabs;
             this.taxicabSpecs = taxicabSpecs;
             this.totalAmount = totalAmount;
         }

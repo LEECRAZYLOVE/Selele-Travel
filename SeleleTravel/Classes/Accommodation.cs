@@ -24,13 +24,13 @@ namespace SeleleTravel
         /// <summary>
         /// The number of people that need accommodation.
         /// </summary>
-        public string numberOfPeople;
+        public int numberOfPeople;
         string accommodationSpecifications;
-        string numberOFRooms;
-        string amount;
+        int numberOFRooms;
+        double amount;
 
         public Accommodation(string name, DateTime checkIn, 
-            DateTime checkOut, string numberOfPeople, string numberOFRooms, string accommodationSpecifications, string amount)
+            DateTime checkOut, int numberOfPeople, int numberOFRooms, string accommodationSpecifications, double amount)
         {
             this.name = name;
             this.checkIn = checkIn;
