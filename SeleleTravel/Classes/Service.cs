@@ -10,15 +10,7 @@ namespace SeleleTravel
 /// </summary>
     class Service
     {
-        public List<Quote> serviceQuotes;
-        public List<Order> serviceOrder;
-        /// <summary>
-        /// double Check
-        /// It checks if the service order has been approved on not
-        /// </summary>
-        /// <param name="_serviceOrder"></param>
-        /// <returns></returns>
-        private bool doubleCheck(Order _serviceOrder) => serviceQuotes.Contains(_serviceOrder.approvedQuote);
-        
+        public Quote serviceQuotes;
+        public Order serviceOrder;
     }
 }

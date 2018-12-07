@@ -84,23 +84,77 @@ namespace SeleleTravel
 
         #endregion
 
+        #region General Methods
+
+        /// <summary>
+        /// It validates the amount and removes any in valid characters
+        /// </summary>
+        /// <param name="totalAmount"></param>
+        /// <returns></returns>
+        TextBox validateAmount(TextBox totalAmount)
+        {
+            string myabc = "0123456789";
+            char currentChar = totalAmount.Text[totalAmount.Text.Length - 1];
+            if (myabc.IndexOf(currentChar) < 0) totalAmount.Text.Replace(currentChar, ' ');
+            totalAmount.Text.Trim();
+            return totalAmount;
+        }
+
+
+
+        #endregion
+        
         #region Event tab
+        // This removes invalid text from the amount textbox for event tab.
+        private void TxbEvents_total_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txbEvents_total = validateAmount(txbEvents_total);
+        }
+
+        // displays an error message when the textboxes are empty
+        void EventErrorMessage(string name, string specs, string amount)
+        {
+            if (name == "" || specs == "")
+            {
+                MessageBox.Show("Please enter valid text!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void _done(object sender, RoutedEventArgs e)
         {
+            // assign vars to the textboxes
             string nameOfEvent = txbEvents_name.Text;
             string eventSpecs = txbEvents_specifications.Text;
             string eventAmount = txbEvents_total.Text;
             Events event_selele = new Events(nameOfEvent, eventSpecs, eventAmount);
 
+            // Data verification:
+            // make sure that the supplied data is valid
+            EventErrorMessage(nameOfEvent, eventSpecs, eventAmount);
+
+            // Reset textbox values to empty
+            txbEvents_name.Text = "";
+            txbEvents_specifications.Text = "";
+            txbEvents_total.Text = "";
+
             // Todo sql insertion
             // ...
         }
-
         #endregion
 
         #region Conference tab
+
+        public void ConferenceErrorMessage(string name, string venue, DateTime date, string time, string specs, string amount)
+        {
+            if (name == "" || specs == "")
+            {
+                MessageBox.Show("Please enter valid text!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void BtnConference_done_Click(object sender, RoutedEventArgs e)
         {
+            // Assign values from the textboxes to the variables
             string conferenceName = txbConference_name.Text;
             string conferenceVenue = txbConference_venue.Text;
             DateTime dateOfConference = dpConference_date.DisplayDate;
@@ -108,6 +162,9 @@ namespace SeleleTravel
             string specsOfConference = txbConference_specifications.Text;
             string amountOfconf = txbConference_total.Text;
             Conference selele_Conference = new Conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
+            
+            // Data Verification:
+            // check if the variables are empty
             
             // Todo sql insertion
             // ...
@@ -160,16 +217,8 @@ namespace SeleleTravel
             ltbFlight_passengersOutput.Items.CopyTo(_passengers.ToArray(), 0);
         }
 
+
         #endregion
-
-        private void BtnAccommodation_done_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnCarHire_Done_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }
