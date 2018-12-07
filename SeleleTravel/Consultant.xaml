@@ -226,6 +226,7 @@
                     <Button x:Name="btnQuote_markUp" Content="ADD" HorizontalAlignment="Left" Margin="616,42,0,0" VerticalAlignment="Top" Width="75"/>
                     <Label x:Name="lblQuote_total" Content="R" HorizontalAlignment="Left" Margin="590,80,0,0" VerticalAlignment="Top"/>
                     <Button Content="btnQuote_update" HorizontalAlignment="Left" Margin="616,42,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden"/>
+                    <Button x:Name="btnQuoteSummar_document" Content="View as document and print" HorizontalAlignment="Left" Margin="514,287,0,0" VerticalAlignment="Top" Width="248" Click="Button_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Orders" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="49" Margin="-2,0,0,0">
@@ -263,7 +264,7 @@
                         <ColumnDefinition Width="36*"/>
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="txbInbox_preview" HorizontalAlignment="Left" Height="342" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Margin="210,0,0,0"/>
-                    <ListBox x:Name="ltbInbox_messagesList" HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="210"/>
+                    <ListBox x:Name="ltbInbox_messagesList" HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="210" Background="#FFB2B2A3"/>
                     <Label Content="Quote Number:" HorizontalAlignment="Left" Margin="532,7,0,0" VerticalAlignment="Top"/>
                     <Label Content="Service:" HorizontalAlignment="Left" Margin="532,41,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="btnInbox_service" Content="UPDATE" HorizontalAlignment="Left" Margin="654,90,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="3"/>
@@ -281,7 +282,7 @@
             </TabItem>
             <TabItem Header="Send Quotes" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="83" Margin="-2,0,0,0">
                 <Grid Background="#FFE5E5E5">
-                    <ListBox x:Name="ltbSendQuotes_verifiedQuotes" HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="210"/>
+                    <ListBox x:Name="ltbSendQuotes_verifiedQuotes" HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="210" Background="#FFB2B2A3"/>
                     <TextBox x:Name="txbSendQuotes_preview" HorizontalAlignment="Left" Height="342" Margin="210,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322"/>
                     <PasswordBox x:Name="pdbSendQuotes_password" HorizontalAlignment="Left" Margin="620,20,0,0" VerticalAlignment="Top" Width="136"/>
                     <Label Content="Password:" HorizontalAlignment="Left" Margin="546,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.192"/>
