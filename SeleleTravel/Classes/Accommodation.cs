@@ -27,10 +27,10 @@ namespace SeleleTravel
         public string numberofpeople;
         string accommodationSpecifications;
         string numberOFRooms;
-        string amount;
+        double amount;
 
         public Accommodation(string accomname, DateTime checkin, 
-            DateTime checkout, string numberofpeople, string numberOFRooms, string accommodationSpecifications, string amount) : base()
+            DateTime checkout, string numberofpeople, string numberOFRooms, string accommodationSpecifications, double amount) : base()
         {
             this.accomname = accomname;
             this.checkin = checkin;
