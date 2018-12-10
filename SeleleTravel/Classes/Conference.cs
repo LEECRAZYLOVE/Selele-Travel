@@ -15,7 +15,7 @@ namespace SeleleTravel
         public string nameOfConference;
         public DateTime dateOfConference;
         public string timeOfConference;
-        public string amountOfConference;
+        public double amountOfConference;
         public string conferenceSpecs;
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace SeleleTravel
         /// <param name="nameOfConference"></param>
         /// /// <param name="dateOfConference"></param>
         /// <param name="timeOfConference"></param>
-        public Conference(string venueOfConference, string nameOfConference, DateTime dateOfConference, string timeOfConference, string amountOfConference, string conferenceSpecs)
+        public Conference(string venueOfConference, string nameOfConference, DateTime dateOfConference, string timeOfConference, double amountOfConference, string conferenceSpecs)
         {
             this.venueOfConference = venueOfConference;
             this.nameOfConference = nameOfConference;

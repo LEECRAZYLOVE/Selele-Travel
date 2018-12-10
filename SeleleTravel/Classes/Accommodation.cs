@@ -7,38 +7,39 @@ using System.Threading.Tasks;
 
 namespace SeleleTravel
 {
-    class Accommodation : Service
+    public class Accommodation : Service
     {
         /// <summary>
         /// Name of the place.
         /// </summary>
-        public string name;
+        public string accomname;
         /// <summary>
         /// Date of check-in.
         /// </summary>
-        public DateTime checkIn;
+        public DateTime checkin;
         /// <summary>
         /// Date of check-out.
         /// </summary>
-        public DateTime checkOut;
+        public DateTime checkout;
         /// <summary>
         /// The number of people that need accommodation.
         /// </summary>
-        public string numberOfPeople;
+        public string numberofpeople;
         string accommodationSpecifications;
         string numberOFRooms;
         string amount;
 
-        public Accommodation(string name, DateTime checkIn, 
-            DateTime checkOut, string numberOfPeople, string numberOFRooms, string accommodationSpecifications, string amount)
+        public Accommodation(string accomname, DateTime checkin, 
+            DateTime checkout, string numberofpeople, string numberOFRooms, string accommodationSpecifications, string amount) : base()
         {
-            this.name = name;
-            this.checkIn = checkIn;
-            this.checkOut = checkOut;
-            this.numberOfPeople = numberOfPeople;
+            this.accomname = accomname;
+            this.checkin = checkin;
+            this.checkout = checkout;
+            this.numberofpeople = numberofpeople;
             this.accommodationSpecifications = accommodationSpecifications;
             this.numberOFRooms = numberOFRooms;
             this.amount = amount;
+
         }
     }
 }
