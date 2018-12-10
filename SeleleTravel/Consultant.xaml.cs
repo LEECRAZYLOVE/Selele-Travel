@@ -25,6 +25,9 @@ namespace SeleleTravel
         {
             InitializeComponent();
         }
+
+        #region Client tab
+
         private void selectionChanged(object sender, RoutedEventArgs e)
         {
             //Making sure that only one checkbox is selected at a time
@@ -35,6 +38,7 @@ namespace SeleleTravel
             }
             else ckbBusiness.IsChecked = !ckbIndividual.IsChecked;
         }
+
         //Status : Incomplete
         private void createNewClient_Click(object sender, RoutedEventArgs e)
         {
@@ -66,10 +70,19 @@ namespace SeleleTravel
             //Add client to database
 
         }
-        private void nameAndSurnameTextChanged(object sender, TextChangedEventArgs e)
+        
+        #region Already a Client Display
+
+        #endregion
+
+        #endregion
+
+        #region General Methods
+
+        private void AmountChanged(object sender, TextChangedEventArgs e)
         {
 
-            string acceptedCharacters = " qwertyuioplkjhgfdsazxcvbnm";
+            string acceptedCharacters = "0123456789.";
             TextBox reference = (TextBox)sender;
             if (reference.Text.Length <= 0) return;
 
@@ -78,40 +91,28 @@ namespace SeleleTravel
             {
                 reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
                 reference.SelectionStart = reference.Text.Length;
-                MessageBox.Show("'" + letterEntered + "' is not an accepted character for a name or a surname!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("'" + letterEntered + "' is not an accepted character for an amount!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        #region Already a Client Display
-
-        #endregion
-
-        #region General Methods
-
-        /// <summary>
-        /// It validates the amount and removes any in valid characters
-        /// </summary>
-        /// <param name="totalAmount"></param>
-        /// <returns></returns>
-        TextBox validateAmount(TextBox totalAmount)
+        private void AmountChanged_WHOLENumber(object sender, TextChangedEventArgs e)
         {
-            string myabc = "0123456789";
-            char currentChar = totalAmount.Text[totalAmount.Text.Length - 1];
-            if (myabc.IndexOf(currentChar) < 0) totalAmount.Text.Replace(currentChar, ' ');
-            totalAmount.Text.Trim();
-            return totalAmount;
+            string acceptedCharacters = "0123456789";
+            TextBox reference = (TextBox)sender;
+            if (reference.Text.Length <= 0) return;
+
+            string letterEntered = reference.Text.Last().ToString().ToLower();
+            if (!acceptedCharacters.Contains(letterEntered))
+            {
+                reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
+                reference.SelectionStart = reference.Text.Length;
+                MessageBox.Show("'" + letterEntered + "' is not an accepted character for a whole number!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
-
-
-
+        
         #endregion
 
         #region Event tab
-        // This removes invalid text from the amount textbox for event tab.
-        private void TxbEvents_total_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            txbEvents_total = validateAmount(txbEvents_total);
-        }
 
         // displays an error message when the textboxes are empty
         void EventErrorMessage(string name, string specs)
@@ -147,16 +148,6 @@ namespace SeleleTravel
         #endregion
 
         #region Conference tab
-
-        /// <summary>
-        /// Checks if the digits in the texbox are valid
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TxbConference_total_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            txbConference_total = validateAmount(txbConference_total);
-        }
 
         /// <summary>
         /// It checks if the variables are empty
@@ -209,26 +200,7 @@ namespace SeleleTravel
         #endregion
 
         #region Taxi cab
-        /// <summary>
-        /// Checks if the values entered are valid.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TxbCab_numCabs_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            txbCab_numCabs = validateAmount(txbCab_numCabs);
-        }
-
-        /// <summary>
-        /// Checks if the total amount has valid numbers
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TxbCab_total_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            txbCab_total = validateAmount(txbCab_total);
-        }
-
+        
         /// <summary>
         /// Check if the texboxes are empty and the send an error message if they are.
         /// </summary>
@@ -242,6 +214,7 @@ namespace SeleleTravel
                 if (stringValues[i] == "")
                 {
                     MessageBox.Show("Please enter valid text!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
                 }
             }
 
@@ -262,7 +235,7 @@ namespace SeleleTravel
             DateTime _dateOfPickup = dpCab_pickUpDate.DisplayDate;
             int _numberOfcabs = Convert.ToInt32(txbCab_numCabs.Text);
             string _taxicabSpecs = txbCab_specifications.Text;
-            string _totalAmount = txbCab_total.Text;
+            double _totalAmount = Convert.ToDouble(txbCab_total.Text);
 
             // Data verification
             List<string> conf_stringValues = new List<string>();
@@ -285,26 +258,6 @@ namespace SeleleTravel
         #region Flight tab
 
         /// <summary>
-        /// Checks if the entered digits are valid
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TxbFlight_numBags_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            txbFlight_numBags = validateAmount(txbFlight_numBags);
-        }
-
-        /// <summary>
-        /// checks if the digits provided in the total amount are valid.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TxbFlight_total_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            txbFlight_total = validateAmount(txbFlight_total);
-        }
-
-        /// <summary>
         /// Checks if the data provided has valid characters
         /// </summary>
         /// <param name="stringValues"></param>
@@ -317,6 +270,7 @@ namespace SeleleTravel
                 if (stringValues[i] == "")
                 {
                     MessageBox.Show("Please enter valid text!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
                 }
             }
 
@@ -330,7 +284,7 @@ namespace SeleleTravel
             }
         }
 
-        List<string> _passengers;
+        List<string> _passengers = new List<string>();
         private void BtnFlight_done_Click(object sender, RoutedEventArgs e)
         {
             // assign valuesfrom the texbox to the variables
@@ -352,7 +306,7 @@ namespace SeleleTravel
             _stringValues.Add(preferedTime);
             _stringValues.Add(flightSpecs);
             flightErrorMessage(_stringValues, departureDate, arrivalDate);
-
+            
             // check if the list is not empty
             if(_passengers.Count <= 0)
             {
@@ -371,6 +325,7 @@ namespace SeleleTravel
             txbFlight_numBags.Text = "";
             txbFlight_time.Text = "";
             txbFlight_specifications.Text = "";
+            _passengers = new List<string>();
         }
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
@@ -402,6 +357,7 @@ namespace SeleleTravel
                 if (stringValues[i] == "")
                 {
                     MessageBox.Show("Please enter valid text!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
                 }
             }
 
@@ -413,36 +369,6 @@ namespace SeleleTravel
             {
                 MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-        
-        /// <summary>
-        /// checks if the digits entered are valid
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TxbAccommodation_numGuests_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            txbAccommodation_numGuests = validateAmount(txbAccommodation_numGuests);
-        }
-
-        /// <summary>
-        /// checks if the digits entered are valid
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TxbAccommodation_numRooms_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            txbAccommodation_numRooms = validateAmount(txbAccommodation_numRooms);
-        }
-
-        /// <summary>
-        /// checks if the digits entered are valid
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TxbAccommodation_total_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            txbAccommodation_total = validateAmount(txbAccommodation_total);
         }
 
         private void BtnAccommodation_done_Click(object sender, RoutedEventArgs e)
@@ -476,11 +402,32 @@ namespace SeleleTravel
 
         #region CarHire
 
-        private void TxbCarHire_numCars_TextChanged(object sender, TextChangedEventArgs e)
+        /// <summary>
+        /// Check if the variables are empty
+        /// </summary>
+        /// <param name="stringValues"></param>
+        /// <param name="startdate"></param>
+        /// <param name="enddate"></param>
+        public void carHireErrorMessage(List<string> stringValues, DateTime startdate, DateTime enddate)
         {
+            for (int i = 0; i < stringValues.Count; i++)
+            {
+                if (stringValues[i] == "")
+                {
+                    MessageBox.Show("Please enter valid text!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
 
+            if (startdate == null || startdate.ToString() == null || startdate.ToString() == "")
+            {
+                MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (enddate == null || enddate.ToString() == null || enddate.ToString() == "")
+            {
+                MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
-
+        
         private void BtnCarHire_Done_Click(object sender, RoutedEventArgs e)
         {
             // Asign variable to textbox text
@@ -492,7 +439,25 @@ namespace SeleleTravel
             int numberOfCars = Convert.ToInt32(txbCarHire_numCars.Text);
             string carHireSpecs = txbCarHire_specifications.Text;
 
-            //Data Validation
+            // Data Validation
+            // Check for errors
+            List<string> stringValues_ = new List<string>();
+            stringValues_.Add(agencyName);
+            stringValues_.Add(pickUpLocation);
+            stringValues_.Add(dropOffLocation);
+            stringValues_.Add(carHireSpecs);
+            carHireErrorMessage(stringValues_, _startday, _endDay);
+
+            // Create an instance of carhire
+            CarHire _carHire = new CarHire(agencyName, pickUpLocation, dropOffLocation, _startday, _endDay);
+
+            // Reset the textboxes
+            txbCarHire_agency.Text = "";
+            txbCarHire_pickUp.Text = "";
+            txbCarHire_dropOff.Text = "";
+            txbCarHire_numCars.Text = "";
+            txbCarHire_specifications.Text = "";
+
         }
 
         #endregion
@@ -640,10 +605,7 @@ namespace SeleleTravel
             //Close this form.
             this.Close();
         }
-
-       
-
-       
+        
     }
 }
 
