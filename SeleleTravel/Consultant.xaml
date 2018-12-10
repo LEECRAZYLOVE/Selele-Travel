@@ -64,8 +64,8 @@
                     <Button x:Name="btnOldClient_find" Content="FIND" Grid.Column="1" HorizontalAlignment="Left" Margin="284,47,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Car Hire">
-                <Grid Background="#FFE5E5E5" Height="342" VerticalAlignment="Top" HorizontalAlignment="Left" Width="784" Margin="0,1,0,-1">
+            <TabItem Header="Car Hire" Margin="-2,-4,-2,2">
+                <Grid Background="#FFE5E5E5" Height="342" VerticalAlignment="Top" HorizontalAlignment="Left" Width="784" Margin="0,3,0,-3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="151*"/>
                         <ColumnDefinition Width="10*"/>

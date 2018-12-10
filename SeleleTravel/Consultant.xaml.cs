@@ -50,12 +50,12 @@ namespace SeleleTravel
             ContactDetails contactDetails = new ContactDetails(cellphone, email, telephone, fax);
 
             //Get location details
-            string address = txbNewClient_address.Text;
+            string clientAddress = txbNewClient_address.Text;
             string city = txbNewClient_city.Text;
             string areaCode = txbNewClient_areaCode.Text;
             string province = txbNewClient_province.Text;
             //use this in initialisation of client
-            string _location = address + '\n' + city + '\n' + areaCode + '\n' + province;
+            string _location = clientAddress + '\n' + city + '\n' + areaCode + '\n' + province;
             //Initialize Client instance
             Client client = new Client(names, clientType, contactDetails)
             {
@@ -64,15 +64,22 @@ namespace SeleleTravel
 
 
             //Add client to database
-
-        }
-        private void nameAndSurnameTextChanged(object sender, TextChangedEventArgs e)
+         /*   var context = new ClientEntities();//from Client class created by DB first
+            var post = new Post()//from Client class created  by DB first
+            {
+                client_no = client.clientID;
+            clientName = names;
+            phoneNumber = telephone;
+            Address = clientaddress;
+            emailAddress = email;
+            }
+        */
+    }
+    private void nameAndSurnameTextChanged(object sender, TextChangedEventArgs e)
         {
-
             string acceptedCharacters = " qwertyuioplkjhgfdsazxcvbnm";
             TextBox reference = (TextBox)sender;
             if (reference.Text.Length <= 0) return;
-
             string letterEntered = reference.Text.Last().ToString().ToLower();
             if (!acceptedCharacters.Contains(letterEntered))
             {
@@ -96,6 +103,16 @@ namespace SeleleTravel
 
             // Todo sql insertion
             // ...
+            /*   var context = new EventEntities();//from Client class created by DB first
+           var post = new Post()//from Client class created  by DB first
+           {
+               Event_ID = client.clientID;
+           clientName = names;
+           phoneNumber = telephone;
+           Address = clientaddress;
+           emailAddress = email;
+           }
+       */
         }
 
         #endregion
