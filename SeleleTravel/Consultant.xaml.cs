@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Word = Microsoft.Office.Interop.Word;
 using System.Reflection;
+using System.IO;
 
 namespace SeleleTravel
 {
@@ -28,6 +29,8 @@ namespace SeleleTravel
 
         #region Client tab
 
+        #region New Client
+
         private void selectionChanged(object sender, RoutedEventArgs e)
         {
             //Making sure that only one checkbox is selected at a time
@@ -37,6 +40,30 @@ namespace SeleleTravel
                 ckbIndividual.IsChecked = !ckbBusiness.IsChecked;
             }
             else ckbBusiness.IsChecked = !ckbIndividual.IsChecked;
+        }
+
+        /// <summary>
+        /// checks if the email has valid number of '@' character.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        TextBox checkEmail(TextBox email)
+        {
+            try
+            {
+                char specialChar = '@';
+                int countNumSpecialChar = 0;
+                foreach (char x in email.Text)
+                {
+                    if (x == specialChar) countNumSpecialChar++;
+                }
+                if (countNumSpecialChar > 1 || countNumSpecialChar == 0) throw new Exception("Make sure the email has valid characters");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error!",MessageBoxButton.OK,MessageBoxImage.Error);
+            }
+            return email;
         }
 
         //Status : Incomplete
@@ -49,36 +76,56 @@ namespace SeleleTravel
             //Get contact details
             string cellphone = txbNewClient_cellphone.Text;
             string fax = txbNewClient_fax.Text;
+
+            // email verification 
+            txbNewClient_email = checkEmail(txbNewClient_email);
             string email = txbNewClient_email.Text;
+
             string telephone = txbNewClient_telephone.Text;
+
             ContactDetails contactDetails = new ContactDetails(cellphone, email, telephone, fax);
 
             //Get location details
             string address = txbNewClient_address.Text;
             string city = txbNewClient_city.Text;
             string areaCode = txbNewClient_areaCode.Text;
-            string province = txbNewClient_province.Text;
+            string province = DropBxNewClient_province.SelectionBoxItem.ToString();
             //use this in initialisation of client
             string _location = address + '\n' + city + '\n' + areaCode + '\n' + province;
+
             //Initialize Client instance
             Client client = new Client(names, clientType, contactDetails)
             {
                 location = _location
             };
 
-
             //Add client to database
 
         }
         
+        #endregion
+
         #region Already a Client Display
 
         #endregion
 
+        private void BtnOldClient_find_Click(object sender, RoutedEventArgs e)
+        {
+            // Assign the value to be searched to the variable
+            string findName = txbOldClient_find.Text;
+
+            // Results from the database
+            txblOldClient_Details.Text = "";
+        }
+
         #endregion
 
-        #region General Methods
-
+        #region General Methods/Events
+        /// <summary>
+        /// Checks if number provided is a valid amount
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AmountChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -95,6 +142,11 @@ namespace SeleleTravel
             }
         }
 
+        /// <summary>
+        /// Checks if the number provided is a valid whole nummber
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AmountChanged_WHOLENumber(object sender, TextChangedEventArgs e)
         {
             string acceptedCharacters = "0123456789";
@@ -106,10 +158,30 @@ namespace SeleleTravel
             {
                 reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
                 reference.SelectionStart = reference.Text.Length;
-                MessageBox.Show("'" + letterEntered + "' is not an accepted character for a whole number!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("'" + letterEntered + "' is not an accepted character!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        
+
+        /// <summary>
+        /// Checks if the number provided is a valid phone/fax/telephone number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void phoneNumberCheck(object sender, TextChangedEventArgs e)
+        {
+            string acceptedCharacters = "+0123456789 ";
+            TextBox reference = (TextBox)sender;
+            if (reference.Text.Length <= 0) return;
+
+            string letterEntered = reference.Text.Last().ToString().ToLower();
+            if (!acceptedCharacters.Contains(letterEntered))
+            {
+                reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
+                reference.SelectionStart = reference.Text.Length;
+                MessageBox.Show("'" + letterEntered + "' is not an accepted character for a phone/telephone number!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         #endregion
 
         #region Event tab
@@ -377,9 +449,9 @@ namespace SeleleTravel
             string accommodationSpecs = txbAccommodation_specifications.Text;
             DateTime checkInDate = dpAccommodation_checkIn.DisplayDate;
             DateTime checkOutDate = dpAccommodation_checkOut.DisplayDate;
-            int numberOfGuests = Convert.ToInt32(txbAccommodation_numGuests.Text);
-            int numberOfRooms = Convert.ToInt32(txbAccommodation_numRooms.Text);
-            double totalCost = Convert.ToDouble(txbAccommodation_total.Text);
+            string numberOfGuests = txbAccommodation_numGuests.Text;
+            string numberOfRooms = txbAccommodation_numRooms.Text;
+            string totalCost = txbAccommodation_total.Text;
 
             // Validate data
             List<string> _stringValues = new List<string>();
@@ -457,6 +529,19 @@ namespace SeleleTravel
             txbCarHire_dropOff.Text = "";
             txbCarHire_numCars.Text = "";
             txbCarHire_specifications.Text = "";
+
+        }
+
+        #endregion
+
+        #region Search tab
+
+        private void BtnConsultant_search_Click(object sender, RoutedEventArgs e)
+        {
+            // Assign value to the variable
+            string searchValue = txbConsultant_search.Text;
+
+            // Filters used
 
         }
 
@@ -605,6 +690,7 @@ namespace SeleleTravel
             //Close this form.
             this.Close();
         }
+
         
     }
 }
