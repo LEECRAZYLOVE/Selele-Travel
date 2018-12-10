@@ -110,7 +110,7 @@ namespace SeleleTravel
         // This removes invalid text from the amount textbox for event tab.
         private void TxbEvents_total_TextChanged(object sender, TextChangedEventArgs e)
         {
-            txbEvents_total = validateAmount(txbEvents_total);
+         //   txbEvents_total = validateAmount(txbEvents_total);
         }
 
         // displays an error message when the textboxes are empty
@@ -142,7 +142,19 @@ namespace SeleleTravel
             txbEvents_total.Text = "";
 
             // Todo sql insertion
-            // ...
+            var currentEvent = new @event()
+            {
+              event_id = "ev789",
+              nameofevent = "Litha's 21st Birthday",
+              resourcesneeded = "A very good vibe",
+              eventlocation = "MSC Cruise to Hawaii"
+            };
+            //Converter<doubtotalCost, >
+
+            //Test Run for the quries in the databse
+            var context = new SeleleEntities();
+            context.events.Add(currentEvent);
+            context.SaveChanges();
         }
         #endregion
 
@@ -274,7 +286,7 @@ namespace SeleleTravel
             conf_stringValues.Add(_taxicabSpecs);
             
             // create the instance after checking for errors
-            Cab taxiCab = new Cab(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs, _totalAmount);
+            Cab taxiCab = new Cab(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs,  Convert.ToDouble(_totalAmount));
 
             // Todo sql insertion
             // ...
@@ -451,8 +463,8 @@ namespace SeleleTravel
             string accommodationSpecs = txbAccommodation_specifications.Text;
             DateTime checkInDate = dpAccommodation_checkIn.DisplayDate;
             DateTime checkOutDate = dpAccommodation_checkOut.DisplayDate;
-            int numberOfGuests = Convert.ToInt32(txbAccommodation_numGuests.Text);
-            int numberOfRooms = Convert.ToInt32(txbAccommodation_numRooms.Text);
+            string numberOfGuests = txbAccommodation_numGuests.Text;
+            string numberOfRooms = txbAccommodation_numRooms.Text;
             double totalCost = Convert.ToDouble(txbAccommodation_total.Text);
 
             // Validate data
@@ -462,14 +474,30 @@ namespace SeleleTravel
             accommodationErrorMessage(_stringValues, checkInDate, checkOutDate);
 
             // Instantiate the accomodation
-            Accommodation accommodation = new Accommodation(nameOfAgency, checkInDate, checkOutDate, numberOfGuests, numberOfRooms, accommodationSpecs, totalCost);
+            //Accommodation currentAccommodation = new Accommodation(nameOfAgency, checkInDate, checkOutDate, numberOfGuests, numberOfRooms, accommodationSpecs, totalCost);
+            var currentAccommodation = new accommodation()
+            {
+                quote_no = "1234",
+                order_no = "5678",
+                accomname = nameOfAgency,
+                checkin = "10/06/1998",
+                checkout = "never",
+                numberofpeople = "4",
+                amount = Convert.ToDecimal(totalCost)
+        };
+            //Converter<doubtotalCost, >
 
-            // Reset the texboxes to empty
+            // Reset the textboxes to empty
             txbAccommodation_name.Text = "";
             txbAccommodation_specifications.Text = "";
             txbAccommodation_numGuests.Text = "";
             txbAccommodation_numRooms.Text = "";
             txbAccommodation_total.Text ="";
+
+            //Test Run for the quries in the databse
+            var context = new SeleleEntities();
+            context.accommodations.Add(currentAccommodation);
+            context.SaveChanges();
         }
 
         #endregion
@@ -641,9 +669,7 @@ namespace SeleleTravel
             this.Close();
         }
 
-       
 
-       
     }
 }
 

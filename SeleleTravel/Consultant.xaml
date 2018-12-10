@@ -197,15 +197,19 @@
             </TabItem>
             <TabItem Header="Events" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="46" Margin="-1,0,0,0">
                 <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="503*"/>
+                        <ColumnDefinition Width="281*"/>
+                    </Grid.ColumnDefinitions>
                     <Label x:Name="label49" Content="Name:" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label50" Content="Specifications:" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txbEvents_name" HorizontalAlignment="Left" Height="23" Margin="94,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593"/>
-                    <TextBox x:Name="txbEvents_specifications" HorizontalAlignment="Left" Height="258" Margin="94,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593"/>
-                    <Label x:Name="label51" Content="TOTAL:" HorizontalAlignment="Left" Margin="699,253,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txbEvents_total" TextChanged="TxbEvents_total_TextChanged" HorizontalAlignment="Left" Height="23" Margin="722,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52"/>
-                    <Button x:Name="btnEvents_done" Content="DONE" HorizontalAlignment="Left" Margin="699,312,0,0" VerticalAlignment="Top" Width="75" Click="_done"/>
-                    <Button Content="btnEvents_update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="699,312,0,0" Background="#FF45D310" Visibility="Hidden"/>
-                    <Label x:Name="rands" Content="R" HorizontalAlignment="Left" Margin="699,284,0,0" VerticalAlignment="Top" Height="23"/>
+                    <TextBox x:Name="txbEvents_name" HorizontalAlignment="Left" Height="23" Margin="94,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txbEvents_specifications" HorizontalAlignment="Left" Height="258" Margin="94,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label51" Content="TOTAL:" HorizontalAlignment="Left" Margin="195.977,253,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="txbEvents_total" TextChanged="TxbEvents_total_TextChanged" HorizontalAlignment="Left" Height="23" Margin="218.977,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52" Grid.Column="1"/>
+                    <Button x:Name="btnEvents_done" Content="DONE" HorizontalAlignment="Left" Margin="195.977,312,0,10" Width="75" Click="_done" Grid.Column="1"/>
+                    <Button Content="btnEvents_update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="195.977,312,0,0" Background="#FF45D310" Visibility="Hidden" Grid.Column="1"/>
+                    <Label x:Name="rands" Content="R" HorizontalAlignment="Left" Margin="195.977,284,0,0" VerticalAlignment="Top" Height="23" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Quote Summary" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="102" Margin="-1,0,0,0" RenderTransformOrigin="0.5,0.5">
