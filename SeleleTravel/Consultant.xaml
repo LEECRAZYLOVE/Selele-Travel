@@ -171,7 +171,7 @@
                     <Label x:Name="label41" Content="Number of rooms:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="188,206,0,0"/>
                     <TextBox x:Name="txbAccommodation_numRooms" HorizontalAlignment="Left" Height="23" Margin="300,209,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
                     <Label x:Name="label42" Content="TOTAL:" HorizontalAlignment="Left" Margin="423,241,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txbAccommodation_total" HorizontalAlignment="Left" Height="23" Margin="423,272,0,0" TextWrapping="Wrap" Text="R" VerticalAlignment="Top" Width="75"/>
+                    <TextBox x:Name="txbAccommodation_total" HorizontalAlignment="Left" Height="23" Margin="423,272,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="75"/>
                     <Button x:Name="btnAccommodation_done" Content="DONE" HorizontalAlignment="Left" Margin="423,300,0,0" VerticalAlignment="Top" Width="75" Click="BtnAccommodation_done_Click"/>
                     <Button x:Name="btnAccommodation_update" Content="UPDATE" HorizontalAlignment="Left" Margin="423,300,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden" />
                 </Grid>

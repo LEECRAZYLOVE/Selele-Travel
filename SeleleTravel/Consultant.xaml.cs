@@ -166,7 +166,10 @@ namespace SeleleTravel
 
         private void BtnAccommodation_done_Click(object sender, RoutedEventArgs e)
         {
-
+            Accommodation currentAccomm = new Accommodation(txbAccommodation_name.Text, dpAccommodation_checkIn.SelectedDate.Value, dpAccommodation_checkOut.SelectedDate.Value, txbAccommodation_numGuests.Text, txbAccommodation_numRooms.Text, txbAccommodation_specifications.Text, txbAccommodation_total.Text);
+            var context = new DatabaseConnectionControl<Accommodation>(currentAccomm);
+            context.table.Add(currentAccomm);
+            context.SaveChanges();
         }
 
         private void BtnCarHire_Done_Click(object sender, RoutedEventArgs e)
@@ -316,6 +319,11 @@ namespace SeleleTravel
 
             //Close this form.
             this.Close();
+        }
+
+        private void TxbEvents_total_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

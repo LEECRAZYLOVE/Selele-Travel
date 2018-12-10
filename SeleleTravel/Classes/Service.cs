@@ -8,9 +8,15 @@ namespace SeleleTravel
 {/// <summary>
 /// Super class for the services provided by the business.
 /// </summary>
-    class Service
+    public class Service
     {
-        public Quote serviceQuotes;
-        public Order serviceOrder;
+        public string serviceQuoteNum;
+        public string serviceOrderNum;
+
+        public Service()
+        {
+            this.serviceOrderNum = Order.order_no;
+            this.serviceQuoteNum = Quote.quote_no;
+        }
     }
 }
