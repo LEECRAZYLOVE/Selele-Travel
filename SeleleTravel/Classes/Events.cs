@@ -10,9 +10,9 @@ namespace SeleleTravel
     {
         public string name;
         public string specifications;
-        public string amount;
+        public double amount;
 
-        public Events(string name, string specifications, string amount)
+        public Events(string name, string specifications, double amount)
         {
             this.name = name;
             this.specifications = specifications;
