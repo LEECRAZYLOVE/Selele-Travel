@@ -12,7 +12,7 @@ namespace SeleleTravel
     struct Order
     {
         public Quote approvedQuote;
-        public string orderNumber;
+        public static string order_no;
         public DateTime timeOrdered;
         /// <summary>
         /// Order
@@ -22,7 +22,7 @@ namespace SeleleTravel
         public Order(Quote _approvedQuote, string _orderNumber)
         {
             approvedQuote = _approvedQuote;
-            orderNumber = _orderNumber;
+            order_no = _orderNumber;
             timeOrdered = DateTime.Now;
         }
     }

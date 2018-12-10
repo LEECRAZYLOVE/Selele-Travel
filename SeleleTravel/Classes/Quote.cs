@@ -8,7 +8,7 @@ namespace SeleleTravel
 {
     public class Quote
     {
-        public string quote_no;
+        public static string quote_no;
         public double amount;
         public string typeOfService;
         public DateTime timeQuoted;
