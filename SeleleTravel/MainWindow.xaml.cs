@@ -19,6 +19,7 @@ namespace SeleleTravel
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
     public partial class MainWindow : Window
     {
         //instantiating all the windows as global objects
@@ -27,14 +28,15 @@ namespace SeleleTravel
         public static Manager_Home managerWindow = new Manager_Home();
         public static Owner ownerWindow = new Owner();
         public static New_Service_Provider newServiceProviderWindow = new New_Service_Provider();
+        
 
         public MainWindow()
         {
             InitializeComponent();
             //conn = new NpgsqlConnection("Server=127.0.0.1;Port=1998;Database=Selele;User Id=postgres;Password=Linnomtha;");
             //conn.Open();
-
-        }
+            
+    }
 
         #region Client Display
         #endregion
@@ -59,24 +61,6 @@ namespace SeleleTravel
         {
             Hide();
             logInWindow.Show();
-            var context = new SeleleEntities2();//from Client class created by DB first
-            var currentEvent = new @event()//from Client class created  by DB first
-
-            try
-            {
-                context.events.Add(currentEvent);
-                context.SaveChanges();
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-                throw ex;
-            }
         }
 
         private void btn_managerSide_Click(object sender, RoutedEventArgs e)

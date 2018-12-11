@@ -85,6 +85,69 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="accommodation.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="accommodationdetail.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="agencydetail.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="airlinedetail.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cabservice.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="carhire.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="client.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="conference.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dailyserviceupdate.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="event.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="flight.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="invoice.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="order.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="quote.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SeleleModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SeleleModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SeleleModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SeleleModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SeleleModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="staff.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="voucher.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
     <Page Include="Consultant.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -103,18 +166,9 @@
     </Compile>
     <Compile Include="Classes\Accommodation.cs" />
     <Compile Include="Classes\Boss.cs" />
-    <Compile Include="Classes\Cab.cs" />
-    <Compile Include="Classes\CarHire.cs" />
-    <Compile Include="Classes\Client.cs" />
-    <Compile Include="Classes\Conference.cs" />
     <Compile Include="Classes\ContactDetails.cs" />
     <Compile Include="Classes\Employee.cs" />
-    <Compile Include="Classes\Events.cs" />
-    <Compile Include="Classes\Flight.cs" />
     <Compile Include="Classes\Manager.cs" />
-    <Compile Include="Classes\Order.cs" />
-    <Compile Include="Classes\Quote.cs" />
-    <Compile Include="Classes\Service.cs" />
     <Compile Include="Consultant.xaml.cs">
       <DependentUpon>Consultant.xaml</DependentUpon>
     </Compile>
@@ -171,6 +225,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <EntityDeploy Include="SeleleModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SeleleModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SeleleModel.edmx.diagram">
+      <DependentUpon>SeleleModel.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -214,6 +275,18 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SeleleModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SeleleModel.edmx</DependentUpon>
+      <LastGenOutput>SeleleModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SeleleModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SeleleModel.edmx</DependentUpon>
+      <LastGenOutput>SeleleModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
