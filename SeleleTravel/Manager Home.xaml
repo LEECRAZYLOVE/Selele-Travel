@@ -14,28 +14,28 @@
             <TabItem Header="Quote Summary">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="85*"/>
-                        <ColumnDefinition Width="177*"/>
+                        <ColumnDefinition Width="128*"/>
+                        <ColumnDefinition Width="265*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="ltbQuoteSummary_incomingQuotes" HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="210" Margin="0,0,0,-1" Background="#FFB2B2A3"/>
-                    <TextBox x:Name="txbQuoteSummary_preview" HorizontalAlignment="Left" Height="342" Margin="210,0,0,-1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnQuoteSummary_send" Content="APPROVE VERIFICATION" HorizontalAlignment="Left" Margin="334,311,0,0" VerticalAlignment="Top" Width="154" Grid.Column="1"/>
-                    <Label Content="From:" HorizontalAlignment="Left" Margin="282,15,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <TextBlock x:Name="txblockQuoteSummary_consultantID" HorizontalAlignment="Left" Margin="325,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="48" Width="196" Grid.Column="1"/>
+                    <ListBox x:Name="ltbQuoteSummary_incomingQuotes" HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="210" Margin="0,0,0,-2" Background="#FFB2B2A3"/>
+                    <TextBox x:Name="txbQuoteSummary_preview" HorizontalAlignment="Left" Height="342" Margin="210,0,0,-2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btnQuoteSummary_send" Content="APPROVE VERIFICATION" HorizontalAlignment="Left" Margin="334,305,0,0" VerticalAlignment="Top" Width="187" Grid.Column="1" Height="27" Click="BtnQuoteSummary_send_Click"/>
+                    <Label Content="From:" HorizontalAlignment="Left" Margin="282,15,0,0" VerticalAlignment="Top" Grid.Column="1" Height="34" Width="42"/>
+                    <TextBlock x:Name="txblockQuoteSummary_consultantID" HorizontalAlignment="Left" Margin="329,15,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="34" Width="192" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Compose Message">
                 <Grid Background="#FFE5E5E5">
                     <Label x:Name="label49" Content="Name/Staff ID:" HorizontalAlignment="Left" Margin="1,26,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label50" Content="Message:" HorizontalAlignment="Left" Margin="0,74,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txbMessage_name" HorizontalAlignment="Left" Height="23" Margin="94,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593"/>
-                    <TextBox x:Name="txbMessage_message" HorizontalAlignment="Left" Height="258" Margin="94,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593"/>
-                    <Button x:Name="btnMessage_send" Content="SEND" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="701,311,0,0"/>
+                    <TextBox x:Name="txbMessage_name" HorizontalAlignment="Left" Height="23" Margin="103,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="584"/>
+                    <TextBox x:Name="txbMessage_message" HorizontalAlignment="Left" Height="258" Margin="103,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="584"/>
+                    <Button x:Name="btnMessage_send" Content="SEND" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="701,311,0,0" Click="BtnMessage_send_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Verified Quotes" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="111" Margin="-1,0,0,0">
                 <Grid Background="#FFE5E5E5" Height="341" VerticalAlignment="Bottom">
-                    <ListBox HorizontalAlignment="Left" Height="341" VerticalAlignment="Top" Width="210" RenderTransformOrigin="0.5,0.5" Background="#FFB2B2A3">
+                    <ListBox Name="listbxVerifiedQuotes" HorizontalAlignment="Left" Height="341" VerticalAlignment="Top" Width="210" RenderTransformOrigin="0.5,0.5" Background="#FFB2B2A3">
                         <ListBox.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -57,7 +57,7 @@
                     <ListBox x:Name="ltbAuthorizations_incomingAuthorizations" HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="270" Background="#FFB2B2A3"/>
                     <PasswordBox x:Name="pdbAuthorizations_password" HorizontalAlignment="Left" Margin="184,20,0,0" VerticalAlignment="Top" Width="136" Grid.Column="1"/>
                     <Label Content="Password:" HorizontalAlignment="Left" Margin="110,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.192" Grid.Column="1"/>
-                    <Button x:Name="btnAuthorizations_Authorize" Content="Authorize" HorizontalAlignment="Left" Margin="195,56,0,0" VerticalAlignment="Top" Width="114" Grid.Column="1"/>
+                    <Button x:Name="btnAuthorizations_Authorize" Content="Authorize" HorizontalAlignment="Left" Margin="195,56,0,0" VerticalAlignment="Top" Width="114" Grid.Column="1" Click="BtnAuthorizations_Authorize_Click"/>
                     <ListBox x:Name="ltbAuthorizations_outgoingAuthorizations" HorizontalAlignment="Left" Height="342" Margin="270,0,0,0" VerticalAlignment="Top" Width="270" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
