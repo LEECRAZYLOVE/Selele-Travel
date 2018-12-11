@@ -53,9 +53,9 @@ namespace SeleleTravel
             string clientAddress = txbNewClient_address.Text;
             string city = txbNewClient_city.Text;
             string areaCode = txbNewClient_areaCode.Text;
-            string province = txbNewClient_province.Text;
+            //string province = txbNewClient_province.Text;
             //use this in initialisation of client
-            string _location = clientAddress + '\n' + city + '\n' + areaCode + '\n' + province;
+            string _location = clientAddress + '\n' + city + '\n' + areaCode;// + '\n' + province;
             //Initialize Client instance
             Client client = new Client(names, clientType, contactDetails)
             {
@@ -64,18 +64,18 @@ namespace SeleleTravel
 
 
             //Add client to database
-         /*   var context = new ClientEntities();//from Client class created by DB first
-            var post = new Post()//from Client class created  by DB first
-            {
-                client_no = client.clientID;
-            clientName = names;
-            phoneNumber = telephone;
-            Address = clientaddress;
-            emailAddress = email;
-            }
-        */
-    }
-    private void nameAndSurnameTextChanged(object sender, TextChangedEventArgs e)
+            /*   var context = new ClientEntities();//from Client class created by DB first
+               var post = new Post()//from Client class created  by DB first
+               {
+                   client_no = client.clientID;
+               clientName = names;
+               phoneNumber = telephone;
+               Address = clientaddress;
+               emailAddress = email;
+               }
+           */
+        }
+        private void nameAndSurnameTextChanged(object sender, TextChangedEventArgs e)
         {
             string acceptedCharacters = " qwertyuioplkjhgfdsazxcvbnm";
             TextBox reference = (TextBox)sender;
@@ -99,20 +99,36 @@ namespace SeleleTravel
             string nameOfEvent = txbEvents_name.Text;
             string eventSpecs = txbEvents_specifications.Text;
             string eventAmount = txbEvents_total.Text;
-            Events event_selele = new Events(nameOfEvent, eventSpecs, eventAmount);
+           // Events event_selele = new Events(nameOfEvent, eventSpecs, Convert.ToDouble(eventAmount));
 
             // Todo sql insertion
-            // ...
-            /*   var context = new EventEntities();//from Client class created by DB first
-           var post = new Post()//from Client class created  by DB first
-           {
-               Event_ID = client.clientID;
-           clientName = names;
-           phoneNumber = telephone;
-           Address = clientaddress;
-           emailAddress = email;
-           }
-       */
+
+            var context = new SeleleEntities2();//from Client class created by DB first
+            var currentEvent = new @event()//from Client class created  by DB first
+            {
+                event_id = "1234",
+                eventname = "Litha's 21st Birthday",
+                eventspecifications = "MSC Cruise to Hawaii.",
+                eventcost = "250"
+            };
+
+
+            try
+            {
+                //context.events.Remove();
+               // context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+            }
+
         }
 
         #endregion
@@ -126,7 +142,7 @@ namespace SeleleTravel
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
             string amountOfconf = txbConference_total.Text;
-            Conference selele_Conference = new Conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
+            Conference selele_Conference = new Conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, Convert.ToDouble(amountOfconf), specsOfConference);
             
             // Todo sql insertion
             // ...
@@ -147,7 +163,7 @@ namespace SeleleTravel
             string _taxicabSpecs = txbCab_specifications.Text;
             string _totalAmount = txbCab_total.Text;
 
-            Cab taxiCab = new Cab(_agencyName,_driverName,_pickUpLocation,_dropOffLocation,_timeOfPickUp,_dateOfPickup,_numberOfPassengers,_taxicabSpecs,_totalAmount);
+            Cab taxiCab = new Cab(_agencyName,_driverName,_pickUpLocation,_dropOffLocation,_timeOfPickUp,_dateOfPickup,Convert.ToInt32(_numberOfPassengers),_taxicabSpecs,Convert.ToDouble(_totalAmount));
             
             // Todo sql insertion
             // ...
@@ -167,8 +183,9 @@ namespace SeleleTravel
             string numberOfBags = txbFlight_numBags.Text;
             string preferedTime = txbFlight_time.Text;
             string flightSpecs = txbFlight_specifications.Text;
+            double flightTotal = Convert.ToDouble(txbFlight_total.Text);
            
-            Flight flight = new Flight(airlineName, fromLoc, toLoc, departureDate, Convert.ToInt32(numberOfBags), _passengers);
+            Flight flight = new Flight(airlineName, fromLoc, toLoc, departureDate, Convert.ToInt32(numberOfBags), _passengers, flightTotal);
         }
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)

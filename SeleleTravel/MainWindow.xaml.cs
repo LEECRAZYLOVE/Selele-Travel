@@ -58,7 +58,25 @@ namespace SeleleTravel
         private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            logInWindow.Show();   
+            logInWindow.Show();
+            var context = new SeleleEntities2();//from Client class created by DB first
+            var currentEvent = new @event()//from Client class created  by DB first
+
+            try
+            {
+                context.events.Add(currentEvent);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+            }
         }
 
         private void btn_managerSide_Click(object sender, RoutedEventArgs e)
