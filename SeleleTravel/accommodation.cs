@@ -25,8 +25,7 @@ namespace SeleleTravel
         public Nullable<double> amount { get; set; }
         public string accomspecs { get; set; }
 
-        accommodation( string accomname, DateTime checkin, 
-            DateTime checkout, int numberofpeople, int numberOFRooms, string accommodationSpecifications, double amount) : base()
+        public accommodation( string accomname, DateTime checkin, DateTime checkout, int numberofpeople, int numberOFRooms, string accommodationSpecifications, double amount)
         {
             this.accomname = accomname;
             this.checkin = checkin;
@@ -35,7 +34,6 @@ namespace SeleleTravel
             this.accomspecs = accommodationSpecifications;
             this.numberofrooms = numberOFRooms;
             this.amount = amount;
-
         }
 }
 }

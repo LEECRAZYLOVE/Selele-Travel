@@ -71,7 +71,7 @@ namespace SeleleTravel
         {
             string names = txbNewClient_name.Text + " " + txbNewClient_surname;
             //Retrieving clientType
-            ClientType clientType = (bool)(ckbBusiness.IsChecked) ? ClientType.Business : ClientType.Individual;
+            clienttype clientType = (bool)(ckbBusiness.IsChecked) ? clienttype.Business : clienttype.Individual;
 
             //Get contact details
             string cellphone = txbNewClient_cellphone.Text;
@@ -94,9 +94,9 @@ namespace SeleleTravel
             string _location = address + '\n' + city + '\n' + areaCode + '\n' + province;
 
             //Initialize Client instance
-            Client client = new Client(names, clientType, contactDetails)
+            client client = new client(names, clientType, contactDetails)
             {
-                location = _location
+                address = _location
             };
 
             //Add client to database
@@ -207,7 +207,12 @@ namespace SeleleTravel
             EventErrorMessage(nameOfEvent, eventSpecs);
 
             // create an instnce of the event class
-            Events event_selele = new Events(nameOfEvent, eventSpecs, eventAmount);
+            var context = new SeleleEntities();
+            var currentEvent = new @event(nameOfEvent, eventSpecs, eventAmount)//(nameOfEvent, eventSpecs, eventAmount);
+            {
+                quote_no = "1234",
+                order_no = "5678"
+            };
 
             // Reset textbox values to empty
             txbEvents_name.Text = "";
@@ -215,7 +220,23 @@ namespace SeleleTravel
             txbEvents_total.Text = "";
 
             // Todo sql insertion
-            // ...
+
+           // try
+           // {
+           //     context.events.Add(currentEvent);
+           //     context.SaveChanges();
+           // }
+           // catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+           // {
+           //     var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+           //     var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+           // }
+            //catch (Exception ex)
+            //{
+            //    //other error
+            //    throw ex;
+            //}
+
         }
         #endregion
 
@@ -255,7 +276,7 @@ namespace SeleleTravel
             // check if the variables are empty
             conferenceErrorMessage(conferenceName, conferenceVenue, dateOfConference, conferenceTime, specsOfConference);
 
-            Conference selele_Conference = new Conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
+            conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
 
             // reset texbox values to empty
             txbConference_name.Text = "";
@@ -319,7 +340,7 @@ namespace SeleleTravel
             conf_stringValues.Add(_taxicabSpecs);
             
             // create the instance after checking for errors
-            Cab taxiCab = new Cab(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs, _totalAmount);
+            var taxiCab = new cabservice(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs, _totalAmount);
 
             // Todo sql insertion
             // ...
@@ -387,7 +408,10 @@ namespace SeleleTravel
             else
             {
                 // creates an instance of the flight class
-                Flight flight = new Flight(airlineName, fromLoc, toLoc, departureDate, numberOfBags, _passengers, totolAmount);
+                var Flight = new flight(airlineName, fromLoc, toLoc, departureDate, arrivalDate, numberOfBags, _passengers.Count(), _passengers, totolAmount);
+                {
+
+                };
             }
             
             // reset the textbox values to empty
@@ -449,8 +473,8 @@ namespace SeleleTravel
             string accommodationSpecs = txbAccommodation_specifications.Text;
             DateTime checkInDate = dpAccommodation_checkIn.DisplayDate;
             DateTime checkOutDate = dpAccommodation_checkOut.DisplayDate;
-            string numberOfGuests = txbAccommodation_numGuests.Text;
-            string numberOfRooms = txbAccommodation_numRooms.Text;
+            int numberOfGuests = Convert.ToInt32(txbAccommodation_numGuests.Text);
+            int numberOfRooms = Convert.ToInt32(txbAccommodation_numRooms.Text);
             double totalCost = Convert.ToDouble(txbAccommodation_total.Text);
 
             // Validate data
@@ -460,7 +484,10 @@ namespace SeleleTravel
             accommodationErrorMessage(_stringValues, checkInDate, checkOutDate);
 
             // Instantiate the accomodation
-            Accommodation accommodation = new Accommodation(nameOfAgency, checkInDate, checkOutDate, numberOfGuests, numberOfRooms, accommodationSpecs, totalCost);
+            var currentAccommodation = new accommodation(nameOfAgency, checkInDate, checkOutDate, numberOfGuests, numberOfRooms, accommodationSpecs, totalCost);
+            {
+
+            };
 
             // Reset the texboxes to empty
             txbAccommodation_name.Text = "";
@@ -521,7 +548,10 @@ namespace SeleleTravel
             carHireErrorMessage(stringValues_, _startday, _endDay);
 
             // Create an instance of carhire
-            CarHire _carHire = new CarHire(agencyName, pickUpLocation, dropOffLocation, _startday, _endDay);
+            var _carHire = new carhire(agencyName, pickUpLocation, dropOffLocation, _startday, _endDay);
+            {
+
+            };
 
             // Reset the textboxes
             txbCarHire_agency.Text = "";

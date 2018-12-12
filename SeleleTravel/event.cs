@@ -20,7 +20,7 @@ namespace SeleleTravel
         public string eventname { get; set; }
         public Nullable<double> amount { get; set; }
 
-        public @event(string name, string specifications, string specs, double amount)
+        public @event(string name, string specs, double amount)
         {
             eventname = name;
             eventspecs = specs;
