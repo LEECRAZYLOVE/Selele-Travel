@@ -134,6 +134,22 @@ namespace SeleleTravel
         #endregion
 
         #region Search tab
+        //private List<string> stringEquivalent(List<object> list)
+        //{
+        //    List<string> result = new List<string>();
+
+        //    foreach (var a in list)
+        //    {
+        //        if (a is quote q)
+        //        {
+        //            result.Add(q.ToString());
+        //        }
+        //        else if (a is )
+                    
+        //    }
+
+        //    return result;
+        //}
         private void BtnManager_search_Click(object sender, RoutedEventArgs e)
         {
             //Make sure that the search results are clear
@@ -178,8 +194,13 @@ namespace SeleleTravel
                 txbManager_Search_results.Items.Refresh();
             }
         }
+
         #endregion
 
-
+        private void BtnManager_logOut_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            MainWindow.logInWindow.Show();
+        }
     }
 }

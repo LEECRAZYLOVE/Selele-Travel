@@ -103,6 +103,7 @@
     <Compile Include="carhire.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\GeneralMethods.cs" />
     <Compile Include="client.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
