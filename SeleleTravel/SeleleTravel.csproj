@@ -171,7 +171,6 @@
     <Compile Include="Consultant.xaml.cs">
       <DependentUpon>Consultant.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseConnectionControl.cs" />
     <Compile Include="Log In.xaml.cs">
       <DependentUpon>Log In.xaml</DependentUpon>
     </Compile>
