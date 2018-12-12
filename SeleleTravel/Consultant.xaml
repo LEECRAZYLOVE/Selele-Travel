@@ -309,11 +309,15 @@
             </TabItem>
             <TabItem Header="Send Quotes" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="83" Margin="-2,0,0,0">
                 <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="527*"/>
+                        <ColumnDefinition Width="288*"/>
+                    </Grid.ColumnDefinitions>
                     <ListBox x:Name="ltbSendQuotes_verifiedQuotes" HorizontalAlignment="Left" Height="367" VerticalAlignment="Top" Width="210" Background="#FFB2B2A3"/>
-                    <TextBox x:Name="txbSendQuotes_preview" HorizontalAlignment="Left" Height="367" Margin="210,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322"/>
-                    <PasswordBox x:Name="pdbSendQuotes_password" HorizontalAlignment="Left" Margin="616,12,0,0" VerticalAlignment="Top" Width="136" Height="27"/>
-                    <Label Content="Password:" HorizontalAlignment="Left" Margin="546,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.192"/>
-                    <Button x:Name="btnSendQuotes_send" Content="SEND TO CLIENTS" HorizontalAlignment="Left" Margin="616,44,0,0" VerticalAlignment="Top" Width="136" Height="25"/>
+                    <TextBox x:Name="txbSendQuotes_preview" HorizontalAlignment="Left" Height="367" Margin="210,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
+                    <PasswordBox x:Name="pdbSendQuotes_password" HorizontalAlignment="Left" Margin="89,12,0,0" VerticalAlignment="Top" Width="136" Height="27" Grid.Column="1"/>
+                    <Label Content="Password:" HorizontalAlignment="Left" Margin="19,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.192" Grid.Column="1"/>
+                    <Button x:Name="btnSendQuotes_send" Content="SEND TO CLIENTS" HorizontalAlignment="Left" Margin="89,44,0,0" VerticalAlignment="Top" Width="136" Height="25" Grid.Column="1"/>
                 </Grid>
             </TabItem>
         </TabControl>
