@@ -27,7 +27,10 @@ namespace SeleleTravel
         public string clientname { get; set; }
 
         public static int totalQuotes = 0;
-
+        public override string ToString()
+        {
+            return $"Quote no: {quote_no}";
+        }
         public quote(double amount, string typeOfServices, string consultant_no,string client_no,string clientname,double serviceFee)
         {
             this.amount = amount;
@@ -52,12 +55,6 @@ namespace SeleleTravel
             }
             // generates the quote number using the time and string generated above
             quote_no = $"{quotedate}{_totalQts}";
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
-
         }
     }
 }

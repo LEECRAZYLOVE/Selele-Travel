@@ -28,14 +28,23 @@ namespace SeleleTravel
         public static Manager_Home managerWindow = new Manager_Home();
         public static Owner ownerWindow = new Owner();
         public static New_Service_Provider newServiceProviderWindow = new New_Service_Provider();
-        
-
+        //Makes all windows spawn in the center of the screen
+        void MakeWindowsSpawnInScreenCenter()
+        {
+            logInWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            consultantWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            managerWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            ownerWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            newServiceProviderWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
         public MainWindow()
         {
             InitializeComponent();
             //conn = new NpgsqlConnection("Server=127.0.0.1;Port=1998;Database=Selele;User Id=postgres;Password=Linnomtha;");
             //conn.Open();
-            
+            MakeWindowsSpawnInScreenCenter();
+            Closed += GeneralMethods.CloseAllWindows;
     }
 
         #region Client Display
@@ -54,7 +63,8 @@ namespace SeleleTravel
             //Main_Window.Visibility = Visibility.Visible;
             //Consultant_Side.Visibility = Visibility.Hidden;
             //Log_In_Side.Visibility = Visibility.Hidden;
-            this.WindowState = WindowState.Minimized;
+            this.WindowState = WindowState.Maximized;
+            
         }
 
         private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
@@ -130,5 +140,7 @@ namespace SeleleTravel
 
             return "";
         }
+
+        
     }
 }
