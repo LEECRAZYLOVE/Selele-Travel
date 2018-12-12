@@ -19,8 +19,42 @@ namespace SeleleTravel
         public string agencyname { get; set; }
         public string pickuplocation { get; set; }
         public string dropofflocation { get; set; }
-        public Nullable<double> hireduration { get; set; }
         public Nullable<System.DateTime> dayofhire { get; set; }
-        public Nullable<System.DateTime> expectedendtime { get; set; }
+        public Nullable<System.DateTime> expectedenddate { get; set; }
+        public Nullable<System.DateTime> enddate { get; set; }
+        public string carhirespecifications { get; set; }
+
+        carhire(string agencyName, string pickUpLocation, string dropOffLocation, DateTime dayOfHire, DateTime endDate, DateTime expectedEndDate)
+        {
+            this.agencyname = agencyName;
+            this.pickuplocation = pickUpLocation;
+            this.dropofflocation = dropOffLocation;
+            this.dayofhire = dayOfHire;
+            this.enddate = endDate;
+            this.expectedenddate = expectedEndDate; //this is the date that we expect the renting should be done so that we have the reminder prompts
     }
+    /// <summary>
+    /// This method is used to add the times for the summary
+    /// </summary>
+    /// <param name="Time_of_hire"></param>
+    /// <param name="Hire_duration"></param>
+    /// <returns></returns>//todo
+    //private DateTime AddTime(DateTime Time_of_hire, DateTime Hire_duration)
+    //{   }
+
+    public override string ToString()
+    {
+        string output = $"Thank you for choosing Selele Travel & Accomodation these are your car hire details\n" +
+                        $"Agency name: {agencyname}\n" +
+                        $"Pick up location: {pickuplocation}\n" +
+                        $"Drop off location: {dropofflocation}\n" +
+                        $"Period of hire\n" +
+                        $"From: {dayofhire}\n" +
+                        $"Till: {expectedenddate}\n" +
+                        $"Safe travels.\n";
+        return output;
+    }
+
+    //TODO Override ToString
+}
 }

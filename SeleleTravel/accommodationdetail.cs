@@ -14,12 +14,14 @@ namespace SeleleTravel
     
     public partial class accommodationdetail
     {
+        public string accomm_id { get; set; }
         public string nameofagency { get; set; }
         public string address { get; set; }
         public string phonenumber { get; set; }
         public string emailaddress { get; set; }
         public string faxnumber { get; set; }
         public string cellphone { get; set; }
-        public string service { get; set; }
+
+        //TODO - acomm_id generation function
     }
 }

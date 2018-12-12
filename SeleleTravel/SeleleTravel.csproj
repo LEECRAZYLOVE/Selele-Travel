@@ -94,7 +94,7 @@
     <Compile Include="agencydetail.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="airlineagencydetail.cs">
+    <Compile Include="airlinedetail.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="cabservice.cs">
@@ -107,6 +107,9 @@
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="conference.cs">
+      <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dailyserviceupdate.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="event.cs">
@@ -124,11 +127,6 @@
     <Compile Include="quote.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SeleleDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SeleleDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="SeleleModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -144,10 +142,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SeleleModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="service.cs">
+    <Compile Include="staff.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="staff.cs">
+    <Compile Include="voucher.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Page Include="Consultant.xaml">
@@ -168,18 +166,9 @@
     </Compile>
     <Compile Include="Classes\Accommodation.cs" />
     <Compile Include="Classes\Boss.cs" />
-    <Compile Include="Classes\Cab.cs" />
-    <Compile Include="Classes\CarHire.cs" />
-    <Compile Include="Classes\Client.cs" />
-    <Compile Include="Classes\Conference.cs" />
     <Compile Include="Classes\ContactDetails.cs" />
     <Compile Include="Classes\Employee.cs" />
-    <Compile Include="Classes\Events.cs" />
-    <Compile Include="Classes\Flight.cs" />
     <Compile Include="Classes\Manager.cs" />
-    <Compile Include="Classes\Order.cs" />
-    <Compile Include="Classes\Quote.cs" />
-    <Compile Include="Classes\Service.cs" />
     <Compile Include="Consultant.xaml.cs">
       <DependentUpon>Consultant.xaml</DependentUpon>
     </Compile>
@@ -236,17 +225,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="SeleleDataSet.xsc">
-      <DependentUpon>SeleleDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="SeleleDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SeleleDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SeleleDataSet.xss">
-      <DependentUpon>SeleleDataSet.xsd</DependentUpon>
-    </None>
     <EntityDeploy Include="SeleleModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SeleleModel.Designer.cs</LastGenOutput>
@@ -296,6 +274,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="SeleleModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SeleleModel.edmx</DependentUpon>
@@ -306,9 +287,6 @@
       <DependentUpon>SeleleModel.edmx</DependentUpon>
       <LastGenOutput>SeleleModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,27 +14,18 @@ namespace SeleleTravel
     
     public partial class order
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public order()
-        {
-            this.accommodations = new HashSet<accommodation>();
-            this.flights = new HashSet<flight>();
-            this.invoices = new HashSet<invoice>();
-        }
-    
         public string order_no { get; set; }
         public string quote_no { get; set; }
         public string client_no { get; set; }
-        public string timeordered { get; set; }
-        public Nullable<System.DateTime> dateordered { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<accommodation> accommodations { get; set; }
-        public virtual client client { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<flight> flights { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<invoice> invoices { get; set; }
-        public virtual quote quote { get; set; }
+        public Nullable<System.DateTime> datereceived { get; set; }
+        public Nullable<System.DateTime> orderdate { get; set; }
+
+        public order(quote _approvedQuote, string _orderNumber, DateTime orderDate)
+        {
+            quote_no = _approvedQuote.quote_no;
+            order_no = _orderNumber;
+            datereceived = DateTime.Now;
+            orderdate = orderDate;
+        }
     }
 }

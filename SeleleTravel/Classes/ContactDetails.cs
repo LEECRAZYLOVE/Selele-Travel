@@ -9,12 +9,12 @@ namespace SeleleTravel
     /// <summary>
     /// A helper class for the Client class
     /// </summary>
-    class ContactDetails
+    public class ContactDetails
     {
         public string cellphone; //Cellphone number
         public string telephone; //Telephone number
         public string fax; //Fax number
-        public string email;
+        public string emailaddress;
         private string defaultValue = "Not Specified";
         public ContactDetails(string cellphone)
         {
@@ -23,14 +23,14 @@ namespace SeleleTravel
             else this.cellphone = cellphone;
 
             this.telephone = defaultValue;
-            this.email = defaultValue;
+            this.emailaddress = defaultValue;
             this.fax = defaultValue;
         }
         public ContactDetails(string cellphone, string email) : this(cellphone)
         {
             if (string.IsNullOrEmpty(cellphone.Trim()))
-                this.email = defaultValue;
-            else this.email = email;
+                this.emailaddress = defaultValue;
+            else this.emailaddress = email;
 
             telephone = defaultValue;
             fax = defaultValue;

@@ -12,19 +12,23 @@ namespace SeleleTravel
     using System;
     using System.Collections.Generic;
     
-    public partial class @event
+    public partial class voucher
     {
-        public string quote_no { get; set; }
+        public string voucher_no { get; set; }
         public string order_no { get; set; }
-        public string eventspecs { get; set; }
-        public string eventname { get; set; }
+        public string client_id { get; set; }
+        public string accomm_id { get; set; }
+        public string agency_id { get; set; }
+        public string staff_id { get; set; }
         public Nullable<double> amount { get; set; }
 
-        public @event(string name, string specifications, string specs, double amount)
+        voucher(order _order, client Client, accommodation Accom, agencydetail Agency, staff Staff, double amount)
         {
-            eventname = name;
-            eventspecs = specs;
-            this.amount = amount;
+            order_no = _order.order_no;s
+            client_id = Client.client_no;
+            accomm_id = Accom.accom_id;
+            agency_id = Agency.agency_id;
+            staff_id = Staff.staff_id;
         }
     }
 }

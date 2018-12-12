@@ -28,17 +28,18 @@ namespace SeleleTravel
         public virtual DbSet<accommodation> accommodations { get; set; }
         public virtual DbSet<accommodationdetail> accommodationdetails { get; set; }
         public virtual DbSet<agencydetail> agencydetails { get; set; }
-        public virtual DbSet<airlineagencydetail> airlineagencydetails { get; set; }
+        public virtual DbSet<airlinedetail> airlinedetails { get; set; }
         public virtual DbSet<cabservice> cabservices { get; set; }
         public virtual DbSet<carhire> carhires { get; set; }
         public virtual DbSet<client> clients { get; set; }
         public virtual DbSet<conference> conferences { get; set; }
+        public virtual DbSet<dailyserviceupdate> dailyserviceupdates { get; set; }
         public virtual DbSet<@event> events { get; set; }
         public virtual DbSet<flight> flights { get; set; }
         public virtual DbSet<invoice> invoices { get; set; }
         public virtual DbSet<order> orders { get; set; }
         public virtual DbSet<quote> quotes { get; set; }
-        public virtual DbSet<service> services { get; set; }
         public virtual DbSet<staff> staffs { get; set; }
+        public virtual DbSet<voucher> vouchers { get; set; }
     }
 }

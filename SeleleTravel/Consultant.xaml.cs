@@ -451,7 +451,7 @@ namespace SeleleTravel
             DateTime checkOutDate = dpAccommodation_checkOut.DisplayDate;
             string numberOfGuests = txbAccommodation_numGuests.Text;
             string numberOfRooms = txbAccommodation_numRooms.Text;
-            string totalCost = txbAccommodation_total.Text;
+            double totalCost = Convert.ToDouble(txbAccommodation_total.Text);
 
             // Validate data
             List<string> _stringValues = new List<string>();

@@ -14,20 +14,12 @@ namespace SeleleTravel
     
     public partial class staff
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public staff()
-        {
-            this.quotes = new HashSet<quote>();
-        }
-    
         public string staff_id { get; set; }
-        public string stafffirstname { get; set; }
+        public string stafffirstnames { get; set; }
         public string stafflastname { get; set; }
         public string staffposition { get; set; }
         public Nullable<System.DateTime> dateofhire { get; set; }
+        public Nullable<double> salary { get; set; }
         public string branch { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<quote> quotes { get; set; }
     }
 }

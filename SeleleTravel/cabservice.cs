@@ -15,13 +15,32 @@ namespace SeleleTravel
     public partial class cabservice
     {
         public string nameofagency { get; set; }
+        public string agency_id { get; set; }
         public string quote_no { get; set; }
+        public string order_no { get; set; }
         public string nameofdriver { get; set; }
         public string pickup { get; set; }
         public string dropoff { get; set; }
         public Nullable<System.DateTime> dateofcab { get; set; }
-        public string phonenumber { get; set; }
-    
-        public virtual quote quote { get; set; }
+        public Nullable<int> numberofcabs { get; set; }
+        public Nullable<double> amount { get; set; }
+        public string timeofcab { get; set; }
+        public string cabspecs { get; set; }
+
+        cabservice(string agencyName, string driverName, string pickUpLocation, string dropOffLocation, string timeOfPickUp, DateTime dateOfPickup, int numberOfCabs, string taxicabSpecs, double totalAmount)
+        {
+            this.nameofagency = agencyName;
+            this.nameofdriver = driverName;
+            this.pickup = pickUpLocation;
+            this.dropoff = dropOffLocation;
+            this.timeofcab = timeOfPickUp;
+            this.dateofcab = dateOfPickup;
+            this.numberofcabs = numberOfCabs;
+            this.cabspecs = taxicabSpecs;
+            this.amount = totalAmount;
+        }
+
+        //TODO Override ToString
     }
+
 }

@@ -11,31 +11,53 @@ namespace SeleleTravel
 {
     using System;
     using System.Collections.Generic;
-    
+   
     public partial class quote
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public quote()
-        {
-            //this.cabservices = new HashSet<cabservice>();
-            //this.orders = new HashSet<order>();
-        }
-    
         public string quote_no { get; set; }
-        public Nullable<decimal> amount { get; set; }
+        public Nullable<double> amount { get; set; }
         public string service { get; set; }
         public string timequoted { get; set; }
-        public Nullable<System.DateTime> datequoted { get; set; }
+        public string timesent { get; set; }
+        public Nullable<System.DateTime> datesent { get; set; }
+        public Nullable<System.DateTime> quotedate { get; set; }
         public string consultant_no { get; set; }
-        public string agencyphonenumber { get; set; }
-        public string agencyname { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cabservice> cabservices { get; set; }
-        public virtual conference conference { get; set; }
-        public virtual flight flight { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order> orders { get; set; }
-        public virtual staff staff { get; set; }
+        public Nullable<double> servicefee { get; set; }
+        public string client_no { get; set; }
+        public string clientname { get; set; }
+
+        public static int totalQuotes = 0;
+
+        public quote(double amount, string typeOfServices, string consultant_no,string client_no,string clientname,double serviceFee)
+        {
+            this.amount = amount;
+            service = typeOfServices;
+            this.consultant_no = consultant_no;
+            this.clientname = clientname;
+            this.client_no = client_no;
+            this.servicefee = serviceFee;
+            quotedate = DateTime.Now;
+        }
+        /// <summary>
+        /// It generates a new quote number
+        /// </summary>
+        private void makeQuote_no()
+        {
+            quotedate = DateTime.Now; // Assignes the timeQuoted to the current time
+            string _totalQts = totalQuotes.ToString(); // assigns the static value to the string
+            while (_totalQts.Length < 6)
+            {
+                // It adds a zero once to the left of the current string
+                _totalQts = _totalQts.PadLeft(1, '0');
+            }
+            // generates the quote number using the time and string generated above
+            quote_no = $"{quotedate}{_totalQts}";
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+
+        }
     }
 }

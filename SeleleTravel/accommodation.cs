@@ -17,11 +17,25 @@ namespace SeleleTravel
         public string quote_no { get; set; }
         public string order_no { get; set; }
         public string accomname { get; set; }
-        public string checkin { get; set; }
-        public string checkout { get; set; }
-        public string numberofpeople { get; set; }
-        public Nullable<decimal> amount { get; set; }
-    
-        public virtual order order { get; set; }
-    }
+        public string accom_id { get; set; }
+        public Nullable<System.DateTime> checkin { get; set; }
+        public Nullable<System.DateTime> checkout { get; set; }
+        public Nullable<int> numberofguests { get; set; }
+        public Nullable<int> numberofrooms { get; set; }
+        public Nullable<double> amount { get; set; }
+        public string accomspecs { get; set; }
+
+        accommodation( string accomname, DateTime checkin, 
+            DateTime checkout, int numberofpeople, int numberOFRooms, string accommodationSpecifications, double amount) : base()
+        {
+            this.accomname = accomname;
+            this.checkin = checkin;
+            this.checkout = checkout;
+            this.numberofguests = numberofpeople;
+            this.accomspecs = accommodationSpecifications;
+            this.numberofrooms = numberOFRooms;
+            this.amount = amount;
+
+        }
+}
 }

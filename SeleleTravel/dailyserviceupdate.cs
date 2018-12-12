@@ -12,10 +12,13 @@ namespace SeleleTravel
     using System;
     using System.Collections.Generic;
     
-    public partial class service
+    public partial class dailyserviceupdate
     {
+        public System.DateTime datestamp { get; set; }
         public string servicename { get; set; }
-        public Nullable<decimal> total { get; set; }
+        public string client_no { get; set; }
+        public string clientname { get; set; }
+        public Nullable<double> total { get; set; }
         public Nullable<int> frequency { get; set; }
     }
 }

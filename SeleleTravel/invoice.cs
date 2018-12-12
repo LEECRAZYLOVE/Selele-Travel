@@ -16,12 +16,11 @@ namespace SeleleTravel
     {
         public string invoice_no { get; set; }
         public string order_no { get; set; }
+        public Nullable<System.DateTime> datesent { get; set; }
         public Nullable<System.DateTime> invoicedate { get; set; }
         public string clientname { get; set; }
-        public Nullable<double> paymentduration { get; set; }
+        public Nullable<int> paymentduration { get; set; }
         public Nullable<double> owe { get; set; }
         public Nullable<double> paid { get; set; }
-    
-        public virtual order order { get; set; }
     }
 }
