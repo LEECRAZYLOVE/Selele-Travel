@@ -567,10 +567,10 @@ namespace SeleleTravel
 
         #region Search tab
 
-        private void BtnConsultant_search_Click(object sender, RoutedEventArgs e)
+        private void btnConsultant_search_Click(object sender, RoutedEventArgs e)
         {
             // Assign value to the variable
-            string searchValue = txbConsultant_search.Text;
+           // string searchValue = txbConsultant_search.Text;
 
             // Filters used
 

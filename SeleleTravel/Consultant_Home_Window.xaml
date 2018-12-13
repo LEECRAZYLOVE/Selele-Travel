@@ -7,19 +7,42 @@
         mc:Ignorable="d"
         Title="Consultant_Home_Page" Height="450" Width="800">
     <Grid Background="#FFDED152">
-        <Canvas HorizontalAlignment="Left" Height="325                 " Margin="118.368,94,0,0" VerticalAlignment="Top" Width="335" Background="#FF3C2D2D" Opacity="0.5">
-            <ListBox x:Name="listBox" Height="100" Canvas.Left="10" Canvas.Top="39" Width="100"/>
+        <Canvas HorizontalAlignment="Left" Height="325                 " Margin="118.368,94,0,0" VerticalAlignment="Top" Width="335" Opacity="0.5">
+            <Canvas.Background>
+                <ImageBrush ImageSource="Selele Travel BALLS.png"/>
+            </Canvas.Background>
         </Canvas>
         <Label x:Name="lblConsultantID" Content="LabeloutputID" Margin="2,33.047,653.048,350.399" FontFamily="Comic Sans MS" FontSize="16"/>
-        <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="40.997" Margin="685,10,0,0" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515" Background="#FFC72D2D"/>
+        <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="40.997" Margin="685,10,0,0" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515">
+            <Button.Background>
+                <ImageBrush ImageSource="Selele Travel BALLS.png" Stretch="UniformToFill" Opacity="0.8"/>
+            </Button.Background>
+        </Button>
         <Label x:Name="lblConsultantName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28.047" Width="136.952" Margin="2,0,0,0" FontFamily="Comic Sans MS" FontSize="16"/>
         <Label x:Name="label" Content="Quotations" HorizontalAlignment="Left" Margin="328.166,7.55,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" FontWeight="Bold"/>
-        <Button x:Name="btnConsultant_Quotes" Content=" New Quotes" HorizontalAlignment="Left" Margin="0,94,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
+        <Button x:Name="btnConsultant_Quotes" Content=" New Quotes" HorizontalAlignment="Left" Margin="0,94,0,0" VerticalAlignment="Top" Width="118.368" Height="65" Click="btnConsultant_Quotes_Click"/>
         <Button x:Name="btnConsultant_Orders" Content="New Orders" HorizontalAlignment="Left" Margin="0,159,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
         <Button x:Name="btnConsultant_Vouchers" Content="New Vouchers" HorizontalAlignment="Left" Margin="0,224,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
         <Button x:Name="btnConsultant_NewServiceProvider" Content="New Service Provider" HorizontalAlignment="Left" Margin="0,289,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
         <Button x:Name="btnConsultant_Update" Content="Update Quotes" HorizontalAlignment="Left" Margin="0,354,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
         <Canvas HorizontalAlignment="Left" Height="325" Margin="453.368,94,0,0" VerticalAlignment="Top" Width="338.632" Background="#FFB02525" Opacity="0.5"/>
-        <Label x:Name="label1" Content="Inbox" Opacity="1.5" Margin="260.632,94,475.794,294.04" FontSize="16" FontFamily="Comic Sans MS"/>
+        <Label x:Name="label1" Content="Inbox" Opacity="1.5" Margin="254.632,63.04,473.794,320" FontSize="16" FontFamily="Comic Sans MS"/>
+        <ListBox x:Name="lbConsultant_inboxList" Background="#FFD5D9E6" Margin="118.368,94,569.632,0" Opacity="0.5"/>
+        <TextBlock x:Name="tbkConsultant_inboxMessages" TextWrapping="Wrap" Text="TextBlock" Margin="222.368,99,343.632,0" FontFamily="Comic Sans MS"/>
+        <Button x:Name="btnConsultant_search" Content="SEARCH" HorizontalAlignment="Left" Margin="717,94,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnConsultant_search_Click"/>
+        <ComboBox x:Name="cbbConsultant_Search_entities" HorizontalAlignment="Left" Margin="453.368,137.04,0,0" VerticalAlignment="Top" Width="338.632">
+            <ComboBoxItem Content="Staff" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Accommodation" HorizontalAlignment="Left" Width="197"/>
+            <ComboBoxItem Content="Agency/Airline" HorizontalAlignment="Left" Width="336.632"/>
+        </ComboBox>
+        <Label x:Name="label54" Content="Filters:" HorizontalAlignment="Left" Margin="453.368,113.52,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS"/>
+        <CheckBox x:Name="ckbConsultant_Search_quotes" Content="Quotes" HorizontalAlignment="Left" Margin="458.368,166.05,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="ckbConsultant_Search_orders" Content="Orders" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="530.646,166.05,0,0"/>
+        <CheckBox x:Name="ckbConsultant_Search_vouchers" Content="Vouchers" HorizontalAlignment="Left" Margin="600.451,166.05,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="ckbConsultant_Search_invoices" Content="Invoices" HorizontalAlignment="Left" Margin="682.55,166.05,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="ltbConsultant_Search_Results" HorizontalAlignment="Left" Height="232.852" Margin="453.368,186.148,0,0" VerticalAlignment="Top" Width="338.632" FontFamily="Comic Sans MS" Opacity="0.8"/>
+        <TextBox x:Name="txbConsultant_search" HorizontalAlignment="Left" Height="23" Margin="453.368,94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="263.632"/>
+        <CheckBox x:Name="ckbConsultant_Search_all" Content="all" HorizontalAlignment="Left" Margin="750.105,166.05,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
