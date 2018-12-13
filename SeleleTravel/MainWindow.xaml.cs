@@ -24,7 +24,7 @@ namespace SeleleTravel
     {
         //instantiating all the windows as global objects
         public static Log_In logInWindow = new Log_In();
-        public static Consultant consultantWindow = new Consultant();
+        public static Consultant_Home_Window consultantWindow = new Consultant_Home_Window();
         public static Manager_Home managerWindow = new Manager_Home();
         public static Owner ownerWindow = new Owner();
         public static New_Service_Provider newServiceProviderWindow = new New_Service_Provider();
