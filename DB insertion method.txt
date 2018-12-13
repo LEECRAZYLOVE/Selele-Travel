@@ -1,0 +1,8 @@
+var context= new SeleleEntities();
+          var cliententity= new client(put in parameters)
+           {
+
+           }
+        context.client.Add(cliententity);
+context.SaveChanges();
+        }
