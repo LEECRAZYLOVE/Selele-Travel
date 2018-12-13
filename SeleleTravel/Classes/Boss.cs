@@ -53,8 +53,8 @@ namespace SeleleTravel
         {
             fire(employee);
             Manager manager = new Manager(employee.names, employee.surname, employee.location);
-            manager.employeeID = employee.employeeID;
-            manager.timeHired = employee.timeHired;
+            manager.staff_id = employee.employeeID;
+            manager.dateofhire = employee.timeHired;
 
             //Reflect changes on database
 
@@ -67,9 +67,9 @@ namespace SeleleTravel
         public Boss(string names = "Mrs Pumla Patricia", string surname ="Nyangiwe", string location = "East London")
             :base(names, surname, location)
         {
-            this.names = names;
-            this.surname = surname;
-            this.location = location;
+            stafffirstnames = names;
+            stafflastname = surname;
+            branch = location;
         }
     }
 }

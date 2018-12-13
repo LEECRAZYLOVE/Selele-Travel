@@ -32,5 +32,10 @@ namespace SeleleTravel
             MainWindow.managerWindow.Show(); //if manager details correspond with the database
            // MainWindow.ownerWindow.Show(); //if owner details correspond with the database
         }
+
+        private void Log_In_Home_Closed(object sender, EventArgs e)
+        {
+            GeneralMethods.CloseAllWindows();
+        }
     }
 }

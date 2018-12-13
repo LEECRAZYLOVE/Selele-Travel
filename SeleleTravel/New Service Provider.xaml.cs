@@ -29,5 +29,10 @@ namespace SeleleTravel
         {
             
         }
+
+        private void New_Service_Provider_Home_Closed(object sender, EventArgs e)
+        {
+            GeneralMethods.CloseAllWindows();
+        }
     }
 }
