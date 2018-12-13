@@ -103,11 +103,24 @@
     <Compile Include="carhire.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\GeneralMethods.cs" />
     <Compile Include="client.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="conference.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultant_Orders_Window..xaml.cs">
+      <DependentUpon>Consultant_Orders_Window..xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Consultant_Quotes_Window.xaml.cs">
+      <DependentUpon>Consultant_Quotes_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Consultant_Update_Window.xaml.cs">
+      <DependentUpon>Consultant_Update_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Consultant_Vouchers_Window..xaml.cs">
+      <DependentUpon>Consultant_Vouchers_Window..xaml</DependentUpon>
     </Compile>
     <Compile Include="dailyserviceupdate.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
@@ -152,6 +165,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Consultant_Orders_Window..xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Consultant_Quotes_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Consultant_Update_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Consultant_Vouchers_Window..xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Log In.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,15 +193,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\Accommodation.cs" />
     <Compile Include="Classes\Boss.cs" />
     <Compile Include="Classes\ContactDetails.cs" />
-    <Compile Include="Classes\Employee.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Consultant.xaml.cs">
       <DependentUpon>Consultant.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseConnectionControl.cs" />
     <Compile Include="Log In.xaml.cs">
       <DependentUpon>Log In.xaml</DependentUpon>
     </Compile>
@@ -277,6 +303,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Selele Travel LOGO2.png" />
     <Content Include="SeleleModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SeleleModel.edmx</DependentUpon>

@@ -7,12 +7,12 @@ using System.Windows;
 
 namespace SeleleTravel
 {
-    class Manager : Employee
+    class Manager : staff
     {
         /// <summary>
         /// Employees under this specific manager.
         /// </summary>
-        public virtual List<Employee> employees { get; protected set; }
+        public virtual List<staff> employees { get; protected set; }
         /// <summary>
         /// Each manager manages in a specific location,
         /// so this method gets all the employees of that location,
@@ -20,9 +20,9 @@ namespace SeleleTravel
         /// </summary>
         private void getEmployees()
         {
-            foreach (Employee e in Employee.hiredEmployees)
+            foreach (staff e in hiredEmployees)
             {
-                if (e.location == location)
+                if (e.branch == branch)
                 {
                     employees.Add(e);
                 }
