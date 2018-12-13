@@ -305,6 +305,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Selele Travel LOGO2.png" />
+    <Resource Include="Selele Travel BALLS.png" />
     <Content Include="SeleleModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SeleleModel.edmx</DependentUpon>
