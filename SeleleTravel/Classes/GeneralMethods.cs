@@ -10,14 +10,16 @@ namespace SeleleTravel
 
     public static class GeneralMethods
     {
-         public static void CloseAllWindows()
+        public static void closeAllWindows()
         {
-            //instantiating all the windows as global objects
-            MainWindow.logInWindow.Close();
-            MainWindow.consultantWindow.Close();
-            MainWindow.managerWindow.Close();
-            MainWindow.ownerWindow.Close();
-            MainWindow.newServiceProviderWindow.Close();
+            foreach (Window w in Application.Current.Windows)
+                w?.Close();
         }
+        public static void logOut(Window windowToLogOutOff)
+        {
+            windowToLogOutOff.Hide();
+            Application.Current.MainWindow.Show();
+        }
+        
     }
 }

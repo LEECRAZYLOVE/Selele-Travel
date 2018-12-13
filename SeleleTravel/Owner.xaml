@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Owner" Height="450" Width="800" Closed="Owner_Home_Closed">
     <Grid>
-        
+        <Button Content="Button" HorizontalAlignment="Left" Margin="709,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
     </Grid>
 </Window>
