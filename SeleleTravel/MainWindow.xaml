@@ -5,14 +5,78 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Home" SizeToContent="WidthAndHeight" WindowStartupLocation="Manual" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Loaded="Window_Loaded" Width="647.2" Height="439.2" >
-    <Grid x:Name="mainGrid" Background="White">
-        <Image x:Name="image" Source="Selele Travel LOGO.png" Stretch="Fill" Margin="113,-49,138.8,104.6"/>
-        <Viewbox x:Name="buttonsBox" Margin="10,220,9.8,61.6" Stretch="Uniform">
+        Title="Home" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Loaded="Window_Loaded" Width="647.2" Height="432" >
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonTemplate" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="Purple"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="Black" />
+                                <Setter Property="BorderThickness" TargetName="border" Value="4"/>
+                                <Setter Property="FontSize" Value="20"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="Navy"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid x:Name="mainGrid">
+        <Image x:Name="image" Source="Selele Travel LOGO2.png" Stretch="None" Margin="106,10,105.8,194.6"/>
+        <Viewbox x:Name="buttonsBox" Margin="10,225.6,9.8,45.4" Stretch="None">
             <Grid Height="132" Width="489">
-                <Button x:Name="btn_consultantSide" Content="Consultant" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFD8B827" Click="btn_consultantSide_Click" Margin="360,2,-13,0"/>
-                <Button x:Name="btn_managerSide" Content="Manager" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFEE1717" Margin="184,2,0,0" Click="btn_managerSide_Click"/>
-                <Button x:Name="btn_bossSide" Content="Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FF3E9EFD" Click="btn_bossSide_Click" Margin="0,2,0,0"/>
+                <Button x:Name="btn_consultantSide" Content="Consultant" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFD8B827" Click="btn_consultantSide_Click" Margin="360,2,-13,0" BorderBrush="Black" Style="{DynamicResource ButtonTemplate}"  />
+                <Button x:Name="btn_managerSide" Content="Manager" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFEE1717" Margin="184,2,0,0" Click="btn_managerSide_Click" BorderBrush="Black" Style="{DynamicResource ButtonTemplate}" />
+                <Button x:Name="btn_bossSide" Content="Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FF3E9EFD" Click="btn_bossSide_Click" Margin="0,2,0,0" BorderBrush="Black" Style="{DynamicResource ButtonTemplate}"  />
             </Grid>
         </Viewbox>
     </Grid>

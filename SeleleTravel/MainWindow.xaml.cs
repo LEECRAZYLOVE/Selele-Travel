@@ -46,7 +46,7 @@ namespace SeleleTravel
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Maximized;
+            //this.WindowState = WindowState.Maximized;
         }
 
         private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
@@ -65,6 +65,7 @@ namespace SeleleTravel
         {
             Hide();
             logInWindow.Show();
+            
         }
         
         public string MakeQuoteSummmary () //function that will display the final information for the quote
