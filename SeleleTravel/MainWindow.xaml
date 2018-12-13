@@ -74,9 +74,9 @@
         <Image x:Name="image" Source="Selele Travel LOGO2.png" Stretch="None" Margin="106,10,105.8,194.6"/>
         <Viewbox x:Name="buttonsBox" Margin="10,225.6,9.8,45.4" Stretch="None">
             <Grid Height="132" Width="489">
-                <Button x:Name="btn_consultantSide" Content="Consultant" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFD8B827" Click="btn_consultantSide_Click" Margin="360,2,-13,0" BorderBrush="Black" Style="{DynamicResource ButtonTemplate}"  />
-                <Button x:Name="btn_managerSide" Content="Manager" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFEE1717" Margin="184,2,0,0" Click="btn_managerSide_Click" BorderBrush="Black" Style="{DynamicResource ButtonTemplate}" />
-                <Button x:Name="btn_bossSide" Content="Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FF3E9EFD" Click="btn_bossSide_Click" Margin="0,2,0,0" BorderBrush="Black" Style="{DynamicResource ButtonTemplate}"  />
+                <Button x:Name="btn_consultantSide" Content="Consultant" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFD8B827" Click="btn_consultantSide_Click" Margin="360,2,-13,0" BorderBrush="Black" Style="{DynamicResource ButtonTemplate}" FontSize="20"  />
+                <Button x:Name="btn_managerSide" Content="Manager" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFEE1717" Margin="184,2,0,0" Click="btn_managerSide_Click" BorderBrush="Black" Style="{DynamicResource ButtonTemplate}" FontSize="20" />
+                <Button x:Name="btn_bossSide" Content="Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FF3E9EFD" Click="btn_bossSide_Click" Margin="0,2,0,0" BorderBrush="Black" Style="{DynamicResource ButtonTemplate}" FontSize="20"  />
             </Grid>
         </Viewbox>
     </Grid>

@@ -7,9 +7,19 @@
         mc:Ignorable="d"
         Title="Consultant_Home_Page" Height="450" Width="800">
     <Grid Background="#FFDED152">
-        <Label x:Name="lblConsultantID" Content="LabeloutputID" Margin="2,24,676,344"/>
-        <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Margin="685,10,0,0"/>
-        <Label x:Name="lblConsultantName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="104" Margin="2,0,0,0"/>
-        <Label x:Name="label" Content="Quotations" HorizontalAlignment="Left" Margin="357,21,0,0" VerticalAlignment="Top"/>
+        <Canvas HorizontalAlignment="Left" Height="325                 " Margin="118.368,94,0,0" VerticalAlignment="Top" Width="335" Background="#FF3C2D2D" Opacity="0.5">
+            <ListBox x:Name="listBox" Height="100" Canvas.Left="10" Canvas.Top="39" Width="100"/>
+        </Canvas>
+        <Label x:Name="lblConsultantID" Content="LabeloutputID" Margin="2,33.047,653.048,350.399" FontFamily="Comic Sans MS" FontSize="16"/>
+        <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="40.997" Margin="685,10,0,0" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515" Background="#FFC72D2D"/>
+        <Label x:Name="lblConsultantName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28.047" Width="136.952" Margin="2,0,0,0" FontFamily="Comic Sans MS" FontSize="16"/>
+        <Label x:Name="label" Content="Quotations" HorizontalAlignment="Left" Margin="328.166,7.55,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="btnConsultant_Quotes" Content=" New Quotes" HorizontalAlignment="Left" Margin="0,94,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
+        <Button x:Name="btnConsultant_Orders" Content="New Orders" HorizontalAlignment="Left" Margin="0,159,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
+        <Button x:Name="btnConsultant_Vouchers" Content="New Vouchers" HorizontalAlignment="Left" Margin="0,224,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
+        <Button x:Name="btnConsultant_NewServiceProvider" Content="New Service Provider" HorizontalAlignment="Left" Margin="0,289,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
+        <Button x:Name="btnConsultant_Update" Content="Update Quotes" HorizontalAlignment="Left" Margin="0,354,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
+        <Canvas HorizontalAlignment="Left" Height="325" Margin="453.368,94,0,0" VerticalAlignment="Top" Width="338.632" Background="#FFB02525" Opacity="0.5"/>
+        <Label x:Name="label1" Content="Inbox" Opacity="1.5" Margin="260.632,94,475.794,294.04" FontSize="16" FontFamily="Comic Sans MS"/>
     </Grid>
 </Window>
