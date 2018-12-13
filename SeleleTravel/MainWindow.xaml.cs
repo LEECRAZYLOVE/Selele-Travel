@@ -41,30 +41,12 @@ namespace SeleleTravel
         public MainWindow()
         {
             InitializeComponent();
-            //conn = new NpgsqlConnection("Server=127.0.0.1;Port=1998;Database=Selele;User Id=postgres;Password=Linnomtha;");
-            //conn.Open();
             MakeWindowsSpawnInScreenCenter();
-            Closed += GeneralMethods.CloseAllWindows;
-    }
-
-        #region Client Display
-        #endregion
-        #region newClient Display
-        /// <summary>
-        /// This just makes sure that only one type is chosen between business and individual.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
-        #endregion
-
+            
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //Main_Window.Visibility = Visibility.Visible;
-            //Consultant_Side.Visibility = Visibility.Hidden;
-            //Log_In_Side.Visibility = Visibility.Hidden;
             this.WindowState = WindowState.Maximized;
-            
         }
 
         private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
@@ -84,63 +66,12 @@ namespace SeleleTravel
             Hide();
             logInWindow.Show();
         }
-
-        //Npgsql.NpgsqlConnection conn;
-
-        //private void button1_Click(object sender, RoutedEventArgs e)
-        //{
-        //    using (Npgsql.NpgsqlCommand cmd = new NpgsqlCommand("select * from myTable where name=" + Name))
-        //    { // '' or 1=1
-        //      // select * from myTable where name ='' or 1=1
-        //        cmd.CommandText = "select date,name from quote where quote_no = @mynum";
-        //        cmd.Parameters.Add("mynum", 7);
-        //        // for ins/upd:
-        //        cmd.ExecuteNonQuery();
-        //        // for single value:
-        //        cmd.ExecuteScalar();
-        //        using (Npgsql.NpgsqlDataReader r = cmd.ExecuteReader())
-        //        {
-        //            while (r.Read())
-        //            {
-        //                var x = r.GetDate(0);
-        //                string b = r.GetString(1);
-        //                // do whatever
-        //            }
-        //        }
-        //    }
-        //}
-        //Npgsql.NpgsqlConnection conn;
-
-        //private void button1_Click(object sender, RoutedEventArgs e)
-        //{
-        //    using (Npgsql.NpgsqlCommand cmd = new NpgsqlCommand("select * from myTable where name=" + Name))
-        //    { // '' or 1=1
-        //      // select * from myTable where name ='' or 1=1
-        //        cmd.CommandText = "select date,name from quote where quote_no = @mynum";
-        //        cmd.Parameters.Add("mynum", 7);
-        //        // for ins/upd:
-        //        cmd.ExecuteNonQuery();
-        //        // for single value:
-        //        cmd.ExecuteScalar();
-        //        using (Npgsql.NpgsqlDataReader r = cmd.ExecuteReader())
-        //        {
-        //            while (r.Read())
-        //            {
-        //                var x = r.GetDate(0);
-        //                string b = r.GetString(1);
-        //                // do whatever
-        //            }
-        //        }
-        //    }
-        //}
         
-
         public string MakeQuoteSummmary () //function that will display the final information for the quote
         {
 
             return "";
         }
 
-        
     }
 }
