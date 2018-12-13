@@ -110,6 +110,18 @@
     <Compile Include="conference.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Consultant_Orders_Window.xaml.cs">
+      <DependentUpon>Consultant_Orders_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Consultant_Home_Window.xaml.cs">
+      <DependentUpon>Consultant_Home_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Consultant_Update_Window.xaml.cs">
+      <DependentUpon>Consultant_Update_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Consultant_Vouchers_Window.xaml.cs">
+      <DependentUpon>Consultant_Vouchers_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dailyserviceupdate.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
@@ -149,11 +161,27 @@
     <Compile Include="voucher.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
-    <Page Include="Windows\Consultant\Consultant.xaml">
+    <Page Include="Consultant_Quotes_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\General\Log In.xaml">
+    <Page Include="Consultant_Orders_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Consultant_Home_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Consultant_Update_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Consultant_Vouchers_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Log In.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,37 +196,37 @@
     <Compile Include="Classes\Boss.cs" />
     <Compile Include="Classes\ContactDetails.cs" />
     <Compile Include="Classes\Manager.cs" />
-    <Compile Include="Windows\Consultant\Consultant.xaml.cs">
-      <DependentUpon>Consultant.xaml</DependentUpon>
+    <Compile Include="Consultant_Quotes_Window.xaml.cs">
+      <DependentUpon>Consultant_Quotes_Window.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\General\Log In.xaml.cs">
+    <Compile Include="Log In.xaml.cs">
       <DependentUpon>Log In.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Windows\Manager\Manager Home.xaml">
+    <Page Include="Manager Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Consultant\New Service Provider.xaml">
+    <Page Include="New Service Provider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Owner\Owner.xaml">
+    <Page Include="Owner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Windows\Manager\Manager Home.xaml.cs">
+    <Compile Include="Manager Home.xaml.cs">
       <DependentUpon>Manager Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Consultant\New Service Provider.xaml.cs">
+    <Compile Include="New Service Provider.xaml.cs">
       <DependentUpon>New Service Provider.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Owner\Owner.xaml.cs">
+    <Compile Include="Owner.xaml.cs">
       <DependentUpon>Owner.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">

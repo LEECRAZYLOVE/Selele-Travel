@@ -20,9 +20,9 @@ namespace SeleleTravel
     /// <summary>
     /// Interaction logic for Consultant.xaml
     /// </summary>
-    public partial class Consultant : Window
+    public partial class Consultant_Quotes : Window
     {
-        public Consultant()
+        public Consultant_Quotes()
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
