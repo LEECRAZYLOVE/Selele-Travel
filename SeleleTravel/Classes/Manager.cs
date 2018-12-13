@@ -20,9 +20,9 @@ namespace SeleleTravel
         /// </summary>
         private void getEmployees()
         {
-            foreach (staff e in staff.hiredEmployees)
+            foreach (staff e in hiredEmployees)
             {
-                if (e.location == branch)
+                if (e.branch == branch)
                 {
                     employees.Add(e);
                 }
