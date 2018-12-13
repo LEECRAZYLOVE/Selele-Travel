@@ -484,10 +484,10 @@ namespace SeleleTravel
             accommodationErrorMessage(_stringValues, checkInDate, checkOutDate);
 
             // Instantiate the accomodation
-            var currentAccommodation = new accommodation(nameOfAgency, checkInDate, checkOutDate, numberOfGuests, numberOfRooms, accommodationSpecs, totalCost);
-            {
-
-            };
+            //var currentAccommodation = new accommodation(nameOfAgency, checkInDate, checkOutDate, numberOfGuests, numberOfRooms, accommodationSpecs, totalCost);
+            //{
+            //    acc
+            //};
 
             // Reset the texboxes to empty
             txbAccommodation_name.Text = "";

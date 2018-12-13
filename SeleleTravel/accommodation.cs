@@ -25,15 +25,5 @@ namespace SeleleTravel
         public Nullable<double> amount { get; set; }
         public string accomspecs { get; set; }
 
-        public accommodation( string accomname, DateTime checkin, DateTime checkout, int numberofpeople, int numberOFRooms, string accommodationSpecifications, double amount)
-        {
-            this.accomname = accomname;
-            this.checkin = checkin;
-            this.checkout = checkout;
-            this.numberofguests = numberofpeople;
-            this.accomspecs = accommodationSpecifications;
-            this.numberofrooms = numberOFRooms;
-            this.amount = amount;
-        }
-}
+    }
 }
