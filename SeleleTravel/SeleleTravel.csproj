@@ -167,7 +167,6 @@
     </Compile>
     <Compile Include="Classes\Boss.cs" />
     <Compile Include="Classes\ContactDetails.cs" />
-    <Compile Include="Classes\Employee.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Consultant.xaml.cs">
       <DependentUpon>Consultant.xaml</DependentUpon>

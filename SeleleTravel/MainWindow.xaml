@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Home" SizeToContent="WidthAndHeight" WindowStartupLocation="Manual" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="{x:Null}" Foreground="{x:Null}" Loaded="Window_Loaded" >
+        Title="Home" SizeToContent="WidthAndHeight" WindowStartupLocation="Manual" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="{x:Null}" Foreground="{x:Null}" Loaded="Window_Loaded" Closed="Home_Page_Closed" >
     <Grid Background="White">
         <Image x:Name="image" Source="Selele Travel LOGO.png" Stretch="Fill" Margin="165,-118,209,174"/>
         <Button x:Name="btn_consultantSide" Content="Consultant" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFD8B827" Click="btn_consultantSide_Click" Margin="644,295,0,0"/>

@@ -23,5 +23,10 @@ namespace SeleleTravel
         {
             InitializeComponent();
         }
+
+        private void Owner_Home_Closed(object sender, EventArgs e)
+        {
+            GeneralMethods.CloseAllWindows();
+        }
     }
 }

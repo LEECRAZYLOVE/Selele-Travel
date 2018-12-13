@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace SeleleTravel
 {
-    class Manager : Employee
+    class Manager : staff
     {
         /// <summary>
         /// Employees under this specific manager.
@@ -22,7 +22,7 @@ namespace SeleleTravel
         {
             foreach (Employee e in Employee.hiredEmployees)
             {
-                if (e.location == location)
+                if (e.location == branch)
                 {
                     employees.Add(e);
                 }

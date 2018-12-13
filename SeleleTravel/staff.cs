@@ -11,7 +11,9 @@ namespace SeleleTravel
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Windows;
+    using System.Windows.Forms;
+
     public partial class staff
     {
         public string staff_id { get; set; }
@@ -20,13 +22,17 @@ namespace SeleleTravel
         public string staffposition { get; set; }
         public Nullable<System.DateTime> dateofhire { get; set; }
         public Nullable<double> salary { get; set; }
+        public string password { get; set; }
+        /// <summary>
+        /// The location where the employee is based.(Useful in the Managers 'getEmployees' method).
+        /// </summary>
         public string branch { get; set; }
 
         /// <summary>
         /// This is a list of all the employees that are hired by the company.
         /// </summary>
-        public static List<Employee> hiredEmployees = new List<Employee>();
-
+        public static List<staff> hiredEmployees = new List<staff>();
+        static int numberOfEmployees = 0;
         /// <summary>
         /// Generates an employee id.
         /// </summary>
@@ -38,13 +44,8 @@ namespace SeleleTravel
             {
                 idEnding = idEnding.PadLeft(1, '0');
             }
-            employeeID = timeHired.Year + surname[0] + idEnding;
+            staff_id = dateofhire.Value.Year + stafflastname[0] + idEnding;
         }
-        /// <summary>
-        /// The location where the employee is based.(Useful in the Managers 'getEmployees' method).
-        /// </summary>
-        public string location;
-
         /// <summary>
         /// Changes the password of this employee. Status : Incomplete
         /// </summary>
@@ -57,35 +58,20 @@ namespace SeleleTravel
 
             //Displaying to user
             string message = "Password successfully updated!";
-            MessageBox.Show(message, "Alert..", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-        }
-        /// <summary>
-        /// Changes the username of this employee. Status : incomplete
-        /// </summary>
-        /// <param name="newUsername"></param>
-        public void updateUsername(string newUsername)
-        {
-            username = newUsername;
-
-            //Make the necessary changes on the database
-
-            //Displaying to user
-            string message = "Password successfully updated!";
-            MessageBox.Show(message, "Alert..", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-
+            //System.Windows.Forms.MessageBox.Show(message, "Alert..", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
         public override string ToString()
         {
-            return names + " " + surname;
+            return stafffirstnames + " " + stafflastname;
         }
-        public Employee(string names, string surname, string location = "East London")
+        public staff(string names, string surname, string location = "East London")
         {
-            this.names = names;
-            this.surname = surname;
-            this.location = location;
+            stafffirstnames = names;
+            stafflastname = surname;
+            branch = location;
             if (!(this is Boss))
                 makeEmployeeID();
-            else employeeID = this.names + " " + surname;
+            else staff_id = stafffirstnames + " " + stafflastname;
             numberOfEmployees++;
         }
     }

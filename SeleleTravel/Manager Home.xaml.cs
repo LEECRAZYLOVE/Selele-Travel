@@ -202,5 +202,10 @@ namespace SeleleTravel
             Hide();
             MainWindow.logInWindow.Show();
         }
+
+        private void Manager_Home1_Closed(object sender, EventArgs e)
+        {
+            GeneralMethods.CloseAllWindows();
+        }
     }
 }

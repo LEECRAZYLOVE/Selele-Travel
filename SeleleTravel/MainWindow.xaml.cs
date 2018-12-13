@@ -38,13 +38,13 @@ namespace SeleleTravel
             newServiceProviderWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
+
         public MainWindow()
         {
             InitializeComponent();
             //conn = new NpgsqlConnection("Server=127.0.0.1;Port=1998;Database=Selele;User Id=postgres;Password=Linnomtha;");
             //conn.Open();
             MakeWindowsSpawnInScreenCenter();
-            Closed += GeneralMethods.CloseAllWindows;
     }
 
         #region Client Display
@@ -141,6 +141,9 @@ namespace SeleleTravel
             return "";
         }
 
-        
+        private void Home_Page_Closed(object sender, EventArgs e)
+        {
+            GeneralMethods.CloseAllWindows();
+        }
     }
 }
