@@ -19,30 +19,23 @@ namespace SeleleTravel
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-
+    public enum LoadWindow { Consultant, Manager, Owner}
     public partial class MainWindow : Window
     {
         //instantiating all the windows as global objects
-        public static Log_In logInWindow = new Log_In();
+        public static Log_In logInWindow;
         public static Consultant consultantWindow = new Consultant();
         public static Manager_Home managerWindow = new Manager_Home();
         public static Owner ownerWindow = new Owner();
         public static New_Service_Provider newServiceProviderWindow = new New_Service_Provider();
+        
         //Makes all windows spawn in the center of the screen
-        void MakeWindowsSpawnInScreenCenter()
-        {
-            logInWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            consultantWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            managerWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            ownerWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            newServiceProviderWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
-        }
+
         public MainWindow()
         {
             InitializeComponent();
-            MakeWindowsSpawnInScreenCenter();
-            
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            Application.Current.MainWindow = this;
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -52,18 +45,22 @@ namespace SeleleTravel
         private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
         {
             Hide();
+            logInWindow = new Log_In(LoadWindow.Consultant);
             logInWindow.Show();
+
         }
 
         private void btn_managerSide_Click(object sender, RoutedEventArgs e)
         {
             Hide();
+            logInWindow = new Log_In(LoadWindow.Manager);
             logInWindow.Show();
         }
 
         private void btn_bossSide_Click(object sender, RoutedEventArgs e)
         {
             Hide();
+            logInWindow = new Log_In(LoadWindow.Owner);
             logInWindow.Show();
             
         }
@@ -73,6 +70,6 @@ namespace SeleleTravel
 
             return "";
         }
-
+        
     }
 }

@@ -22,11 +22,17 @@ namespace SeleleTravel
         public Owner()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
-
+        
         private void Owner_Home_Closed(object sender, EventArgs e)
         {
-            GeneralMethods.CloseAllWindows();
+            GeneralMethods.closeAllWindows();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GeneralMethods.logOut(this);
         }
     }
 }

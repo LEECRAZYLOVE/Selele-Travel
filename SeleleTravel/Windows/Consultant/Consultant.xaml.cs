@@ -25,6 +25,7 @@ namespace SeleleTravel
         public Consultant()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         #region Client tab
@@ -721,7 +722,11 @@ namespace SeleleTravel
             this.Close();
         }
 
-        
+        private void BtnConsultant_logOut_Click(object sender, RoutedEventArgs e)
+        {
+            GeneralMethods.logOut(this);
+            
+        }
     }
 }
 

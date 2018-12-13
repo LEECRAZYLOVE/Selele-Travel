@@ -19,23 +19,38 @@ namespace SeleleTravel
     /// </summary>
     public partial class Log_In : Window
     {
-        public Log_In()
+        LoadWindow windowToLoad;
+        public Log_In(LoadWindow windowToLoad)
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            this.windowToLoad = windowToLoad;
             //this.WindowState = WindowState.Maximized;
         }
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
         {
+            switch (windowToLoad)
+            {
+                case LoadWindow.Consultant:
+                    MainWindow.consultantWindow = new Consultant();
+                    MainWindow.consultantWindow.Show();
+                    break;
+                case LoadWindow.Manager:
+                    MainWindow.managerWindow = new Manager_Home();
+                    MainWindow.managerWindow.Show();
+                    break;
+                case LoadWindow.Owner:
+                    MainWindow.ownerWindow = new Owner();
+                    MainWindow.ownerWindow.Show();
+                    break;
+            }
             Hide();
-            MainWindow.consultantWindow.Show(); //if consultant details correspond with the database
-            //MainWindow.managerWindow.Show(); //if manager details correspond with the database
-           // MainWindow.ownerWindow.Show(); //if owner details correspond with the database
-        }
+    }
 
         private void Log_In_Home_Closed(object sender, EventArgs e)
         {
-            GeneralMethods.CloseAllWindows();
+            GeneralMethods.closeAllWindows();
         }
     }
 }

@@ -25,7 +25,7 @@ namespace SeleleTravel
         public Manager_Home()
         {
             InitializeComponent();
-
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             timer.Elapsed += Timer_Elapsed;
         }
 
@@ -199,13 +199,12 @@ namespace SeleleTravel
 
         private void BtnManager_logOut_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
-            MainWindow.logInWindow.Show();
+            GeneralMethods.logOut(this);
         }
 
         private void Manager_Home1_Closed(object sender, EventArgs e)
         {
-            GeneralMethods.CloseAllWindows();
+            GeneralMethods.closeAllWindows();
         }
     }
 }
