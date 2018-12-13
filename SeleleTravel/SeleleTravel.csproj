@@ -144,11 +144,11 @@
     <Compile Include="voucher.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
-    <Page Include="Consultant.xaml">
+    <Page Include="Windows\Consultant\Consultant.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Log In.xaml">
+    <Page Include="Windows\General\Log In.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,37 +163,37 @@
     <Compile Include="Classes\Boss.cs" />
     <Compile Include="Classes\ContactDetails.cs" />
     <Compile Include="Classes\Manager.cs" />
-    <Compile Include="Consultant.xaml.cs">
+    <Compile Include="Windows\Consultant\Consultant.xaml.cs">
       <DependentUpon>Consultant.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Log In.xaml.cs">
+    <Compile Include="Windows\General\Log In.xaml.cs">
       <DependentUpon>Log In.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Manager Home.xaml">
+    <Page Include="Windows\Manager\Manager Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="New Service Provider.xaml">
+    <Page Include="Windows\Consultant\New Service Provider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Owner.xaml">
+    <Page Include="Windows\Owner\Owner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Manager Home.xaml.cs">
+    <Compile Include="Windows\Manager\Manager Home.xaml.cs">
       <DependentUpon>Manager Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="New Service Provider.xaml.cs">
+    <Compile Include="Windows\Consultant\New Service Provider.xaml.cs">
       <DependentUpon>New Service Provider.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Owner.xaml.cs">
+    <Compile Include="Windows\Owner\Owner.xaml.cs">
       <DependentUpon>Owner.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
