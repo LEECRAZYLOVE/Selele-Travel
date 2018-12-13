@@ -1,0 +1,92 @@
+﻿<Window x:Name="ManagerHome" x:Class="SeleleTravel.ManagerHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SeleleTravel"
+        mc:Ignorable="d"
+        Title="Manager_home" Height="450" Width="800" Closed="Manager_Home1_Closed">
+    <Grid Background="#FFFF1D1D">
+        <Label x:Name="lblManagerID" Content="LabeloutputID" Margin="2,24,705,369"/>
+        <Label x:Name="lblManagerName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="104" Margin="2,0,0,0"/>
+        <Button x:Name="btnManager_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Margin="685,10,0,0" Click="BtnManager_logOut_Click"/>
+        <TabControl x:Name="Manager_tabControl" HorizontalAlignment="Left" Height="369" VerticalAlignment="Top" Width="792" Margin="0,50,0,0">
+            <TabItem Header="Quote Summary" Height="22" Margin="-2,-2,-1.6,0" VerticalAlignment="Bottom">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="98*"/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="265*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="ltbQuoteSummary_incomingQuotes" HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="210" Margin="0,0,0,-0.4" Background="#FFB2B2A3" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txbQuoteSummary_preview" HorizontalAlignment="Left" Height="342" Margin="13.6,0,0,-0.4" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <Button x:Name="btnQuoteSummary_verifyReject" Content="REJECT VERIFICATION" HorizontalAlignment="Left" Margin="334,305,0,0" VerticalAlignment="Top" Width="187" Grid.Column="2" Height="27" Click="BtnQuoteSummary_verifyReject_Click"/>
+                    <Label Content="From:" HorizontalAlignment="Left" Margin="282,15,0,0" VerticalAlignment="Top" Grid.Column="2" Height="34" Width="42"/>
+                    <TextBlock x:Name="txblockQuoteSummary_consultantID" HorizontalAlignment="Left" Margin="329,15,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="34" Width="192" Grid.Column="2"/>
+                    <Button x:Name="btnQuoteSummary_verifyApprove" Content="APPROVE VERIFICATION" HorizontalAlignment="Left" Margin="334,273,0,0" VerticalAlignment="Top" Width="187" Grid.Column="2" Height="27" Click="BtnQuoteSummary_verifyAccept_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Compose Message">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="37*"/>
+                        <ColumnDefinition Width="356*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="label49" Content="Name/Staff ID:" HorizontalAlignment="Left" Margin="1,26,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label50" Content="Message:" HorizontalAlignment="Left" Margin="0,74,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txbMessage_name" HorizontalAlignment="Left" Height="23" Margin="29,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="584" Grid.Column="1"/>
+                    <TextBox x:Name="txbMessage_message"  HorizontalAlignment="Left" Height="258" Margin="29,74,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="584" Grid.Column="1"/>
+                    <Button x:Name="btnMessage_send" Content="SEND" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="627,311,0,0" Click="BtnMessage_send_Click" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Verified Quotes" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="111" Margin="-1,0,0,0">
+                <Grid Background="#FFE5E5E5" Height="341" VerticalAlignment="Bottom">
+                    <ListBox Name="listbxVerifiedQuotes" HorizontalAlignment="Left" Height="341" VerticalAlignment="Top" Width="210" RenderTransformOrigin="0.5,0.5" Background="#FFB2B2A3">
+                        <ListBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-0.133"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListBox.RenderTransform>
+                    </ListBox>
+                    <TextBox x:Name="txbVerifiedQuotes_preview" HorizontalAlignment="Left" Height="341" Margin="210,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="576"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Authorizations" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" Margin="-4,0,0,0">
+                <Grid Background="#FFE5E5E5" Margin="0,0,2,-1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="109*"/>
+                        <ColumnDefinition Width="87*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="ltbAuthorizations_incomingAuthorizations" HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="270" Background="#FFB2B2A3"/>
+                    <PasswordBox x:Name="pdbAuthorizations_password" HorizontalAlignment="Left" Margin="184,20,0,0" VerticalAlignment="Top" Width="136" Grid.Column="1"/>
+                    <Label Content="Password:" HorizontalAlignment="Left" Margin="110,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.192" Grid.Column="1"/>
+                    <Button x:Name="btnAuthorizations_Authorize" Content="Authorize" HorizontalAlignment="Left" Margin="195,56,0,0" VerticalAlignment="Top" Width="114" Grid.Column="1" Click="BtnAuthorizations_Authorize_Click"/>
+                    <ListBox x:Name="ltbAuthorizations_outgoingAuthorizations" HorizontalAlignment="Left" Height="342" Margin="270,0,0,0" VerticalAlignment="Top" Width="270" Grid.ColumnSpan="2"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Search" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="96" Margin="-4,0,0,0">
+                <Grid Background="#FFE5E5E5" Margin="0,0,2,-1">
+                    <WrapPanel HorizontalAlignment="Left" Height="185" Margin="19,56,0,0" VerticalAlignment="Top" Width="200" Background="#FFB2B2A3"/>
+                    <Button x:Name="btnManager_search" Content="SEARCH" HorizontalAlignment="Left" Margin="234,11,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="BtnManager_search_Click"/>
+                    <TextBox x:Name="txbManager_search" HorizontalAlignment="Left" Height="23" Margin="19,11,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+                    <ListBox x:Name="txbManager_Search_results" HorizontalAlignment="Left" Height="321" Margin="339,11,0,0"  VerticalAlignment="Top" Width="435"/>
+                    <ComboBox x:Name="cbbManager_Search_entities" HorizontalAlignment="Left" Margin="19,96,0,0" VerticalAlignment="Top" Width="200">
+                        <ComboBoxItem Content="Staff" HorizontalAlignment="Left" Width="118"/>
+                        <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="118"/>
+                        <ComboBoxItem Content="Agency/Accommodation/Airline" HorizontalAlignment="Left" Width="197"/>
+                    </ComboBox>
+                    <Label x:Name="label54" Content="Filters:" HorizontalAlignment="Left" Margin="41,56,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnManager_Search_newService" Content="New Service Provider" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="19,312,0,0"/>
+                    <CheckBox x:Name="ckbManager_Search_quotes" Content="Quotes" HorizontalAlignment="Left" Margin="19,158,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="ckbManager_Search_orders" Content="Orders" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,178,0,0"/>
+                    <CheckBox x:Name="ckbManager_Search_vouchers" Content="Vouchers" HorizontalAlignment="Left" Margin="19,198,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="ckbManager_Search_invoices" Content="Invoices" HorizontalAlignment="Left" Margin="19,218,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

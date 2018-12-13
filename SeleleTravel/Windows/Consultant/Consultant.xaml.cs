@@ -20,12 +20,11 @@ namespace SeleleTravel
     /// <summary>
     /// Interaction logic for Consultant.xaml
     /// </summary>
-    public partial class Consultant_Quotes : Window
+    public partial class Consultant : Window
     {
-        public Consultant_Quotes()
+        public Consultant()
         {
             InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         #region Client tab
@@ -62,7 +61,7 @@ namespace SeleleTravel
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(e.Message, "Error!",MessageBoxButton.OK,MessageBoxImage.Error);
             }
             return email;
         }
@@ -103,7 +102,7 @@ namespace SeleleTravel
             //Add client to database
 
         }
-
+        
         #endregion
 
         #region Already a Client Display
@@ -202,7 +201,7 @@ namespace SeleleTravel
             string nameOfEvent = txbEvents_name.Text;
             string eventSpecs = txbEvents_specifications.Text;
             double eventAmount = Convert.ToDouble(txbEvents_total.Text);
-
+            
             // Data verification:
             // make sure that the supplied data is valid
             EventErrorMessage(nameOfEvent, eventSpecs);
@@ -222,16 +221,16 @@ namespace SeleleTravel
 
             // Todo sql insertion
 
-            // try
-            // {
-            //     context.events.Add(currentEvent);
-            //     context.SaveChanges();
-            // }
-            // catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            // {
-            //     var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-            //     var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            // }
+           // try
+           // {
+           //     context.events.Add(currentEvent);
+           //     context.SaveChanges();
+           // }
+           // catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+           // {
+           //     var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+           //     var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+           // }
             //catch (Exception ex)
             //{
             //    //other error
@@ -263,7 +262,7 @@ namespace SeleleTravel
                 MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        
         private void BtnConference_done_Click(object sender, RoutedEventArgs e)
         {
             string conferenceName = txbConference_name.Text;
@@ -272,7 +271,7 @@ namespace SeleleTravel
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
             double amountOfconf = Convert.ToDouble(txbConference_total.Text);
-
+           
             // Data Verification:
             // check if the variables are empty
             conferenceErrorMessage(conferenceName, conferenceVenue, dateOfConference, conferenceTime, specsOfConference);
@@ -285,7 +284,7 @@ namespace SeleleTravel
             txbConference_time.Text = "";
             txbConference_specifications.Text = "";
             txbConference_total.Text = "";
-
+            
             // Todo sql insertion
             // ...
 
@@ -294,7 +293,7 @@ namespace SeleleTravel
         #endregion
 
         #region Taxi cab
-
+        
         /// <summary>
         /// Check if the texboxes are empty and the send an error message if they are.
         /// </summary>
@@ -303,7 +302,7 @@ namespace SeleleTravel
         /// <param name="numOfpass"></param>
         public void conferenceErrorMessage(List<string> stringValues, DateTime date)
         {
-            for (int i = 0; i < stringValues.Count; i++)
+            for(int i =0; i <stringValues.Count; i++)
             {
                 if (stringValues[i] == "")
                 {
@@ -339,7 +338,7 @@ namespace SeleleTravel
             conf_stringValues.Add(_dropOffLocation);
             conf_stringValues.Add(_timeOfPickUp);
             conf_stringValues.Add(_taxicabSpecs);
-
+            
             // create the instance after checking for errors
             var taxiCab = new cabservice(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs, _totalAmount);
 
@@ -372,7 +371,7 @@ namespace SeleleTravel
             {
                 MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else if (arrival == null || arrival.ToString() == null || arrival.ToString() == "")
+            else if(arrival == null || arrival.ToString() == null || arrival.ToString() == "")
             {
                 MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -400,9 +399,9 @@ namespace SeleleTravel
             _stringValues.Add(preferedTime);
             _stringValues.Add(flightSpecs);
             flightErrorMessage(_stringValues, departureDate, arrivalDate);
-
+            
             // check if the list is not empty
-            if (_passengers.Count <= 0)
+            if(_passengers.Count <= 0)
             {
                 MessageBox.Show("Please add the names of passenger!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -414,7 +413,7 @@ namespace SeleleTravel
 
                 };
             }
-
+            
             // reset the textbox values to empty
             txbFlight_airline.Text = "";
             txbFlight_from.Text = "";
@@ -431,7 +430,7 @@ namespace SeleleTravel
             ltbFlight_passengersOutput.Items.Add(passangerName);
             ltbFlight_passengersOutput.Items.Refresh();
 
-            for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
+            for(int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
             {
                 _passengers[i] = ltbFlight_passengersOutput.Items[i].ToString();
             }
@@ -495,7 +494,7 @@ namespace SeleleTravel
             txbAccommodation_specifications.Text = "";
             txbAccommodation_numGuests.Text = "";
             txbAccommodation_numRooms.Text = "";
-            txbAccommodation_total.Text = "";
+            txbAccommodation_total.Text ="";
         }
 
         #endregion
@@ -527,7 +526,7 @@ namespace SeleleTravel
                 MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        
         private void BtnCarHire_Done_Click(object sender, RoutedEventArgs e)
         {
             // Asign variable to textbox text
@@ -722,11 +721,7 @@ namespace SeleleTravel
             this.Close();
         }
 
-        private void BtnConsultant_logOut_Click(object sender, RoutedEventArgs e)
-        {
-            GeneralMethods.logOut(this);
-
-        }
+        
     }
 }
 

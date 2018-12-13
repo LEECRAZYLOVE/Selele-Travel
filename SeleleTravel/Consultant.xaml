@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Consultant_Quotes_Page" Height="475" Width="829">
     <Grid Background="#FFDED152">
+        <Label x:Name="lblConsultantID" Content="LabeloutputID" Margin="2,24,705,369"/>
+        <Label x:Name="lblConsultantName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="104" Margin="2,0,0,0"/>
+        <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Margin="685,10,0,0" Click="BtnConsultant_logOut_Click"/>
         <TabControl x:Name="Consultant_tabControl" Margin="2,50,0,-1">
             <TabItem Header="Client Details">
                 <Grid Background="#FFE5E5E5">

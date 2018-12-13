@@ -22,6 +22,12 @@ namespace SeleleTravel
         public Consultant_Home_Window()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
+
+        private void BtnConsultant_logOut_Click(object sender, RoutedEventArgs e)
+        {
+            GeneralMethods.logOut(this);
         }
     }
 }

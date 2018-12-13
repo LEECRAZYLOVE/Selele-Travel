@@ -117,6 +117,9 @@
     <Compile Include="Consultant_Home_Window.xaml.cs">
       <DependentUpon>Consultant_Home_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Consultant_Quotes_Window.xaml.cs">
+      <DependentUpon>Consultant_Quotes_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Consultant_Update_Window.xaml.cs">
       <DependentUpon>Consultant_Update_Window.xaml</DependentUpon>
     </Compile>
@@ -162,15 +165,15 @@
     <Compile Include="voucher.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
-    <Page Include="Consultant_Quotes_Window.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Consultant_Orders_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Consultant_Home_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Consultant_Quotes_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -197,9 +200,6 @@
     <Compile Include="Classes\Boss.cs" />
     <Compile Include="Classes\ContactDetails.cs" />
     <Compile Include="Classes\Manager.cs" />
-    <Compile Include="Consultant_Quotes_Window.xaml.cs">
-      <DependentUpon>Consultant_Quotes_Window.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Log In.xaml.cs">
       <DependentUpon>Log In.xaml</DependentUpon>
     </Compile>
