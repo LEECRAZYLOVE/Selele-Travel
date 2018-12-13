@@ -249,6 +249,7 @@
                         <ColumnDefinition Width="466*"/>
                         <ColumnDefinition Width="549*"/>
                     </Grid.ColumnDefinitions>
+                    <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="251,137,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Search" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="48" Margin="-1,0,0,0">
