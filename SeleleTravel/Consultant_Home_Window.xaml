@@ -8,7 +8,7 @@
         Title="Consultant_Home_Page" Height="450" Width="800">
     <Grid Background="#FFDED152">
         <Label x:Name="lblConsultantID" Content="LabeloutputID" Margin="2,24,676,344"/>
-        <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Margin="685,10,0,0"/>
+        <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Margin="685,10,0,0" Click="BtnConsultant_logOut_Click"/>
         <Label x:Name="lblConsultantName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="104" Margin="2,0,0,0"/>
         <Label x:Name="label" Content="Quotations" HorizontalAlignment="Left" Margin="357,21,0,0" VerticalAlignment="Top"/>
     </Grid>

@@ -33,7 +33,7 @@ namespace SeleleTravel
             switch (windowToLoad)
             {
                 case LoadWindow.Consultant:
-                    MainWindow.consultantWindow = new Consultant();
+                    MainWindow.consultantWindow = new Consultant_Home_Window();
                     MainWindow.consultantWindow.Show();
                     break;
                 case LoadWindow.Manager:
