@@ -52,5 +52,11 @@ namespace SeleleTravel
         {
             GeneralMethods.closeAllWindows();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            Application.Current.MainWindow.Show();
+        }
     }
 }
