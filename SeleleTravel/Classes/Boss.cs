@@ -12,13 +12,13 @@ namespace SeleleTravel
     { 
 
 
-        public override List<Employee> employees { get => Employee.hiredEmployees; }
+        public override List<staff> employees { get => staff.hiredEmployees; }
 
         /// <summary>
         /// Fires an employee. Status : incomplete
         /// </summary>
         /// <param name="employee"></param>
-        public void fire(Employee employee)
+        public void fire(staff employee)
         {
             if (employees.Contains(employee))
                 employees.Remove(employee);

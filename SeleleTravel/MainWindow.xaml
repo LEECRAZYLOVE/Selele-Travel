@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="Home" SizeToContent="WidthAndHeight" WindowStartupLocation="Manual" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Loaded="Window_Loaded" Width="647.2" Height="439.2" >
     <Grid x:Name="mainGrid" Background="White">
-        <Image x:Name="image" Source="Selele Travel LOGO.png" Stretch="Fill" Margin="139,-118,112.8,173.6"/>
-        <Viewbox x:Name="buttonsBox" Margin="73,280,76.8,82.2" Stretch="Uniform">
-            <Grid Height="127" Width="675">
-                <Button x:Name="btn_consultantSide" Content="Consultant" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFD8B827" Click="btn_consultantSide_Click" Margin="545,0,0,0"/>
-                <Button x:Name="btn_managerSide" Content="Manager" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFEE1717" Margin="281,0,0,0" Click="btn_managerSide_Click"/>
-                <Button x:Name="btn_bossSide" Content="Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FF3E9EFD" Click="btn_bossSide_Click"/>
+        <Image x:Name="image" Source="Selele Travel LOGO.png" Stretch="Fill" Margin="113,-49,138.8,104.6"/>
+        <Viewbox x:Name="buttonsBox" Margin="10,220,9.8,61.6" Stretch="Uniform">
+            <Grid Height="132" Width="489">
+                <Button x:Name="btn_consultantSide" Content="Consultant" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFD8B827" Click="btn_consultantSide_Click" Margin="360,2,-13,0"/>
+                <Button x:Name="btn_managerSide" Content="Manager" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FFEE1717" Margin="184,2,0,0" Click="btn_managerSide_Click"/>
+                <Button x:Name="btn_bossSide" Content="Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FF3E9EFD" Click="btn_bossSide_Click" Margin="0,2,0,0"/>
             </Grid>
         </Viewbox>
     </Grid>
