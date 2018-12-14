@@ -33,10 +33,7 @@ namespace SeleleTravel
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            // Refresh the list boxes for verified and incoming quotes!
-            ltbQuoteSummary_incomingQuotes.Items.Refresh();
-            listbxVerifiedQuotes.Items.Refresh();
-            ltbAuthorizations_incomingAuthorizations.Items.Refresh();
+
         }
 
         #endregion

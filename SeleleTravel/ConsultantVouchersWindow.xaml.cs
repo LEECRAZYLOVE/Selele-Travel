@@ -23,5 +23,14 @@ namespace SeleleTravel
         {
             InitializeComponent();
         }
+
+        private void BtnConvsultant_Vouchers_viewOrder_Click(object sender, RoutedEventArgs e)
+        {
+            // Exract order number and assign it to the variable used to search
+            string orderNumber = txbConsultant_Vouchers_inputOrder.Text;
+
+            // Output the desired information 
+            txbConsultant_Vouchers_viewOrder.Text = "";
+        }
     }
 }
