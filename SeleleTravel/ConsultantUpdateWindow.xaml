@@ -318,7 +318,7 @@
             <TabItem Header="Car Hire" Margin="8.338,0,-8.339,0" Style="{DynamicResource TabItemStyle}">
                 <Grid Background="#FFE5E5E5" Height="588.154" VerticalAlignment="Bottom" Margin="0,0,0,14.246" HorizontalAlignment="Left" Width="908.924">
                     <Label Content="Agency:" RenderTransformOrigin="2.605,1.577" Margin="18,26,829.589,535.338"/>
-                    <Label Content="Pick Up:" Margin="18,67,0,0" Style="{DynamicResource LabelStyle}"/>
+                    <Label Content="Pick Up:" Margin="18,67,796.924,478.154" Style="{DynamicResource LabelStyle}"/>
                     <Label Content="Drop Off:"  Margin="368.968,71,442.07,488.367" Style="{DynamicResource LabelStyle}"/>
                     <Label Content="Start Day:" Margin="18,117.75,791.924,436.464" Style="{DynamicResource LabelStyle}"/>
                     <Label Content="End Day:"  Margin="368.968,113.5,449.102,436.464" Style="{DynamicResource LabelStyle}"/>
@@ -329,7 +329,7 @@
                     <DatePicker x:Name="dpCarHire_endDay" HorizontalAlignment="Left" Margin="478,117.75,0,0" VerticalAlignment="Top" Width="115"/>
                     <Label  Content="Specifications:" Margin="18,239,745.247,313.401" Style="{DynamicResource LabelStyle}"/>
                     <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="298.401" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="575" Margin="18,279.753,0,0" RenderTransformOrigin="0.5,0.5"/>
-                    <Label Content="Number of cars:" Margin="18,197,745.247,354.154" Style="{DynamicResource LabelStyle}"/>
+                    <Label Content="Number of cars:" Margin="18,151.69,745.247,399.464" Style="{DynamicResource LabelStyle}"/>
                     <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="210,197,0,0"/>
                     <Label Content="TOTAL:" Margin="664.691,382.451,171.498,174.367" Style="{DynamicResource LabelStyle}"/>
                     <TextBox x:Name="txbCarHire_total" HorizontalAlignment="Left" Height="38.035" Margin="704.407,418.787,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80.284" TextChanged="AmountChanged"/>
