@@ -27,7 +27,9 @@
         <Button x:Name="btnConsultant_Update" HorizontalAlignment="Left" Content="Update Info" Margin="0,364,0,0" VerticalAlignment="Top" Width="118.368" Height="55" Click="btnConsultant_Update_Click"/>
         <Canvas HorizontalAlignment="Left" Height="325" Margin="453.368,94,0,0" VerticalAlignment="Top" Width="338.632" Background="#FFB02525" Opacity="0.5"/>
         <Label x:Name="label1" Content="Inbox" Opacity="1.5" Margin="254.632,63.04,473.794,320" FontSize="16" FontFamily="Comic Sans MS"/>
-        <ListBox x:Name="lbConsultant_inboxList" Background="#FFD5D9E6" Margin="118.368,94,569.632,0" Opacity="0.5"/>
+        <ListBox x:Name="lbConsultant_inboxList" Background="#FFD5D9E6" Margin="118.368,94,569.632,0" Opacity="0.5">
+            <Grid Background="#FFE5E5E5" Height="100" Width="100"/>
+        </ListBox>
         <TextBlock x:Name="tbkConsultant_inboxMessages" TextWrapping="Wrap" Text="TextBlock" Margin="222.368,94,343.632,0" FontFamily="Comic Sans MS"/>
         <Button x:Name="btnConsultant_search" Content="SEARCH" HorizontalAlignment="Left" Margin="717,94,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnConsultant_search_Click"/>
         <ComboBox x:Name="cbbConsultant_Search_entities" HorizontalAlignment="Left" Margin="453.368,137.04,0,0" VerticalAlignment="Top" Width="338.632">
@@ -45,15 +47,6 @@
         <TextBox x:Name="txbConsultant_search" HorizontalAlignment="Left" Height="23" Margin="453.368,94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="263.632"/>
         <CheckBox x:Name="ckbConsultant_Search_all" Content="all" HorizontalAlignment="Left" Margin="750.105,166.05,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnConsultant_composeMessage" Content="Compose Message" HorizontalAlignment="Left" Margin="0,255.53,0,0" VerticalAlignment="Top" Width="118.368" Height="55" Click="btnConsultant_composeMessage_Click"/>
-        <Popup x:Name="ppConsultant_Update" Margin="0,0,792,419" Visibility="Hidden">
-            <Grid Background="#FFE5E5E5" Height="41" Width="110">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Button x:Name="btnUpdate_PopUp_client" Content="Client Information" HorizontalAlignment="Left" Margin="0,21.166,0,0" VerticalAlignment="Top" Width="110" Grid.RowSpan="2" Click="btnUpdate_PopUp_client_Click"/>
-                <Button x:Name="btnUpdate_PopUp_quote" Content="Quote Information" HorizontalAlignment="Left" Margin="0,1.206,0,0" VerticalAlignment="Top" Width="110" Grid.RowSpan="2" Click="btnUpdate_PopUp_quote_Click"/>
-            </Grid>
-        </Popup>
+
     </Grid>
 </Window>

@@ -17,16 +17,16 @@ namespace SeleleTravel
     /// <summary>
     /// Interaction logic for Consultant_Quotes_Window.xaml
     /// </summary>
-    public partial class Consultant_Home_Window : Window
+    public partial class ConsultantHomeWindow : Window
     {
         //instantiating all the windows as global objects
-        public static Consultant_Orders_Window consultantOrdersWindow = new Consultant_Orders_Window();
-        public static Consultant_Quotes consultantQuotesWindow = new Consultant_Quotes();
-        public static Consultant_Update_Window consultantUpdateWindow = new Consultant_Update_Window();
-        public static Consultant_Vouchers_Window consultantVouchersWindow = new Consultant_Vouchers_Window();
-        public static Compose_Message_Window composeMessageWindow = new Compose_Message_Window();
+        public static ConsultantOrdersWindow consultantOrdersWindow = new ConsultantOrdersWindow();
+        public static ConsultantQuotesWindow consultantQuotesWindow = new ConsultantQuotesWindow();
+        public static ConsultantUpdateWindow consultantUpdateWindow = new ConsultantUpdateWindow();
+        public static ConsultantVouchersWindow consultantVouchersWindow = new ConsultantVouchersWindow();
+        public static ComposeMessageWindow composeMessageWindow = new ComposeMessageWindow();
 
-        public Consultant_Home_Window()
+        public ConsultantHomeWindow()
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -66,17 +66,9 @@ namespace SeleleTravel
 
         private void btnConsultant_Update_Click(object sender, RoutedEventArgs e)
         {
-            ppConsultant_Update.Visibility = Visibility.Visible;
+           
+            //ppConsultant_Update.Visibility = Visibility.Visible;
         }
 
-        private void btnUpdate_PopUp_client_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnUpdate_PopUp_quote_Click(object sender, RoutedEventArgs e)
-        {
-            consultantUpdateWindow.Show();
-        }
     }
 }
