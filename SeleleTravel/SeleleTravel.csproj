@@ -110,6 +110,9 @@
     <Compile Include="client.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Compose_Message_Window.xaml.cs">
+      <DependentUpon>Compose_Message_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="conference.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
     <Compile Include="voucher.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
+    <Page Include="Compose_Message_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Consultant_Orders_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

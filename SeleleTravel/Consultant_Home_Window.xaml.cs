@@ -19,6 +19,12 @@ namespace SeleleTravel
     /// </summary>
     public partial class Consultant_Home_Window : Window
     {
+        //instantiating all the windows as global objects
+        public static Consultant_Orders_Window consultantOrdersWindow = new Consultant_Orders_Window();
+        public static Consultant_Quotes consultantQuotesWindow = new Consultant_Quotes();
+        public static Consultant_Update_Window consultantUpdateWindow = new Consultant_Update_Window();
+        public static Consultant_Vouchers_Window consultantVouchersWindow = new Consultant_Vouchers_Window();
+
         public Consultant_Home_Window()
         {
             InitializeComponent();
@@ -28,6 +34,18 @@ namespace SeleleTravel
         private void BtnConsultant_logOut_Click(object sender, RoutedEventArgs e)
         {
             GeneralMethods.logOut(this);
+        }
+
+        private void btnConsultant_Quotes_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            consultantQuotesWindow.Show();
+            
+        }
+
+        private void btnConsultant_search_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
