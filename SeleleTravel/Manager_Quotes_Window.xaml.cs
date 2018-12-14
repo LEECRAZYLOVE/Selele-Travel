@@ -19,9 +19,16 @@ namespace SeleleTravel
     /// </summary>
     public partial class Manager_Quotes_Window : Window
     {
+        public static ComposeMessageWindow composeMessage = new ComposeMessageWindow();
+
         public Manager_Quotes_Window()
         {
             InitializeComponent();
+        }
+
+        private void BtnQuoteSummary_verifyReject_Click(object sender, RoutedEventArgs e)
+        {
+            composeMessage.Show();
         }
     }
 }

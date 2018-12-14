@@ -7,8 +7,6 @@
         mc:Ignorable="d"
         Title="Manager_Quotes_Page" Height="450" Width="800">
     <Grid Background="#FFFF1919">
-        <Label x:Name="lblManagerID" Content="LabeloutputID" Margin="2,24,705,369"/>
-        <Label x:Name="lblManagerName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="104" Margin="2,0,0,0"/>
         <Button x:Name="btnManager_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Margin="685,10,0,0" Click="BtnManager_logOut_Click"/>
         <TabControl x:Name="Manager_tabControl" HorizontalAlignment="Left" Height="369" VerticalAlignment="Top" Width="792" Margin="0,50,0,0">
             <TabItem Header="Quote Summary" Height="22" Margin="-2,-2,-1.6,0" VerticalAlignment="Bottom">
@@ -26,7 +24,7 @@
                     <Button x:Name="btnQuoteSummary_verifyApprove" Content="APPROVE VERIFICATION" HorizontalAlignment="Left" Margin="334,273,0,0" VerticalAlignment="Top" Width="187" Grid.Column="2" Height="27" Click="BtnQuoteSummary_verifyAccept_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Verified Quotes" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="111" Margin="-1,0,0,0">
+            <TabItem Header="Verified Quotes" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="111" Margin="2.089,0,-2.089,0">
                 <Grid Background="#FFE5E5E5" Height="341" VerticalAlignment="Bottom">
                     <ListBox x:Name="listbxVerifiedQuotes" HorizontalAlignment="Left" Height="341" VerticalAlignment="Top" Width="210" RenderTransformOrigin="0.5,0.5" Background="#FFB2B2A3">
                         <ListBox.RenderTransform>
