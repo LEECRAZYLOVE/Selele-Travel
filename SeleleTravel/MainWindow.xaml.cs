@@ -23,8 +23,8 @@ namespace SeleleTravel
     public partial class MainWindow : Window
     {
         //instantiating all the windows as global objects
-        public static Log_In logInWindow;
-        public static Consultant_Home_Window consultantWindow = new Consultant_Home_Window();
+        public static LogInWindow logInWindow;
+        public static ConsultantHomeWindow consultantWindow = new ConsultantHomeWindow();
         public static Manager_Home managerWindow = new Manager_Home();
         public static Owner ownerWindow = new Owner();
         public static New_Service_Provider newServiceProviderWindow = new New_Service_Provider();
@@ -46,7 +46,7 @@ namespace SeleleTravel
         private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            logInWindow = new Log_In(LoadWindow.Consultant);
+            logInWindow = new LogInWindow(LoadWindow.Consultant);
             logInWindow.Show();
 
         }
@@ -54,14 +54,14 @@ namespace SeleleTravel
         private void btn_managerSide_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            logInWindow = new Log_In(LoadWindow.Manager);
+            logInWindow = new LogInWindow(LoadWindow.Manager);
             logInWindow.Show();
         }
 
         private void btn_bossSide_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            logInWindow = new Log_In(LoadWindow.Owner);
+            logInWindow = new LogInWindow(LoadWindow.Owner);
             logInWindow.Show();
             
         }
