@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Manager_home" Height="450" Width="800" Closed="Manager_Home1_Closed">
+        Title="Manager_home" Height="450" Width="800" Closed="Manager_Home1_Closed" Icon="SeleleLogoBalls.png">
     <Grid Background="#FFFF1D1D">
         <Label x:Name="lblManagerID" Content="LabeloutputID" Margin="2,24,705,369"/>
         <Label x:Name="lblManagerName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="104" Margin="2,0,0,0"/>

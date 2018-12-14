@@ -5,35 +5,90 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="New_Service_Provider" Height="450" Width="800" Closed="New_Service_Provider_Home_Closed">
-    <Grid Background="#FF8CB407">
-        <TextBox x:Name="txbNewClient_address" HorizontalAlignment="Left" Height="58" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="658" Margin="70,117,0,0"/>
-        <Label x:Name="label9" Content="Name:" Margin="10,40,738,353"/>
-        <TextBox x:Name="txbNewService_name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="658" Margin="70,43,0,0"/>
-        <Label x:Name="label11" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,117,0,0"/>
-        <TextBox x:Name="txbNewService_city" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="294" Margin="434,191,0,0"/>
-        <Label x:Name="label12" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.038" Margin="396,188,0,0"/>
-        <Label x:Name="label13" Content="Province:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,191,0,0"/>
-        <TextBox x:Name="txbNewService_province" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="294" Margin="70,191,0,0"/>
-        <Label x:Name="lbl1" Content="Cellphone:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,254,0,0"/>
-        <Label x:Name="lbl2" Content="Area Code:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.35,0.769" Margin="361,254,0,0"/>
-        <Label x:Name="lbl3" Content="Telephone:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,308,0,0"/>
-        <Label x:Name="lbl4" Content="Fax:" Margin="396,308,366,85"/>
-        <TextBox x:Name="txbNewService_cellphone" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Margin="70,254,0,0"/>
-        <TextBox x:Name="txbNewService_telephone" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Margin="70,308,0,0"/>
-        <TextBox x:Name="txbNewService_areaCode" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83" Margin="434,254,0,0"/>
-        <TextBox x:Name="txbNewService_fax" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="294" Margin="434,311,0,0"/>
-        <Label x:Name="lbl5" Content="email:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,341,0,0"/>
-        <TextBox x:Name="txbNewService_email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="658" Margin="70,344,0,0"/>
-        <Button x:Name="btnNewService_add" Content="Add" Click="createNewClient_Click" Margin="70,389,647,10" RenderTransformOrigin="0.5,0.5"/>
-        <Label x:Name="lblNewService_clientID" Content="labelOutput" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="182,386,0,0" RenderTransformOrigin="0.817,2.064"/>
-        <ComboBox x:Name="cbbNewService_entities" HorizontalAlignment="Left" Margin="70,81,0,0" VerticalAlignment="Top" Width="200">
-            <ComboBoxItem Content="Staff" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Agency/Accommodation/Airline" HorizontalAlignment="Left" Width="197"/>
-        </ComboBox>
-        <Label x:Name="label" Content="Entity:" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Enter Details" HorizontalAlignment="Left" Margin="341,10,0,0" VerticalAlignment="Top"/>
+        Title="SeleleApp" Height="706.352" Width="556.557" Closed="New_Service_Provider_Home_Closed" Icon="SeleleLogoBalls.png">
+    <Window.Resources>
+        <Style x:Key="LabelStyle1" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="FontFamily" Value="Rockville"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Label}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="mainGrid" Background="#FFD9EAD3" >
+        <Canvas x:Name="container" Height="568.377" Canvas.Left="34.502" Canvas.Top="44.423" Width="481.065">
+            <Label x:Name="label9" Content="Name:" Style="{DynamicResource LabelStyle1}" Canvas.Left="5.617" Canvas.Top="59.021"/>
+            <Label x:Name="label11" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Canvas.Top="131.694"/>
+            <Label x:Name="label12" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1.42" Canvas.Top="214.454" Style="{DynamicResource LabelStyle1}"/>
+            <Label x:Name="label13" Content="Province:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="284.046" Style="{DynamicResource LabelStyle1}"/>
+            <Label x:Name="lbl1" Content="Cellphone:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="325.03" Style="{DynamicResource LabelStyle1}"/>
+            <Label x:Name="lbl2" Content="Area Code:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="248.654" Style="{DynamicResource LabelStyle1}"/>
+            <Label x:Name="lbl3" Content="Telephone:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="391.93" Style="{DynamicResource LabelStyle1}"/>
+            <Label x:Name="lbl4" Content="Fax:" Canvas.Left="5.617" Canvas.Top="357.73" Style="{DynamicResource LabelStyle1}"/>
+            <Label x:Name="lbl5" Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="421.13" Style="{DynamicResource LabelStyle1}"/>
+
+            <TextBox x:Name="txbNewService_name" HorizontalAlignment="Left" Height="30" Width="361.066" TextWrapping="Wrap" VerticalAlignment="Top"  Canvas.Left="119.999" Canvas.Top="55.661" FontSize="16" FontFamily="Comic Sans MS"/>
+            <ComboBox x:Name="cbbNewService_entities" Height="32" Width="260" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="90.661" BorderBrush="#FFB2E4CA">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FFB2E4CA" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+                <ComboBoxItem Content="Staff" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
+                <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
+                <ComboBoxItem Content="Agency/Accommodation/Airline" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15" Margin="0,0,-2.934,0"/>
+            </ComboBox>
+            <TextBox x:Name="txbNewClient_address" HorizontalAlignment="Left" Height="80" Width="361.066" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="129.457" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewService_city" Height="30" Width="361.066" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="214.457" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewService_areaCode" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="361.066" Canvas.Left="119.999" Canvas.Top="249.457" FontSize="16" FontFamily="Comic Sans MS"/>
+            <ComboBox Height="32" Width="260" Canvas.Left="119.999" Canvas.Top="284.046" BorderBrush="#FFB2E4CA" >
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FFB2E4CA" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+                <ComboBoxItem Content="Eastern Cape" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
+                <ComboBoxItem Content="Free State" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
+                <ComboBoxItem Content="Gauteng" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
+                <ComboBoxItem Content="Kwazulu Natal" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
+                <ComboBoxItem Content="Limpopo" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
+                <ComboBoxItem Content="Mpumalanga" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
+                <ComboBoxItem Content="North West" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
+                <ComboBoxItem Content="Northen Cape" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
+                <ComboBoxItem Content="Western Cape" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
+            </ComboBox>
+            <TextBox x:Name="txbNewService_cellphone" Height="30" Width="361.066" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="324.23" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewService_fax" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="359.23" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewService_telephone" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="394.23" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewService_email" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="429.23" FontSize="16" FontFamily="Comic Sans MS"/>
+            <Button x:Name="btnNewService_add" Content="Add" Click="createNewClient_Click" RenderTransformOrigin="0.5,0.5" Canvas.Left="119.999" Canvas.Top="513.411" Width="255.79" Height="54.966" FontFamily="Rockwell" FontSize="36" Background="#FFB2E4CA"/>
+
+            <Label x:Name="label" Content="Entity:" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Canvas.Left="1.42" Canvas.Top="93.221"/>
+            <Label x:Name="label1" Content="Enter service provider details here :" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Canvas.Left="78.157" FontSize="20"/>
+
+
+
+        </Canvas>
+
+
 
     </Grid>
 </Window>

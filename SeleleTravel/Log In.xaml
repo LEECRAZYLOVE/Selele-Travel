@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Selele Staff Authentication" Height="400" Width="350" Closed="Log_In_Home_Closed">
+        Title="Selele Staff Authentication" Height="400" Width="350" Closed="Log_In_Home_Closed" Icon="SeleleLogoBalls.png" ResizeMode="NoResize" >
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -53,8 +53,8 @@
                                 <Setter Property="Foreground" Value="White"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                                <Setter Property="Background" TargetName="border" Value="Black"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="Black"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
@@ -69,13 +69,13 @@
     </Window.Resources>
     <Canvas Background="#FFDDDDDD">
 
-        <TextBox x:Name="txbLogIn_staffID" TextWrapping="Wrap" Text="" Canvas.Left="67" Canvas.Top="123" Width="206" Height="34" BorderBrush="Black"/>
+        <TextBox x:Name="txbLogIn_staffID" TextWrapping="Wrap" Text="" Canvas.Left="67" Canvas.Top="123" Width="206" Height="34" BorderBrush="Black" FontSize="16"/>
         <Label Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.632,1.231" Height="31" Width="92" Canvas.Left="67" Canvas.Top="162" FontSize="16" FontFamily="Rockwell"/>
         <Label Content="Staff ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="31" Width="73" Canvas.Left="67" Canvas.Top="92" FontSize="16" FontFamily="Rockwell"/>
         <Button x:Name="btnLogIn" Content="SIGN IN" Click="btnLogIn_Click" Canvas.Left="67" Canvas.Top="253.2" Width="206" Height="64"  BorderBrush="Black" FontSize="36" Style="{DynamicResource LoginButtonStyle}"/>
         <PasswordBox x:Name="pdbLogIn_password" Canvas.Left="67" Canvas.Top="193" Width="206" Height="41" BorderBrush="Black" FontSize="20"/>
         <Label Content="Enter Your Credentials" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="206" Canvas.Left="67" Canvas.Top="47" FontSize="18" FontFamily="Rockwell"/>
-        <Button Content="GO BACK" Height="20" Width="70" Canvas.Left="10" Canvas.Top="10" Style="{DynamicResource LoginButtonStyle}" Click="Button_Click"/>
+        <Button Content="GO BACK" Height="20" Width="70" Canvas.Left="10" Canvas.Top="10" Style="{DynamicResource LoginButtonStyle}" Click="Button_Click" Background="#FFDDDDDD" BorderBrush="LightGray" Foreground="Black"/>
 
     </Canvas>
 </Window>

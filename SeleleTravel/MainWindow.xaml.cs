@@ -36,6 +36,7 @@ namespace SeleleTravel
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             Application.Current.MainWindow = this;
+            
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -70,6 +71,10 @@ namespace SeleleTravel
 
             return "";
         }
-        
+
+        private void Home_Page_Closed(object sender, EventArgs e)
+        {
+            GeneralMethods.closeAllWindows();
+        }
     }
 }

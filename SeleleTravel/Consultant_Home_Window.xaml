@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Consultant_Home_Page" Height="450" Width="800">
+        Title="Consultant_Home_Page" Height="450" Width="800" Icon="SeleleLogoBalls.png">
     <Grid Background="#FFDED152">
         <Canvas HorizontalAlignment="Left" Height="325                 " Margin="118.368,94,0,0" VerticalAlignment="Top" Width="335" Background="#FF3C2D2D" Opacity="0.5">
             <ListBox x:Name="listBox" Height="100" Canvas.Left="10" Canvas.Top="39" Width="100"/>

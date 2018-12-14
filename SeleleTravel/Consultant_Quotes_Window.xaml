@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Consultant_Quotes_Page" Height="475" Width="829">
+        Title="Consultant_Quotes_Page" Height="475" Width="829" Icon="SeleleLogoBalls.png">
     <Grid Background="#FFDED152">
         <TabControl x:Name="Consultant_tabControl" Margin="2,50,0,-1">
             <TabItem Header="Client Details">
