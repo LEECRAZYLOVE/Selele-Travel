@@ -22,6 +22,7 @@ namespace SeleleTravel
         public ComposeMessageWindow()
         {
             InitializeComponent();
+        
         }
 
         private void BtnMessage_send_Click(object sender, RoutedEventArgs e)
