@@ -18,7 +18,7 @@
         <TextBox x:Name="txbConsultant_Orders_viewQuote" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="357.04" Margin="10,51.96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="556.703" Opacity="0.6"/>
         <TextBox x:Name="txbConsultant_Orders_orderNumber" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="585.963,51.96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185.904"/>
         <Label x:Name="label1" Grid.ColumnSpan="2" Content="Order Number:" HorizontalAlignment="Left" Margin="631.993,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnConsultant_Orders_addNewOrder" Grid.ColumnSpan="2" Content="Add New Order" Margin="585.963,389.04,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="185.904"/>
+        <Button x:Name="btnConsultant_Orders_addNewOrder" Grid.ColumnSpan="2" Content="Add New Order" Margin="585.963,389.04,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="185.904" Click="BtnConsultant_Orders_addNewOrder_Click"/>
 
     </Grid>
 </Window>

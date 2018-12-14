@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="label" Grid.ColumnSpan="2" Content="Order Number:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txbConsultant_Vouchers_inputOrder" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="106.703,12.96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250"/>
-        <Button x:Name="btnConvsultant_Vouchers_viewOrder" Grid.ColumnSpan="2" Content="View" HorizontalAlignment="Left" Margin="372.703,12.96,0,0" VerticalAlignment="Top" Width="95"/>
+        <Button x:Name="btnConvsultant_Vouchers_viewOrder" Grid.ColumnSpan="2" Content="View" HorizontalAlignment="Left" Margin="372.703,12.96,0,0" VerticalAlignment="Top" Width="95" Click="BtnConvsultant_Vouchers_viewOrder_Click"/>
         <Button x:Name="btnConsultant_Vouchers_selectOrder" Grid.ColumnSpan="2" Content="Select" HorizontalAlignment="Left" Margin="472.703,12.96,0,0" VerticalAlignment="Top" Width="94"/>
         <TextBox x:Name="txbConsultant_Vouchers_viewOrder" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="357.04" Margin="10,51.96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="556.703" Opacity="0.6"/>
         <Label x:Name="label1" Grid.ColumnSpan="2" Content="Voucher Number:" HorizontalAlignment="Left" Margin="631.993,10,0,0" VerticalAlignment="Top"/>

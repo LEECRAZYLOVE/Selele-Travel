@@ -31,7 +31,10 @@ namespace SeleleTravel
 
         #region Refresh the list
 
- 
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+
+        }
 
         #endregion
 
