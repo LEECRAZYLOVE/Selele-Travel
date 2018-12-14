@@ -23,5 +23,16 @@ namespace SeleleTravel
         {
             InitializeComponent();
         }
+
+        private void BtnConsultant_Orders_addNewOrder_Click(object sender, RoutedEventArgs e)
+        {
+            // Extract and assign to variables
+            string orderNumber = txbConsultant_Orders_orderNumber.Text;
+            string quoteNumber = txbConsultant_Orders_inputQuote.Text;
+            string order = txbConsultant_Orders_viewQuote.Text;
+
+            // 
+
+        }
     }
 }
