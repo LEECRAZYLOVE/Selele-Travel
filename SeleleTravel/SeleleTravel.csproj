@@ -143,6 +143,18 @@
     <Compile Include="invoice.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Manager_Authorizations_Window.xaml.cs">
+      <DependentUpon>Manager_Authorizations_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_Confirmations_Window.xaml.cs">
+      <DependentUpon>Manager_Confirmations_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_Invoices_Window.xaml.cs">
+      <DependentUpon>Manager_Invoices_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager_Quotes_Window.xaml.cs">
+      <DependentUpon>Manager_Quotes_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="order.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
@@ -217,6 +229,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Manager Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Authorizations_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Confirmations_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Invoices_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manager_Quotes_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

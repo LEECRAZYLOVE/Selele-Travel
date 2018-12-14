@@ -24,6 +24,7 @@ namespace SeleleTravel
         public static ConsultantQuotesWindow consultantQuotesWindow = new ConsultantQuotesWindow();
         public static ConsultantUpdateWindow consultantUpdateWindow = new ConsultantUpdateWindow();
         public static ConsultantVouchersWindow consultantVouchersWindow = new ConsultantVouchersWindow();
+        public static ComposeMessageWindow composeMessageWindow = new ComposeMessageWindow();
 
         public ConsultantHomeWindow()
         {
@@ -38,7 +39,6 @@ namespace SeleleTravel
 
         private void btnConsultant_Quotes_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
             consultantQuotesWindow.Show();
             
         }
@@ -47,5 +47,28 @@ namespace SeleleTravel
         {
 
         }
+
+        private void btnConsultant_Orders_Click(object sender, RoutedEventArgs e)
+        {
+            consultantOrdersWindow.Show();
+
+        }
+
+        private void btnConsultant_Vouchers_Click(object sender, RoutedEventArgs e)
+        {
+            consultantVouchersWindow.Show();
+        }
+
+        private void btnConsultant_composeMessage_Click(object sender, RoutedEventArgs e)
+        {
+            composeMessageWindow.Show();
+        }
+
+        private void btnConsultant_Update_Click(object sender, RoutedEventArgs e)
+        {
+           
+            //ppConsultant_Update.Visibility = Visibility.Visible;
+        }
+
     }
 }
