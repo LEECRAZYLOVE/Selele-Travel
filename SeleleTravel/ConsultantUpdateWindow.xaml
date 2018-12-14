@@ -300,45 +300,86 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="#FFFAF19D"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="125"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Template">
+                
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid Background="#FFFDFDA3">
         <TabControl x:Name="Consultant_tabControl" Margin="0,10,0,0" Background="#FFFFD86B">
             <TabItem Header="Client Details" Style="{DynamicResource TabItemStyle}" Margin="10,0,-10,0">
                 <Canvas x:Name="cvsUpdateCleint" HorizontalAlignment="Center" Width="917.6" Margin="10,10,10,10" Background="#FFFFD86B">
-                    <Label Content="Search for an existing client..." Canvas.Left="313.8" FontFamily="Rockvile" FontSize="20" BorderThickness="0,0,0,2" FontWeight="Bold" Canvas.Top="6.6" Width="290"/>
+                    <Label Content="Search for an existing client..." Canvas.Left="313.8" FontFamily="Rockvile" FontSize="20" BorderThickness="0,0,0,2" Canvas.Top="6.6" Width="290"/>
                     <Button x:Name="btnUpdate_update" Content="UPDATE CLIENT"  Canvas.Left="787.391" Canvas.Top="65.6" Click="createNewClient_Click" Style="{DynamicResource UpdateButtonStyle}" />
                     <TextBox x:Name="txbUpdate_find" HorizontalAlignment="Left" Height="35" Width="642.391" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="Black" Canvas.Left="10" Canvas.Top="65.6" FontSize="20" />
-                    <Button x:Name="btnUpdate_find" Content="FIND" HorizontalAlignment="Left" VerticalAlignment="Top"  Click="BtnOldClient_find_Click" RenderTransformOrigin="0.586,0.542" Height="35" Width="125" Grid.ColumnSpan="2" Background="#FFFAF19D" BorderBrush="Black" Canvas.Left="657.391" Canvas.Top="65.6" FontSize="16"/>
-                    <ListBox x:Name="ltbUpdate_clientDetails" Opacity="80" HorizontalAlignment="Left" Height="462.159" VerticalAlignment="Top" Width="897.6" BorderBrush="Black" Canvas.Left="10" Canvas.Top="136.241"/>
+                    <Button x:Name="btnUpdate_find" Content="FIND" Click="BtnOldClient_find_Click"  Canvas.Left="657.391" Canvas.Top="65.6" Style="{DynamicResource ButtonStyle}"/>
+                    <ListBox x:Name="ltbUpdate_clientDetails" Opacity="80" HorizontalAlignment="Left" Height="446.159" VerticalAlignment="Top" Width="897.6" BorderBrush="Black" Canvas.Left="10" Canvas.Top="136.241"/>
                     <Label Content="Client ID :" Canvas.Left="10" Canvas.Top="29.6"  Style="{DynamicResource LabelStyle}"/>
                     <Label Content="Results :" Canvas.Left="10" Canvas.Top="100.6" Style="{DynamicResource LabelStyle}"/>
                 </Canvas>
 
             </TabItem>
             <TabItem Header="Car Hire" Margin="8.338,0,-8.339,0" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFE5E5E5" Height="588.154" VerticalAlignment="Bottom" Margin="0,0,0,14.246" HorizontalAlignment="Left" Width="908.924">
-                    <Label Content="Agency:" RenderTransformOrigin="2.605,1.577" Margin="18,26,829.589,535.338"/>
+                <Grid Background="#FFFFD86B" Height="588.154" VerticalAlignment="Bottom" Margin="0,0,0,14.246" HorizontalAlignment="Left" Width="908.924">
+                    <Label Content="Agency:" RenderTransformOrigin="2.605,1.577" Margin="18,26,814.083,526.154" Style="{DynamicResource LabelStyle}"/>
                     <Label Content="Pick Up:" Margin="18,67,796.924,478.154" Style="{DynamicResource LabelStyle}"/>
                     <Label Content="Drop Off:"  Margin="368.968,71,442.07,488.367" Style="{DynamicResource LabelStyle}"/>
                     <Label Content="Start Day:" Margin="18,117.75,791.924,436.464" Style="{DynamicResource LabelStyle}"/>
                     <Label Content="End Day:"  Margin="368.968,113.5,449.102,436.464" Style="{DynamicResource LabelStyle}"/>
-                    <TextBox x:Name="txbCarHire_agency" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="614.854" Margin="117,26,0,0"/>
+                    <TextBox x:Name="txbCarHire_agency" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="615" Margin="117,26,0,0"/>
                     <TextBox x:Name="txbCarHire_pickUp" HorizontalAlignment="Left" Height="40" Margin="117,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Grid.ColumnSpan="3"/>
                     <TextBox x:Name="txbCarHire_dropOff" HorizontalAlignment="Left" Height="40" Margin="471.854,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
                     <DatePicker x:Name="dpCarHire_startDay" HorizontalAlignment="Left" Margin="117,122,0,0" VerticalAlignment="Top" Width="115" Grid.ColumnSpan="3" d:IsHidden="False"/>
                     <DatePicker x:Name="dpCarHire_endDay" HorizontalAlignment="Left" Margin="478,117.75,0,0" VerticalAlignment="Top" Width="115"/>
                     <Label  Content="Specifications:" Margin="18,239,745.247,313.401" Style="{DynamicResource LabelStyle}"/>
-                    <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="298.401" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="575" Margin="18,279.753,0,0" RenderTransformOrigin="0.5,0.5"/>
-                    <Label Content="Number of cars:" Margin="18,151.69,745.247,399.464" Style="{DynamicResource LabelStyle}"/>
-                    <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="210,197,0,0"/>
-                    <Label Content="TOTAL:" Margin="664.691,382.451,171.498,174.367" Style="{DynamicResource LabelStyle}"/>
-                    <TextBox x:Name="txbCarHire_total" HorizontalAlignment="Left" Height="38.035" Margin="704.407,418.787,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80.284" TextChanged="AmountChanged"/>
-                    <Button x:Name="btnCarHire_update" Content="UPDATE"  Margin="664.691,467.852,124.233,85.301"  Click="BtnCarHire_update_Click" Style="{DynamicResource UpdateButtonStyle}"/>
-                    <Label Content="R" Margin="664.691,418.787,209.517,131.332" Style="{DynamicResource LabelStyle}"/>
+                    <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="298.401" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="713.854" Margin="18,279.753,0,0" RenderTransformOrigin="0.5,0.5"/>
+                    <Label Content="Number of cars:" Margin="18,197,745.247,354.154" Style="{DynamicResource LabelStyle}"/>
+                    <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="563.177" Margin="168.677,197,0,0"/>
+                    <Label Content="TOTAL:" Margin="739.208,463.783,96.981,93.035" Style="{DynamicResource LabelStyle}"/>
+                    <TextBox x:Name="txbCarHire_total" HorizontalAlignment="Left" Height="38.035" Margin="778.924,500.119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="AmountChanged"/>
+                    <Button x:Name="btnCarHire_update" Content="UPDATE"  Margin="739.208,543.154,10,10"  Click="BtnCarHire_update_Click" Style="{DynamicResource UpdateButtonStyle}" Width="Auto"/>
+                    <Label Content="R" Margin="739.208,500.119,135,50" Style="{DynamicResource LabelStyle}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Taxi Cab" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7.124,0,-7.124,0" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFFFD86B">
                     <Label x:Name="label25" Content="Agency:" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label26" Content="Driver:" HorizontalAlignment="Left" Margin="374,10,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label27" Content="Pick Up:" HorizontalAlignment="Left" Margin="31,73,0,0" VerticalAlignment="Top"/>
@@ -357,16 +398,12 @@
                     <TextBox x:Name="txbCab_numCabs" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" Margin="417,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="45"/>
                     <Label x:Name="label34" Content="TOTAL:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="699,253,0,0"/>
                     <TextBox x:Name="txbCab_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" Margin="699,284,0,0"/>
-                    <Button x:Name="btnCab_update" Content="UPDATE" HorizontalAlignment="Left" Margin="699,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Click="BtnCab_update_Click"/>
+                    <Button x:Name="btnCab_update" Content="UPDATE" Click="BtnCab_update_Click" Style="{DynamicResource UpdateButtonStyle}" Margin="530.797,345.187,123.202,232.212" />
                     <Label Content="R" HorizontalAlignment="Left" Margin="675,284,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Flight" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2.693,0,-2.693,0" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="155*"/>
-                        <ColumnDefinition Width="237*"/>
-                    </Grid.ColumnDefinitions>
+                <Grid Background="#FFFFD86B">
                     <Label x:Name="label21" Content="Airline:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,11,0,0"/>
                     <Label x:Name="label18" Content="Passengers:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="128,11,0,0"/>
                     <Label x:Name="label15" Content="To:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="255,62,0,0"/>
@@ -384,17 +421,17 @@
                     <Label x:Name="label23" Content="Specifications:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,260,0,0"/>
                     <TextBox x:Name="txbFlight_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="72" Margin="116,260,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" Grid.ColumnSpan="2"/>
                     <ListBox x:Name="ltbFlight_passengersOutput" Grid.Column="1" HorizontalAlignment="Left" Height="270" Margin="204,62,0,0" VerticalAlignment="Top" Width="230"/>
-                    <Button x:Name="btnFlight_addPassenger" Content="ADD" Grid.Column="1" HorizontalAlignment="Left" Margin="359,14,0,0" VerticalAlignment="Top" Width="75" Click="BtnFlight_addPassenger_Click"/>
+                    <Button x:Name="btnFlight_addPassenger" Content="ADD" Click="BtnFlight_addPassenger_Click" Style="{DynamicResource ButtonStyle}" Margin="215.417,384.456,93.582,192.943"/>
                     <Label x:Name="label24" Content="Preferred time:" HorizontalAlignment="Left" Margin="192,209,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="txbFlight_time" HorizontalAlignment="Left" Height="23" Margin="287,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                     <Label x:Name="label35" Content="TOTAL:" Grid.Column="1" HorizontalAlignment="Left" Margin="114,255,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="txbFlight_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Grid.Column="1" Margin="121,286,0,0"/>
-                    <Button x:Name="btnFlight_update" Content="UPDATE" Grid.Column="1" HorizontalAlignment="Left" Margin="114,314,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Click="BtnFlight_update_Click"/>
+                    <Button x:Name="btnFlight_update" Content="UPDATE" Click="BtnFlight_update_Click" Style="{DynamicResource UpdateButtonStyle}" Grid.Column="1" Margin="78.88,386.168,235.119,191.231"/>
                     <Label Content="R" Grid.Column="1" HorizontalAlignment="Left" Margin="102,286,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Accommodation" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-0.629,0,0,0" Style="{DynamicResource TabItemStyle}" VerticalContentAlignment="Stretch">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFFFD86B">
                     <Label x:Name="label36" Content="Name:" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label37" Content="Check In:" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label38" Content="Check Out:" HorizontalAlignment="Left" Margin="227,94,0,0" VerticalAlignment="Top"/>
@@ -409,12 +446,12 @@
                     <TextBox x:Name="txbAccommodation_numRooms" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" Margin="300,209,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
                     <Label x:Name="label42" Content="TOTAL:" HorizontalAlignment="Left" Margin="423,241,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="txbAccommodation_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" Margin="423,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btnAccommodation_update" Content="UPDATE" HorizontalAlignment="Left" Margin="423,300,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Click="BtnAccommodation_update_Click" />
+                    <Button x:Name="btnAccommodation_update" Content="UPDATE" Click="BtnAccommodation_update_Click" Style="{DynamicResource UpdateButtonStyle}" Margin="423,382.845,219,194.554" />
                     <Label Content="R" HorizontalAlignment="Left" Margin="399,272,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Conference" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="-1.845,0,0,0" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFFFD86B">
                     <Label x:Name="label43" Content="Name:" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label44" Content="Venue:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,68,0,0"/>
                     <Label x:Name="label45" Content="Date:" HorizontalAlignment="Left" Margin="49,118,0,0" VerticalAlignment="Top"/>
@@ -427,53 +464,41 @@
                     <DatePicker x:Name="dpConference_date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,119,0,0" Width="120"/>
                     <Label x:Name="label48" Content="TOTAL:" HorizontalAlignment="Left" Margin="375,251,0,0" VerticalAlignment="Top" Width="94"/>
                     <TextBox x:Name="txbConference_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" Margin="399,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"/>
-                    <Button x:Name="btnConference_update" Content="UPDATE" HorizontalAlignment="Left" Margin="394,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Click="BtnConference_update_Click" />
+                    <Button x:Name="btnConference_update" Content="UPDATE" Click="BtnConference_update_Click" Style="{DynamicResource UpdateButtonStyle}" Margin="375,337,267,240.4"/>
                     <Label Content="R" HorizontalAlignment="Left" Margin="375,284,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Events" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-4.06,0,0,0" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFFFD86B">
                     <Label x:Name="label49" Content="Name:" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label50" Content="Specifications:" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="txbEvents_name" HorizontalAlignment="Left" Height="23" Margin="94,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593"/>
                     <TextBox x:Name="txbEvents_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="258" Margin="94,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593"/>
                     <Label x:Name="label51" Content="TOTAL:" HorizontalAlignment="Left" Margin="699,253,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="txbEvents_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" Margin="722,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52"/>
-                    <Button x:Name="btnEvents_update" Content="UPDATE" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="699,312,0,0" Background="#FF45D310" />
+                    <Button x:Name="btnEvents_update" Content="UPDATE" Style="{DynamicResource UpdateButtonStyle}" Margin="422.253,371.769,231.746,205.63"/>
                     <Label x:Name="rands" Content="R" HorizontalAlignment="Left" Margin="699,284,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Quote Summary" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="-8.489,-0.107,0,0" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource TabItemStyle}">
-                <TabItem.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-0.365"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TabItem.RenderTransform>
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFFFD86B">
                     <TextBox x:Name="txbQuote_quoteSummary" HorizontalAlignment="Left" Height="322" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="486"/>
                     <Label x:Name="label52" Content="Mark Up %:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="514,11,0,0"/>
                     <TextBox x:Name="txbQuote_markUp" HorizontalAlignment="Left" Height="23" Margin="590,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="127"/>
                     <Label x:Name="label53" Content="Total:" HorizontalAlignment="Left" Margin="514,80,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnQuote_requestVerification" Content="Request Verification" HorizontalAlignment="Left" Margin="514,312,0,0" VerticalAlignment="Top" Width="248"/>
+                    <Button x:Name="btnQuote_requestVerification" Content="Request Verification"  Width="250" Style="{DynamicResource ButtonStyle}" Margin="496,291.96,16,285.44"/>
                     <Label x:Name="lblQuote_total" Content="R" HorizontalAlignment="Left" Margin="590,80,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnQuote_update" Content="Update" HorizontalAlignment="Left" Margin="616,42,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Click="BtnQuote_update_Click" />
-                    <Button x:Name="btnQuoteSummar_document" Content="View as document and print" HorizontalAlignment="Left" Margin="514,287,0,0" VerticalAlignment="Top" Width="248" Click="Button_Click"/>
+                    <Button x:Name="btnQuote_update" Content="Update" Click="BtnQuote_update_Click" Style="{DynamicResource UpdateButtonStyle}" Margin="357.55,351.832,284.449,225.567"/>
+                    <Button x:Name="btnQuoteSummar_document" Content="View as document and print" Width="250" Click="Button_Click" Style="{DynamicResource ButtonStyle}" Margin="502,331.96,10,245.44"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Send Quotes" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="-8.809,0,0,0" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="527*"/>
-                        <ColumnDefinition Width="288*"/>
-                    </Grid.ColumnDefinitions>
+                <Grid Background="#FFFFD86B">
                     <ListBox x:Name="ltbSendQuotes_verifiedQuotes" HorizontalAlignment="Left" Height="367" VerticalAlignment="Top" Width="210" Background="#FFB2B2A3"/>
                     <TextBox x:Name="txbSendQuotes_preview" HorizontalAlignment="Left" Height="367" Margin="210,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
                     <PasswordBox x:Name="pdbSendQuotes_password" HorizontalAlignment="Left" Margin="105.476,12,0,0" VerticalAlignment="Top" Width="136" Height="27" Grid.Column="1"/>
                     <Label Content="Password:" HorizontalAlignment="Left" Margin="28.752,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.192" Grid.Column="1"/>
-                    <Button x:Name="btnSendQuotes_send" Content="SEND TO CLIENTS" HorizontalAlignment="Left" Margin="40.611,57.386,0,0" VerticalAlignment="Top" Width="227.141" Height="25" Grid.Column="1" Click="BtnSendQuotes_send_Click"/>
+                    <Button x:Name="btnSendQuotes_send" Content="SEND TO CLIENTS" Width="250"   Click="BtnSendQuotes_send_Click" Style="{DynamicResource ButtonStyle}"/>
                 </Grid>
             </TabItem>
         </TabControl>

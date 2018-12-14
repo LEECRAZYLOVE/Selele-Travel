@@ -34,9 +34,10 @@ namespace SeleleTravel
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             // Refresh the list boxes for verified and incoming quotes!
-            ltbQuoteSummary_incomingQuotes.Items.Refresh();
-            listbxVerifiedQuotes.Items.Refresh();
-            ltbAuthorizations_incomingAuthorizations.Items.Refresh();
+
+            //ltbQuoteSummary_incomingQuotes.Items.Refresh();
+            //listbxVerifiedQuotes.Items.Refresh();
+            //ltbAuthorizations_incomingAuthorizations.Items.Refresh();
         }
 
         #endregion
@@ -72,17 +73,17 @@ namespace SeleleTravel
             // Assign the id to the variable
 
             // search for the consultant id from the database
-            string consultantId = txbMessage_name.Text;
+            //string consultantId = txbMessage_name.Text;
 
             // Type out the message to be sent to the client
             // Assign the message typed to the variable
-            string message = txbMessage_message.Text;
+            //string message = txbMessage_message.Text;
 
             // check if the message is empty and throw an error if it's empty and then get out of the method
-            if (checkForError(message)) return;
+            //if (checkForError(message)) return;
             //if there is a rejected quote, we would like to send the information of the quote to the consultant
-            if (!string.IsNullOrEmpty(rejectedQuoteNo))
-                message = $"{message}\n{rejectedQuoteNo}";
+            //if (!string.IsNullOrEmpty(rejectedQuoteNo))
+              //  message = $"{message}\n{rejectedQuoteNo}";
 
             // update the message list for the consultant id
             //
@@ -103,31 +104,36 @@ namespace SeleleTravel
         private void BtnQuoteSummary_verifyReject_Click(object sender, RoutedEventArgs e)
         {
             // Refresh the list boxes for verified and incoming quotes
-            ltbQuoteSummary_incomingQuotes.Items.Refresh();
-            listbxVerifiedQuotes.Items.Refresh();
 
-            
+            //ltbQuoteSummary_incomingQuotes.Items.Refresh();
+            //listbxVerifiedQuotes.Items.Refresh();
+
+
             //Grab the information of the client and send it to the 'compose message' name textbox
-            txbMessage_name.Text = txblockQuoteSummary_consultantID.Text;
+
+            //txbMessage_name.Text = txblockQuoteSummary_consultantID.Text;
+            
             //view the 'compose message' tab
-            Manager_tabControl.SelectedIndex = 1;
+            //Manager_tabControl.SelectedIndex = 1;
+            
             //Grab the information of the quote we just rejected
-            quote currentQuote = ltbQuoteSummary_incomingQuotes.SelectedItems[0] as quote;
-            rejectedQuoteNo = $"Quote no. : {currentQuote.quote_no}";
+            //quote currentQuote = ltbQuoteSummary_incomingQuotes.SelectedItems[0] as quote;
+            //rejectedQuoteNo = $"Quote no. : {currentQuote.quote_no}";
 
         }
         private void BtnQuoteSummary_verifyAccept_Click(object sender, RoutedEventArgs e)
         {
             // Refresh the list boxes for verified and incoming quotes
-            ltbQuoteSummary_incomingQuotes.Items.Refresh();
-            listbxVerifiedQuotes.Items.Refresh();
+
+            //ltbQuoteSummary_incomingQuotes.Items.Refresh();
+            //listbxVerifiedQuotes.Items.Refresh();
 
 
         }
         private void BtnAuthorizations_Authorize_Click(object sender, RoutedEventArgs e)
         {
             // hash the password and the sign in to the database
-            string newFreshNew = pdbAuthorizations_password.Password;
+            //string newFreshNew = pdbAuthorizations_password.Password;
             
         }
 
@@ -153,7 +159,7 @@ namespace SeleleTravel
         private void BtnManager_search_Click(object sender, RoutedEventArgs e)
         {
             //Make sure that the search results are clear
-            txbManager_Search_results.Items.Clear();
+            ltbManager_Search_Results.Items.Clear();
             string searchString = txbManager_search.Text;
             List<object> results = new List<object>();
             //for all checkboxes, if a checkbox is checked, then we would like to search in the appropriate table as well
@@ -186,12 +192,12 @@ namespace SeleleTravel
             if (results.Count <= 0)
             {
                 string nothingFoundMessage = "No items match the search term";
-                txbManager_Search_results.Items.Add(nothingFoundMessage);
+                ltbManager_Search_Results.Items.Add(nothingFoundMessage);
             }
             else
             {
-                txbManager_Search_results.ItemsSource = results;
-                txbManager_Search_results.Items.Refresh();
+                ltbManager_Search_Results.ItemsSource = results;
+                ltbManager_Search_Results.Items.Refresh();
             }
         }
 
@@ -206,5 +212,27 @@ namespace SeleleTravel
         {
             GeneralMethods.closeAllWindows();
         }
+
+        private void BtnManager_Quotes_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnManager_invoices_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnManager_composeMessage_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnManager_Confirmatons_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        
     }
 }

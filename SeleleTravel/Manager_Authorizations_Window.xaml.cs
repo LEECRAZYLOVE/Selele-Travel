@@ -23,5 +23,10 @@ namespace SeleleTravel
         {
             InitializeComponent();
         }
+
+        private void BtnAuthorizations_Authorize_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

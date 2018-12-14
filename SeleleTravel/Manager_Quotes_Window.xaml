@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Manager_Quotes_Page" Height="450" Width="800">
     <Grid Background="#FFFF1919">
-        <Button x:Name="btnManager_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Margin="685,10,0,0" Click="BtnManager_logOut_Click"/>
+        <Button x:Name="btnManager_logOut" Content="LOGOUT" Margin="685,10,11.6,381" Click="BtnManager_logOut_Click"/>
         <TabControl x:Name="Manager_tabControl" HorizontalAlignment="Left" Height="369" VerticalAlignment="Top" Width="792" Margin="0,50,0,0">
             <TabItem Header="Quote Summary" Height="22" Margin="-2,-2,-1.6,0" VerticalAlignment="Bottom">
                 <Grid Background="#FFE5E5E5">

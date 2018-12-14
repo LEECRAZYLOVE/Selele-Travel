@@ -30,5 +30,15 @@ namespace SeleleTravel
         {
             composeMessage.Show();
         }
+
+        private void BtnManager_logOut_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnQuoteSummary_verifyAccept_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
