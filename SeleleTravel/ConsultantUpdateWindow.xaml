@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Consultant_Update_Window" Height="451.4" Width="663.2" Background="#FFE4D64D">
+        Title="Consultant_Update_Window" Height="451.4" Width="798.567" Background="#FFE4D64D">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
