@@ -67,7 +67,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Canvas Background="#FFDDDDDD">
+    <Canvas Background="LightGray">
 
         <TextBox x:Name="txbLogIn_staffID" TextWrapping="Wrap" Text="" Canvas.Left="67" Canvas.Top="123" Width="206" Height="34" BorderBrush="Black"/>
         <Label Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.632,1.231" Height="31" Width="92" Canvas.Left="67" Canvas.Top="162" FontSize="16" FontFamily="Rockwell"/>

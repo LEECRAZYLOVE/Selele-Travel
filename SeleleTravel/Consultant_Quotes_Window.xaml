@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
         Title="Consultant_Quotes_Page" Height="475" Width="829">
-    <Grid Background="#FFDED152">
-        <TabControl x:Name="Consultant_tabControl" Margin="2,50,0,-1">
+    <Grid Background="#FFE4D64D">
+        <TabControl x:Name="Consultant_tabControl" Margin="0,39,2,0">
             <TabItem Header="Client Details">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -72,7 +72,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Car Hire" Margin="-2,-4,-2,2">
-                <Grid Background="#FFE5E5E5" Height="342" VerticalAlignment="Top" HorizontalAlignment="Left" Width="784" Margin="0,3,0,-3">
+                <Grid Background="#FFE5E5E5" Height="372.435" VerticalAlignment="Top" HorizontalAlignment="Left" Width="814.435" Margin="0,3,-1.435,-3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="151*"/>
                         <ColumnDefinition Width="10*"/>
@@ -89,7 +89,7 @@
                     <DatePicker x:Name="dpCarHire_startDay" HorizontalAlignment="Left" Margin="117,122,0,0" VerticalAlignment="Top" Width="115" Grid.ColumnSpan="3" d:IsHidden="False"/>
                     <DatePicker x:Name="dpCarHire_endDay" HorizontalAlignment="Left" Margin="271,124,0,0" VerticalAlignment="Top" Width="115" Grid.Column="2"/>
                     <Label x:Name="label7" Content="Specifications:" HorizontalAlignment="Left" Margin="18,239,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="82" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="575" Margin="119,239,0,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3">
+                    <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="126.578" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="575" Margin="119.095,239,0,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3">
                         <TextBox.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -101,11 +101,11 @@
                     </TextBox>
                     <Label x:Name="label22" Content="Number of cars:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,197,0,0"/>
                     <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="117,201,0,0" Grid.ColumnSpan="3"/>
-                    <Label x:Name="label33" Content="TOTAL:" Grid.Column="2" HorizontalAlignment="Left" Margin="546,246,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txbCarHire_total" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="558,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" TextChanged="AmountChanged"/>
-                    <Button x:Name="btnCarHire_Done" Content="DONE" Grid.Column="2" HorizontalAlignment="Left" Margin="546,300,0,0" VerticalAlignment="Top" Width="75" Click="BtnCarHire_Done_Click"/>
+                    <Label x:Name="label33" Content="TOTAL:" Grid.Column="2" HorizontalAlignment="Left" Margin="540.823,288.515,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txbCarHire_total" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="558,314.475,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" TextChanged="AmountChanged"/>
+                    <Button x:Name="btnCarHire_Done" Content="DONE" Grid.Column="2" HorizontalAlignment="Left" Margin="546,342.475,0,0" VerticalAlignment="Top" Width="75" Click="BtnCarHire_Done_Click"/>
                     <Button x:Name="btnCarHire_update" Content="UPDATE" Grid.Column="2" HorizontalAlignment="Left" Margin="546,300,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden"/>
-                    <Label Content="R" Grid.Column="2" HorizontalAlignment="Left" Margin="539,272,0,0" VerticalAlignment="Top" Height="23"/>
+                    <Label Content="R" Grid.Column="2" HorizontalAlignment="Left" Margin="540.823,314.475,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Taxi Cab" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="56" Margin="-2,0,0,0">
@@ -240,56 +240,14 @@
                     <Button x:Name="btnQuoteSummar_document" Content="View as document and print" HorizontalAlignment="Left" Margin="514,287,0,0" VerticalAlignment="Top" Width="248" Click="Button_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Orders" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="49" Margin="-2,0,0,0">
-                <Grid Background="#FFE5E5E5" Margin="0,0,-1,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="466*"/>
-                        <ColumnDefinition Width="549*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="251,137,0,0" VerticalAlignment="Top" Width="75"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Inbox" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="44" Margin="-2,0,0,0">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="353*"/>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="36*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox x:Name="txbInbox_preview" HorizontalAlignment="Left" Height="368" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Margin="211,-1,0,0" RenderTransformOrigin="0.5,0.5">
-                        <TextBox.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform AngleX="-0.318"/>
-                                <RotateTransform/>
-                                <TranslateTransform X="-0.948"/>
-                            </TransformGroup>
-                        </TextBox.RenderTransform>
-                    </TextBox>
-                    <ListBox x:Name="ltbInbox_messagesList" HorizontalAlignment="Left" Height="367" VerticalAlignment="Top" Width="210" Background="#FFB2B2A3"/>
-                    <Label Content="Quote Number:" HorizontalAlignment="Left" Margin="532,7,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Service:" HorizontalAlignment="Left" Margin="532,41,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnInbox_service" Content="UPDATE" HorizontalAlignment="Left" Margin="654,90,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="3"/>
-                    <TextBox x:Name="txbInbox_quoteNum" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" Grid.ColumnSpan="3" Margin="630,10,0,0"/>
-                    <ComboBox Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="630,41,0,0" VerticalAlignment="Top" Width="144">
-                        <ComboBoxItem Content="Client Details" HorizontalAlignment="Left" Width="142"/>
-                        <ComboBoxItem Content="Car Hire" HorizontalAlignment="Left" Width="142"/>
-                        <ComboBoxItem Content="Taxi Cab" HorizontalAlignment="Left" Width="142"/>
-                        <ComboBoxItem Content="Flight" HorizontalAlignment="Left" Width="142"/>
-                        <ComboBoxItem Content="Accommodation" HorizontalAlignment="Left" Width="142"/>
-                        <ComboBoxItem Content="Conference" HorizontalAlignment="Left" Width="142"/>
-                        <ComboBoxItem Content="Events" HorizontalAlignment="Left" Width="142"/>
-                    </ComboBox>
-                </Grid>
-            </TabItem>
             <TabItem Header="Send Quotes" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="83" Margin="-2,0,0,0">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="527*"/>
                         <ColumnDefinition Width="288*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="ltbSendQuotes_verifiedQuotes" HorizontalAlignment="Left" Height="367" VerticalAlignment="Top" Width="210" Background="#FFB2B2A3"/>
-                    <TextBox x:Name="txbSendQuotes_preview" HorizontalAlignment="Left" Height="367" Margin="210,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
+                    <ListBox x:Name="ltbSendQuotes_verifiedQuotes" HorizontalAlignment="Left" Height="377" VerticalAlignment="Top" Width="210" Background="#FFB2B2A3"/>
+                    <TextBox x:Name="txbSendQuotes_preview" HorizontalAlignment="Left" Height="377" Margin="210,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
                     <PasswordBox x:Name="pdbSendQuotes_password" HorizontalAlignment="Left" Margin="89,12,0,0" VerticalAlignment="Top" Width="136" Height="27" Grid.Column="1"/>
                     <Label Content="Password:" HorizontalAlignment="Left" Margin="19,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.192" Grid.Column="1"/>
                     <Button x:Name="btnSendQuotes_send" Content="SEND TO CLIENTS" HorizontalAlignment="Left" Margin="89,44,0,0" VerticalAlignment="Top" Width="136" Height="25" Grid.Column="1"/>
