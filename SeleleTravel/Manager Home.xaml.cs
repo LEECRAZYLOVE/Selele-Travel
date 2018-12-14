@@ -26,18 +26,14 @@ namespace SeleleTravel
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            timer.Elapsed += Timer_Elapsed;
+           // timer.Elapsed += Timer_Elapsed;
         }
 
         #region Refresh the list
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            // Refresh the list boxes for verified and incoming quotes!
 
-            //ltbQuoteSummary_incomingQuotes.Items.Refresh();
-            //listbxVerifiedQuotes.Items.Refresh();
-            //ltbAuthorizations_incomingAuthorizations.Items.Refresh();
         }
 
         #endregion
@@ -53,7 +49,7 @@ namespace SeleleTravel
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        bool checkForError(string name)
+      public bool checkForError(string name)
         {
             if(name.Trim() == "")
             {
@@ -62,36 +58,7 @@ namespace SeleleTravel
             }
             return false;
         }
-        /*this is the reject quote's quote no.
-         *I made this global because I want to access the current quote from the 'BtnQuoteSummary_verifyReject_Click' click event,
-         *and add the quote number as a suufix to it, and send that to the consultant
-         */
-        string rejectedQuoteNo;
-        private void BtnMessage_send_Click(object sender, RoutedEventArgs e)
-        {
-            // Type out the consultant id
-            // Assign the id to the variable
-
-            // search for the consultant id from the database
-            //string consultantId = txbMessage_name.Text;
-
-            // Type out the message to be sent to the client
-            // Assign the message typed to the variable
-            //string message = txbMessage_message.Text;
-
-            // check if the message is empty and throw an error if it's empty and then get out of the method
-            //if (checkForError(message)) return;
-            //if there is a rejected quote, we would like to send the information of the quote to the consultant
-            //if (!string.IsNullOrEmpty(rejectedQuoteNo))
-              //  message = $"{message}\n{rejectedQuoteNo}";
-
-            // update the message list for the consultant id
-            //
-
-
-            //At the end we want to make sure to reset the rejectedQuote number to empty again
-            rejectedQuoteNo = "";
-        }
+      
 
         #endregion
 
@@ -101,41 +68,6 @@ namespace SeleleTravel
 
         #region Authorizations tab
         
-        private void BtnQuoteSummary_verifyReject_Click(object sender, RoutedEventArgs e)
-        {
-            // Refresh the list boxes for verified and incoming quotes
-
-            //ltbQuoteSummary_incomingQuotes.Items.Refresh();
-            //listbxVerifiedQuotes.Items.Refresh();
-
-
-            //Grab the information of the client and send it to the 'compose message' name textbox
-
-            //txbMessage_name.Text = txblockQuoteSummary_consultantID.Text;
-            
-            //view the 'compose message' tab
-            //Manager_tabControl.SelectedIndex = 1;
-            
-            //Grab the information of the quote we just rejected
-            //quote currentQuote = ltbQuoteSummary_incomingQuotes.SelectedItems[0] as quote;
-            //rejectedQuoteNo = $"Quote no. : {currentQuote.quote_no}";
-
-        }
-        private void BtnQuoteSummary_verifyAccept_Click(object sender, RoutedEventArgs e)
-        {
-            // Refresh the list boxes for verified and incoming quotes
-
-            //ltbQuoteSummary_incomingQuotes.Items.Refresh();
-            //listbxVerifiedQuotes.Items.Refresh();
-
-
-        }
-        private void BtnAuthorizations_Authorize_Click(object sender, RoutedEventArgs e)
-        {
-            // hash the password and the sign in to the database
-            //string newFreshNew = pdbAuthorizations_password.Password;
-            
-        }
 
         #endregion
 
@@ -158,6 +90,7 @@ namespace SeleleTravel
         //}
         private void BtnManager_search_Click(object sender, RoutedEventArgs e)
         {
+
             //Make sure that the search results are clear
             ltbManager_Search_Results.Items.Clear();
             string searchString = txbManager_search.Text;
@@ -192,7 +125,7 @@ namespace SeleleTravel
             if (results.Count <= 0)
             {
                 string nothingFoundMessage = "No items match the search term";
-                ltbManager_Search_Results.Items.Add(nothingFoundMessage);
+                ltbManager_Search_Results.Items.Add(nothingFoundMessage);                
             }
             else
             {
@@ -203,36 +136,25 @@ namespace SeleleTravel
 
         #endregion
 
-        private void BtnManager_logOut_Click(object sender, RoutedEventArgs e)
-        {
-            GeneralMethods.logOut(this);
-        }
-
         private void Manager_Home1_Closed(object sender, EventArgs e)
         {
             GeneralMethods.closeAllWindows();
         }
 
-        private void BtnManager_Quotes_Click(object sender, RoutedEventArgs e)
+        private void btnManager_logOut_Click(object sender, RoutedEventArgs e)
+        {
+
+            GeneralMethods.logOut(this);
+        }
+
+        private void btnManager_search_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void BtnManager_invoices_Click(object sender, RoutedEventArgs e)
+        private void btnManager_Quotes_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
-        private void BtnManager_composeMessage_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnManager_Confirmatons_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        
     }
 }

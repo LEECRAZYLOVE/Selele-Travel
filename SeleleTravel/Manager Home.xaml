@@ -13,22 +13,22 @@
             </Canvas.Background>
         </Canvas>
         <Label x:Name="lblManagerID" Content="LabeloutputID" Margin="2,33.047,653.048,350.399" FontFamily="Comic Sans MS" FontSize="16"/>
-        <Button x:Name="btnManager_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="40.997" Margin="685,10,0,0" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515" Click="BtnManager_logOut_Click">
+        <Button x:Name="btnManager_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="40.997" Margin="685,10,0,0" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515" Click="btnManager_logOut_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Selele Travel BALLS.png" Stretch="UniformToFill" Opacity="0.8"/>
             </Button.Background>
         </Button>
         <Label x:Name="lblManagerName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28.047" Width="136.952" Margin="2,0,0,0" FontFamily="Comic Sans MS" FontSize="16"/>
         <Label x:Name="label" Content="Home" HorizontalAlignment="Left" Margin="356.166,10,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" FontWeight="Bold"/>
-        <Button x:Name="btnManager_Quotes" Content=" Quote Verifications" HorizontalAlignment="Left" Margin="0,94,0,0" VerticalAlignment="Top" Width="118.368" Height="65" Click="BtnManager_Quotes_Click"/>
-        <Button x:Name="btnManager_authorize" Content="Authorizations" HorizontalAlignment="Left" Margin="0,159,0,0" VerticalAlignment="Top" Width="118.368" Height="65" Click="BtnAuthorizations_Authorize_Click"/>
-        <Button x:Name="btnManager_invoices" Content="Invoices" HorizontalAlignment="Left" Margin="0,224,0,0" VerticalAlignment="Top" Width="118.368" Height="65" Click="BtnManager_invoices_Click"/>
-        <Button x:Name="btnManager_Confirmatons" Content="Booking Confirmations" HorizontalAlignment="Left" Margin="0,354,0,0" VerticalAlignment="Top" Width="118.368" Height="65" Click="BtnManager_Confirmatons_Click"/>
+        <Button x:Name="btnManager_Quotes" Content=" Quote Verifications" HorizontalAlignment="Left" Margin="0,94,0,0" VerticalAlignment="Top" Width="118.368" Height="65" Click="btnManager_Quotes_Click"/>
+        <Button x:Name="btnManager_authorize" Content="Authorizations" HorizontalAlignment="Left" Margin="0,159,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
+        <Button x:Name="btnManager_invoices" Content="Invoices" HorizontalAlignment="Left" Margin="0,224,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
+        <Button x:Name="btnManager_Confirmatons" Content="Booking Confirmations" HorizontalAlignment="Left" Margin="0,354,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
         <Canvas HorizontalAlignment="Left" Height="325" Margin="453.368,94,0,0" VerticalAlignment="Top" Width="338.632" Background="#FFB02525" Opacity="0.5"/>
         <Label x:Name="label1" Content="Inbox" Opacity="1.5" Margin="254.632,63.04,473.794,320" FontSize="16" FontFamily="Comic Sans MS"/>
         <ListBox x:Name="lbManager_inboxList" Background="#FFD5D9E6" Margin="118.368,94,569.632,0" Opacity="0.5"/>
         <TextBlock x:Name="tbkManager_inboxMessages" TextWrapping="Wrap" Text="TextBlock" Margin="222.368,94,343.632,0" FontFamily="Comic Sans MS"/>
-        <Button x:Name="btnManager_search" Content="SEARCH" HorizontalAlignment="Left" Margin="717,94,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="BtnManager_search_Click"/>
+        <Button x:Name="btnManager_search" Content="SEARCH" HorizontalAlignment="Left" Margin="717,94,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnManager_search_Click_1"/>
         <ComboBox x:Name="cbbManager_Search_entities" HorizontalAlignment="Left" Margin="453.368,137.04,0,0" VerticalAlignment="Top" Width="338.632">
             <ComboBoxItem Content="Staff" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="118"/>
@@ -43,6 +43,6 @@
         <ListBox x:Name="ltbManager_Search_Results" HorizontalAlignment="Left" Height="232.852" Margin="453.368,186.148,0,0" VerticalAlignment="Top" Width="338.632" FontFamily="Comic Sans MS" Opacity="0.8"/>
         <TextBox x:Name="txbManager_search" HorizontalAlignment="Left" Height="23" Margin="453.368,94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="263.632"/>
         <CheckBox x:Name="ckbManager_Search_all" Content="all" HorizontalAlignment="Left" Margin="750.105,166.05,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnManager_composeMessage" Content="Compose Message" HorizontalAlignment="Left" Margin="0,289,0,0" VerticalAlignment="Top" Width="118.368" Height="65" Click="BtnManager_composeMessage_Click"/>
+        <Button x:Name="btnManager_composeMessage" Content="Compose Message" HorizontalAlignment="Left" Margin="0,289,0,0" VerticalAlignment="Top" Width="118.368" Height="65"/>
     </Grid>
 </Window>

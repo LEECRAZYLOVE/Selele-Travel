@@ -26,7 +26,8 @@ namespace SeleleTravel
 
         private void BtnAuthorizations_Authorize_Click(object sender, RoutedEventArgs e)
         {
-
+            // hash the password and the sign in to the database
+            string newFreshNew = pdbAuthorizations_password.Password;
         }
     }
 }
