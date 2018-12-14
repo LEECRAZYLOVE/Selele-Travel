@@ -23,6 +23,7 @@ namespace SeleleTravel
         public ConsultantUpdateWindow()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         private void createNewClient_Click(object sender, RoutedEventArgs e)
