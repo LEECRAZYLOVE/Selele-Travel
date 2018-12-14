@@ -15,13 +15,18 @@ using System.Windows.Shapes;
 namespace SeleleTravel
 {
     /// <summary>
-    /// Interaction logic for Consultant_Orders_Window.xaml
+    /// Interaction logic for Compose_Message_Window.xaml
     /// </summary>
-    public partial class Consultant_Orders_Window : Window
+    public partial class ComposeMessageWindow : Window
     {
-        public Consultant_Orders_Window()
+        public ComposeMessageWindow()
         {
             InitializeComponent();
+        }
+
+        private void BtnMessage_send_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

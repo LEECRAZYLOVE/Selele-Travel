@@ -17,10 +17,10 @@ namespace SeleleTravel
     /// <summary>
     /// Interaction logic for Log_In.xaml
     /// </summary>
-    public partial class Log_In : Window
+    public partial class LogInWindow : Window
     {
         LoadWindow windowToLoad;
-        public Log_In(LoadWindow windowToLoad)
+        public LogInWindow(LoadWindow windowToLoad)
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -33,7 +33,7 @@ namespace SeleleTravel
             switch (windowToLoad)
             {
                 case LoadWindow.Consultant:
-                    MainWindow.consultantWindow = new Consultant_Home_Window();
+                    MainWindow.consultantWindow = new ConsultantHomeWindow();
                     MainWindow.consultantWindow.Show();
                     break;
                 case LoadWindow.Manager:

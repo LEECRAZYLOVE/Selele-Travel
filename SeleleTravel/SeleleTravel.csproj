@@ -110,26 +110,26 @@
     <Compile Include="client.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Compose_Message_Window.xaml.cs">
-      <DependentUpon>Compose_Message_Window.xaml</DependentUpon>
+    <Compile Include="ComposeMessageWindow.xaml.cs">
+      <DependentUpon>ComposeMessageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="conference.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Consultant_Orders_Window.xaml.cs">
-      <DependentUpon>Consultant_Orders_Window.xaml</DependentUpon>
+    <Compile Include="ConsultantOrdersWindow.xaml.cs">
+      <DependentUpon>ConsultantOrdersWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Consultant_Home_Window.xaml.cs">
-      <DependentUpon>Consultant_Home_Window.xaml</DependentUpon>
+    <Compile Include="ConsultantHomeWindow.xaml.cs">
+      <DependentUpon>ConsultantHomeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Consultant_Quotes_Window.xaml.cs">
-      <DependentUpon>Consultant_Quotes_Window.xaml</DependentUpon>
+    <Compile Include="ConsultantQuotesWindow.xaml.cs">
+      <DependentUpon>ConsultantQuotesWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Consultant_Update_Window.xaml.cs">
-      <DependentUpon>Consultant_Update_Window.xaml</DependentUpon>
+    <Compile Include="ConsultantUpdateWindow.xaml.cs">
+      <DependentUpon>ConsultantUpdateWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Consultant_Vouchers_Window.xaml.cs">
-      <DependentUpon>Consultant_Vouchers_Window.xaml</DependentUpon>
+    <Compile Include="ConsultantVouchersWindow.xaml.cs">
+      <DependentUpon>ConsultantVouchersWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="dailyserviceupdate.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
@@ -170,31 +170,31 @@
     <Compile Include="voucher.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
-    <Page Include="Compose_Message_Window.xaml">
+    <Page Include="ComposeMessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Consultant_Orders_Window.xaml">
+    <Page Include="ConsultantOrdersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Consultant_Home_Window.xaml">
+    <Page Include="ConsultantHomeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Consultant_Quotes_Window.xaml">
+    <Page Include="ConsultantQuotesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Consultant_Update_Window.xaml">
+    <Page Include="ConsultantUpdateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Consultant_Vouchers_Window.xaml">
+    <Page Include="ConsultantVouchersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Log In.xaml">
+    <Page Include="LogInWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,8 +209,8 @@
     <Compile Include="Classes\Boss.cs" />
     <Compile Include="Classes\ContactDetails.cs" />
     <Compile Include="Classes\Manager.cs" />
-    <Compile Include="Log In.xaml.cs">
-      <DependentUpon>Log In.xaml</DependentUpon>
+    <Compile Include="LogInWindow.xaml.cs">
+      <DependentUpon>LogInWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

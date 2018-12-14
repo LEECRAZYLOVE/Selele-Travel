@@ -17,15 +17,15 @@ namespace SeleleTravel
     /// <summary>
     /// Interaction logic for Consultant_Quotes_Window.xaml
     /// </summary>
-    public partial class Consultant_Home_Window : Window
+    public partial class ConsultantHomeWindow : Window
     {
         //instantiating all the windows as global objects
-        public static Consultant_Orders_Window consultantOrdersWindow = new Consultant_Orders_Window();
-        public static Consultant_Quotes consultantQuotesWindow = new Consultant_Quotes();
-        public static Consultant_Update_Window consultantUpdateWindow = new Consultant_Update_Window();
-        public static Consultant_Vouchers_Window consultantVouchersWindow = new Consultant_Vouchers_Window();
+        public static ConsultantOrdersWindow consultantOrdersWindow = new ConsultantOrdersWindow();
+        public static ConsultantQuotesWindow consultantQuotesWindow = new ConsultantQuotesWindow();
+        public static ConsultantUpdateWindow consultantUpdateWindow = new ConsultantUpdateWindow();
+        public static ConsultantVouchersWindow consultantVouchersWindow = new ConsultantVouchersWindow();
 
-        public Consultant_Home_Window()
+        public ConsultantHomeWindow()
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;

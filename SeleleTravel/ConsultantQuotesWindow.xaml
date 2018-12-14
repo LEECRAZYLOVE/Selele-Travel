@@ -1,30 +1,78 @@
-﻿<Window x:Class="SeleleTravel.Consultant_Update_Window"
+﻿<Window x:Name="Consultant_Quotes_Window" x:Class="SeleleTravel.ConsultantQuotesWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Consultant_Update_Window" Height="450" Width="800" Background="#FFE4D64D">
-    <Grid>
-        <TabControl x:Name="Consultant_tabControl" Margin="0,24,0,0">
+        Title="Consultant_Quotes_Page" Height="475" Width="829">
+    <Grid Background="#FFE4D64D">
+        <TabControl x:Name="Consultant_tabControl" Margin="0,39,2,0">
             <TabItem Header="Client Details">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="195*"/>
                         <ColumnDefinition Width="197*"/>
                     </Grid.ColumnDefinitions>
-                    <Canvas x:Name="cvsUpdateCleint" Grid.Column="1" HorizontalAlignment="Right" Width="394">
-                        <Label x:Name="label14" Content="Already A Client" Canvas.Left="-63.217" Canvas.Top="10" Width="96"/>
-                        <Button x:Name="btnUpdate_update" Content="UPDATE"  Canvas.Left="295.613" Canvas.Top="325.673" Click="createNewClient_Click" Height="31.327" Width="88.387" Background="#FF45D310"/>
+                    <Canvas x:Name="cvsNewClient1" Height="342" VerticalAlignment="Top" HorizontalAlignment="Left" Width="390">
+                        <WrapPanel HorizontalAlignment="Left" Height="366" VerticalAlignment="Top" Width="386" Canvas.Left="4" Canvas.Top="3" Background="#FFB2B2A3"/>
+                        <TextBox x:Name="txbNewClient_address" HorizontalAlignment="Left" Height="58" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="310" Canvas.Left="70" Canvas.Top="103"/>
+                        <CheckBox x:Name="ckbIndividual" Content="Individual" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="80" Checked="selectionChanged"/>
+                        <Label x:Name="label8" Content="Enter Client Details" Canvas.Left="142" Canvas.Top="10" RenderTransformOrigin="0.542,-0.193">
+                            <Label.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="0.397"/>
+                                    <TranslateTransform X="0.126" Y="0.021"/>
+                                </TransformGroup>
+                            </Label.RenderTransform>
+                        </Label>
+                        <Label x:Name="label9" Content="Name:" Canvas.Left="10" Canvas.Top="40"/>
+                        <TextBox x:Name="txbNewClient_name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="43"/>
+                        <TextBox x:Name="txbNewClient_surname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="43"/>
+                        <Label x:Name="label10" Content="Surname:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="201" Canvas.Top="40"/>
+                        <CheckBox x:Name="ckbBusiness" Content="Business" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="70" Canvas.Top="80" Checked="selectionChanged"/>
+                        <Label x:Name="label11" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="103"/>
+                        <TextBox x:Name="txbNewClient_city" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="183"/>
+                        <Label x:Name="label12" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.038" Canvas.Left="222" Canvas.Top="180"/>
+                        <Label x:Name="label13" Content="Province:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="7" Canvas.Top="180"/>
+                        <Label Content="Cellphone:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="4" Canvas.Top="219"/>
+                        <Label Content="Area Code:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="195" Canvas.Top="219" RenderTransformOrigin="0.35,0.769"/>
+                        <Label Content="Telephone:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="3" Canvas.Top="254"/>
+                        <Label Content="Fax:" Canvas.Left="222" Canvas.Top="254"/>
+                        <TextBox x:Name="txbNewClient_cellphone" TextChanged="phoneNumberCheck"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="222"/>
+                        <TextBox x:Name="txbNewClient_telephone" TextChanged="phoneNumberCheck" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="254"/>
+                        <TextBox x:Name="txbNewClient_areaCode" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="222"/>
+                        <TextBox x:Name="txbNewClient_fax" TextChanged="phoneNumberCheck" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="257"/>
+                        <Label Content="email:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="4" Canvas.Top="285"/>
+                        <TextBox x:Name="txbNewClient_email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="310" Canvas.Left="70" Canvas.Top="289"/>
+                        <Button x:Name="btnNewClient_add" Content="ADD" Canvas.Left="70" Canvas.Top="318" Width="75" Click="createNewClient_Click"/>
+                        <Label x:Name="lblNewClient_clientID" Content="labelOutput" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="315"/>
+                        <ComboBox x:Name="DropBxNewClient_province" Width="120" Canvas.Left="70" Canvas.Top="183">
+                            <ComboBoxItem Content="Eastern Cape" HorizontalAlignment="Left" Width="118"/>
+                            <ComboBoxItem Content="Free State" HorizontalAlignment="Left" Width="118"/>
+                            <ComboBoxItem Content="Gauteng" HorizontalAlignment="Left" Width="118"/>
+                            <ComboBoxItem Content="KwaZulu-Natal" HorizontalAlignment="Left" Width="118"/>
+                            <ComboBoxItem Content="Limpopo" HorizontalAlignment="Left" Width="118"/>
+                            <ComboBoxItem Content="Mpumalanga" HorizontalAlignment="Left" Width="118"/>
+                            <ComboBoxItem Content="North West" HorizontalAlignment="Left" Width="118"/>
+                            <ComboBoxItem Content="Northern Cape" HorizontalAlignment="Left" Width="118"/>
+                            <ComboBoxItem Content="Western Cape" HorizontalAlignment="Left" Width="118"/>
+                        </ComboBox>
                     </Canvas>
-                    <TextBox x:Name="txbUpdate_find" HorizontalAlignment="Left" Height="23" Margin="30.661,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="639.334" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnUpdate_find" Content="FIND" Grid.Column="1" HorizontalAlignment="Left" Margin="293.529,47.04,0,0" VerticalAlignment="Top" Width="91.476" Click="BtnOldClient_find_Click" RenderTransformOrigin="0.586,0.542"/>
-                    <ListBox x:Name="ltbUpdate_clientDetails" Opacity="80" HorizontalAlignment="Left" Height="272.359" Margin="30.661,84.641,0,0" VerticalAlignment="Top" Width="639.334" Grid.ColumnSpan="2"/>
+                    <Canvas x:Name="cvsOldClient1" Grid.Column="1" HorizontalAlignment="Right" Width="394">
+                        <Label x:Name="label14" Content="Already A Client" Canvas.Left="152" Canvas.Top="10" Width="96"/>
+                        <TextBlock x:Name="txblOldClient_Details" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="34" Canvas.Top="80" Height="227" Width="323"><Run Text="TextBlockOutput"/></TextBlock>
+                        <Button x:Name="btnOldClient_select" Content="SELECT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Canvas.Left="282" Canvas.Top="312"/>
+                        <Button x:Name="btnOldClient_update" Content="UPDATE"  Canvas.Left="-320" Canvas.Top="317" Click="createNewClient_Click" Height="20" Width="75" Background="#FF45D310" Visibility="Hidden"/>
+                    </Canvas>
+                    <TextBox x:Name="txbOldClient_find" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="32,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247"/>
+                    <Button x:Name="btnOldClient_find" Content="FIND" Grid.Column="1" HorizontalAlignment="Left" Margin="284,47,0,0" VerticalAlignment="Top" Width="75" Click="BtnOldClient_find_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Car Hire" Margin="-2,-4,-2,2">
-                <Grid Background="#FFE5E5E5" Height="367.743" VerticalAlignment="Bottom" Margin="0,-1.118,-1.089,0.375" HorizontalAlignment="Left" Width="787.089">
+                <Grid Background="#FFE5E5E5" Height="372.435" VerticalAlignment="Top" HorizontalAlignment="Left" Width="814.435" Margin="0,3,-1.435,-3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="151*"/>
                         <ColumnDefinition Width="10*"/>
@@ -41,7 +89,7 @@
                     <DatePicker x:Name="dpCarHire_startDay" HorizontalAlignment="Left" Margin="117,122,0,0" VerticalAlignment="Top" Width="115" Grid.ColumnSpan="3" d:IsHidden="False"/>
                     <DatePicker x:Name="dpCarHire_endDay" HorizontalAlignment="Left" Margin="271,124,0,0" VerticalAlignment="Top" Width="115" Grid.Column="2"/>
                     <Label x:Name="label7" Content="Specifications:" HorizontalAlignment="Left" Margin="18,239,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="122.146" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="575" Margin="119.085,239,0,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3">
+                    <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="126.578" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="575" Margin="119.095,239,0,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3">
                         <TextBox.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -53,10 +101,11 @@
                     </TextBox>
                     <Label x:Name="label22" Content="Number of cars:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,197,0,0"/>
                     <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="117,201,0,0" Grid.ColumnSpan="3"/>
-                    <Label x:Name="label33" Content="TOTAL:" Grid.Column="2" HorizontalAlignment="Left" Margin="546,268.843,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txbCarHire_total" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="558,299.803,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" TextChanged="AmountChanged"/>
-                    <Button x:Name="btnCarHire_update" Content="UPDATE" Grid.Column="2" HorizontalAlignment="Left" Margin="546,337.783,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" />
-                    <Label Content="R" Grid.Column="2" HorizontalAlignment="Left" Margin="540.823,299.803,0,0" VerticalAlignment="Top" Height="23"/>
+                    <Label x:Name="label33" Content="TOTAL:" Grid.Column="2" HorizontalAlignment="Left" Margin="540.823,288.515,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txbCarHire_total" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="558,314.475,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" TextChanged="AmountChanged"/>
+                    <Button x:Name="btnCarHire_Done" Content="DONE" Grid.Column="2" HorizontalAlignment="Left" Margin="546,342.475,0,0" VerticalAlignment="Top" Width="75" Click="BtnCarHire_Done_Click"/>
+                    <Button x:Name="btnCarHire_update" Content="UPDATE" Grid.Column="2" HorizontalAlignment="Left" Margin="546,300,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden"/>
+                    <Label Content="R" Grid.Column="2" HorizontalAlignment="Left" Margin="540.823,314.475,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Taxi Cab" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="56" Margin="-2,0,0,0">
@@ -79,7 +128,8 @@
                     <TextBox x:Name="txbCab_numCabs" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" Margin="417,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="45"/>
                     <Label x:Name="label34" Content="TOTAL:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="699,253,0,0"/>
                     <TextBox x:Name="txbCab_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" Margin="699,284,0,0"/>
-                    <Button x:Name="btnCab_update" Content="UPDATE" HorizontalAlignment="Left" Margin="699,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310"/>
+                    <Button x:Name="btnCab_done" Content="DONE" HorizontalAlignment="Left" Margin="699,312,0,0" VerticalAlignment="Top" Width="75" Click="BtnCab_done_Click"/>
+                    <Button x:Name="btnCab_update" Content="UPDATE" HorizontalAlignment="Left" Margin="699,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden"/>
                     <Label Content="R" HorizontalAlignment="Left" Margin="675,284,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
@@ -111,7 +161,8 @@
                     <TextBox x:Name="txbFlight_time" HorizontalAlignment="Left" Height="23" Margin="287,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                     <Label x:Name="label35" Content="TOTAL:" Grid.Column="1" HorizontalAlignment="Left" Margin="114,255,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="txbFlight_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Grid.Column="1" Margin="121,286,0,0"/>
-                    <Button x:Name="btnFlight_update" Content="UPDATE" Grid.Column="1" HorizontalAlignment="Left" Margin="114,314,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310"/>
+                    <Button x:Name="btnFlight_done" Content="DONE" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="114,314,0,0" Click="BtnFlight_done_Click"/>
+                    <Button x:Name="btnFlight" Content="UPDATE" Grid.Column="1" HorizontalAlignment="Left" Margin="128,165,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden"/>
                     <Label Content="R" Grid.Column="1" HorizontalAlignment="Left" Margin="102,286,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
@@ -131,7 +182,8 @@
                     <TextBox x:Name="txbAccommodation_numRooms" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" Margin="300,209,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="51"/>
                     <Label x:Name="label42" Content="TOTAL:" HorizontalAlignment="Left" Margin="423,241,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="txbAccommodation_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" Margin="423,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btnAccommodation_update" Content="UPDATE" HorizontalAlignment="Left" Margin="423,300,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" />
+                    <Button x:Name="btnAccommodation_done" Content="DONE" HorizontalAlignment="Left" Margin="423,300,0,0" VerticalAlignment="Top" Width="75" Click="BtnAccommodation_done_Click"/>
+                    <Button x:Name="btnAccommodation_update" Content="UPDATE" HorizontalAlignment="Left" Margin="423,300,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden" />
                     <Label Content="R" HorizontalAlignment="Left" Margin="399,272,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
@@ -149,7 +201,8 @@
                     <DatePicker x:Name="dpConference_date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,119,0,0" Width="120"/>
                     <Label x:Name="label48" Content="TOTAL:" HorizontalAlignment="Left" Margin="375,251,0,0" VerticalAlignment="Top" Width="94"/>
                     <TextBox x:Name="txbConference_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" Margin="399,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"/>
-                    <Button x:Name="btnConference_update" Content="UPDATE" HorizontalAlignment="Left" Margin="394,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" />
+                    <Button x:Name="btnConference_done" Content="DONE" HorizontalAlignment="Left" Margin="394,312,0,0" VerticalAlignment="Top" Width="75" Click="BtnConference_done_Click"/>
+                    <Button x:Name="btnConference_update" Content="UPDATE" HorizontalAlignment="Left" Margin="394,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden"/>
                     <Label Content="R" HorizontalAlignment="Left" Margin="375,284,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
@@ -161,7 +214,8 @@
                     <TextBox x:Name="txbEvents_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="258" Margin="94,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593"/>
                     <Label x:Name="label51" Content="TOTAL:" HorizontalAlignment="Left" Margin="699,253,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="txbEvents_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" Margin="722,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52"/>
-                    <Button Content="btnEvents_update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="699,312,0,0" Background="#FF45D310" />
+                    <Button x:Name="btnEvents_done" Content="DONE" HorizontalAlignment="Left" Margin="699,312,0,0" VerticalAlignment="Top" Width="75" Click="_done"/>
+                    <Button Content="btnEvents_update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="699,312,0,0" Background="#FF45D310" Visibility="Hidden"/>
                     <Label x:Name="rands" Content="R" HorizontalAlignment="Left" Margin="699,284,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
@@ -180,8 +234,9 @@
                     <TextBox x:Name="txbQuote_markUp" HorizontalAlignment="Left" Height="23" Margin="590,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="127"/>
                     <Label x:Name="label53" Content="Total:" HorizontalAlignment="Left" Margin="514,80,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="btnQuote_requestVerification" Content="Request Verification" HorizontalAlignment="Left" Margin="514,312,0,0" VerticalAlignment="Top" Width="248"/>
+                    <Button x:Name="btnQuote_markUp" Content="ADD" HorizontalAlignment="Left" Margin="616,42,0,0" VerticalAlignment="Top" Width="75"/>
                     <Label x:Name="lblQuote_total" Content="R" HorizontalAlignment="Left" Margin="590,80,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnQuote_update" Content="Update" HorizontalAlignment="Left" Margin="616,42,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" />
+                    <Button Content="btnQuote_update" HorizontalAlignment="Left" Margin="616,42,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden"/>
                     <Button x:Name="btnQuoteSummar_document" Content="View as document and print" HorizontalAlignment="Left" Margin="514,287,0,0" VerticalAlignment="Top" Width="248" Click="Button_Click"/>
                 </Grid>
             </TabItem>
@@ -191,11 +246,11 @@
                         <ColumnDefinition Width="527*"/>
                         <ColumnDefinition Width="288*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="ltbSendQuotes_verifiedQuotes" HorizontalAlignment="Left" Height="367" VerticalAlignment="Top" Width="210" Background="#FFB2B2A3"/>
-                    <TextBox x:Name="txbSendQuotes_preview" HorizontalAlignment="Left" Height="367" Margin="210,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
-                    <PasswordBox x:Name="pdbSendQuotes_password" HorizontalAlignment="Left" Margin="105.476,12,0,0" VerticalAlignment="Top" Width="136" Height="27" Grid.Column="1"/>
-                    <Label Content="Password:" HorizontalAlignment="Left" Margin="28.752,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.192" Grid.Column="1"/>
-                    <Button x:Name="btnSendQuotes_send" Content="SEND TO CLIENTS" HorizontalAlignment="Left" Margin="40.611,57.386,0,0" VerticalAlignment="Top" Width="227.141" Height="25" Grid.Column="1"/>
+                    <ListBox x:Name="ltbSendQuotes_verifiedQuotes" HorizontalAlignment="Left" Height="377" VerticalAlignment="Top" Width="210" Background="#FFB2B2A3"/>
+                    <TextBox x:Name="txbSendQuotes_preview" HorizontalAlignment="Left" Height="377" Margin="210,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
+                    <PasswordBox x:Name="pdbSendQuotes_password" HorizontalAlignment="Left" Margin="89,12,0,0" VerticalAlignment="Top" Width="136" Height="27" Grid.Column="1"/>
+                    <Label Content="Password:" HorizontalAlignment="Left" Margin="19,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.192" Grid.Column="1"/>
+                    <Button x:Name="btnSendQuotes_send" Content="SEND TO CLIENTS" HorizontalAlignment="Left" Margin="89,44,0,0" VerticalAlignment="Top" Width="136" Height="25" Grid.Column="1"/>
                 </Grid>
             </TabItem>
         </TabControl>

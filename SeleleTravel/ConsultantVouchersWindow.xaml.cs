@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace SeleleTravel
 {
     /// <summary>
-    /// Interaction logic for Compose_Message_Window.xaml
+    /// Interaction logic for Consultant_Vouchers_Window.xaml
     /// </summary>
-    public partial class Compose_Message_Window : Window
+    public partial class ConsultantVouchersWindow : Window
     {
-        public Compose_Message_Window()
+        public ConsultantVouchersWindow()
         {
             InitializeComponent();
         }
