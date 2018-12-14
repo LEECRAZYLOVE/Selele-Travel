@@ -58,10 +58,12 @@ namespace SeleleTravel
         }
 
         /// <summary>
-        /// checks if the number typed is a valid number
+        /// checks if the number typed is a valid number.
+        /// If the value to be checked is not a whole number then assign the bool to false. 
         /// </summary>
         /// <param name="sender"></param>
-        public static void checkAmountTyped(object sender, bool int_double)
+        /// /// <param name="int_double"></param>
+        public static void checkAmountTyped(object sender, bool int_double=true)
         {
             string acceptedCharacters = "";
 

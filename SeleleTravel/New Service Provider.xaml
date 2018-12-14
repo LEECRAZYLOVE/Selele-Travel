@@ -55,10 +55,10 @@
                 <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
                 <ComboBoxItem Content="Agency/Accommodation/Airline" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15" Margin="0,0,-2.934,0"/>
             </ComboBox>
-            <TextBox x:Name="txbNewClient_address" HorizontalAlignment="Left" Height="80" Width="361.066" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="129.457" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewClient_address" AcceptsReturn="True" HorizontalAlignment="Left" Height="80" Width="361.066" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="129.457" FontSize="16" FontFamily="Comic Sans MS"/>
             <TextBox x:Name="txbNewService_city" Height="30" Width="361.066" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="214.457" FontSize="16" FontFamily="Comic Sans MS"/>
-            <TextBox x:Name="txbNewService_areaCode" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="361.066" Canvas.Left="119.999" Canvas.Top="249.457" FontSize="16" FontFamily="Comic Sans MS"/>
-            <ComboBox Height="32" Width="260" Canvas.Left="119.999" Canvas.Top="284.046" BorderBrush="#FFB2E4CA" >
+            <TextBox x:Name="txbNewService_areaCode" TextChanged="validateValue" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="361.066" Canvas.Left="119.999" Canvas.Top="249.457" FontSize="16" FontFamily="Comic Sans MS"/>
+            <ComboBox x:Name="provinceComboBox"  Height="32" Width="260" Canvas.Left="119.999" Canvas.Top="284.046" BorderBrush="#FFB2E4CA" >
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -75,9 +75,9 @@
                 <ComboBoxItem Content="Northen Cape" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
                 <ComboBoxItem Content="Western Cape" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
             </ComboBox>
-            <TextBox x:Name="txbNewService_cellphone" Height="30" Width="361.066" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="324.23" FontSize="16" FontFamily="Comic Sans MS"/>
-            <TextBox x:Name="txbNewService_fax" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="359.23" FontSize="16" FontFamily="Comic Sans MS"/>
-            <TextBox x:Name="txbNewService_telephone" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="394.23" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewService_cellphone" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="324.23" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewService_fax" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="359.23" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewService_telephone" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="394.23" FontSize="16" FontFamily="Comic Sans MS"/>
             <TextBox x:Name="txbNewService_email" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="429.23" FontSize="16" FontFamily="Comic Sans MS"/>
             <Button x:Name="btnNewService_add" Content="Add" Click="createNewClient_Click" RenderTransformOrigin="0.5,0.5" Canvas.Left="119.999" Canvas.Top="513.411" Width="255.79" Height="54.966" FontFamily="Rockwell" FontSize="36" Background="#FFB2E4CA"/>
 
