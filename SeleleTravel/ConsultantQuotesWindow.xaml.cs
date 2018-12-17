@@ -70,7 +70,7 @@ namespace SeleleTravel
         //Status : Incomplete
         private void createNewClient_Click(object sender, RoutedEventArgs e)
         {
-            string names = txbNewClient_name.Text + " " + txbNewClient_surname;
+            string names = txbNewClient_name.Text + " " + txbNewClient_surname.Text;
             //Retrieving clientType
             //clienttype clientType = (bool)(ckbBusiness.IsChecked) ? clienttype.Business : clienttype.Individual;
 
@@ -123,7 +123,7 @@ namespace SeleleTravel
             catch (Exception ex)
             {
                 //other error
-                throw ex;
+               // throw ex;
             }
         }
 
@@ -551,6 +551,8 @@ namespace SeleleTravel
 
         #endregion
 
+
+        //Opening a word document from the program
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             object oMissing = System.Reflection.Missing.Value;
