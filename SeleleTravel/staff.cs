@@ -11,9 +11,7 @@ namespace SeleleTravel
 {
     using System;
     using System.Collections.Generic;
-    using System.Windows;
-    using System.Windows.Forms;
-
+    
     public partial class staff
     {
         public string staff_id { get; set; }
@@ -22,57 +20,7 @@ namespace SeleleTravel
         public string staffposition { get; set; }
         public Nullable<System.DateTime> dateofhire { get; set; }
         public Nullable<double> salary { get; set; }
-        public string password { get; set; }
-        /// <summary>
-        /// The location where the employee is based.(Useful in the Managers 'getEmployees' method).
-        /// </summary>
         public string branch { get; set; }
-
-        /// <summary>
-        /// This is a list of all the employees that are hired by the company.
-        /// </summary>
-        public static List<staff> hiredEmployees = new List<staff>();
-        static int numberOfEmployees = 0;
-        /// <summary>
-        /// Generates an employee id.
-        /// </summary>
-        /// <returns></returns>
-        private void makeEmployeeID()
-        {
-            string idEnding = numberOfEmployees.ToString();
-            while (idEnding.Length < 4)
-            {
-                idEnding = idEnding.PadLeft(1, '0');
-            }
-            staff_id = dateofhire.Value.Year + stafflastname[0] + idEnding;
-        }
-        /// <summary>
-        /// Changes the password of this employee. Status : Incomplete
-        /// </summary>
-        /// <param name="newPassword"></param>
-        public void updatePassword(string newPassword)
-        {
-            password = newPassword;
-
-            //Reflect the changes on the database
-
-            //Displaying to user
-            string message = "Password successfully updated!";
-            //System.Windows.Forms.MessageBox.Show(message, "Alert..", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-        }
-        public override string ToString()
-        {
-            return stafffirstnames + " " + stafflastname;
-        }
-        public staff(string names, string surname, string location = "East London")
-        {
-            stafffirstnames = names;
-            stafflastname = surname;
-            branch = location;
-            if (!(this is Boss))
-                makeEmployeeID();
-            else staff_id = stafffirstnames + " " + stafflastname;
-            numberOfEmployees++;
-        }
+        public string password { get; set; }
     }
 }

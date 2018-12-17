@@ -21,14 +21,5 @@ namespace SeleleTravel
         public string agency_id { get; set; }
         public string staff_id { get; set; }
         public Nullable<double> amount { get; set; }
-
-        voucher(order _order, client Client, accommodation Accom, agencydetail Agency, staff Staff, double amount)
-        {
-            order_no = _order.order_no;
-            client_id = Client.client_no;
-            accomm_id = Accom.accom_id;
-            agency_id = Agency.agency_id;
-            staff_id = Staff.staff_id;
-        }
     }
 }

@@ -21,7 +21,5 @@ namespace SeleleTravel
         public string emailaddress { get; set; }
         public string faxnumber { get; set; }
         public string cellphone { get; set; }
-
-        //TODO - acomm_id generation function
     }
 }
