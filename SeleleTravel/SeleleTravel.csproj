@@ -158,6 +158,12 @@
     <Compile Include="order.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Owner_Employees_Window.xaml.cs">
+      <DependentUpon>Owner_Employees_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Owner_Financial_Window.xaml.cs">
+      <DependentUpon>Owner_Financial_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="quote.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
@@ -253,6 +259,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Owner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Owner_Employees_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Owner_Financial_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
