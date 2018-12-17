@@ -137,7 +137,8 @@ namespace SeleleTravel
         /// <returns></returns>
         public static DateTime checkFirstDay(List<DateTime> dateTimes)
         {
-            return
+            DateTime v = dateTimes[1];
+            return v;
         }
 
         /// <summary>
@@ -147,7 +148,8 @@ namespace SeleleTravel
         /// <returns></returns>
         public static DateTime checkLastDay(List<DateTime> dateTimes)
         {
-            return
+            DateTime v = dateTimes[1];
+            return v;
         }
 
         /// <summary>
@@ -179,8 +181,8 @@ namespace SeleleTravel
 
             // 1.
 
-
-            return
+            Dictionary<string, Dictionary<string, string>> keyValuePairs = new Dictionary<string, Dictionary<string, string>>();
+            return keyValuePairs;
         }
     }
 }
