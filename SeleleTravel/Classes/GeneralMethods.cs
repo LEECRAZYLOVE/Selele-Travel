@@ -5,17 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.IO;
 
 namespace SeleleTravel
 {
 
     public static class GeneralMethods
     {
+
+        /// <summary>
+        /// closes all windows open.
+        /// </summary>
         public static void closeAllWindows()
         {
             foreach (Window w in Application.Current.Windows)
                 w?.Close();
         }
+
+        /// <summary>
+        /// Logs out the window
+        /// </summary>
+        /// <param name="windowToLogOutOff"></param>
         public static void logOut(Window windowToLogOutOff)
         {
             windowToLogOutOff.Hide();
@@ -118,6 +128,59 @@ namespace SeleleTravel
             {
                 x.Text = "";
             }
+        }
+
+        /// <summary>
+        /// Checks for the first day of service from  list of given dates
+        /// </summary>
+        /// <param name="dateTimes"></param>
+        /// <returns></returns>
+        public static DateTime checkFirstDay(List<DateTime> dateTimes)
+        {
+            return
+        }
+
+        /// <summary>
+        /// Checks the last day from a list of given dates.
+        /// </summary>
+        /// <param name="dateTimes"></param>
+        /// <returns></returns>
+        public static DateTime checkLastDay(List<DateTime> dateTimes)
+        {
+            return
+        }
+
+        /// <summary>
+        /// Gets the first and last day of service rendered from the services that are currently being created. 
+        /// It stores the dates in a csv file.
+        /// format: Order Number, Start date, End date
+        /// </summary>
+        /// <returns></returns>
+        public static void checkEndOfservices()
+        {
+            // 1. Get the order number
+            // 2. Get the dates
+            // 3. store the info in a csv file
+
+            // 1.
+            
+        }
+
+        /// <summary>
+        /// Extract the data from the csv file and then sends it to manager
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<string,Dictionary<string,string>> getLastDayOfService()
+        {
+            // 1. extract data
+            // 2. compare todays date with the last day
+            // 3. If today is the last day then send it to the manager 
+            // 4. and then delete it from the csv file
+
+            // 1.
+
+
+            return
         }
     }
 }

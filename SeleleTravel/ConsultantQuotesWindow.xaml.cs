@@ -108,8 +108,6 @@ namespace SeleleTravel
 
         #region Already a Client Display
 
-        #endregion
-
         private void BtnOldClient_find_Click(object sender, RoutedEventArgs e)
         {
             // Assign the value to be searched to the variable
@@ -118,7 +116,14 @@ namespace SeleleTravel
             // Results from the database
             txblOldClient_Details.Text = "";
         }
+        
+        private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        #endregion
+        
         #endregion
 
         #region General Methods/Events
@@ -169,6 +174,10 @@ namespace SeleleTravel
 
             stringVs.Add(nameOfEvent);
             stringVs.Add(eventSpecs);
+
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
             bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
 
             if(!boolValue)
@@ -240,6 +249,9 @@ namespace SeleleTravel
 
             dateTimes.Add(dateOfConference);
 
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
             bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
             bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
@@ -294,6 +306,9 @@ namespace SeleleTravel
 
             dateTimes.Add(_dateOfPickup);
 
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
             bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
             bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
@@ -356,6 +371,9 @@ namespace SeleleTravel
             dateTimes.Add(departureDate);
             dateTimes.Add(arrivalDate);
 
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
             bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
             bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
             
@@ -432,6 +450,9 @@ namespace SeleleTravel
             dateTimes.Add(checkInDate);
             dateTimes.Add(checkOutDate);
 
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
             bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
             bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
@@ -487,6 +508,9 @@ namespace SeleleTravel
             dateTimes.Add(_startday);
             dateTimes.Add(_endDay);
 
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
             bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
             bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
@@ -678,7 +702,6 @@ namespace SeleleTravel
             GeneralMethods.logOut(this);
 
         }
-
     }
 }
 

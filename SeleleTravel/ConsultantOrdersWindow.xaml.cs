@@ -29,9 +29,28 @@ namespace SeleleTravel
             // Extract and assign to variables
             string orderNumber = txbConsultant_Orders_orderNumber.Text;
             string quoteNumber = txbConsultant_Orders_inputQuote.Text;
-            string order = txbConsultant_Orders_viewQuote.Text;
+
+            // Display data from the database which is belongs to the current quote number
+            // 1. Assign the the data to variables so that it becomes easy to store the database again when creating a new order
+            // 2. Display the data in the textbox
+
+            txbConsultant_Orders_viewQuote.Text = ""; // DISPLAY TEXTBOX 
 
             // 
+
+        }
+
+        private void BtnConvsultant_Orders_viewQuote_Click(object sender, RoutedEventArgs e)
+        {
+            // extract data from the database and display it in the textbox for displaying
+            // the data is the one partaining to the current quote number.
+
+
+        }
+
+        private void BtnConsultant_Orders_selectQuote_Click(object sender, RoutedEventArgs e)
+        {
+            // Link the current quote number to the new order that will be generated
 
         }
     }

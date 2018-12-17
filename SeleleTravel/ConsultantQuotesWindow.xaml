@@ -64,7 +64,7 @@
                     <Canvas x:Name="cvsOldClient1" Grid.Column="1" HorizontalAlignment="Right" Width="394">
                         <Label x:Name="label14" Content="Already A Client" Canvas.Left="152" Canvas.Top="10" Width="96"/>
                         <TextBlock x:Name="txblOldClient_Details" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="34" Canvas.Top="80" Height="227" Width="323"><Run Text="TextBlockOutput"/></TextBlock>
-                        <Button x:Name="btnOldClient_select" Content="SELECT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Canvas.Left="282" Canvas.Top="312"/>
+                        <Button x:Name="btnOldClient_select" Content="SELECT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Canvas.Left="282" Canvas.Top="312" Click="BtnOldClient_select_Click"/>
                         <Button x:Name="btnOldClient_update" Content="UPDATE"  Canvas.Left="-320" Canvas.Top="317" Click="createNewClient_Click" Height="20" Width="75" Background="#FF45D310" Visibility="Hidden"/>
                     </Canvas>
                     <TextBox x:Name="txbOldClient_find" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="32,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247"/>
