@@ -22,24 +22,5 @@ namespace SeleleTravel
         public string order_no { get; set; }
         public string conferencespecs { get; set; }
         public Nullable<double> amount { get; set; }
-
-        public conference(string venueOfConference, string nameOfConference, DateTime dateOfConference, string timeOfConference, double amountOfConference, string conferenceSpecs)
-        {
-            this.venue = venueOfConference;
-            this.conferencename = nameOfConference;
-            dateofconference = dateOfConference;
-            timeconference = timeOfConference;
-            amount = amountOfConference;
-            conferencespecs = conferenceSpecs;
-        }
-
-        public override string ToString()
-        {
-            string output = $"Thank you for choosing Selele Travel & Accomodation these are your conference details\n" +
-                            $"Venue of conference: {venue}\n" +
-                            $"Name of conference: {conferencename}\n" +
-                            $"Time of conference: {timeconference}\n";
-            return output;
-        }
     }
 }

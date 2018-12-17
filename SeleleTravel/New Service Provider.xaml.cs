@@ -39,14 +39,27 @@ namespace SeleleTravel
                 faxnumber = txbNewService_fax.Text,
                 cellphone = txbNewService_cellphone.Text
             };
-
-            context.accommodationdetails.Add(currentServiceProvider);
-            context.SaveChanges();
-            MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentServiceProvider.accomm_id}");
+      
+            try
+            {
+                context.accommodationdetails.Add(currentServiceProvider);
+                context.SaveChanges();
+                MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentServiceProvider.accomm_id}");
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+            }
 
         }
 
-    private void New_Service_Provider_Home_Closed(object sender, EventArgs e)
+        private void New_Service_Provider_Home_Closed(object sender, EventArgs e)
         {
             GeneralMethods.closeAllWindows();
         }

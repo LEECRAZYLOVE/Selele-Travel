@@ -17,15 +17,8 @@ namespace SeleleTravel
         public string order_no { get; set; }
         public string quote_no { get; set; }
         public string client_no { get; set; }
+        public string timeordered { get; set; }
         public Nullable<System.DateTime> datereceived { get; set; }
         public Nullable<System.DateTime> orderdate { get; set; }
-
-        public order(quote _approvedQuote, string _orderNumber, DateTime orderDate)
-        {
-            quote_no = _approvedQuote.quote_no;
-            order_no = _orderNumber;
-            datereceived = DateTime.Now;
-            orderdate = orderDate;
-        }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SeleleModel.Store" Provider="Devart.Data.PostgreSql" ProviderManifestToken="PostgreSQL, 11.1.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SeleleModel.Store" Provider="Devart.Data.PostgreSql" ProviderManifestToken="PostgreSQL, 11.1.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="accommodation">
           <Key>
             <PropertyRef Name="quote_no" />
@@ -136,7 +136,6 @@
           <Property Name="eventspecs" Type="varchar" MaxLength="65535" />
           <Property Name="eventname" Type="varchar" MaxLength="50" />
           <Property Name="amount" Type="double precision" />
-          <Property Name="eventcost" Type="varchar" MaxLength="65535" />
         </EntityType>
         <EntityType Name="flight">
           <Key>
@@ -152,6 +151,7 @@
           <Property Name="numberofbags" Type="int" />
           <Property Name="totalamount" Type="double precision" />
           <Property Name="flightspecs" Type="varchar" MaxLength="65535" />
+          <Property Name="numberofpassengers" Type="int" />
         </EntityType>
         <EntityType Name="invoice">
           <Key>
@@ -173,7 +173,6 @@
           <Property Name="order_no" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="quote_no" Type="char" MaxLength="10" />
           <Property Name="client_no" Type="varchar" MaxLength="50" />
-          <Property Name="timeordered" Type="varchar" MaxLength="10" />
           <Property Name="datereceived" Type="date" />
           <Property Name="orderdate" Type="date" />
         </EntityType>
@@ -189,9 +188,9 @@
           <Property Name="datesent" Type="date" />
           <Property Name="quotedate" Type="date" />
           <Property Name="consultant_no" Type="varchar" MaxLength="15" />
-          <Property Name="agencyphonenumber" Type="varchar" MaxLength="15" />
           <Property Name="servicefee" Type="double precision" />
-          <Property Name="agencyname" Type="varchar" MaxLength="50" />
+          <Property Name="client_no" Type="varchar" MaxLength="50" />
+          <Property Name="clientname" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="staff">
           <Key>
@@ -204,6 +203,7 @@
           <Property Name="dateofhire" Type="date" />
           <Property Name="salary" Type="double precision" />
           <Property Name="branch" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="voucher">
           <Key>
@@ -235,8 +235,7 @@
           <EntitySet Name="staff" EntityType="Self.staff" Schema="public" store:Type="Tables" />
           <EntitySet Name="voucher" EntityType="Self.voucher" Schema="public" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SeleleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -387,6 +386,7 @@
           <Property Name="numberofbags" Type="Int32" />
           <Property Name="totalamount" Type="Double" />
           <Property Name="flightspecs" Type="String" MaxLength="65535" FixedLength="false" Unicode="true" />
+          <Property Name="numberofpassengers" Type="Int32" />
         </EntityType>
         <EntityType Name="invoice">
           <Key>
@@ -427,6 +427,8 @@
           <Property Name="agencyphonenumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="servicefee" Type="Double" />
           <Property Name="agencyname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="client_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="clientname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="staff">
           <Key>
@@ -439,6 +441,7 @@
           <Property Name="dateofhire" Type="DateTime" />
           <Property Name="salary" Type="Double" />
           <Property Name="branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="voucher">
           <Key>
@@ -615,13 +618,13 @@
                 <ScalarProperty Name="eventspecs" ColumnName="eventspecs" />
                 <ScalarProperty Name="eventname" ColumnName="eventname" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="eventcost" ColumnName="eventcost" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="flights">
             <EntityTypeMapping TypeName="SeleleModel.flight">
               <MappingFragment StoreEntitySet="flight">
+                <ScalarProperty Name="numberofpassengers" ColumnName="numberofpassengers" />
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
                 <ScalarProperty Name="airline" ColumnName="airline" />
@@ -655,7 +658,6 @@
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="client_no" ColumnName="client_no" />
-                <ScalarProperty Name="timeordered" ColumnName="timeordered" />
                 <ScalarProperty Name="datereceived" ColumnName="datereceived" />
                 <ScalarProperty Name="orderdate" ColumnName="orderdate" />
               </MappingFragment>
@@ -664,6 +666,8 @@
           <EntitySetMapping Name="quotes">
             <EntityTypeMapping TypeName="SeleleModel.quote">
               <MappingFragment StoreEntitySet="quote">
+                <ScalarProperty Name="clientname" ColumnName="clientname" />
+                <ScalarProperty Name="client_no" ColumnName="client_no" />
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="service" ColumnName="service" />
@@ -672,15 +676,14 @@
                 <ScalarProperty Name="datesent" ColumnName="datesent" />
                 <ScalarProperty Name="quotedate" ColumnName="quotedate" />
                 <ScalarProperty Name="consultant_no" ColumnName="consultant_no" />
-                <ScalarProperty Name="agencyphonenumber" ColumnName="agencyphonenumber" />
                 <ScalarProperty Name="servicefee" ColumnName="servicefee" />
-                <ScalarProperty Name="agencyname" ColumnName="agencyname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="staffs">
             <EntityTypeMapping TypeName="SeleleModel.staff">
               <MappingFragment StoreEntitySet="staff">
+                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="staff_id" ColumnName="staff_id" />
                 <ScalarProperty Name="stafffirstnames" ColumnName="stafffirstnames" />
                 <ScalarProperty Name="stafflastname" ColumnName="stafflastname" />

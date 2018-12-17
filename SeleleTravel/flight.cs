@@ -25,58 +25,5 @@ namespace SeleleTravel
         public Nullable<double> totalamount { get; set; }
         public string flightspecs { get; set; }
         public Nullable<int> numberofpassengers { get; set; }
-
-        public List<string> passengers;
-        public string flightnumber;
-        public string checkin;
-        /// <summary>
-        /// Flight
-        /// Takes in info that is required for flight booking
-        /// </summary>
-        /// <param name="airline"></param>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
-        /// <param name="departure"></param>
-        /// <param name="numberOfbags"></param>
-        /// /// <param name="passengers"></param>
-        public flight(string airline, string from, string to, DateTime departure, DateTime arrivedate, int numberOfbags, int numberofpassengers, List<string> passengers, double totalAmount)
-        {
-            this.airline = airline;
-            fromcity = from;
-            tocity = to;
-            departdate = departure;
-            this.arrivedate = arrivedate;
-            numberofbags = numberOfbags;
-            this.numberofpassengers = numberofpassengers;
-            totalamount = totalAmount;
-            this.passengers = passengers;
-        }
-
-        /// <summary>
-        /// Depart and Arrival
-        /// This method takes in the details provided by the airline and then overide those entered in the constructor
-        /// </summary>
-        /// <param name="airlineDeparture"></param>
-        /// <param name="airlineArrival"></param>
-        /// <param name="flightNumber"></param>
-        public void departure_And_Arrival(DateTime airlineDeparture, DateTime airlineArrival, string flightNumber)
-        {
-            departdate = airlineDeparture;
-            arrivedate = airlineArrival;
-            flightnumber = flightNumber;
-        }
-
-        public override string ToString()
-        {
-            string output = $"Thank you for choosing Selele Travel & Accomodation these are your flight details belows\n" +
-                            $"{airline}\n" +
-                            $"From {fromcity} to {tocity}\n" +
-                            $"Check in time: {checkin}\n" +
-                            $"Departure time: {departdate}\n" +
-                            $"Arrival time: {arrivedate}\n" +
-                            $"Number of bags: {numberofbags}" +
-                            $"Safe travels.\n";
-            return output;
-        }
     }
 }
