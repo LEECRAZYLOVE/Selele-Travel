@@ -434,7 +434,7 @@
                 <Grid Background="#FFE5E5E5">
                     <Label x:Name="label43" Content="Name:" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label44" Content="Venue:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,68,0,0"/>
-                    <Label x:Name="label45" Content="Date:" HorizontalAlignment="Left" Margin="49,118,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label45" Content="Start date:" HorizontalAlignment="Left" Margin="10,113.49,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label46" Content="Specifications:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="394,10,0,0"/>
                     <Label x:Name="label47" Content="Time:" HorizontalAlignment="Left" Margin="242,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.526,0.115"/>
                     <TextBox x:Name="txbConference_name" HorizontalAlignment="Left" Height="23" Margin="99,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266"/>
@@ -447,6 +447,8 @@
                     <Button x:Name="btnConference_done" Content="DONE" HorizontalAlignment="Left" Margin="394,312,0,0" VerticalAlignment="Top" Width="75" Click="BtnConference_done_Click"/>
                     <Button x:Name="btnConference_update" Content="UPDATE" HorizontalAlignment="Left" Margin="394,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden"/>
                     <Label Content="R" HorizontalAlignment="Left" Margin="375,284,0,0" VerticalAlignment="Top" Height="23"/>
+                    <DatePicker HorizontalAlignment="Left" Height="35.2" Margin="174.094,196.29,0,0" VerticalAlignment="Top" Width="219.703"/>
+                    <Label x:Name="label45_Copy" Content="End Date:" HorizontalAlignment="Left" Margin="65.466,195.29,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Events" Style="{DynamicResource TabItemStyle}">
@@ -460,6 +462,10 @@
                     <Button x:Name="btnEvents_done" Content="DONE" HorizontalAlignment="Left" Margin="699,312,0,0" VerticalAlignment="Top" Width="75" Click="_done"/>
                     <Button Content="btnEvents_update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="699,312,0,0" Background="#FF45D310" Visibility="Hidden"/>
                     <Label x:Name="rands" Content="R" HorizontalAlignment="Left" Margin="699,284,0,0" VerticalAlignment="Top" Height="23"/>
+                    <DatePicker HorizontalAlignment="Left" Height="27.733" Margin="130.333,365.89,0,0" VerticalAlignment="Top" Width="187.734"/>
+                    <DatePicker HorizontalAlignment="Left" Height="27.733" Margin="360.733,365.89,0,0" VerticalAlignment="Top" Width="187.734"/>
+                    <TextBlock HorizontalAlignment="Left" Height="24.867" Margin="144.2,398.623,0,0" TextWrapping="Wrap" Text="Start" VerticalAlignment="Top" Width="126.933"/>
+                    <TextBlock HorizontalAlignment="Left" Height="24.867" Margin="394.867,398.623,0,0" TextWrapping="Wrap" Text="End" VerticalAlignment="Top" Width="104.533"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Quote Summary" Style="{DynamicResource TabItemStyle}">
