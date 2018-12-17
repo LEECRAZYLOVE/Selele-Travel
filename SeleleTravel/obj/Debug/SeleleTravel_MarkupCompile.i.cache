@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Litha Stuurman\Desktop\Selele Travel App\SeleleTravel\obj\Debug\
+C:\Users\Simpiwe\source\repos\Selele-Travel\SeleleTravel\obj\Debug\
 SeleleTravel
 none
 false
 DEBUG;TRACE
-C:\Users\Litha Stuurman\Desktop\Selele Travel App\SeleleTravel\App.xaml
-151471319147
+C:\Users\Simpiwe\source\repos\Selele-Travel\SeleleTravel\App.xaml
+15460788311
 22094804178
-461545957753
-141-1361493364
-Compose_Message_Window.xaml;Consultant_Orders_Window.xaml;Consultant_Home_Window.xaml;Consultant_Quotes_Window.xaml;Consultant_Update_Window.xaml;Consultant_Vouchers_Window.xaml;Log In.xaml;MainWindow.xaml;Manager Home.xaml;Manager_Authorizations_Window.xaml;Manager_Confirmations_Window.xaml;Manager_Invoices_Window.xaml;Manager_Quotes_Window.xaml;New Service Provider.xaml;Owner.xaml;
+461927111030
+141-1835206910
+ComposeMessageWindow.xaml;ConsultantOrdersWindow.xaml;ConsultantHomeWindow.xaml;ConsultantQuotesWindow.xaml;ConsultantUpdateWindow.xaml;ConsultantVouchersWindow.xaml;LogInWindow.xaml;MainWindow.xaml;Manager Home.xaml;Manager_Authorizations_Window.xaml;Manager_Confirmations_Window.xaml;Manager_Invoices_Window.xaml;Manager_Quotes_Window.xaml;New Service Provider.xaml;Owner.xaml;
 
 True
 
