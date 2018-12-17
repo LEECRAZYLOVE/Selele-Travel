@@ -24,6 +24,5 @@ namespace SeleleTravel
         public Nullable<int> numberofrooms { get; set; }
         public Nullable<double> amount { get; set; }
         public string accomspecs { get; set; }
-
     }
 }

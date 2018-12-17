@@ -70,21 +70,21 @@ namespace SeleleTravel
         //Status : Incomplete
         private void createNewClient_Click(object sender, RoutedEventArgs e)
         {
-            string names = txbNewClient_name.Text + " " + txbNewClient_surname;
+            string names = txbNewClient_name.Text + " " + txbNewClient_surname.Text;
             //Retrieving clientType
-            clienttype clientType = (bool)(ckbBusiness.IsChecked) ? clienttype.Business : clienttype.Individual;
+            //clienttype clientType = (bool)(ckbBusiness.IsChecked) ? clienttype.Business : clienttype.Individual;
 
             //Get contact details
-            string cellphone = txbNewClient_cellphone.Text;
-            string fax = txbNewClient_fax.Text;
+            string Cellphone = txbNewClient_cellphone.Text;
+            string Fax = txbNewClient_fax.Text;
 
             // email verification 
             txbNewClient_email = checkEmail(txbNewClient_email);
             string email = txbNewClient_email.Text;
 
-            string telephone = txbNewClient_telephone.Text;
+            string Telephone = txbNewClient_telephone.Text;
 
-            ContactDetails contactDetails = new ContactDetails(cellphone, email, telephone, fax);
+            ContactDetails contactDetails = new ContactDetails(Cellphone, email, Telephone, Fax);
 
             //Get location details
             string address = txbNewClient_address.Text;
@@ -94,14 +94,37 @@ namespace SeleleTravel
             //use this in initialisation of client
             string _location = address + '\n' + city + '\n' + areaCode + '\n' + province;
 
-            //Initialize Client instance
-            client client = new client(names, clientType, contactDetails)
+            //Initialize Client  and DBConnect instance
+            var context = new SeleleEntities();
+            var currentClient = new client()
             {
-                address = _location
+                client_no = "J67", //This will be automatically generated. I'm using a dummy to test queries.
+                quote_no = "1234",
+                clientname = names,
+                cellphone = Cellphone,
+                address = _location,
+                emailaddress = email,
+                telephone = Telephone,
+                fax = Fax,
             };
 
             //Add client to database
-
+            try
+            {
+                context.clients.Add(currentClient);
+                context.SaveChanges();
+                MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentClient.client_no}");
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+               // throw ex;
+            }
         }
 
         #endregion
@@ -182,34 +205,33 @@ namespace SeleleTravel
 
             if(!boolValue)
             {
-                // todo..
-                // create an instnce of the event class
+               //create an instnce of the event class and dbconnect
                 var context = new SeleleEntities();
-                var currentEvent = new @event(nameOfEvent, eventSpecs, eventAmount)//(nameOfEvent, eventSpecs, eventAmount);
+                var currentEvent = new @event()//(nameOfEvent, eventSpecs, eventAmount);
                 {
+                    eventname = nameOfEvent,
+                    eventspecs=  eventSpecs,
+                    amount = eventAmount,
                     quote_no = "1234",
-                    order_no = "5678"
+                    //order_no = "5678"
                 };
 
-
-
-                // Todo sql insertion
-
-                // try
-                // {
-                //     context.events.Add(currentEvent);
-                //     context.SaveChanges();
-                // }
-                // catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-                // {
-                //     var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                //     var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-                // }
-                //catch (Exception ex)
-                //{
-                //    //other error
-                //    throw ex;
-                //}
+                //sql insertion
+                try
+                {
+                    context.events.Add(currentEvent);
+                    context.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+                }
+                catch (Exception ex)
+                {
+                    //other error
+                    throw ex;
+                }
 
                 // reset texbox values to empty
                 // call the clear textbox method
@@ -258,7 +280,7 @@ namespace SeleleTravel
             if(!boolValue && !valueOfBool)
             {
                 // todo...
-                conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
+               // conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
 
                 // Todo sql insertion
                 // ...
@@ -316,7 +338,7 @@ namespace SeleleTravel
             {
                 // todo
                 // create the instance after checking for errors
-                var taxiCab = new cabservice(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs, _totalAmount);
+               // var taxiCab = new cabservice(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs, _totalAmount);
 
                 // Todo sql insertion
                 // ...
@@ -389,10 +411,10 @@ namespace SeleleTravel
                 else
                 {
                     // creates an instance of the flight class
-                    var Flight = new flight(airlineName, fromLoc, toLoc, departureDate, arrivalDate, numberOfBags, _passengers.Count(), _passengers, totolAmount);
-                    {
+                    //var Flight = new flight(airlineName, fromLoc, toLoc, departureDate, arrivalDate, numberOfBags, _passengers.Count(), _passengers, totolAmount);
+                    //{
 
-                    };
+                    //};
                 }
 
                 // reset the textbox values to empty
@@ -520,10 +542,10 @@ namespace SeleleTravel
             if(!boolValue && !valueOfBool)
             {
                 // Create an instance of carhire
-                var _carHire = new carhire(agencyName, pickUpLocation, dropOffLocation, _startday, _endDay);
-                {
+                //var _carHire = new carhire(agencyName, pickUpLocation, dropOffLocation, _startday, _endDay);
+                //{
 
-                };
+                //};
 
                 // Reset the textboxes
                 // call the clear textbox method
@@ -553,6 +575,8 @@ namespace SeleleTravel
 
         #endregion
 
+
+        //Opening a word document from the program
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             object oMissing = System.Reflection.Missing.Value;

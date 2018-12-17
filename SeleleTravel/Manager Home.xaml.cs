@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Timers;
+using System.IO;
 
 namespace SeleleTravel
 {
@@ -154,7 +155,10 @@ namespace SeleleTravel
 
         private void btnManager_Quotes_Click(object sender, RoutedEventArgs e)
         {
-
+            var x = Directory.EnumerateFiles(".");
+            string ans = "";
+            x.ToList().ForEach(d => ans = $"{ans}\n{d}");
+            MessageBox.Show(ans);
         }
     }
 }

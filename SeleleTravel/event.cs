@@ -19,12 +19,6 @@ namespace SeleleTravel
         public string eventspecs { get; set; }
         public string eventname { get; set; }
         public Nullable<double> amount { get; set; }
-
-        public @event(string name, string specs, double amount)
-        {
-            eventname = name;
-            eventspecs = specs;
-            this.amount = amount;
-        }
+        public string eventcost { get; set; }
     }
 }

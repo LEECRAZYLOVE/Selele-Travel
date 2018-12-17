@@ -5,18 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Compose_Message_Window" Height="450" Width="800">
-    <Grid Background="#FFE5E5E5" HorizontalAlignment="Left" Width="790" Height="418.29" VerticalAlignment="Top">
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="Compose a message" Height="500" Width="850">
+    <Grid Background="#FFFDF5BD">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="73*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="label49" Content="Name/Staff ID:" HorizontalAlignment="Left" Margin="1,11.05,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="25.96" Width="87.54"/>
-        <Label x:Name="label50" Content="Message:" HorizontalAlignment="Left" Margin="1,97.684,0,0" VerticalAlignment="Top" Height="25.96" Width="59.29"/>
-        <TextBox x:Name="txbMessage_name" HorizontalAlignment="Left" Height="23" Margin="29,14.01,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="584" Grid.Column="1"/>
-        <TextBox x:Name="txbMessage_message"  HorizontalAlignment="Left" Height="309.576" Margin="29,97.684,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="584" Grid.Column="1"/>
-        <Button x:Name="btnMessage_send" Content="SEND" HorizontalAlignment="Left" Width="75" Margin="630.2,387,0,0" Click="BtnMessage_send_Click" Grid.Column="1" Height="20" VerticalAlignment="Top"/>
-        <Label x:Name="label" Content="Subject:" HorizontalAlignment="Left" Margin="2.165,46.253,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,-0.079" Height="25.96" Width="58.125"/>
-        <TextBox x:Name="txbMessage_subject" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="29,49.213,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="584"/>
+        <!-- Left hand Side-->
+        <StackPanel>
+            <TextBlock Text="Name/Staff ID :" FontFamily="Comic Sans MS" FontSize="16" Margin="12" />
+            <TextBlock Text="Subject :" FontFamily="Comic Sans MS" FontSize="16" Margin="12 7"/>
+            <TextBlock Text="Message :" FontFamily="Comic Sans MS" FontSize="16" Margin="12 7"/>
+        </StackPanel>
+        <!-- Middle -->
+        <StackPanel Grid.Column="1">
+            <TextBox x:Name="txbMessage_name" FontSize="16" Height="30" Padding="5" Margin="10" FontFamily="Arial" Background="#FFFFFCE4"/>
+            <TextBox x:Name="txbMessage_subject" FontSize="16" Height="30" Padding="5" Margin="10 0" Background="#FFFFFCE4"/>
+            <TextBox x:Name="txbMessage_message" FontSize="16" Margin="10" Padding="5" Height="340" Background="#FFFFFCE4"/>
+        </StackPanel>
+
+        <!--Right hand side-->
+        <Button x:Name="btnMessage_send" Grid.Column="2" Content="Send Message" Height="40" Margin="10 20" VerticalAlignment="Bottom" Background="#FFBDF0BD"/>
     </Grid>
 </Window>

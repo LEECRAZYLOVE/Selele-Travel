@@ -313,7 +313,7 @@
             <Setter Property="Width" Value="125"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Template">
-                
+
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
@@ -341,6 +341,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
     </Window.Resources>
     <Grid Background="#FFFDFDA3">
         <TabControl x:Name="Consultant_tabControl" Margin="0,10,0,0" Background="#FFFFD86B">
@@ -363,15 +364,15 @@
                     <Label Content="Drop Off:"  Margin="368.968,71,442.07,488.367" Style="{DynamicResource LabelStyle}"/>
                     <Label Content="Start Day:" Margin="18,117.75,791.924,436.464" Style="{DynamicResource LabelStyle}"/>
                     <Label Content="End Day:"  Margin="368.968,113.5,449.102,436.464" Style="{DynamicResource LabelStyle}"/>
-                    <TextBox x:Name="txbCarHire_agency" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="615" Margin="117,26,0,0"/>
-                    <TextBox x:Name="txbCarHire_pickUp" HorizontalAlignment="Left" Height="40" Margin="117,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Grid.ColumnSpan="3"/>
-                    <TextBox x:Name="txbCarHire_dropOff" HorizontalAlignment="Left" Height="40" Margin="471.854,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
+                    <TextBox x:Name="txbCarHire_agency" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="615" Margin="117,26,0,0" BorderBrush="Black"/>
+                    <TextBox x:Name="txbCarHire_pickUp" HorizontalAlignment="Left" Height="40" Margin="117,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Grid.ColumnSpan="3" BorderBrush="Black"/>
+                    <TextBox x:Name="txbCarHire_dropOff" HorizontalAlignment="Left" Height="40" Margin="471.854,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" BorderBrush="Black"/>
                     <DatePicker x:Name="dpCarHire_startDay" HorizontalAlignment="Left" Margin="117,122,0,0" VerticalAlignment="Top" Width="115" Grid.ColumnSpan="3" d:IsHidden="False"/>
                     <DatePicker x:Name="dpCarHire_endDay" HorizontalAlignment="Left" Margin="478,117.75,0,0" VerticalAlignment="Top" Width="115"/>
                     <Label  Content="Specifications:" Margin="18,239,745.247,313.401" Style="{DynamicResource LabelStyle}"/>
-                    <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="298.401" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="713.854" Margin="18,279.753,0,0" RenderTransformOrigin="0.5,0.5"/>
+                    <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="298.401" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="713.854" Margin="18,279.753,0,0" RenderTransformOrigin="0.5,0.5" BorderBrush="Black"/>
                     <Label Content="Number of cars:" Margin="18,197,745.247,354.154" Style="{DynamicResource LabelStyle}"/>
-                    <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="563.177" Margin="168.677,197,0,0"/>
+                    <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="563.177" Margin="168.677,197,0,0" BorderBrush="Black"/>
                     <Label Content="TOTAL:" Margin="739.208,463.783,96.981,93.035" Style="{DynamicResource LabelStyle}"/>
                     <TextBox x:Name="txbCarHire_total" HorizontalAlignment="Left" Height="38.035" Margin="778.924,500.119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="AmountChanged"/>
                     <Button x:Name="btnCarHire_update" Content="UPDATE"  Margin="739.208,543.154,10,10"  Click="BtnCarHire_update_Click" Style="{DynamicResource UpdateButtonStyle}" Width="Auto"/>
@@ -379,38 +380,38 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Taxi Cab" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7.124,0,-7.124,0" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFFFD86B">
-                    <Label x:Name="label25" Content="Agency:" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label26" Content="Driver:" HorizontalAlignment="Left" Margin="374,10,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label27" Content="Pick Up:" HorizontalAlignment="Left" Margin="31,73,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label28" Content="Time:" HorizontalAlignment="Left" Margin="374,73,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label29" Content="Date:" HorizontalAlignment="Left" Margin="516,71,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label30" Content="Drop Off:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,144,0,0"/>
-                    <Label x:Name="label31" Content="Specifications:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.579,3.192" Margin="10,216,0,0"/>
-                    <TextBox x:Name="txbCab_agency" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267" Margin="102,14,0,0"/>
-                    <TextBox x:Name="txbCab_pickUp" HorizontalAlignment="Left" Height="23" Margin="102,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="139"/>
-                    <TextBox x:Name="txbCab_dropOff" HorizontalAlignment="Left" Height="23" Margin="102,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="139"/>
-                    <TextBox x:Name="txbCab_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="98" Margin="102,216,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267"/>
-                    <TextBox x:Name="txbCab_driver" HorizontalAlignment="Left" Height="23" Margin="417,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267"/>
-                    <TextBox x:Name="txbCab_pickUpTime" HorizontalAlignment="Left" Height="23" Margin="417,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85"/>
-                    <DatePicker x:Name="dpCab_pickUpDate" HorizontalAlignment="Left" Margin="559,73,0,0" VerticalAlignment="Top" Width="125"/>
-                    <Label x:Name="label32" Content="Number of cabs:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="315,148,0,0"/>
-                    <TextBox x:Name="txbCab_numCabs" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" Margin="417,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="45"/>
-                    <Label x:Name="label34" Content="TOTAL:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="699,253,0,0"/>
-                    <TextBox x:Name="txbCab_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" Margin="699,284,0,0"/>
-                    <Button x:Name="btnCab_update" Content="UPDATE" Click="BtnCab_update_Click" Style="{DynamicResource UpdateButtonStyle}" Margin="530.797,345.187,123.202,232.212" />
-                    <Label Content="R" HorizontalAlignment="Left" Margin="675,284,0,0" VerticalAlignment="Top" Height="23"/>
-                </Grid>
+                <Canvas Background="#FFFFD86B" Margin="0,8.8,0,14.459" Width="912.381">
+                    <Label x:Name="label25" Content="Agency:"  Style="{DynamicResource LabelStyle}" Canvas.Left="20.94" Canvas.Top="14"/>
+                    <Label x:Name="label26" Content="Driver:"  Style="{DynamicResource LabelStyle}" Canvas.Left="470.764" Canvas.Top="14"/>
+                    <Label x:Name="label27" Content="Pick Up:"  Style="{DynamicResource LabelStyle}" Canvas.Left="20.193" Canvas.Top="75.8"/>
+                    <Label x:Name="label28" Content="Time:"  Style="{DynamicResource LabelStyle}" Canvas.Left="479.588" Canvas.Top="73"/>
+                    <Label x:Name="label29" Content="Date:"  Style="{DynamicResource LabelStyle}" Canvas.Left="644.573" Canvas.Top="68.75" />
+                    <Label x:Name="label30" Content="Drop Off:"  Style="{DynamicResource LabelStyle}" Canvas.Left="10" Canvas.Top="135.6"/>
+                    <Label x:Name="label31" Content="Specifications:" Style="{DynamicResource LabelStyle}" Canvas.Left="10" Canvas.Top="216.4"/>
+                    <TextBox x:Name="txbCab_agency" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Margin="109.483,14,0,0" FontFamily="Bell MT" FontSize="20" TextDecorations="{x:Null}" BorderBrush="#FF151515"/>
+                    <TextBox x:Name="txbCab_pickUp" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="314.806" Canvas.Left="119.677" Canvas.Top="73" FontFamily="Bell MT" FontSize="20" TextDecorations="{x:Null}" BorderBrush="#FF151515"/>
+                    <TextBox x:Name="txbCab_dropOff" HorizontalAlignment="Left" Height="40" Margin="119.677,135.6,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="314.806" FontFamily="Bell MT" FontSize="20" TextDecorations="{x:Null}" BorderBrush="#FF151515"/>
+                    <TextBox x:Name="txbCab_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="326.141" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="741.614" Canvas.Left="10" Canvas.Top="253" FontFamily="Bell MT" FontSize="20" TextDecorations="{x:Null}" BorderBrush="#FF151515"/>
+                    <TextBox x:Name="txbCab_driver" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="277.427" Canvas.Left="554.573" Canvas.Top="14" FontFamily="Bell MT" FontSize="20" TextDecorations="{x:Null}" BorderBrush="#FF151515"/>
+                    <TextBox x:Name="txbCab_pickUpTime" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="hh:mm" VerticalAlignment="Top" Width="85" Canvas.Left="554.573" Canvas.Top="74" FontFamily="Bell MT" FontSize="20" GotFocus="TxbCab_pickUpTime_GotFocus" LostFocus="TxbCab_pickUpTime_LostFocus" Foreground="#FFABADB3" BorderBrush="#FF151515"/>
+                    <DatePicker x:Name="dpCab_pickUpDate" HorizontalAlignment="Left" Margin="707,73,0,0" VerticalAlignment="Top" Width="125"/>
+                    <Label x:Name="label32" Content="Number of cabs Required:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="449.389,144,0,0" Style="{DynamicResource LabelStyle}"/>
+                    <TextBox x:Name="txbCab_numCabs" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="40" Margin="693,135.6,0,0" TextWrapping="Wrap" Text="" Width="139" FontFamily="Bell MT" FontSize="20" TextDecorations="{x:Null}" BorderBrush="#FF151515"/>
+                    <Label Content="TOTAL:" Style="{DynamicResource LabelStyle}" Canvas.Left="756.614" Canvas.Top="462.541"/>
+                    <TextBox x:Name="txbCab_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="119.233" Canvas.Left="782.381" Canvas.Top="499.141"/>
+                    <Button x:Name="btnCab_update" Content="UPDATE" Click="BtnCab_update_Click" Style="{DynamicResource UpdateButtonStyle}" Canvas.Left="756.614" Canvas.Top="544.141" Width="145" />
+                    <Label Content="R" Style="{DynamicResource LabelStyle}" Canvas.Left="756.614" Canvas.Top="499.141"/>
+                </Canvas>
             </TabItem>
             <TabItem Header="Flight" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2.693,0,-2.693,0" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFFFD86B">
-                    <Label x:Name="label21" Content="Airline:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,11,0,0"/>
-                    <Label x:Name="label18" Content="Passengers:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="128,11,0,0"/>
-                    <Label x:Name="label15" Content="To:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="255,62,0,0"/>
-                    <Label x:Name="label16" Content="From:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,62,0,0"/>
-                    <Label x:Name="label17" Content="Arrival:" VerticalAlignment="Top" Margin="236,115,28,0" RenderTransformOrigin="0.842,0.615"/>
-                    <Label x:Name="label19" Content="Departure:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,115,0,0"/>
-                    <Label x:Name="label20" Content="Number of bags:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,209,0,0"/>
+                <Canvas Background="#FFFFD86B" Width="901.583" Margin="0,10,0,22.152">
+                    <Label x:Name="label21" Content="Airline:" />
+                    <Label x:Name="label18" Content="Passengers:" />
+                    <Label x:Name="label15" Content="To:" />
+                    <Label x:Name="label16" Content="From:" />
+                    <Label x:Name="label17" Content="Arrival:" Style="{DynamicResource LabelStyle}" />
+                    <Label x:Name="label19" Content="Departure:" Canvas.Left="33.227" Canvas.Top="40.84" Style="{DynamicResource LabelStyle}" />
+                    <Label x:Name="label20" Content="Number of bags:" Style="{DynamicResource LabelStyle}" Canvas.Left="10" Canvas.Top="66.8"/>
                     <TextBox x:Name="txbFlight_airline" HorizontalAlignment="Left" Height="23" Margin="116,15,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" Grid.ColumnSpan="2"/>
                     <TextBox x:Name="txbFlight_passengers" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="204,15,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                     <TextBox x:Name="txbFlight_to" HorizontalAlignment="Left" Height="23" Margin="287,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
@@ -418,17 +419,17 @@
                     <DatePicker x:Name="dpFlight_departure" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="116,117,0,0" Width="115"/>
                     <DatePicker x:Name="dpFlight_arrival" HorizontalAlignment="Left" Margin="287,117,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="120"/>
                     <TextBox x:Name="txbFlight_numBags" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" Margin="116,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="39"/>
-                    <Label x:Name="label23" Content="Specifications:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,260,0,0"/>
-                    <TextBox x:Name="txbFlight_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="72" Margin="116,260,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" Grid.ColumnSpan="2"/>
-                    <ListBox x:Name="ltbFlight_passengersOutput" Grid.Column="1" HorizontalAlignment="Left" Height="270" Margin="204,62,0,0" VerticalAlignment="Top" Width="230"/>
-                    <Button x:Name="btnFlight_addPassenger" Content="ADD" Click="BtnFlight_addPassenger_Click" Style="{DynamicResource ButtonStyle}" Margin="215.417,384.456,93.582,192.943"/>
-                    <Label x:Name="label24" Content="Preferred time:" HorizontalAlignment="Left" Margin="192,209,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label23" Content="Specifications:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,260,0,0" Style="{DynamicResource LabelStyle}"/>
+                    <TextBox x:Name="txbFlight_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="273.648" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="410.417" Grid.ColumnSpan="2" Canvas.Left="10" Canvas.Top="296.6"/>
+                    <ListBox x:Name="ltbFlight_passengersOutput" Grid.Column="1" HorizontalAlignment="Left" Height="520.248" VerticalAlignment="Top" Width="320.823" Canvas.Left="570.76" Canvas.Top="50"/>
+                    <Button x:Name="btnFlight_addPassenger" Content="ADD" Click="BtnFlight_addPassenger_Click" Style="{DynamicResource ButtonStyle}" Canvas.Left="766.583" Canvas.Top="10"/>
+                    <Label x:Name="label24" Content="Preferred time:" Style="{DynamicResource LabelStyle}"/>
                     <TextBox x:Name="txbFlight_time" HorizontalAlignment="Left" Height="23" Margin="287,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-                    <Label x:Name="label35" Content="TOTAL:" Grid.Column="1" HorizontalAlignment="Left" Margin="114,255,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txbFlight_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Grid.Column="1" Margin="121,286,0,0"/>
-                    <Button x:Name="btnFlight_update" Content="UPDATE" Click="BtnFlight_update_Click" Style="{DynamicResource UpdateButtonStyle}" Grid.Column="1" Margin="78.88,386.168,235.119,191.231"/>
-                    <Label Content="R" Grid.Column="1" HorizontalAlignment="Left" Margin="102,286,0,0" VerticalAlignment="Top" Height="23"/>
-                </Grid>
+                    <Label x:Name="label35" Content="TOTAL:" Style="{DynamicResource LabelStyle}" Canvas.Left="454.685" Canvas.Top="453.648"/>
+                    <TextBox x:Name="txbFlight_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="111.075" Grid.Column="1" Canvas.Left="454.685" Canvas.Top="490.248"/>
+                    <Button x:Name="btnFlight_update" Content="UPDATE" Click="BtnFlight_update_Click" Style="{DynamicResource UpdateButtonStyle}" Grid.Column="1" Canvas.Left="425.417" Canvas.Top="535.248" Width="140.343"/>
+                    <Label Content="R"  Style="{DynamicResource LabelStyle}" Canvas.Left="425.417" Canvas.Top="493.12"/>
+                </Canvas>
             </TabItem>
             <TabItem Header="Accommodation" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-0.629,0,0,0" Style="{DynamicResource TabItemStyle}" VerticalContentAlignment="Stretch">
                 <Grid Background="#FFFFD86B">
