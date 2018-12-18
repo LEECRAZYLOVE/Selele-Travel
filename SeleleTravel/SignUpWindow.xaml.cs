@@ -15,26 +15,16 @@ using System.Windows.Shapes;
 namespace SeleleTravel
 {
     /// <summary>
-    /// Interaction logic for Owner_Employees_Window.xaml
+    /// Interaction logic for SignUpWindow.xaml
     /// </summary>
-    public partial class OwnerEmployeesWindow : Window
+    public partial class SignUpWindow : Window
     {
-        public OwnerEmployeesWindow()
+        public SignUpWindow()
         {
             InitializeComponent();
         }
 
-        private void btnOwner_search_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnEmployees_update_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnEmplyees_find_Click(object sender, RoutedEventArgs e)
+        private void btnSignUp_done_Click(object sender, RoutedEventArgs e)
         {
 
         }

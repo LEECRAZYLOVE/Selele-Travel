@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Owner_Employees_Page" Height="450" Width="800">
+        Title="Owner_Employees_Page" Height="800" Width="1200">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -171,11 +171,15 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Background="#FF84D8FF" Margin="0,0,-206,-300">
-        <Label Content="Employees" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0"/>
-        <TabControl HorizontalAlignment="Left" Height="630.8" Margin="10,79.6,0,0" VerticalAlignment="Top" Width="973.6">
+    <Grid Background="#FF84D8FF" Margin="0,-20,2,0.5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="86*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Employees" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="536.28,10,516.28,0" Grid.RowSpan="2" Width="137.44"/>
+        <TabControl HorizontalAlignment="Left" Height="708.821" Margin="10,53.1,0,0" VerticalAlignment="Top" Width="1180" Grid.Row="1">
             <TabItem Header="Employee Details" Margin="0,0,-20.309,0" Width="120.309" Height="30" HorizontalAlignment="Left">
-                <Canvas x:Name="cvsUpdateCleint" HorizontalAlignment="Right" Width="968.486" Background="#FFBFBFBF" Margin="0,0,-0.886,-8.2">
+                <Canvas x:Name="cvsUpdateCleint" HorizontalAlignment="Right" Width="1174.886" Background="#FFBFBFBF" Margin="0,0,-0.886,-8.2">
                     <Label Content="Search for an employee..." Canvas.Left="313.8" FontFamily="Rockvile" FontSize="20" BorderThickness="0,0,0,2" Canvas.Top="6.6" Width="290"/>
                     <Button x:Name="btnEmployees_update" Content="UPDATE EMPLOYEE"  Canvas.Left="770.891" Canvas.Top="65.6" Style="{DynamicResource UpdateButtonStyle}" Width="136.5" />
                     <TextBox x:Name="txbEmployees_find" HorizontalAlignment="Left" Height="35" Width="642.391" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="Black" Canvas.Left="10" Canvas.Top="65.6" FontSize="20" />
@@ -185,11 +189,78 @@
                     <Label Content="Results :" Canvas.Left="10" Canvas.Top="100.6" Style="{DynamicResource LabelStyle}"/>
                 </Canvas>
             </TabItem>
-            <TabItem Header="New Employee" Margin="0" Height="30" Width="100" HorizontalAlignment="Left">
-                <Canvas Background="White"/>
+            <TabItem Header="New Employee" Margin="0" Height="30">
+                <Grid Background="#FFBFBFBF">
+
+                    <StackPanel  Margin="0,0,10,0">
+                        <TextBlock Text="Enter Employee Details" Margin="10" FontSize="20" HorizontalAlignment="Center"/>
+                        <!--Name and surname-->
+                        <DockPanel>
+                            <TextBlock Text="Name :" FontSize="16" Margin="5"/>
+                            <TextBox x:Name="txbNewEmployee_name" Width="494" Margin="5" Padding="5" Height="30"/>
+                            <TextBlock Text="Surname :" FontSize="16" Margin="5"/>
+                            <TextBox x:Name="txbNewEmployee_surname" Margin="5" Padding="5" Height="30"/>
+                        </DockPanel>
+                        <!--CheckBoxes-->
+                        <!--Address-->
+                        <DockPanel>
+                            <TextBlock Text="Address" FontSize="16" Margin="10"/>
+                            <TextBox x:Name="txbNewEmployee_address" Margin="10" Height="164"/>
+                        </DockPanel>
+                        <!--City, Area Code-->
+                        <DockPanel>
+                            <TextBlock Text="City :" FontSize="16" Margin="10 10 35 10"/>
+                            <TextBox x:Name="txbNewEmployee_city" Width="780" Margin="10"/>
+                            <TextBlock Text="Area Code :" FontSize="16" Margin="10" Width="77.697"/>
+                            <TextBox x:Name="txbNewEmployee_areaCode" Margin="10" Height="40"/>
+                        </DockPanel>
+                        <!--Province-->
+                        <DockPanel >
+                            <TextBlock Text="Province :" Margin="10 10 20 10"/>
+                            <ComboBox x:Name="DropBxNewEmployee_province" Margin="10" Height="39.96">
+                                <ComboBoxItem Content="Eastern Cape"/>
+                                <ComboBoxItem Content="Free State"/>
+                                <ComboBoxItem Content="Gauteng"/>
+                                <ComboBoxItem Content="KwaZulu-Natal"/>
+                                <ComboBoxItem Content="Limpopo"/>
+                                <ComboBoxItem Content="Mpumalanga"/>
+                                <ComboBoxItem Content="North West"/>
+                                <ComboBoxItem Content="Northern Cape"/>
+                                <ComboBoxItem Content="Western Cape"/>
+                            </ComboBox>
+                        </DockPanel>
+                        <!--Contact details-->
+                        <StackPanel>
+                            <DockPanel>
+                                <TextBlock Text="Cellphone :" Margin="10"/>
+                                <TextBox x:Name="txbEmployee_cellphone" Margin="10" Height="40"/>
+                            </DockPanel>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <DockPanel>
+                                <TextBlock Text="Telephone :" Margin="10 10 8 10"/>
+                                <TextBox x:Name="txbNewEmployee_telephone" Margin="10" Height="40"/>
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <DockPanel>
+                                <TextBlock Text="Fax :" Margin="10 10 50 10"/>
+                                <TextBox x:Name="txbNewEmployee_fax" Margin="10" Height="40"/>
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <DockPanel>
+                                <TextBlock Text="Email :" Margin="10 10 40 10"/>
+                                <TextBox x:Name="txbNewEmployee_email" Margin="10" Height="40"/>
+                            </DockPanel>
+                        </StackPanel>
+                        <Button x:Name="btnNewEmployee_generate" Content="Generate Employee ID" FontSize="20" Width="300" Margin="143.5,0"/>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Header="Termination" Height="30" Width="100" Margin="0" HorizontalAlignment="Left">
-                <Canvas Background="White">
+                <Canvas Background="#FFBFBFBF">
                     <TextBox x:Name="txbOwner_search" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" Canvas.Left="61" Canvas.Top="50" BorderBrush="Black" FontSize="20" FontFamily="Times New Roman"/>
                     <Button x:Name="btnEmployees_terminate" Content="END CONTRACT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="30" Canvas.Left="739.2" Canvas.Top="50"/>
                     <Label Content="Enter employee ID: " Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Height="33" Canvas.Left="366" Width="156" RenderTransformOrigin="0.494,0.527" Canvas.Top="10"/>
