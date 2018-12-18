@@ -107,7 +107,7 @@
             <TabItem Header="Search" Height="30" Width="100" Margin="0" HorizontalAlignment="Left">
                 <Canvas Background="White">
                     <TextBox x:Name="txbOwner_search" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" Canvas.Left="10" Canvas.Top="10" BorderBrush="Black" FontSize="20" FontFamily="Times New Roman"/>
-                    <Button x:Name="btnOwner_search" Content="SEARCH" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="30" Click="btnManager_search_Click_1" Canvas.Left="674.2" Canvas.Top="10"/>
+                    <Button x:Name="btnOwner_search" Content="SEARCH" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="30" Click="btnOwner_search_Click" Canvas.Left="674.2" Canvas.Top="10"/>
                     <Label Content="Filter Search:" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" Canvas.Left="10" Canvas.Top="45"/>
                     <DockPanel Canvas.Left="10" Canvas.Top="98.683">
                         <CheckBox x:Name="ckbOwner_Search_quotes" Content="Quotes"  Width="75" Margin="3, 0"/>

@@ -23,5 +23,20 @@ namespace SeleleTravel
         {
             InitializeComponent();
         }
+
+        private void btnOwner_search_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEmployees_update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEmplyees_find_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -221,7 +221,100 @@
     </Window.Resources>
     <Grid Background="#FFFFF485">
         <TabControl x:Name="Consultant_tabControl" Margin="0,40,0,0">
+            <!--Client Details-->
             <TabItem Header="Client Details" Style="{DynamicResource TabItemStyle}" >
+                <Grid Background="#eee">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Left Hand Side-->
+                    <StackPanel>
+                        <TextBlock Text="Enter Client Details" Margin="10" FontSize="20" HorizontalAlignment="Center"/>
+                        <!--Name and surname-->
+                        <DockPanel>
+                            <TextBlock Text="Name :" FontSize="16" Margin="5"/>
+                            <TextBox x:Name="txbNewClient_name" Width="200" Margin="5" Padding="5" Height="30"/>
+                            <TextBlock Text="Surname :" FontSize="16" Margin="5"/>
+                            <TextBox x:Name="txbNewClient_surname" Margin="5" Padding="5" Height="30"/>
+                        </DockPanel>
+                        <!--CheckBoxes-->
+                        <StackPanel Orientation="Horizontal" >
+                            <CheckBox x:Name="ckbBusiness" Content="Business" Margin="200 5 0 0" />
+                            <CheckBox x:Name="ckbIndividual" Content="Individual" Margin="5 5 5 0"/>
+                        </StackPanel>
+                        <!--Address-->
+                        <DockPanel>
+                            <TextBlock Text="Address" FontSize="16" Margin="10"/>
+                            <TextBox x:Name="txbNewClient_address" Margin="10" Height="100"/>
+                        </DockPanel>
+                        <!--City, Area Code-->
+                        <DockPanel>
+                            <TextBlock Text="City :" FontSize="16" Margin="10 10 35 10"/>  
+                            <TextBox x:Name="txbNewClient_city" Width="250" Margin="10"/>
+                            <TextBlock Text="Area Code :" FontSize="16" Margin="10"/>
+                            <TextBox x:Name="txbNewClient_areaCode" Margin="10" Height="40"/>
+                        </DockPanel>
+                        <!--Province-->
+                        <DockPanel >
+                            <TextBlock Text="Province :" Margin="10 10 20 10"/>
+                            <ComboBox x:Name="DropBxNewClient_province" Margin="10">
+                                <ComboBoxItem Content="Eastern Cape"/>
+                                <ComboBoxItem Content="Free State"/>
+                                <ComboBoxItem Content="Gauteng"/>
+                                <ComboBoxItem Content="KwaZulu-Natal"/>
+                                <ComboBoxItem Content="Limpopo"/>
+                                <ComboBoxItem Content="Mpumalanga"/>
+                                <ComboBoxItem Content="North West"/>
+                                <ComboBoxItem Content="Northern Cape"/>
+                                <ComboBoxItem Content="Western Cape"/>
+                            </ComboBox>
+                        </DockPanel>
+                        <!--Contact details-->
+                        <StackPanel>
+                            <DockPanel>
+                                <TextBlock Text="Cellphone :" Margin="10"/>
+                                <TextBox x:Name="txbNewClient_cellphone" Margin="10" Height="40"/>
+                            </DockPanel>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <DockPanel>
+                                <TextBlock Text="Telephone :" Margin="10 10 8 10"/>
+                                <TextBox x:Name="txbNewClient_telephone" Margin="10" Height="40"/>
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <DockPanel>
+                                <TextBlock Text="Fax :" Margin="10 10 50 10"/>
+                                <TextBox x:Name="txbNewClient_fax" Margin="10" Height="40"/>
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <DockPanel>
+                                <TextBlock Text="Email :" Margin="10 10 40 10"/>
+                                <TextBox x:Name="txbNewClient_email" Margin="10" Height="40"/>
+                            </DockPanel>
+                        </StackPanel>
+                        <Button Content="Add Client" FontSize="20" Width="300"/>
+                    </StackPanel>
+
+                    <!--Right hand Side-->
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="Already a client" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
+                        <DockPanel>
+                            <TextBox x:Name="txbOldClient_find" Width="400" Height="30" Margin="10"/>
+                            <Button x:Name="btnOldClient_find" Content="Search" Margin="10"/>
+
+                        </DockPanel>
+                        <ListBox x:Name="lbxlOldClient_Details" Margin="10" Height="450">
+                            <ListBoxItem Content="No results found."/>
+                        </ListBox>
+                        <Button  x:Name="btnOldClient_select"  Content="Select Client" FontSize="20" Width="300"/>
+                        <Button  x:Name="btnOldClient_update"  Content="Update Client" FontSize="20" Width="300" Margin="10"/>
+                    </StackPanel>
+                </Grid>
+                <!--
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -283,8 +376,9 @@
                     </Canvas>
                     <TextBox x:Name="txbOldClient_find" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="32,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247"/>
                     <Button x:Name="btnOldClient_find" Content="FIND" Grid.Column="1" HorizontalAlignment="Left" Margin="284,47,0,0" VerticalAlignment="Top" Width="75" Click="BtnOldClient_find_Click"/>
-                </Grid>
+                </Grid> -->
             </TabItem>
+            <!--Car Hire -->
             <TabItem Header="Car Hire" Style="{DynamicResource TabItemStyle}">
                 <Grid Background="#eee">
                     <!--Labels-->
@@ -315,6 +409,7 @@
 
                 </Grid>
             </TabItem>
+            <!--Taxi Cab-->
             <TabItem Header="Taxi Cab" Style="{DynamicResource TabItemStyle}">
                 <Grid Background="#FFE5E5E5">
                     <!--Labels-->
@@ -346,6 +441,7 @@
                     <Button x:Name="btnCab_update" Content="UPDATE" HorizontalAlignment="Left" Margin="699,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden"/>
                 </Grid>
             </TabItem>
+            <!--Flight-->
             <TabItem Header="Flight" Style="{DynamicResource TabItemStyle}">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -379,6 +475,7 @@
                     <Label Content="R" Grid.Column="1" HorizontalAlignment="Left" Margin="102,286,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
+            <!--Accommodation-->
             <TabItem Header="Accommodation" Style="{DynamicResource TabItemStyle}">
                 <Grid Background="#FFE5E5E5">
                     <Label x:Name="label36" Content="Name:" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top"/>
@@ -400,6 +497,7 @@
                     <Label Content="R" HorizontalAlignment="Left" Margin="399,272,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
             </TabItem>
+            <!--Conference-->
             <TabItem Header="Conference" Style="{DynamicResource TabItemStyle}">
                 <Grid Background="#FFE5E5E5">
                     <Label x:Name="label43" Content="Name:" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top"/>
@@ -421,6 +519,7 @@
                     <Label x:Name="label45_Copy" Content="End Date:" HorizontalAlignment="Left" Margin="65.466,195.29,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
+            <!--Events-->
             <TabItem Header="Events" Style="{DynamicResource TabItemStyle}">
                 <Grid Background="#FFE5E5E5">
                     <Label x:Name="label49" Content="Name:" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top"/>
@@ -438,6 +537,7 @@
                     <TextBlock HorizontalAlignment="Left" Height="24.867" Margin="394.867,398.623,0,0" TextWrapping="Wrap" Text="End" VerticalAlignment="Top" Width="104.533"/>
                 </Grid>
             </TabItem>
+            <!--Quote Summary-->
             <TabItem Header="Quote Summary" Style="{DynamicResource TabItemStyle}">
                 <TabItem.RenderTransform>
                     <TransformGroup>
@@ -459,6 +559,7 @@
                     <Button x:Name="btnQuoteSummar_document" Content="View as document and print" HorizontalAlignment="Left" Margin="514,287,0,0" VerticalAlignment="Top" Width="248" Click="Button_Click"/>
                 </Grid>
             </TabItem>
+            <!--Send Quotes-->
             <TabItem Header="Send Quotes" Style="{DynamicResource TabItemStyle}">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>

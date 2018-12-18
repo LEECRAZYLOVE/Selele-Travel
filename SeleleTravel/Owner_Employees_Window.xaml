@@ -177,9 +177,9 @@
             <TabItem Header="Employee Details" Margin="0,0,-20.309,0" Width="120.309" Height="30" HorizontalAlignment="Left">
                 <Canvas x:Name="cvsUpdateCleint" HorizontalAlignment="Right" Width="968.486" Background="#FFBFBFBF" Margin="0,0,-0.886,-8.2">
                     <Label Content="Search for an employee..." Canvas.Left="313.8" FontFamily="Rockvile" FontSize="20" BorderThickness="0,0,0,2" Canvas.Top="6.6" Width="290"/>
-                    <Button x:Name="btnEmployees_update" Content="UPDATE EMPLOYEE"  Canvas.Left="770.891" Canvas.Top="65.6" Style="{DynamicResource UpdateButtonStyle}" Width="136.5" />
+                    <Button x:Name="btnEmployees_update" Content="UPDATE EMPLOYEE"  Canvas.Left="770.891" Canvas.Top="65.6" Style="{DynamicResource UpdateButtonStyle}" Width="136.5" Click="BtnEmployees_update_Click" />
                     <TextBox x:Name="txbEmployees_find" HorizontalAlignment="Left" Height="35" Width="642.391" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="Black" Canvas.Left="10" Canvas.Top="65.6" FontSize="20" />
-                    <Button x:Name="btnEmplyees_find" Content="FIND" Canvas.Left="657.391" Canvas.Top="65.6" Style="{DynamicResource ButtonStyle}" Background="#FF9DE1FA" Width="108.5"/>
+                    <Button x:Name="btnEmplyees_find" Content="FIND" Canvas.Left="657.391" Canvas.Top="65.6" Style="{DynamicResource ButtonStyle}" Background="#FF9DE1FA" Width="108.5" Click="BtnEmplyees_find_Click"/>
                     <ListBox x:Name="ltbEmployees_employeeDetails" Opacity="80" HorizontalAlignment="Left" Height="446.159" VerticalAlignment="Top" Width="897.6" BorderBrush="Black" Canvas.Left="10" Canvas.Top="136.241"/>
                     <Label Content="Employee ID :" Canvas.Left="10" Canvas.Top="29.6"  Style="{DynamicResource LabelStyle}"/>
                     <Label Content="Results :" Canvas.Left="10" Canvas.Top="100.6" Style="{DynamicResource LabelStyle}"/>
@@ -198,7 +198,7 @@
             <TabItem Header="Search" Height="30" Width="100" Margin="0" HorizontalAlignment="Left">
                 <Canvas Background="White">
                     <TextBox x:Name="txbOwner_search" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" Canvas.Left="10" Canvas.Top="10" BorderBrush="Black" FontSize="20" FontFamily="Times New Roman"/>
-                    <Button x:Name="btnOwner_search" Content="SEARCH" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="30" Click="btnManager_search_Click_1" Canvas.Left="674.2" Canvas.Top="10"/>
+                    <Button x:Name="btnOwner_search" Content="SEARCH" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="30" Click="btnOwner_search_Click" Canvas.Left="674.2" Canvas.Top="10"/>
                     <Label Content="Filter Search:" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" Canvas.Left="10" Canvas.Top="45"/>
                     <DockPanel Canvas.Left="10" Canvas.Top="98.683">
                         <CheckBox x:Name="ckbOwner_Search_quotes" Content="Quotes"  Width="75" Margin="3, 0"/>

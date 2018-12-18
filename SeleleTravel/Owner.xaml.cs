@@ -34,5 +34,10 @@ namespace SeleleTravel
         {
             GeneralMethods.logOut(this);
         }
+
+        private void btnOwner_search_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
