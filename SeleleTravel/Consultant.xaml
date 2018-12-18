@@ -106,7 +106,7 @@
                     <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="117,201,0,0" Grid.ColumnSpan="3"/>
                     <Label x:Name="label33" Content="TOTAL:" Grid.Column="2" HorizontalAlignment="Left" Margin="546,246,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="txbCarHire_total" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="558,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" TextChanged="AmountChanged"/>
-                    <Button x:Name="btnCarHire_Done" Content="DONE" Grid.Column="2" HorizontalAlignment="Left" Margin="546,300,0,0" VerticalAlignment="Top" Width="75" Click="BtnCarHire_Done_Click"/>
+                    <Button x:Name="btnCarHire_Done" Content="DONE" Grid.Column="2" HorizontalAlignment="Left" Margin="546,299,0,0" VerticalAlignment="Top" Width="75" Click="BtnCarHire_Done_Click"/>
                     <Button x:Name="btnCarHire_update" Content="UPDATE" Grid.Column="2" HorizontalAlignment="Left" Margin="546,300,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden"/>
                     <Label Content="R" Grid.Column="2" HorizontalAlignment="Left" Margin="539,272,0,0" VerticalAlignment="Top" Height="23"/>
                 </Grid>
@@ -192,37 +192,45 @@
             </TabItem>
             <TabItem Header="Conference" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="74" Margin="-1,0,0,0">
                 <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="171*"/>
+                        <ColumnDefinition Width="613*"/>
+                    </Grid.ColumnDefinitions>
                     <Label x:Name="label43" Content="Name:" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label44" Content="Venue:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,68,0,0"/>
                     <Label x:Name="label45" Content="Date:" HorizontalAlignment="Left" Margin="49,118,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label46" Content="Specifications:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="394,10,0,0"/>
-                    <Label x:Name="label47" Content="Time:" HorizontalAlignment="Left" Margin="242,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.526,0.115"/>
-                    <TextBox x:Name="txbConference_name" HorizontalAlignment="Left" Height="23" Margin="99,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266"/>
-                    <TextBox x:Name="txbConference_specifications" HorizontalAlignment="Left" Height="318" Margin="484,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278"/>
-                    <TextBox x:Name="txbConference_venue" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266" Margin="99,71,0,0"/>
-                    <TextBox x:Name="txbConference_time" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" Margin="285,120,0,0"/>
-                    <DatePicker x:Name="dpConference_date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,119,0,0" Width="120"/>
-                    <Label x:Name="label48" Content="TOTAL:" HorizontalAlignment="Left" Margin="375,251,0,0" VerticalAlignment="Top" Width="94"/>
-                    <TextBox x:Name="txbConference_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" Margin="399,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"/>
-                    <Button x:Name="btnConference_done" Content="DONE" HorizontalAlignment="Left" Margin="394,312,0,0" VerticalAlignment="Top" Width="75" Click="BtnConference_done_Click"/>
-                    <Button x:Name="btnConference_update" Content="UPDATE" HorizontalAlignment="Left" Margin="394,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden"/>
-                    <Label Content="R" HorizontalAlignment="Left" Margin="375,284,0,0" VerticalAlignment="Top" Height="23"/>
+                    <Label x:Name="label46" Content="Specifications:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="223,10,0,0" Grid.Column="1"/>
+                    <Label x:Name="label47" Content="Time:" HorizontalAlignment="Left" Margin="71,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.526,0.115" Grid.Column="1"/>
+                    <TextBox x:Name="txbConference_name" HorizontalAlignment="Left" Height="23" Margin="99,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txbConference_specifications" HorizontalAlignment="Left" Height="318" Margin="313,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" Grid.Column="1"/>
+                    <TextBox x:Name="txbConference_venue" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="266" Margin="99,71,0,0" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txbConference_time" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" Margin="114,120,0,0" Grid.Column="1"/>
+                    <DatePicker x:Name="dpConference_date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,119,0,0" Width="120" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label48" Content="TOTAL:" HorizontalAlignment="Left" Margin="204,251,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
+                    <TextBox x:Name="txbConference_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" Margin="228,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
+                    <Button x:Name="btnConference_done" Content="DONE" HorizontalAlignment="Left" Margin="223,312,0,0" VerticalAlignment="Top" Width="75" Click="BtnConference_done_Click" Grid.Column="1"/>
+                    <Button x:Name="btnConference_update" Content="UPDATE" HorizontalAlignment="Left" Margin="223,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden" Grid.Column="1"/>
+                    <Label Content="R" HorizontalAlignment="Left" Margin="204,284,0,0" VerticalAlignment="Top" Height="23" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Events" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="46" Margin="-1,0,0,0">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFE5E5E5" Margin="-1,0,1,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="83*"/>
+                        <ColumnDefinition Width="29*"/>
+                    </Grid.ColumnDefinitions>
                     <Label x:Name="label49" Content="Name:" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label50" Content="Specifications:" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txbEvents_name" HorizontalAlignment="Left" Height="23" Margin="94,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593"/>
-                    <TextBox x:Name="txbEvents_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="258" Margin="94,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593"/>
-                    <Label x:Name="label51" Content="TOTAL:" HorizontalAlignment="Left" Margin="699,253,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txbEvents_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" Margin="722,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52"/>
-                    <Button x:Name="btnEvents_done" Content="DONE" HorizontalAlignment="Left" Margin="699,312,0,0" VerticalAlignment="Top" Width="75" Click="_done"/>
-                    <Button Content="btnEvents_update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="699,312,0,0" Background="#FF45D310" Visibility="Hidden"/>
-                    <Label x:Name="rands" Content="R" HorizontalAlignment="Left" Margin="699,284,0,0" VerticalAlignment="Top" Height="23"/>
+                    <TextBox x:Name="txbEvents_name" HorizontalAlignment="Left" Height="23" Margin="94,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txbEvents_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="258" Margin="94,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label51" Content="TOTAL:" HorizontalAlignment="Left" Margin="118,253,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="txbEvents_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" Margin="141,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52" Grid.Column="1"/>
+                    <Button x:Name="btnEvents_done" Content="DONE" HorizontalAlignment="Left" Margin="118,312,0,0" VerticalAlignment="Top" Width="75" Click="_done" Grid.Column="1"/>
+                    <Button Content="btnEvents_update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="118,312,0,0" Background="#FF45D310" Visibility="Hidden" Grid.Column="1"/>
+                    <Label x:Name="rands" Content="R" HorizontalAlignment="Left" Margin="118,284,0,0" VerticalAlignment="Top" Height="23" Grid.Column="1"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Quote Summary" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="102" Margin="-1,0,0,0" RenderTransformOrigin="0.5,0.5">
+            <TabItem Header="Quote Summary" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="102" Margin="-1,1,0,-1" RenderTransformOrigin="0.5,0.5">
                 <TabItem.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

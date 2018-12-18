@@ -109,22 +109,22 @@ namespace SeleleTravel
             };
 
             //Add client to database
-            try
-            {
-                context.clients.Add(currentClient);
-                context.SaveChanges();
-                MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentClient.client_no}");
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-               // throw ex;
-            }
+            //try
+            //{
+            //    context.clients.Add(currentClient);
+            //    context.SaveChanges();
+            //    MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentClient.client_no}");
+            //}
+            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            //{
+            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            //}
+            //catch (Exception ex)
+            //{
+            //    //other error
+            //   // throw ex;
+            //}
         }
 
         #endregion
@@ -215,21 +215,21 @@ namespace SeleleTravel
                 };
 
                 //sql insertion
-                try
-                {
-                    context.events.Add(currentEvent);
-                    context.SaveChanges();
-                }
-                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-                {
-                    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-                }
-                catch (Exception ex)
-                {
-                    //other error
-                    throw ex;
-                }
+                //try
+                //{
+                //    context.events.Add(currentEvent);
+                //    context.SaveChanges();
+                //}
+                //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                //{
+                //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+                //}
+                //catch (Exception ex)
+                //{
+                //    //other error
+                //    throw ex;
+                //}
 
                 // reset texbox values to empty
                 // call the clear textbox method
@@ -746,6 +746,8 @@ namespace SeleleTravel
             GeneralMethods.logOut(this);
 
         }
+
+     
     }
 }
 

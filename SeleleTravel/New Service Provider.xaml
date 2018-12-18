@@ -33,14 +33,14 @@
     </Window.Resources>
     <Grid x:Name="mainGrid" Background="#FFD9EAD3" >
         <Canvas x:Name="container" Height="568.377" Canvas.Left="34.502" Canvas.Top="44.423" Width="481.065">
-            <Label x:Name="label9" Content="Name:" Style="{DynamicResource LabelStyle1}" Canvas.Left="6" Canvas.Top="59"/>
+            <Label x:Name="label9" Content="Name:" Style="{DynamicResource LabelStyle1}" Canvas.Top="56.461"/>
             <Label x:Name="label11" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Canvas.Top="131.694"/>
             <Label x:Name="label12" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1.42" Canvas.Top="214.454" Style="{DynamicResource LabelStyle1}"/>
             <Label x:Name="label13" Content="Province:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="284.046" Style="{DynamicResource LabelStyle1}"/>
             <Label x:Name="lbl1" Content="Cellphone:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="325.03" Style="{DynamicResource LabelStyle1}"/>
             <Label x:Name="lbl2" Content="Area Code:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="248.654" Style="{DynamicResource LabelStyle1}"/>
             <Label x:Name="lbl3" Content="Telephone:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="391.93" Style="{DynamicResource LabelStyle1}"/>
-            <Label x:Name="lbl4" Content="Fax:" Canvas.Left="5.617" Canvas.Top="357.73" Style="{DynamicResource LabelStyle1}"/>
+            <Label x:Name="lbl4" Content="Fax:" Canvas.Top="357.73" Style="{DynamicResource LabelStyle1}"/>
             <Label x:Name="lbl5" Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="421.13" Style="{DynamicResource LabelStyle1}"/>
 
             <TextBox x:Name="txbNewService_name" HorizontalAlignment="Left" Height="30" Width="361.066" TextWrapping="Wrap" VerticalAlignment="Top"  Canvas.Left="119.999" Canvas.Top="55.661" FontSize="16" FontFamily="Comic Sans MS"/>
@@ -83,10 +83,16 @@
 
             <Label x:Name="label" Content="Entity:" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Canvas.Left="1.42" Canvas.Top="93.221"/>
             <Label x:Name="label1" Content="Enter service provider details here :" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Canvas.Left="78.157" FontSize="20"/>
+            <ComboBox x:Name="cbxUpdateClient" Canvas.Left="119.999" Canvas.Top="90.661" Width="226.5" Height="29.2" d:IsHidden="True">
+                <ComboBoxItem Content="Business" HorizontalAlignment="Left" Width="224.5"/>
+                <ComboBoxItem Content="Individual" HorizontalAlignment="Left" Width="224.5"/>
+            </ComboBox>
 
 
 
         </Canvas>
+        <Button x:Name="btnUpdateClient" Content="Update"  RenderTransformOrigin="0.5,0.5" FontFamily="Rockwell" FontSize="36" Background="#FFB2E4CA" Margin="152.999,566.898,139.768,53.488" d:IsHidden="True"/>
+        <Label x:Name="lblUpdateClient" Content="Enter client details here :" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" FontSize="20" Margin="152.999,53.487,0,0" d:IsHidden="True"/>
 
 
 
