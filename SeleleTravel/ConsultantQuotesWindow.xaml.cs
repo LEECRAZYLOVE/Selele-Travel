@@ -95,11 +95,11 @@ namespace SeleleTravel
             string _location = address + '\n' + city + '\n' + areaCode + '\n' + province;
 
             //Initialize Client  and DBConnect instance
-            var context = new SeleleEntities();
+            //var context = new SeleleEntities();
             var currentClient = new client()
             {
-                client_no = "J67", //This will be automatically generated. I'm using a dummy to test queries.
-                quote_no = "1234",
+                client_no = "J0001", //This will be automatically generated. I'm using a dummy to test queries.
+                quote_no = "0001",
                 clientname = names,
                 cellphone = Cellphone,
                 address = _location,
@@ -109,22 +109,23 @@ namespace SeleleTravel
             };
 
             //Add client to database
-            try
-            {
-                context.clients.Add(currentClient);
-                context.SaveChanges();
-                MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentClient.client_no}");
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-               // throw ex;
-            }
+            //try
+            //{
+            //    context.clients.Add(currentClient);
+            //    context.SaveChanges();
+            //    MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentClient.client_no}");
+            //}
+            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            //{
+            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            //}
+            //catch (Exception ex)
+            //{
+            //    //other error
+            //   // throw ex;
+              
+            //}
         }
 
         #endregion
@@ -206,7 +207,7 @@ namespace SeleleTravel
             if(!boolValue)
             {
                //create an instnce of the event class and dbconnect
-                var context = new SeleleEntities();
+                //var context = new SeleleEntities();
                 var currentEvent = new @event()//(nameOfEvent, eventSpecs, eventAmount);
                 {
                     eventname = nameOfEvent,
@@ -217,21 +218,21 @@ namespace SeleleTravel
                 };
 
                 //sql insertion
-                try
-                {
-                    context.events.Add(currentEvent);
-                    context.SaveChanges();
-                }
-                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-                {
-                    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-                }
-                catch (Exception ex)
-                {
-                    //other error
-                    throw ex;
-                }
+                //try
+                //{
+                //    context.events.Add(currentEvent);
+                //    context.SaveChanges();
+                //}
+                //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                //{
+                //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+                //}
+                //catch (Exception ex)
+                //{
+                //    other error
+                //    throw ex;
+                //}
 
                 // reset texbox values to empty
                 // call the clear textbox method
@@ -724,6 +725,11 @@ namespace SeleleTravel
         private void BtnConsultant_logOut_Click(object sender, RoutedEventArgs e)
         {
             GeneralMethods.logOut(this);
+
+        }
+
+        private void TxbNewClient_name_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
         }
     }

@@ -230,7 +230,7 @@
                     </Grid.ColumnDefinitions>
                     <Canvas x:Name="cvsNewClient1" Height="342" VerticalAlignment="Top" HorizontalAlignment="Left" Width="390">
                         <WrapPanel HorizontalAlignment="Left" Height="366" VerticalAlignment="Top" Width="386" Canvas.Left="4" Canvas.Top="3" Background="#FFB2B2A3"/>
-                        <TextBox x:Name="txbNewClient_address" HorizontalAlignment="Left" Height="58" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="310" Canvas.Left="70" Canvas.Top="103"/>
+                        <TextBox x:Name="txbNewClient_address" HorizontalAlignment="Left" Height="58" TextWrapping="Wrap" Text="Rhodes Uni" VerticalAlignment="Top" Width="310" Canvas.Left="70" Canvas.Top="103"/>
                         <CheckBox x:Name="ckbIndividual" Content="Individual" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="80" Checked="selectionChanged"/>
                         <Label x:Name="label8" Content="Enter Client Details" Canvas.Left="142" Canvas.Top="10" RenderTransformOrigin="0.542,-0.193">
                             <Label.RenderTransform>
@@ -243,24 +243,24 @@
                             </Label.RenderTransform>
                         </Label>
                         <Label x:Name="label9" Content="Name:" Canvas.Left="10" Canvas.Top="40"/>
-                        <TextBox x:Name="txbNewClient_name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="43"/>
-                        <TextBox x:Name="txbNewClient_surname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="43"/>
+                        <TextBox x:Name="txbNewClient_name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="litha" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="43" TextChanged="TxbNewClient_name_TextChanged"/>
+                        <TextBox x:Name="txbNewClient_surname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="stuurman" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="43"/>
                         <Label x:Name="label10" Content="Surname:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="201" Canvas.Top="40"/>
                         <CheckBox x:Name="ckbBusiness" Content="Business" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="70" Canvas.Top="80" Checked="selectionChanged"/>
                         <Label x:Name="label11" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="103"/>
-                        <TextBox x:Name="txbNewClient_city" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="183"/>
+                        <TextBox x:Name="txbNewClient_city" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Grahamstown" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="183"/>
                         <Label x:Name="label12" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.816,-0.038" Canvas.Left="222" Canvas.Top="180"/>
                         <Label x:Name="label13" Content="Province:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="7" Canvas.Top="180"/>
                         <Label Content="Cellphone:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="4" Canvas.Top="219"/>
                         <Label Content="Area Code:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="195" Canvas.Top="219" RenderTransformOrigin="0.35,0.769"/>
                         <Label Content="Telephone:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="3" Canvas.Top="254"/>
                         <Label Content="Fax:" Canvas.Left="222" Canvas.Top="254"/>
-                        <TextBox x:Name="txbNewClient_cellphone" TextChanged="phoneNumberCheck"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="222"/>
-                        <TextBox x:Name="txbNewClient_telephone" TextChanged="phoneNumberCheck" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="254"/>
-                        <TextBox x:Name="txbNewClient_areaCode" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="222"/>
-                        <TextBox x:Name="txbNewClient_fax" TextChanged="phoneNumberCheck" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="257"/>
+                        <TextBox x:Name="txbNewClient_cellphone" TextChanged="phoneNumberCheck"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="1234567890" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="222"/>
+                        <TextBox x:Name="txbNewClient_telephone" TextChanged="phoneNumberCheck" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="0987654321" VerticalAlignment="Top" Width="120" Canvas.Left="70" Canvas.Top="254"/>
+                        <TextBox x:Name="txbNewClient_areaCode" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="6139" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="222"/>
+                        <TextBox x:Name="txbNewClient_fax" TextChanged="phoneNumberCheck" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="1234567890" VerticalAlignment="Top" Width="120" Canvas.Left="260" Canvas.Top="257"/>
                         <Label Content="email:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="4" Canvas.Top="285"/>
-                        <TextBox x:Name="txbNewClient_email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="310" Canvas.Left="70" Canvas.Top="289"/>
+                        <TextBox x:Name="txbNewClient_email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="crazedoutlee@gmail.com" VerticalAlignment="Top" Width="310" Canvas.Left="70" Canvas.Top="289"/>
                         <Button x:Name="btnNewClient_add" Content="ADD" Canvas.Left="70" Canvas.Top="318" Width="75" Click="createNewClient_Click"/>
                         <Label x:Name="lblNewClient_clientID" Content="labelOutput" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="169" Canvas.Top="315"/>
                         <ComboBox x:Name="DropBxNewClient_province" Width="120" Canvas.Left="70" Canvas.Top="183">

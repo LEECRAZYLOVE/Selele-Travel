@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SeleleModel.Store" Provider="Devart.Data.PostgreSql" ProviderManifestToken="PostgreSQL, 11.1.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SeleleModel.Store" Provider="Devart.Data.PostgreSql" ProviderManifestToken="PostgreSQL, 11.1.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="accommodation">
           <Key>
             <PropertyRef Name="quote_no" />
@@ -110,11 +110,12 @@
           <Property Name="venue" Type="varchar" MaxLength="50" />
           <Property Name="conferencename" Type="varchar" MaxLength="50" />
           <Property Name="timeconference" Type="varchar" MaxLength="10" />
-          <Property Name="dateofconference" Type="date" />
           <Property Name="quote_no" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="order_no" Type="varchar" MaxLength="50" />
           <Property Name="conferencespecs" Type="varchar" MaxLength="65535" />
           <Property Name="amount" Type="double precision" />
+          <Property Name="startday" Type="date" />
+          <Property Name="endday" Type="date" />
         </EntityType>
         <EntityType Name="dailyserviceupdate">
           <Key>
@@ -136,6 +137,8 @@
           <Property Name="eventspecs" Type="varchar" MaxLength="65535" />
           <Property Name="eventname" Type="varchar" MaxLength="50" />
           <Property Name="amount" Type="double precision" />
+          <Property Name="startday" Type="date" />
+          <Property Name="endday" Type="date" />
         </EntityType>
         <EntityType Name="flight">
           <Key>
@@ -147,7 +150,6 @@
           <Property Name="fromcity" Type="varchar" MaxLength="50" />
           <Property Name="tocity" Type="varchar" MaxLength="50" />
           <Property Name="departdate" Type="date" />
-          <Property Name="arrivedate" Type="date" />
           <Property Name="numberofbags" Type="int" />
           <Property Name="totalamount" Type="double precision" />
           <Property Name="flightspecs" Type="varchar" MaxLength="65535" />
@@ -235,7 +237,8 @@
           <EntitySet Name="staff" EntityType="Self.staff" Schema="public" store:Type="Tables" />
           <EntitySet Name="voucher" EntityType="Self.voucher" Schema="public" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SeleleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -344,11 +347,12 @@
           <Property Name="venue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="conferencename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="timeconference" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="dateofconference" Type="DateTime" />
           <Property Name="quote_no" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="conferencespecs" Type="String" MaxLength="65535" FixedLength="false" Unicode="true" />
           <Property Name="amount" Type="Double" />
+          <Property Name="startday" Type="DateTime" />
+          <Property Name="endday" Type="DateTime" />
         </EntityType>
         <EntityType Name="dailyserviceupdate">
           <Key>
@@ -370,7 +374,8 @@
           <Property Name="eventspecs" Type="String" MaxLength="65535" FixedLength="false" Unicode="true" />
           <Property Name="eventname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="amount" Type="Double" />
-          <Property Name="eventcost" Type="String" MaxLength="65535" FixedLength="false" Unicode="true" />
+          <Property Name="startday" Type="DateTime" />
+          <Property Name="endday" Type="DateTime" />
         </EntityType>
         <EntityType Name="flight">
           <Key>
@@ -382,7 +387,6 @@
           <Property Name="fromcity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="tocity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="departdate" Type="DateTime" />
-          <Property Name="arrivedate" Type="DateTime" />
           <Property Name="numberofbags" Type="Int32" />
           <Property Name="totalamount" Type="Double" />
           <Property Name="flightspecs" Type="String" MaxLength="65535" FixedLength="false" Unicode="true" />
@@ -408,7 +412,6 @@
           <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="quote_no" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="client_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="timeordered" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="datereceived" Type="DateTime" />
           <Property Name="orderdate" Type="DateTime" />
         </EntityType>
@@ -424,9 +427,7 @@
           <Property Name="datesent" Type="DateTime" />
           <Property Name="quotedate" Type="DateTime" />
           <Property Name="consultant_no" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="agencyphonenumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="servicefee" Type="Double" />
-          <Property Name="agencyname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="client_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="clientname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -590,11 +591,12 @@
                 <ScalarProperty Name="venue" ColumnName="venue" />
                 <ScalarProperty Name="conferencename" ColumnName="conferencename" />
                 <ScalarProperty Name="timeconference" ColumnName="timeconference" />
-                <ScalarProperty Name="dateofconference" ColumnName="dateofconference" />
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
                 <ScalarProperty Name="conferencespecs" ColumnName="conferencespecs" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="startday" ColumnName="startday" />
+                <ScalarProperty Name="endday" ColumnName="endday" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -618,23 +620,24 @@
                 <ScalarProperty Name="eventspecs" ColumnName="eventspecs" />
                 <ScalarProperty Name="eventname" ColumnName="eventname" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="startday" ColumnName="startday" />
+                <ScalarProperty Name="endday" ColumnName="endday" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="flights">
             <EntityTypeMapping TypeName="SeleleModel.flight">
               <MappingFragment StoreEntitySet="flight">
-                <ScalarProperty Name="numberofpassengers" ColumnName="numberofpassengers" />
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
                 <ScalarProperty Name="airline" ColumnName="airline" />
                 <ScalarProperty Name="fromcity" ColumnName="fromcity" />
                 <ScalarProperty Name="tocity" ColumnName="tocity" />
                 <ScalarProperty Name="departdate" ColumnName="departdate" />
-                <ScalarProperty Name="arrivedate" ColumnName="arrivedate" />
                 <ScalarProperty Name="numberofbags" ColumnName="numberofbags" />
                 <ScalarProperty Name="totalamount" ColumnName="totalamount" />
                 <ScalarProperty Name="flightspecs" ColumnName="flightspecs" />
+                <ScalarProperty Name="numberofpassengers" ColumnName="numberofpassengers" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -666,8 +669,6 @@
           <EntitySetMapping Name="quotes">
             <EntityTypeMapping TypeName="SeleleModel.quote">
               <MappingFragment StoreEntitySet="quote">
-                <ScalarProperty Name="clientname" ColumnName="clientname" />
-                <ScalarProperty Name="client_no" ColumnName="client_no" />
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="service" ColumnName="service" />
@@ -677,13 +678,14 @@
                 <ScalarProperty Name="quotedate" ColumnName="quotedate" />
                 <ScalarProperty Name="consultant_no" ColumnName="consultant_no" />
                 <ScalarProperty Name="servicefee" ColumnName="servicefee" />
+                <ScalarProperty Name="client_no" ColumnName="client_no" />
+                <ScalarProperty Name="clientname" ColumnName="clientname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="staffs">
             <EntityTypeMapping TypeName="SeleleModel.staff">
               <MappingFragment StoreEntitySet="staff">
-                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="staff_id" ColumnName="staff_id" />
                 <ScalarProperty Name="stafffirstnames" ColumnName="stafffirstnames" />
                 <ScalarProperty Name="stafflastname" ColumnName="stafflastname" />
@@ -691,6 +693,7 @@
                 <ScalarProperty Name="dateofhire" ColumnName="dateofhire" />
                 <ScalarProperty Name="salary" ColumnName="salary" />
                 <ScalarProperty Name="branch" ColumnName="branch" />
+                <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -722,7 +725,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
