@@ -17,9 +17,9 @@ namespace SeleleTravel
     /// <summary>
     /// Interaction logic for Owner.xaml
     /// </summary>
-    public partial class Owner : Window
+    public partial class OwnerHomeWindow : Window
     {
-        public Owner()
+        public OwnerHomeWindow()
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;

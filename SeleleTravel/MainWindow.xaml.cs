@@ -26,7 +26,7 @@ namespace SeleleTravel
         public static LogInWindow logInWindow;
         public static ConsultantHomeWindow consultantWindow = new ConsultantHomeWindow();
         public static Manager_Home managerWindow = new Manager_Home();
-        public static Owner ownerWindow = new Owner();
+        public static OwnerHomeWindow ownerWindow = new OwnerHomeWindow();
         public static New_Service_Provider newServiceProviderWindow = new New_Service_Provider();
         
         //Makes all windows spawn in the center of the screen
