@@ -255,6 +255,9 @@
     <Compile Include="order.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="OwnerPaymentsWindow.xaml.cs">
+      <DependentUpon>OwnerPaymentsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Owner_Employees_Window.xaml.cs">
       <DependentUpon>Owner_Employees_Window.xaml</DependentUpon>
     </Compile>
@@ -278,6 +281,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SeleleModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SignUpWindow.xaml.cs">
+      <DependentUpon>SignUpWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="staff.cs">
       <DependentUpon>SeleleModel.tt</DependentUpon>
@@ -359,11 +365,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="OwnerPaymentsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Owner_Employees_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Owner_Financial_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SignUpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
