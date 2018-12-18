@@ -17,9 +17,9 @@ namespace SeleleTravel
     /// <summary>
     /// Interaction logic for Owner_Financial_Window.xaml
     /// </summary>
-    public partial class Owner_Financial_Window : Window
+    public partial class OwnerFinancialWindow : Window
     {
-        public Owner_Financial_Window()
+        public OwnerFinancialWindow()
         {
             InitializeComponent();
         }
