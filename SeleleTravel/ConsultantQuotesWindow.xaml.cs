@@ -391,9 +391,16 @@ namespace SeleleTravel
             string preferedTime = txbFlight_time.Text;
             string flightSpecs = txbFlight_specifications.Text;
             double totolAmount = Convert.ToDouble(txbFlight_total.Text);
-
+            //need a texbox for number of passengers
+            //NEW EditVuyo
+            string passengers = txbFlight_passengers.Text;
+            string[] passArray=passengers.Split(',');
+            for (int i = 0; i < passArray.Length; i++)
+            {
+                _passengers.Add(passArray[i]);
+            }
             // Data validation
-            List<string> _stringValues = new List<string>();
+                List<string> _stringValues = new List<string>();
             _stringValues.Add(airlineName);
             _stringValues.Add(fromLoc);
             _stringValues.Add(toLoc);

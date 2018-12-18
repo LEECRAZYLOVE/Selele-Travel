@@ -156,7 +156,7 @@
                     <Label x:Name="label23" Content="Specifications:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,260,0,0"/>
                     <TextBox x:Name="txbFlight_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="72" Margin="116,260,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" Grid.ColumnSpan="2"/>
                     <ListBox x:Name="ltbFlight_passengersOutput" Grid.Column="1" HorizontalAlignment="Left" Height="270" Margin="204,62,0,0" VerticalAlignment="Top" Width="230"/>
-                    <Button x:Name="btnFlight_addPassenger" Content="ADD" Grid.Column="1" HorizontalAlignment="Left" Margin="359,14,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnFlight_addPassenger" Content="ADD" Grid.Column="1" HorizontalAlignment="Left" Margin="359,14,0,0" VerticalAlignment="Top" Width="75" Click="btnFlight_addPassenger_Click_1"/>
                     <Label x:Name="label24" Content="Preferred time:" HorizontalAlignment="Left" Margin="192,209,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="txbFlight_time" HorizontalAlignment="Left" Height="23" Margin="287,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                     <Label x:Name="label35" Content="TOTAL:" Grid.Column="1" HorizontalAlignment="Left" Margin="114,255,0,0" VerticalAlignment="Top"/>

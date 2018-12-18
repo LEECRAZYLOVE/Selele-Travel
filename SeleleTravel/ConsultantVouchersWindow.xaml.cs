@@ -23,5 +23,15 @@ namespace SeleleTravel
         {
             InitializeComponent();
         }
+
+        private void btnConsultant_Voucher_addNewVoucher_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnConvsultant_Vouchers_viewOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

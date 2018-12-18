@@ -23,5 +23,10 @@ namespace SeleleTravel
         {
             InitializeComponent();
         }
+
+        private void btnConsultant_Orders_addNewOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

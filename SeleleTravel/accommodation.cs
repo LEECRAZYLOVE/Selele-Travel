@@ -24,6 +24,16 @@ namespace SeleleTravel
         public Nullable<int> numberofrooms { get; set; }
         public Nullable<double> amount { get; set; }
         public string accomspecs { get; set; }
-
+        //todo constructor
+        public accommodation( string accomname, DateTime checkin,DateTime checkout,int guests, int rooms, double amount,string accomspecs)
+        {
+            this.accomname = accomname;
+            this.checkin = checkin;
+            this.checkout = checkout;
+            this.amount = amount;
+            this.numberofguests = numberofguests;
+            this.numberofrooms = numberofrooms;
+            this.accomspecs = accomspecs;
+        }
     }
 }

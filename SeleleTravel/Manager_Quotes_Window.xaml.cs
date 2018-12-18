@@ -30,5 +30,10 @@ namespace SeleleTravel
         {
             composeMessage.Show();
         }
+
+        private void BtnQuoteSummary_verifyAccept_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
