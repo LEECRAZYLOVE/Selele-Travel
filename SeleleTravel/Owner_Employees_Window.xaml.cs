@@ -15,27 +15,26 @@ using System.Windows.Shapes;
 namespace SeleleTravel
 {
     /// <summary>
-    /// Interaction logic for Owner.xaml
+    /// Interaction logic for Owner_Employees_Window.xaml
     /// </summary>
-    public partial class OwnerHomeWindow : Window
+    public partial class OwnerEmployeesWindow : Window
     {
-        public OwnerHomeWindow()
+        public OwnerEmployeesWindow()
         {
             InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
-        }
-        
-        private void Owner_Home_Closed(object sender, EventArgs e)
-        {
-            GeneralMethods.closeAllWindows();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            GeneralMethods.logOut(this);
         }
 
         private void btnOwner_search_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEmployees_update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEmplyees_find_Click(object sender, RoutedEventArgs e)
         {
 
         }

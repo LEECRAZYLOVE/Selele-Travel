@@ -41,7 +41,7 @@ namespace SeleleTravel
                     MainWindow.managerWindow.Show();
                     break;
                 case LoadWindow.Owner:
-                    MainWindow.ownerWindow = new Owner();
+                    MainWindow.ownerWindow = new OwnerHomeWindow();
                     MainWindow.ownerWindow.Show();
                     break;
             }

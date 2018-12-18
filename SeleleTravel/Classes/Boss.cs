@@ -12,7 +12,7 @@ namespace SeleleTravel
     { 
 
 
-        public override List<staff> employees { get => staff.hiredEmployees; }
+        //public override List<staff> employees { get => staff.hiredEmployees; }
 
         /// <summary>
         /// Fires an employee. Status : incomplete
@@ -37,7 +37,7 @@ namespace SeleleTravel
         public void hire(staff employee)
         {
             employee.dateofhire = DateTime.Now;
-            staff.hiredEmployees.Add(employee);
+            //staff.hiredEmployees.Add(employee);
 
             //Append changes to database
 

@@ -13,12 +13,12 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="label" Grid.ColumnSpan="2" Content="Quote Number:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txbConsultant_Orders_inputQuote" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="106.703,12.96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250"/>
-        <Button x:Name="btnConvsultant_Orders_viewQuote" Grid.ColumnSpan="2" Content="View" HorizontalAlignment="Left" Margin="372.703,12.96,0,0" VerticalAlignment="Top" Width="95"/>
-        <Button x:Name="btnConsultant_Orders_selectQuote" Grid.ColumnSpan="2" Content="Select" HorizontalAlignment="Left" Margin="472.703,12.96,0,0" VerticalAlignment="Top" Width="94"/>
+        <Button x:Name="btnConvsultant_Orders_viewQuote" Grid.ColumnSpan="2" Content="View" HorizontalAlignment="Left" Margin="372.703,12.96,0,0" VerticalAlignment="Top" Width="95" Click="BtnConvsultant_Orders_viewQuote_Click"/>
+        <Button x:Name="btnConsultant_Orders_selectQuote" Grid.ColumnSpan="2" Content="Select" HorizontalAlignment="Left" Margin="472.703,12.96,0,0" VerticalAlignment="Top" Width="94" Click="BtnConsultant_Orders_selectQuote_Click"/>
         <TextBox x:Name="txbConsultant_Orders_viewQuote" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="357.04" Margin="10,51.96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="556.703" Opacity="0.6"/>
         <TextBox x:Name="txbConsultant_Orders_orderNumber" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="585.963,51.96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185.904"/>
         <Label x:Name="label1" Grid.ColumnSpan="2" Content="Order Number:" HorizontalAlignment="Left" Margin="631.993,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnConsultant_Orders_addNewOrder" Grid.ColumnSpan="2" Content="Add New Order" Margin="585.963,389.04,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="185.904" Click="btnConsultant_Orders_addNewOrder_Click"/>
+        <Button x:Name="btnConsultant_Orders_addNewOrder" Grid.ColumnSpan="2" Content="Add New Order" Margin="585.963,389.04,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="185.904" Click="BtnConsultant_Orders_addNewOrder_Click"/>
 
     </Grid>
 </Window>

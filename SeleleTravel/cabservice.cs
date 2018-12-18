@@ -26,21 +26,5 @@ namespace SeleleTravel
         public Nullable<double> amount { get; set; }
         public string timeofcab { get; set; }
         public string cabspecs { get; set; }
-
-        public cabservice(string agencyName, string driverName, string pickUpLocation, string dropOffLocation, string timeOfPickUp, DateTime dateOfPickup, int numberOfCabs, string taxicabSpecs, double totalAmount)
-        {
-            this.nameofagency = agencyName;
-            this.nameofdriver = driverName;
-            this.pickup = pickUpLocation;
-            this.dropoff = dropOffLocation;
-            this.timeofcab = timeOfPickUp;
-            this.dateofcab = dateOfPickup;
-            this.numberofcabs = numberOfCabs;
-            this.cabspecs = taxicabSpecs;
-            this.amount = totalAmount;
-        }
-
-        //TODO Override ToString
     }
-
 }

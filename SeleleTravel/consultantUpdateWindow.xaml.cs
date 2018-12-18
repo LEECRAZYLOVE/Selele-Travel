@@ -23,6 +23,7 @@ namespace SeleleTravel
         public ConsultantUpdateWindow()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         private void createNewClient_Click(object sender, RoutedEventArgs e)
@@ -88,6 +89,28 @@ namespace SeleleTravel
         private void AmountChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+        //Implementing placeholder
+        private void TxbCab_pickUpTime_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox current = (TextBox)sender;
+            string placeHolderText = "hh:mm";
+            if (current.Text == placeHolderText)
+            {
+                current.Foreground = Brushes.Black;
+                current.Clear();
+            }
+        }
+
+        private void TxbCab_pickUpTime_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox current = (TextBox)sender;
+            string placeHolderText = "hh:mm";
+            if (current.Text == "")
+            {
+                current.Foreground = Brushes.LightGray;
+                current.Text = placeHolderText;
+            }
         }
     }
 }

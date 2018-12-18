@@ -15,19 +15,13 @@ using System.Windows.Shapes;
 namespace SeleleTravel
 {
     /// <summary>
-    /// Interaction logic for Manager_Authorizations_Window.xaml
+    /// Interaction logic for Owner_Financial_Window.xaml
     /// </summary>
-    public partial class Manager_Authorizations_Window : Window
+    public partial class OwnerFinancialWindow : Window
     {
-        public Manager_Authorizations_Window()
+        public OwnerFinancialWindow()
         {
             InitializeComponent();
-        }
-
-        private void BtnAuthorizations_Authorize_Click(object sender, RoutedEventArgs e)
-        {
-            // hash the password and the sign in to the database
-            string newFreshNew = pdbAuthorizations_password.Password;
         }
     }
 }

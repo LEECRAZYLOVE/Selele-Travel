@@ -26,6 +26,16 @@ namespace SeleleTravel
             //this.WindowState = WindowState.Maximized;
         }
 
+        private void validateValue(object sender, TextChangedEventArgs e)
+        {
+            GeneralMethods.checkAmountTyped(sender);
+        }
+
+        private void validateNumber(object sender, TextChangedEventArgs e)
+        {
+            GeneralMethods.checkPhoneNumber(sender);
+        }
+
         private void createNewClient_Click(object sender, RoutedEventArgs e)
         {
             

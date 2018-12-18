@@ -33,7 +33,7 @@
     </Window.Resources>
     <Grid x:Name="mainGrid" Background="#FFD9EAD3" >
         <Canvas x:Name="container" Height="568.377" Canvas.Left="34.502" Canvas.Top="44.423" Width="481.065">
-            <Label x:Name="label9" Content="Name:" Style="{DynamicResource LabelStyle1}" Canvas.Left="5.617" Canvas.Top="59.021"/>
+            <Label x:Name="label9" Content="Name:" Style="{DynamicResource LabelStyle1}" Canvas.Left="6" Canvas.Top="59"/>
             <Label x:Name="label11" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Canvas.Top="131.694"/>
             <Label x:Name="label12" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1.42" Canvas.Top="214.454" Style="{DynamicResource LabelStyle1}"/>
             <Label x:Name="label13" Content="Province:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="284.046" Style="{DynamicResource LabelStyle1}"/>
@@ -75,9 +75,9 @@
                 <ComboBoxItem Content="Northen Cape" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
                 <ComboBoxItem Content="Western Cape" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
             </ComboBox>
-            <TextBox x:Name="txbNewService_cellphone" Height="30" Width="361.066" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="324.23" FontSize="16" FontFamily="Comic Sans MS"/>
-            <TextBox x:Name="txbNewService_fax" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="359.23" FontSize="16" FontFamily="Comic Sans MS"/>
-            <TextBox x:Name="txbNewService_telephone" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="394.23" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewService_cellphone" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="324.23" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewService_fax" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="359.23" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewService_telephone" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="394.23" FontSize="16" FontFamily="Comic Sans MS"/>
             <TextBox x:Name="txbNewService_email" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="429.23" FontSize="16" FontFamily="Comic Sans MS"/>
             <Button x:Name="btnNewService_add" Content="Add" Click="createNewClient_Click" RenderTransformOrigin="0.5,0.5" Canvas.Left="119.999" Canvas.Top="513.411" Width="255.79" Height="54.966" FontFamily="Rockwell" FontSize="36" Background="#FFB2E4CA"/>
 

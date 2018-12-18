@@ -20,7 +20,5 @@ namespace SeleleTravel
         public string emailaddress { get; set; }
         public string fax { get; set; }
         public string agency_id { get; set; }
-
-        //TODO - agency_id generation function
     }
 }

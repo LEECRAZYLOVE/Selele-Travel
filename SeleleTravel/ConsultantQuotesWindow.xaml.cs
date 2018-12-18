@@ -70,21 +70,21 @@ namespace SeleleTravel
         //Status : Incomplete
         private void createNewClient_Click(object sender, RoutedEventArgs e)
         {
-            string names = txbNewClient_name.Text + " " + txbNewClient_surname;
+            string names = txbNewClient_name.Text + " " + txbNewClient_surname.Text;
             //Retrieving clientType
-            clienttype clientType = (bool)(ckbBusiness.IsChecked) ? clienttype.Business : clienttype.Individual;
+            //clienttype clientType = (bool)(ckbBusiness.IsChecked) ? clienttype.Business : clienttype.Individual;
 
             //Get contact details
-            string cellphone = txbNewClient_cellphone.Text;
-            string fax = txbNewClient_fax.Text;
+            string Cellphone = txbNewClient_cellphone.Text;
+            string Fax = txbNewClient_fax.Text;
 
             // email verification 
             txbNewClient_email = checkEmail(txbNewClient_email);
             string email = txbNewClient_email.Text;
 
-            string telephone = txbNewClient_telephone.Text;
+            string Telephone = txbNewClient_telephone.Text;
 
-            ContactDetails contactDetails = new ContactDetails(cellphone, email, telephone, fax);
+            ContactDetails contactDetails = new ContactDetails(Cellphone, email, Telephone, Fax);
 
             //Get location details
             string address = txbNewClient_address.Text;
@@ -94,21 +94,42 @@ namespace SeleleTravel
             //use this in initialisation of client
             string _location = address + '\n' + city + '\n' + areaCode + '\n' + province;
 
-            //Initialize Client instance
-            client client = new client(names, clientType, contactDetails)
+            //Initialize Client  and DBConnect instance
+            var context = new SeleleEntities();
+            var currentClient = new client()
             {
-                address = _location
+                client_no = "J67", //This will be automatically generated. I'm using a dummy to test queries.
+                quote_no = "1234",
+                clientname = names,
+                cellphone = Cellphone,
+                address = _location,
+                emailaddress = email,
+                telephone = Telephone,
+                fax = Fax,
             };
 
             //Add client to database
-
+            try
+            {
+                context.clients.Add(currentClient);
+                context.SaveChanges();
+                MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentClient.client_no}");
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+               // throw ex;
+            }
         }
 
         #endregion
 
         #region Already a Client Display
-
-        #endregion
 
         private void BtnOldClient_find_Click(object sender, RoutedEventArgs e)
         {
@@ -116,9 +137,17 @@ namespace SeleleTravel
             string findName = txbOldClient_find.Text;
 
             // Results from the database
-            txblOldClient_Details.Text = "";
+            //Add these result to the listbox
+
+        }
+        
+        private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
+        #endregion
+        
         #endregion
 
         #region General Methods/Events
@@ -129,18 +158,7 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void AmountChanged(object sender, TextChangedEventArgs e)
         {
-
-            string acceptedCharacters = "0123456789.";
-            TextBox reference = (TextBox)sender;
-            if (reference.Text.Length <= 0) return;
-
-            string letterEntered = reference.Text.Last().ToString().ToLower();
-            if (!acceptedCharacters.Contains(letterEntered))
-            {
-                reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
-                reference.SelectionStart = reference.Text.Length;
-                MessageBox.Show("'" + letterEntered + "' is not an accepted character for an amount!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            bool intOrDouble = false;
         }
 
         /// <summary>
@@ -150,17 +168,7 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void AmountChanged_WHOLENumber(object sender, TextChangedEventArgs e)
         {
-            string acceptedCharacters = "0123456789";
-            TextBox reference = (TextBox)sender;
-            if (reference.Text.Length <= 0) return;
-
-            string letterEntered = reference.Text.Last().ToString().ToLower();
-            if (!acceptedCharacters.Contains(letterEntered))
-            {
-                reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
-                reference.SelectionStart = reference.Text.Length;
-                MessageBox.Show("'" + letterEntered + "' is not an accepted character!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            bool intOrDble = true;
         }
 
         /// <summary>
@@ -170,32 +178,13 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void phoneNumberCheck(object sender, TextChangedEventArgs e)
         {
-            string acceptedCharacters = "+0123456789 ";
-            TextBox reference = (TextBox)sender;
-            if (reference.Text.Length <= 0) return;
-
-            string letterEntered = reference.Text.Last().ToString().ToLower();
-            if (!acceptedCharacters.Contains(letterEntered))
-            {
-                reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
-                reference.SelectionStart = reference.Text.Length;
-                MessageBox.Show("'" + letterEntered + "' is not an accepted character for a phone/telephone number!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            
         }
 
         #endregion
 
         #region Event tab
-
-        // displays an error message when the textboxes are empty
-        void EventErrorMessage(string name, string specs)
-        {
-            if (name == "" || specs == "")
-            {
-                MessageBox.Show("Please enter valid text!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
+        
         private void _done(object sender, RoutedEventArgs e)
         {
             // assign vars to the textboxes
@@ -205,64 +194,61 @@ namespace SeleleTravel
 
             // Data verification:
             // make sure that the supplied data is valid
-            EventErrorMessage(nameOfEvent, eventSpecs);
+            List<string> stringVs = new List<string>() { nameOfEvent, eventSpecs };
 
-            // create an instnce of the event class
-            var context = new SeleleEntities();
-            var currentEvent = new @event(nameOfEvent, eventSpecs, eventAmount)//(nameOfEvent, eventSpecs, eventAmount);
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
+            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
+
+            if(!boolValue)
             {
-                quote_no = "1234",
-                order_no = "5678"
-            };
+               //create an instnce of the event class and dbconnect
+                var context = new SeleleEntities();
+                var currentEvent = new @event()//(nameOfEvent, eventSpecs, eventAmount);
+                {
+                    eventname = nameOfEvent,
+                    eventspecs=  eventSpecs,
+                    amount = eventAmount,
+                    quote_no = "1234",
+                    //order_no = "5678"
+                };
 
-            // Reset textbox values to empty
-            txbEvents_name.Text = "";
-            txbEvents_specifications.Text = "";
-            txbEvents_total.Text = "";
+                //sql insertion
+                try
+                {
+                    context.events.Add(currentEvent);
+                    context.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+                }
+                catch (Exception ex)
+                {
+                    //other error
+                    throw ex;
+                }
 
-            // Todo sql insertion
+                // reset texbox values to empty
+                // call the clear textbox method
+                List<TextBox> textBoxes = new List<TextBox>
+                {
+                    txbEvents_name,
+                    txbEvents_specifications,
+                    txbEvents_total
+                };
+                GeneralMethods.clearTextBoxes(textBoxes);
 
-            // try
-            // {
-            //     context.events.Add(currentEvent);
-            //     context.SaveChanges();
-            // }
-            // catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            // {
-            //     var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-            //     var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            // }
-            //catch (Exception ex)
-            //{
-            //    //other error
-            //    throw ex;
-            //}
+            }
+
 
         }
+
         #endregion
 
         #region Conference tab
-
-        /// <summary>
-        /// It checks if the variables are empty
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="venue"></param>
-        /// <param name="date"></param>
-        /// <param name="time"></param>
-        /// <param name="specs"></param>
-        public void conferenceErrorMessage(string name, string venue, DateTime date, string time, string specs)
-        {
-            if (name == "" || specs == "" || time == "" || specs == "")
-            {
-                MessageBox.Show("Please enter valid text!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            if (date == null || date.ToString() == null || date.ToString() == "")
-            {
-                MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
 
         private void BtnConference_done_Click(object sender, RoutedEventArgs e)
         {
@@ -275,49 +261,50 @@ namespace SeleleTravel
 
             // Data Verification:
             // check if the variables are empty
-            conferenceErrorMessage(conferenceName, conferenceVenue, dateOfConference, conferenceTime, specsOfConference);
+            List<DateTime> dateTimes = new List<DateTime>() { dateOfConference };
+            List<string> stringVs = new List<string>
+            {
+                conferenceName,
+                conferenceVenue,
+                conferenceTime,
+                specsOfConference
+            };
 
-            conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
+            
 
-            // reset texbox values to empty
-            txbConference_name.Text = "";
-            txbConference_venue.Text = "";
-            txbConference_time.Text = "";
-            txbConference_specifications.Text = "";
-            txbConference_total.Text = "";
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
+            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
+            bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
-            // Todo sql insertion
-            // ...
+            if(!boolValue && !valueOfBool)
+            {
+                // todo...
+                // conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
 
+                // Todo sql insertion
+                // ...
+
+                // reset texbox values to empty
+                // call the clear textbox method
+                List<TextBox> textBoxes = new List<TextBox>
+                {
+                    txbConference_name,
+                    txbConference_venue,
+                    txbConference_time,
+                    txbConference_specifications,
+                    txbConference_total
+                };
+                GeneralMethods.clearTextBoxes(textBoxes);
+                
+            }
         }
 
         #endregion
 
         #region Taxi cab
-
-        /// <summary>
-        /// Check if the texboxes are empty and the send an error message if they are.
-        /// </summary>
-        /// <param name="stringValues"></param>
-        /// <param name="date"></param>
-        /// <param name="numOfpass"></param>
-        public void conferenceErrorMessage(List<string> stringValues, DateTime date)
-        {
-            for (int i = 0; i < stringValues.Count; i++)
-            {
-                if (stringValues[i] == "")
-                {
-                    MessageBox.Show("Please enter valid text!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    break;
-                }
-            }
-
-            if (date == null || date.ToString() == null || date.ToString() == "")
-            {
-                MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
+        
         private void BtnCab_done_Click(object sender, RoutedEventArgs e)
         {
             // Asign vars to texbox values
@@ -332,53 +319,58 @@ namespace SeleleTravel
             double _totalAmount = Convert.ToDouble(txbCab_total.Text);
 
             // Data verification
-            List<string> conf_stringValues = new List<string>();
-            conf_stringValues.Add(_agencyName);
-            conf_stringValues.Add(_driverName);
-            conf_stringValues.Add(_pickUpLocation);
-            conf_stringValues.Add(_dropOffLocation);
-            conf_stringValues.Add(_timeOfPickUp);
-            conf_stringValues.Add(_taxicabSpecs);
+            List<DateTime> dateTimes = new List<DateTime>() { _dateOfPickup };
+            List<string> stringVs = new List<string>
+            {
+                _agencyName,
+                _driverName,
+                _pickUpLocation,
+                _dropOffLocation,
+                _timeOfPickUp,
+                _taxicabSpecs
+            };
 
-            // create the instance after checking for errors
-            var taxiCab = new cabservice(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs, _totalAmount);
 
-            // Todo sql insertion
-            // ...
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
+            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
+            bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
+
+            if(!boolValue && !valueOfBool)
+            {
+                // todo
+                // create the instance after checking for errors
+                // var taxiCab = new cabservice(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs, _totalAmount);
+
+                // Todo sql insertion
+                // ...
+
+                // reset the textbox values to empty
+                // call the clear textbox method
+                List<TextBox> textBoxes = new List<TextBox>
+                {
+                    txbCab_agency,
+                    txbCab_driver,
+                    txbCab_pickUp,
+                    txbCab_dropOff,
+                    txbCab_pickUpTime,
+                    txbCab_numCabs,
+                    txbCab_specifications,
+                    txbCab_total
+                };
+                GeneralMethods.clearTextBoxes(textBoxes);
+            }
+
+
+
         }
 
         #endregion
 
         #region Flight tab
 
-        /// <summary>
-        /// Checks if the data provided has valid characters
-        /// </summary>
-        /// <param name="stringValues"></param>
-        /// <param name="departuredate"></param>
-        /// <param name="arrival"></param>
-        public void flightErrorMessage(List<string> stringValues, DateTime departuredate, DateTime arrival)
-        {
-            for (int i = 0; i < stringValues.Count; i++)
-            {
-                if (stringValues[i] == "")
-                {
-                    MessageBox.Show("Please enter valid text!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    break;
-                }
-            }
-
-            if (departuredate == null || departuredate.ToString() == null || departuredate.ToString() == "")
-            {
-                MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else if (arrival == null || arrival.ToString() == null || arrival.ToString() == "")
-            {
-                MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        List<string> _passengers = new List<string>();
+        private List<string> _passengers = new List<string>();
         private void BtnFlight_done_Click(object sender, RoutedEventArgs e)
         {
             // assign valuesfrom the texbox to the variables
@@ -391,45 +383,67 @@ namespace SeleleTravel
             string preferedTime = txbFlight_time.Text;
             string flightSpecs = txbFlight_specifications.Text;
             double totolAmount = Convert.ToDouble(txbFlight_total.Text);
-            //need a texbox for number of passengers
-            //NEW EditVuyo
-            string passengers = txbFlight_passengers.Text;
-            string[] passArray=passengers.Split(',');
-            for (int i = 0; i < passArray.Length; i++)
-            {
-                _passengers.Add(passArray[i]);
-            }
+
             // Data validation
-                List<string> _stringValues = new List<string>();
-            _stringValues.Add(airlineName);
-            _stringValues.Add(fromLoc);
-            _stringValues.Add(toLoc);
-            _stringValues.Add(preferedTime);
-            _stringValues.Add(flightSpecs);
-            flightErrorMessage(_stringValues, departureDate, arrivalDate);
+            // and Error checking
+            List<DateTime> dateTimes = new List<DateTime>
+            {
+                departureDate,
+                arrivalDate
+            };
+            List<string> stringVs = new List<string>
+            {
+                airlineName,
+                fromLoc,
+                toLoc,
+                preferedTime,
+                flightSpecs
+            };
 
-            // check if the list is not empty
-            if (_passengers.Count <= 0)
+
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
+            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
+            bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
+            
+            if(!boolValue && !valueOfBool)
             {
-                MessageBox.Show("Please add the names of passenger!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
-                // creates an instance of the flight class
-                var Flight = new flight(airlineName, fromLoc, toLoc, departureDate, arrivalDate, numberOfBags, _passengers.Count(), _passengers, totolAmount);
+                // todo ...
+
+                // check if the list is not empty
+                if (_passengers.Count <= 0)
                 {
+                    MessageBox.Show("Please add the names of passenger!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    // creates an instance of the flight class
+                    //var Flight = new flight(airlineName, fromLoc, toLoc, departureDate, arrivalDate, numberOfBags, _passengers.Count(), _passengers, totolAmount);
+                    //{
 
+                    //};
+                }
+
+                // reset the textbox values to empty
+                // call the clear textbox method
+                List<TextBox> textBoxes = new List<TextBox>
+                {
+                    txbAccommodation_name,
+                    txbAccommodation_specifications,
+                    txbAccommodation_numGuests,
+                    txbAccommodation_numRooms,
+                    txbAccommodation_total
                 };
+                GeneralMethods.clearTextBoxes(textBoxes);
+
+                // clear the passangers
+                _passengers = new List<string>();
             }
 
-            // reset the textbox values to empty
-            txbFlight_airline.Text = "";
-            txbFlight_from.Text = "";
-            txbFlight_to.Text = "";
-            txbFlight_numBags.Text = "";
-            txbFlight_time.Text = "";
-            txbFlight_specifications.Text = "";
-            _passengers = new List<string>();
+            
+
+            
         }
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
@@ -448,33 +462,6 @@ namespace SeleleTravel
 
         #region Accomodation tab
 
-        /// <summary>
-        /// Check if the variables are empty
-        /// </summary>
-        /// <param name="stringValues"></param>
-        /// <param name="checkindate"></param>
-        /// <param name="checkout"></param>
-        public void accommodationErrorMessage(List<string> stringValues, DateTime checkindate, DateTime checkout)
-        {
-            for (int i = 0; i < stringValues.Count; i++)
-            {
-                if (stringValues[i] == "")
-                {
-                    MessageBox.Show("Please enter valid text!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    break;
-                }
-            }
-
-            if (checkindate == null || checkindate.ToString() == null || checkindate.ToString() == "")
-            {
-                MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else if (checkout == null || checkout.ToString() == null || checkout.ToString() == "")
-            {
-                MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
         private void BtnAccommodation_done_Click(object sender, RoutedEventArgs e)
         {
             string nameOfAgency = txbAccommodation_name.Text;
@@ -485,55 +472,56 @@ namespace SeleleTravel
             int numberOfRooms = Convert.ToInt32(txbAccommodation_numRooms.Text);
             double totalCost = Convert.ToDouble(txbAccommodation_total.Text);
 
-            // Validate data
-            List<string> _stringValues = new List<string>();
-            _stringValues.Add(nameOfAgency);
-            _stringValues.Add(accommodationSpecs);
-            accommodationErrorMessage(_stringValues, checkInDate, checkOutDate);
+            // Data validation
+            // Error checking
+            List<DateTime> dateTimes = new List<DateTime>
+            {
+                checkInDate,
+                checkOutDate
+            };
 
-            // Instantiate the accomodation
-            //var currentAccommodation = new accommodation(nameOfAgency, checkInDate, checkOutDate, numberOfGuests, numberOfRooms, accommodationSpecs, totalCost);
-            //{
-            //    acc
-            //};
+            List<string> stringVs = new List<string>
+            {
+                nameOfAgency,
+                accommodationSpecs
+            };
+           
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
+            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
+            bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
-            // Reset the texboxes to empty
-            txbAccommodation_name.Text = "";
-            txbAccommodation_specifications.Text = "";
-            txbAccommodation_numGuests.Text = "";
-            txbAccommodation_numRooms.Text = "";
-            txbAccommodation_total.Text = "";
+            if(!boolValue && !valueOfBool)
+            {
+                // ... todo
+
+                // Instantiate the accomodation
+                //var currentAccommodation = new accommodation(nameOfAgency, checkInDate, checkOutDate, numberOfGuests, numberOfRooms, accommodationSpecs, totalCost);
+                //{
+                //    acc
+                //};
+
+                // Reset the texboxes to empty
+                // call the clear textbox method
+                List<TextBox> textBoxes = new List<TextBox>
+                {
+                    txbAccommodation_name,
+                    txbAccommodation_specifications,
+                    txbAccommodation_numGuests,
+                    txbAccommodation_numRooms,
+                    txbAccommodation_total
+                };
+                GeneralMethods.clearTextBoxes(textBoxes);
+            }
+
+
+
         }
 
         #endregion
 
         #region CarHire
-
-        /// <summary>
-        /// Check if the variables are empty
-        /// </summary>
-        /// <param name="stringValues"></param>
-        /// <param name="startdate"></param>
-        /// <param name="enddate"></param>
-        public void carHireErrorMessage(List<string> stringValues, DateTime startdate, DateTime enddate)
-        {
-            for (int i = 0; i < stringValues.Count; i++)
-            {
-                if (stringValues[i] == "")
-                {
-                    MessageBox.Show("Please enter valid text!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-
-            if (startdate == null || startdate.ToString() == null || startdate.ToString() == "")
-            {
-                MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else if (enddate == null || enddate.ToString() == null || enddate.ToString() == "")
-            {
-                MessageBox.Show("Please select the date!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
 
         private void BtnCarHire_Done_Click(object sender, RoutedEventArgs e)
         {
@@ -548,26 +536,50 @@ namespace SeleleTravel
 
             // Data Validation
             // Check for errors
-            List<string> stringValues_ = new List<string>();
-            stringValues_.Add(agencyName);
-            stringValues_.Add(pickUpLocation);
-            stringValues_.Add(dropOffLocation);
-            stringValues_.Add(carHireSpecs);
-            carHireErrorMessage(stringValues_, _startday, _endDay);
-
-            // Create an instance of carhire
-            var _carHire = new carhire(agencyName, pickUpLocation, dropOffLocation, _startday, _endDay);
+            List<DateTime> dateTimes = new List<DateTime>
             {
-
+                _startday,
+                _endDay
             };
+            List<string> stringVs = new List<string>
+            {
+                agencyName,
+                pickUpLocation,
+                dropOffLocation,
+                carHireSpecs
+            };
+            
 
-            // Reset the textboxes
-            txbCarHire_agency.Text = "";
-            txbCarHire_pickUp.Text = "";
-            txbCarHire_dropOff.Text = "";
-            txbCarHire_numCars.Text = "";
-            txbCarHire_specifications.Text = "";
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
+            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
+            bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
+            // check if the bool statements above are false
+            // if they are, continue
+            // else stop the program
+            if(!boolValue && !valueOfBool)
+            {
+                // Create an instance of carhire
+                //var _carHire = new carhire(agencyName, pickUpLocation, dropOffLocation, _startday, _endDay);
+                //{
+
+                //};
+
+                // Reset the textboxes
+                // call the clear textbox method
+                List<TextBox> toBeCleared = new List<TextBox>
+                {
+                    txbCarHire_agency,
+                    txbCarHire_pickUp,
+                    txbCarHire_dropOff,
+                    txbCarHire_numCars,
+                    txbCarHire_specifications
+                };
+                GeneralMethods.clearTextBoxes(toBeCleared);
+            }
+            
         }
 
         #endregion
@@ -585,6 +597,8 @@ namespace SeleleTravel
 
         #endregion
 
+
+        //Opening a word document from the program
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             object oMissing = System.Reflection.Missing.Value;
