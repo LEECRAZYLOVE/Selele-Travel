@@ -24,13 +24,12 @@ namespace SeleleTravel
         public Nullable<System.DateTime> enddate { get; set; }
         public string carhirespecifications { get; set; }
 
-        carhire(string agencyName, string pickUpLocation, string dropOffLocation, DateTime dayOfHire, DateTime endDate, DateTime expectedEndDate)
+        public carhire(string agencyName, string pickUpLocation, string dropOffLocation, DateTime dayOfHire, DateTime expectedEndDate)
         {
             this.agencyname = agencyName;
             this.pickuplocation = pickUpLocation;
             this.dropofflocation = dropOffLocation;
             this.dayofhire = dayOfHire;
-            this.enddate = endDate;
             this.expectedenddate = expectedEndDate; //this is the date that we expect the renting should be done so that we have the reminder prompts
     }
     /// <summary>

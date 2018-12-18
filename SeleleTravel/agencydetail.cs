@@ -22,7 +22,5 @@ namespace SeleleTravel
         public string fax { get; set; }
         public string cellphone { get; set; }
         public string service { get; set; }
-
-        //TODO - acgeny_id generation function
     }
 }

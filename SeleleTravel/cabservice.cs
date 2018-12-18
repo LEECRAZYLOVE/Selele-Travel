@@ -27,7 +27,7 @@ namespace SeleleTravel
         public string timeofcab { get; set; }
         public string cabspecs { get; set; }
 
-        cabservice(string agencyName, string driverName, string pickUpLocation, string dropOffLocation, string timeOfPickUp, DateTime dateOfPickup, int numberOfCabs, string taxicabSpecs, double totalAmount)
+        public cabservice(string agencyName, string driverName, string pickUpLocation, string dropOffLocation, string timeOfPickUp, DateTime dateOfPickup, int numberOfCabs, string taxicabSpecs, double totalAmount)
         {
             this.nameofagency = agencyName;
             this.nameofdriver = driverName;

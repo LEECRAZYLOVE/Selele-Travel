@@ -1,0 +1,45 @@
+﻿<Window x:Class="SeleleTravel.Manager_Quotes_Window" x:Name="Manager_Quotes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SeleleTravel"
+        mc:Ignorable="d"
+        Title="Manager_Quotes_Page" Height="450" Width="800">
+    <Grid Background="#FFFF1919">
+        <Button x:Name="btnManager_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="29" Margin="685,10,0,0" Click="BtnManager_logOut_Click"/>
+        <TabControl x:Name="Manager_tabControl" HorizontalAlignment="Left" Height="369" VerticalAlignment="Top" Width="792" Margin="0,50,0,0">
+            <TabItem Header="Quote Summary" Height="22" Margin="-2,-2,-1.6,0" VerticalAlignment="Bottom">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="98*"/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="265*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="ltbQuoteSummary_incomingQuotes" HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="210" Margin="0,0,0,-0.4" Background="#FFB2B2A3" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txbQuoteSummary_preview" HorizontalAlignment="Left" Height="342" Margin="13.6,0,0,-0.4" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <Button x:Name="btnQuoteSummary_verifyReject" Content="REJECT VERIFICATION" HorizontalAlignment="Left" Margin="334,305,0,0" VerticalAlignment="Top" Width="187" Grid.Column="2" Height="27" Click="BtnQuoteSummary_verifyReject_Click"/>
+                    <Label Content="From:" HorizontalAlignment="Left" Margin="282,15,0,0" VerticalAlignment="Top" Grid.Column="2" Height="34" Width="42"/>
+                    <TextBlock x:Name="txblockQuoteSummary_consultantID" HorizontalAlignment="Left" Margin="329,15,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="34" Width="192" Grid.Column="2"/>
+                    <Button x:Name="btnQuoteSummary_verifyApprove" Content="APPROVE VERIFICATION" HorizontalAlignment="Left" Margin="334,273,0,0" VerticalAlignment="Top" Width="187" Grid.Column="2" Height="27" Click="BtnQuoteSummary_verifyAccept_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Verified Quotes" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="111" Margin="2.089,0,-2.089,0">
+                <Grid Background="#FFE5E5E5" Height="341" VerticalAlignment="Bottom">
+                    <ListBox x:Name="listbxVerifiedQuotes" HorizontalAlignment="Left" Height="341" VerticalAlignment="Top" Width="210" RenderTransformOrigin="0.5,0.5" Background="#FFB2B2A3">
+                        <ListBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-0.133"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListBox.RenderTransform>
+                    </ListBox>
+                    <TextBox x:Name="txbVerifiedQuotes_preview" HorizontalAlignment="Left" Height="341" Margin="210,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="576"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

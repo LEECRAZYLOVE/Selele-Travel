@@ -25,8 +25,7 @@ namespace SeleleTravel
         public Nullable<double> paid { get; set; }
         public Nullable<double> owe { get; set; }
         public Nullable<double> broughtforward { get; set; }
-        List<quote> quotes { get; set; }//this is to keep track of all quotes deployed to a client VUYO
-        public List<dailyserviceupdate> services;
+
         public ContactDetails contactdetails;
         /// <summary>
         /// The type of client. This field will be useful when searching for clients.

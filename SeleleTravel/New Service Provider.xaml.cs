@@ -22,6 +22,7 @@ namespace SeleleTravel
         public New_Service_Provider()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             //this.WindowState = WindowState.Maximized;
         }
 
@@ -29,5 +30,12 @@ namespace SeleleTravel
         {
             
         }
+
+        private void New_Service_Provider_Home_Closed(object sender, EventArgs e)
+        {
+            GeneralMethods.closeAllWindows();
+        }
+
+        
     }
 }
