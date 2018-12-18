@@ -378,7 +378,6 @@ namespace SeleleTravel
             string fromLoc = txbFlight_from.Text;
             string toLoc = txbFlight_to.Text;
             DateTime departureDate = dpFlight_departure.DisplayDate;
-            DateTime arrivalDate = dpFlight_arrival.DisplayDate;
             int numberOfBags = Convert.ToInt32(txbFlight_numBags.Text);
             string preferedTime = txbFlight_time.Text;
             string flightSpecs = txbFlight_specifications.Text;
@@ -388,8 +387,7 @@ namespace SeleleTravel
             // and Error checking
             List<DateTime> dateTimes = new List<DateTime>
             {
-                departureDate,
-                arrivalDate
+                departureDate
             };
             List<string> stringVs = new List<string>
             {
@@ -448,14 +446,14 @@ namespace SeleleTravel
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
         {
-            string passangerName = txbFlight_passengers.Text;
-            ltbFlight_passengersOutput.Items.Add(passangerName);
-            ltbFlight_passengersOutput.Items.Refresh();
+            //string passangerName = txbFlight_passengers.Text;
+            //ltbFlight_passengersOutput.Items.Add(passangerName);
+            //ltbFlight_passengersOutput.Items.Refresh();
 
-            for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
-            {
-                _passengers[i] = ltbFlight_passengersOutput.Items[i].ToString();
-            }
+            //for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
+            //{
+            //    _passengers[i] = ltbFlight_passengersOutput.Items[i].ToString();
+            //}
         }
 
         #endregion
