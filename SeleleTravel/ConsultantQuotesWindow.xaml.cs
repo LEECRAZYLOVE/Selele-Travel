@@ -140,7 +140,7 @@ namespace SeleleTravel
             string findName = txbOldClient_find.Text;
 
             // Results from the database
-
+            //txblOldClient_Details.Text = "";
         }
         
         private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
@@ -257,22 +257,28 @@ namespace SeleleTravel
         {
             string conferenceName = txbConference_name.Text;
             string conferenceVenue = txbConference_venue.Text;
-            DateTime dateOfConference = dpConference_date.DisplayDate;
+            DateTime startOfConference = (DateTime)dpConference_startDate.SelectedDate;
+            DateTime endOfConference = (DateTime)dpConference_endDate.SelectedDate;
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
             double amountOfconf = Convert.ToDouble(txbConference_total.Text);
 
             // Data Verification:
             // check if the variables are empty
-            List<DateTime> dateTimes = new List<DateTime>();
-            List<string> stringVs = new List<string>();
+            List<DateTime> dateTimes = new List<DateTime>()
+            {
+                startOfConference,
+                endOfConference
+            };
+            List<string> stringVs = new List<string>
+            {
+                conferenceName,
+                conferenceVenue,
+                conferenceTime,
+                specsOfConference
+            };
 
-            stringVs.Add(conferenceName);
-            stringVs.Add(conferenceVenue);
-            stringVs.Add(conferenceTime);
-            stringVs.Add(specsOfConference);
 
-            dateTimes.Add(dateOfConference);
 
             // This returns a bool value,
             // if it returns true then one of the strings are empty
@@ -443,10 +449,10 @@ namespace SeleleTravel
             //ltbFlight_passengersOutput.Items.Add(passangerName);
             //ltbFlight_passengersOutput.Items.Refresh();
 
-            for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
-            {
-                _passengers[i] = ltbFlight_passengersOutput.Items[i].ToString();
-            }
+            //for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
+            //{
+            //    _passengers[i] = ltbFlight_passengersOutput.Items[i].ToString();
+            //}
         }
 
         #endregion
