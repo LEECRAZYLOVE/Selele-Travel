@@ -19,6 +19,5 @@ namespace SeleleTravel
         public string eventspecs { get; set; }
         public string eventname { get; set; }
         public Nullable<double> amount { get; set; }
-        public string eventcost { get; set; }
     }
 }

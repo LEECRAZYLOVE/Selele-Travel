@@ -238,32 +238,32 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="accommodation.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="accommodationdetail.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="agencydetail.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="airlinedetail.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="cabservice.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="carhire.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="Classes\GeneralMethods.cs" />
     <Compile Include="client.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="ComposeMessageWindow.xaml.cs">
       <DependentUpon>ComposeMessageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="conference.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="ConsultantOrdersWindow.xaml.cs">
       <DependentUpon>ConsultantOrdersWindow.xaml</DependentUpon>
@@ -281,16 +281,16 @@
       <DependentUpon>ConsultantVouchersWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="dailyserviceupdate.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="event.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="flight.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="invoice.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="Manager_Authorizations_Window.xaml.cs">
       <DependentUpon>Manager_Authorizations_Window.xaml</DependentUpon>
@@ -305,7 +305,7 @@
       <DependentUpon>Manager_Quotes_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="order.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="OwnerPaymentsWindow.xaml.cs">
       <DependentUpon>OwnerPaymentsWindow.xaml</DependentUpon>
@@ -317,7 +317,7 @@
       <DependentUpon>Owner_Financial_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="quote.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="SeleleModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -334,14 +334,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SeleleModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="seleleModelTest.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>seleleModelTest.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seleleModelTest.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seleleModelTest.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>seleleModelTest.edmx</DependentUpon>
+    </Compile>
     <Compile Include="SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="staff.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Compile Include="voucher.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
+      <DependentUpon>seleleModelTest.tt</DependentUpon>
     </Compile>
     <Page Include="ComposeMessageWindow.xaml">
       <SubType>Designer</SubType>
@@ -473,6 +488,13 @@
     <None Include="SeleleModel.edmx.diagram">
       <DependentUpon>SeleleModel.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="seleleModelTest.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>seleleModelTest.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="seleleModelTest.edmx.diagram">
+      <DependentUpon>seleleModelTest.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -518,6 +540,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="seleleModelTest.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>seleleModelTest.edmx</DependentUpon>
+      <LastGenOutput>seleleModelTest.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="seleleModelTest.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>seleleModelTest.edmx</DependentUpon>
+      <LastGenOutput>seleleModelTest.cs</LastGenOutput>
+    </Content>
     <Resource Include="Selele Travel LOGO2.png" />
     <Resource Include="Selele Travel BALLS.png" />
     <Resource Include="SeleleLogoBalls.png" />

@@ -46,6 +46,9 @@ namespace SeleleTravel
             GeneralMethods.closeAllWindows();
         }
 
-        
+        private void txbNewService_name_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

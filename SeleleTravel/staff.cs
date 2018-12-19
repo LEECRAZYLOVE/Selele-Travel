@@ -21,6 +21,5 @@ namespace SeleleTravel
         public Nullable<System.DateTime> dateofhire { get; set; }
         public Nullable<double> salary { get; set; }
         public string branch { get; set; }
-        public string password { get; set; }
     }
 }

@@ -43,7 +43,7 @@
             <Label x:Name="lbl4" Content="Fax:" Canvas.Top="357.73" Style="{DynamicResource LabelStyle1}"/>
             <Label x:Name="lbl5" Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="421.13" Style="{DynamicResource LabelStyle1}"/>
 
-            <TextBox x:Name="txbNewService_name" HorizontalAlignment="Left" Height="30" Width="361.066" TextWrapping="Wrap" VerticalAlignment="Top"  Canvas.Left="119.999" Canvas.Top="55.661" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewService_name" HorizontalAlignment="Left" Height="30" Width="361.066" TextWrapping="Wrap" VerticalAlignment="Top"  Canvas.Left="119.999" Canvas.Top="55.661" FontSize="16" FontFamily="Comic Sans MS" TextChanged="txbNewService_name_TextChanged"/>
             <ComboBox x:Name="cbbNewService_entities" Height="32" Width="260" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="90.661" BorderBrush="#FFB2E4CA">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">

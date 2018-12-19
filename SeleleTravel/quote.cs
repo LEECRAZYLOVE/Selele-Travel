@@ -22,9 +22,7 @@ namespace SeleleTravel
         public Nullable<System.DateTime> datesent { get; set; }
         public Nullable<System.DateTime> quotedate { get; set; }
         public string consultant_no { get; set; }
-        public string agencyphonenumber { get; set; }
         public Nullable<double> servicefee { get; set; }
-        public string agencyname { get; set; }
         public string client_no { get; set; }
         public string clientname { get; set; }
     }
