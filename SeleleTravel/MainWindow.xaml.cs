@@ -36,7 +36,6 @@ namespace SeleleTravel
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             Application.Current.MainWindow = this;
-            
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

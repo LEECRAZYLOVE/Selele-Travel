@@ -17,10 +17,11 @@ namespace SeleleTravel
         public string venue { get; set; }
         public string conferencename { get; set; }
         public string timeconference { get; set; }
-        public Nullable<System.DateTime> dateofconference { get; set; }
         public string quote_no { get; set; }
         public string order_no { get; set; }
         public string conferencespecs { get; set; }
         public Nullable<double> amount { get; set; }
+        public Nullable<System.DateTime> startday { get; set; }
+        public Nullable<System.DateTime> endday { get; set; }
     }
 }
