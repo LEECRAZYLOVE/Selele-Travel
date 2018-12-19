@@ -57,7 +57,7 @@ namespace SeleleTravel
             string cellphone = txbNewService_cellphone.Text;
             string service = cbbNewService_entities.SelectionBoxItem.ToString();
 
-            //var context = new SeleleEntities();
+            var context = new SeleleEntities();
             var currentServiceProvider = new agencydetail()
             {
                 agency_id = "A0001", //This will be automatically generated. I'm using a dummy to test queries.
@@ -70,23 +70,23 @@ namespace SeleleTravel
                 service = service
             };
             //Add service provider to database
-            //try
-            //{
-            //    context.agencydetails.Add(currentServiceProvider);
-            //    context.SaveChanges();
-            //    MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentServiceProvider.agency_id}");
-            //}
-            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            //{
-            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            //}
-            //catch (Exception ex)
-            //{
-            //    //other error
-            //    throw ex;
+            try
+            {
+                context.agencydetails.Add(currentServiceProvider);
+                context.SaveChanges();
+                MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentServiceProvider.agency_id}");
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
 
-            //}
+            }
         }
     }
 }

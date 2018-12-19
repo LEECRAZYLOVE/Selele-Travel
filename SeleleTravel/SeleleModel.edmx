@@ -110,6 +110,7 @@
           <Property Name="venue" Type="varchar" MaxLength="50" />
           <Property Name="conferencename" Type="varchar" MaxLength="50" />
           <Property Name="timeconference" Type="varchar" MaxLength="10" />
+          <Property Name="dateofconference" Type="date" />
           <Property Name="quote_no" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="order_no" Type="varchar" MaxLength="50" />
           <Property Name="conferencespecs" Type="varchar" MaxLength="65535" />
@@ -128,7 +129,7 @@
           <Property Name="total" Type="double precision" />
           <Property Name="frequency" Type="int" />
         </EntityType>
-        <EntityType Name="events">
+        <EntityType Name="event">
           <Key>
             <PropertyRef Name="quote_no" />
           </Key>
@@ -153,7 +154,6 @@
           <Property Name="numberofbags" Type="int" />
           <Property Name="totalamount" Type="double precision" />
           <Property Name="flightspecs" Type="varchar" MaxLength="65535" />
-          <Property Name="numberofpassengers" Type="int" />
         </EntityType>
         <EntityType Name="invoice">
           <Key>
@@ -174,7 +174,6 @@
           </Key>
           <Property Name="order_no" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="quote_no" Type="char" MaxLength="10" />
-          <Property Name="client_no" Type="varchar" MaxLength="50" />
           <Property Name="datereceived" Type="date" />
           <Property Name="orderdate" Type="date" />
         </EntityType>
@@ -229,7 +228,7 @@
           <EntitySet Name="client" EntityType="Self.client" Schema="public" store:Type="Tables" />
           <EntitySet Name="conference" EntityType="Self.conference" Schema="public" store:Type="Tables" />
           <EntitySet Name="dailyserviceupdate" EntityType="Self.dailyserviceupdate" Schema="public" store:Type="Tables" />
-          <EntitySet Name="events" EntityType="Self.events" Schema="public" store:Type="Tables" />
+          <EntitySet Name="event" EntityType="Self.event" Schema="public" store:Type="Tables" />
           <EntitySet Name="flight" EntityType="Self.flight" Schema="public" store:Type="Tables" />
           <EntitySet Name="invoice" EntityType="Self.invoice" Schema="public" store:Type="Tables" />
           <EntitySet Name="orders" EntityType="Self.orders" Schema="public" store:Type="Tables" />
@@ -347,6 +346,7 @@
           <Property Name="venue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="conferencename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="timeconference" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="dateofconference" Type="DateTime" />
           <Property Name="quote_no" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="conferencespecs" Type="String" MaxLength="65535" FixedLength="false" Unicode="true" />
@@ -390,7 +390,6 @@
           <Property Name="numberofbags" Type="Int32" />
           <Property Name="totalamount" Type="Double" />
           <Property Name="flightspecs" Type="String" MaxLength="65535" FixedLength="false" Unicode="true" />
-          <Property Name="numberofpassengers" Type="Int32" />
         </EntityType>
         <EntityType Name="invoice">
           <Key>
@@ -411,7 +410,6 @@
           </Key>
           <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="quote_no" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="client_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="datereceived" Type="DateTime" />
           <Property Name="orderdate" Type="DateTime" />
         </EntityType>
@@ -591,6 +589,7 @@
                 <ScalarProperty Name="venue" ColumnName="venue" />
                 <ScalarProperty Name="conferencename" ColumnName="conferencename" />
                 <ScalarProperty Name="timeconference" ColumnName="timeconference" />
+                <ScalarProperty Name="dateofconference" ColumnName="dateofconference" />
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
                 <ScalarProperty Name="conferencespecs" ColumnName="conferencespecs" />
@@ -614,7 +613,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="events">
             <EntityTypeMapping TypeName="SeleleModel.event">
-              <MappingFragment StoreEntitySet="events">
+              <MappingFragment StoreEntitySet="event">
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
                 <ScalarProperty Name="eventspecs" ColumnName="eventspecs" />
@@ -637,7 +636,6 @@
                 <ScalarProperty Name="numberofbags" ColumnName="numberofbags" />
                 <ScalarProperty Name="totalamount" ColumnName="totalamount" />
                 <ScalarProperty Name="flightspecs" ColumnName="flightspecs" />
-                <ScalarProperty Name="numberofpassengers" ColumnName="numberofpassengers" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -660,7 +658,6 @@
               <MappingFragment StoreEntitySet="orders">
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
-                <ScalarProperty Name="client_no" ColumnName="client_no" />
                 <ScalarProperty Name="datereceived" ColumnName="datereceived" />
                 <ScalarProperty Name="orderdate" ColumnName="orderdate" />
               </MappingFragment>
