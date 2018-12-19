@@ -20,6 +20,11 @@ namespace SeleleTravel
     public partial class LogInWindow : Window
     {
         LoadWindow windowToLoad;
+        public LogInWindow()
+        {
+            InitializeComponent();
+        }
+
         public LogInWindow(LoadWindow windowToLoad)
         {
             InitializeComponent();
