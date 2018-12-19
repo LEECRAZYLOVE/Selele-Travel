@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using Devart.Data.MySql;
 
 namespace SeleleTravel
 {
@@ -20,6 +22,11 @@ namespace SeleleTravel
     public partial class LogInWindow : Window
     {
         LoadWindow windowToLoad;
+        public LogInWindow()
+        {
+            InitializeComponent();
+        }
+
         public LogInWindow(LoadWindow windowToLoad)
         {
             InitializeComponent();
