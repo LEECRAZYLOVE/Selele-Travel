@@ -28,6 +28,8 @@ namespace SeleleTravel
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
+        public List<DateTime> servicesDates = new List<DateTime>();
+
         #region Client tab
 
         #region New Client
@@ -138,7 +140,7 @@ namespace SeleleTravel
             string findName = txbOldClient_find.Text;
 
             // Results from the database
-
+            txblOldClient_Details.Text = "";
         }
         
         private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
@@ -191,22 +193,30 @@ namespace SeleleTravel
             string nameOfEvent = txbEvents_name.Text;
             string eventSpecs = txbEvents_specifications.Text;
             double eventAmount = Convert.ToDouble(txbEvents_total.Text);
+            DateTime eventStartdate = _eventStartDate.DisplayDate;
+            DateTime eventEnddate = _eventEndDate.DisplayDate;
 
             // Data verification:
             // make sure that the supplied data is valid
-            List<string> stringVs = new List<string>();
-
-            stringVs.Add(nameOfEvent);
-            stringVs.Add(eventSpecs);
-
+            List<string> stringVs = new List<string> { nameOfEvent, eventSpecs};
+            
             // This returns a bool value,
             // if it returns true then one of the strings are empty
             // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
             bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
 
-            if(!boolValue)
+            // check if the dates are empty
+            List<DateTime> tempDateTime = new List<DateTime> { eventStartdate, eventEnddate };
+            bool dateBoolValue = GeneralMethods.checkDateTimeBox(tempDateTime);
+            
+            if (!boolValue && !dateBoolValue)
             {
-               //create an instnce of the event class and dbconnect
+
+                // Add the date to the global list of dates that will be stored
+                servicesDates.Add(eventStartdate);
+                servicesDates.Add(eventEnddate);
+
+                //create an instnce of the event class and dbconnect
                 //var context = new SeleleEntities();
                 var currentEvent = new @event()//(nameOfEvent, eventSpecs, eventAmount);
                 {
@@ -236,10 +246,7 @@ namespace SeleleTravel
 
                 // reset texbox values to empty
                 // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox>();
-                textBoxes.Add(txbEvents_name);
-                textBoxes.Add(txbEvents_specifications);
-                textBoxes.Add(txbEvents_total);
+                List<TextBox> textBoxes = new List<TextBox> { txbEvents_name, txbEvents_specifications, txbEvents_total };
                 GeneralMethods.clearTextBoxes(textBoxes);
 
             }
@@ -256,44 +263,37 @@ namespace SeleleTravel
             string conferenceName = txbConference_name.Text;
             string conferenceVenue = txbConference_venue.Text;
             DateTime dateOfConference = dpConference_date.DisplayDate;
+            DateTime endDateofConference = _endDateOfConf.DisplayDate;
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
             double amountOfconf = Convert.ToDouble(txbConference_total.Text);
 
             // Data Verification:
             // check if the variables are empty
-            List<DateTime> dateTimes = new List<DateTime>();
-            List<string> stringVs = new List<string>();
-
-            stringVs.Add(conferenceName);
-            stringVs.Add(conferenceVenue);
-            stringVs.Add(conferenceTime);
-            stringVs.Add(specsOfConference);
-
-            dateTimes.Add(dateOfConference);
-
+            List<DateTime> dateTimes = new List<DateTime> { dateOfConference, endDateofConference};
+            List<string> stringVs = new List<string> { conferenceName, conferenceVenue, conferenceTime, specsOfConference};
+            
             // This returns a bool value,
             // if it returns true then one of the strings are empty
             // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
-            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
-            bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
+            bool checkEmptyStrngBool = GeneralMethods.checkEmptytxtBox(stringVs);
+            bool checkDatesBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
-            if(!boolValue && !valueOfBool)
+            if(!checkEmptyStrngBool && !checkDatesBool)
             {
+                // Add the date to the global list of dates that will be stored
+                servicesDates.Add(dateOfConference);
+                servicesDates.Add(endDateofConference);
+
                 // todo...
-               // conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
+                // conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
 
                 // Todo sql insertion
                 // ...
 
                 // reset texbox values to empty
                 // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox>();
-                textBoxes.Add(txbConference_name);
-                textBoxes.Add(txbConference_venue);
-                textBoxes.Add(txbConference_time);
-                textBoxes.Add(txbConference_specifications);
-                textBoxes.Add(txbConference_total);
+                List<TextBox> textBoxes = new List<TextBox> { txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total };
                 GeneralMethods.clearTextBoxes(textBoxes);
                 
             }
@@ -374,6 +374,7 @@ namespace SeleleTravel
             string fromLoc = txbFlight_from.Text;
             string toLoc = txbFlight_to.Text;
             DateTime departureDate = dpFlight_departure.DisplayDate;
+            DateTime arrivalDate = dpFlight_arrival.DisplayDate;
             int numberOfBags = Convert.ToInt32(txbFlight_numBags.Text);
             string preferedTime = txbFlight_time.Text;
             string flightSpecs = txbFlight_specifications.Text;
@@ -391,6 +392,7 @@ namespace SeleleTravel
             stringVs.Add(flightSpecs);
 
             dateTimes.Add(departureDate);
+            dateTimes.Add(arrivalDate);
 
             // This returns a bool value,
             // if it returns true then one of the strings are empty
@@ -437,9 +439,9 @@ namespace SeleleTravel
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
         {
-            //string passangerName = txbFlight_passengers.Text;
-            //ltbFlight_passengersOutput.Items.Add(passangerName);
-            //ltbFlight_passengersOutput.Items.Refresh();
+            string passangerName = txbFlight_passengers.Text;
+            ltbFlight_passengersOutput.Items.Add(passangerName);
+            ltbFlight_passengersOutput.Items.Refresh();
 
             for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
             {
@@ -463,22 +465,21 @@ namespace SeleleTravel
 
             // Data validation
             // Error checking
-            List<DateTime> dateTimes = new List<DateTime>();
-            List<string> stringVs = new List<string>();
-
-            stringVs.Add(nameOfAgency);
-            stringVs.Add(accommodationSpecs);
-            dateTimes.Add(checkInDate);
-            dateTimes.Add(checkOutDate);
-
+            List<DateTime> dateTimes = new List<DateTime>(2) { checkInDate, checkOutDate };
+            List<string> stringVs = new List<string> { nameOfAgency, accommodationSpecs};
+            
             // This returns a bool value,
             // if it returns true then one of the strings are empty
             // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
-            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
-            bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
+            bool checkEmptyStringBool = GeneralMethods.checkEmptytxtBox(stringVs);
+            bool checkValidDateBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
-            if(!boolValue && !valueOfBool)
+            if(!checkEmptyStringBool && !checkValidDateBool)
             {
+                // Add the date to the global list of dates that will be stored
+                servicesDates.Add(checkInDate);
+                servicesDates.Add(checkOutDate);
+
                 // ... todo
 
                 // Instantiate the accomodation
@@ -489,12 +490,7 @@ namespace SeleleTravel
 
                 // Reset the texboxes to empty
                 // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox>();
-                textBoxes.Add(txbAccommodation_name);
-                textBoxes.Add(txbAccommodation_specifications);
-                textBoxes.Add(txbAccommodation_numGuests);
-                textBoxes.Add(txbAccommodation_numRooms);
-                textBoxes.Add(txbAccommodation_total);
+                List<TextBox> textBoxes = new List<TextBox> { txbAccommodation_name, txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_numRooms, txbAccommodation_total };
                 GeneralMethods.clearTextBoxes(textBoxes);
             }
 
@@ -519,27 +515,24 @@ namespace SeleleTravel
 
             // Data Validation
             // Check for errors
-            List<DateTime> dateTimes = new List<DateTime>();
-            List<string> stringVs = new List<string>();
-
-            stringVs.Add(agencyName);
-            stringVs.Add(pickUpLocation);
-            stringVs.Add(dropOffLocation);
-            stringVs.Add(carHireSpecs);
-            dateTimes.Add(_startday);
-            dateTimes.Add(_endDay);
-
+            List<DateTime> dateTimes = new List<DateTime> (2) { _startday, _endDay};
+            List<string> stringVs = new List<string> { agencyName, pickUpLocation, dropOffLocation, carHireSpecs};
+            
             // This returns a bool value,
             // if it returns true then one of the strings are empty
             // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
-            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
-            bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
+            bool checkEmptyStringBool = GeneralMethods.checkEmptytxtBox(stringVs);
+            bool checkNullorEmptyDates = GeneralMethods.checkDateTimeBox(dateTimes);
 
             // check if the bool statements above are false
             // if they are, continue
             // else stop the program
-            if(!boolValue && !valueOfBool)
+            if(!checkEmptyStringBool && !checkNullorEmptyDates)
             {
+                // Add the date to the global list of dates that will be stored
+                servicesDates.Add(_startday);
+                servicesDates.Add(_endDay);
+
                 // Create an instance of carhire
                 //var _carHire = new carhire(agencyName, pickUpLocation, dropOffLocation, _startday, _endDay);
                 //{
@@ -548,12 +541,7 @@ namespace SeleleTravel
 
                 // Reset the textboxes
                 // call the clear textbox method
-                List<TextBox> toBeCleared = new List<TextBox>();
-                toBeCleared.Add(txbCarHire_agency);
-                toBeCleared.Add(txbCarHire_pickUp);
-                toBeCleared.Add(txbCarHire_dropOff);
-                toBeCleared.Add(txbCarHire_numCars);
-                toBeCleared.Add(txbCarHire_specifications);
+                List<TextBox> toBeCleared = new List<TextBox> { txbCarHire_agency, txbCarHire_pickUp, txbCarHire_dropOff, txbCarHire_numCars, txbCarHire_specifications };
                 GeneralMethods.clearTextBoxes(toBeCleared);
             }
             
@@ -574,152 +562,186 @@ namespace SeleleTravel
 
         #endregion
 
+        #region Quote Summary tab
 
-        //Opening a word document from the program
-        private void Button_Click(object sender, RoutedEventArgs e)
+        string quoteNum = "";
+
+        // add the mark percentage to the total amount of the quote
+        private void BtnQuote_markUp_Click(object sender, RoutedEventArgs e)
         {
-            object oMissing = System.Reflection.Missing.Value;
-            object oEndOfDoc = "\\endofdoc"; /* \endofdoc is a predefined bookmark */
 
-            //Start Word and create a new document.
-            Word._Application oWord;
-            Word._Document oDoc;
-            oWord = new Word.Application();
-            oWord.Visible = true;
-            oDoc = oWord.Documents.Add(ref oMissing, ref oMissing,
-            ref oMissing, ref oMissing);
-
-            //Insert a paragraph at the beginning of the document.
-            Word.Paragraph oPara1;
-            oPara1 = oDoc.Content.Paragraphs.Add(ref oMissing);
-            oPara1.Range.Text = "Heading 1";
-            oPara1.Range.Font.Bold = 1;
-            oPara1.Format.SpaceAfter = 24;    //24 pt spacing after paragraph.
-            oPara1.Range.InsertParagraphAfter();
-
-            //Insert a paragraph at the end of the document.
-            Word.Paragraph oPara2;
-            object oRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-            oPara2 = oDoc.Content.Paragraphs.Add(ref oRng);
-            oPara2.Range.Text = "Heading 2";
-            oPara2.Format.SpaceAfter = 6;
-            oPara2.Range.InsertParagraphAfter();
-
-            //Insert another paragraph.
-            Word.Paragraph oPara3;
-            oRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-            oPara3 = oDoc.Content.Paragraphs.Add(ref oRng);
-            oPara3.Range.Text = "This is a sentence of normal text. Now here is a table:";
-            oPara3.Range.Font.Bold = 0;
-            oPara3.Format.SpaceAfter = 24;
-            oPara3.Range.InsertParagraphAfter();
-
-            //Insert a 3 x 5 table, fill it with data, and make the first row
-            //bold and italic.
-            Word.Table oTable;
-            Word.Range wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-            oTable = oDoc.Tables.Add(wrdRng, 3, 5, ref oMissing, ref oMissing);
-            oTable.Range.ParagraphFormat.SpaceAfter = 6;
-            int r, c;
-            string strText;
-            for (r = 1; r <= 3; r++)
-                for (c = 1; c <= 5; c++)
-                {
-                    strText = "r" + r + "c" + c;
-                    oTable.Cell(r, c).Range.Text = strText;
-                }
-            oTable.Rows[1].Range.Font.Bold = 1;
-            oTable.Rows[1].Range.Font.Italic = 1;
-
-            //Add some text after the table.
-            Word.Paragraph oPara4;
-            oRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-            oPara4 = oDoc.Content.Paragraphs.Add(ref oRng);
-            oPara4.Range.InsertParagraphBefore();
-            oPara4.Range.Text = "And here's another table:";
-            oPara4.Format.SpaceAfter = 24;
-            oPara4.Range.InsertParagraphAfter();
-
-            //Insert a 5 x 2 table, fill it with data, and change the column widths.
-            wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-            oTable = oDoc.Tables.Add(wrdRng, 5, 2, ref oMissing, ref oMissing);
-            oTable.Range.ParagraphFormat.SpaceAfter = 6;
-            for (r = 1; r <= 5; r++)
-                for (c = 1; c <= 2; c++)
-                {
-                    strText = "r" + r + "c" + c;
-                    oTable.Cell(r, c).Range.Text = strText;
-                }
-            oTable.Columns[1].Width = oWord.InchesToPoints(2); //Change width of columns 1 & 2
-            oTable.Columns[2].Width = oWord.InchesToPoints(3);
-
-            //Keep inserting text. When you get to 7 inches from top of the
-            //document, insert a hard page break.
-            object oPos;
-            double dPos = oWord.InchesToPoints(7);
-            oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range.InsertParagraphAfter();
-            do
-            {
-                wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-                wrdRng.ParagraphFormat.SpaceAfter = 6;
-                wrdRng.InsertAfter("A line of text");
-                wrdRng.InsertParagraphAfter();
-                oPos = wrdRng.get_Information
-                                       (Word.WdInformation.wdVerticalPositionRelativeToPage);
-            }
-            while (dPos >= Convert.ToDouble(oPos));
-            object oCollapseEnd = Word.WdCollapseDirection.wdCollapseEnd;
-            object oPageBreak = Word.WdBreakType.wdPageBreak;
-            wrdRng.Collapse(ref oCollapseEnd);
-            wrdRng.InsertBreak(ref oPageBreak);
-            wrdRng.Collapse(ref oCollapseEnd);
-            wrdRng.InsertAfter("We're now on page 2. Here's my chart:");
-            wrdRng.InsertParagraphAfter();
-
-            //Insert a chart.
-            Word.InlineShape oShape;
-            object oClassType = "MSGraph.Chart.8";
-            wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-            oShape = wrdRng.InlineShapes.AddOLEObject(ref oClassType, ref oMissing,
-            ref oMissing, ref oMissing, ref oMissing,
-            ref oMissing, ref oMissing, ref oMissing);
-
-            //Demonstrate use of late bound oChart and oChartApp objects to
-            //manipulate the chart object with MSGraph.
-            object oChart;
-            object oChartApp;
-            oChart = oShape.OLEFormat.Object;
-            oChartApp = oChart.GetType().InvokeMember("Application",
-            BindingFlags.GetProperty, null, oChart, null);
-
-            //Change the chart type to Line.
-            object[] Parameters = new Object[1];
-            Parameters[0] = 4; //xlLine = 4
-            oChart.GetType().InvokeMember("ChartType", BindingFlags.SetProperty,
-            null, oChart, Parameters);
-
-            //Update the chart image and quit MSGraph.
-            oChartApp.GetType().InvokeMember("Update",
-            BindingFlags.InvokeMethod, null, oChartApp, null);
-            oChartApp.GetType().InvokeMember("Quit",
-            BindingFlags.InvokeMethod, null, oChartApp, null);
-            //... If desired, you can proceed from here using the Microsoft Graph 
-            //Object model on the oChart and oChartApp objects to make additional
-            //changes to the chart.
-
-            //Set the width of the chart.
-            oShape.Width = oWord.InchesToPoints(6.25f);
-            oShape.Height = oWord.InchesToPoints(3.57f);
-
-            //Add text after the chart.
-            wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-            wrdRng.InsertParagraphAfter();
-            wrdRng.InsertAfter("THE END.");
-
-            //Close this form.
-            this.Close();
         }
 
+        // send verification to the manager
+        private void BtnQuote_requestVerification_Click(object sender, RoutedEventArgs e)
+        {
+            // NB: SET UP LOCAL SERVER TO ALLOW COMM IN THE NETWORK
+            // send verification
+
+            // check the first and last day of the quote
+            List<DateTime> firstANDlastDay =  GeneralMethods.checkFirst_lastDay(servicesDates);
+
+            // save the quote details to the csv file
+            // the format is: quote number, order Number, start date, end date
+            quoteNum = GeneralMethods.makeQuote_no();
+            string tempOrderNum = "To Be Added";
+            GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
+        }
+
+        // 
+        // Opening a word document from the program
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // check quote number if it's valid
+            bool checkQ_number = GeneralMethods.checkQuoteNotEmpty(quoteNum);
+            if (checkQ_number)
+            {
+                object oMissing = System.Reflection.Missing.Value;
+                object oEndOfDoc = "\\endofdoc"; /* \endofdoc is a predefined bookmark */
+
+                //Start Word and create a new document.
+                Word._Application oWord;
+                Word._Document oDoc;
+                oWord = new Word.Application();
+                oWord.Visible = true;
+                oDoc = oWord.Documents.Add(ref oMissing, ref oMissing,
+                ref oMissing, ref oMissing);
+
+                //Insert a paragraph at the beginning of the document.
+                Word.Paragraph oPara1;
+                oPara1 = oDoc.Content.Paragraphs.Add(ref oMissing);
+                oPara1.Range.Text = "Heading 1";
+                oPara1.Range.Font.Bold = 1;
+                oPara1.Format.SpaceAfter = 24;    //24 pt spacing after paragraph.
+                oPara1.Range.InsertParagraphAfter();
+
+                //Insert a paragraph at the end of the document.
+                Word.Paragraph oPara2;
+                object oRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                oPara2 = oDoc.Content.Paragraphs.Add(ref oRng);
+                oPara2.Range.Text = "Heading 2";
+                oPara2.Format.SpaceAfter = 6;
+                oPara2.Range.InsertParagraphAfter();
+
+                //Insert another paragraph.
+                Word.Paragraph oPara3;
+                oRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                oPara3 = oDoc.Content.Paragraphs.Add(ref oRng);
+                oPara3.Range.Text = "This is a sentence of normal text. Now here is a table:";
+                oPara3.Range.Font.Bold = 0;
+                oPara3.Format.SpaceAfter = 24;
+                oPara3.Range.InsertParagraphAfter();
+
+                //Insert a 3 x 5 table, fill it with data, and make the first row
+                //bold and italic.
+                Word.Table oTable;
+                Word.Range wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                oTable = oDoc.Tables.Add(wrdRng, 3, 5, ref oMissing, ref oMissing);
+                oTable.Range.ParagraphFormat.SpaceAfter = 6;
+                int r, c;
+                string strText;
+                for (r = 1; r <= 3; r++)
+                    for (c = 1; c <= 5; c++)
+                    {
+                        strText = "r" + r + "c" + c;
+                        oTable.Cell(r, c).Range.Text = strText;
+                    }
+                oTable.Rows[1].Range.Font.Bold = 1;
+                oTable.Rows[1].Range.Font.Italic = 1;
+
+                //Add some text after the table.
+                Word.Paragraph oPara4;
+                oRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                oPara4 = oDoc.Content.Paragraphs.Add(ref oRng);
+                oPara4.Range.InsertParagraphBefore();
+                oPara4.Range.Text = "And here's another table:";
+                oPara4.Format.SpaceAfter = 24;
+                oPara4.Range.InsertParagraphAfter();
+
+                //Insert a 5 x 2 table, fill it with data, and change the column widths.
+                wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                oTable = oDoc.Tables.Add(wrdRng, 5, 2, ref oMissing, ref oMissing);
+                oTable.Range.ParagraphFormat.SpaceAfter = 6;
+                for (r = 1; r <= 5; r++)
+                    for (c = 1; c <= 2; c++)
+                    {
+                        strText = "r" + r + "c" + c;
+                        oTable.Cell(r, c).Range.Text = strText;
+                    }
+                oTable.Columns[1].Width = oWord.InchesToPoints(2); //Change width of columns 1 & 2
+                oTable.Columns[2].Width = oWord.InchesToPoints(3);
+
+                //Keep inserting text. When you get to 7 inches from top of the
+                //document, insert a hard page break.
+                object oPos;
+                double dPos = oWord.InchesToPoints(7);
+                oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range.InsertParagraphAfter();
+                do
+                {
+                    wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                    wrdRng.ParagraphFormat.SpaceAfter = 6;
+                    wrdRng.InsertAfter("A line of text");
+                    wrdRng.InsertParagraphAfter();
+                    oPos = wrdRng.get_Information
+                                           (Word.WdInformation.wdVerticalPositionRelativeToPage);
+                }
+                while (dPos >= Convert.ToDouble(oPos));
+                object oCollapseEnd = Word.WdCollapseDirection.wdCollapseEnd;
+                object oPageBreak = Word.WdBreakType.wdPageBreak;
+                wrdRng.Collapse(ref oCollapseEnd);
+                wrdRng.InsertBreak(ref oPageBreak);
+                wrdRng.Collapse(ref oCollapseEnd);
+                wrdRng.InsertAfter("We're now on page 2. Here's my chart:");
+                wrdRng.InsertParagraphAfter();
+
+                //Insert a chart.
+                Word.InlineShape oShape;
+                object oClassType = "MSGraph.Chart.8";
+                wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                oShape = wrdRng.InlineShapes.AddOLEObject(ref oClassType, ref oMissing,
+                ref oMissing, ref oMissing, ref oMissing,
+                ref oMissing, ref oMissing, ref oMissing);
+
+                //Demonstrate use of late bound oChart and oChartApp objects to
+                //manipulate the chart object with MSGraph.
+                object oChart;
+                object oChartApp;
+                oChart = oShape.OLEFormat.Object;
+                oChartApp = oChart.GetType().InvokeMember("Application",
+                BindingFlags.GetProperty, null, oChart, null);
+
+                //Change the chart type to Line.
+                object[] Parameters = new Object[1];
+                Parameters[0] = 4; //xlLine = 4
+                oChart.GetType().InvokeMember("ChartType", BindingFlags.SetProperty,
+                null, oChart, Parameters);
+
+                //Update the chart image and quit MSGraph.
+                oChartApp.GetType().InvokeMember("Update",
+                BindingFlags.InvokeMethod, null, oChartApp, null);
+                oChartApp.GetType().InvokeMember("Quit",
+                BindingFlags.InvokeMethod, null, oChartApp, null);
+                //... If desired, you can proceed from here using the Microsoft Graph 
+                //Object model on the oChart and oChartApp objects to make additional
+                //changes to the chart.
+
+                //Set the width of the chart.
+                oShape.Width = oWord.InchesToPoints(6.25f);
+                oShape.Height = oWord.InchesToPoints(3.57f);
+
+                //Add text after the chart.
+                wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                wrdRng.InsertParagraphAfter();
+                wrdRng.InsertAfter("THE END.");
+
+                //Close this form.
+                this.Close();
+            }
+            
+        }
+        
+        #endregion
+        
         private void BtnConsultant_logOut_Click(object sender, RoutedEventArgs e)
         {
             GeneralMethods.logOut(this);
@@ -731,10 +753,7 @@ namespace SeleleTravel
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }
 
