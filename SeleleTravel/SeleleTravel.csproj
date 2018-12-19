@@ -286,8 +286,8 @@
     <Compile Include="Manager_Confirmations_Window.xaml.cs">
       <DependentUpon>Manager_Confirmations_Window.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Manager_Invoices_Window.xaml.cs">
-      <DependentUpon>Manager_Invoices_Window.xaml</DependentUpon>
+    <Compile Include="Manager_Payments_Window.xaml.cs">
+      <DependentUpon>Manager_Payments_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager_Quotes_Window.xaml.cs">
       <DependentUpon>Manager_Quotes_Window.xaml</DependentUpon>
@@ -389,7 +389,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Manager_Invoices_Window.xaml">
+    <Page Include="Manager_Payments_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

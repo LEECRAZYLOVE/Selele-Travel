@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="Manager_Confirmations_Window" Height="450" Width="800">
     <Grid>
-        
+        <Label x:Name="label" Content="Incoming Vouchers" HorizontalAlignment="Left" Margin="10,1.388,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="ltbManager_incomingVouchers" HorizontalAlignment="Left" Height="375.612" Margin="10,33.388,0,0" VerticalAlignment="Top" Width="328.792"/>
+        <Label x:Name="label1" Content="Outgoing Vouchers" HorizontalAlignment="Left" Margin="453.208,2.428,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="ltbManager_outgoingVouchers" HorizontalAlignment="Left" Height="350.652" VerticalAlignment="Top" Width="328.792" Margin="453.208,33.388,0,0"/>
+        <Button x:Name="btnManager_sendVoucher" Content="Send Vouchers and Booking Confirmations" HorizontalAlignment="Left" Margin="453.208,389.04,0,0" VerticalAlignment="Top" Width="328.792"/>
+
     </Grid>
 </Window>

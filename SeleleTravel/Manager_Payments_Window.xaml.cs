@@ -17,9 +17,9 @@ namespace SeleleTravel
     /// <summary>
     /// Interaction logic for Manager_Invoices_Window.xaml
     /// </summary>
-    public partial class Manager_Invoices_Window : Window
-    {
-        public Manager_Invoices_Window()
+    public partial class Manager_Payments_Window : Window
+   {
+        public Manager_Payments_Window()
         {
             InitializeComponent();
         }
