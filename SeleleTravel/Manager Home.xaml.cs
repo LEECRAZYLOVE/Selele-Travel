@@ -155,10 +155,7 @@ namespace SeleleTravel
 
         private void btnManager_Quotes_Click(object sender, RoutedEventArgs e)
         {
-            var x = Directory.EnumerateFiles(".");
-            string ans = "";
-            x.ToList().ForEach(d => ans = $"{ans}\n{d}");
-            MessageBox.Show(ans);
+            
         }
     }
 }

@@ -95,11 +95,11 @@ namespace SeleleTravel
             string _location = address + '\n' + city + '\n' + areaCode + '\n' + province;
 
             //Initialize Client  and DBConnect instance
-            var context = new SeleleEntities();
+            //var context = new SeleleEntities();
             var currentClient = new client()
             {
-                client_no = "J67", //This will be automatically generated. I'm using a dummy to test queries.
-                quote_no = "1234",
+                client_no = "J0001", //This will be automatically generated. I'm using a dummy to test queries.
+                quote_no = "0001",
                 clientname = names,
                 cellphone = Cellphone,
                 address = _location,
@@ -124,6 +124,7 @@ namespace SeleleTravel
             //{
             //    //other error
             //   // throw ex;
+              
             //}
         }
 
@@ -137,7 +138,6 @@ namespace SeleleTravel
             string findName = txbOldClient_find.Text;
 
             // Results from the database
-            //Add these result to the listbox
 
         }
         
@@ -194,7 +194,10 @@ namespace SeleleTravel
 
             // Data verification:
             // make sure that the supplied data is valid
-            List<string> stringVs = new List<string>() { nameOfEvent, eventSpecs };
+            List<string> stringVs = new List<string>();
+
+            stringVs.Add(nameOfEvent);
+            stringVs.Add(eventSpecs);
 
             // This returns a bool value,
             // if it returns true then one of the strings are empty
@@ -204,7 +207,7 @@ namespace SeleleTravel
             if(!boolValue)
             {
                //create an instnce of the event class and dbconnect
-                var context = new SeleleEntities();
+                //var context = new SeleleEntities();
                 var currentEvent = new @event()//(nameOfEvent, eventSpecs, eventAmount);
                 {
                     eventname = nameOfEvent,
@@ -227,18 +230,16 @@ namespace SeleleTravel
                 //}
                 //catch (Exception ex)
                 //{
-                //    //other error
+                //    other error
                 //    throw ex;
                 //}
 
                 // reset texbox values to empty
                 // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox>
-                {
-                    txbEvents_name,
-                    txbEvents_specifications,
-                    txbEvents_total
-                };
+                List<TextBox> textBoxes = new List<TextBox>();
+                textBoxes.Add(txbEvents_name);
+                textBoxes.Add(txbEvents_specifications);
+                textBoxes.Add(txbEvents_total);
                 GeneralMethods.clearTextBoxes(textBoxes);
 
             }
@@ -261,16 +262,15 @@ namespace SeleleTravel
 
             // Data Verification:
             // check if the variables are empty
-            List<DateTime> dateTimes = new List<DateTime>() { dateOfConference };
-            List<string> stringVs = new List<string>
-            {
-                conferenceName,
-                conferenceVenue,
-                conferenceTime,
-                specsOfConference
-            };
+            List<DateTime> dateTimes = new List<DateTime>();
+            List<string> stringVs = new List<string>();
 
-            
+            stringVs.Add(conferenceName);
+            stringVs.Add(conferenceVenue);
+            stringVs.Add(conferenceTime);
+            stringVs.Add(specsOfConference);
+
+            dateTimes.Add(dateOfConference);
 
             // This returns a bool value,
             // if it returns true then one of the strings are empty
@@ -281,21 +281,19 @@ namespace SeleleTravel
             if(!boolValue && !valueOfBool)
             {
                 // todo...
-                // conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
+               // conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
 
                 // Todo sql insertion
                 // ...
 
                 // reset texbox values to empty
                 // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox>
-                {
-                    txbConference_name,
-                    txbConference_venue,
-                    txbConference_time,
-                    txbConference_specifications,
-                    txbConference_total
-                };
+                List<TextBox> textBoxes = new List<TextBox>();
+                textBoxes.Add(txbConference_name);
+                textBoxes.Add(txbConference_venue);
+                textBoxes.Add(txbConference_time);
+                textBoxes.Add(txbConference_specifications);
+                textBoxes.Add(txbConference_total);
                 GeneralMethods.clearTextBoxes(textBoxes);
                 
             }
@@ -319,17 +317,17 @@ namespace SeleleTravel
             double _totalAmount = Convert.ToDouble(txbCab_total.Text);
 
             // Data verification
-            List<DateTime> dateTimes = new List<DateTime>() { _dateOfPickup };
-            List<string> stringVs = new List<string>
-            {
-                _agencyName,
-                _driverName,
-                _pickUpLocation,
-                _dropOffLocation,
-                _timeOfPickUp,
-                _taxicabSpecs
-            };
+            List<DateTime> dateTimes = new List<DateTime>();
+            List<string> stringVs = new List<string>();
 
+            stringVs.Add(_agencyName);
+            stringVs.Add(_driverName);
+            stringVs.Add(_pickUpLocation);
+            stringVs.Add(_dropOffLocation);
+            stringVs.Add(_timeOfPickUp);
+            stringVs.Add(_taxicabSpecs);
+
+            dateTimes.Add(_dateOfPickup);
 
             // This returns a bool value,
             // if it returns true then one of the strings are empty
@@ -341,24 +339,22 @@ namespace SeleleTravel
             {
                 // todo
                 // create the instance after checking for errors
-                // var taxiCab = new cabservice(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs, _totalAmount);
+               // var taxiCab = new cabservice(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs, _totalAmount);
 
                 // Todo sql insertion
                 // ...
 
                 // reset the textbox values to empty
                 // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox>
-                {
-                    txbCab_agency,
-                    txbCab_driver,
-                    txbCab_pickUp,
-                    txbCab_dropOff,
-                    txbCab_pickUpTime,
-                    txbCab_numCabs,
-                    txbCab_specifications,
-                    txbCab_total
-                };
+                List<TextBox> textBoxes = new List<TextBox>();
+                textBoxes.Add(txbCab_agency);
+                textBoxes.Add(txbCab_driver);
+                textBoxes.Add(txbCab_pickUp);
+                textBoxes.Add(txbCab_dropOff);
+                textBoxes.Add(txbCab_pickUpTime);
+                textBoxes.Add(txbCab_numCabs);
+                textBoxes.Add(txbCab_specifications);
+                textBoxes.Add(txbCab_total);
                 GeneralMethods.clearTextBoxes(textBoxes);
             }
 
@@ -378,7 +374,6 @@ namespace SeleleTravel
             string fromLoc = txbFlight_from.Text;
             string toLoc = txbFlight_to.Text;
             DateTime departureDate = dpFlight_departure.DisplayDate;
-            DateTime arrivalDate = dpFlight_arrival.DisplayDate;
             int numberOfBags = Convert.ToInt32(txbFlight_numBags.Text);
             string preferedTime = txbFlight_time.Text;
             string flightSpecs = txbFlight_specifications.Text;
@@ -386,20 +381,16 @@ namespace SeleleTravel
 
             // Data validation
             // and Error checking
-            List<DateTime> dateTimes = new List<DateTime>
-            {
-                departureDate,
-                arrivalDate
-            };
-            List<string> stringVs = new List<string>
-            {
-                airlineName,
-                fromLoc,
-                toLoc,
-                preferedTime,
-                flightSpecs
-            };
+            List<DateTime> dateTimes = new List<DateTime>();
+            List<string> stringVs = new List<string>();
 
+            stringVs.Add(airlineName);
+            stringVs.Add(fromLoc);
+            stringVs.Add(toLoc);
+            stringVs.Add(preferedTime);
+            stringVs.Add(flightSpecs);
+
+            dateTimes.Add(departureDate);
 
             // This returns a bool value,
             // if it returns true then one of the strings are empty
@@ -427,14 +418,12 @@ namespace SeleleTravel
 
                 // reset the textbox values to empty
                 // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox>
-                {
-                    txbAccommodation_name,
-                    txbAccommodation_specifications,
-                    txbAccommodation_numGuests,
-                    txbAccommodation_numRooms,
-                    txbAccommodation_total
-                };
+                List<TextBox> textBoxes = new List<TextBox>();
+                textBoxes.Add(txbAccommodation_name);
+                textBoxes.Add(txbAccommodation_specifications);
+                textBoxes.Add(txbAccommodation_numGuests);
+                textBoxes.Add(txbAccommodation_numRooms);
+                textBoxes.Add(txbAccommodation_total);
                 GeneralMethods.clearTextBoxes(textBoxes);
 
                 // clear the passangers
@@ -448,9 +437,9 @@ namespace SeleleTravel
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
         {
-            string passangerName = txbFlight_passengers.Text;
-            ltbFlight_passengersOutput.Items.Add(passangerName);
-            ltbFlight_passengersOutput.Items.Refresh();
+            //string passangerName = txbFlight_passengers.Text;
+            //ltbFlight_passengersOutput.Items.Add(passangerName);
+            //ltbFlight_passengersOutput.Items.Refresh();
 
             for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
             {
@@ -474,18 +463,14 @@ namespace SeleleTravel
 
             // Data validation
             // Error checking
-            List<DateTime> dateTimes = new List<DateTime>
-            {
-                checkInDate,
-                checkOutDate
-            };
+            List<DateTime> dateTimes = new List<DateTime>();
+            List<string> stringVs = new List<string>();
 
-            List<string> stringVs = new List<string>
-            {
-                nameOfAgency,
-                accommodationSpecs
-            };
-           
+            stringVs.Add(nameOfAgency);
+            stringVs.Add(accommodationSpecs);
+            dateTimes.Add(checkInDate);
+            dateTimes.Add(checkOutDate);
+
             // This returns a bool value,
             // if it returns true then one of the strings are empty
             // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
@@ -504,14 +489,12 @@ namespace SeleleTravel
 
                 // Reset the texboxes to empty
                 // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox>
-                {
-                    txbAccommodation_name,
-                    txbAccommodation_specifications,
-                    txbAccommodation_numGuests,
-                    txbAccommodation_numRooms,
-                    txbAccommodation_total
-                };
+                List<TextBox> textBoxes = new List<TextBox>();
+                textBoxes.Add(txbAccommodation_name);
+                textBoxes.Add(txbAccommodation_specifications);
+                textBoxes.Add(txbAccommodation_numGuests);
+                textBoxes.Add(txbAccommodation_numRooms);
+                textBoxes.Add(txbAccommodation_total);
                 GeneralMethods.clearTextBoxes(textBoxes);
             }
 
@@ -536,19 +519,15 @@ namespace SeleleTravel
 
             // Data Validation
             // Check for errors
-            List<DateTime> dateTimes = new List<DateTime>
-            {
-                _startday,
-                _endDay
-            };
-            List<string> stringVs = new List<string>
-            {
-                agencyName,
-                pickUpLocation,
-                dropOffLocation,
-                carHireSpecs
-            };
-            
+            List<DateTime> dateTimes = new List<DateTime>();
+            List<string> stringVs = new List<string>();
+
+            stringVs.Add(agencyName);
+            stringVs.Add(pickUpLocation);
+            stringVs.Add(dropOffLocation);
+            stringVs.Add(carHireSpecs);
+            dateTimes.Add(_startday);
+            dateTimes.Add(_endDay);
 
             // This returns a bool value,
             // if it returns true then one of the strings are empty
@@ -569,14 +548,12 @@ namespace SeleleTravel
 
                 // Reset the textboxes
                 // call the clear textbox method
-                List<TextBox> toBeCleared = new List<TextBox>
-                {
-                    txbCarHire_agency,
-                    txbCarHire_pickUp,
-                    txbCarHire_dropOff,
-                    txbCarHire_numCars,
-                    txbCarHire_specifications
-                };
+                List<TextBox> toBeCleared = new List<TextBox>();
+                toBeCleared.Add(txbCarHire_agency);
+                toBeCleared.Add(txbCarHire_pickUp);
+                toBeCleared.Add(txbCarHire_dropOff);
+                toBeCleared.Add(txbCarHire_numCars);
+                toBeCleared.Add(txbCarHire_specifications);
                 GeneralMethods.clearTextBoxes(toBeCleared);
             }
             
@@ -749,7 +726,10 @@ namespace SeleleTravel
 
         }
 
-     
+        private void TxbNewClient_name_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
 
