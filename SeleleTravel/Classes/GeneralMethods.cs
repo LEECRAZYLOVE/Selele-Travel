@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.IO;
+using System.Windows.Media;
 
 namespace SeleleTravel
 {
@@ -56,15 +57,26 @@ namespace SeleleTravel
         /// <returns></returns>
         public static bool checkDateTimeBox(List<DateTime> dateTimeValues)
         {
-            for (int i = 0; i < dateTimeValues.Count; i++)
+            // check if the end date is bigger that the start date
+            bool greaterORless = dateTimeValues[1] >= dateTimeValues[0];
+            if (greaterORless)
             {
-                if (dateTimeValues[i] == null || dateTimeValues[i].ToString() == "")
+                for (int i = 0; i < dateTimeValues.Count; i++)
                 {
-                    MessageBox.Show("Please select a date", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return true;
+                    // checks if the dates are null or empty strings.
+                    if (dateTimeValues[i] == null || dateTimeValues[i].ToString() == "")
+                    {
+                        MessageBox.Show("Please select a date", "Error, selected dates are invalid", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return true;
+                    }
                 }
+                return false;
             }
-            return false;
+            else
+            {
+                MessageBox.Show("Please select a date that is valid", "Error, Selected dates are invalid", MessageBoxButton.OK, MessageBoxImage.Error);
+                return true;
+            }
         }
 
         /// <summary>
@@ -173,9 +185,9 @@ namespace SeleleTravel
         /// <param name="firstDayOFservice"> Date of the first day of service </param>
         /// <param name="lastDayOfService"> Date of the last day of service </param>
         /// <returns></returns>
-        public static void saveDataToCSVfile(string orderNumber, List<DateTime> dates)
+        public static void saveDataToCSVfile(string quoteNumber,string orderNumber, List<DateTime> dates)
         {
-            // format for storing: Order Number, Start date, End date
+            // format for storing: quote number, order Number, start date, end date
 
             // for first time launch: create a directory relative to the .exe file.
             // hide the folder once created.
@@ -195,13 +207,13 @@ namespace SeleleTravel
 
             // create a string that follows the format stated above
             // create a textwriter variables
-            string orderDetails = $"{orderNumber},{dates[0]},{dates[1]}";
+            string orderDetails = $"{quoteNumber},{orderNumber},{dates[0]},{dates[1]}";
             TextWriter writer;
 
             // first time launch
             string DirectoryPath = "DatesOfServices";
             string Filepath = $"{DirectoryPath}/serviceDates.csv";
-            string metaData = "Order Number, Start date, End Date";
+            string metaData = "Quote Number, Order Number, Start date, End Date";
             
             if (!Directory.Exists(DirectoryPath))
             {
@@ -245,6 +257,61 @@ namespace SeleleTravel
                     writer.Close();
                 }
             }
+        }
+
+        /// <summary>
+        /// It links the order number to the quote number and then saves the info to the csv file.
+        /// </summary>
+        /// <param name="quote_Number"></param>
+        /// <param name="order_Number"></param>
+        public static void linkOrderNumberInCSVfile(string quote_Number, string order_Number)
+        {
+            // format for storing: quote number, order Number, start date, end date
+
+            // Extract the detail from the csv file
+            List<string[]> serviceDetails_ = getServiceDates();
+
+            // Link the order number to the quote number
+            for(int i =0; i < serviceDetails_.Count; i++)
+            {
+                // temp storage for the current index array
+                string[] temp = serviceDetails_[i];
+
+                // check if the quote number is the same as the one on the array
+                // if so update the order number from "To Be Added" to the new quote number
+                if (temp[0] == quote_Number && temp[1] == "To Be Added")
+                {
+                    temp[1] = order_Number;
+                    serviceDetails_[i] = temp;
+                    break;
+                }
+            }
+
+            // save details to the file
+            // create a new file with the updated details
+
+            // first time launch
+            string Filepath = "DatesOfServices/serviceDates.csv";
+            string metaData = "Quote Number, Order Number, Start date, End Date";
+
+            // create file
+            TextWriter writer = File.CreateText(Filepath);
+
+            // Write metadata first
+            writer.WriteLine(metaData);
+
+            // write data to the file
+            for(int i=0;i< serviceDetails_.Count; i++)
+            {
+                // Extrct data from the list
+                // store using the format: quote number, order Number, start date, end date
+                string[] temp = serviceDetails_[i];
+                string line = $"{temp[0]},{temp[1]},{temp[2]},{temp[3]}";
+                writer.WriteLine(line);
+            }
+
+            writer.Close();
+            
         }
 
         /// <summary>
@@ -304,7 +371,8 @@ namespace SeleleTravel
                 for(int k = 0; k< serviceDetails.Count; k++)
                 {
                     string[] temp = serviceDetails[k];
-                    if (temp[0] == orderNumbers[i]) serviceDetails.Remove(temp);
+                    // compare the order number on the file with the one on the list
+                    if (temp[1] == orderNumbers[i]) serviceDetails.Remove(temp);
                 }
             }
 
@@ -324,10 +392,75 @@ namespace SeleleTravel
             for(int i = 0;i< serviceDetails.Count; i++)
             {
                 string[] mytemp = serviceDetails[i];
-                string line = $"{mytemp[0]},{mytemp[1]},{mytemp[2]}";
+                string line = $"{mytemp[0]},{mytemp[1]},{mytemp[2]},{mytemp[3]}";
                 writer.WriteLine();
             }
             writer.Close();
         }
+
+        /// <summary>
+        /// It generates the quote number.
+        /// </summary>
+        /// <returns></returns>
+        public static string makeQuote_no()
+        {
+            string numOfQuotes = Convert.ToString(getNumberOfQuotes());
+            DateTime timeQuoted = DateTime.Now; // Assignes the timeQuoted to the current time
+            string _totalQts = numOfQuotes; // assigns the static value to the string
+            while (_totalQts.Length < 6)
+            {
+                // It adds a zero once to the left of the current string
+                _totalQts = _totalQts.PadLeft(1, '0');
+            }
+            // generates the quote number using the time and string generated above
+            string quote_no = $"{timeQuoted}{_totalQts}";
+            
+            // increment the number of quotes
+            incrementNumOfQuotes();
+
+            return quote_no;
+        }
+
+        /// <summary>
+        /// gets the total number of quotes that have been generated thus far.
+        /// </summary>
+        /// <returns></returns>
+        private static int getNumberOfQuotes()
+        {
+            TextReader reader = File.OpenText("quoteNum/numOfQuotes");
+            int number = Convert.ToInt32(reader.ReadLine());
+            reader.Close();
+            return number;
+        }
+
+        /// <summary>
+        ///increments the number of generated quotes by one and then stores the number.
+        /// </summary>
+        private static void incrementNumOfQuotes()
+        {
+            TextReader reader = File.OpenText("quoteNum/numOfQuotes.seleleqs");
+            int number = Convert.ToInt32(reader.ReadLine());
+            reader.Close();
+            TextWriter writer = File.CreateText("quoteNum/numOfQuotes.seleleqs");
+            writer.WriteLine(number++);
+            writer.Close();
+        }
+
+        /// <summary>
+        /// checks if the quote number is empty.
+        /// </summary>
+        /// <param name="q_number"></param>
+        /// <returns></returns>
+        public static bool checkQuoteNotEmpty(string q_number)
+        {
+            if (q_number == "")
+            {
+                MessageBox.Show("The quote number has not been generated, please press the \"Request Verification\" button", "Error: Quote number not generated",MessageBoxButton.OK,MessageBoxImage.Error);
+                return false;
+            }
+            return true;
+        }
+
+
     }
 }
