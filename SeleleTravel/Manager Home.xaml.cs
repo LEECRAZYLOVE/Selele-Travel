@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Timers;
 using System.IO;
+using System.Data.SqlClient;
+using Devart.Data.MySql;
 
 namespace SeleleTravel
 {

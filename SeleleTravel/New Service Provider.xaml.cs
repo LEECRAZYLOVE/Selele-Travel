@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+//using System.Data.SqlClient;
+using Devart.Data.MySql;
 
 namespace SeleleTravel
 {
@@ -24,6 +26,9 @@ namespace SeleleTravel
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             //this.WindowState = WindowState.Maximized;
+            lblUpdateClient.Visibility = Visibility.Hidden;
+            cbxUpdateClient.Visibility = Visibility.Hidden;
+            btnUpdateClient.Visibility = Visibility.Hidden;
         }
 
         private void validateValue(object sender, TextChangedEventArgs e)
@@ -36,34 +41,40 @@ namespace SeleleTravel
             GeneralMethods.checkPhoneNumber(sender);
         }
 
-        private void createNewClient_Click(object sender, RoutedEventArgs e)
-        {//new edit
+
+        private void New_Service_Provider_Home_Closed(object sender, EventArgs e)
+        {
+            GeneralMethods.closeAllWindows();
+        }
+
+        private void BtnNewService_add_Click(object sender, RoutedEventArgs e)
+        {
             string name = txbNewService_name.Text;
-            string address = txbNewClient_address.Text;
+            string address = txbNewService_address.Text;
             string telephone = txbNewService_telephone.Text;
             string emailadress = txbNewService_email.Text;
             string fax = txbNewService_fax.Text;
             string cellphone = txbNewService_cellphone.Text;
-            string service = cbbNewService_entities.SelectionBoxItem.ToString() ;
+            string service = cbbNewService_entities.SelectionBoxItem.ToString();
 
             //var context = new SeleleEntities();
             var currentServiceProvider = new agencydetail()
             {
                 agency_id = "A0001", //This will be automatically generated. I'm using a dummy to test queries.
                 nameofagency = name,
-               address = address,
+                address = address,
                 telephone = telephone,
                 emailaddress = emailadress,
                 fax = fax,
-               cellphone  = cellphone,
-              service=service
+                cellphone = cellphone,
+                service = service
             };
-           //Add service provider to database
+            //Add service provider to database
             //try
             //{
             //    context.agencydetails.Add(currentServiceProvider);
             //    context.SaveChanges();
-            //    //  MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentServiceProvider.client_no}");
+            //    MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentServiceProvider.agency_id}");
             //}
             //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             //{
@@ -77,12 +88,5 @@ namespace SeleleTravel
 
             //}
         }
-
-        private void New_Service_Provider_Home_Closed(object sender, EventArgs e)
-        {
-            GeneralMethods.closeAllWindows();
-        }
-
-        
     }
 }

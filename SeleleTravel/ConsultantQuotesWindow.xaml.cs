@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using Word = Microsoft.Office.Interop.Word;
 using System.Reflection;
 using System.IO;
+using System.Data.SqlClient;
+using Devart.Data.MySql;
 
 namespace SeleleTravel
 {
