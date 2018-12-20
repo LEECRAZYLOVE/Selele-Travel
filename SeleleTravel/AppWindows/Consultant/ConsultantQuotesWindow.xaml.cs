@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using Word = Microsoft.Office.Interop.Word;
 using System.Reflection;
 using System.IO;
+using Devart.Data.MySql;
+using System.Data.SqlClient;
 
 namespace SeleleTravel
 {
@@ -133,19 +135,8 @@ namespace SeleleTravel
 
         #region Already a Client Display
 
-        private void BtnOldClient_find_Click(object sender, RoutedEventArgs e)
-        {
-            // Assign the value to be searched to the variable
-            string findName = txbOldClient_find.Text;
+ 
 
-            // Results from the database
-            //txblOldClient_Details.Text = "";
-        }
-
-        private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         #endregion
 
@@ -160,6 +151,7 @@ namespace SeleleTravel
         private void AmountChanged(object sender, TextChangedEventArgs e)
         {
             bool intOrDouble = false;
+            GeneralMethods.checkAmountTyped(sender, intOrDouble);
         }
 
         /// <summary>
@@ -169,7 +161,7 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void AmountChanged_WHOLENumber(object sender, TextChangedEventArgs e)
         {
-            bool intOrDble = true;
+            GeneralMethods.checkAmountTyped(sender);
         }
 
         /// <summary>
@@ -179,7 +171,7 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void phoneNumberCheck(object sender, TextChangedEventArgs e)
         {
-
+            GeneralMethods.checkPhoneNumber(sender);
         }
 
         #endregion
@@ -306,7 +298,7 @@ namespace SeleleTravel
         {
             string conferenceName = txbConference_name.Text;
             string conferenceVenue = txbConference_venue.Text;
-            DateTime startDateOfConference = dpConference_startDate.DisplayDate;
+            DateTime dateOfConference = dpConference_startDate.DisplayDate;
             DateTime endDateofConference = dpConference_endDate.DisplayDate;
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
@@ -518,8 +510,8 @@ namespace SeleleTravel
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
         {
-            string passengerName = txbFlight_passangerName.Text;
-            ltbFlight_passengersOutput.Items.Add(passengerName);
+            string passangerName = txbFlight_passangerName.Text;
+            ltbFlight_passengersOutput.Items.Add(passangerName);
             ltbFlight_passengersOutput.Items.Refresh();
 
             for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
@@ -611,13 +603,13 @@ namespace SeleleTravel
                 // Add the date to the global list of dates that will be stored
                 servicesDates.Add(_startday);
                 servicesDates.Add(_endDay);
-
+                
                 // Create an instance of carhire
                 //var _carHire = new carhire(agencyName, pickUpLocation, dropOffLocation, _startday, _endDay);
                 //{
-
+                
                 //};
-
+                
                 // Reset the textboxes
                 // call the clear textbox method
                 List<TextBox> toBeCleared = new List<TextBox> { txbCarHire_agency, txbCarHire_pickUp, txbCarHire_dropOff, txbCarHire_numCars, txbCarHire_specifications };
@@ -666,8 +658,7 @@ namespace SeleleTravel
             string tempOrderNum = "To Be Added";
             GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
         }
-
-        // 
+        
         // Opening a word document from the program
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -835,6 +826,35 @@ namespace SeleleTravel
         private void BtnClient_add_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Consultant_Quotes_Window_Closed(object sender, EventArgs e)
+        {
+            Owner.Show();
+        }
+
+        private void btnOldClient_update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEvents_done_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnOldClient_find_Click(object sender, RoutedEventArgs e)
+        {
+            // Assign the value to be searched to the variable
+            string findName = txbOldClient_find.Text;
+
+            // Results from the database
+            //txblOldClient_Details.Text = "";
         }
 
         private void btnOldClient_select_Click_1(object sender, RoutedEventArgs e)

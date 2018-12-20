@@ -82,7 +82,8 @@ namespace SeleleTravel
 
         private void New_Service_Provider_Home_Closed(object sender, EventArgs e)
         {
-            GeneralMethods.closeAllWindows();
+            //GeneralMethods.closeAllWindows();
+            Owner.Show();
         }
 
         private void txbNewService_name_TextChanged(object sender, TextChangedEventArgs e)
@@ -100,10 +101,10 @@ namespace SeleleTravel
             string cellphone = txbNewService_cellphone.Text;
             string service = cbbNewService_entities.SelectionBoxItem.ToString();
 
-            var context = new postgresEntities12th();
+            var context = new SeleleEntities();
             var currentServiceProvider = new agencydetail()
             {
-                agency_id = "A0001", //This will be automatically generated. I'm using a dummy to test queries.
+                agency_id = "A0002", //This will be automatically generated. I'm using a dummy to test queries.
                 nameofagency = name,
                 address = address,
                 telephone = telephone,
@@ -134,7 +135,7 @@ namespace SeleleTravel
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {//Extracting data from the database DONE!
-            using (postgresEntities12th currentServiceProvider = new postgresEntities12th())
+            using (SeleleEntities currentServiceProvider = new SeleleEntities())
             {
                 var query =(from c in currentServiceProvider.agencydetails
 

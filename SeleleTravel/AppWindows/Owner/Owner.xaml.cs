@@ -76,5 +76,10 @@ namespace SeleleTravel
             ownerPaymentsWindow.Show();
             Hide();
         }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
