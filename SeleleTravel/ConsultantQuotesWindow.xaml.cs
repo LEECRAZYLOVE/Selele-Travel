@@ -25,7 +25,6 @@ namespace SeleleTravel
         public ConsultantQuotesWindow()
         {
             InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         public List<DateTime> servicesDates = new List<DateTime>();
@@ -270,7 +269,7 @@ namespace SeleleTravel
 
             // Data Verification:
             // check if the variables are empty
-            List<DateTime> dateTimes = new List<DateTime> { dateOfConference, endDateofConference};
+            List<DateTime> dateTimes = new List<DateTime> { startDatOfConference, endDateofConference};
             List<string> stringVs = new List<string> { conferenceName, conferenceVenue, conferenceTime, specsOfConference};
             
             // This returns a bool value,
@@ -282,7 +281,7 @@ namespace SeleleTravel
             if(!checkEmptyStrngBool && !checkDatesBool)
             {
                 // Add the date to the global list of dates that will be stored
-                servicesDates.Add(dateOfConference);
+                servicesDates.Add(startDatOfConference);
                 servicesDates.Add(endDateofConference);
 
                 // todo...
@@ -381,14 +380,20 @@ namespace SeleleTravel
 
             // Data validation
             // and Error checking
-            List<DateTime> dateTimes = new List<DateTime>();
-            List<string> stringVs = new List<string>();
+            List<DateTime> dateTimes = new List<DateTime>
+            {
+                departureDate
+            };
+            List<string> stringVs = new List<string>
+            {
+                airlineName,
+                fromLoc,
+                toLoc,
+                preferedTime,
+                flightSpecs
+            };
 
-            stringVs.Add(airlineName);
-            stringVs.Add(fromLoc);
-            stringVs.Add(toLoc);
-            stringVs.Add(preferedTime);
-            stringVs.Add(flightSpecs);
+            
 
             dateTimes.Add(departureDate);
 

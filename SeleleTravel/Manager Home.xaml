@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Manager_Page" Height="750" Width="1006.4" Closed="Manager_Home1_Closed" Icon="SeleleLogoBalls.png">
+        WindowStartupLocation="CenterScreen"
+        Icon="SeleleLogoBalls.png"
+        Title="Manager_Page" Height="750" Width="1006.4" Closed="Manager_Home1_Closed">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

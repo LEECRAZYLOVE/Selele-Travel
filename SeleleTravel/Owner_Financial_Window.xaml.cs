@@ -25,5 +25,11 @@ namespace SeleleTravel
         {
             InitializeComponent();
         }
+
+        private void Owner_Financial_Window_Closed(object sender, EventArgs e)
+        {
+            Owner?.Show();
+            Close();
+        }
     }
 }

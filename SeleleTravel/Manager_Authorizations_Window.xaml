@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+        Icon="SeleleLogoBalls.png"
         FontSize="20"
         Title="Selele | Manager | Authorize" Height="700" Width="1200">
     <Grid Background="#FFF6E5A6">

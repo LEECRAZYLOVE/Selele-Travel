@@ -21,6 +21,9 @@ namespace SeleleTravel
     /// </summary>
     public partial class OwnerHomeWindow : Window
     {
+        public OwnerFinancialWindow ownerFinancialWindow;
+        public OwnerEmployeesWindow ownerEmployeesWindow;
+        public OwnerPaymentsWindow ownerPaymentsWindow;
         public OwnerHomeWindow()
         {
             InitializeComponent();
@@ -40,6 +43,38 @@ namespace SeleleTravel
         private void btnOwner_search_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void BtnOwner_financialSummary_Click(object sender, RoutedEventArgs e)
+        {
+            ownerFinancialWindow = new OwnerFinancialWindow();
+            ownerFinancialWindow.Owner = this;
+            Hide();
+            ownerFinancialWindow.Show();
+        }
+
+        private void BtnOwner_Employees_Click(object sender, RoutedEventArgs e)
+        {
+            ownerEmployeesWindow = new OwnerEmployeesWindow();
+            ownerEmployeesWindow.Owner = this;
+            Hide();
+            ownerEmployeesWindow.Show();
+        }
+
+        private void BtnOwner_composeMessage_Click(object sender, RoutedEventArgs e)
+        {
+            ComposeMessageWindow composeMessageWindow = new ComposeMessageWindow();
+            composeMessageWindow.Owner = this;
+            composeMessageWindow.Show();
+            Hide();
+        }
+
+        private void BtnOwner_paymentProofs_Click(object sender, RoutedEventArgs e)
+        {
+            ownerPaymentsWindow = new OwnerPaymentsWindow();
+            ownerEmployeesWindow.Owner = this;
+            ownerPaymentsWindow.Show();
+            Hide();
         }
     }
 }
