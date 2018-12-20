@@ -135,7 +135,7 @@ namespace SeleleTravel
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {//Extracting data from the database DONE!
-            using (postgresEntities12th currentServiceProvider = new postgresEntities12th())
+            using (SeleleEntities currentServiceProvider = new SeleleEntities())
             {
                 var query =(from c in currentServiceProvider.agencydetails
 

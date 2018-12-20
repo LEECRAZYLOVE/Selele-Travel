@@ -304,14 +304,13 @@
                         <TextBlock Text="Already a client" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
                         <DockPanel>
                             <TextBox x:Name="txbOldClient_find" Width="400" Height="30" Margin="10"/>
-                            <Button x:Name="btnOldClient_find" Content="Search" Margin="10" Click="btnOldClient_find_Click_1"/>
+                            <Button x:Name="btnOldClient_find" Content="Search" Margin="10" Click="BtnOldClient_find_Click"/>
 
                         </DockPanel>
                         <ListBox x:Name="lbxOldClient_Details" Margin="10" Height="450">
                             <ListBoxItem Content="No results found."/>
                         </ListBox>
-                        <Button  x:Name="btnOldClient_select"  Content="Select Client" FontSize="20" Width="300" Click="btnOldClient_select_Click_1"/>
-                        <Button  x:Name="btnOldClient_update"  Content="Update Client" FontSize="20" Width="300" Margin="10" Click="btnOldClient_update_Click"/>
+                        <Button  x:Name="btnOldClient_select"  Content="Select Client" FontSize="20" Width="300" Click="BtnOldClient_select_Click" />
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -343,7 +342,6 @@
 
                     <TextBox x:Name="txbCarHire_total" HorizontalAlignment="Left" Height="30" Margin="1034.213,586.941,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112.053" TextChanged="AmountChanged"/>
                     <Button x:Name="btnCarHire_Done" Content="DONE" HorizontalAlignment="Left" Margin="977.613,621.941,0,0" VerticalAlignment="Top" Width="168.653" Click="BtnCarHire_Done_Click" Height="35.243"/>
-                    <Button x:Name="btnCarHire_update" Content="UPDATE"  HorizontalAlignment="Left" Margin="1025.399,10,0,0" VerticalAlignment="Top" Width="120.867" Background="#FF45D310" Visibility="Visible" Height="43"/>
 
                 </Grid>
             </TabItem>
@@ -523,7 +521,6 @@
                             <TextBlock Grid.Column="1" Text="Total      R :" Margin="0,0,172,0"/>
                             <TextBox x:Name="txbAccommodation_total"  TextChanged="AmountChanged" Grid.Column="1" Height="30" Grid.ColumnSpan="2" Margin="127,0,10,0"/>
                             <Button x:Name="btnAccommodation_done" Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10"/>
-                            <Button x:Name="btnAccommodation_update" Content="Update!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="10"/>
                         </Grid>
                     </StackPanel>
                 </Grid>
@@ -590,7 +587,6 @@
                             <TextBlock Grid.Column="1" Text="Total      R :"/>
                             <TextBox x:Name="txbConference_total"   TextChanged="AmountChanged" Grid.Column="2" Height="30"/>
                             <Button x:Name="btnConference_done"  Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10"/>
-                            <Button x:Name="btnConference_update"  Content="Update!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="10"/>
                         </Grid>
                     </StackPanel>
                 </Grid>
@@ -655,8 +651,7 @@
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Column="1" Text="Total      R :"/>
                             <TextBox x:Name="txbEvents_total"   TextChanged="AmountChanged" Grid.Column="2" Height="30"/>
-                            <Button x:Name="btnEvents_done"  Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" Click="btnEvents_done_Click"/>
-                            <Button x:Name="btnEvents_update"  Content="Update!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="10" Click="btnEvents_update_Click"/>
+                            <Button x:Name="btnEvents_done"  Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" Click="BtnEvents_done_Click" />
                         </Grid>
                     </StackPanel>
                 </Grid>
