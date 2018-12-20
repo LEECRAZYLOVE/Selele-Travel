@@ -461,6 +461,30 @@ namespace SeleleTravel
             return true;
         }
 
+        /// <summary>
+        /// Generates a staff ID by taking the surname and the last four number in the cellphone e.g. Stuurman1533
+        /// shows it in a popup
+        /// </summary>
+        /// <param name="surname"></param>
+        /// <param name="cellphone"></param>
+        public static string makeStaffID(string surname, string cellphone)
+        {
+            string ID = surname + cellphone.Substring(6, 9);
+            MessageBox.Show("New Employee ID is: ID");
+            return ID;
+        }
 
+        /// <summary>
+        /// Forms the full address string with the city, area code and province
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="city"></param>
+        /// <param name="areaCode"></param>
+        /// <param name="province"></param>
+        /// <returns></returns>
+        public static string makeAddress(string address, string city, string areaCode, string province)
+        {
+            return $"{address} \n {city} \n {areaCode} \n {province}";
+        }
     }
 }

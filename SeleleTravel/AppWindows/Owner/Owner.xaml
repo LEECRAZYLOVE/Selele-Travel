@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Owner_Page" Height="800" Width="1200" Closed="Owner_Home_Closed" Icon="SeleleLogoBalls.png">
+        WindowStartupLocation="CenterScreen"
+        Icon="..\..\images\SeleleLogoBalls.png"
+        Title="Owner_Page" Height="800" Width="1200" Closed="Owner_Home_Closed">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -67,7 +69,7 @@
 
         <Button x:Name="btnOwner_logOut" Content="LOGOUT" Width="150" Height="40" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0" >
             <Button.Background>
-                <ImageBrush ImageSource="SeleleLogoBalls.png" Stretch="Uniform">
+                <ImageBrush ImageSource="..\..\images\SeleleLogoBalls.png" Stretch="Uniform">
                     <ImageBrush.RelativeTransform>
                         <TransformGroup>
                             <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="5" ScaleY="5"/>
@@ -85,13 +87,13 @@
         <TabControl HorizontalAlignment="Left" Height="630.8" Margin="10,79.6,0,0" VerticalAlignment="Top" Width="973.6">
             <TabItem Header="Home" Margin="0" Width="100" Height="30" HorizontalAlignment="Left">
                 <Canvas Background="White">
-                    <Image Height="572.8" Canvas.Left="10" Canvas.Top="10" Width="947.6" Source="SeleleLogoBalls.png" Opacity=".5"/>
+                    <Image Height="572.8" Canvas.Left="10" Canvas.Top="10" Width="947.6" Source="..\..\images\SeleleLogoBalls.png" Opacity=".5"/>
                     <Label Content="Choose an option..." VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" Canvas.Left="15.8" Canvas.Top="20" />
                     <StackPanel Height="513.6" Canvas.Left="10" Canvas.Top="69.2" Width="947.6">
-                        <Button x:Name="btnOwner_financialSummary" Height="123.2" Content="Financial Summary" Style="{DynamicResource HomeButtonStyle}"/>
-                        <Button x:Name="btnOwner_Employees" Height="135.2" Content="Employees" Style="{DynamicResource HomeButtonStyle}"/>
-                        <Button x:Name="btnOwner_composeMessage" Height="126.2" Content="Compose Message" Style="{DynamicResource HomeButtonStyle}"/>
-                        <Button x:Name="btnOwner_paymentProofs" Height="123.2" Content="Proof of Payments" Style="{DynamicResource HomeButtonStyle}"/>
+                        <Button x:Name="btnOwner_financialSummary" Height="123.2" Content="Financial Summary" Style="{DynamicResource HomeButtonStyle}" Click="BtnOwner_financialSummary_Click"/>
+                        <Button x:Name="btnOwner_Employees" Height="135.2" Content="Employees" Style="{DynamicResource HomeButtonStyle}" Click="BtnOwner_Employees_Click"/>
+                        <Button x:Name="btnOwner_composeMessage" Height="126.2" Content="Compose Message" Style="{DynamicResource HomeButtonStyle}" Click="BtnOwner_composeMessage_Click"/>
+                        <Button x:Name="btnOwner_paymentProofs" Height="123.2" Content="Proof of Payments" Style="{DynamicResource HomeButtonStyle}" Click="BtnOwner_paymentProofs_Click"/>
                     </StackPanel>
                 </Canvas>
             </TabItem>

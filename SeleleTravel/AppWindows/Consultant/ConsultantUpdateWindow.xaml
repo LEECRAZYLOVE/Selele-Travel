@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Icon="..\..\images\SeleleLogoBalls.png"
         Title="Consultant_Update_Window" Height="700" Width="950" Background="#FFE4D64D">
     <Window.Resources>
         <Style x:Key="FocusVisual">

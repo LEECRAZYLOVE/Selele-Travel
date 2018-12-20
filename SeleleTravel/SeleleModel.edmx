@@ -203,8 +203,12 @@
           <Property Name="staffposition" Type="varchar" MaxLength="30" />
           <Property Name="dateofhire" Type="date" />
           <Property Name="salary" Type="double precision" />
-          <Property Name="branch" Type="varchar" MaxLength="50" />
           <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="cellphone" Type="varchar" MaxLength="15" />
+          <Property Name="telephone" Type="varchar" MaxLength="15" />
+          <Property Name="fax" Type="varchar" MaxLength="15" />
+          <Property Name="address" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="voucher">
           <Key>
@@ -439,8 +443,12 @@
           <Property Name="staffposition" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="dateofhire" Type="DateTime" />
           <Property Name="salary" Type="Double" />
-          <Property Name="branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cellphone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="voucher">
           <Key>
@@ -689,8 +697,12 @@
                 <ScalarProperty Name="staffposition" ColumnName="staffposition" />
                 <ScalarProperty Name="dateofhire" ColumnName="dateofhire" />
                 <ScalarProperty Name="salary" ColumnName="salary" />
-                <ScalarProperty Name="branch" ColumnName="branch" />
                 <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="cellphone" ColumnName="cellphone" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="address" ColumnName="address" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

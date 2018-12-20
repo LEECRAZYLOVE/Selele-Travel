@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+        Icon="..\..\images\SeleleLogoBalls.png"
         FontFamily="Comic sans ms"
         FontSize="16"
-        Icon="SeleleLogoBalls.png"
         Title="Selele | ManagerQuotesPage" Height="700" Width="1100">
     <Grid Background="#FFFF8888">
         <TabControl x:Name="Manager_tabControl" HorizontalAlignment="Left" Height="626" VerticalAlignment="Top" Width="1078" Margin="8,38,0,0">

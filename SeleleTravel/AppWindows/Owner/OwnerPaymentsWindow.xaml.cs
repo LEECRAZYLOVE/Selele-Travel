@@ -17,13 +17,19 @@ using System.Data.SqlClient;
 namespace SeleleTravel
 {
     /// <summary>
-    /// Interaction logic for Owner_Financial_Window.xaml
+    /// Interaction logic for OwnerPaymentsWindow.xaml
     /// </summary>
-    public partial class OwnerFinancialWindow : Window
+    public partial class OwnerPaymentsWindow : Window
     {
-        public OwnerFinancialWindow()
+        public OwnerPaymentsWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Owner?.Show();
+            Close();
         }
     }
 }

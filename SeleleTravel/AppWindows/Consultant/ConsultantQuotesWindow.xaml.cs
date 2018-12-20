@@ -25,7 +25,6 @@ namespace SeleleTravel
         public ConsultantQuotesWindow()
         {
             InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         public List<DateTime> servicesDates = new List<DateTime>();
@@ -126,7 +125,7 @@ namespace SeleleTravel
             //{
             //    //other error
             //   // throw ex;
-              
+
             //}
         }
 
@@ -140,16 +139,16 @@ namespace SeleleTravel
             string findName = txbOldClient_find.Text;
 
             // Results from the database
-           // lbxOldClient_Details = "";
+            //txblOldClient_Details.Text = "";
         }
-        
+
         private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
         #endregion
-        
+
         #endregion
 
         #region General Methods/Events
@@ -180,13 +179,21 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void phoneNumberCheck(object sender, TextChangedEventArgs e)
         {
-            
+
         }
 
         #endregion
 
+        #region Clients Tab
+
+        private void add_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+
         #region Event tab
-        
+
         private void _done(object sender, RoutedEventArgs e)
         {
             // assign vars to the textboxes
@@ -262,7 +269,7 @@ namespace SeleleTravel
         {
             string conferenceName = txbConference_name.Text;
             string conferenceVenue = txbConference_venue.Text;
-            DateTime startDateOfConference = dpConference_startDate.DisplayDate;
+            DateTime startDateofConference = dpConference_startDate.DisplayDate;
             DateTime endDateofConference = dpConference_endDate.DisplayDate;
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
@@ -270,7 +277,7 @@ namespace SeleleTravel
 
             // Data Verification:
             // check if the variables are empty
-            List<DateTime> dateTimes = new List<DateTime> { startDateOfConference, endDateofConference};
+            List<DateTime> dateTimes = new List<DateTime> { dateOfConference, endDateofConference};
             List<string> stringVs = new List<string> { conferenceName, conferenceVenue, conferenceTime, specsOfConference};
             
             // This returns a bool value,
@@ -282,7 +289,7 @@ namespace SeleleTravel
             if(!checkEmptyStrngBool && !checkDatesBool)
             {
                 // Add the date to the global list of dates that will be stored
-                servicesDates.Add(startDateOfConference);
+                servicesDates.Add(dateOfConference);
                 servicesDates.Add(endDateofConference);
 
                 // todo...
@@ -381,14 +388,20 @@ namespace SeleleTravel
 
             // Data validation
             // and Error checking
-            List<DateTime> dateTimes = new List<DateTime>();
-            List<string> stringVs = new List<string>();
+            List<DateTime> dateTimes = new List<DateTime>
+            {
+                departureDate
+            };
+            List<string> stringVs = new List<string>
+            {
+                airlineName,
+                fromLoc,
+                toLoc,
+                preferedTime,
+                flightSpecs
+            };
 
-            stringVs.Add(airlineName);
-            stringVs.Add(fromLoc);
-            stringVs.Add(toLoc);
-            stringVs.Add(preferedTime);
-            stringVs.Add(flightSpecs);
+            
 
             dateTimes.Add(departureDate);
 
@@ -437,8 +450,8 @@ namespace SeleleTravel
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
         {
-            string passangerName = txbFlight_passangerName.Text;
-            ltbFlight_passengersOutput.Items.Add(passangerName);
+            string passengerName = txbFlight_passangerName.Text;
+            ltbFlight_passengersOutput.Items.Add(passengerName);
             ltbFlight_passengersOutput.Items.Refresh();
 
             for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
@@ -751,32 +764,7 @@ namespace SeleleTravel
 
         }
 
-        private void btnOldClient_select_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnOldClient_update_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnOldClient_find_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnEvents_done_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnEvents_update_Click(object sender, RoutedEventArgs e)
+        private void BtnClient_add_Click(object sender, RoutedEventArgs e)
         {
 
         }
