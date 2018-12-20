@@ -76,7 +76,7 @@
         <PasswordBox x:Name="pdbLogIn_password" Canvas.Left="67" Canvas.Top="193" Width="206" Height="41" BorderBrush="Black" FontSize="20"/>
         <Label Content="Enter Your Credentials" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="206" Canvas.Left="67" Canvas.Top="47" FontSize="18" FontFamily="Rockwell"/>
         <Button Content="GO BACK" Height="20" Width="70" Canvas.Left="10" Canvas.Top="10" Style="{DynamicResource LoginButtonStyle}" Click="Button_Click" Background="#FFDDDDDD" BorderBrush="LightGray" Foreground="Black"/>
-        <Button x:Name="btnSignUp" Content="SIGN UP" Canvas.Left="67" Canvas.Top="302" Width="206" Height="44"  BorderBrush="Black" FontSize="36" Style="{DynamicResource LoginButtonStyle}"/>
+        <Button x:Name="btnSignUp" Content="SIGN UP" Canvas.Left="67" Canvas.Top="302" Width="206" Height="44"  BorderBrush="Black" FontSize="36" Style="{DynamicResource LoginButtonStyle}" Click="BtnSignUp_Click"/>
 
     </Canvas>
 </Window>

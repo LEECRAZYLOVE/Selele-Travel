@@ -52,7 +52,7 @@ namespace SeleleTravel
         public void promote(staff employee)
         {
             fire(employee);
-            Manager manager = new Manager(employee.stafffirstnames, employee.stafflastname, employee.branch);
+            Manager manager = new Manager(employee.stafffirstnames, employee.stafflastname);
             manager.staff_id = employee.staff_id;
             manager.dateofhire = employee.dateofhire;
 
@@ -61,15 +61,13 @@ namespace SeleleTravel
             //Displaying to user
             string message = "Password successfully updated!";
             MessageBox.Show(message, "Alert..", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-
         }
         
-        public Boss(string names = "Mrs Pumla Patricia", string surname ="Nyangiwe", string location = "East London")
-            :base(names, surname, location)
+        public Boss(string names = "Mrs Pumla Patricia", string surname ="Nyangiwe")
+            :base(names, surname)
         {
             stafffirstnames = names;
             stafflastname = surname;
-            branch = location;
         }
     }
 }

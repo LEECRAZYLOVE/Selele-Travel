@@ -33,7 +33,7 @@ namespace SeleleTravel
         /// </summary>
         public static List<Manager> AllManagers = new List<Manager>();
         
-        public Manager(string names, string surname, string location = "East London") //: base(names, surname, location)
+        public Manager(string names, string surname) //: base(names, surname, location)
         {
             //getEmployees();
             AllManagers.Add(this);

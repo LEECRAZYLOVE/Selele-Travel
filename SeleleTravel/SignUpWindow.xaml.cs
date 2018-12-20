@@ -28,6 +28,33 @@ namespace SeleleTravel
 
         private void btnSignUp_done_Click(object sender, RoutedEventArgs e)
         {
+            //string currentStaffID = txbSignUp_staffID.Text;
+            //  using (SeleleEntities currentEmployee = new SeleleEntities())
+            //{
+            //   var query = (from c in currentEmployee.staffs
+            //    where c.staff_id == currentStaffID 
+            //    select new
+            //    {
+            //        c.staff_id
+            //    });
+            //}
+
+            //string Password = pdbSignUp_password.Password;
+            //string confirmPassword = pdbSignUp_passwordConfirm.Password;
+
+            //if (Password != confirmPassword)
+            //{
+            //    MessageBox.Show("Password doest not match. Please try again.");
+            //    pdbSignUp_password.Clear();
+            //    pdbSignUp_passwordConfirm.Clear();
+            //    btnSignUp_done_Click(sender, e);
+            //}
+
+            //var context = new SeleleEntities();
+            //var currentNewEmployee = new staff()
+            //{
+            //    password = Password
+            //};
 
         }
     }

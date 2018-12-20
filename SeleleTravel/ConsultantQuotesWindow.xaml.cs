@@ -140,7 +140,7 @@ namespace SeleleTravel
             string findName = txbOldClient_find.Text;
 
             // Results from the database
-            txblOldClient_Details.Text = "";
+            //txblOldClient_Details.Text = "";
         }
         
         private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
@@ -193,8 +193,8 @@ namespace SeleleTravel
             string nameOfEvent = txbEvents_name.Text;
             string eventSpecs = txbEvents_specifications.Text;
             double eventAmount = Convert.ToDouble(txbEvents_total.Text);
-            DateTime eventStartdate = _eventStartDate.DisplayDate;
-            DateTime eventEnddate = _eventEndDate.DisplayDate;
+            DateTime eventStartdate = dpEvents_startDate.DisplayDate;
+            DateTime eventEnddate = dpEvents_endDate.DisplayDate;
 
             // Data verification:
             // make sure that the supplied data is valid
@@ -262,8 +262,8 @@ namespace SeleleTravel
         {
             string conferenceName = txbConference_name.Text;
             string conferenceVenue = txbConference_venue.Text;
-            DateTime dateOfConference = dpConference_date.DisplayDate;
-            DateTime endDateofConference = _endDateOfConf.DisplayDate;
+            DateTime dateOfConference = dpConference_startDate.DisplayDate;
+            DateTime endDateofConference = dpConference_endDate.DisplayDate;
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
             double amountOfconf = Convert.ToDouble(txbConference_total.Text);
@@ -374,7 +374,6 @@ namespace SeleleTravel
             string fromLoc = txbFlight_from.Text;
             string toLoc = txbFlight_to.Text;
             DateTime departureDate = dpFlight_departure.DisplayDate;
-            DateTime arrivalDate = dpFlight_arrival.DisplayDate;
             int numberOfBags = Convert.ToInt32(txbFlight_numBags.Text);
             string preferedTime = txbFlight_time.Text;
             string flightSpecs = txbFlight_specifications.Text;
@@ -392,7 +391,6 @@ namespace SeleleTravel
             stringVs.Add(flightSpecs);
 
             dateTimes.Add(departureDate);
-            dateTimes.Add(arrivalDate);
 
             // This returns a bool value,
             // if it returns true then one of the strings are empty
@@ -439,8 +437,8 @@ namespace SeleleTravel
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
         {
-            string passangerName = txbFlight_passengers.Text;
-            ltbFlight_passengersOutput.Items.Add(passangerName);
+            string passengerName = txbFlight_passangerName.Text;
+            ltbFlight_passengersOutput.Items.Add(passengerName);
             ltbFlight_passengersOutput.Items.Refresh();
 
             for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)

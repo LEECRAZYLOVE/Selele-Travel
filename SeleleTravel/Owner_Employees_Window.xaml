@@ -205,19 +205,20 @@
                         <!--Address-->
                         <DockPanel>
                             <TextBlock Text="Address" FontSize="16" Margin="10"/>
-                            <TextBox x:Name="txbNewEmployee_address" Margin="10" Height="164"/>
+                            <TextBox x:Name="txbNewEmployee_address" Margin="10" Height="160"/>
                         </DockPanel>
                         <!--City, Area Code-->
                         <DockPanel>
                             <TextBlock Text="City :" FontSize="16" Margin="10 10 35 10"/>
                             <TextBox x:Name="txbNewEmployee_city" Width="780" Margin="10"/>
                             <TextBlock Text="Area Code :" FontSize="16" Margin="10" Width="77.697"/>
-                            <TextBox x:Name="txbNewEmployee_areaCode" Margin="10" Height="40"/>
+                            <TextBox x:Name="txbNewEmployee_areaCode" Margin="10" Height="30"/>
                         </DockPanel>
+                        
                         <!--Province-->
                         <DockPanel >
                             <TextBlock Text="Province :" Margin="10 10 20 10"/>
-                            <ComboBox x:Name="DropBxNewEmployee_province" Margin="10" Height="39.96">
+                            <ComboBox x:Name="DropBxNewEmployee_province" Margin="10" Height="30">
                                 <ComboBoxItem Content="Eastern Cape"/>
                                 <ComboBoxItem Content="Free State"/>
                                 <ComboBoxItem Content="Gauteng"/>
@@ -230,32 +231,35 @@
                             </ComboBox>
                         </DockPanel>
                         <!--Contact details-->
-                        <StackPanel>
                             <DockPanel>
                                 <TextBlock Text="Cellphone :" Margin="10"/>
-                                <TextBox x:Name="txbEmployee_cellphone" Margin="10" Height="40"/>
+                                <TextBox x:Name="txbEmployee_cellphone" Margin="10" Height="30"/>
                             </DockPanel>
-                        </StackPanel>
-
-                        <StackPanel>
+                        
                             <DockPanel>
                                 <TextBlock Text="Telephone :" Margin="10 10 8 10"/>
-                                <TextBox x:Name="txbNewEmployee_telephone" Margin="10" Height="40"/>
+                                <TextBox x:Name="txbNewEmployee_telephone" Margin="10" Height="30"/>
                             </DockPanel>
-                        </StackPanel>
-                        <StackPanel>
+                        
                             <DockPanel>
                                 <TextBlock Text="Fax :" Margin="10 10 50 10"/>
-                                <TextBox x:Name="txbNewEmployee_fax" Margin="10" Height="40"/>
+                                <TextBox x:Name="txbNewEmployee_fax" Margin="10" Height="30"/>
                             </DockPanel>
-                        </StackPanel>
-                        <StackPanel>
+                        
+                        
                             <DockPanel>
                                 <TextBlock Text="Email :" Margin="10 10 40 10"/>
-                                <TextBox x:Name="txbNewEmployee_email" Margin="10" Height="40"/>
+                                <TextBox x:Name="txbNewEmployee_email" Margin="10" Height="30"/>
                             </DockPanel>
-                        </StackPanel>
-                        <Button x:Name="btnNewEmployee_generate" Content="Generate Employee ID" FontSize="20" Width="300" Margin="143.5,0"/>
+                        <DockPanel>
+                            <TextBlock Text="Position :" Margin="10 10 8 10"/>
+                            <TextBox x:Name="txbNewEmployee_position" Margin="10" Width="500" Height="30"/>
+
+                            <TextBlock Text="Salary :" Margin="10 10 8 10"/>
+                            <TextBox x:Name="txbNewEmployee_salary" Margin="10" Height="30"/>
+                        </DockPanel>
+
+                        <Button x:Name="btnNewEmployee_generate" Content="Generate Employee ID" FontSize="20" Width="300" Margin="143.5,0" Click="BtnNewEmployee_generate_Click"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
