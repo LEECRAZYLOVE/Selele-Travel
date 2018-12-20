@@ -1,0 +1,138 @@
+﻿<Window x:Name="Manager_Home_Window" x:Class="SeleleTravel.Manager_Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SeleleTravel"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Icon="..\..\images\SeleleLogoBalls.png"
+        Title="Manager_Page" Height="750" Width="1006.4" Closed="Manager_Home1_Closed">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="HomeButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0,1,0,1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="Height" Value="102.72"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FFFF9E9E"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FFF35353">
+
+        <Button x:Name="btnManager_logOut" Content="LOGOUT" Width="150" Height="40" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515" Click="btnManager_logOut_Click" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0" >
+            <Button.Background>
+                <ImageBrush ImageSource="..\..\images\SeleleLogoBalls.png" Stretch="Uniform">
+                    <ImageBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="5" ScaleY="5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ImageBrush.RelativeTransform>
+                </ImageBrush>
+            </Button.Background>
+        </Button>
+        <Label x:Name="lblManagerName" Content="-Manager Name-" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33.047" Width="136.952" Margin="2,0,0,0" FontFamily="Comic Sans MS" FontSize="16"/>
+        <Label x:Name="lblManagerID" Content="-Manager ID-" Margin="2,33.047,854.648,645.8" FontFamily="Comic Sans MS" FontSize="16"/>
+        <Label Content="Welcome" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+        <TabControl HorizontalAlignment="Left" Height="630.8" Margin="10,79.6,0,0" VerticalAlignment="Top" Width="973.6">
+            <TabItem Header="Home" Margin="0" Width="100" Height="30" HorizontalAlignment="Left">
+                <Canvas Background="White">
+                    <Image Height="572.8" Canvas.Left="10" Canvas.Top="10" Width="947.6" Source="..\..\images\SeleleLogoBalls.png" Opacity=".5"/>
+                    <Label Content="Choose an option..." VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" Canvas.Left="15.8" Canvas.Top="20" />
+                    <StackPanel Height="513.6" Canvas.Left="10" Canvas.Top="69.2" Width="947.6">
+                        <Button x:Name="btnManager_Quotes" Content="Quote Verifications" Click="btnManager_Quotes_Click"  Style="{DynamicResource HomeButtonStyle}"/>
+                        <Button x:Name="btnManager_authorize" Content="Authorizations" Style="{DynamicResource HomeButtonStyle}"/>
+                        <Button x:Name="btnManager_invoices" Content="Invoices"  Style="{DynamicResource HomeButtonStyle}"/>
+                        <Button x:Name="btnManager_composeMessage" Content="Compose Message" Style="{DynamicResource HomeButtonStyle}"/>
+                        <Button x:Name="btnManager_Confirmatons" Content="Booking Confirmations"   Style="{DynamicResource HomeButtonStyle}"/>
+                    </StackPanel>
+                </Canvas>
+            </TabItem>
+            <TabItem Header="Messages" Margin="0" Height="30" Width="100" HorizontalAlignment="Left">
+                <Canvas Background="White">
+                    <TextBlock x:Name="tbkManager_inboxMessages" Text="No Message selected." Padding="5" TextWrapping="Wrap" FontFamily="Comic Sans MS" Height="525" Canvas.Left="420" Canvas.Top="51" Width="526"/>
+                    <Label Content="Inbox :" Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Height="33" Canvas.Left="25" Canvas.Top="12" Width="77"/>
+                    <ListBox x:Name="lbManager_inboxList" Background="#FFD5D9E6" Opacity="0.5" Height="523" Canvas.Left="21" Canvas.Top="51" Width="355">
+                        <ListBoxItem Content="No New Messages.."/>
+                    </ListBox>
+                    <Label Content="Selected Message :" Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Canvas.Left="418" Canvas.Top="9" />
+                </Canvas>
+            </TabItem>
+            <TabItem Header="Search" Height="30" Width="100" Margin="0" HorizontalAlignment="Left">
+                <Canvas Background="White">
+                    <TextBox x:Name="txbManager_search" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" Canvas.Left="10" Canvas.Top="10" BorderBrush="Black" FontSize="20" FontFamily="Times New Roman"/>
+                    <Button x:Name="btnManager_search" Content="SEARCH" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="30" Click="btnManager_search_Click_1" Canvas.Left="674.2" Canvas.Top="10"/>
+                    <Label Content="Filter Search:" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" Canvas.Left="10" Canvas.Top="45"/>
+                    <DockPanel Canvas.Left="10" Canvas.Top="98.683">
+                        <CheckBox x:Name="ckbManager_Search_quotes" Content="Quotes"  Width="75" Margin="3, 0"/>
+                        <CheckBox x:Name="ckbManager_Search_orders" Content="Orders" Width="75"  Margin="3, 0"/>
+                        <CheckBox x:Name="ckbManager_Search_vouchers" Content="Vouchers"  Width="75" Margin="3, 0"/>
+                        <CheckBox x:Name="ckbManager_Search_invoices" Content="Invoices" Width="75" Margin="3, 0"/>
+                        <CheckBox x:Name="ckbManager_Search_all" Content="All" Width="75" Margin="3, 0"/>
+                    </DockPanel>
+                    <ListBox x:Name="ltbManager_Search_Results" HorizontalAlignment="Left" Height="464" VerticalAlignment="Top" Width="944" FontFamily="Comic Sans MS" Opacity="0.8" Canvas.Left="10" Canvas.Top="118"/>
+                    <ComboBox x:Name="cbbManager_Search_entities" HorizontalAlignment="Left" VerticalAlignment="Top" Width="341.792" Canvas.Top="71.723" Canvas.Left="10">
+                        <ComboBoxItem Content="Staff" HorizontalAlignment="Left" Width="339"/>
+                        <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="339"/>
+                        <ComboBoxItem Content="Accommodation" HorizontalAlignment="Left" Width="340" Margin="0,0,-0.8,0"/>
+                        <ComboBoxItem Content="Agency/Airline" HorizontalAlignment="Left" Width="336.632"/>
+                    </ComboBox>
+
+                </Canvas>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

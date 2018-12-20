@@ -26,12 +26,7 @@ namespace SeleleTravel
     {
         //instantiating all the windows as global objects
         public static LogInWindow logInWindow;
-        public static ConsultantHomeWindow consultantWindow = new ConsultantHomeWindow();
-        public static Manager_Home managerWindow = new Manager_Home();
-        public static OwnerHomeWindow ownerWindow = new OwnerHomeWindow();
-        public static New_Service_Provider newServiceProviderWindow = new New_Service_Provider();
         
-        //Makes all windows spawn in the center of the screen
 
         public MainWindow()
         {
@@ -43,28 +38,30 @@ namespace SeleleTravel
         {
             //this.WindowState = WindowState.Maximized;
         }
+        private void loadLogInWindow(LoadWindow windowToLoad)
+        {
+            logInWindow = new LogInWindow(windowToLoad);
+            logInWindow.Owner = this;
+            logInWindow.Show();
+        }
 
         private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            logInWindow = new LogInWindow(LoadWindow.Consultant);
-            logInWindow.Show();
+            loadLogInWindow(LoadWindow.Consultant);
 
         }
 
         private void btn_managerSide_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            logInWindow = new LogInWindow(LoadWindow.Manager);
-            logInWindow.Show();
+            loadLogInWindow(LoadWindow.Manager);
         }
 
         private void btn_bossSide_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            logInWindow = new LogInWindow(LoadWindow.Owner);
-            logInWindow.Show();
-            
+            loadLogInWindow(LoadWindow.Owner);
         }
         
         public string MakeQuoteSummmary () //function that will display the final information for the quote

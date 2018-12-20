@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Simpiwe\source\repos\Selele-Travel\SeleleTravel\App.xaml
-191801596183
-22094804178
-50997338898
-191-1527584611
-ComposeMessageWindow.xaml;ConsultantOrdersWindow.xaml;ConsultantHomeWindow.xaml;ConsultantQuotesWindow.xaml;ConsultantUpdateWindow.xaml;ConsultantVouchersWindow.xaml;LogInWindow.xaml;MainWindow.xaml;Manager Home.xaml;Manager_Authorizations_Window.xaml;Manager_Confirmations_Window.xaml;Manager_Payments_Window.xaml;Manager_Quotes_Window.xaml;New Service Provider.xaml;Owner.xaml;OwnerPaymentsWindow.xaml;Owner_Employees_Window.xaml;Owner_Financial_Window.xaml;SignUpWindow.xaml;
+19-710417538
+6-600543366
+561021499106
+192992978104
+AppWindows\General\ComposeMessageWindow.xaml;AppWindows\Consultant\ConsultantOrdersWindow.xaml;AppWindows\Consultant\ConsultantHomeWindow.xaml;AppWindows\Consultant\ConsultantQuotesWindow.xaml;AppWindows\Consultant\ConsultantUpdateWindow.xaml;AppWindows\Consultant\ConsultantVouchersWindow.xaml;AppWindows\General\LogInWindow.xaml;MainWindow.xaml;AppWindows\Manager\Manager Home.xaml;AppWindows\Manager\Manager_Authorizations_Window.xaml;AppWindows\Manager\Manager_Confirmations_Window.xaml;AppWindows\Manager\Manager_Payments_Window.xaml;AppWindows\Manager\Manager_Quotes_Window.xaml;AppWindows\Consultant\New Service Provider.xaml;AppWindows\Owner\Owner.xaml;AppWindows\Owner\OwnerPaymentsWindow.xaml;AppWindows\Owner\Owner_Employees_Window.xaml;AppWindows\Owner\Owner_Financial_Window.xaml;AppWindows\General\SignUpWindow.xaml;
 
 True
 

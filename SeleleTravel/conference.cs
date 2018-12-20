@@ -17,6 +17,7 @@ namespace SeleleTravel
         public string venue { get; set; }
         public string conferencename { get; set; }
         public string timeconference { get; set; }
+        public Nullable<System.DateTime> dateofconference { get; set; }
         public string quote_no { get; set; }
         public string order_no { get; set; }
         public string conferencespecs { get; set; }

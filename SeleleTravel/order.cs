@@ -16,7 +16,6 @@ namespace SeleleTravel
     {
         public string order_no { get; set; }
         public string quote_no { get; set; }
-        public string client_no { get; set; }
         public Nullable<System.DateTime> datereceived { get; set; }
         public Nullable<System.DateTime> orderdate { get; set; }
     }
