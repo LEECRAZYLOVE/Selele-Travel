@@ -490,7 +490,6 @@ namespace SeleleTravel
         public static string makeStaffID(string surname, string cellphone)
         {
             string ID = surname + cellphone.Substring(1,4);
-            MessageBox.Show("New Employee ID is: ID");
             return ID;
         }
 
