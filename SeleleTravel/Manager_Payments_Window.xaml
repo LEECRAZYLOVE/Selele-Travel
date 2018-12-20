@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Icon="SeleleLogoBalls.png"
+        Icon="./images/SeleleLogoBalls.png"
         FontFamily="Comic Sans MS"
         FontSize="20"
         Title="Manager_Payments_Window" Height="700" Width="1000">

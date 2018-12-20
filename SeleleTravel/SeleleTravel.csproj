@@ -531,7 +531,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Selele Travel LOGO.png" />
+    <Resource Include="Images\Selele Travel LOGO.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
@@ -589,9 +589,9 @@
       <DependentUpon>seleleModelTest.edmx</DependentUpon>
       <LastGenOutput>seleleModelTest.cs</LastGenOutput>
     </Content>
-    <Resource Include="Selele Travel LOGO2.png" />
-    <Resource Include="Selele Travel BALLS.png" />
-    <Resource Include="SeleleLogoBalls.png" />
+    <Resource Include="Images\Selele Travel LOGO2.png" />
+    <Resource Include="Images\Selele Travel BALLS.png" />
+    <Resource Include="Images\SeleleLogoBalls.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SeleleModel.Context.tt">
@@ -604,6 +604,11 @@
       <DependentUpon>SeleleModel.edmx</DependentUpon>
       <LastGenOutput>SeleleModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Windows\Consultant\" />
+    <Folder Include="Windows\Manager\" />
+    <Folder Include="Windows\Owner\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

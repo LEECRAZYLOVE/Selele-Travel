@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Icon="SeleleLogoBalls.png"
+        Icon="./images/SeleleLogoBalls.png"
         Title="Selele Staff Authentication" Height="400" Width="350" Closed="Log_In_Home_Closed" ResizeMode="NoResize" >
     <Window.Resources>
         <Style x:Key="FocusVisual">

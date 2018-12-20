@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Icon="SeleleLogoBalls.png"
+        Icon="./images/SeleleLogoBalls.png"
         Title="Selele" Height="700" Width="1000">
     
     <Grid Background="#FFCADEFF">

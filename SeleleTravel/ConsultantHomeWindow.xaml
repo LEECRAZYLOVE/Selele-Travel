@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Icon="SeleleLogoBalls.png"
+        Icon="./images/SeleleLogoBalls.png"
         Title="Consultant_Home_Page" Height="450" Width="800">
     <Grid Background="#FFE4D64D">
         <Canvas HorizontalAlignment="Left" Height="325                 " Margin="118.368,94,0,0" VerticalAlignment="Top" Width="335" Opacity="0.5">
             <Canvas.Background>
-                <ImageBrush ImageSource="Selele Travel BALLS.png"/>
+                <ImageBrush ImageSource="images/Selele Travel BALLS.png"/>
             </Canvas.Background>
         </Canvas>
         <Label x:Name="lblConsultantID" Content="LabeloutputID" Margin="2,33.047,653.048,350.399" FontFamily="Comic Sans MS" FontSize="16"/>
         <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="40.997" Margin="685,10,0,0" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515">
             <Button.Background>
-                <ImageBrush ImageSource="Selele Travel BALLS.png" Stretch="UniformToFill" Opacity="0.8"/>
+                <ImageBrush ImageSource="images/Selele Travel BALLS.png" Stretch="UniformToFill" Opacity="0.8"/>
             </Button.Background>
         </Button>
         <Label x:Name="lblConsultantName" Content="Labeloutputname" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28.047" Width="136.952" Margin="2,0,0,0" FontFamily="Comic Sans MS" FontSize="16"/>
