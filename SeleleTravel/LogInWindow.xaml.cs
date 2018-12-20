@@ -22,6 +22,7 @@ namespace SeleleTravel
     public partial class LogInWindow : Window
     {
         LoadWindow windowToLoad;
+        public static SignUpWindow signUpWindow = new SignUpWindow();
         public LogInWindow()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace SeleleTravel
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.windowToLoad = windowToLoad;
+            
             //this.WindowState = WindowState.Maximized;
         }
 
@@ -64,6 +66,13 @@ namespace SeleleTravel
         {
             Hide();
             Application.Current.MainWindow.Show();
+        }
+
+        private void BtnSignUp_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            signUpWindow.Show();
+            
         }
     }
 }

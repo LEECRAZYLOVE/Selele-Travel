@@ -269,7 +269,7 @@ namespace SeleleTravel
         {
             string conferenceName = txbConference_name.Text;
             string conferenceVenue = txbConference_venue.Text;
-            DateTime startDatOfConference = dpConference_startDate.DisplayDate;
+            DateTime dateOfConference = dpConference_startDate.DisplayDate;
             DateTime endDateofConference = dpConference_endDate.DisplayDate;
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
@@ -403,6 +403,7 @@ namespace SeleleTravel
 
             
 
+            dateTimes.Add(departureDate);
 
             // This returns a bool value,
             // if it returns true then one of the strings are empty
@@ -449,8 +450,8 @@ namespace SeleleTravel
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
         {
-            string passangerName = txbFlight_passangerName.Text;
-            ltbFlight_passengersOutput.Items.Add(passangerName);
+            string passengerName = txbFlight_passangerName.Text;
+            ltbFlight_passengersOutput.Items.Add(passengerName);
             ltbFlight_passengersOutput.Items.Refresh();
 
             for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
