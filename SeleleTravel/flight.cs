@@ -20,9 +20,9 @@ namespace SeleleTravel
         public string fromcity { get; set; }
         public string tocity { get; set; }
         public Nullable<System.DateTime> departdate { get; set; }
+        public Nullable<System.DateTime> arrivedate { get; set; }
         public Nullable<int> numberofbags { get; set; }
         public Nullable<double> totalamount { get; set; }
         public string flightspecs { get; set; }
-        public Nullable<int> numberofpassengers { get; set; }
     }
 }

@@ -298,7 +298,7 @@
                                 <TextBox x:Name="txbNewClient_email" Margin="10" Height="40"/>
                             </DockPanel>
                         </StackPanel>
-                        <Button Content="Add Client" FontSize="20" Width="300"/>
+                        <Button Content="Add Client" FontSize="20" Width="300" Click="Button_Click_1"/>
                     </StackPanel>
 
                     <!--Right hand Side-->
