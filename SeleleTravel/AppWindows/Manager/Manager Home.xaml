@@ -113,7 +113,7 @@
             </TabItem>
             <TabItem Header="Search" Height="30" Width="100" Margin="0" HorizontalAlignment="Left">
                 <Canvas Background="White">
-                    <TextBox x:Name="txbManager_search" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" Canvas.Left="10" Canvas.Top="10" BorderBrush="Black" FontSize="20" FontFamily="Times New Roman"/>
+                    <TextBox x:Name="txbManager_search" Text="Name or ID..." HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" Canvas.Left="10" Canvas.Top="10" BorderBrush="Black" FontSize="20" FontFamily="Times New Roman"/>
                     <Button x:Name="btnManager_search" Content="SEARCH" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="30" Click="btnManager_search_Click_1" Canvas.Left="674.2" Canvas.Top="10"/>
                     <Label Content="Filter Search:" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" Canvas.Left="10" Canvas.Top="45"/>
                     <DockPanel Canvas.Left="10" Canvas.Top="98.683">
@@ -124,7 +124,7 @@
                         <CheckBox x:Name="ckbManager_Search_all" Content="All" Width="75" Margin="3, 0"/>
                     </DockPanel>
                     <ListBox x:Name="ltbManager_Search_Results" HorizontalAlignment="Left" Height="464" VerticalAlignment="Top" Width="944" FontFamily="Comic Sans MS" Opacity="0.8" Canvas.Left="10" Canvas.Top="118"/>
-                    <ComboBox x:Name="cbbManager_Search_entities" HorizontalAlignment="Left" VerticalAlignment="Top" Width="341.792" Canvas.Top="71.723" Canvas.Left="10">
+                    <ComboBox x:Name="cbbManager_Search_entities" HorizontalAlignment="Left" VerticalAlignment="Top" Width="341.792" Canvas.Top="71.723" Canvas.Left="10" SelectionChanged="cbbManager_Search_entities_SelectionChanged">
                         <ComboBoxItem Content="Staff" HorizontalAlignment="Left" Width="339"/>
                         <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="339"/>
                         <ComboBoxItem Content="Accommodation" HorizontalAlignment="Left" Width="340" Margin="0,0,-0.8,0"/>
