@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Icon="SeleleLogoBalls.png"
         Title="Consultant_Home_Page" Height="450" Width="800">
     <Grid Background="#FFE4D64D">
         <Canvas HorizontalAlignment="Left" Height="325                 " Margin="118.368,94,0,0" VerticalAlignment="Top" Width="335" Opacity="0.5">

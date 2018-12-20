@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:SeleleTravel"
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Name="Home_Page" x:Class="SeleleTravel.MainWindow"
         mc:Ignorable="d"
-        Title="Home" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Loaded="Window_Loaded" Width="647.2" Height="432" Icon="SeleleLogoBalls.png" Closed="Home_Page_Closed">
+        WindowStartupLocation="CenterScreen"
+        Icon="SeleleLogoBalls.png"
+        Title="Home" SizeToContent="WidthAndHeight" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Loaded="Window_Loaded" Width="647.2" Height="432" Closed="Home_Page_Closed">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

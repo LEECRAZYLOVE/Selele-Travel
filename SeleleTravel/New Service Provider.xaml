@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="SeleleApp" Height="706.352" Width="556.557" Closed="New_Service_Provider_Home_Closed" Icon="SeleleLogoBalls.png">
+        WindowStartupLocation="CenterScreen"
+        Icon="SeleleLogoBalls.png"
+        Title="SeleleApp" Height="706.352" Width="556.557" Closed="New_Service_Provider_Home_Closed">
     <Window.Resources>
         <Style x:Key="LabelStyle1" TargetType="{x:Type Label}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
