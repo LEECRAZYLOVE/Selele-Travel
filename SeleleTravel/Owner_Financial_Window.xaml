@@ -9,7 +9,15 @@
         Icon="SeleleLogoBalls.png"
         Closed="Owner_Financial_Window_Closed"
         Title="Owner_Financial_Page" Height="800" Width="1200">
-    <Grid RenderTransformOrigin="0.5,0.5" Background="#FF84D8FF">
+    <Grid RenderTransformOrigin="0.5,0.5" Background="#FF84D8FF" Margin="-1,-1,-2,-5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="548*"/>
+            <RowDefinition Height="227*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="419*"/>
+            <ColumnDefinition Width="781*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -18,35 +26,35 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <Label x:Name="label" Content="Entity:" HorizontalAlignment="Left" Margin="21.419,15.587,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbxFinancial_entity" HorizontalAlignment="Left" Margin="79.105,19.587,0,0" VerticalAlignment="Top" Width="169.005">
-            <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Services" HorizontalAlignment="Left" Width="118"/>
+        <Label x:Name="label" Content="Entity:" HorizontalAlignment="Left" Margin="21,16,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbxFinancial_entity" HorizontalAlignment="Left" Margin="79,20,0,0" VerticalAlignment="Top" Width="169">
+            <ComboBoxItem x:Name="cbxitemFinancial_clients" Content="Clients" HorizontalAlignment="Left" Width="118" Selected="CbxitemFinancial_clients_Selected"/>
+            <ComboBoxItem x:Name="cbxitemFinancial_services" Content="Services" HorizontalAlignment="Left" Width="118" Selected="CbxitemFinancial_services_Selected"/>
         </ComboBox>
-        <Canvas x:Name="cvsClient" HorizontalAlignment="Left" Height="368.321" Margin="21.419,54.926,0,0" VerticalAlignment="Top" Width="397.153">
+        <Canvas x:Name="cvsClient" HorizontalAlignment="Left" Height="368" Margin="21,55,0,0" VerticalAlignment="Top" Width="398" Grid.ColumnSpan="2">
             <ListBox x:Name="lbFinancial_clientList" Height="368.321" Width="397.153"/>
         </Canvas>
-        <Canvas x:Name="cvsService" HorizontalAlignment="Left" Height="368.321" Margin="21.419,54.926,0,0" VerticalAlignment="Top" Width="397.153" d:IsHidden="True">
+        <Canvas x:Name="cvsService" HorizontalAlignment="Left" Height="368" Margin="21,55,0,0" VerticalAlignment="Top" Width="398" d:IsHidden="True" Grid.ColumnSpan="2">
             <ListBox x:Name="lbFinancial_servicesList" Height="100" Width="100"/>
         </Canvas>
-        <ListBox x:Name="lbFinancial_results1" Background="LightGray" HorizontalAlignment="Left" Height="943.413" VerticalAlignment="Top" Width="1019.207" Margin="462.793,15.587,0,0"/>
-        <ListBox x:Name="lbFinancial_results2" Background="LightGray" HorizontalAlignment="Left" Height="939.413" Margin="462.793,19.587,0,0" VerticalAlignment="Top" Width="1019.207" d:IsHidden="True"/>
-        <Label x:Name="label1" Content="Time Period:" HorizontalAlignment="Left" Margin="21.419,456.941,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbxFinancial_period" HorizontalAlignment="Left" Margin="108.097,460.941,0,0" VerticalAlignment="Top" Width="310.475">
-            <ComboBoxItem Content="Annually" HorizontalAlignment="Left" Width="308.475"/>
-            <ComboBoxItem Content="MUltiple Months" HorizontalAlignment="Left" Width="308.475"/>
-            <ComboBoxItem Content="Monthly" HorizontalAlignment="Left" Width="308.475"/>
-            <ComboBoxItem Content="Weekly" HorizontalAlignment="Left" Width="308.475"/>
+        <ListBox x:Name="lbFinancial_results1" Background="LightGray" HorizontalAlignment="Left" Height="384" VerticalAlignment="Top" Width="729" Margin="52,0,-3,0" Grid.Column="1"/>
+        <ListBox x:Name="lbFinancial_results2" Background="LightGray" HorizontalAlignment="Left" Margin="52,389,-3,0" Width="729" Grid.Column="1" Height="384" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <Label x:Name="label1" Content="Time Period:" HorizontalAlignment="Left" Margin="21,457,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbxFinancial_period" HorizontalAlignment="Left" Margin="108,461,0,0" VerticalAlignment="Top" Width="311" Grid.ColumnSpan="2">
+            <ComboBoxItem x:Name="cbxitemFinancial_annually" Content="Annually" HorizontalAlignment="Left" Width="308.475" Selected="CbxitemFinancial_annually_Selected"/>
+            <ComboBoxItem x:Name="cbxitemFinancial_multipleMonths" Content="Multiple Months" HorizontalAlignment="Left" Width="308.475" Selected="CbxitemFinancial_multipleMonths_Selected"/>
+            <ComboBoxItem x:Name="cbxitemFinancial_monthly" Content="Monthly" HorizontalAlignment="Left" Width="308.475" Selected="CbxitemFinancial_monthly_Selected"/>
+            <ComboBoxItem x:Name="cbxitemFinancial_weekly" Content="Weekly" HorizontalAlignment="Left" Width="308.475" Selected="CbxitemFinancial_weekly_Selected"/>
         </ComboBox>
-        <Button x:Name="btnFinancial_view1" Content="View Summary One" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188.67" Margin="21.419,939.04,0,0"/>
-        <Button x:Name="btnFinancial_view2" Content="View Summary Two" HorizontalAlignment="Left" Margin="229.572,939.04,0,0" VerticalAlignment="Top" Width="189" d:IsHidden="True"/>
-        <Canvas x:Name="cvsYear" HorizontalAlignment="Left" Height="399.206" Margin="21.419,504.658,0,0" VerticalAlignment="Top" Width="397.153" d:IsHidden="True">
-            <Label x:Name="label2" Content="Enter Year:" Width="68.017"/>
+        <Button x:Name="btnFinancial_view1" Content="View Summary One" HorizontalAlignment="Left" VerticalAlignment="Top" Width="189" Margin="21,196.384,0,0" Grid.Row="1"/>
+        <Button x:Name="btnFinancial_view2" Content="View Summary Two" HorizontalAlignment="Left" Margin="230,196.384,0,0" VerticalAlignment="Top" Width="189" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <Canvas x:Name="cvsYear" HorizontalAlignment="Left" Height="399" Margin="21,505,0,-129" VerticalAlignment="Top" Width="398" Grid.ColumnSpan="2" d:IsHidden="True" Grid.RowSpan="2">
+            <Label x:Name="lblYear" Content="Enter Year:" Width="68.017"/>
             <TextBox x:Name="txbYear" Height="23" Canvas.Left="87.637" TextWrapping="Wrap" Text="" Width="120"/>
         </Canvas>
-        <Canvas x:Name="cvsMultipleMonths" HorizontalAlignment="Left" Height="399.206" Margin="21.419,504.658,0,0" VerticalAlignment="Top" Width="423.8" d:IsHidden="True">
-            <Label x:Name="label3" Content="From:" Canvas.Top="10"/>
-            <Label x:Name="label4" Content="To:" Canvas.Left="220.654" Canvas.Top="10"/>
+        <Canvas x:Name="cvsMultipleMonths" HorizontalAlignment="Left" Height="399" Margin="21,505,0,-129" VerticalAlignment="Top" Width="424" Grid.ColumnSpan="2" d:IsHidden="True" Grid.RowSpan="2">
+            <Label x:Name="lblMultipleMonths_from" Content="From:" Canvas.Top="10"/>
+            <Label x:Name="lblMultipleMonths_to" Content="To:" Canvas.Left="220.654" Canvas.Top="10"/>
             <ComboBox x:Name="cbxMultipleMonths_from" Canvas.Left="62.68" Canvas.Top="14" Width="134.005">
                 <ComboBoxItem Content="January" HorizontalAlignment="Left" Width="132.005"/>
                 <ComboBoxItem Content="February" HorizontalAlignment="Left" Width="132.005"/>
@@ -77,15 +85,15 @@
             </ComboBox>
 
         </Canvas>
-        <Canvas x:Name="cvsMonthly" HorizontalAlignment="Left" Height="399.206" Margin="21.419,504.658,0,0" VerticalAlignment="Top" Width="397.153" d:IsHidden="True">
+        <Canvas x:Name="cvsMonthly" HorizontalAlignment="Left" Height="399" Margin="21,505,0,-129" VerticalAlignment="Top" Width="398" Grid.ColumnSpan="2" d:IsHidden="True" Grid.RowSpan="2">
             <DatePicker x:Name="dpMonthly_from" Canvas.Left="64.666" Canvas.Top="11.96" Width="127.637"/>
             <DatePicker x:Name="dpMonthly_to" Canvas.Left="259.476" Canvas.Top="11.96" Width="137.677"/>
-            <Label x:Name="label5" Content="From:" Canvas.Top="10"/>
-            <Label x:Name="label6" Content="To:" Canvas.Left="205.649" Canvas.Top="10"/>
+            <Label x:Name="lblMonthly_from" Content="From:" Canvas.Top="10"/>
+            <Label x:Name="lblMonthly_to" Content="To:" Canvas.Left="205.649" Canvas.Top="10"/>
         </Canvas>
-        <Canvas x:Name="cvsWeekly" HorizontalAlignment="Left" Height="399.206" Margin="21.419,504.658,0,0" VerticalAlignment="Top" Width="397.153" d:IsHidden="True">
+        <Canvas x:Name="cvsWeekly" HorizontalAlignment="Left" Height="399" Margin="21,505,0,-129" VerticalAlignment="Top" Width="398" Grid.ColumnSpan="2" d:IsHidden="True" Grid.RowSpan="2">
             <DatePicker x:Name="dpWeekly_day" Canvas.Left="37.927" Canvas.Top="10" Width="150.349"/>
-            <Label x:Name="label7" Content="Day:" Canvas.Top="10"/>
+            <Label x:Name="lblWeekly" Content="Day:" Canvas.Top="10"/>
         </Canvas>
 
     </Grid>

@@ -41,7 +41,7 @@ namespace SeleleTravel
         private void createNewClient_Click(object sender, RoutedEventArgs e)
         {//new edit
             string name = txbNewService_name.Text;
-            string address = txbNewClient_address.Text;
+            string address = txbNewService_address.Text;
             string telephone = txbNewService_telephone.Text;
             string emailadress = txbNewService_email.Text;
             string fax = txbNewService_fax.Text;
@@ -91,9 +91,48 @@ namespace SeleleTravel
         }
 
         private void btnUpdateClient_Click(object sender, RoutedEventArgs e)
-        {//For insertion Done
+        {
+           
+        }
+
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{//Extracting data from the database DONE!
+        //    using (postgresEntities12th currentServiceProvider = new postgresEntities12th())
+        //    {
+        //        var query =(from c in currentServiceProvider.agencydetails
+
+        //                     where c.telephone=="0783861533"
+        //                     select new
+        //                     {
+        //                         c.agency_id,
+        //                         c.address,
+        //                         c.cellphone,
+        //                         c.emailaddress,
+        //                         c.fax,
+        //                         c.nameofagency,
+        //                         c.service,
+        //                         c.telephone,
+                                
+        //                     }).First() ;
+
+        //        if (query != null)
+        //        {
+        //            txbNewService_name.Text = query.nameofagency;
+        //            txbNewService_address.Text = query.address ;
+        //            txbNewService_cellphone.Text = query.cellphone;
+        //            txbNewService_fax.Text = query.fax;
+        //            txbNewService_telephone.Text = query.telephone;
+        //            txbNewService_email.Text = query.emailaddress;
+        //        }
+        //    }
+
+        //}
+
+        private void BtnNewService_add_Click(object sender, RoutedEventArgs e)
+        {
+            //For insertion Done
             string name = txbNewService_name.Text;
-            string address = txbNewClient_address.Text;
+            string address = txbNewService_address.Text;
             string telephone = txbNewService_telephone.Text;
             string emailadress = txbNewService_email.Text;
             string fax = txbNewService_fax.Text;
@@ -130,39 +169,6 @@ namespace SeleleTravel
                 throw ex;
 
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {//Extracting data from the database DONE!
-            using (postgresEntities12th currentServiceProvider = new postgresEntities12th())
-            {
-                var query =(from c in currentServiceProvider.agencydetails
-
-                             where c.telephone=="0783861533"
-                             select new
-                             {
-                                 c.agency_id,
-                                 c.address,
-                                 c.cellphone,
-                                 c.emailaddress,
-                                 c.fax,
-                                 c.nameofagency,
-                                 c.service,
-                                 c.telephone,
-                                
-                             }).First() ;
-
-                if (query != null)
-                {
-                    txbNewService_name.Text = query.nameofagency;
-                    txbNewClient_address.Text = query.address ;
-                    txbNewService_cellphone.Text = query.cellphone;
-                    txbNewService_fax.Text = query.fax;
-                    txbNewService_telephone.Text = query.telephone;
-                    txbNewService_email.Text = query.emailaddress;
-                }
-            }
-
         }
     }
 }
