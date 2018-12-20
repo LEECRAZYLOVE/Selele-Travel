@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="postgresModel2.Store" Provider="Devart.Data.PostgreSql" ProviderManifestToken="PostgreSQL, 10.6.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="postgresModel.Store" Provider="Devart.Data.PostgreSql" ProviderManifestToken="PostgreSQL, 10.6.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="accommodation">
           <Key>
             <PropertyRef Name="quote_no" />
@@ -86,6 +86,7 @@
           <Property Name="expectedenddate" Type="date" />
           <Property Name="enddate" Type="date" />
           <Property Name="carhirespecifications" Type="varchar" MaxLength="500" />
+          <Property Name="amount" Type="double precision" />
         </EntityType>
         <EntityType Name="client">
           <Key>
@@ -152,7 +153,7 @@
           <Property Name="tocity" Type="varchar" MaxLength="50" />
           <Property Name="departdate" Type="date" />
           <Property Name="numberofbags" Type="int" />
-          <Property Name="totalamount" Type="double precision" />
+          <Property Name="amount" Type="double precision" />
           <Property Name="flightspecs" Type="varchar" MaxLength="65535" />
         </EntityType>
         <EntityType Name="invoice">
@@ -222,7 +223,7 @@
           <Property Name="staff_id" Type="varchar" MaxLength="50" />
           <Property Name="amount" Type="double precision" />
         </EntityType>
-        <EntityContainer Name="postgresModel2StoreContainer">
+        <EntityContainer Name="postgresModelStoreContainer">
           <EntitySet Name="accommodation" EntityType="Self.accommodation" Schema="public" store:Type="Tables" />
           <EntitySet Name="accommodationdetails" EntityType="Self.accommodationdetails" Schema="public" store:Type="Tables" />
           <EntitySet Name="agencydetails" EntityType="Self.agencydetails" Schema="public" store:Type="Tables" />
@@ -244,7 +245,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="postgresModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="postgresModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="accommodation">
           <Key>
             <PropertyRef Name="quote_no" />
@@ -326,6 +327,7 @@
           <Property Name="expectedenddate" Type="DateTime" />
           <Property Name="enddate" Type="DateTime" />
           <Property Name="carhirespecifications" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="amount" Type="Double" />
         </EntityType>
         <EntityType Name="client">
           <Key>
@@ -392,7 +394,7 @@
           <Property Name="tocity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="departdate" Type="DateTime" />
           <Property Name="numberofbags" Type="Int32" />
-          <Property Name="totalamount" Type="Double" />
+          <Property Name="amount" Type="Double" />
           <Property Name="flightspecs" Type="String" MaxLength="65535" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="invoice">
@@ -485,9 +487,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="postgresModel2StoreContainer" CdmEntityContainer="postgresEntities12th">
+        <EntityContainerMapping StorageEntityContainer="postgresModelStoreContainer" CdmEntityContainer="postgresEntities12th">
           <EntitySetMapping Name="accommodations">
-            <EntityTypeMapping TypeName="postgresModel2.accommodation">
+            <EntityTypeMapping TypeName="postgresModel.accommodation">
               <MappingFragment StoreEntitySet="accommodation">
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
@@ -503,7 +505,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="accommodationdetails">
-            <EntityTypeMapping TypeName="postgresModel2.accommodationdetail">
+            <EntityTypeMapping TypeName="postgresModel.accommodationdetail">
               <MappingFragment StoreEntitySet="accommodationdetails">
                 <ScalarProperty Name="accomm_id" ColumnName="accomm_id" />
                 <ScalarProperty Name="nameofagency" ColumnName="nameofagency" />
@@ -516,7 +518,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="agencydetails">
-            <EntityTypeMapping TypeName="postgresModel2.agencydetail">
+            <EntityTypeMapping TypeName="postgresModel.agencydetail">
               <MappingFragment StoreEntitySet="agencydetails">
                 <ScalarProperty Name="agency_id" ColumnName="agency_id" />
                 <ScalarProperty Name="nameofagency" ColumnName="nameofagency" />
@@ -530,7 +532,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="airlinedetails">
-            <EntityTypeMapping TypeName="postgresModel2.airlinedetail">
+            <EntityTypeMapping TypeName="postgresModel.airlinedetail">
               <MappingFragment StoreEntitySet="airlinedetails">
                 <ScalarProperty Name="nameofagency" ColumnName="nameofagency" />
                 <ScalarProperty Name="address" ColumnName="address" />
@@ -542,7 +544,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="cabservices">
-            <EntityTypeMapping TypeName="postgresModel2.cabservice">
+            <EntityTypeMapping TypeName="postgresModel.cabservice">
               <MappingFragment StoreEntitySet="cabservices">
                 <ScalarProperty Name="nameofagency" ColumnName="nameofagency" />
                 <ScalarProperty Name="agency_id" ColumnName="agency_id" />
@@ -560,7 +562,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="carhires">
-            <EntityTypeMapping TypeName="postgresModel2.carhire">
+            <EntityTypeMapping TypeName="postgresModel.carhire">
               <MappingFragment StoreEntitySet="carhire">
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
@@ -571,11 +573,12 @@
                 <ScalarProperty Name="expectedenddate" ColumnName="expectedenddate" />
                 <ScalarProperty Name="enddate" ColumnName="enddate" />
                 <ScalarProperty Name="carhirespecifications" ColumnName="carhirespecifications" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="clients">
-            <EntityTypeMapping TypeName="postgresModel2.client">
+            <EntityTypeMapping TypeName="postgresModel.client">
               <MappingFragment StoreEntitySet="client">
                 <ScalarProperty Name="client_no" ColumnName="client_no" />
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
@@ -592,7 +595,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="conferences">
-            <EntityTypeMapping TypeName="postgresModel2.conference">
+            <EntityTypeMapping TypeName="postgresModel.conference">
               <MappingFragment StoreEntitySet="conference">
                 <ScalarProperty Name="venue" ColumnName="venue" />
                 <ScalarProperty Name="conferencename" ColumnName="conferencename" />
@@ -608,7 +611,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="dailyserviceupdates">
-            <EntityTypeMapping TypeName="postgresModel2.dailyserviceupdate">
+            <EntityTypeMapping TypeName="postgresModel.dailyserviceupdate">
               <MappingFragment StoreEntitySet="dailyserviceupdate">
                 <ScalarProperty Name="datestamp" ColumnName="datestamp" />
                 <ScalarProperty Name="servicename" ColumnName="servicename" />
@@ -620,7 +623,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="events">
-            <EntityTypeMapping TypeName="postgresModel2.event">
+            <EntityTypeMapping TypeName="postgresModel.event">
               <MappingFragment StoreEntitySet="events">
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
@@ -633,7 +636,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="flights">
-            <EntityTypeMapping TypeName="postgresModel2.flight">
+            <EntityTypeMapping TypeName="postgresModel.flight">
               <MappingFragment StoreEntitySet="flight">
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
@@ -642,13 +645,13 @@
                 <ScalarProperty Name="tocity" ColumnName="tocity" />
                 <ScalarProperty Name="departdate" ColumnName="departdate" />
                 <ScalarProperty Name="numberofbags" ColumnName="numberofbags" />
-                <ScalarProperty Name="totalamount" ColumnName="totalamount" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="flightspecs" ColumnName="flightspecs" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="invoices">
-            <EntityTypeMapping TypeName="postgresModel2.invoice">
+            <EntityTypeMapping TypeName="postgresModel.invoice">
               <MappingFragment StoreEntitySet="invoice">
                 <ScalarProperty Name="invoice_no" ColumnName="invoice_no" />
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
@@ -662,7 +665,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="orders">
-            <EntityTypeMapping TypeName="postgresModel2.order">
+            <EntityTypeMapping TypeName="postgresModel.order">
               <MappingFragment StoreEntitySet="orders">
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
@@ -672,7 +675,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="quotes">
-            <EntityTypeMapping TypeName="postgresModel2.quote">
+            <EntityTypeMapping TypeName="postgresModel.quote">
               <MappingFragment StoreEntitySet="quote">
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
@@ -689,7 +692,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="staffs">
-            <EntityTypeMapping TypeName="postgresModel2.staff">
+            <EntityTypeMapping TypeName="postgresModel.staff">
               <MappingFragment StoreEntitySet="staff">
                 <ScalarProperty Name="staff_id" ColumnName="staff_id" />
                 <ScalarProperty Name="stafffirstnames" ColumnName="stafffirstnames" />
@@ -707,7 +710,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vouchers">
-            <EntityTypeMapping TypeName="postgresModel2.voucher">
+            <EntityTypeMapping TypeName="postgresModel.voucher">
               <MappingFragment StoreEntitySet="voucher">
                 <ScalarProperty Name="voucher_no" ColumnName="voucher_no" />
                 <ScalarProperty Name="order_no" ColumnName="order_no" />

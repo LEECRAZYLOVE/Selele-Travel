@@ -56,20 +56,22 @@ namespace SeleleTravel
             string Email = txbNewEmployee_email.Text;
             string Position = txbNewEmployee_position.Text;
             double Salary = Convert.ToDouble(txbNewEmployee_salary.Text);
-
-            var context = new SeleleEntities();
+            DateTime dateOfHire = DateTime.Now;
+            var context = new postgresEntities12th();
             var currentEmployee = new staff()
             {
-                staff_id = GeneralMethods.makeStaffID(Surname, Cellphone),
+                //staff_id = GeneralMethods.makeStaffID(Surname, Cellphone),
+                staff_id="Stuu1234",
                 stafffirstnames = Name,
                 stafflastname = Surname,
                 address = FullAddress,
                 cellphone = Cellphone,
                 telephone = Telephone,
                 fax = Fax,
-                email = Email,
+                emailaddress = Email,
                 staffposition = Position,
-                salary = Salary
+                salary = Salary,
+                dateofhire=dateOfHire
             };
             //Add staff to database
             try
@@ -95,6 +97,16 @@ namespace SeleleTravel
         {
             Owner?.Show();
             Close();
+        }
+
+        private void btnEmplyees_find_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEmployees_update_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

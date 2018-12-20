@@ -28,7 +28,7 @@ namespace SeleleTravel
         }
 
         public List<DateTime> servicesDates = new List<DateTime>();
-
+        double qouteAmount = 0;
         #region Client tab
 
         #region New Client
@@ -188,7 +188,44 @@ namespace SeleleTravel
 
         private void add_Button_Click(object sender, RoutedEventArgs e)
         {
+            string clientName=txbNewClient_name.Text+""+ txbNewClient_surname.Text;
+            string client_no = "C0001";
+            string quote_no = "Q0001";
+            string cellphone = txbNewClient_cellphone.Text;
+            string address = txbNewClient_address.Text;
+            string emailaddress = txbNewClient_email.Text;
+            string telephone = txbNewClient_telephone.Text;
+            string fax = txbNewClient_fax.Text;
+            
+            var context = new postgresEntities12th();
+            var currentClient = new client()
+            {
+                client_no = client_no, //This will be automatically generated. I'm using a dummy to test queries.
+                quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
+                address = address,
+                telephone = telephone,
+                emailaddress = emailaddress,
+                fax = fax,
+                cellphone = cellphone,
+                
+            };
+            //Add client to database
+            try
+            {
+                context.clients.Add(currentClient);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
 
+            }
         }
         #endregion
 
@@ -269,7 +306,7 @@ namespace SeleleTravel
         {
             string conferenceName = txbConference_name.Text;
             string conferenceVenue = txbConference_venue.Text;
-            DateTime startDateofConference = dpConference_startDate.DisplayDate;
+            DateTime startDateOfConference = dpConference_startDate.DisplayDate;
             DateTime endDateofConference = dpConference_endDate.DisplayDate;
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
@@ -277,7 +314,7 @@ namespace SeleleTravel
 
             // Data Verification:
             // check if the variables are empty
-            List<DateTime> dateTimes = new List<DateTime> { dateOfConference, endDateofConference};
+            List<DateTime> dateTimes = new List<DateTime> { startDateOfConference, endDateofConference};
             List<string> stringVs = new List<string> { conferenceName, conferenceVenue, conferenceTime, specsOfConference};
             
             // This returns a bool value,
@@ -289,7 +326,7 @@ namespace SeleleTravel
             if(!checkEmptyStrngBool && !checkDatesBool)
             {
                 // Add the date to the global list of dates that will be stored
-                servicesDates.Add(dateOfConference);
+                servicesDates.Add(startDateOfConference);
                 servicesDates.Add(endDateofConference);
 
                 // todo...
@@ -346,11 +383,42 @@ namespace SeleleTravel
             {
                 // todo
                 // create the instance after checking for errors
-               // var taxiCab = new cabservice(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs, _totalAmount);
+                // var taxiCab = new cabservice(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs, _totalAmount);
 
                 // Todo sql insertion
                 // ...
+                var context = new postgresEntities12th();
+                var currentCabService = new cabservice()
+                {
+                    nameofagency=_agencyName, 
+                    agency_id="Cab0001",//This will be automatically generated. I'm using a dummy to test queries.
+                    quote_no="Q0001",
+                    nameofdriver=_driverName,
+                    pickup=_pickUpLocation,
+                    dropoff=_dropOffLocation,
+                    dateofcab=_dateOfPickup,
+                    numberofcabs=_numberOfcabs,
+                    amount=_totalAmount,
+                   timeofcab=_timeOfPickUp,
+                   cabspecs=_taxicabSpecs
+                };
+                //Add cabservice to database
+                try
+                {
+                    context.cabservices.Add(currentCabService);
+                    context.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+                }
+                catch (Exception ex)
+                {
+                    //other error
+                    throw ex;
 
+                }
                 // reset the textbox values to empty
                 // call the clear textbox method
                 List<TextBox> textBoxes = new List<TextBox>();
@@ -765,6 +833,372 @@ namespace SeleleTravel
         }
 
         private void BtnClient_add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnOldClient_select_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnOldClient_update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnOldClient_find_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEvents_done_Click(object sender, RoutedEventArgs e)
+        {
+            // assign vars to the textboxes
+            string nameOfEvent = txbEvents_name.Text;
+            string eventSpecs = txbEvents_specifications.Text;
+            double eventAmount = Convert.ToDouble(txbEvents_total.Text);
+            DateTime eventStartdate = dpEvents_startDate.DisplayDate;
+            DateTime eventEnddate = dpEvents_endDate.DisplayDate;
+            string quote_no = "Q0001";
+            // Data verification:
+            // make sure that the supplied data is valid
+            List<string> stringVs = new List<string> { nameOfEvent, eventSpecs };
+
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
+            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
+
+            // check if the dates are empty
+            List<DateTime> tempDateTime = new List<DateTime> { eventStartdate, eventEnddate };
+            bool dateBoolValue = GeneralMethods.checkDateTimeBox(tempDateTime);
+
+            if (!boolValue && !dateBoolValue)
+            {
+
+                // Add the date to the global list of dates that will be stored
+                servicesDates.Add(eventStartdate);
+                servicesDates.Add(eventEnddate);
+
+               
+                //sql insertion
+                var context = new postgresEntities12th();
+                var currentEvent = new @event()
+                {
+                    quote_no=quote_no,
+                    eventspecs=eventSpecs,
+                    eventname=nameOfEvent,
+                    amount=eventAmount,
+                    startday=eventStartdate,
+                    endday=eventEnddate
+
+                };
+                //Add cabservice to database
+                try
+                {
+                    context.events.Add(currentEvent);
+                    context.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                }
+                catch (Exception ex)
+                {
+                    //other error
+                    throw ex;
+
+                }
+                // reset texbox values to empty
+                // call the clear textbox method
+                List<TextBox> textBoxes = new List<TextBox> { txbEvents_name, txbEvents_specifications, txbEvents_total };
+                GeneralMethods.clearTextBoxes(textBoxes);
+
+            }
+        }
+         private void btnEvents_update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnConference_done_Click_1(object sender, RoutedEventArgs e)
+        {
+            string conferenceName = txbConference_name.Text;
+            string conferenceVenue = txbConference_venue.Text;
+            DateTime startDateOfConference = dpConference_startDate.DisplayDate;
+            DateTime endDateofConference = dpConference_endDate.DisplayDate;
+            string conferenceTime = txbConference_time.Text;
+            string specsOfConference = txbConference_specifications.Text;
+            double amountOfconf = Convert.ToDouble(txbConference_total.Text);
+
+            // Data Verification:
+            // check if the variables are empty
+            List<DateTime> dateTimes = new List<DateTime> { startDateOfConference, endDateofConference };
+            List<string> stringVs = new List<string> { conferenceName, conferenceVenue, conferenceTime, specsOfConference };
+
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
+            bool checkEmptyStrngBool = GeneralMethods.checkEmptytxtBox(stringVs);
+            bool checkDatesBool = GeneralMethods.checkDateTimeBox(dateTimes);
+
+            if (!checkEmptyStrngBool && !checkDatesBool)
+            {
+                // Add the date to the global list of dates that will be stored
+                servicesDates.Add(startDateOfConference);
+                servicesDates.Add(endDateofConference);
+
+                // todo...
+                // conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
+
+                // Todo sql insertion
+                // ...
+
+                // reset texbox values to empty
+                // call the clear textbox method
+                List<TextBox> textBoxes = new List<TextBox> { txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total };
+                GeneralMethods.clearTextBoxes(textBoxes);
+
+            }
+        }
+
+        private void btnConference_update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCarHire_update_Click(object sender, RoutedEventArgs e)
+        {
+            string quote_no = "Q0001";
+            string agencyname =txbCarHire_agency.Text;
+            string pickuplocation = txbCarHire_pickUp.Text;
+            string dropofflocation = txbCarHire_dropOff.Text;
+            DateTime dayofhire = Convert.ToDateTime(dpCarHire_startDay.Text);
+            DateTime expectedenddate = Convert.ToDateTime(dpCarHire_endDay.Text);
+            string carhirespecifications = $"Number of Cars: {txbCarHire_numCars.Text}\n {txbCarHire_specifications}";
+            double amount = Convert.ToDouble(txbCarHire_total.Text);
+            var context = new postgresEntities12th();
+            var currentCarHire = new carhire()
+            {
+
+                quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
+                agencyname = agencyname,
+                pickuplocation = pickuplocation,
+                dropofflocation = dropofflocation,
+                dayofhire = dayofhire,
+                expectedenddate = expectedenddate,
+                carhirespecifications = carhirespecifications,
+                amount = amount
+
+            };
+            //Add carhire to database
+            try
+            {
+                context.carhires.Add(currentCarHire);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+
+            }
+        }
+
+        private void btnFlight_done_Click_1(object sender, RoutedEventArgs e)
+        {
+            string airline = txbFlight_airline.Text;
+            string quote_no = "Q0001";
+            string fromcity = txbFlight_from.Text;
+            string tocity = txbFlight_to.Text;
+            DateTime departdate = Convert.ToDateTime(dpFlight_departure.Text);
+            int numberofbags = Convert.ToInt32(txbFlight_numBags);
+            double amount = Convert.ToDouble(txbFlight_total.Text);
+            string flightspecs = txbFlight_specifications.Text;
+            var context = new postgresEntities12th();
+            var currentFlight = new flight()
+            {
+
+                quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
+                airline = airline,
+                fromcity = fromcity,
+                tocity=tocity,
+                departdate=departdate,
+                numberofbags=numberofbags,
+                flightspecs=flightspecs,
+                amount = amount
+
+            };
+            //Add flight to database
+            try
+            {
+                context.flights.Add(currentFlight);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+
+            }
+        }
+
+        private void btnAccommodation_done_Click_1(object sender, RoutedEventArgs e)
+        {
+            string quote_no = "Q0001";
+            string accomname = txbAccommodation_name.Text;
+            string accom_id = "AccoPE0001";
+            DateTime checkin = Convert.ToDateTime(dpAccommodation_checkIn.Text);
+            DateTime checkout = Convert.ToDateTime(dpAccommodation_checkOut.Text);
+            int numberofguests = Convert.ToInt32(txbAccommodation_numGuests.Text);
+            int numberofrooms = Convert.ToInt32(txbAccommodation_numRooms.Text);
+            double amount = Convert.ToDouble(txbAccommodation_total.Text);
+            string accomspecs = txbAccommodation_specifications.Text;
+            var context = new postgresEntities12th();
+            var currentAccommodation = new accommodation()
+            {
+
+                quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
+                accomname = accomname,
+                accom_id=accom_id,
+                checkin=checkin,
+                checkout=checkout,
+                numberofguests=numberofguests,
+                numberofrooms=numberofrooms,
+                accomspecs=accomspecs,
+                amount = amount
+
+            };
+            //Add flight to database
+            try
+            {
+                context.accommodations.Add(currentAccommodation);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+
+            }
+        }
+
+        private void btnQuoteSummar_document_Click(object sender, RoutedEventArgs e)
+        {//Extracting quoteDetails through a query
+            double quoteAmount = 0;
+            string service = "";
+            using (postgresEntities12th currentQuote = new postgresEntities12th())
+            {
+                var query = (from c in currentQuote.cabservices
+
+                             where c.quote_no == "Q0001"
+                             select new
+                             {
+                                 c.amount,
+                                
+
+                             }).First();
+
+                if (query != null)
+                {
+                    quoteAmount += Convert.ToDouble(query.amount);
+                    service = $"{service}\n cabservices";
+                }
+                var query2 = (from c in currentQuote.carhires
+
+                             where c.quote_no == "Q0001"
+                             select new
+                             {
+                                 c.amount
+
+                             }).First();
+
+                if (query2 != null)
+                {
+                    quoteAmount += Convert.ToDouble(query2.amount);
+                    service = $"{service}\n carhire";
+                }
+                var query3 = (from c in currentQuote.conferences
+
+                             where c.quote_no == "Q0001"
+                             select new
+                             {
+                                 c.amount
+
+                             }).First();
+
+                if (query3 != null)
+                {
+                    quoteAmount += Convert.ToDouble(query3.amount);
+                    service = $"{service}\n conference";
+                }
+                var query4 = (from c in currentQuote.events
+
+                             where c.quote_no == "Q0001"
+                             select new
+                             {
+                                 c.amount
+
+                             }).First();
+
+                if (query4 != null)
+                {
+                    quoteAmount += Convert.ToDouble(query4.amount);
+                    service = $"{service}\n event";
+                }
+                var query5 = (from c in currentQuote.flights
+
+                             where c.quote_no == "Q0001"
+                             select new
+                             {
+                                 c.amount
+
+                             }).First();
+
+                if (query5 != null)
+                {
+                    quoteAmount += Convert.ToDouble(query5.amount);
+                    service = $"{service}\n flight";
+                }
+
+                var query6 = (from c in currentQuote.accommodations
+
+                             where c.quote_no == "Q0001"
+                             select new
+                             {
+                                 c.amount
+
+                             }).First();
+
+                if (query6 != null)
+                {
+                    quoteAmount += Convert.ToDouble(query6.amount);
+                    service = $"{service}\n accommodation";
+                }
+            }
+
+
+            
+           
+        }
+
+        private void btnQuote_markUp_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
