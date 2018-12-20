@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
+        Closed="Window_Closed"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
         Title="Consultant_Vouchers_Window" Height="450" Width="800">

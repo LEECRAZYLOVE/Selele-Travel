@@ -15,7 +15,7 @@
             </Canvas.Background>
         </Canvas>
         <Label x:Name="lblConsultantID" Content="LabeloutputID" Margin="2,33.047,653.048,350.399" FontFamily="Comic Sans MS" FontSize="16"/>
-        <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="40.997" Margin="685,10,0,0" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515">
+        <Button x:Name="btnConsultant_logOut" Content="LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="40.997" Margin="685,10,0,0" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515" Click="BtnConsultant_logOut_Click">
             <Button.Background>
                 <ImageBrush ImageSource="..\..\images\SeleleLogoBalls.png" Stretch="UniformToFill" Opacity="0.8"/>
             </Button.Background>
@@ -25,7 +25,7 @@
         <Button x:Name="btnConsultant_Quotes" Content=" New Quotes" HorizontalAlignment="Left" Margin="0,94,0,0" VerticalAlignment="Top" Width="118.368" Height="55" Click="btnConsultant_Quotes_Click"/>
         <Button x:Name="btnConsultant_Orders" Content="New Orders" HorizontalAlignment="Left" Margin="0,145.53,0,0" VerticalAlignment="Top" Width="118.368" Height="55" Click="btnConsultant_Orders_Click"/>
         <Button x:Name="btnConsultant_Vouchers" Content="New Vouchers" HorizontalAlignment="Left" Margin="0,200.53,0,0" VerticalAlignment="Top" Width="118.368" Height="55" Click="btnConsultant_Vouchers_Click"/>
-        <Button x:Name="btnConsultant_NewServiceProvider" Content="New Service Provider" HorizontalAlignment="Left" Margin="0,309,0,0" VerticalAlignment="Top" Width="118.368" Height="55"/>
+        <Button x:Name="btnConsultant_NewServiceProvider" Content="New Service Provider" HorizontalAlignment="Left" Margin="0,309,0,0" VerticalAlignment="Top" Width="118.368" Height="55" Click="BtnConsultant_NewServiceProvider_Click"/>
         <Button x:Name="btnConsultant_Update" HorizontalAlignment="Left" Content="Update Info" Margin="0,364,0,0" VerticalAlignment="Top" Width="118.368" Height="55" Click="btnConsultant_Update_Click"/>
         <Canvas HorizontalAlignment="Left" Height="325" Margin="453.368,94,0,0" VerticalAlignment="Top" Width="338.632" Background="#FFB02525" Opacity="0.5"/>
         <Label x:Name="label1" Content="Inbox" Opacity="1.5" Margin="254.632,63.04,473.794,320" FontSize="16" FontFamily="Comic Sans MS"/>

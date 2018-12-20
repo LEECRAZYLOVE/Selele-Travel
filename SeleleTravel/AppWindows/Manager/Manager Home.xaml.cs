@@ -152,12 +152,52 @@ namespace SeleleTravel
 
         private void btnManager_search_Click_1(object sender, RoutedEventArgs e)
         {
+            //New edit
+            string filter = cbbManager_Search_entities.SelectionBoxItem.ToString();
+            string search = txbManager_search.Text;
 
+            if (filter == "Staff")
+            {
+                using (postgresEntities12th currentSearch = new postgresEntities12th())
+                {
+                    var query = (from c in currentSearch.staffs
+
+                                 where c.staff_id == search
+                                 select new
+                                 {
+                                     c.staff_id,
+                                     c.staffposition,
+                                     c.stafffirstnames,
+                                     c.stafflastname,
+                                     c.salary,
+                                     c.dateofhire,
+                                     c.address,
+                                     c.telephone,
+                                     c.cellphone,
+                                     c.password,
+                                     c.fax,
+                                     c.emailaddress
+
+                                 }).First();
+
+                    if (query != null)
+                    {
+                        string staffmember = $"{query.staff_id} ,{query.stafffirstnames}, {query.stafflastname}, {query.staffposition}, {query.dateofhire}, {query.salary}, {query.password}, {query.cellphone}, {query.telephone}";
+                        ltbManager_Search_Results.Items.Add(staffmember);
+                    }
+                }
+            }
+            
         }
 
         private void btnManager_Quotes_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void cbbManager_Search_entities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

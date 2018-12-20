@@ -58,5 +58,10 @@ namespace SeleleTravel
                 GeneralMethods.clearTextBoxes(textBoxes);
             }
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Owner.Show();
+        }
     }
 }

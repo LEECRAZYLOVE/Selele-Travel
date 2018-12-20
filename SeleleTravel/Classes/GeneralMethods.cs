@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.IO;
-using System.Windows.Media;
 
 namespace SeleleTravel
 {
@@ -29,8 +28,8 @@ namespace SeleleTravel
         /// <param name="windowToLogOutOff"></param>
         public static void logOut(Window windowToLogOutOff)
         {
-            windowToLogOutOff.Hide();
-            Application.Current.MainWindow.Show();
+            windowToLogOutOff.Close();
+            Application.Current?.MainWindow?.Show();
         }
 
         /// <summary>
@@ -88,15 +87,15 @@ namespace SeleleTravel
         public static void checkAmountTyped(object sender, bool int_double=true)
         {
             string acceptedCharacters = "";
-
+            // if it's true then the number being validated is an integer
+            // else it's a double
             if (int_double)
             {
                 acceptedCharacters = "0123456789";
             }
             else
             {
-                acceptedCharacters = "0123456789." +
-                    "";
+                acceptedCharacters = "0123456789.";
             }
 
             TextBox reference = (TextBox)sender;
@@ -427,10 +426,21 @@ namespace SeleleTravel
         /// <returns></returns>
         private static int getNumberOfQuotes()
         {
-            TextReader reader = File.OpenText("quoteNum/numOfQuotes");
-            int number = Convert.ToInt32(reader.ReadLine());
-            reader.Close();
-            return number;
+            if(Directory.Exists("quoteNum") && File.Exists("quoteNum/numOfQuotes.seleleqs"))
+            {
+                TextReader reader = File.OpenText("quoteNum/numOfQuotes.seleleqs");
+                int number = Convert.ToInt32(reader.ReadLine());
+                reader.Close();
+                return number;
+            }
+            else
+            {
+                incrementNumOfQuotes();
+                TextReader reader = File.OpenText("quoteNum/numOfQuotes.seleleqs");
+                int number = Convert.ToInt32(reader.ReadLine());
+                reader.Close();
+                return number;
+            }
         }
 
         /// <summary>
@@ -438,12 +448,22 @@ namespace SeleleTravel
         /// </summary>
         private static void incrementNumOfQuotes()
         {
-            TextReader reader = File.OpenText("quoteNum/numOfQuotes.seleleqs");
-            int number = Convert.ToInt32(reader.ReadLine());
-            reader.Close();
-            TextWriter writer = File.CreateText("quoteNum/numOfQuotes.seleleqs");
-            writer.WriteLine(number++);
-            writer.Close();
+            if(Directory.Exists("quoteNum") && File.Exists("quoteNum/numOfQuotes.seleleqs"))
+            {
+                TextReader reader = File.OpenText("quoteNum/numOfQuotes.seleleqs");
+                int number = Convert.ToInt32(reader.ReadLine());
+                reader.Close();
+                TextWriter writer = File.CreateText("quoteNum/numOfQuotes.seleleqs");
+                writer.WriteLine(number++);
+                writer.Close();
+            }
+            else
+            {
+                int number = 0;
+                TextWriter writer = File.CreateText("quoteNum/numOfQuotes.seleleqs");
+                writer.WriteLine(number++);
+                writer.Close();
+            }
         }
 
         /// <summary>

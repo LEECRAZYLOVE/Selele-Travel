@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
+        Closed="New_Service_Provider_Home_Closed"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        Title="SeleleApp" Height="706.352" Width="556.557" Closed="New_Service_Provider_Home_Closed">
+        Title="SeleleApp" Height="706.352" Width="556.557">
     <Window.Resources>
         <Style x:Key="LabelStyle1" TargetType="{x:Type Label}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
@@ -89,6 +90,9 @@
                 <ComboBoxItem Content="Business" HorizontalAlignment="Left" Width="224.5"/>
                 <ComboBoxItem Content="Individual" HorizontalAlignment="Left" Width="224.5"/>
             </ComboBox>
+            <Button Content="Button" Width="75"/>
+            <Button Content="Button" Width="75"/>
+            <Button Content="Button" Canvas.Left="41" Canvas.Top="498" Width="75" Click="Button_Click_1"/>
 
 
 

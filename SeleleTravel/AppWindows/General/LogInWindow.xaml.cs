@@ -59,12 +59,13 @@ namespace SeleleTravel
         private void Log_In_Home_Closed(object sender, EventArgs e)
         {
             //GeneralMethods.closeAllWindows();
+            Close();
+            Application.Current.MainWindow.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
-            Application.Current.MainWindow.Show();
+            
         }
 
         private void BtnSignUp_Click(object sender, RoutedEventArgs e)
