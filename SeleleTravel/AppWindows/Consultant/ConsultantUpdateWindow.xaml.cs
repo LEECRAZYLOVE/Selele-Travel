@@ -114,5 +114,10 @@ namespace SeleleTravel
                 current.Text = placeHolderText;
             }
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Owner.Show();
+        }
     }
 }

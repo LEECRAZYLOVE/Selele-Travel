@@ -29,8 +29,8 @@ namespace SeleleTravel
         /// <param name="windowToLogOutOff"></param>
         public static void logOut(Window windowToLogOutOff)
         {
-            windowToLogOutOff.Hide();
-            Application.Current.MainWindow.Show();
+            windowToLogOutOff.Close();
+            Application.Current?.MainWindow?.Show();
         }
 
         /// <summary>

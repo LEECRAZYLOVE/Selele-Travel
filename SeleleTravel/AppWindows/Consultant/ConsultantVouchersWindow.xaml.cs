@@ -32,5 +32,10 @@ namespace SeleleTravel
             // Output the desired information 
             txbConsultant_Vouchers_viewOrder.Text = "";
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Owner.Show();
+        }
     }
 }

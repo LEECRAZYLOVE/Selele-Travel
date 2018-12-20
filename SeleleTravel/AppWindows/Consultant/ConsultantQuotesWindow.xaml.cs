@@ -277,7 +277,7 @@ namespace SeleleTravel
 
             // Data Verification:
             // check if the variables are empty
-            List<DateTime> dateTimes = new List<DateTime> { dateOfConference, endDateofConference};
+            List<DateTime> dateTimes = new List<DateTime> { startDateofConference, endDateofConference};
             List<string> stringVs = new List<string> { conferenceName, conferenceVenue, conferenceTime, specsOfConference};
             
             // This returns a bool value,
@@ -289,7 +289,7 @@ namespace SeleleTravel
             if(!checkEmptyStrngBool && !checkDatesBool)
             {
                 // Add the date to the global list of dates that will be stored
-                servicesDates.Add(dateOfConference);
+                servicesDates.Add(startDateofConference);
                 servicesDates.Add(endDateofConference);
 
                 // todo...
@@ -767,6 +767,11 @@ namespace SeleleTravel
         private void BtnClient_add_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Consultant_Quotes_Window_Closed(object sender, EventArgs e)
+        {
+            Owner.Show();
         }
     }
 }

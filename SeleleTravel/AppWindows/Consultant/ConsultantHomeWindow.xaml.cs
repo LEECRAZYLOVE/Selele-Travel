@@ -21,12 +21,6 @@ namespace SeleleTravel
     /// </summary>
     public partial class ConsultantHomeWindow : Window
     {
-        //instantiating all the windows as global objects
-        public static ConsultantOrdersWindow consultantOrdersWindow = new ConsultantOrdersWindow();
-        public static ConsultantQuotesWindow consultantQuotesWindow = new ConsultantQuotesWindow();
-        public static ConsultantUpdateWindow consultantUpdateWindow = new ConsultantUpdateWindow();
-        public static ConsultantVouchersWindow consultantVouchersWindow = new ConsultantVouchersWindow();
-        public static ComposeMessageWindow composeMessageWindow = new ComposeMessageWindow();
 
         public ConsultantHomeWindow()
         {
@@ -41,7 +35,10 @@ namespace SeleleTravel
 
         private void btnConsultant_Quotes_Click(object sender, RoutedEventArgs e)
         {
+            ConsultantQuotesWindow consultantQuotesWindow = new ConsultantQuotesWindow();
+            consultantQuotesWindow.Owner = this;
             consultantQuotesWindow.Show();
+            Hide();
             
         }
 
@@ -52,25 +49,47 @@ namespace SeleleTravel
 
         private void btnConsultant_Orders_Click(object sender, RoutedEventArgs e)
         {
+            ConsultantOrdersWindow consultantOrdersWindow = new ConsultantOrdersWindow();
+            consultantOrdersWindow.Owner = this;
             consultantOrdersWindow.Show();
+            Hide();
 
         }
 
         private void btnConsultant_Vouchers_Click(object sender, RoutedEventArgs e)
         {
+            ConsultantVouchersWindow consultantVouchersWindow = new ConsultantVouchersWindow();
+            consultantVouchersWindow.Owner = this;
             consultantVouchersWindow.Show();
+            Hide();
+
         }
 
         private void btnConsultant_composeMessage_Click(object sender, RoutedEventArgs e)
         {
+            ComposeMessageWindow composeMessageWindow = new ComposeMessageWindow();
+            composeMessageWindow.Owner = this;
             composeMessageWindow.Show();
+            Hide();
+
         }
 
         private void btnConsultant_Update_Click(object sender, RoutedEventArgs e)
         {
-           
+            ConsultantUpdateWindow consultantUpdateWindow = new ConsultantUpdateWindow();
+            consultantUpdateWindow.Owner = this;
+            consultantUpdateWindow.Show();
+            Hide();
+
             //ppConsultant_Update.Visibility = Visibility.Visible;
         }
 
+        private void BtnConsultant_NewServiceProvider_Click(object sender, RoutedEventArgs e)
+        {
+            New_Service_Provider provider = new New_Service_Provider();
+            provider.Owner = this;
+            provider.Show();
+            Hide();
+        }
     }
 }

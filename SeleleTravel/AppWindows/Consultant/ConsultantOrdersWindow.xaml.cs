@@ -68,5 +68,10 @@ namespace SeleleTravel
             // Link the current quote number to the new order that will be generated
 
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Owner.Show();
+        }
     }
 }

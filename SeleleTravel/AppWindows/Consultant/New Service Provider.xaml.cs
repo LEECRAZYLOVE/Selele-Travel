@@ -82,7 +82,8 @@ namespace SeleleTravel
 
         private void New_Service_Provider_Home_Closed(object sender, EventArgs e)
         {
-            GeneralMethods.closeAllWindows();
+            //GeneralMethods.closeAllWindows();
+            Owner.Show();
         }
 
         private void txbNewService_name_TextChanged(object sender, TextChangedEventArgs e)
