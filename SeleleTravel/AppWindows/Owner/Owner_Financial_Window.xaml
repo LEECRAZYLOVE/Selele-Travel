@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Icon="SeleleLogoBalls.png"
+        Icon="..\..\images\SeleleLogoBalls.png"
         Closed="Owner_Financial_Window_Closed"
         Title="Owner_Financial_Page" Height="800" Width="1200">
     <Grid RenderTransformOrigin="0.5,0.5" Background="#FF84D8FF" Margin="-1,-1,-2,-5">

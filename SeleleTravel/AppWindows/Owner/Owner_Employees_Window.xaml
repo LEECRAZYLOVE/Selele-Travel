@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Icon="SeleleLogoBalls.png"
+        Icon="..\..\images\SeleleLogoBalls.png"
         Title="Owner_Employees_Page" Height="800" Width="1200">
     <Window.Resources>
         <Style x:Key="FocusVisual">

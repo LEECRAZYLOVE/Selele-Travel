@@ -266,25 +266,25 @@
     <Compile Include="client.cs">
       <DependentUpon>seleleModel 12th test.tt</DependentUpon>
     </Compile>
-    <Compile Include="ComposeMessageWindow.xaml.cs">
+    <Compile Include="AppWindows\General\ComposeMessageWindow.xaml.cs">
       <DependentUpon>ComposeMessageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="conference.cs">
       <DependentUpon>seleleModel 12th test.tt</DependentUpon>
     </Compile>
-    <Compile Include="ConsultantOrdersWindow.xaml.cs">
+    <Compile Include="AppWindows\Consultant\ConsultantOrdersWindow.xaml.cs">
       <DependentUpon>ConsultantOrdersWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ConsultantHomeWindow.xaml.cs">
+    <Compile Include="AppWindows\Consultant\ConsultantHomeWindow.xaml.cs">
       <DependentUpon>ConsultantHomeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ConsultantQuotesWindow.xaml.cs">
+    <Compile Include="AppWindows\Consultant\ConsultantQuotesWindow.xaml.cs">
       <DependentUpon>ConsultantQuotesWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ConsultantUpdateWindow.xaml.cs">
+    <Compile Include="AppWindows\Consultant\ConsultantUpdateWindow.xaml.cs">
       <DependentUpon>ConsultantUpdateWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ConsultantVouchersWindow.xaml.cs">
+    <Compile Include="AppWindows\Consultant\ConsultantVouchersWindow.xaml.cs">
       <DependentUpon>ConsultantVouchersWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="dailyserviceupdate.cs">
@@ -299,28 +299,28 @@
     <Compile Include="invoice.cs">
       <DependentUpon>seleleModel 12th test.tt</DependentUpon>
     </Compile>
-    <Compile Include="Manager_Authorizations_Window.xaml.cs">
+    <Compile Include="AppWindows\Manager\Manager_Authorizations_Window.xaml.cs">
       <DependentUpon>Manager_Authorizations_Window.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Manager_Confirmations_Window.xaml.cs">
+    <Compile Include="AppWindows\Manager\Manager_Confirmations_Window.xaml.cs">
       <DependentUpon>Manager_Confirmations_Window.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Manager_Payments_Window.xaml.cs">
+    <Compile Include="AppWindows\Manager\Manager_Payments_Window.xaml.cs">
       <DependentUpon>Manager_Payments_Window.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Manager_Quotes_Window.xaml.cs">
+    <Compile Include="AppWindows\Manager\Manager_Quotes_Window.xaml.cs">
       <DependentUpon>Manager_Quotes_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="order.cs">
       <DependentUpon>seleleModel 12th test.tt</DependentUpon>
     </Compile>
-    <Compile Include="OwnerPaymentsWindow.xaml.cs">
+    <Compile Include="AppWindows\Owner\OwnerPaymentsWindow.xaml.cs">
       <DependentUpon>OwnerPaymentsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Owner_Employees_Window.xaml.cs">
+    <Compile Include="AppWindows\Owner\Owner_Employees_Window.xaml.cs">
       <DependentUpon>Owner_Employees_Window.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Owner_Financial_Window.xaml.cs">
+    <Compile Include="AppWindows\Owner\Owner_Financial_Window.xaml.cs">
       <DependentUpon>Owner_Financial_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="quote.cs">
@@ -371,7 +371,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>seleleModelTest.edmx</DependentUpon>
     </Compile>
-    <Compile Include="SignUpWindow.xaml.cs">
+    <Compile Include="AppWindows\General\SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="staff.cs">
@@ -380,31 +380,31 @@
     <Compile Include="voucher.cs">
       <DependentUpon>seleleModel 12th test.tt</DependentUpon>
     </Compile>
-    <Page Include="ComposeMessageWindow.xaml">
+    <Page Include="AppWindows\General\ComposeMessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ConsultantOrdersWindow.xaml">
+    <Page Include="AppWindows\Consultant\ConsultantOrdersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ConsultantHomeWindow.xaml">
+    <Page Include="AppWindows\Consultant\ConsultantHomeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ConsultantQuotesWindow.xaml">
+    <Page Include="AppWindows\Consultant\ConsultantQuotesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ConsultantUpdateWindow.xaml">
+    <Page Include="AppWindows\Consultant\ConsultantUpdateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ConsultantVouchersWindow.xaml">
+    <Page Include="AppWindows\Consultant\ConsultantVouchersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LogInWindow.xaml">
+    <Page Include="AppWindows\General\LogInWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -419,66 +419,66 @@
     <Compile Include="Classes\Boss.cs" />
     <Compile Include="Classes\ContactDetails.cs" />
     <Compile Include="Classes\Manager.cs" />
-    <Compile Include="LogInWindow.xaml.cs">
+    <Compile Include="AppWindows\General\LogInWindow.xaml.cs">
       <DependentUpon>LogInWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Manager Home.xaml">
+    <Page Include="AppWindows\Manager\Manager Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Manager_Authorizations_Window.xaml">
+    <Page Include="AppWindows\Manager\Manager_Authorizations_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Manager_Confirmations_Window.xaml">
+    <Page Include="AppWindows\Manager\Manager_Confirmations_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Manager_Payments_Window.xaml">
+    <Page Include="AppWindows\Manager\Manager_Payments_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Manager_Quotes_Window.xaml">
+    <Page Include="AppWindows\Manager\Manager_Quotes_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="New Service Provider.xaml">
+    <Page Include="AppWindows\Consultant\New Service Provider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Owner.xaml">
+    <Page Include="AppWindows\Owner\Owner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OwnerPaymentsWindow.xaml">
+    <Page Include="AppWindows\Owner\OwnerPaymentsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Owner_Employees_Window.xaml">
+    <Page Include="AppWindows\Owner\Owner_Employees_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Owner_Financial_Window.xaml">
+    <Page Include="AppWindows\Owner\Owner_Financial_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SignUpWindow.xaml">
+    <Page Include="AppWindows\General\SignUpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Manager Home.xaml.cs">
+    <Compile Include="AppWindows\Manager\Manager Home.xaml.cs">
       <DependentUpon>Manager Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="New Service Provider.xaml.cs">
+    <Compile Include="AppWindows\Consultant\New Service Provider.xaml.cs">
       <DependentUpon>New Service Provider.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Owner.xaml.cs">
+    <Compile Include="AppWindows\Owner\Owner.xaml.cs">
       <DependentUpon>Owner.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -531,7 +531,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Selele Travel LOGO.png" />
+    <Resource Include="Images\Selele Travel LOGO.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
@@ -589,9 +589,9 @@
       <DependentUpon>seleleModelTest.edmx</DependentUpon>
       <LastGenOutput>seleleModelTest.cs</LastGenOutput>
     </Content>
-    <Resource Include="Selele Travel LOGO2.png" />
-    <Resource Include="Selele Travel BALLS.png" />
-    <Resource Include="SeleleLogoBalls.png" />
+    <Resource Include="Images\Selele Travel LOGO2.png" />
+    <Resource Include="Images\Selele Travel BALLS.png" />
+    <Resource Include="Images\SeleleLogoBalls.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SeleleModel.Context.tt">
@@ -605,5 +605,6 @@
       <LastGenOutput>SeleleModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

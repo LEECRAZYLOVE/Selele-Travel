@@ -125,7 +125,7 @@ namespace SeleleTravel
             //{
             //    //other error
             //   // throw ex;
-              
+
             //}
         }
 
@@ -141,14 +141,14 @@ namespace SeleleTravel
             // Results from the database
             //txblOldClient_Details.Text = "";
         }
-        
+
         private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
         #endregion
-        
+
         #endregion
 
         #region General Methods/Events
@@ -179,13 +179,21 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void phoneNumberCheck(object sender, TextChangedEventArgs e)
         {
-            
+
         }
 
         #endregion
 
+        #region Clients Tab
+
+        private void add_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+
         #region Event tab
-        
+
         private void _done(object sender, RoutedEventArgs e)
         {
             // assign vars to the textboxes
@@ -261,7 +269,7 @@ namespace SeleleTravel
         {
             string conferenceName = txbConference_name.Text;
             string conferenceVenue = txbConference_venue.Text;
-            DateTime dateOfConference = dpConference_startDate.DisplayDate;
+            DateTime startDateofConference = dpConference_startDate.DisplayDate;
             DateTime endDateofConference = dpConference_endDate.DisplayDate;
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;

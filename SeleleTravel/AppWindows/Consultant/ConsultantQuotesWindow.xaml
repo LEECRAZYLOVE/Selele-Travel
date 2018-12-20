@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Icon="SeleleLogoBalls.png"
+        Icon="..\..\images\SeleleLogoBalls.png"
         Title="Consultant_Quotes_Page" Height="800" Width="1200">
     <Window.Resources>
         <Style x:Key="FocusVisual">
@@ -298,7 +298,7 @@
                                 <TextBox x:Name="txbNewClient_email" Margin="10" Height="40"/>
                             </DockPanel>
                         </StackPanel>
-                        <Button x:Name="btnClient_add" Content="Add Client" FontSize="20" Width="300" Click="BtnClient_add_Click"/>
+                        <Button Content="Add Client" FontSize="20" Width="300" Click="add_Button_Click"/>
                     </StackPanel>
 
                     <!--Right hand Side-->
