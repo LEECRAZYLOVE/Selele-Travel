@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using Word = Microsoft.Office.Interop.Word;
 using System.Reflection;
 using System.IO;
+using Devart.Data.MySql;
+using System.Data.SqlClient;
 
 namespace SeleleTravel
 {
@@ -269,7 +271,7 @@ namespace SeleleTravel
         {
             string conferenceName = txbConference_name.Text;
             string conferenceVenue = txbConference_venue.Text;
-            DateTime startDateofConference = dpConference_startDate.DisplayDate;
+            DateTime dateOfConference = dpConference_startDate.DisplayDate;
             DateTime endDateofConference = dpConference_endDate.DisplayDate;
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;

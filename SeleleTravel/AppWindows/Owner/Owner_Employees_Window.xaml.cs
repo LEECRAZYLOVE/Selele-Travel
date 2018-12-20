@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
-//using Devart.Data.MySql;
+using Devart.Data.MySql;
 
 namespace SeleleTravel
 {
@@ -69,7 +69,8 @@ namespace SeleleTravel
                 fax = Fax,
                 email = Email,
                 staffposition = Position,
-                salary = Salary
+                salary = Salary,
+                dateofhire = DateTime.Today
             };
             //Add staff to database
             try

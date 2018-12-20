@@ -21,6 +21,10 @@ namespace SeleleTravel
     /// </summary>
     public partial class SignUpWindow : Window
     {
+        public static ConsultantHomeWindow consultantWindow = new ConsultantHomeWindow();
+        public static Manager_Home managerWindow = new Manager_Home();
+        public static OwnerHomeWindow ownerWindow = new OwnerHomeWindow();
+
         public SignUpWindow()
         {
             InitializeComponent();
@@ -28,34 +32,45 @@ namespace SeleleTravel
 
         private void btnSignUp_done_Click(object sender, RoutedEventArgs e)
         {
-            //string currentStaffID = txbSignUp_staffID.Text;
-            //  using (SeleleEntities currentEmployee = new SeleleEntities())
-            //{
-            //   var query = (from c in currentEmployee.staffs
-            //    where c.staff_id == currentStaffID 
-            //    select new
-            //    {
-            //        c.staff_id
-            //    });
-            //}
+            string currentStaffID = txbSignUp_staffID.Text;
+            string Password = pdbSignUp_password.Password;
+            string confirmPassword = pdbSignUp_passwordConfirm.Password;
 
-            //string Password = pdbSignUp_password.Password;
-            //string confirmPassword = pdbSignUp_passwordConfirm.Password;
+            if (Password != confirmPassword)
+            {
+                MessageBox.Show("Password doest not match. Please try again.");
+                pdbSignUp_password.Clear();
+                pdbSignUp_passwordConfirm.Clear();
+                btnSignUp_done_Click(sender, e);
+            }
 
-            //if (Password != confirmPassword)
-            //{
-            //    MessageBox.Show("Password doest not match. Please try again.");
-            //    pdbSignUp_password.Clear();
-            //    pdbSignUp_passwordConfirm.Clear();
-            //    btnSignUp_done_Click(sender, e);
-            //}
+            string Position = "";
+            string staffFullName = "";
+            string StaffID = "";
+            //retieve the object, adding the password and saving it into the database
+            using (var context = new SeleleEntities())
+            {
+                var retrievedEmployee = context.staffs.SingleOrDefault(c => c.staff_id == currentStaffID); //checking where it matches in the database
+                if (retrievedEmployee != null)
+                {
+                    retrievedEmployee.password = Password;
+                    context.SaveChanges();
 
-            //var context = new SeleleEntities();
-            //var currentNewEmployee = new staff()
-            //{
-            //    password = Password
-            //};
-
+                    Position = retrievedEmployee.staffposition;
+                    staffFullName = retrievedEmployee.stafffirstnames + ' ' + retrievedEmployee.stafflastname;
+                    StaffID = retrievedEmployee.staff_id;
+                }
+            }
+            MessageBox.Show("Successfully saved into the database. You will now be redirected to your home page.");
+            switch (Position)
+            {
+                case "Consultant": consultantWindow.Show(); break;
+                case "Manager": managerWindow.Show(); break;
+                case "Owner" : ownerWindow.Show(); break;
+                
+            }
         }
     }
+    
 }
+

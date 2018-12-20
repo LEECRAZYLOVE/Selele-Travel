@@ -469,7 +469,7 @@ namespace SeleleTravel
         /// <param name="cellphone"></param>
         public static string makeStaffID(string surname, string cellphone)
         {
-            string ID = surname + cellphone.Substring(6, 9);
+            string ID = surname + cellphone.Substring(1,4);
             MessageBox.Show("New Employee ID is: ID");
             return ID;
         }
