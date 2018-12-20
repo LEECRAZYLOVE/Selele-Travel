@@ -90,5 +90,11 @@ namespace SeleleTravel
 
             }
         }
+
+        private void Owner_Employees_Window_Closed(object sender, EventArgs e)
+        {
+            Owner?.Show();
+            Close();
+        }
     }
 }

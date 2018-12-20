@@ -28,13 +28,9 @@ namespace SeleleTravel
             InitializeComponent();
         }
 
-        public LogInWindow(LoadWindow windowToLoad)
+        public LogInWindow(LoadWindow windowToLoad) :this()
         {
-            InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.windowToLoad = windowToLoad;
-            
-            //this.WindowState = WindowState.Maximized;
         }
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
@@ -42,24 +38,27 @@ namespace SeleleTravel
             switch (windowToLoad)
             {
                 case LoadWindow.Consultant:
-                    MainWindow.consultantWindow = new ConsultantHomeWindow();
-                    MainWindow.consultantWindow.Show();
+                    ConsultantHomeWindow consultantWindow = new ConsultantHomeWindow();
+                    consultantWindow.Owner = Owner;
+                    consultantWindow.Show();
                     break;
                 case LoadWindow.Manager:
-                    MainWindow.managerWindow = new Manager_Home();
-                    MainWindow.managerWindow.Show();
+                    Manager_Home managerWindow = new Manager_Home();
+                    managerWindow.Owner = Owner;
+                    managerWindow.Show();
                     break;
                 case LoadWindow.Owner:
-                    MainWindow.ownerWindow = new OwnerHomeWindow();
-                    MainWindow.ownerWindow.Show();
+                    OwnerHomeWindow ownerWindow = new OwnerHomeWindow();
+                    ownerWindow.Owner = Owner;
+                    ownerWindow.Show();
                     break;
             }
-            Hide();
+            Close();
     }
 
         private void Log_In_Home_Closed(object sender, EventArgs e)
         {
-            GeneralMethods.closeAllWindows();
+            //GeneralMethods.closeAllWindows();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
