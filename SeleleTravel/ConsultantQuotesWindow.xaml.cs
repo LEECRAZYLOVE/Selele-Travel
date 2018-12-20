@@ -140,7 +140,7 @@ namespace SeleleTravel
             string findName = txbOldClient_find.Text;
 
             // Results from the database
-            txblOldClient_Details.Text = "";
+            //txblOldClient_Details.Text = "";
         }
         
         private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
@@ -161,6 +161,7 @@ namespace SeleleTravel
         private void AmountChanged(object sender, TextChangedEventArgs e)
         {
             bool intOrDouble = false;
+            GeneralMethods.checkAmountTyped(sender, intOrDouble);
         }
 
         /// <summary>
@@ -170,7 +171,7 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void AmountChanged_WHOLENumber(object sender, TextChangedEventArgs e)
         {
-            bool intOrDble = true;
+            GeneralMethods.checkAmountTyped(sender);
         }
 
         /// <summary>
@@ -180,7 +181,7 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void phoneNumberCheck(object sender, TextChangedEventArgs e)
         {
-            
+            GeneralMethods.checkPhoneNumber(sender);
         }
 
         #endregion
@@ -193,8 +194,8 @@ namespace SeleleTravel
             string nameOfEvent = txbEvents_name.Text;
             string eventSpecs = txbEvents_specifications.Text;
             double eventAmount = Convert.ToDouble(txbEvents_total.Text);
-            DateTime eventStartdate = _eventStartDate.DisplayDate;
-            DateTime eventEnddate = _eventEndDate.DisplayDate;
+            DateTime eventStartdate = dpEvents_startDate.DisplayDate;
+            DateTime eventEnddate = dpEvents_endDate.DisplayDate;
 
             // Data verification:
             // make sure that the supplied data is valid
@@ -262,15 +263,15 @@ namespace SeleleTravel
         {
             string conferenceName = txbConference_name.Text;
             string conferenceVenue = txbConference_venue.Text;
-            DateTime dateOfConference = dpConference_date.DisplayDate;
-            DateTime endDateofConference = _endDateOfConf.DisplayDate;
+            DateTime startDatOfConference = dpConference_startDate.DisplayDate;
+            DateTime endDateofConference = dpConference_endDate.DisplayDate;
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
             double amountOfconf = Convert.ToDouble(txbConference_total.Text);
 
             // Data Verification:
             // check if the variables are empty
-            List<DateTime> dateTimes = new List<DateTime> { dateOfConference, endDateofConference};
+            List<DateTime> dateTimes = new List<DateTime> { startDatOfConference, endDateofConference};
             List<string> stringVs = new List<string> { conferenceName, conferenceVenue, conferenceTime, specsOfConference};
             
             // This returns a bool value,
@@ -282,7 +283,7 @@ namespace SeleleTravel
             if(!checkEmptyStrngBool && !checkDatesBool)
             {
                 // Add the date to the global list of dates that will be stored
-                servicesDates.Add(dateOfConference);
+                servicesDates.Add(startDatOfConference);
                 servicesDates.Add(endDateofConference);
 
                 // todo...
@@ -374,7 +375,6 @@ namespace SeleleTravel
             string fromLoc = txbFlight_from.Text;
             string toLoc = txbFlight_to.Text;
             DateTime departureDate = dpFlight_departure.DisplayDate;
-            DateTime arrivalDate = dpFlight_arrival.DisplayDate;
             int numberOfBags = Convert.ToInt32(txbFlight_numBags.Text);
             string preferedTime = txbFlight_time.Text;
             string flightSpecs = txbFlight_specifications.Text;
@@ -382,17 +382,21 @@ namespace SeleleTravel
 
             // Data validation
             // and Error checking
-            List<DateTime> dateTimes = new List<DateTime>();
-            List<string> stringVs = new List<string>();
+            List<DateTime> dateTimes = new List<DateTime>
+            {
+                departureDate
+            };
+            List<string> stringVs = new List<string>
+            {
+                airlineName,
+                fromLoc,
+                toLoc,
+                preferedTime,
+                flightSpecs
+            };
 
-            stringVs.Add(airlineName);
-            stringVs.Add(fromLoc);
-            stringVs.Add(toLoc);
-            stringVs.Add(preferedTime);
-            stringVs.Add(flightSpecs);
+            
 
-            dateTimes.Add(departureDate);
-            dateTimes.Add(arrivalDate);
 
             // This returns a bool value,
             // if it returns true then one of the strings are empty
@@ -439,7 +443,7 @@ namespace SeleleTravel
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
         {
-            string passangerName = txbFlight_passengers.Text;
+            string passangerName = txbFlight_passangerName.Text;
             ltbFlight_passengersOutput.Items.Add(passangerName);
             ltbFlight_passengersOutput.Items.Refresh();
 
@@ -532,13 +536,13 @@ namespace SeleleTravel
                 // Add the date to the global list of dates that will be stored
                 servicesDates.Add(_startday);
                 servicesDates.Add(_endDay);
-
+                
                 // Create an instance of carhire
                 //var _carHire = new carhire(agencyName, pickUpLocation, dropOffLocation, _startday, _endDay);
                 //{
-
+                
                 //};
-
+                
                 // Reset the textboxes
                 // call the clear textbox method
                 List<TextBox> toBeCleared = new List<TextBox> { txbCarHire_agency, txbCarHire_pickUp, txbCarHire_dropOff, txbCarHire_numCars, txbCarHire_specifications };
@@ -587,8 +591,7 @@ namespace SeleleTravel
             string tempOrderNum = "To Be Added";
             GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
         }
-
-        // 
+        
         // Opening a word document from the program
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -752,8 +755,6 @@ namespace SeleleTravel
         {
 
         }
-
-        
     }
 }
 

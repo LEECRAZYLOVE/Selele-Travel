@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Consultant_Quotes_Page" Height="800" Width="1200">
+        Title="Consultant_Quotes_Page" Height="808" Width="1210">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -246,14 +246,14 @@
                         <!--Address-->
                         <DockPanel>
                             <TextBlock Text="Address" FontSize="16" Margin="10"/>
-                            <TextBox x:Name="txbNewClient_address" Margin="10" Height="100"/>
+                            <TextBox x:Name="txbNewClient_address" AcceptsReturn="True" Margin="10" Height="100"/>
                         </DockPanel>
                         <!--City, Area Code-->
                         <DockPanel>
                             <TextBlock Text="City :" FontSize="16" Margin="10 10 35 10"/>
                             <TextBox x:Name="txbNewClient_city" Width="250" Margin="10"/>
                             <TextBlock Text="Area Code :" FontSize="16" Margin="10"/>
-                            <TextBox x:Name="txbNewClient_areaCode" Margin="10" Height="40"/>
+                            <TextBox x:Name="txbNewClient_areaCode" TextChanged="AmountChanged_WHOLENumber" Margin="10" Height="40"/>
                         </DockPanel>
                         <!--Province-->
                         <DockPanel >
@@ -274,20 +274,20 @@
                         <StackPanel>
                             <DockPanel>
                                 <TextBlock Text="Cellphone :" Margin="10"/>
-                                <TextBox x:Name="txbNewClient_cellphone" Margin="10" Height="40"/>
+                                <TextBox x:Name="txbNewClient_cellphone" TextChanged="phoneNumberCheck" Margin="10" Height="40"/>
                             </DockPanel>
                         </StackPanel>
 
                         <StackPanel>
                             <DockPanel>
                                 <TextBlock Text="Telephone :" Margin="10 10 8 10"/>
-                                <TextBox x:Name="txbNewClient_telephone" Margin="10" Height="40"/>
+                                <TextBox x:Name="txbNewClient_telephone" TextChanged="phoneNumberCheck" Margin="10" Height="40"/>
                             </DockPanel>
                         </StackPanel>
                         <StackPanel>
                             <DockPanel>
                                 <TextBlock Text="Fax :" Margin="10 10 50 10"/>
-                                <TextBox x:Name="txbNewClient_fax" Margin="10" Height="40"/>
+                                <TextBox x:Name="txbNewClient_fax" TextChanged="phoneNumberCheck" Margin="10" Height="40"/>
                             </DockPanel>
                         </StackPanel>
                         <StackPanel>
@@ -407,7 +407,7 @@
                             <TextBlock Text="Prefered departure time :" Margin="10"/>
                             <TextBox x:Name="txbFlight_time"  Margin=" 10" Width="150"/>
                             <TextBlock Text="Number of bags :" Margin="10"/>
-                            <TextBox x:Name="txbFlight_numBags" Margin=" 10" Width="191"/>
+                            <TextBox x:Name="txbFlight_numBags" TextChanged="AmountChanged_WHOLENumber" Margin=" 10" Width="191"/>
                         </DockPanel>
                         <!--Passanger Information-->
                         <Grid>
@@ -423,20 +423,20 @@
                                 </DockPanel>
                                 <DockPanel Margin="10">
                                     <TextBlock Text="Id Number :              " Margin="5"/>
-                                    <TextBox x:Name="txbFlight_passangerSurname" Height="30" Width="300"/>
+                                    <TextBox x:Name="txbFlight_passangerSurname" TextChanged="AmountChanged_WHOLENumber" Height="30" Width="300"/>
                                     <TextBlock Text="Cell no :   " Margin="5"/>
-                                    <TextBox x:Name="txbFlight_passangerCellphone" Height="30"/>
+                                    <TextBox x:Name="txbFlight_passangerCellphone" TextChanged="phoneNumberCheck" Height="30"/>
                                 </DockPanel>
                                 <DockPanel Margin="10">
                                     <TextBlock Text="Work no          :           " Margin="0 5"/>
-                                    <TextBox x:Name="txbFlight_passangerTitle" Height="30" Width="200"/>
+                                    <TextBox x:Name="txbFlight_passangerTitle" TextChanged="phoneNumberCheck" Height="30" Width="200"/>
                                     <TextBlock Text="email address          :   " Margin="5"/>
                                     <TextBox x:Name="txbFlight_passanger" Height="30"/>
 
                                 </DockPanel>
                                 <DockPanel Margin="10">
                                     <TextBlock Text="Adress          :             " Margin="0 5"/>
-                                    <TextBox x:Name="txbFlight_passangerAddress" Height="50"/>
+                                    <TextBox x:Name="txbFlight_passangerAddress" AcceptsReturn="True" Height="50"/>
                                 </DockPanel>
                                 <Button x:Name="btnFlight_addPassenger" Content="Add Passanger" Width=" 200"/>
                             </StackPanel>
@@ -450,7 +450,7 @@
                         <!--Specifications-->
                         <DockPanel>
                             <TextBlock Text="Specifications :             " Margin="10"/>
-                            <TextBox x:Name="txbFlight_specifications" TextWrapping="Wrap" Margin="10 10 100 10" Height="50"/>
+                            <TextBox x:Name="txbFlight_specifications" AcceptsReturn="True" TextWrapping="Wrap" Margin="10 10 100 10" Height="50"/>
                         </DockPanel>
                         <!--Total-->
                         <Grid HorizontalAlignment="Center">
@@ -459,7 +459,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="TOTAL R :" Margin="10"/>
-                            <TextBox x:Name="txbFlight_total" Grid.Column="1" Width="200" Height="40" Margin="10"/>
+                            <TextBox x:Name="txbFlight_total" TextChanged="AmountChanged" Grid.Column="1" Width="200" Height="40" Margin="10"/>
                         </Grid>
                         <Button x:Name="btnFlight_done" Content="Done!" Height="25" Margin="444,0,449,0"/>
                     </StackPanel>
@@ -499,14 +499,14 @@
                             </Grid.ColumnDefinitions>
                             <DockPanel Grid.Column="1">
                                 <TextBlock Text="Number of guests : "/>
-                                <TextBox x:Name="txbAccommodation_numGuests" Width="150"/>
+                                <TextBox x:Name="txbAccommodation_numGuests" TextChanged="AmountChanged_WHOLENumber" Width="150"/>
                                 <TextBlock Text=" Number of rooms : "/>
-                                <TextBox x:Name="txbAccommodation_numRooms"/>
+                                <TextBox x:Name="txbAccommodation_numRooms" TextChanged="AmountChanged_WHOLENumber"/>
                             </DockPanel>
                         </Grid>
                         <!--Specifications-->
                         <TextBlock Text="Specifications :"/>
-                        <TextBox x:Name="txbAccommodation_specifications" Margin="20" Height="200"/>
+                        <TextBox x:Name="txbAccommodation_specifications" AcceptsReturn="True" Margin="20" Height="200"/>
                         <!--Total-->
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -520,14 +520,14 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Column="1" Text="Total      R :"/>
-                            <TextBox x:Name="txbAccommodation_total"  TextChanged="AmountChanged" Grid.Column="2" Height="30"/>
+                            <TextBlock Grid.Column="1" Text="Total      R :" Margin="0,0,172,0"/>
+                            <TextBox x:Name="txbAccommodation_total"  TextChanged="AmountChanged" Grid.Column="1" Height="30" Grid.ColumnSpan="2" Margin="127,0,10,0"/>
                             <Button x:Name="btnAccommodation_done" Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10"/>
                             <Button x:Name="btnAccommodation_update" Content="Update!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="10"/>
                         </Grid>
                     </StackPanel>
                 </Grid>
-                
+
             </TabItem>
             <!--Conference-->
             <TabItem Header="Conference" Style="{DynamicResource TabItemStyle}">
@@ -573,7 +573,7 @@
                         </Grid>
                         <!--Specifications-->
                         <TextBlock Text="Specifications :"/>
-                        <TextBox x:Name="txbConference_specifications"  Margin="20" Height="200"/>
+                        <TextBox x:Name="txbConference_specifications" AcceptsReturn="True"  Margin="20" Height="200"/>
                         <!--Total-->
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -594,7 +594,7 @@
                         </Grid>
                     </StackPanel>
                 </Grid>
-               
+
             </TabItem>
             <!--Events-->
             <TabItem Header="Events" Style="{DynamicResource TabItemStyle}">
@@ -639,7 +639,7 @@
                         </Grid>
                         <!--Specifications-->
                         <TextBlock Text="Specifications :"/>
-                        <TextBox x:Name="txbEvents_specifications"  Margin="20" Height="200"/>
+                        <TextBox x:Name="txbEvents_specifications" AcceptsReturn="True"  Margin="20" Height="200"/>
                         <!--Total-->
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -660,11 +660,11 @@
                         </Grid>
                     </StackPanel>
                 </Grid>
-                
+
             </TabItem>
             <!--Quote Summary-->
             <TabItem Header="Quote Summary" Style="{DynamicResource TabItemStyle}">
-                
+
                 <Grid Background="#eee">
                     <!--Separate into two sides-->
                     <Grid.ColumnDefinitions>
@@ -678,7 +678,7 @@
                     <StackPanel Grid.Column="1" Margin="10">
                         <DockPanel>
                             <TextBlock Text="Mark-Up % : "/>
-                            <TextBox x:Name="txbQuote_markUp" Height="30"/>
+                            <TextBox x:Name="txbQuote_markUp" TextChanged="AmountChanged" Height="30"/>
                         </DockPanel>
                         <Button x:Name="btnQuote_markUp" Content="Add Mark-up" HorizontalAlignment="Center" Width="300" Margin="10"/>
                     </StackPanel>
@@ -686,14 +686,14 @@
                     <Border VerticalAlignment="Bottom" Grid.Column="1">
                         <StackPanel >
                             <Button x:Name="btnQuoteSummar_document" Content="View as document and print" Margin="10"/>
-                            <Button x:Name="btnQuote_requestVerification" Content="Request Verification" Margin="10 0 10 10"/>
+                            <Button x:Name="btnQuote_requestVerification" Content="Request Verification" Margin="10 0 10 10" Click="BtnQuote_requestVerification_Click"/>
                         </StackPanel>
                     </Border>
                 </Grid>
             </TabItem>
             <!--Send Quotes-->
             <TabItem Header="Send Quotes" Style="{DynamicResource TabItemStyle}">
-                
+
                 <Grid Background="#eee">
                     <!--Separating the grid into 3 parts-->
                     <Grid.ColumnDefinitions>
@@ -709,14 +709,14 @@
                     <!--Middle-->
                     <TextBlock Grid.Column="1" Text="Quote preview :" Margin="10"/>
                     <TextBlock Grid.Column="1"  Background="#fff" Text="No quote selected." Margin="10 40 10 10" Padding="10"/>
-                    
+
                     <!-- Right hand side-->
                     <StackPanel Grid.Column="2">
                         <TextBlock Text="Password :" Margin="10"/>
                         <PasswordBox Margin="10 0 10 10" Height="30"/>
                         <Button Content="Send to clients" Margin="10 0 10 10"/>
                     </StackPanel>
-                     
+
                 </Grid>
             </TabItem>
         </TabControl>
