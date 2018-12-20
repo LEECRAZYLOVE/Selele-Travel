@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Icon="./images/SeleleLogoBalls.png"
+        Icon="..\..\images\SeleleLogoBalls.png"
         Title="Compose a message" Height="500" Width="850">
     <Grid Background="#FFFDF5BD">
         <Grid.ColumnDefinitions>

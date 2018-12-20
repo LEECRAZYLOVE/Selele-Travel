@@ -86,7 +86,7 @@ namespace SeleleTravel
             catch (Exception ex)
             {
                 //other error
-                throw ex;s
+                throw ex;
 
             }
         }

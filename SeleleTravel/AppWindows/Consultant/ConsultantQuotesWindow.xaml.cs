@@ -269,7 +269,7 @@ namespace SeleleTravel
         {
             string conferenceName = txbConference_name.Text;
             string conferenceVenue = txbConference_venue.Text;
-            DateTime dateOfConference = dpConference_startDate.DisplayDate;
+            DateTime startDateofConference = dpConference_startDate.DisplayDate;
             DateTime endDateofConference = dpConference_endDate.DisplayDate;
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
@@ -277,7 +277,7 @@ namespace SeleleTravel
 
             // Data Verification:
             // check if the variables are empty
-            List<DateTime> dateTimes = new List<DateTime> { startDatOfConference, endDateofConference};
+            List<DateTime> dateTimes = new List<DateTime> { startDateofConference, endDateofConference};
             List<string> stringVs = new List<string> { conferenceName, conferenceVenue, conferenceTime, specsOfConference};
             
             // This returns a bool value,
@@ -289,7 +289,7 @@ namespace SeleleTravel
             if(!checkEmptyStrngBool && !checkDatesBool)
             {
                 // Add the date to the global list of dates that will be stored
-                servicesDates.Add(startDatOfConference);
+                servicesDates.Add(startDateofConference);
                 servicesDates.Add(endDateofConference);
 
                 // todo...
