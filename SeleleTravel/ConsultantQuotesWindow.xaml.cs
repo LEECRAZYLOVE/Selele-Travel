@@ -140,7 +140,7 @@ namespace SeleleTravel
             string findName = txbOldClient_find.Text;
 
             // Results from the database
-            txblOldClient_Details.Text = "";
+           // lbxOldClient_Details = "";
         }
         
         private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
@@ -193,8 +193,8 @@ namespace SeleleTravel
             string nameOfEvent = txbEvents_name.Text;
             string eventSpecs = txbEvents_specifications.Text;
             double eventAmount = Convert.ToDouble(txbEvents_total.Text);
-            DateTime eventStartdate = _eventStartDate.DisplayDate;
-            DateTime eventEnddate = _eventEndDate.DisplayDate;
+            DateTime eventStartdate = dpEvents_startDate.DisplayDate;
+            DateTime eventEnddate = dpEvents_endDate.DisplayDate;
 
             // Data verification:
             // make sure that the supplied data is valid
@@ -262,15 +262,15 @@ namespace SeleleTravel
         {
             string conferenceName = txbConference_name.Text;
             string conferenceVenue = txbConference_venue.Text;
-            DateTime dateOfConference = dpConference_date.DisplayDate;
-            DateTime endDateofConference = _endDateOfConf.DisplayDate;
+            DateTime startDateOfConference = dpConference_startDate.DisplayDate;
+            DateTime endDateofConference = dpConference_endDate.DisplayDate;
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
             double amountOfconf = Convert.ToDouble(txbConference_total.Text);
 
             // Data Verification:
             // check if the variables are empty
-            List<DateTime> dateTimes = new List<DateTime> { dateOfConference, endDateofConference};
+            List<DateTime> dateTimes = new List<DateTime> { startDateOfConference, endDateofConference};
             List<string> stringVs = new List<string> { conferenceName, conferenceVenue, conferenceTime, specsOfConference};
             
             // This returns a bool value,
@@ -282,7 +282,7 @@ namespace SeleleTravel
             if(!checkEmptyStrngBool && !checkDatesBool)
             {
                 // Add the date to the global list of dates that will be stored
-                servicesDates.Add(dateOfConference);
+                servicesDates.Add(startDateOfConference);
                 servicesDates.Add(endDateofConference);
 
                 // todo...
@@ -374,7 +374,6 @@ namespace SeleleTravel
             string fromLoc = txbFlight_from.Text;
             string toLoc = txbFlight_to.Text;
             DateTime departureDate = dpFlight_departure.DisplayDate;
-            DateTime arrivalDate = dpFlight_arrival.DisplayDate;
             int numberOfBags = Convert.ToInt32(txbFlight_numBags.Text);
             string preferedTime = txbFlight_time.Text;
             string flightSpecs = txbFlight_specifications.Text;
@@ -392,7 +391,6 @@ namespace SeleleTravel
             stringVs.Add(flightSpecs);
 
             dateTimes.Add(departureDate);
-            dateTimes.Add(arrivalDate);
 
             // This returns a bool value,
             // if it returns true then one of the strings are empty
@@ -439,7 +437,7 @@ namespace SeleleTravel
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
         {
-            string passangerName = txbFlight_passengers.Text;
+            string passangerName = txbFlight_passangerName.Text;
             ltbFlight_passengersOutput.Items.Add(passangerName);
             ltbFlight_passengersOutput.Items.Refresh();
 
@@ -753,7 +751,35 @@ namespace SeleleTravel
 
         }
 
-        
+        private void btnOldClient_select_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnOldClient_update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnOldClient_find_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEvents_done_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEvents_update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 

@@ -20,6 +20,11 @@ namespace SeleleTravel
         public string staffposition { get; set; }
         public Nullable<System.DateTime> dateofhire { get; set; }
         public Nullable<double> salary { get; set; }
-        public string branch { get; set; }
+        public string password { get; set; }
+        public string cellphone { get; set; }
+        public string telephone { get; set; }
+        public string fax { get; set; }
+        public string emailaddress { get; set; }
+        public string address { get; set; }
     }
 }

@@ -41,7 +41,7 @@ namespace SeleleTravel
         private void createNewClient_Click(object sender, RoutedEventArgs e)
         {//new edit
             string name = txbNewService_name.Text;
-            string address = txbNewClient_address.Text;
+            string address = txbNewService_address.Text;
             string telephone = txbNewService_telephone.Text;
             string emailadress = txbNewService_email.Text;
             string fax = txbNewService_fax.Text;
@@ -93,7 +93,7 @@ namespace SeleleTravel
         private void btnUpdateClient_Click(object sender, RoutedEventArgs e)
         {//For insertion Done
             string name = txbNewService_name.Text;
-            string address = txbNewClient_address.Text;
+            string address = txbNewService_address.Text;
             string telephone = txbNewService_telephone.Text;
             string emailadress = txbNewService_email.Text;
             string fax = txbNewService_fax.Text;
@@ -155,13 +155,23 @@ namespace SeleleTravel
                 if (query != null)
                 {
                     txbNewService_name.Text = query.nameofagency;
-                    txbNewClient_address.Text = query.address ;
+                    txbNewService_address.Text = query.address ;
                     txbNewService_cellphone.Text = query.cellphone;
                     txbNewService_fax.Text = query.fax;
                     txbNewService_telephone.Text = query.telephone;
                     txbNewService_email.Text = query.emailaddress;
                 }
             }
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnNewService_add_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

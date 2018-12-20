@@ -52,7 +52,7 @@ namespace SeleleTravel
         public void promote(staff employee)
         {
             fire(employee);
-            Manager manager = new Manager(employee.stafffirstnames, employee.stafflastname, employee.branch);
+            Manager manager = new Manager(employee.stafffirstnames, employee.stafflastname);
             manager.staff_id = employee.staff_id;
             manager.dateofhire = employee.dateofhire;
 
@@ -69,7 +69,6 @@ namespace SeleleTravel
         {
             stafffirstnames = names;
             stafflastname = surname;
-            branch = location;
         }
     }
 }
