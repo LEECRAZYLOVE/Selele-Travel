@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\g17z1278\Source\Repos\Selele-Travel\SeleleTravel\seleleModel 12th test.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\g17z1278\Source\Repos\Selele-Travel\SeleleTravel\seleleModel12th.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
