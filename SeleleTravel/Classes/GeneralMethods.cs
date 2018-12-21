@@ -12,6 +12,16 @@ namespace SeleleTravel
 
     public static class GeneralMethods
     {
+        public static string seleleTelephone = "0435550116";
+        public static string seleleCellphone = "0614724551";
+        public static string seleleFax = "0895567837";
+        public static string seleleEmail = "seleletravel@live.com";
+        public static string seleleAddress = "Office 3 \n Mantis Business Centre \n 14 Byron Street \n Cambridge \n East London \n 5206";
+        public static string seleleBank = "Standard Bank";
+        public static string seleleAccountName = "Selele Travelling and Accommodation cc";
+        public static string seleleAccountNumber = "251389715";
+        public static string seleleBranchName = "Vincent Park";
+        public static string seleleBranchCode = "053721";
 
         /// <summary>
         /// closes all windows open.
@@ -505,5 +515,24 @@ namespace SeleleTravel
         {
             return $"{address} \n {city} \n {areaCode} \n {province}";
         }
+
+        /// <summary>
+        /// This will return the office details for the quote summary or any other situation.
+        /// </summary>
+        /// <returns></returns>
+        public static string SeleleOfficeDetails()
+        {
+            return $" Tel: {seleleTelephone} \n Cell: {seleleCellphone} \n Fax: {seleleFax} \n {seleleEmail} \n {seleleAddress}";
+        }
+
+        /// <summary>
+        /// This will return the banking details for the quote summary or any other situation.
+        /// </summary>
+        /// <returns></returns>
+        public static string SeleleBankDetails()
+        {
+            return $" Bank Name: {seleleBank} \n Account Name: {seleleAccountName} \n Account no: {seleleAccountNumber} \n Branch Name: {seleleBranchName} \n  Branch Code: {seleleBranchCode}";
+        }
+
     }
 }

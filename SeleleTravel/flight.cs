@@ -21,7 +21,7 @@ namespace SeleleTravel
         public string tocity { get; set; }
         public Nullable<System.DateTime> departdate { get; set; }
         public Nullable<int> numberofbags { get; set; }
-        public Nullable<double> totalamount { get; set; }
+        public Nullable<double> amount { get; set; }
         public string flightspecs { get; set; }
     }
 }

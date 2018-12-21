@@ -86,6 +86,7 @@
           <Property Name="expectedenddate" Type="date" />
           <Property Name="enddate" Type="date" />
           <Property Name="carhirespecifications" Type="varchar" MaxLength="500" />
+          <Property Name="amount" Type="double precision" />
         </EntityType>
         <EntityType Name="client">
           <Key>
@@ -152,7 +153,7 @@
           <Property Name="tocity" Type="varchar" MaxLength="50" />
           <Property Name="departdate" Type="date" />
           <Property Name="numberofbags" Type="int" />
-          <Property Name="totalamount" Type="double precision" />
+          <Property Name="amount" Type="double precision" />
           <Property Name="flightspecs" Type="varchar" MaxLength="65535" />
         </EntityType>
         <EntityType Name="invoice">
@@ -197,7 +198,6 @@
           <Key>
             <PropertyRef Name="staff_id" />
           </Key>
-          <Property Name="staff_id" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="stafffirstnames" Type="varchar" MaxLength="100" />
           <Property Name="stafflastname" Type="varchar" MaxLength="30" />
           <Property Name="staffposition" Type="varchar" MaxLength="30" />
@@ -209,6 +209,7 @@
           <Property Name="telephone" Type="varchar" MaxLength="15" />
           <Property Name="fax" Type="varchar" MaxLength="15" />
           <Property Name="address" Type="varchar" MaxLength="500" />
+          <Property Name="staff_id" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="voucher">
           <Key>
@@ -326,6 +327,7 @@
           <Property Name="expectedenddate" Type="DateTime" />
           <Property Name="enddate" Type="DateTime" />
           <Property Name="carhirespecifications" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="amount" Type="Double" />
         </EntityType>
         <EntityType Name="client">
           <Key>
@@ -392,7 +394,7 @@
           <Property Name="tocity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="departdate" Type="DateTime" />
           <Property Name="numberofbags" Type="Int32" />
-          <Property Name="totalamount" Type="Double" />
+          <Property Name="amount" Type="Double" />
           <Property Name="flightspecs" Type="String" MaxLength="65535" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="invoice">
@@ -437,7 +439,6 @@
           <Key>
             <PropertyRef Name="staff_id" />
           </Key>
-          <Property Name="staff_id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="stafffirstnames" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="stafflastname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="staffposition" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
@@ -449,6 +450,7 @@
           <Property Name="telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="fax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="staff_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="voucher">
           <Key>
@@ -571,6 +573,7 @@
                 <ScalarProperty Name="expectedenddate" ColumnName="expectedenddate" />
                 <ScalarProperty Name="enddate" ColumnName="enddate" />
                 <ScalarProperty Name="carhirespecifications" ColumnName="carhirespecifications" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -642,7 +645,7 @@
                 <ScalarProperty Name="tocity" ColumnName="tocity" />
                 <ScalarProperty Name="departdate" ColumnName="departdate" />
                 <ScalarProperty Name="numberofbags" ColumnName="numberofbags" />
-                <ScalarProperty Name="totalamount" ColumnName="totalamount" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="flightspecs" ColumnName="flightspecs" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -691,7 +694,6 @@
           <EntitySetMapping Name="staffs">
             <EntityTypeMapping TypeName="SeleleModel.staff">
               <MappingFragment StoreEntitySet="staff">
-                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
                 <ScalarProperty Name="stafffirstnames" ColumnName="stafffirstnames" />
                 <ScalarProperty Name="stafflastname" ColumnName="stafflastname" />
                 <ScalarProperty Name="staffposition" ColumnName="staffposition" />
@@ -703,6 +705,7 @@
                 <ScalarProperty Name="telephone" ColumnName="telephone" />
                 <ScalarProperty Name="fax" ColumnName="fax" />
                 <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

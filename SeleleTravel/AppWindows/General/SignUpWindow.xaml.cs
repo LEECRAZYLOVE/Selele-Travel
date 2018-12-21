@@ -41,33 +41,39 @@ namespace SeleleTravel
                 MessageBox.Show("Password doest not match. Please try again.");
                 pdbSignUp_password.Clear();
                 pdbSignUp_passwordConfirm.Clear();
+                pdbSignUp_password.Clear();
+                pdbSignUp_passwordConfirm.Clear();
                 btnSignUp_done_Click(sender, e);
             }
-
-            string Position = "";
-            string staffFullName = "";
-            string StaffID = "";
-            //retieve the object, adding the password and saving it into the database
-            using (var context = new SeleleEntities())
+            else if (Password == confirmPassword)
             {
-                var retrievedEmployee = context.staffs.SingleOrDefault(c => c.staff_id == currentStaffID); //checking where it matches in the database
-                if (retrievedEmployee != null)
+                string Position = "";
+                string staffFullName = "";
+                string StaffID = "";
+                //retieve the object, adding the password and saving it into the database
+                using (var context = new SeleleEntities())
                 {
-                    retrievedEmployee.password = Password;
-                    context.SaveChanges();
+                    var retrievedEmployee = context.staffs.SingleOrDefault(c => c.staff_id == currentStaffID); //checking where it matches in the database
+                    if (retrievedEmployee != null)
+                    {
+                        retrievedEmployee.password = Password;
+                        context.SaveChanges();
 
-                    Position = retrievedEmployee.staffposition;
-                    staffFullName = retrievedEmployee.stafffirstnames + ' ' + retrievedEmployee.stafflastname;
-                    StaffID = retrievedEmployee.staff_id;
+                        Position = retrievedEmployee.staffposition;
+                        staffFullName = retrievedEmployee.stafffirstnames + ' ' + retrievedEmployee.stafflastname;
+                        StaffID = retrievedEmployee.staff_id;
+                    }
                 }
-            }
-            MessageBox.Show("Successfully saved into the database. You will now be redirected to your home page.");
-            switch (Position)
-            {
-                case "Consultant": consultantWindow.Show(); break;
-                case "Manager": managerWindow.Show(); break;
-                case "Owner" : ownerWindow.Show(); break;
-                
+                MessageBox.Show("Successfully saved into the database. You will now be redirected to your home page.");
+
+                //After signing up the new employee will be redirected to the relevant window
+                switch (Position)
+                {
+                    case "Consultant": this.Hide(); consultantWindow.Show(); break;
+                    case "Manager": this.Hide(); managerWindow.Show(); break;
+                    case "Owner": this.Hide(); ownerWindow.Show(); break;
+
+                }
             }
         }
     }

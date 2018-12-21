@@ -23,5 +23,6 @@ namespace SeleleTravel
         public Nullable<System.DateTime> expectedenddate { get; set; }
         public Nullable<System.DateTime> enddate { get; set; }
         public string carhirespecifications { get; set; }
+        public Nullable<double> amount { get; set; }
     }
 }
