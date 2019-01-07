@@ -159,10 +159,10 @@ namespace SeleleTravel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AmountChanged_WHOLENumber(object sender, TextChangedEventArgs e)
-        {
-            GeneralMethods.checkAmountTyped( );
-        }
+        //private void AmountChanged_WHOLENumber(object sender, TextChangedEventArgs e)
+        //{
+        //    GeneralMethods.checkAmountTyped( );
+        //}
 
         /// <summary>
         /// Checks if the number provided is a valid phone/fax/telephone number
@@ -306,7 +306,7 @@ namespace SeleleTravel
 
             // Data Verification:
             // check if the variables are empty
-            List<DateTime> dateTimes = new List<DateTime> { startDateOfConference, endDateofConference};
+            List<DateTime> dateTimes = new List<DateTime> { dateOfConference, endDateofConference};
             List<string> stringVs = new List<string> { conferenceName, conferenceVenue, conferenceTime, specsOfConference};
             
             // This returns a bool value,
@@ -318,7 +318,7 @@ namespace SeleleTravel
             if(!checkEmptyStrngBool && !checkDatesBool)
             {
                 // Add the date to the global list of dates that will be stored
-                servicesDates.Add(startDateOfConference);
+                servicesDates.Add(dateOfConference);
                 servicesDates.Add(endDateofConference);
 
                 // todo...
@@ -583,7 +583,39 @@ namespace SeleleTravel
             DateTime _endDay = dpCarHire_endDay.DisplayDate;
             int numberOfCars = Convert.ToInt32(txbCarHire_numCars.Text);
             string carHireSpecs = txbCarHire_specifications.Text;
+            double amount = Convert.ToDouble(txbCarHire_total.Text);
 
+            // Todo sql insertion
+            // ...
+            var context = new postgresEntities12th();
+            var currentCarHire = new carhire()
+            {
+                agencyname = agencyName,
+                quote_no = "Q0001",
+                pickuplocation=pickUpLocation,
+                dropofflocation = dropOffLocation,
+                dayofhire =_startday,
+                expectedenddate = _endDay,
+                carhirespecifications = numberOfCars+"\n"+ carHireSpecs,
+                amount =amount
+            };
+            //Add cabservice to database
+            try
+            {
+                context.carhires.Add(currentCarHire);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+
+            }
             // Data Validation
             // Check for errors
             List<DateTime> dateTimes = new List<DateTime> (2) { _startday, _endDay};
@@ -845,7 +877,67 @@ namespace SeleleTravel
 
         private void BtnEvents_done_Click(object sender, RoutedEventArgs e)
         {
+            // assign vars to the textboxes
+            string nameOfEvent = txbEvents_name.Text;
+            string eventSpecs = txbEvents_specifications.Text;
+            double eventAmount = Convert.ToDouble(txbEvents_total.Text);
+            DateTime eventStartdate = dpEvents_startDate.DisplayDate;
+            DateTime eventEnddate = dpEvents_endDate.DisplayDate;
+            string quote_no = "Q0001";
+            // Data verification:
+            // make sure that the supplied data is valid
+            List<string> stringVs = new List<string> { nameOfEvent, eventSpecs };
 
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
+            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
+
+            // check if the dates are empty
+            List<DateTime> tempDateTime = new List<DateTime> { eventStartdate, eventEnddate };
+            bool dateBoolValue = GeneralMethods.checkDateTimeBox(tempDateTime);
+
+            if (!boolValue && !dateBoolValue)
+            {
+
+                // Add the date to the global list of dates that will be stored
+                servicesDates.Add(eventStartdate);
+                servicesDates.Add(eventEnddate);
+
+
+                //sql insertion
+                var context = new postgresEntities12th();
+                var currentEvent = new @event()
+                {
+                    quote_no = quote_no,
+                    eventspecs = eventSpecs,
+                    eventname = nameOfEvent,
+                    amount = eventAmount,
+                    startday = eventStartdate,
+                    endday = eventEnddate
+                };
+                //Add cabservice to database
+                try
+                {
+                    context.events.Add(currentEvent);
+                    context.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                }
+                catch (Exception ex)
+                {
+                    //other error
+                    throw ex;
+
+                }
+                // reset texbox values to empty
+                // call the clear textbox method
+                List<TextBox> textBoxes = new List<TextBox> { txbEvents_name, txbEvents_specifications, txbEvents_total };
+                GeneralMethods.clearTextBoxes(textBoxes);
+
+            }
         }
 
         private void BtnOldClient_find_Click(object sender, RoutedEventArgs e)
@@ -862,10 +954,10 @@ namespace SeleleTravel
 
         }
 
-        private void btnOldClient_update_Click(object sender, RoutedEventArgs e)
-        {
+        //private void btnOldClient_update_Click(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
 
         private void btnOldClient_find_Click_1(object sender, RoutedEventArgs e)
         {
@@ -951,7 +1043,40 @@ namespace SeleleTravel
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
             double amountOfconf = Convert.ToDouble(txbConference_total.Text);
+            string quote_no = "Q0001";
+            // Todo sql insertion
+            // ...
+            var context = new postgresEntities12th();
+            var currentConference = new conference()
+            {
 
+                quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
+                conferencename = conferenceName,
+                venue = conferenceVenue,
+                startday= startDateOfConference,
+                endday = endDateofConference,
+                timeconference = conferenceTime,
+                conferencespecs = specsOfConference,
+                amount = amountOfconf
+
+            };
+            //Add conference to database
+            try
+            {
+                context.conferences.Add(currentConference);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+
+            }
             // Data Verification:
             // check if the variables are empty
             List<DateTime> dateTimes = new List<DateTime> { startDateOfConference, endDateofConference };
@@ -972,9 +1097,7 @@ namespace SeleleTravel
                 // todo...
                 // conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
 
-                // Todo sql insertion
-                // ...
-
+                
                 // reset texbox values to empty
                 // call the clear textbox method
                 List<TextBox> textBoxes = new List<TextBox> { txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total };
@@ -1100,7 +1223,7 @@ namespace SeleleTravel
                 amount = amount
 
             };
-            //Add flight to database
+            //Add accommodation to database
             try
             {
                 context.accommodations.Add(currentAccommodation);
@@ -1219,6 +1342,11 @@ namespace SeleleTravel
         }
 
         private void btnQuote_markUp_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AmountChanged_WHOLENumber(object sender, TextChangedEventArgs e)
         {
 
         }

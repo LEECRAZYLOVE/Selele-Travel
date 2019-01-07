@@ -27,7 +27,7 @@
             </TransformGroup>
         </Grid.RenderTransform>
         <Label x:Name="label" Content="Entity:" HorizontalAlignment="Left" Margin="21,16,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbxFinancial_entity" HorizontalAlignment="Left" Margin="79,20,0,0" VerticalAlignment="Top" Width="169">
+        <ComboBox x:Name="cbxFinancial_entity" HorizontalAlignment="Left" Margin="79,20,0,0" VerticalAlignment="Top" Width="169" SelectionChanged="cbxFinancial_entity_SelectionChanged">
             <ComboBoxItem x:Name="cbxitemFinancial_clients" Content="Clients" HorizontalAlignment="Left" Width="118" Selected="CbxitemFinancial_clients_Selected"/>
             <ComboBoxItem x:Name="cbxitemFinancial_services" Content="Services" HorizontalAlignment="Left" Width="118" Selected="CbxitemFinancial_services_Selected"/>
         </ComboBox>
@@ -46,7 +46,7 @@
             <ComboBoxItem x:Name="cbxitemFinancial_monthly" Content="Monthly" HorizontalAlignment="Left" Width="308.475" Selected="CbxitemFinancial_monthly_Selected"/>
             <ComboBoxItem x:Name="cbxitemFinancial_weekly" Content="Weekly" HorizontalAlignment="Left" Width="308.475" Selected="CbxitemFinancial_weekly_Selected"/>
         </ComboBox>
-        <Button x:Name="btnFinancial_view1" Content="View Summary One" HorizontalAlignment="Left" VerticalAlignment="Top" Width="189" Margin="21,196.384,0,0" Grid.Row="1"/>
+        <Button x:Name="btnFinancial_view1" Content="View Summary One" HorizontalAlignment="Left" VerticalAlignment="Top" Width="189" Margin="21,196.384,0,0" Grid.Row="1" Click="btnFinancial_view1_Click"/>
         <Button x:Name="btnFinancial_view2" Content="View Summary Two" HorizontalAlignment="Left" Margin="230,196.384,0,0" VerticalAlignment="Top" Width="189" Grid.ColumnSpan="2" Grid.Row="1"/>
         <Canvas x:Name="cvsYear" HorizontalAlignment="Left" Height="399" Margin="21,505,0,-129" VerticalAlignment="Top" Width="398" Grid.ColumnSpan="2" d:IsHidden="True" Grid.RowSpan="2">
             <Label x:Name="lblYear" Content="Enter Year:" Width="68.017"/>

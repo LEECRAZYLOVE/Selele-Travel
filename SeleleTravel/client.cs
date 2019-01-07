@@ -25,5 +25,6 @@ namespace SeleleTravel
         public Nullable<double> paid { get; set; }
         public Nullable<double> owe { get; set; }
         public Nullable<double> broughtforward { get; set; }
+        public Nullable<System.DateTime> dateadded { get; set; }
     }
 }

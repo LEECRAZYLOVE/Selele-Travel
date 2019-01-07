@@ -42,8 +42,8 @@ namespace SeleleTravel
         }
 
         private void BtnNewEmployee_generate_Click(object sender, RoutedEventArgs e)
-        {           
-           bool boolValue =  GeneralMethods.checkEmptytxtBox(new List<string>() { txbNewEmployee_surname.Text, txbNewEmployee_name.Text, txbNewEmployee_address.Text, txbNewEmployee_city.Text, txbNewEmployee_areaCode.Text, txbEmployee_cellphone.Text, txbNewEmployee_telephone.Text, txbNewEmployee_fax.Text, txbNewEmployee_email.Text, txbNewEmployee_position.Text, txbNewEmployee_salary.Text });
+        {
+            bool boolValue = GeneralMethods.checkEmptytxtBox(new List<string>() { txbNewEmployee_surname.Text, txbNewEmployee_name.Text, txbNewEmployee_address.Text, txbNewEmployee_city.Text, txbNewEmployee_areaCode.Text, txbEmployee_cellphone.Text, txbNewEmployee_telephone.Text, txbNewEmployee_fax.Text, txbNewEmployee_email.Text, txbNewEmployee_position.Text, txbNewEmployee_salary.Text });
 
             if (!boolValue) //if all the text boxes are fine then this code will execute
             {
@@ -58,7 +58,7 @@ namespace SeleleTravel
                 string Position = txbNewEmployee_position.Text;
                 double Salary = Convert.ToDouble(txbNewEmployee_salary.Text);
 
-                var context = new SeleleEntities();
+                var context = new postgresEntities12th();
                 var currentEmployee = new staff()
                 {
                     staff_id = GeneralMethods.makeStaffID(Surname, Cellphone),
@@ -68,7 +68,7 @@ namespace SeleleTravel
                     cellphone = Cellphone,
                     telephone = Telephone,
                     fax = Fax,
-                    email = Email,
+
                     staffposition = Position,
                     salary = Salary,
                     dateofhire = DateTime.Today
@@ -104,6 +104,87 @@ namespace SeleleTravel
         private void TxbNewEmployee_salary_TextChanged(object sender, TextChangedEventArgs e)
         {
             GeneralMethods.checkAmountTyped(sender, false);
+        }
+
+        private void btnEmplyees_find_Click_1(object sender, RoutedEventArgs e)
+        {
+            string staff_ID = txbEmployees_find.Text;
+            string staffName = txbEmployee_Name.Text;
+            if (staff_ID != "")
+            {
+                using (postgresEntities12th currentStaff = new postgresEntities12th())
+                {
+                    var query = (from c in currentStaff.staffs
+
+                                 where c.staff_id == staff_ID
+                                 select new
+                                 {
+                                     c.staff_id,
+                                     c.address,
+                                     c.cellphone,
+                                     c.dateofhire,
+                                     c.fax,
+                                     c.salary,
+                                     c.stafffirstnames,
+                                     c.stafflastname,
+                                     c.staffposition,
+                                     c.telephone,
+
+                                 }).First();
+
+                    if (query != null)
+                    {
+
+                        ltbEmployees_employeeDetails.Items.Add($"Staff ID: {query.staff_id}");
+                        ltbEmployees_employeeDetails.Items.Add($"staff first names:{query.stafffirstnames}");
+                        ltbEmployees_employeeDetails.Items.Add($"staff last name: {query.stafflastname}");
+                        ltbEmployees_employeeDetails.Items.Add($"staff position: {query.staffposition}");
+                        ltbEmployees_employeeDetails.Items.Add($"dateofhire: {query.dateofhire}");
+                        ltbEmployees_employeeDetails.Items.Add($"salary: {query.salary}");
+                        ltbEmployees_employeeDetails.Items.Add($"cellphone: {query.cellphone}");
+                        ltbEmployees_employeeDetails.Items.Add($"telephone: {query.telephone}");
+                    }
+
+                }
+
+            }
+            else if (staffName != "")
+            {
+                using (postgresEntities12th currentStaff = new postgresEntities12th())
+                {
+                    var query = (from c in currentStaff.staffs
+
+                                 where c.stafffirstnames == staffName
+                                 select new
+                                 {
+                                     c.staff_id,
+                                     c.address,
+                                     c.cellphone,
+                                     c.dateofhire,
+                                     c.fax,
+                                     c.salary,
+                                     c.stafffirstnames,
+                                     c.stafflastname,
+                                     c.staffposition,
+                                     c.telephone,
+
+                                 }).First();
+
+                    if (query != null)
+                    {
+
+                        ltbEmployees_employeeDetails.Items.Add($"Staff ID: {query.staff_id}");
+                        ltbEmployees_employeeDetails.Items.Add($"staff first names:{query.stafffirstnames}");
+                        ltbEmployees_employeeDetails.Items.Add($"staff last name: {query.stafflastname}");
+                        ltbEmployees_employeeDetails.Items.Add($"staff position: {query.staffposition}");
+                        ltbEmployees_employeeDetails.Items.Add($"dateofhire: {query.dateofhire}");
+                        ltbEmployees_employeeDetails.Items.Add($"salary: {query.salary}");
+                        ltbEmployees_employeeDetails.Items.Add($"cellphone: {query.cellphone}");
+                        ltbEmployees_employeeDetails.Items.Add($"telephone: {query.telephone}");
+                    }
+                }
+
+            }
         }
     }
 }

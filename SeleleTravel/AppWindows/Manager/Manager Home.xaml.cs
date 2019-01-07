@@ -158,7 +158,7 @@ namespace SeleleTravel
 
             if (filter == "Staff")
             {
-                using (SeleleEntities currentSearch = new SeleleEntities())
+                using (postgresEntities12th currentSearch = new postgresEntities12th())
                 {
                     var query = (from c in currentSearch.staffs
 
@@ -175,9 +175,8 @@ namespace SeleleTravel
                                      c.telephone,
                                      c.cellphone,
                                      c.password,
-                                     c.fax,
-                                     c.email
-
+                                     c.fax
+ 
                                  }).First();
 
                     if (query != null)

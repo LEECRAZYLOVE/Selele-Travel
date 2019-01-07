@@ -317,32 +317,36 @@
             <!--Car Hire -->
             <TabItem Header="Car Hire" Style="{DynamicResource TabItemStyle}">
                 <Grid Background="#eee">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="311*"/>
+                        <ColumnDefinition Width="875*"/>
+                    </Grid.ColumnDefinitions>
 
                     <!--Labels-->
-                    <Label Content="Name of Agency:" Margin="60.4,19.71,989.2,617.09" />
-                    <Label Content="Pick Up location:" Margin="60.4,94.243,982.8,528.75"/>
-                    <Label Content="Drop Off location:" Margin="460.8,95.223,592.8,528.75"/>
-                    <Label Content="Start Day:" Margin="60.4,159.14,1030.8,487.26"/>
-                    <Label Content="End Day:" Margin="460.8,159.14,645.521,487.26"/>
-                    <Label Content="R" Margin="977.613,586.941,158.387,60.949" />
-                    <Label Content="Specifications:" Margin="60.4,273.517,989.2,365.32" />
-                    <Label Content="Number of cars:" Height="48" VerticalAlignment="Top" Margin="60.4,220.517,989.2,0"/>
-                    <Label Content="TOTAL:" Margin="977.613,543.318,43.187,100.949" />
+                    <Label Content="Name of Agency:" Margin="60,20,114,617" />
+                    <Label Content="Pick Up location:" Margin="60,94,108,529"/>
+                    <Label Content="Drop Off location:" Margin="150,95,593,529" Grid.Column="1"/>
+                    <Label Content="Start Day:" Margin="60,159,156,487"/>
+                    <Label Content="End Day:" Margin="150,159,646,487" Grid.Column="1"/>
+                    <Label Content="R" Margin="667,587,158,61" Grid.Column="1" />
+                    <Label Content="Specifications:" Margin="60,274,114,365" />
+                    <Label Content="Number of cars:" Height="48" VerticalAlignment="Top" Margin="60,221,114,0"/>
+                    <Label Content="TOTAL:" Margin="667,543,43,101" Grid.Column="1" />
 
                     <!--Input region-->
-                    <TextBox x:Name="txbCarHire_agency" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="650" Margin="209.8,23,0,0"/>
-                    <TextBox x:Name="txbCarHire_pickUp" HorizontalAlignment="Left" Height="30" Margin="209.8,95.223,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246"/>
-                    <TextBox x:Name="txbCarHire_dropOff" HorizontalAlignment="Left" Height="30" Margin="599.8,94.243,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260"/>
-                    <DatePicker x:Name="dpCarHire_startDay" HorizontalAlignment="Left" Margin="209.8,160.14,0,0" VerticalAlignment="Top" Width="246" d:IsHidden="False"/>
-                    <DatePicker x:Name="dpCarHire_endDay" HorizontalAlignment="Left" Margin="599.8,160.14,0,0" VerticalAlignment="Top" Width="260"/>
-                    <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Margin="209.8,220.517,0,0"/>
+                    <TextBox x:Name="txbCarHire_agency" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="650" Margin="210,23,0,0" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txbCarHire_pickUp" HorizontalAlignment="Left" Height="30" Margin="210,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txbCarHire_dropOff" HorizontalAlignment="Left" Height="30" Margin="289,94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Grid.Column="1"/>
+                    <DatePicker x:Name="dpCarHire_startDay" HorizontalAlignment="Left" Margin="210,160,0,0" VerticalAlignment="Top" Width="246" d:IsHidden="False" Grid.ColumnSpan="2"/>
+                    <DatePicker x:Name="dpCarHire_endDay" HorizontalAlignment="Left" Margin="289,160,0,0" VerticalAlignment="Top" Width="260" Grid.Column="1"/>
+                    <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Margin="210,221,0,0" Grid.ColumnSpan="2"/>
 
-                    <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="334.614" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="894.08" Margin="60.4,322.57,0,0" RenderTransformOrigin="0.5,0.5"/>
+                    <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="335" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="895" Margin="60,323,0,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2"/>
 
 
-                    <TextBox x:Name="txbCarHire_total" Text="0"  HorizontalAlignment="Left" Height="30" Margin="1034.213,586.941,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112.053" TextChanged="AmountChanged"/>
-                    <Button x:Name="btnCarHire_Done" Content="DONE" HorizontalAlignment="Left" Margin="977.613,621.941,0,0" VerticalAlignment="Top" Width="168.653" Click="BtnCarHire_Done_Click" Height="35.243"/>
-                    <Button x:Name="btnCarHire_update" Content="UPDATE"  HorizontalAlignment="Left" Margin="1025.399,10,0,0" VerticalAlignment="Top" Width="120.867" Background="#FF45D310" Visibility="Visible" Height="43" Click="btnCarHire_update_Click"/>
+                    <TextBox x:Name="txbCarHire_total" Text="0"  HorizontalAlignment="Left" Height="30" Margin="723,587,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113" TextChanged="AmountChanged" Grid.Column="1"/>
+                    <Button x:Name="btnCarHire_Done" Content="DONE" HorizontalAlignment="Left" Margin="667,622,0,0" VerticalAlignment="Top" Width="168" Click="BtnCarHire_Done_Click" Height="35" Grid.Column="1"/>
+                    <Button x:Name="btnCarHire_update" Content="UPDATE"  HorizontalAlignment="Left" Margin="714,10,0,0" VerticalAlignment="Top" Width="121" Background="#FF45D310" Visibility="Visible" Height="43" Click="btnCarHire_update_Click" Grid.Column="1"/>
 
                 </Grid>
             </TabItem>
@@ -662,7 +666,7 @@
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Column="1" Text="Total      R :"/>
                             <TextBox x:Name="txbEvents_total" Text="0"  TextChanged="AmountChanged" Grid.Column="2" Height="30"/>
-                            <Button x:Name="btnEvents_done"  Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" Click="btnEvents_done_Click"/>
+                            <Button x:Name="btnEvents_done"  Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" Click="BtnEvents_done_Click"/>
                             <Button x:Name="btnEvents_update"  Content="Update!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="10" Click="btnEvents_update_Click"/>
                         </Grid>
                     </StackPanel>
