@@ -679,7 +679,23 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <!--Display for left-hand-side-->
-                    <TextBlock x:Name="txbQuote_quoteSummary" Background="#fff" Margin="10"/>
+                    <TextBlock x:Name="txbQuote_quoteSummary" Margin="10" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.Background>
+                            <ImageBrush ImageSource="/SeleleTravel;component/Images/Selele Travel LOGO2.png" Stretch="None" TileMode="Tile" Viewbox="0.4,1,1,1">
+                                <ImageBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="1" ScaleX="1"/>
+                                        <SkewTransform AngleY="0" AngleX="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </ImageBrush.RelativeTransform>
+                            </ImageBrush>
+                        </TextBlock.Background><Run>
+                            <Run.Background>
+                                <ImageBrush/>
+                            </Run.Background>
+                        </Run></TextBlock>
                     <!--Right-hand-side-->
                     <!--Mark-up stuff-->
                     <StackPanel Grid.Column="1" Margin="10">
@@ -696,6 +712,9 @@
                             <Button x:Name="btnQuote_requestVerification" Content="Request Verification" Margin="10 0 10 10"/>
                         </StackPanel>
                     </Border>
+                    <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="87,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <Label x:Name="label" Content="Valid for:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="117,154,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
             <!--Send Quotes-->

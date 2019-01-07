@@ -65,7 +65,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Background="#FF84D8FF" Margin="0,0,-8,57">
+    <Grid Background="#FF84D8FF" Margin="0,0,-8,-3">
 
         <Button x:Name="btnOwner_logOut" Content="LOGOUT" Width="150" Height="40" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0" >
             <Button.Background>
@@ -130,7 +130,7 @@
                 </Canvas>
             </TabItem>
         </TabControl>
-        <Canvas HorizontalAlignment="Left" Height="596" Margin="984,114,0,0" VerticalAlignment="Top" Width="409" Background="White">
+        <Canvas HorizontalAlignment="Left" Margin="984,114,0,62" Width="409" Background="White">
             <Button x:Name="btnClientAccount_findClient" Content="Find" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Canvas.Left="339" Canvas.Top="56"/>
             <Label x:Name="label" Content="Client Accounts" Canvas.Left="10" Canvas.Top="10"/>
             <Label x:Name="label1" Content="Enter Client ID/Name:" Canvas.Left="10" Canvas.Top="50"/>

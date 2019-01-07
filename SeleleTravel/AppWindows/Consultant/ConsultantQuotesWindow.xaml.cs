@@ -161,7 +161,7 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void AmountChanged_WHOLENumber(object sender, TextChangedEventArgs e)
         {
-            GeneralMethods.checkAmountTyped(sender);
+            GeneralMethods.checkAmountTyped( );
         }
 
         /// <summary>

@@ -79,6 +79,7 @@ namespace SeleleTravel
                     context.staffs.Add(currentEmployee);
                     context.SaveChanges();
                     MessageBox.Show($"Succesfully added into the database. New Employee ID is: {currentEmployee.staff_id}");
+                    GeneralMethods.clearTextBoxes(new List<TextBox>() { txbNewEmployee_surname, txbNewEmployee_name, txbNewEmployee_address, txbNewEmployee_city, txbNewEmployee_areaCode, txbEmployee_cellphone, txbNewEmployee_telephone, txbNewEmployee_fax, txbNewEmployee_email, txbNewEmployee_position, txbNewEmployee_salary });
                 }//catching the validation error cause it kept popping up for no reason
                 catch (System.Data.Entity.Validation.DbEntityValidationException ex)
                 {
