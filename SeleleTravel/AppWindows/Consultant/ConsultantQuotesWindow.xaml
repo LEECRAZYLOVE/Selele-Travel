@@ -312,41 +312,45 @@
                         </ListBox>
                         <Button  x:Name="btnOldClient_select"  Content="Select Client" FontSize="20" Width="300" Click="BtnOldClient_select_Click" />
                     </StackPanel>
+                    <Calendar HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="Consultant no:" HorizontalAlignment="Left" Margin="516,582,0,0" VerticalAlignment="Top" Width="136" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txbConsultant_no" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="516,617,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="157"/>
                 </Grid>
             </TabItem>
             <!--Car Hire -->
             <TabItem Header="Car Hire" Style="{DynamicResource TabItemStyle}">
                 <Grid Background="#eee">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="311*"/>
+                        <ColumnDefinition Width="49*"/>
+                        <ColumnDefinition Width="263*"/>
                         <ColumnDefinition Width="875*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Labels-->
-                    <Label Content="Name of Agency:" Margin="60,20,114,617" />
-                    <Label Content="Pick Up location:" Margin="60,94,108,529"/>
-                    <Label Content="Drop Off location:" Margin="150,95,593,529" Grid.Column="1"/>
-                    <Label Content="Start Day:" Margin="60,159,156,487"/>
-                    <Label Content="End Day:" Margin="150,159,646,487" Grid.Column="1"/>
-                    <Label Content="R" Margin="667,587,158,61" Grid.Column="1" />
-                    <Label Content="Specifications:" Margin="60,274,114,365" />
-                    <Label Content="Number of cars:" Height="48" VerticalAlignment="Top" Margin="60,221,114,0"/>
-                    <Label Content="TOTAL:" Margin="667,543,43,101" Grid.Column="1" />
+                    <Label Content="Name of Agency:" Margin="11.5,20,114,617" Grid.Column="1" />
+                    <Label Content="Pick Up location:" Margin="11.5,94,108,529" Grid.Column="1"/>
+                    <Label Content="Drop Off location:" Margin="150,95,593,529" Grid.Column="2"/>
+                    <Label Content="Start Day:" Margin="11.5,159,156,487" Grid.Column="1"/>
+                    <Label Content="End Day:" Margin="150,159,646,487" Grid.Column="2"/>
+                    <Label Content="R" Margin="667,587,158,61" Grid.Column="2" />
+                    <Label Content="Specifications:" Margin="11.5,274,114,365" Grid.Column="1" />
+                    <Label Content="Number of cars:" Height="48" VerticalAlignment="Top" Margin="11.5,221,114,0" Grid.Column="1"/>
+                    <Label Content="TOTAL:" Margin="667,543,43,101" Grid.Column="2" />
 
                     <!--Input region-->
-                    <TextBox x:Name="txbCarHire_agency" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="650" Margin="210,23,0,0" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="txbCarHire_pickUp" HorizontalAlignment="Left" Height="30" Margin="210,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="txbCarHire_dropOff" HorizontalAlignment="Left" Height="30" Margin="289,94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Grid.Column="1"/>
-                    <DatePicker x:Name="dpCarHire_startDay" HorizontalAlignment="Left" Margin="210,160,0,0" VerticalAlignment="Top" Width="246" d:IsHidden="False" Grid.ColumnSpan="2"/>
-                    <DatePicker x:Name="dpCarHire_endDay" HorizontalAlignment="Left" Margin="289,160,0,0" VerticalAlignment="Top" Width="260" Grid.Column="1"/>
-                    <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Margin="210,221,0,0" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txbCarHire_agency" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="650" Margin="161.5,23,0,0" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <TextBox x:Name="txbCarHire_pickUp" HorizontalAlignment="Left" Height="30" Margin="161.5,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <TextBox x:Name="txbCarHire_dropOff" HorizontalAlignment="Left" Height="30" Margin="289,94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Grid.Column="2"/>
+                    <DatePicker x:Name="dpCarHire_startDay" HorizontalAlignment="Left" Margin="161.5,160,0,0" VerticalAlignment="Top" Width="246" d:IsHidden="False" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <DatePicker x:Name="dpCarHire_endDay" HorizontalAlignment="Left" Margin="289,160,0,0" VerticalAlignment="Top" Width="260" Grid.Column="2"/>
+                    <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Margin="161.5,221,0,0" Grid.ColumnSpan="2" Grid.Column="1"/>
 
-                    <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="335" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="895" Margin="60,323,0,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="335" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="895" Margin="11.5,323,0,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.Column="1"/>
 
 
-                    <TextBox x:Name="txbCarHire_total" Text="0"  HorizontalAlignment="Left" Height="30" Margin="723,587,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113" TextChanged="AmountChanged" Grid.Column="1"/>
-                    <Button x:Name="btnCarHire_Done" Content="DONE" HorizontalAlignment="Left" Margin="667,622,0,0" VerticalAlignment="Top" Width="168" Click="BtnCarHire_Done_Click" Height="35" Grid.Column="1"/>
-                    <Button x:Name="btnCarHire_update" Content="UPDATE"  HorizontalAlignment="Left" Margin="714,10,0,0" VerticalAlignment="Top" Width="121" Background="#FF45D310" Visibility="Visible" Height="43" Click="btnCarHire_update_Click" Grid.Column="1"/>
+                    <TextBox x:Name="txbCarHire_total" Text="0"  HorizontalAlignment="Left" Height="30" Margin="723,587,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113" TextChanged="AmountChanged" Grid.Column="2"/>
+                    <Button x:Name="btnCarHire_Done" Content="DONE" HorizontalAlignment="Left" Margin="667,622,0,0" VerticalAlignment="Top" Width="168" Click="BtnCarHire_Done_Click" Height="35" Grid.Column="2"/>
+                    <Button x:Name="btnCarHire_update" Content="UPDATE"  HorizontalAlignment="Left" Margin="714,10,0,0" VerticalAlignment="Top" Width="121" Background="#FF45D310" Visibility="Visible" Height="43" Click="btnCarHire_update_Click" Grid.Column="2"/>
 
                 </Grid>
             </TabItem>
@@ -718,7 +722,9 @@
                     </Border>
                     <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="87,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
                     <Label x:Name="label" Content="Valid for:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="117,154,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="117,154,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+                    <Button Content="GenerateQuote" Grid.Column="1" HorizontalAlignment="Left" Margin="117,344,0,0" VerticalAlignment="Top" Width="110" Click="Button_Click_1"/>
+                    <Label Content="This is for adding quote to DB" Grid.Column="1" HorizontalAlignment="Left" Margin="55,304,0,0" VerticalAlignment="Top" Width="248" Height="35" RenderTransformOrigin="-0.154,-1.083"/>
                 </Grid>
             </TabItem>
             <!--Send Quotes-->

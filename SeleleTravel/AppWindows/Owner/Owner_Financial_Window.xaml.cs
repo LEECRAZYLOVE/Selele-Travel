@@ -154,7 +154,7 @@ namespace SeleleTravel
         private void btnFinancial_view1_Click(object sender, RoutedEventArgs e)
         {
             string selected = cbxFinancial_entity.SelectedItem.ToString();
-
+ 
 
             using (postgresEntities12th currentClient = new postgresEntities12th())
             {
@@ -187,9 +187,9 @@ namespace SeleleTravel
             }
             
 
-            using (postgresEntities12th currentClient = new postgresEntities12th())
+            using (postgresEntities12th currentQuote = new postgresEntities12th())
             {
-                var query = (from c in currentClient.quotes 
+                var query = (from c in currentQuote.quotes 
 
                              where c.client_no == selected
                              select new
