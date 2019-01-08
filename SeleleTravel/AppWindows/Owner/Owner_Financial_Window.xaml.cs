@@ -150,5 +150,68 @@ namespace SeleleTravel
             lblMultipleMonths_to.Visibility = Visibility.Hidden;
             lblWeekly.Visibility = Visibility.Visible;
         }
-    }
-}
+
+        private void btnFinancial_view1_Click(object sender, RoutedEventArgs e)
+        {
+            string selected = cbxFinancial_entity.SelectedItem.ToString();
+ 
+
+            using (postgresEntities12th currentClient = new postgresEntities12th())
+            {
+                var query = (from c in currentClient.clients
+
+
+                             select new
+                             {
+                                 c.dateadded,
+                                 c.address,
+                                 c.cellphone,
+                                 c.broughtforward,
+                                 c.clientname,
+                                 c.client_no,
+                                 c.emailaddress,
+                                 c.fax,
+                                 c.owe,
+                                 c.telephone,
+                                 c.quote_no
+
+
+                             }).First();
+
+                if (query != null)
+                {
+                    lbFinancial_clientList.Items.Add(query.client_no);
+                    selected = query.client_no;
+                }
+
+            }
+            
+
+            using (postgresEntities12th currentQuote = new postgresEntities12th())
+            {
+                var query = (from c in currentQuote.quotes 
+
+                             where c.client_no == selected
+                             select new
+                             {
+                                 c.quote_no,
+                                 c.client_no,
+                                 c.amount,
+                                 c.service
+                             }).First();
+
+                if (query != null)
+                {
+                    lbFinancial_results1.Items.Add(query.quote_no);
+                }
+            }
+
+
+
+        }
+
+        private void cbxFinancial_entity_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+    } }

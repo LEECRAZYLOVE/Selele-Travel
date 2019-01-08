@@ -30,7 +30,17 @@ namespace SeleleTravel
         }
 
         public List<DateTime> servicesDates = new List<DateTime>();
-        double qouteAmount = 0;
+        double quoteAmount = 0;
+        string service = "";
+        string quote_no = "";
+        string consultant_no = "";
+        string client_no = "";
+        string clientname = "";
+        string datesent = "";
+        string timeQuoted = "";
+        double servicefee = 0;
+        DateTime quoteDate = DateTime.Today;
+        
         #region Client tab
 
         #region New Client
@@ -199,7 +209,7 @@ namespace SeleleTravel
                 emailaddress = emailaddress,
                 fax = fax,
                 cellphone = cellphone,
-                
+
             };
             //Add client to database
             try
@@ -236,8 +246,8 @@ namespace SeleleTravel
 
             // Data verification:
             // make sure that the supplied data is valid
-            List<string> stringVs = new List<string> { nameOfEvent, eventSpecs};
-            
+            List<string> stringVs = new List<string> { nameOfEvent, eventSpecs };
+
             // This returns a bool value,
             // if it returns true then one of the strings are empty
             // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
@@ -259,7 +269,7 @@ namespace SeleleTravel
                 var currentEvent = new @event()//(nameOfEvent, eventSpecs, eventAmount);
                 {
                     eventname = nameOfEvent,
-                    eventspecs=  eventSpecs,
+                    eventspecs = eventSpecs,
                     amount = eventAmount,
                     quote_no = ConsultantHomeWindow.currentQuoteNo,
                     //order_no = "5678"
@@ -317,7 +327,7 @@ namespace SeleleTravel
             bool checkEmptyStrngBool = GeneralMethods.checkEmptytxtBox(stringVs);
             bool checkDatesBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
-            if(!checkEmptyStrngBool && !checkDatesBool)
+            if (!checkEmptyStrngBool && !checkDatesBool)
             {
                 // Add the date to the global list of dates that will be stored
                 servicesDates.Add(dateOfConference);
@@ -354,6 +364,10 @@ namespace SeleleTravel
             string _taxicabSpecs = txbCab_specifications.Text;
             double _totalAmount = Convert.ToDouble(txbCab_total.Text);
 
+            //in prep for quote insertion
+            quoteAmount += _totalAmount;
+            service = $"{service}\nCab Services";
+
             // Data verification
             List<DateTime> dateTimes = new List<DateTime>();
             List<string> stringVs = new List<string>();
@@ -377,8 +391,7 @@ namespace SeleleTravel
             {
                 // todo
                 // create the instance after checking for errors
-                // var taxiCab = new cabservice(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _dateOfPickup, _numberOfcabs, _taxicabSpecs, _totalAmount);
-
+              
                 // Todo sql insertion
                 // ...
                 var context = new SeleleEntities();
@@ -429,14 +442,18 @@ namespace SeleleTravel
             }
 
 
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
 
         }
 
-        #endregion
+       
+     
+    #endregion
 
-        #region Flight tab
+    #region Flight tab
 
-        private List<string> _passengers = new List<string>();
+    private List<string> _passengers = new List<string>();
         private void BtnFlight_done_Click(object sender, RoutedEventArgs e)
         {
             // assign valuesfrom the texbox to the variables
@@ -580,7 +597,42 @@ namespace SeleleTravel
             DateTime _endDay = dpCarHire_endDay.DisplayDate;
             int numberOfCars = Convert.ToInt32(txbCarHire_numCars.Text);
             string carHireSpecs = txbCarHire_specifications.Text;
+            double amount = Convert.ToDouble(txbCarHire_total.Text);
+            //in prep for quote insertion
+            quoteAmount += amount;
+            service = $"{service}\nCarhire";
+           
+            // Todo sql insertion
+            // ...
+            var context = new postgresEntities12th();
+            var currentCarHire = new carhire()
+            {
+                agencyname = agencyName,
+                quote_no = quote_no,
+                pickuplocation=pickUpLocation,
+                dropofflocation = dropOffLocation,
+                dayofhire =_startday,
+                expectedenddate = _endDay,
+                carhirespecifications = numberOfCars+"\n"+ carHireSpecs,
+                amount =amount
+            };
+            //Add cabservice to database
+            try
+            {
+                context.carhires.Add(currentCarHire);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
 
+            }
             // Data Validation
             // Check for errors
             List<DateTime> dateTimes = new List<DateTime> (2) { _startday, _endDay};
@@ -612,7 +664,47 @@ namespace SeleleTravel
                 List<TextBox> toBeCleared = new List<TextBox> { txbCarHire_agency, txbCarHire_pickUp, txbCarHire_dropOff, txbCarHire_numCars, txbCarHire_specifications };
                 GeneralMethods.clearTextBoxes(toBeCleared);
             }
-            
+
+            //Adding service to the Quote
+
+            var currentQuote = new quote()
+            {
+                service = "cabservice\n"
+            };
+            //Add client to database
+            try
+            {
+                context.quotes.Add(currentQuote);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+
+            }
+            //Add carhire to database
+            try
+            {
+                context.carhires.Add(currentCarHire);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+
+            }
         }
 
         #endregion
@@ -634,8 +726,181 @@ namespace SeleleTravel
 
         string quoteNum = "";
 
-        #endregion
+        // add the mark percentage to the total amount of the quote
+        private void BtnQuote_markUp_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        // send verification to the manager
+        private void BtnQuote_requestVerification_Click(object sender, RoutedEventArgs e)
+        {
+            // NB: SET UP LOCAL SERVER TO ALLOW COMM IN THE NETWORK
+            // send verification
+
+            // check the first and last day of the quote
+            List<DateTime> firstANDlastDay =  GeneralMethods.checkFirst_lastDay(servicesDates);
+
+            // save the quote details to the csv file
+            // the format is: quote number, order Number, start date, end date
+            quoteNum = GeneralMethods.makeQuote_no();
+            string tempOrderNum = "To Be Added";
+            GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
+        }
+        
+        // Opening a word document from the program
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // check quote number if it's valid
+            bool checkQ_number = GeneralMethods.checkQuoteNotEmpty(quoteNum);
+            if (checkQ_number)
+            {
+                object oMissing = System.Reflection.Missing.Value;
+                object oEndOfDoc = "\\endofdoc"; /* \endofdoc is a predefined bookmark */
+
+                //Start Word and create a new document.
+                Word._Application oWord;
+                Word._Document oDoc;
+                oWord = new Word.Application();
+                oWord.Visible = true;
+                oDoc = oWord.Documents.Add(ref oMissing, ref oMissing,
+                ref oMissing, ref oMissing);
+
+                //Insert a paragraph at the beginning of the document.
+                Word.Paragraph oPara1;
+                oPara1 = oDoc.Content.Paragraphs.Add(ref oMissing);
+                oPara1.Range.Text = "Heading 1";
+                oPara1.Range.Font.Bold = 1;
+                oPara1.Format.SpaceAfter = 24;    //24 pt spacing after paragraph.
+                oPara1.Range.InsertParagraphAfter();
+
+                //Insert a paragraph at the end of the document.
+                Word.Paragraph oPara2;
+                object oRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                oPara2 = oDoc.Content.Paragraphs.Add(ref oRng);
+                oPara2.Range.Text = "Heading 2";
+                oPara2.Format.SpaceAfter = 6;
+                oPara2.Range.InsertParagraphAfter();
+
+                //Insert another paragraph.
+                Word.Paragraph oPara3;
+                oRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                oPara3 = oDoc.Content.Paragraphs.Add(ref oRng);
+                oPara3.Range.Text = "This is a sentence of normal text. Now here is a table:";
+                oPara3.Range.Font.Bold = 0;
+                oPara3.Format.SpaceAfter = 24;
+                oPara3.Range.InsertParagraphAfter();
+
+                //Insert a 3 x 5 table, fill it with data, and make the first row
+                //bold and italic.
+                Word.Table oTable;
+                Word.Range wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                oTable = oDoc.Tables.Add(wrdRng, 3, 5, ref oMissing, ref oMissing);
+                oTable.Range.ParagraphFormat.SpaceAfter = 6;
+                int r, c;
+                string strText;
+                for (r = 1; r <= 3; r++)
+                    for (c = 1; c <= 5; c++)
+                    {
+                        strText = "r" + r + "c" + c;
+                        oTable.Cell(r, c).Range.Text = strText;
+                    }
+                oTable.Rows[1].Range.Font.Bold = 1;
+                oTable.Rows[1].Range.Font.Italic = 1;
+
+                //Add some text after the table.
+                Word.Paragraph oPara4;
+                oRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                oPara4 = oDoc.Content.Paragraphs.Add(ref oRng);
+                oPara4.Range.InsertParagraphBefore();
+                oPara4.Range.Text = "And here's another table:";
+                oPara4.Format.SpaceAfter = 24;
+                oPara4.Range.InsertParagraphAfter();
+
+                //Insert a 5 x 2 table, fill it with data, and change the column widths.
+                wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                oTable = oDoc.Tables.Add(wrdRng, 5, 2, ref oMissing, ref oMissing);
+                oTable.Range.ParagraphFormat.SpaceAfter = 6;
+                for (r = 1; r <= 5; r++)
+                    for (c = 1; c <= 2; c++)
+                    {
+                        strText = "r" + r + "c" + c;
+                        oTable.Cell(r, c).Range.Text = strText;
+                    }
+                oTable.Columns[1].Width = oWord.InchesToPoints(2); //Change width of columns 1 & 2
+                oTable.Columns[2].Width = oWord.InchesToPoints(3);
+
+                //Keep inserting text. When you get to 7 inches from top of the
+                //document, insert a hard page break.
+                object oPos;
+                double dPos = oWord.InchesToPoints(7);
+                oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range.InsertParagraphAfter();
+                do
+                {
+                    wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                    wrdRng.ParagraphFormat.SpaceAfter = 6;
+                    wrdRng.InsertAfter("A line of text");
+                    wrdRng.InsertParagraphAfter();
+                    oPos = wrdRng.get_Information
+                                           (Word.WdInformation.wdVerticalPositionRelativeToPage);
+                }
+                while (dPos >= Convert.ToDouble(oPos));
+                object oCollapseEnd = Word.WdCollapseDirection.wdCollapseEnd;
+                object oPageBreak = Word.WdBreakType.wdPageBreak;
+                wrdRng.Collapse(ref oCollapseEnd);
+                wrdRng.InsertBreak(ref oPageBreak);
+                wrdRng.Collapse(ref oCollapseEnd);
+                wrdRng.InsertAfter("We're now on page 2. Here's my chart:");
+                wrdRng.InsertParagraphAfter();
+
+                //Insert a chart.
+                Word.InlineShape oShape;
+                object oClassType = "MSGraph.Chart.8";
+                wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                oShape = wrdRng.InlineShapes.AddOLEObject(ref oClassType, ref oMissing,
+                ref oMissing, ref oMissing, ref oMissing,
+                ref oMissing, ref oMissing, ref oMissing);
+
+                //Demonstrate use of late bound oChart and oChartApp objects to
+                //manipulate the chart object with MSGraph.
+                object oChart;
+                object oChartApp;
+                oChart = oShape.OLEFormat.Object;
+                oChartApp = oChart.GetType().InvokeMember("Application",
+                BindingFlags.GetProperty, null, oChart, null);
+
+                //Change the chart type to Line.
+                object[] Parameters = new Object[1];
+                Parameters[0] = 4; //xlLine = 4
+                oChart.GetType().InvokeMember("ChartType", BindingFlags.SetProperty,
+                null, oChart, Parameters);
+
+                //Update the chart image and quit MSGraph.
+                oChartApp.GetType().InvokeMember("Update",
+                BindingFlags.InvokeMethod, null, oChartApp, null);
+                oChartApp.GetType().InvokeMember("Quit",
+                BindingFlags.InvokeMethod, null, oChartApp, null);
+                //... If desired, you can proceed from here using the Microsoft Graph 
+                //Object model on the oChart and oChartApp objects to make additional
+                //changes to the chart.
+
+                //Set the width of the chart.
+                oShape.Width = oWord.InchesToPoints(6.25f);
+                oShape.Height = oWord.InchesToPoints(3.57f);
+
+                //Add text after the chart.
+                wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                wrdRng.InsertParagraphAfter();
+                wrdRng.InsertAfter("THE END.");
+
+                //Close this form.
+                this.Close();
+            }
+            
+        }
+        
+        #endregion
+        
         private void BtnConsultant_logOut_Click(object sender, RoutedEventArgs e)
         {
             GeneralMethods.logOut(this);
@@ -669,7 +934,69 @@ namespace SeleleTravel
 
         private void BtnEvents_done_Click(object sender, RoutedEventArgs e)
         {
+            // assign vars to the textboxes
+            string nameOfEvent = txbEvents_name.Text;
+            string eventSpecs = txbEvents_specifications.Text;
+            double eventAmount = Convert.ToDouble(txbEvents_total.Text);
+            DateTime eventStartdate = dpEvents_startDate.DisplayDate;
+            DateTime eventEnddate = dpEvents_endDate.DisplayDate;
+            //in prep for quote insertion
+            quoteAmount += eventAmount;
+            service = $"{service}\nEvent";
+            // Data verification:
+            // make sure that the supplied data is valid
+            List<string> stringVs = new List<string> { nameOfEvent, eventSpecs };
 
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
+            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
+
+            // check if the dates are empty
+            List<DateTime> tempDateTime = new List<DateTime> { eventStartdate, eventEnddate };
+            bool dateBoolValue = GeneralMethods.checkDateTimeBox(tempDateTime);
+
+            if (!boolValue && !dateBoolValue)
+            {
+
+                // Add the date to the global list of dates that will be stored
+                servicesDates.Add(eventStartdate);
+                servicesDates.Add(eventEnddate);
+
+
+                //sql insertion
+                var context = new postgresEntities12th();
+                var currentEvent = new @event()
+                {
+                    quote_no = quote_no,
+                    eventspecs = eventSpecs,
+                    eventname = nameOfEvent,
+                    amount = eventAmount,
+                    startday = eventStartdate,
+                    endday = eventEnddate
+                };
+                //Add cabservice to database
+                try
+                {
+                    context.events.Add(currentEvent);
+                    context.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                }
+                catch (Exception ex)
+                {
+                    //other error
+                    throw ex;
+
+                }
+                // reset texbox values to empty
+                // call the clear textbox method
+                List<TextBox> textBoxes = new List<TextBox> { txbEvents_name, txbEvents_specifications, txbEvents_total };
+                GeneralMethods.clearTextBoxes(textBoxes);
+
+            }
         }
 
         private void BtnOldClient_find_Click(object sender, RoutedEventArgs e)
@@ -772,7 +1099,42 @@ namespace SeleleTravel
             string conferenceTime = txbConference_time.Text;
             string specsOfConference = txbConference_specifications.Text;
             double amountOfconf = Convert.ToDouble(txbConference_total.Text);
+            //in prep for quote insertion
+            quoteAmount += amountOfconf;
+            service = $"{service}\nConference";
+            // Todo sql insertion
+            // ...
+            var context = new postgresEntities12th();
+            var currentConference = new conference()
+            {
 
+                quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
+                conferencename = conferenceName,
+                venue = conferenceVenue,
+                startday= startDateOfConference,
+                endday = endDateofConference,
+                timeconference = conferenceTime,
+                conferencespecs = specsOfConference,
+                amount = amountOfconf
+
+            };
+            //Add conference to database
+            try
+            {
+                context.conferences.Add(currentConference);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+
+            }
             // Data Verification:
             // check if the variables are empty
             List<DateTime> dateTimes = new List<DateTime> { startDateOfConference, endDateofConference };
@@ -793,9 +1155,7 @@ namespace SeleleTravel
                 // todo...
                 // conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
 
-                // Todo sql insertion
-                // ...
-
+                
                 // reset texbox values to empty
                 // call the clear textbox method
                 List<TextBox> textBoxes = new List<TextBox> { txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total };
@@ -855,13 +1215,18 @@ namespace SeleleTravel
         private void btnFlight_done_Click_1(object sender, RoutedEventArgs e)
         {
             string airline = txbFlight_airline.Text;
-            string quote_no = "Q0001";
             string fromcity = txbFlight_from.Text;
             string tocity = txbFlight_to.Text;
             DateTime departdate = Convert.ToDateTime(dpFlight_departure.Text);
             int numberofbags = Convert.ToInt32(txbFlight_numBags.Text);
             double amount = Convert.ToDouble(txbFlight_total.Text);
             string flightspecs = txbFlight_specifications.Text;
+
+            //in prep for quote insertion
+            quoteAmount += amount;
+            service = $"{service}\nFlight";
+
+            var context = new postgresEntities12th();
             var context = new SeleleEntities();
             var currentFlight = new flight()
             {
@@ -900,13 +1265,17 @@ namespace SeleleTravel
         {
             string quote_no = ConsultantHomeWindow.currentQuoteNo;
             string accomname = txbAccommodation_name.Text;
-            string accom_id = "AccoPE0001";
+            string accom_id = "AccoPE0001";//this is generated by function for accommodationID
             DateTime checkin = Convert.ToDateTime(dpAccommodation_checkIn.Text);
             DateTime checkout = Convert.ToDateTime(dpAccommodation_checkOut.Text);
             int numberofguests = Convert.ToInt32(txbAccommodation_numGuests.Text);
             int numberofrooms = Convert.ToInt32(txbAccommodation_numRooms.Text);
             double amount = Convert.ToDouble(txbAccommodation_total.Text);
             string accomspecs = txbAccommodation_specifications.Text;
+            //in prep for quote insertion
+            quoteAmount += amount;
+            service = $"{service}\n Accommodation";
+            var context = new postgresEntities12th();
             var context = new SeleleEntities();
             var currentAccommodation = new accommodation()
             {
@@ -922,7 +1291,7 @@ namespace SeleleTravel
                 amount = amount
 
             };
-            //Add flight to database
+            //Add accommodation to database
             try
             {
                 context.accommodations.Add(currentAccommodation);
@@ -1119,7 +1488,7 @@ namespace SeleleTravel
                              select new
                              {
                                  c.amount,
-
+                                
 
                              }).First();
 
@@ -1231,6 +1600,46 @@ namespace SeleleTravel
 
         private void BtnFlight_addPassenger_Click_1(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void AmountChanged_WHOLENumber(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //Todo sql insertion
+                   // ...
+                   var context = new postgresEntities12th();
+            var currentQuote = new quote()
+            {
+               
+                quote_no=quote_no,
+                amount=quoteAmount,
+                service=service,
+                timequoted=timeQuoted,
+                quotedate=quoteDate,
+                consultant_no=consultant_no,
+                client_no=client_no,
+                clientname=clientname
+            };
+            //Add quote to database
+            try
+            {
+                context.quotes.Add(currentQuote);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
             string passangerName = txbFlight_passangerName.Text;
             ltbFlight_passengersOutput.Items.Add(passangerName);
             ltbFlight_passengersOutput.Items.Refresh();
@@ -1246,5 +1655,5 @@ namespace SeleleTravel
             GeneralMethods.quoteSummary(ConsultantHomeWindow.currentQuoteNo);
         }
     }
-}
+    }
 
