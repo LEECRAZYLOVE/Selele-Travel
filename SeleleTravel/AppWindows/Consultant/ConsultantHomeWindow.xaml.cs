@@ -21,6 +21,8 @@ namespace SeleleTravel
     /// </summary>
     public partial class ConsultantHomeWindow : Window
     {
+        public static string currentQuoteNo = "";
+        ConsultantQuotesWindow consultantQuotesWindow = new ConsultantQuotesWindow();
 
         public ConsultantHomeWindow()
         {
@@ -35,11 +37,11 @@ namespace SeleleTravel
 
         private void btnConsultant_Quotes_Click(object sender, RoutedEventArgs e)
         {
-            ConsultantQuotesWindow consultantQuotesWindow = new ConsultantQuotesWindow();
             consultantQuotesWindow.Owner = this;
             consultantQuotesWindow.Show();
             Hide();
-            
+            currentQuoteNo = GeneralMethods.makeQuote_no();
+            MessageBox.Show($"New quote number: {currentQuoteNo}");
         }
 
         private void btnConsultant_search_Click(object sender, RoutedEventArgs e)

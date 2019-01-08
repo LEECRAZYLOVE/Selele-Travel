@@ -98,11 +98,11 @@ namespace SeleleTravel
             string _location = address + '\n' + city + '\n' + areaCode + '\n' + province;
 
             //Initialize Client  and DBConnect instance
-            //var context = new SeleleEntities();
+            var context = new SeleleEntities();
             var currentClient = new client()
             {
                 client_no = "J0001", //This will be automatically generated. I'm using a dummy to test queries.
-                quote_no = "0001",
+                quote_no = ConsultantHomeWindow.currentQuoteNo,
                 clientname = names,
                 cellphone = Cellphone,
                 address = _location,
@@ -112,23 +112,23 @@ namespace SeleleTravel
             };
 
             //Add client to database
-            //try
-            //{
-            //    context.clients.Add(currentClient);
-            //    context.SaveChanges();
-            //    MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentClient.client_no}");
-            //}
-            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            //{
-            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            //}
-            //catch (Exception ex)
-            //{
-            //    //other error
-            //   // throw ex;
+            try
+            {
+                context.clients.Add(currentClient);
+                context.SaveChanges();
+                MessageBox.Show($"Succesfully added into the database. The new Client ID is: {currentClient.client_no}");
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                // throw ex;
 
-            //}
+            }
         }
 
         #endregion
@@ -161,7 +161,7 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void AmountChanged_WHOLENumber(object sender, TextChangedEventArgs e)
         {
-            GeneralMethods.checkAmountTyped( );
+           // GeneralMethods.checkAmountTyped( );
         }
 
         /// <summary>
@@ -177,19 +177,19 @@ namespace SeleleTravel
         #endregion
 
         #region Clients Tab
-
+        //Create New Client
         private void add_Button_Click(object sender, RoutedEventArgs e)
         {
             string clientName=txbNewClient_name.Text+""+ txbNewClient_surname.Text;
             string client_no = "C0001";
-            string quote_no = "Q0001";
+            string quote_no = ConsultantHomeWindow.currentQuoteNo;
             string cellphone = txbNewClient_cellphone.Text;
             string address = txbNewClient_address.Text;
             string emailaddress = txbNewClient_email.Text;
             string telephone = txbNewClient_telephone.Text;
             string fax = txbNewClient_fax.Text;
             
-            var context = new postgresEntities12th();
+            var context = new SeleleEntities();
             var currentClient = new client()
             {
                 client_no = client_no, //This will be automatically generated. I'm using a dummy to test queries.
@@ -206,6 +206,7 @@ namespace SeleleTravel
             {
                 context.clients.Add(currentClient);
                 context.SaveChanges();
+                MessageBox.Show($"Succesfully added into the database. The new Client ID is: {currentClient.client_no}");
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {
@@ -218,6 +219,7 @@ namespace SeleleTravel
                 throw ex;
 
             }
+
         }
         #endregion
 
@@ -243,9 +245,9 @@ namespace SeleleTravel
 
             // check if the dates are empty
             List<DateTime> tempDateTime = new List<DateTime> { eventStartdate, eventEnddate };
-            bool dateBoolValue = GeneralMethods.checkDateTimeBox(tempDateTime);
+            //bool dateBoolValue = GeneralMethods.checkDateTimeBox(tempDateTime);
             
-            if (!boolValue && !dateBoolValue)
+            if (!boolValue )//&& !dateBoolValue)
             {
 
                 // Add the date to the global list of dates that will be stored
@@ -259,7 +261,7 @@ namespace SeleleTravel
                     eventname = nameOfEvent,
                     eventspecs=  eventSpecs,
                     amount = eventAmount,
-                    quote_no = "1234",
+                    quote_no = ConsultantHomeWindow.currentQuoteNo,
                     //order_no = "5678"
                 };
 
@@ -306,7 +308,7 @@ namespace SeleleTravel
 
             // Data Verification:
             // check if the variables are empty
-            List<DateTime> dateTimes = new List<DateTime> { startDateOfConference, endDateofConference};
+            List<DateTime> dateTimes = new List<DateTime> { dateOfConference, endDateofConference};
             List<string> stringVs = new List<string> { conferenceName, conferenceVenue, conferenceTime, specsOfConference};
             
             // This returns a bool value,
@@ -318,7 +320,7 @@ namespace SeleleTravel
             if(!checkEmptyStrngBool && !checkDatesBool)
             {
                 // Add the date to the global list of dates that will be stored
-                servicesDates.Add(startDateOfConference);
+                servicesDates.Add(dateOfConference);
                 servicesDates.Add(endDateofConference);
 
                 // todo...
@@ -369,9 +371,9 @@ namespace SeleleTravel
             // if it returns true then one of the strings are empty
             // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
             bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
-            bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
+           // bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
-            if(!boolValue && !valueOfBool)
+            if(!boolValue )//&& !valueOfBool)
             {
                 // todo
                 // create the instance after checking for errors
@@ -379,26 +381,27 @@ namespace SeleleTravel
 
                 // Todo sql insertion
                 // ...
-                var context = new postgresEntities12th();
+                var context = new SeleleEntities();
                 var currentCabService = new cabservice()
                 {
                     nameofagency=_agencyName, 
                     agency_id="Cab0001",//This will be automatically generated. I'm using a dummy to test queries.
-                    quote_no="Q0001",
+                    quote_no= ConsultantHomeWindow.currentQuoteNo,
                     nameofdriver=_driverName,
                     pickup=_pickUpLocation,
                     dropoff=_dropOffLocation,
                     dateofcab=_dateOfPickup,
                     numberofcabs=_numberOfcabs,
                     amount=_totalAmount,
-                   timeofcab=_timeOfPickUp,
-                   cabspecs=_taxicabSpecs
+                    timeofcab=_timeOfPickUp,
+                    cabspecs=_taxicabSpecs
                 };
                 //Add cabservice to database
                 try
                 {
                     context.cabservices.Add(currentCabService);
                     context.SaveChanges();
+                    MessageBox.Show($"Succesfully added cab details into the database");
                 }
                 catch (System.Data.Entity.Validation.DbEntityValidationException ex)
                 {
@@ -501,6 +504,7 @@ namespace SeleleTravel
 
                 // clear the passangers
                 _passengers = new List<string>();
+                 int numPassenger = _passengers.Count();
             }
 
             
@@ -510,14 +514,7 @@ namespace SeleleTravel
 
         private void BtnFlight_addPassenger_Click(object sender, RoutedEventArgs e)
         {
-            string passangerName = txbFlight_passangerName.Text;
-            ltbFlight_passengersOutput.Items.Add(passangerName);
-            ltbFlight_passengersOutput.Items.Refresh();
-
-            for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
-            {
-                _passengers[i] = ltbFlight_passengersOutput.Items[i].ToString();
-            }
+            
         }
 
         #endregion
@@ -637,30 +634,316 @@ namespace SeleleTravel
 
         string quoteNum = "";
 
-        // add the mark percentage to the total amount of the quote
-        private void BtnQuote_markUp_Click(object sender, RoutedEventArgs e)
+        #endregion
+
+        private void BtnConsultant_logOut_Click(object sender, RoutedEventArgs e)
+        {
+            GeneralMethods.logOut(this);
+
+        }
+
+        private void TxbNewClient_name_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
-        // send verification to the manager
-        private void BtnQuote_requestVerification_Click(object sender, RoutedEventArgs e)
+        private void BtnClient_add_Click(object sender, RoutedEventArgs e)
         {
-            // NB: SET UP LOCAL SERVER TO ALLOW COMM IN THE NETWORK
-            // send verification
 
-            // check the first and last day of the quote
-            List<DateTime> firstANDlastDay =  GeneralMethods.checkFirst_lastDay(servicesDates);
-
-            // save the quote details to the csv file
-            // the format is: quote number, order Number, start date, end date
-            quoteNum = GeneralMethods.makeQuote_no();
-            string tempOrderNum = "To Be Added";
-            GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
         }
-        
+
+        private void Consultant_Quotes_Window_Closed(object sender, EventArgs e)
+        {
+            Owner.Show();
+        }
+
+        private void btnOldClient_update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEvents_done_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnOldClient_find_Click(object sender, RoutedEventArgs e)
+        {
+            // Assign the value to be searched to the variable
+            string findName = txbOldClient_find.Text;
+
+            // Results from the database
+            //txblOldClient_Details.Text = "";
+        }
+
+        private void btnOldClient_select_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+     
+
+        private void btnOldClient_find_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEvents_done_Click(object sender, RoutedEventArgs e)
+        {
+            // assign vars to the textboxes
+            string nameOfEvent = txbEvents_name.Text;
+            string eventSpecs = txbEvents_specifications.Text;
+            double eventAmount = Convert.ToDouble(txbEvents_total.Text);
+            DateTime eventStartdate = dpEvents_startDate.DisplayDate;
+            DateTime eventEnddate = dpEvents_endDate.DisplayDate;
+            string quote_no = ConsultantHomeWindow.currentQuoteNo;
+            // Data verification:
+            // make sure that the supplied data is valid
+            List<string> stringVs = new List<string> { nameOfEvent, eventSpecs };
+
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
+            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
+
+            // check if the dates are empty
+            List<DateTime> tempDateTime = new List<DateTime> { eventStartdate, eventEnddate };
+            bool dateBoolValue = GeneralMethods.checkDateTimeBox(tempDateTime);
+
+            if (!boolValue && !dateBoolValue)
+            {
+
+                // Add the date to the global list of dates that will be stored
+                servicesDates.Add(eventStartdate);
+                servicesDates.Add(eventEnddate);
+
+               
+                //sql insertion
+                var context = new SeleleEntities();
+                var currentEvent = new @event()
+                {
+                    quote_no=quote_no,
+                    eventspecs=eventSpecs,
+                    eventname=nameOfEvent,
+                    amount=eventAmount,
+                    startday=eventStartdate,
+                    endday=eventEnddate
+
+                };
+                //Add cabservice to database
+                try
+                {
+                    context.events.Add(currentEvent);
+                    context.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                }
+                catch (Exception ex)
+                {
+                    //other error
+                    throw ex;
+
+                }
+                // reset texbox values to empty
+                // call the clear textbox method
+                List<TextBox> textBoxes = new List<TextBox> { txbEvents_name, txbEvents_specifications, txbEvents_total };
+                GeneralMethods.clearTextBoxes(textBoxes);
+
+            }
+        }
+         private void btnEvents_update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnConference_done_Click_1(object sender, RoutedEventArgs e)
+        {
+            string conferenceName = txbConference_name.Text;
+            string conferenceVenue = txbConference_venue.Text;
+            DateTime startDateOfConference = dpConference_startDate.DisplayDate;
+            DateTime endDateofConference = dpConference_endDate.DisplayDate;
+            string conferenceTime = txbConference_time.Text;
+            string specsOfConference = txbConference_specifications.Text;
+            double amountOfconf = Convert.ToDouble(txbConference_total.Text);
+
+            // Data Verification:
+            // check if the variables are empty
+            List<DateTime> dateTimes = new List<DateTime> { startDateOfConference, endDateofConference };
+            List<string> stringVs = new List<string> { conferenceName, conferenceVenue, conferenceTime, specsOfConference };
+
+            // This returns a bool value,
+            // if it returns true then one of the strings are empty
+            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
+            bool checkEmptyStrngBool = GeneralMethods.checkEmptytxtBox(stringVs);
+            bool checkDatesBool = GeneralMethods.checkDateTimeBox(dateTimes);
+
+            if (!checkEmptyStrngBool && !checkDatesBool)
+            {
+                // Add the date to the global list of dates that will be stored
+                servicesDates.Add(startDateOfConference);
+                servicesDates.Add(endDateofConference);
+
+                // todo...
+                // conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
+
+                // Todo sql insertion
+                // ...
+
+                // reset texbox values to empty
+                // call the clear textbox method
+                List<TextBox> textBoxes = new List<TextBox> { txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total };
+                GeneralMethods.clearTextBoxes(textBoxes);
+
+            }
+        }
+
+        private void btnConference_update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCarHire_update_Click(object sender, RoutedEventArgs e)
+        {
+            string quote_no = "Q0001";
+            string agencyname =txbCarHire_agency.Text;
+            string pickuplocation = txbCarHire_pickUp.Text;
+            string dropofflocation = txbCarHire_dropOff.Text;
+            DateTime dayofhire = Convert.ToDateTime(dpCarHire_startDay.Text);
+            DateTime expectedenddate = Convert.ToDateTime(dpCarHire_endDay.Text);
+            string carhirespecifications = $"Number of Cars: {txbCarHire_numCars.Text}\n {txbCarHire_specifications}";
+            double amount = Convert.ToDouble(txbCarHire_total.Text);
+            var context = new SeleleEntities();
+            var currentCarHire = new carhire()
+            {
+
+                quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
+                agencyname = agencyname,
+                pickuplocation = pickuplocation,
+                dropofflocation = dropofflocation,
+                dayofhire = dayofhire,
+                expectedenddate = expectedenddate,
+                carhirespecifications = carhirespecifications,
+                amount = amount
+
+            };
+            //Add carhire to database
+            try
+            {
+                context.carhires.Add(currentCarHire);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+
+            }
+        }
+
+        private void btnFlight_done_Click_1(object sender, RoutedEventArgs e)
+        {
+            string airline = txbFlight_airline.Text;
+            string quote_no = "Q0001";
+            string fromcity = txbFlight_from.Text;
+            string tocity = txbFlight_to.Text;
+            DateTime departdate = Convert.ToDateTime(dpFlight_departure.Text);
+            int numberofbags = Convert.ToInt32(txbFlight_numBags.Text);
+            double amount = Convert.ToDouble(txbFlight_total.Text);
+            string flightspecs = txbFlight_specifications.Text;
+            var context = new SeleleEntities();
+            var currentFlight = new flight()
+            {
+
+                quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
+                airline = airline,
+                fromcity = fromcity,
+                tocity=tocity,
+                departdate=departdate,
+                numberofbags=numberofbags,
+                flightspecs=flightspecs,
+                amount = amount,
+                passengernum = _passengers.Count()
+            };
+            //Add flight to database
+            try
+            {
+                context.flights.Add(currentFlight);
+                context.SaveChanges();
+                MessageBox.Show($"Succesfully added flight details into the database");
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+
+            }
+        }
+
+        private void btnAccommodation_done_Click_1(object sender, RoutedEventArgs e)
+        {
+            string quote_no = ConsultantHomeWindow.currentQuoteNo;
+            string accomname = txbAccommodation_name.Text;
+            string accom_id = "AccoPE0001";
+            DateTime checkin = Convert.ToDateTime(dpAccommodation_checkIn.Text);
+            DateTime checkout = Convert.ToDateTime(dpAccommodation_checkOut.Text);
+            int numberofguests = Convert.ToInt32(txbAccommodation_numGuests.Text);
+            int numberofrooms = Convert.ToInt32(txbAccommodation_numRooms.Text);
+            double amount = Convert.ToDouble(txbAccommodation_total.Text);
+            string accomspecs = txbAccommodation_specifications.Text;
+            var context = new SeleleEntities();
+            var currentAccommodation = new accommodation()
+            {
+
+                quote_no = ConsultantHomeWindow.currentQuoteNo,//This will be automatically generated. I'm using a dummy to test queries.
+                accomname = accomname,
+                accom_id=accom_id,
+                checkin=checkin,
+                checkout=checkout,
+                numberofguests=numberofguests,
+                numberofrooms=numberofrooms,
+                accomspecs=accomspecs,
+                amount = amount
+
+            };
+            //Add flight to database
+            try
+            {
+                context.accommodations.Add(currentAccommodation);
+                context.SaveChanges();
+                MessageBox.Show($"Succesfully added acccomomodation details into the database");
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+
+            }
+        }
+
         // Opening a word document from the program
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnQuoteSummar_document_Click(object sender, RoutedEventArgs e)
         {
             // check quote number if it's valid
             bool checkQ_number = GeneralMethods.checkQuoteNotEmpty(quoteNum);
@@ -806,421 +1089,161 @@ namespace SeleleTravel
 
                 //Close this form.
                 this.Close();
-            }
-            
+            }           
+                   
         }
-        
-        #endregion
-        
-        private void BtnConsultant_logOut_Click(object sender, RoutedEventArgs e)
+
+        // send verification to the manager
+        private void BtnQuote_requestVerification_Click(object sender, RoutedEventArgs e)
         {
-            GeneralMethods.logOut(this);
+            // NB: SET UP LOCAL SERVER TO ALLOW COMM IN THE NETWORK
+            // send verification
 
-        }
+            // check the first and last day of the quote
+            List<DateTime> firstANDlastDay = GeneralMethods.checkFirst_lastDay(servicesDates);
 
-        private void TxbNewClient_name_TextChanged(object sender, TextChangedEventArgs e)
-        {
+            // save the quote details to the csv file
+            // the format is: quote number, order Number, start date, end date
+            quoteNum = GeneralMethods.makeQuote_no();
+            string tempOrderNum = "To Be Added";
+            GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
 
-        }
-
-        private void BtnClient_add_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Consultant_Quotes_Window_Closed(object sender, EventArgs e)
-        {
-            Owner.Show();
-        }
-
-        private void btnOldClient_update_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnEvents_done_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnOldClient_find_Click(object sender, RoutedEventArgs e)
-        {
-            // Assign the value to be searched to the variable
-            string findName = txbOldClient_find.Text;
-
-            // Results from the database
-            //txblOldClient_Details.Text = "";
-        }
-
-        private void btnOldClient_select_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnOldClient_update_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnOldClient_find_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnEvents_done_Click(object sender, RoutedEventArgs e)
-        {
-            // assign vars to the textboxes
-            string nameOfEvent = txbEvents_name.Text;
-            string eventSpecs = txbEvents_specifications.Text;
-            double eventAmount = Convert.ToDouble(txbEvents_total.Text);
-            DateTime eventStartdate = dpEvents_startDate.DisplayDate;
-            DateTime eventEnddate = dpEvents_endDate.DisplayDate;
-            string quote_no = "Q0001";
-            // Data verification:
-            // make sure that the supplied data is valid
-            List<string> stringVs = new List<string> { nameOfEvent, eventSpecs };
-
-            // This returns a bool value,
-            // if it returns true then one of the strings are empty
-            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
-            bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
-
-            // check if the dates are empty
-            List<DateTime> tempDateTime = new List<DateTime> { eventStartdate, eventEnddate };
-            bool dateBoolValue = GeneralMethods.checkDateTimeBox(tempDateTime);
-
-            if (!boolValue && !dateBoolValue)
-            {
-
-                // Add the date to the global list of dates that will be stored
-                servicesDates.Add(eventStartdate);
-                servicesDates.Add(eventEnddate);
-
-               
-                //sql insertion
-                var context = new postgresEntities12th();
-                var currentEvent = new @event()
-                {
-                    quote_no=quote_no,
-                    eventspecs=eventSpecs,
-                    eventname=nameOfEvent,
-                    amount=eventAmount,
-                    startday=eventStartdate,
-                    endday=eventEnddate
-
-                };
-                //Add cabservice to database
-                try
-                {
-                    context.events.Add(currentEvent);
-                    context.SaveChanges();
-                }
-                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-                {
-                    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                }
-                catch (Exception ex)
-                {
-                    //other error
-                    throw ex;
-
-                }
-                // reset texbox values to empty
-                // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox> { txbEvents_name, txbEvents_specifications, txbEvents_total };
-                GeneralMethods.clearTextBoxes(textBoxes);
-
-            }
-        }
-         private void btnEvents_update_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnConference_done_Click_1(object sender, RoutedEventArgs e)
-        {
-            string conferenceName = txbConference_name.Text;
-            string conferenceVenue = txbConference_venue.Text;
-            DateTime startDateOfConference = dpConference_startDate.DisplayDate;
-            DateTime endDateofConference = dpConference_endDate.DisplayDate;
-            string conferenceTime = txbConference_time.Text;
-            string specsOfConference = txbConference_specifications.Text;
-            double amountOfconf = Convert.ToDouble(txbConference_total.Text);
-
-            // Data Verification:
-            // check if the variables are empty
-            List<DateTime> dateTimes = new List<DateTime> { startDateOfConference, endDateofConference };
-            List<string> stringVs = new List<string> { conferenceName, conferenceVenue, conferenceTime, specsOfConference };
-
-            // This returns a bool value,
-            // if it returns true then one of the strings are empty
-            // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
-            bool checkEmptyStrngBool = GeneralMethods.checkEmptytxtBox(stringVs);
-            bool checkDatesBool = GeneralMethods.checkDateTimeBox(dateTimes);
-
-            if (!checkEmptyStrngBool && !checkDatesBool)
-            {
-                // Add the date to the global list of dates that will be stored
-                servicesDates.Add(startDateOfConference);
-                servicesDates.Add(endDateofConference);
-
-                // todo...
-                // conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
-
-                // Todo sql insertion
-                // ...
-
-                // reset texbox values to empty
-                // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox> { txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total };
-                GeneralMethods.clearTextBoxes(textBoxes);
-
-            }
-        }
-
-        private void btnConference_update_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnCarHire_update_Click(object sender, RoutedEventArgs e)
-        {
-            string quote_no = "Q0001";
-            string agencyname =txbCarHire_agency.Text;
-            string pickuplocation = txbCarHire_pickUp.Text;
-            string dropofflocation = txbCarHire_dropOff.Text;
-            DateTime dayofhire = Convert.ToDateTime(dpCarHire_startDay.Text);
-            DateTime expectedenddate = Convert.ToDateTime(dpCarHire_endDay.Text);
-            string carhirespecifications = $"Number of Cars: {txbCarHire_numCars.Text}\n {txbCarHire_specifications}";
-            double amount = Convert.ToDouble(txbCarHire_total.Text);
-            var context = new postgresEntities12th();
-            var currentCarHire = new carhire()
-            {
-
-                quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
-                agencyname = agencyname,
-                pickuplocation = pickuplocation,
-                dropofflocation = dropofflocation,
-                dayofhire = dayofhire,
-                expectedenddate = expectedenddate,
-                carhirespecifications = carhirespecifications,
-                amount = amount
-
-            };
-            //Add carhire to database
-            try
-            {
-                context.carhires.Add(currentCarHire);
-                context.SaveChanges();
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-                throw ex;
-
-            }
-        }
-
-        private void btnFlight_done_Click_1(object sender, RoutedEventArgs e)
-        {
-            string airline = txbFlight_airline.Text;
-            string quote_no = "Q0001";
-            string fromcity = txbFlight_from.Text;
-            string tocity = txbFlight_to.Text;
-            DateTime departdate = Convert.ToDateTime(dpFlight_departure.Text);
-            int numberofbags = Convert.ToInt32(txbFlight_numBags);
-            double amount = Convert.ToDouble(txbFlight_total.Text);
-            string flightspecs = txbFlight_specifications.Text;
-            var context = new postgresEntities12th();
-            var currentFlight = new flight()
-            {
-
-                quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
-                airline = airline,
-                fromcity = fromcity,
-                tocity=tocity,
-                departdate=departdate,
-                numberofbags=numberofbags,
-                flightspecs=flightspecs,
-                amount = amount
-
-            };
-            //Add flight to database
-            try
-            {
-                context.flights.Add(currentFlight);
-                context.SaveChanges();
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-                throw ex;
-
-            }
-        }
-
-        private void btnAccommodation_done_Click_1(object sender, RoutedEventArgs e)
-        {
-            string quote_no = "Q0001";
-            string accomname = txbAccommodation_name.Text;
-            string accom_id = "AccoPE0001";
-            DateTime checkin = Convert.ToDateTime(dpAccommodation_checkIn.Text);
-            DateTime checkout = Convert.ToDateTime(dpAccommodation_checkOut.Text);
-            int numberofguests = Convert.ToInt32(txbAccommodation_numGuests.Text);
-            int numberofrooms = Convert.ToInt32(txbAccommodation_numRooms.Text);
-            double amount = Convert.ToDouble(txbAccommodation_total.Text);
-            string accomspecs = txbAccommodation_specifications.Text;
-            var context = new postgresEntities12th();
-            var currentAccommodation = new accommodation()
-            {
-
-                quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
-                accomname = accomname,
-                accom_id=accom_id,
-                checkin=checkin,
-                checkout=checkout,
-                numberofguests=numberofguests,
-                numberofrooms=numberofrooms,
-                accomspecs=accomspecs,
-                amount = amount
-
-            };
-            //Add flight to database
-            try
-            {
-                context.accommodations.Add(currentAccommodation);
-                context.SaveChanges();
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-                throw ex;
-
-            }
-        }
-
-        private void btnQuoteSummar_document_Click(object sender, RoutedEventArgs e)
-        {//Extracting quoteDetails through a query
+            //Extracting quoteDetails through a query
             double quoteAmount = 0;
             string service = "";
-            using (postgresEntities12th currentQuote = new postgresEntities12th())
+            using (SeleleEntities currentQuote = new SeleleEntities())
             {
-                var query = (from c in currentQuote.cabservices
+                var query = (from c in currentQuote.cabservices //cabservices
 
-                             where c.quote_no == "Q0001"
+                             where c.quote_no == ConsultantHomeWindow.currentQuoteNo
                              select new
                              {
                                  c.amount,
-                                
+
 
                              }).First();
 
                 if (query != null)
                 {
                     quoteAmount += Convert.ToDouble(query.amount);
-                    service = $"{service}\n cabservices";
+                    if (query.amount != 0)
+                    {
+                        service = $"{service}\n cabservices";
+                    }
                 }
-                var query2 = (from c in currentQuote.carhires
+                var query2 = (from c in currentQuote.carhires //car hires
 
-                             where c.quote_no == "Q0001"
-                             select new
-                             {
-                                 c.amount
+                              where c.quote_no == ConsultantHomeWindow.currentQuoteNo
+                              select new
+                              {
+                                  c.amount
 
-                             }).First();
+                              }).First();
 
                 if (query2 != null)
                 {
                     quoteAmount += Convert.ToDouble(query2.amount);
-                    service = $"{service}\n carhire";
+                    if (query2.amount != 0)
+                    {
+                        service = $"{service}\n carhire";
+                    }
                 }
-                var query3 = (from c in currentQuote.conferences
+                var query3 = (from c in currentQuote.conferences //conferences
 
-                             where c.quote_no == "Q0001"
-                             select new
-                             {
-                                 c.amount
+                              where c.quote_no == ConsultantHomeWindow.currentQuoteNo
+                              select new
+                              {
+                                  c.amount
 
-                             }).First();
+                              }).First();
 
                 if (query3 != null)
                 {
                     quoteAmount += Convert.ToDouble(query3.amount);
-                    service = $"{service}\n conference";
+                    if (query3.amount != 0)
+                    {
+                        service = $"{service}\n conference";
+                    }
                 }
                 var query4 = (from c in currentQuote.events
 
-                             where c.quote_no == "Q0001"
-                             select new
-                             {
-                                 c.amount
+                              where c.quote_no == ConsultantHomeWindow.currentQuoteNo
+                              select new
+                              {
+                                  c.amount
 
-                             }).First();
+                              }).First();
 
                 if (query4 != null)
                 {
                     quoteAmount += Convert.ToDouble(query4.amount);
-                    service = $"{service}\n event";
+                    if (query4.amount != 0)
+                    {
+                        service = $"{service}\n event";
+                    }
                 }
                 var query5 = (from c in currentQuote.flights
 
-                             where c.quote_no == "Q0001"
-                             select new
-                             {
-                                 c.amount
+                              where c.quote_no == ConsultantHomeWindow.currentQuoteNo
+                              select new
+                              {
+                                  c.amount
 
-                             }).First();
+                              }).First();
 
                 if (query5 != null)
                 {
                     quoteAmount += Convert.ToDouble(query5.amount);
-                    service = $"{service}\n flight";
+                    if (query5.amount != 0)
+                    {
+                        service = $"{service}\n flight";
+                    }
                 }
 
                 var query6 = (from c in currentQuote.accommodations
 
-                             where c.quote_no == "Q0001"
-                             select new
-                             {
-                                 c.amount
+                              where c.quote_no == ConsultantHomeWindow.currentQuoteNo
+                              select new
+                              {
+                                  c.amount
 
-                             }).First();
+                              }).First();
 
                 if (query6 != null)
                 {
                     quoteAmount += Convert.ToDouble(query6.amount);
-                    service = $"{service}\n accommodation";
+                    if (query6.amount != 0)
+                    {
+                        service = $"{service}\n accommodation";
+                    }
                 }
             }
 
 
-            
-           
+
         }
 
-        private void btnQuote_markUp_Click_1(object sender, RoutedEventArgs e)
+        // add the mark percentage to the total amount of the quote
+        private void BtnQuote_markUp_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void BtnFlight_addPassenger_Click_1(object sender, RoutedEventArgs e)
+        {
+            string passangerName = txbFlight_passangerName.Text;
+            ltbFlight_passengersOutput.Items.Add(passangerName);
+            ltbFlight_passengersOutput.Items.Refresh();
+            _passengers.Add(passangerName);
+            //for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
+            //{
+            //    _passengers[i] = ltbFlight_passengersOutput.Items[i].ToString();
+            //}
+        }
+
+        private void TabItem_QuoteSummary_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            GeneralMethods.quoteSummary(ConsultantHomeWindow.currentQuoteNo);
         }
     }
 }

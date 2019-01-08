@@ -87,6 +87,8 @@
           <Property Name="enddate" Type="date" />
           <Property Name="carhirespecifications" Type="varchar" MaxLength="500" />
           <Property Name="amount" Type="double precision" />
+          <Property Name="numberofcars" Type="int" />
+          <Property Name="startday" Type="date" />
         </EntityType>
         <EntityType Name="client">
           <Key>
@@ -103,6 +105,7 @@
           <Property Name="paid" Type="double precision" />
           <Property Name="owe" Type="double precision" />
           <Property Name="broughtforward" Type="double precision" />
+          <Property Name="dateadded" Type="date" />
         </EntityType>
         <EntityType Name="conference">
           <Key>
@@ -111,7 +114,6 @@
           <Property Name="venue" Type="varchar" MaxLength="50" />
           <Property Name="conferencename" Type="varchar" MaxLength="50" />
           <Property Name="timeconference" Type="varchar" MaxLength="10" />
-          <Property Name="dateofconference" Type="date" />
           <Property Name="quote_no" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="order_no" Type="varchar" MaxLength="50" />
           <Property Name="conferencespecs" Type="varchar" MaxLength="65535" />
@@ -155,6 +157,7 @@
           <Property Name="numberofbags" Type="int" />
           <Property Name="amount" Type="double precision" />
           <Property Name="flightspecs" Type="varchar" MaxLength="65535" />
+          <Property Name="passengernum" Type="int" />
         </EntityType>
         <EntityType Name="invoice">
           <Key>
@@ -328,6 +331,8 @@
           <Property Name="enddate" Type="DateTime" />
           <Property Name="carhirespecifications" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="amount" Type="Double" />
+          <Property Name="numberofcars" Type="Int32" />
+          <Property Name="startday" Type="DateTime" />
         </EntityType>
         <EntityType Name="client">
           <Key>
@@ -344,6 +349,7 @@
           <Property Name="paid" Type="Double" />
           <Property Name="owe" Type="Double" />
           <Property Name="broughtforward" Type="Double" />
+          <Property Name="dateadded" Type="DateTime" />
         </EntityType>
         <EntityType Name="conference">
           <Key>
@@ -352,7 +358,6 @@
           <Property Name="venue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="conferencename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="timeconference" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="dateofconference" Type="DateTime" />
           <Property Name="quote_no" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="conferencespecs" Type="String" MaxLength="65535" FixedLength="false" Unicode="true" />
@@ -396,6 +401,7 @@
           <Property Name="numberofbags" Type="Int32" />
           <Property Name="amount" Type="Double" />
           <Property Name="flightspecs" Type="String" MaxLength="65535" FixedLength="false" Unicode="true" />
+          <Property Name="passengernum" Type="Int32" />
         </EntityType>
         <EntityType Name="invoice">
           <Key>
@@ -574,6 +580,8 @@
                 <ScalarProperty Name="enddate" ColumnName="enddate" />
                 <ScalarProperty Name="carhirespecifications" ColumnName="carhirespecifications" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="numberofcars" ColumnName="numberofcars" />
+                <ScalarProperty Name="startday" ColumnName="startday" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -591,6 +599,7 @@
                 <ScalarProperty Name="paid" ColumnName="paid" />
                 <ScalarProperty Name="owe" ColumnName="owe" />
                 <ScalarProperty Name="broughtforward" ColumnName="broughtforward" />
+                <ScalarProperty Name="dateadded" ColumnName="dateadded" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -600,7 +609,6 @@
                 <ScalarProperty Name="venue" ColumnName="venue" />
                 <ScalarProperty Name="conferencename" ColumnName="conferencename" />
                 <ScalarProperty Name="timeconference" ColumnName="timeconference" />
-                <ScalarProperty Name="dateofconference" ColumnName="dateofconference" />
                 <ScalarProperty Name="quote_no" ColumnName="quote_no" />
                 <ScalarProperty Name="order_no" ColumnName="order_no" />
                 <ScalarProperty Name="conferencespecs" ColumnName="conferencespecs" />
@@ -647,6 +655,7 @@
                 <ScalarProperty Name="numberofbags" ColumnName="numberofbags" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="flightspecs" ColumnName="flightspecs" />
+                <ScalarProperty Name="passengernum" ColumnName="passengernum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
