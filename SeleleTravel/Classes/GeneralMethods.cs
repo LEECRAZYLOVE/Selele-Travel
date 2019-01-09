@@ -9,7 +9,7 @@ using System.IO;
 
 namespace SeleleTravel
 {
-
+   
     public static class GeneralMethods
     {
         public static string seleleTelephone = "0435550116";
@@ -64,29 +64,29 @@ namespace SeleleTravel
         /// </summary>
         /// <param name="dateTimeValues"></param>
         /// <returns></returns>
-        public static bool checkDateTimeBox(List<DateTime> dateTimeValues)
-        {
-            // check if the end date is bigger that the start date
-            bool greaterORless = dateTimeValues[1] >= dateTimeValues[0];
-            if (greaterORless)
-            {
-                for (int i = 0; i < dateTimeValues.Count; i++)
-                {
-                    // checks if the dates are null or empty strings.
-                    if (dateTimeValues[i] == null || dateTimeValues[i].ToString() == "")
-                    {
-                        MessageBox.Show("Please select a date", "Error, selected dates are invalid", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return true;
-                    }
-                }
-                return false;
-            }
-            else
-            {
-                MessageBox.Show("Please select a date that is valid", "Error, Selected dates are invalid", MessageBoxButton.OK, MessageBoxImage.Error);
-                return true;
-            }
-        }
+        //public static bool checkDateTimeBox(List<DateTime> dateTimeValues)
+        //{
+        //    // check if the end date is bigger that the start date
+        //    bool greaterORless = dateTimeValues[1] >= dateTimeValues[0];
+        //    if (greaterORless)
+        //    {
+        //        for (int i = 0; i < dateTimeValues.Count; i++)
+        //        {
+        //            // checks if the dates are null or empty strings.
+        //            if (dateTimeValues[i] == null || dateTimeValues[i].ToString() == "")
+        //            {
+        //                MessageBox.Show("Please select a date", "Error, selected dates are invalid", MessageBoxButton.OK, MessageBoxImage.Error);
+        //                return true;
+        //            }
+        //        }
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Please select a date that is valid", "Error, Selected dates are invalid", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        return true;
+        //    }
+        //}
 
         /// <summary>
         /// checks if the number typed is a valid number.
@@ -367,7 +367,7 @@ namespace SeleleTravel
             }
             return serviceDetails;
         }
-
+        
         /// <summary>
         /// Removes services which expire on the current date, and have been ticked by the manager.
         /// </summary>
@@ -413,68 +413,118 @@ namespace SeleleTravel
         /// <returns></returns>
         public static string makeQuote_no()
         {
+
+            string quote_no = "";
             string numOfQuotes = Convert.ToString(getNumberOfQuotes());
-            DateTime timeQuoted = DateTime.Now; // Assignes the timeQuoted to the current time
             string _totalQts = numOfQuotes; // assigns the static value to the string
+            
             while (_totalQts.Length < 6)
             {
                 // It adds a zero once to the left of the current string
-                _totalQts = _totalQts.PadLeft(1, '0');
+                _totalQts = "0"+_totalQts;
             }
             // generates the quote number using the time and string generated above
-            string quote_no = $"{timeQuoted}{_totalQts}";
+            quote_no = $"Q{_totalQts}";
             
-            // increment the number of quotes
-            incrementNumOfQuotes();
-
+            
             return quote_no;
         }
 
         /// <summary>
-        /// gets the total number of quotes that have been generated thus far.
+        /// This creats the agency number for each agency
         /// </summary>
         /// <returns></returns>
-        private static int getNumberOfQuotes()
+        public static string makeAgency_ID(string agencyName, string typeOfAgency)
         {
-            if(Directory.Exists("quoteNum") && File.Exists("quoteNum/numOfQuotes.seleleqs"))
+
+            string agency_ID = "";
+            agency_ID = "A" + typeOfAgency.Substring(0, 1) + agencyName;
+
+            return agency_ID;
+        }
+        /// <summary>
+        /// Creates the client number for each client
+        /// </summary>
+        /// <param name="client Number"></param>
+
+        public static string makeClient_no(string typeOfClient)
+        {
+            string client_no = ""; 
+            string typeInitial = typeOfClient.Substring(0, 1);
+            string numOfClients = Convert.ToString(getNumberOfClients());
+            string totalClients = numOfClients; // assigns the static value to the string
+            while (totalClients.Length < 6)
             {
-                TextReader reader = File.OpenText("quoteNum/numOfQuotes.seleleqs");
-                int number = Convert.ToInt32(reader.ReadLine());
-                reader.Close();
-                return number;
+                // It adds a zero once to the left of the current string
+                totalClients = "0" + totalClients;
             }
-            else
+            // generates the client number using C and B or I for type of business and then the no. of clients
+            
+            client_no = "C" + typeInitial+totalClients ;
+            return client_no;
+        }
+        /// <summary>
+        /// gets the total number of clients that are in the system
+        /// </summary>
+        /// <param name="client Number"></param>
+        private static int getNumberOfClients()
+        {
+            using (SeleleEntities context = new SeleleEntities())
             {
-                incrementNumOfQuotes();
-                TextReader reader = File.OpenText("quoteNum/numOfQuotes.seleleqs");
-                int number = Convert.ToInt32(reader.ReadLine());
-                reader.Close();
-                return number;
+                var query = (from c in context.clients
+
+
+                             select new
+                             {
+                                 c.client_no
+                             }).ToList().Count;
+
+                return query;
+            }
+            
+        }
+            /// <summary>
+            /// gets the total number of quotes that have been generated thus far.
+            /// </summary>
+            /// <returns></returns>
+            private static int getNumberOfQuotes()
+        {
+            using (SeleleEntities context = new SeleleEntities())
+            {
+                var query = (from c in context.clients
+
+
+                             select new
+                             {
+                                 c.client_no
+                             }).ToList().Count;
+
+                return query;
             }
         }
 
-        /// <summary>
-        ///increments the number of generated quotes by one and then stores the number.
-        /// </summary>
-        private static void incrementNumOfQuotes()
-        {
-            if(Directory.Exists("quoteNum") && File.Exists("quoteNum/numOfQuotes.seleleqs"))
-            {
-                TextReader reader = File.OpenText("quoteNum/numOfQuotes.seleleqs");
-                int number = Convert.ToInt32(reader.ReadLine());
-                reader.Close();
-                TextWriter writer = File.CreateText("quoteNum/numOfQuotes.seleleqs");
-                writer.WriteLine(number++);
-                writer.Close();
-            }
-            else
-            {
-                int number = 0;
-                TextWriter writer = File.CreateText("quoteNum/numOfQuotes.seleleqs");
-                writer.WriteLine(number++);
-                writer.Close();
-            }
-        }
+        ///// <summary>
+        /////increments the number of generated quotes by one and then stores the number.
+        ///// </summary>
+        //private static void incrementNumOfQuotes()
+        //{
+        //    if(Directory.Exists("quoteNum") && File.Exists("quoteNum/numOfQuotes.seleleqs"))
+        //    {
+        //        TextReader reader = File.OpenText("quoteNum/numOfQuotes.seleleqs");
+        //        int number = Convert.ToInt32(reader.ReadLine());
+        //        reader.Close();
+        //        TextWriter writer = File.CreateText("quoteNum/numOfQuotes.seleleqs");
+        //        writer.WriteLine(number++);
+        //        writer.Close();
+        //    }
+        //    else
+        //    {
+        //        int number = 0;
+        //        TextWriter writer = File.CreateText("quoteNum/numOfQuotes.seleleqs");
+        //        writer.WriteLine(number++);
+        //        writer.Close();
+        //    }
+        //}
 
         /// <summary>
         /// checks if the quote number is empty.
