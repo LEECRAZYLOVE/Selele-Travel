@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
-//using Devart.Data.MySql;
+using Devart.Data.MySql;
 
 namespace SeleleTravel
 {
@@ -100,11 +100,11 @@ namespace SeleleTravel
             string fax = txbNewService_fax.Text;
             string cellphone = txbNewService_cellphone.Text;
             string service = cbbNewService_entities.SelectionBoxItem.ToString();
-
+            string agency_ID = GeneralMethods.makeAgency_ID(name, service);
             var context = new SeleleEntities();
             var currentServiceProvider = new agencydetail()
             {
-                agency_id = "A0002", //This will be automatically generated. I'm using a dummy to test queries.
+                agency_id =agency_ID, //This will be automatically generated. I'm using a dummy to test queries.
                 nameofagency = name,
                 address = address,
                 telephone = telephone,
@@ -132,21 +132,14 @@ namespace SeleleTravel
 
             }
         }
- 
 
-        private void BtnNewService_add_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //Extracting data from the database DONE!
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {//Extracting data from the database DONE!
             using (SeleleEntities currentServiceProvider = new SeleleEntities())
             {
-                var query = (from c in currentServiceProvider.agencydetails
+                var query =(from c in currentServiceProvider.agencydetails
 
-                             where c.telephone == "0783861533"
+                             where c.telephone=="0783861533"
                              select new
                              {
                                  c.agency_id,
@@ -157,19 +150,77 @@ namespace SeleleTravel
                                  c.nameofagency,
                                  c.service,
                                  c.telephone,
-
-                             }).First();
+                                
+                             }).First() ;
 
                 if (query != null)
                 {
                     txbNewService_name.Text = query.nameofagency;
-                    txbNewService_address.Text = query.address;
+                    txbNewService_address.Text = query.address ;
                     txbNewService_cellphone.Text = query.cellphone;
                     txbNewService_fax.Text = query.fax;
                     txbNewService_telephone.Text = query.telephone;
                     txbNewService_email.Text = query.emailaddress;
                 }
             }
+
+        }
+
+        
+
+        private void BtnNewService_add_Click(object sender, RoutedEventArgs e)
+        {
+            //For insertion Done
+            string name = txbNewService_name.Text;
+            string address = txbNewService_address.Text;
+            string telephone = txbNewService_telephone.Text;
+            string emailadress = txbNewService_email.Text;
+            string fax = txbNewService_fax.Text;
+            string cellphone = txbNewService_cellphone.Text;
+            string service = cbbNewService_entities.SelectionBoxItem.ToString();
+            string agency_ID = GeneralMethods.makeAgency_ID(name, service);
+            var context = new SeleleEntities();
+            var currentServiceProvider = new agencydetail()
+            {
+                agency_id = agency_ID, //This will be automatically generated. I'm using a dummy to test queries.
+                nameofagency = name,
+                address = address,
+                telephone = telephone,
+                emailaddress = emailadress,
+                fax = fax,
+                cellphone = cellphone,
+                service = service
+            };
+            //Add service provider to database
+            try
+            {
+                context.agencydetails.Add(currentServiceProvider);
+                context.SaveChanges();
+                //  MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentServiceProvider.client_no}");
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+
+            }
+        }
+
+        private void btnUpdateClient_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        
+
+        private void cbbNewService_entities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

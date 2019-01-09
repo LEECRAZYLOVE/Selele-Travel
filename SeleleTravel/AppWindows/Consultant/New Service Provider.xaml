@@ -47,17 +47,20 @@
             <Label x:Name="lbl5" Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="421.13" Style="{DynamicResource LabelStyle1}"/>
 
             <TextBox x:Name="txbNewService_name" HorizontalAlignment="Left" Height="30" Width="361.066" TextWrapping="Wrap" VerticalAlignment="Top"  Canvas.Left="119.999" Canvas.Top="55.661" FontSize="16" FontFamily="Comic Sans MS" Text="British Airways"/>
-            <ComboBox x:Name="cbbNewService_entities" Height="32" Width="260" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="90.661" BorderBrush="#FFB2E4CA">
+            <ComboBox x:Name="cbbNewService_entities" Height="32" Width="260" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="120" Canvas.Top="93" BorderBrush="#FFB2E4CA" SelectionChanged="cbbNewService_entities_SelectionChanged">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>
                         <GradientStop Color="#FFB2E4CA" Offset="1"/>
                     </LinearGradientBrush>
                 </ComboBox.Background>
-                <ComboBoxItem Content="Staff" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
-                <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
-                <ComboBoxItem Content="Agency/Accommodation/Airline" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15" Margin="0,0,-2.934,0"/>
-            </ComboBox>
+                <ComboBoxItem Content="Flight" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
+                <ComboBoxItem Content="Events" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
+                <ComboBoxItem Content="Accommodation" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15" Margin="0,0,-2.934,0"/>
+                <ComboBoxItem Content="Taxi Cab" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
+                <ComboBoxItem Content="Car Hire" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15" Margin="0,0,-2.934,0"/>
+                <ComboBoxItem Content="Conferences" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15" Margin="0,0,-2.934,0"/>
+                            </ComboBox>
             <TextBox x:Name="txbNewService_address" HorizontalAlignment="Left" Height="80" Width="361.066" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="129.457" FontSize="16" FontFamily="Comic Sans MS" Text="PE Airport"/>
             <TextBox x:Name="txbNewService_city" Height="30" Width="361.066" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="214.457" FontSize="16" FontFamily="Comic Sans MS" Text="Port Elizabeth"/>
             <TextBox x:Name="txbNewService_areaCode" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="6139" VerticalAlignment="Top" Width="361.066" Canvas.Left="119.999" Canvas.Top="249.457" FontSize="16" FontFamily="Comic Sans MS"/>
@@ -82,7 +85,7 @@
             <TextBox x:Name="txbNewService_fax" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="359.23" FontSize="16" FontFamily="Comic Sans MS" Text="0246812345"/>
             <TextBox x:Name="txbNewService_telephone" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="394.23" FontSize="16" FontFamily="Comic Sans MS" Text="0135791234"/>
             <TextBox x:Name="txbNewService_email" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" Text="bish@ai.com" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="429.23" FontSize="16" FontFamily="Comic Sans MS"/>
-            <Button x:Name="btnNewService_add" Content="Add" RenderTransformOrigin="0.5,0.5" Canvas.Left="119.999" Canvas.Top="513.411" Width="255.79" Height="54.966" FontFamily="Rockwell" FontSize="36" Background="#FFB2E4CA" Click="BtnNewService_add_Click"/>
+            <Button x:Name="btnNewService_add" Content="Add" RenderTransformOrigin="0.5,0.5" Canvas.Left="300" Canvas.Top="498" Width="171" Height="55" FontFamily="Rockwell" FontSize="36" Background="#FFB2E4CA" Click="BtnNewService_add_Click"/>
 
             <Label x:Name="label" Content="Entity:" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Canvas.Left="1.42" Canvas.Top="93.221"/>
             <Label x:Name="label1" Content="Enter service provider details here :" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Canvas.Left="78.157" FontSize="20"/>
@@ -90,12 +93,11 @@
                 <ComboBoxItem Content="Business" HorizontalAlignment="Left" Width="224.5"/>
                 <ComboBoxItem Content="Individual" HorizontalAlignment="Left" Width="224.5"/>
             </ComboBox>
-            <Button Content="Button" Canvas.Left="41" Canvas.Top="498" Width="75" Click="Button_Click_1"/>
 
 
 
         </Canvas>
-        <Button x:Name="btnUpdateClient" Content="Update"  RenderTransformOrigin="0.5,0.5" FontFamily="Rockwell" FontSize="36" Background="#FFB2E4CA" Margin="152.999,566.898,139.768,53.488" d:IsHidden="True"/>
+        <Button x:Name="btnUpdateClient" Content="Update"  RenderTransformOrigin="0.5,0.5" FontFamily="Rockwell" FontSize="36" Background="#FFB2E4CA" Margin="48,552,331,68" />
         <Label x:Name="lblUpdateClient" Content="Enter client details here :" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" FontSize="20" Margin="152.999,53.487,0,0" d:IsHidden="True"/>
 
 
