@@ -43,6 +43,7 @@ namespace SeleleTravel
             logInWindow = new LogInWindow(windowToLoad);
             logInWindow.Owner = this;
             logInWindow.Show();
+            Hide();
         }
 
         private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
@@ -62,12 +63,6 @@ namespace SeleleTravel
         {
             Hide();
             loadLogInWindow(LoadWindow.Owner);
-        }
-        
-        public string MakeQuoteSummmary () //function that will display the final information for the quote
-        {
-
-            return "";
         }
 
         private void Home_Page_Closed(object sender, EventArgs e)
