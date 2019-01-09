@@ -29,7 +29,7 @@ namespace SeleleTravel
         public static void closeAllWindows()
         {
             foreach (Window w in Application.Current.Windows)
-                w?.Close();
+                w.Close();
         }
 
         /// <summary>

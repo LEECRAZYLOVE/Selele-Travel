@@ -28,8 +28,8 @@ namespace SeleleTravel
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Owner?.Show();
-            Close();
+           // Owner?.Show();
+            //Close();
         }
     }
 }
