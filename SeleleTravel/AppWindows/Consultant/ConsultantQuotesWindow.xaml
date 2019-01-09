@@ -717,15 +717,13 @@
                     <Border VerticalAlignment="Bottom" Grid.Column="1">
                         <StackPanel >
                             <Button x:Name="btnQuoteSummar_document" Content="View as document and print" Margin="10" Click="btnQuoteSummar_document_Click"/>
-                            <Button x:Name="btnQuote_requestVerification" Content="Request Verification" Margin="10 0 10 10" Click="btnQuote_requestVerification_Click_1"/>
+                            <Button x:Name="btnQuote_requestVerification" Content="Request Verification" Margin="10 0 10 10" Click="BtnQuote_requestVerification_Click" />
                         </StackPanel>
                     </Border>
                     <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="87,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
                     <Label x:Name="label" Content="Valid for:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="117,154,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-                    <Button Content="GenerateQuote" Grid.Column="1" HorizontalAlignment="Left" Margin="117,344,0,0" VerticalAlignment="Top" Width="110" Click="Button_Click_1"/>
-                    <Label Content="This is for adding quote to DB" Grid.Column="1" HorizontalAlignment="Left" Margin="55,304,0,0" VerticalAlignment="Top" Width="248" Height="35" RenderTransformOrigin="-0.154,-1.083"/>
-                </Grid>
+                    <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="117,154,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
+                    </Grid>
             </TabItem>
             <!--Send Quotes-->
             <TabItem Header="Send Quotes" Style="{DynamicResource TabItemStyle}">
