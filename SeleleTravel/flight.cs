@@ -23,5 +23,6 @@ namespace SeleleTravel
         public Nullable<int> numberofbags { get; set; }
         public Nullable<double> amount { get; set; }
         public string flightspecs { get; set; }
+        public Nullable<int> passengernum { get; set; }
     }
 }

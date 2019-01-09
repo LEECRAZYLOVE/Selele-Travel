@@ -55,12 +55,7 @@
     <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.2.0.4\lib\net46\CommonServiceLocator.dll</HintPath>
     </Reference>
-    <Reference Include="Devart.Data, Version=5.0.2070.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
-      <HintPath>..\packages\Devart.Data.5.0.2070\lib\netstandard2.0\Devart.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Devart.Data.MySql, Version=8.12.1278.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
-      <HintPath>..\packages\Devart.Data.MySql.8.12.1278\lib\netstandard2.0\Devart.Data.MySql.dll</HintPath>
-    </Reference>
+    <Reference Include="Devart.Data, Version=5.0.2070.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
     <Reference Include="Devart.Data.PostgreSql, Version=7.11.1278.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
       <HintPath>..\packages\dotConnect.Express.for.PostgreSQL.7.11.1278\lib\Devart.Data.PostgreSql.dll</HintPath>
     </Reference>
@@ -80,6 +75,9 @@
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28\lib\net46\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.EntityFrameworkCore, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.EntityFrameworkCore.2.2.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
@@ -159,6 +157,9 @@
     </Reference>
     <Reference Include="Platform.Xml.Serialization, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Xml.Serialization.1.2.5\lib\net452\Platform.Xml.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.5.1.0\lib\net451\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="Remotion, Version=1.18.0.10000, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\packages\Remotion.1.18.0\lib\net45\Remotion.dll</HintPath>
@@ -245,22 +246,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="accommodation.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="accommodationdetail.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="agencydetail.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="airlinedetail.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="cabservice.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="carhire.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Classes\GeneralMethods.cs" />
     <Compile Include="AppWindows\General\ComposeMessageWindow.xaml.cs">
@@ -302,29 +303,32 @@
     <Compile Include="AppWindows\Owner\Owner_Financial_Window.xaml.cs">
       <DependentUpon>Owner_Financial_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppWindows\General\SignUpWindow.xaml.cs">
+      <DependentUpon>SignUpWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="client.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="conference.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="dailyserviceupdate.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="event.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="flight.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="invoice.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="order.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="quote.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SeleleModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -341,29 +345,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SeleleModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="AppWindows\General\SignUpWindow.xaml.cs">
-      <DependentUpon>SignUpWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="seleleModelVTest.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>seleleModelVTest.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="seleleModelVTest.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
-    </Compile>
-    <Compile Include="seleleModelVTest.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>seleleModelVTest.edmx</DependentUpon>
-    </Compile>
     <Compile Include="staff.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="voucher.cs">
-      <DependentUpon>seleleModelVTest.tt</DependentUpon>
+      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Page Include="AppWindows\General\ComposeMessageWindow.xaml">
       <SubType>Designer</SubType>
@@ -495,13 +481,6 @@
     <None Include="SeleleModel.edmx.diagram">
       <DependentUpon>SeleleModel.edmx</DependentUpon>
     </None>
-    <EntityDeploy Include="seleleModelVTest.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>seleleModelVTest.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="seleleModelVTest.edmx.diagram">
-      <DependentUpon>seleleModelVTest.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -562,17 +541,6 @@
       <DependentUpon>SeleleModel.edmx</DependentUpon>
       <LastGenOutput>SeleleModel.cs</LastGenOutput>
     </Content>
-    <Content Include="seleleModelVTest.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>seleleModelVTest.edmx</DependentUpon>
-      <LastGenOutput>seleleModelVTest.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="seleleModelVTest.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>seleleModelVTest.edmx</DependentUpon>
-      <LastGenOutput>seleleModelVTest.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
