@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
-using Devart.Data.MySql;
+//using Devart.Data.MySql;
 
 namespace SeleleTravel
 {
@@ -132,14 +132,21 @@ namespace SeleleTravel
 
             }
         }
+ 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {//Extracting data from the database DONE!
+        private void BtnNewService_add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //Extracting data from the database DONE!
             using (SeleleEntities currentServiceProvider = new SeleleEntities())
             {
-                var query =(from c in currentServiceProvider.agencydetails
+                var query = (from c in currentServiceProvider.agencydetails
 
-                             where c.telephone=="0783861533"
+                             where c.telephone == "0783861533"
                              select new
                              {
                                  c.agency_id,
@@ -150,30 +157,19 @@ namespace SeleleTravel
                                  c.nameofagency,
                                  c.service,
                                  c.telephone,
-                                
-                             }).First() ;
+
+                             }).First();
 
                 if (query != null)
                 {
                     txbNewService_name.Text = query.nameofagency;
-                    txbNewService_address.Text = query.address ;
+                    txbNewService_address.Text = query.address;
                     txbNewService_cellphone.Text = query.cellphone;
                     txbNewService_fax.Text = query.fax;
                     txbNewService_telephone.Text = query.telephone;
                     txbNewService_email.Text = query.emailaddress;
                 }
             }
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnNewService_add_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

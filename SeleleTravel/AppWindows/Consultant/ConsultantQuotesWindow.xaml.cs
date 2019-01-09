@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using Word = Microsoft.Office.Interop.Word;
 using System.Reflection;
 using System.IO;
-using Devart.Data.MySql;
+//using Devart.Data.MySql;
 using System.Data.SqlClient;
 
 namespace SeleleTravel
@@ -1161,24 +1161,22 @@ namespace SeleleTravel
         private void btnQuoteSummar_document_Click(object sender, RoutedEventArgs e)
         {
             // check quote number if it's valid
-            bool checkQ_number = GeneralMethods.checkQuoteNotEmpty(quoteNum);
-            if (checkQ_number)
+            //bool checkQ_number = GeneralMethods.checkQuoteNotEmpty(quote_no);
+            //if (checkQ_number)
             {
                 object oMissing = System.Reflection.Missing.Value;
                 object oEndOfDoc = "\\endofdoc"; /* \endofdoc is a predefined bookmark */
 
                 //Start Word and create a new document.
-                Word._Application oWord;
+                Word._Application oWord = new Word.Application(); ;
                 Word._Document oDoc;
-                oWord = new Word.Application();
                 oWord.Visible = true;
-                oDoc = oWord.Documents.Add(ref oMissing, ref oMissing,
-                ref oMissing, ref oMissing);
+                oDoc = oWord.Documents.Add(ref oMissing, ref oMissing, ref oMissing, ref oMissing);
 
                 //Insert a paragraph at the beginning of the document.
                 Word.Paragraph oPara1;
                 oPara1 = oDoc.Content.Paragraphs.Add(ref oMissing);
-                oPara1.Range.Text = "Heading 1";
+                oPara1.Range.Text = GeneralMethods.quoteSummary(quote_no);//Heading 1";
                 oPara1.Range.Font.Bold = 1;
                 oPara1.Format.SpaceAfter = 24;    //24 pt spacing after paragraph.
                 oPara1.Range.InsertParagraphAfter();

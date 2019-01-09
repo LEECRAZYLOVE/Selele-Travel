@@ -90,8 +90,6 @@
                 <ComboBoxItem Content="Business" HorizontalAlignment="Left" Width="224.5"/>
                 <ComboBoxItem Content="Individual" HorizontalAlignment="Left" Width="224.5"/>
             </ComboBox>
-            <Button Content="Button" Width="75"/>
-            <Button Content="Button" Width="75"/>
             <Button Content="Button" Canvas.Left="41" Canvas.Top="498" Width="75" Click="Button_Click_1"/>
 
 

@@ -690,7 +690,7 @@
                     <!--Display for left-hand-side-->
                     <TextBlock x:Name="txbQuote_quoteSummary" Margin="10" RenderTransformOrigin="0.5,0.5">
                         <TextBlock.Background>
-                            <ImageBrush ImageSource="/SeleleTravel;component/Images/Selele Travel LOGO2.png" Stretch="None" TileMode="Tile" Viewbox="0.4,1,1,1">
+                            <ImageBrush ImageSource="/SeleleTravel;component/Images/Selele Travel LOGO2.png" Opacity="50"  Stretch="None" TileMode="Tile" Viewbox="0.4,1,1,1">
                                 <ImageBrush.RelativeTransform>
                                     <TransformGroup>
                                         <ScaleTransform ScaleY="1" ScaleX="1"/>
