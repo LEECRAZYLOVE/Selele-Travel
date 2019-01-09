@@ -192,12 +192,13 @@ namespace SeleleTravel
         {
             string clientName=txbNewClient_name.Text+""+ txbNewClient_surname.Text;
             string client_no = "C0001";
-            string quote_no = ConsultantHomeWindow.currentQuoteNo;
+            quote_no = "Q000001";
             string cellphone = txbNewClient_cellphone.Text;
             string address = txbNewClient_address.Text;
             string emailaddress = txbNewClient_email.Text;
             string telephone = txbNewClient_telephone.Text;
             string fax = txbNewClient_fax.Text;
+            
             
             var context = new SeleleEntities();
             var currentClient = new client()
@@ -350,7 +351,7 @@ namespace SeleleTravel
         #endregion
 
         #region Taxi cab
-        
+
         private void BtnCab_done_Click(object sender, RoutedEventArgs e)
         {
             // Asign vars to texbox values
@@ -366,7 +367,7 @@ namespace SeleleTravel
 
             //in prep for quote insertion
             quoteAmount += _totalAmount;
-            service = $"{service}\nCab Services";
+            service = $"{service}Cab Services|";
 
             // Data verification
             List<DateTime> dateTimes = new List<DateTime>();
@@ -385,29 +386,29 @@ namespace SeleleTravel
             // if it returns true then one of the strings are empty
             // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
             bool boolValue = GeneralMethods.checkEmptytxtBox(stringVs);
-           // bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
+            // bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
-            if(!boolValue )//&& !valueOfBool)
+            if (!boolValue)//&& !valueOfBool)
             {
                 // todo
                 // create the instance after checking for errors
-              
+
                 // Todo sql insertion
                 // ...
                 var context = new SeleleEntities();
                 var currentCabService = new cabservice()
                 {
-                    nameofagency=_agencyName, 
-                    agency_id="Cab0001",//This will be automatically generated. I'm using a dummy to test queries.
-                    quote_no= ConsultantHomeWindow.currentQuoteNo,
-                    nameofdriver=_driverName,
-                    pickup=_pickUpLocation,
-                    dropoff=_dropOffLocation,
-                    dateofcab=_dateOfPickup,
-                    numberofcabs=_numberOfcabs,
-                    amount=_totalAmount,
-                    timeofcab=_timeOfPickUp,
-                    cabspecs=_taxicabSpecs
+                    nameofagency = _agencyName,
+                    agency_id = "Cab0001",//This will be automatically generated. I'm using a dummy to test queries.
+                    quote_no = quote_no,
+                    nameofdriver = _driverName,
+                    pickup = _pickUpLocation,
+                    dropoff = _dropOffLocation,
+                    dateofcab = _dateOfPickup,
+                    numberofcabs = _numberOfcabs,
+                    amount = _totalAmount,
+                    timeofcab = _timeOfPickUp,
+                    cabspecs = _taxicabSpecs
                 };
                 //Add cabservice to database
                 try
@@ -440,15 +441,8 @@ namespace SeleleTravel
                 textBoxes.Add(txbCab_total);
                 GeneralMethods.clearTextBoxes(textBoxes);
             }
-
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
-
-       
-     
+    
     #endregion
 
     #region Flight tab
@@ -600,11 +594,11 @@ namespace SeleleTravel
             double amount = Convert.ToDouble(txbCarHire_total.Text);
             //in prep for quote insertion
             quoteAmount += amount;
-            service = $"{service}\nCarhire";
+            service = $"{service}Carhire|";
            
             // Todo sql insertion
             // ...
-            var context = new postgresEntities12th();
+            var context = new SeleleEntities();
             var currentCarHire = new carhire()
             {
                 agencyname = agencyName,
@@ -663,47 +657,7 @@ namespace SeleleTravel
                 // call the clear textbox method
                 List<TextBox> toBeCleared = new List<TextBox> { txbCarHire_agency, txbCarHire_pickUp, txbCarHire_dropOff, txbCarHire_numCars, txbCarHire_specifications };
                 GeneralMethods.clearTextBoxes(toBeCleared);
-            }
-
-            //Adding service to the Quote
-
-            var currentQuote = new quote()
-            {
-                service = "cabservice\n"
-            };
-            //Add client to database
-            try
-            {
-                context.quotes.Add(currentQuote);
-                context.SaveChanges();
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-                throw ex;
-
-            }
-            //Add carhire to database
-            try
-            {
-                context.carhires.Add(currentCarHire);
-                context.SaveChanges();
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-                throw ex;
-
+            
             }
         }
 
@@ -734,168 +688,61 @@ namespace SeleleTravel
 
         // send verification to the manager
         private void BtnQuote_requestVerification_Click(object sender, RoutedEventArgs e)
-        {
-            // NB: SET UP LOCAL SERVER TO ALLOW COMM IN THE NETWORK
-            // send verification
+        { 
+     
+            var context = new SeleleEntities();
+           
+            //Extracting quoteDetails through a query
+           
+           
 
-            // check the first and last day of the quote
-            List<DateTime> firstANDlastDay =  GeneralMethods.checkFirst_lastDay(servicesDates);
+                // NB: SET UP LOCAL SERVER TO ALLOW COMM IN THE NETWORK
+                // send verification
 
-            // save the quote details to the csv file
-            // the format is: quote number, order Number, start date, end date
-            quoteNum = GeneralMethods.makeQuote_no();
-            string tempOrderNum = "To Be Added";
-            GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
+                // check the first and last day of the quote
+                //List<DateTime> firstANDlastDay = GeneralMethods.checkFirst_lastDay(servicesDates);
+
+                // save the quote details to the csv file
+                // the format is: quote number, order Number, start date, end date
+                quoteNum = GeneralMethods.makeQuote_no();
+                string tempOrderNum = "To Be Added";
+               //GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
+            
+
+            var CurrentQuote = new quote()
+            {
+
+                quote_no = quote_no,
+                amount = quoteAmount,
+                service = service,
+                timequoted = timeQuoted,
+                quotedate = quoteDate,
+                consultant_no = consultant_no,
+                client_no = client_no,
+                clientname = clientname
+            };
+            //Add quote to database
+            try
+            {
+                context.quotes.Add(CurrentQuote);
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            }
+            catch (Exception ex)
+            {
+                //other error
+                throw ex;
+            }
+
         }
+
         
-        // Opening a word document from the program
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // check quote number if it's valid
-            bool checkQ_number = GeneralMethods.checkQuoteNotEmpty(quoteNum);
-            if (checkQ_number)
-            {
-                object oMissing = System.Reflection.Missing.Value;
-                object oEndOfDoc = "\\endofdoc"; /* \endofdoc is a predefined bookmark */
-
-                //Start Word and create a new document.
-                Word._Application oWord;
-                Word._Document oDoc;
-                oWord = new Word.Application();
-                oWord.Visible = true;
-                oDoc = oWord.Documents.Add(ref oMissing, ref oMissing,
-                ref oMissing, ref oMissing);
-
-                //Insert a paragraph at the beginning of the document.
-                Word.Paragraph oPara1;
-                oPara1 = oDoc.Content.Paragraphs.Add(ref oMissing);
-                oPara1.Range.Text = "Heading 1";
-                oPara1.Range.Font.Bold = 1;
-                oPara1.Format.SpaceAfter = 24;    //24 pt spacing after paragraph.
-                oPara1.Range.InsertParagraphAfter();
-
-                //Insert a paragraph at the end of the document.
-                Word.Paragraph oPara2;
-                object oRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-                oPara2 = oDoc.Content.Paragraphs.Add(ref oRng);
-                oPara2.Range.Text = "Heading 2";
-                oPara2.Format.SpaceAfter = 6;
-                oPara2.Range.InsertParagraphAfter();
-
-                //Insert another paragraph.
-                Word.Paragraph oPara3;
-                oRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-                oPara3 = oDoc.Content.Paragraphs.Add(ref oRng);
-                oPara3.Range.Text = "This is a sentence of normal text. Now here is a table:";
-                oPara3.Range.Font.Bold = 0;
-                oPara3.Format.SpaceAfter = 24;
-                oPara3.Range.InsertParagraphAfter();
-
-                //Insert a 3 x 5 table, fill it with data, and make the first row
-                //bold and italic.
-                Word.Table oTable;
-                Word.Range wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-                oTable = oDoc.Tables.Add(wrdRng, 3, 5, ref oMissing, ref oMissing);
-                oTable.Range.ParagraphFormat.SpaceAfter = 6;
-                int r, c;
-                string strText;
-                for (r = 1; r <= 3; r++)
-                    for (c = 1; c <= 5; c++)
-                    {
-                        strText = "r" + r + "c" + c;
-                        oTable.Cell(r, c).Range.Text = strText;
-                    }
-                oTable.Rows[1].Range.Font.Bold = 1;
-                oTable.Rows[1].Range.Font.Italic = 1;
-
-                //Add some text after the table.
-                Word.Paragraph oPara4;
-                oRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-                oPara4 = oDoc.Content.Paragraphs.Add(ref oRng);
-                oPara4.Range.InsertParagraphBefore();
-                oPara4.Range.Text = "And here's another table:";
-                oPara4.Format.SpaceAfter = 24;
-                oPara4.Range.InsertParagraphAfter();
-
-                //Insert a 5 x 2 table, fill it with data, and change the column widths.
-                wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-                oTable = oDoc.Tables.Add(wrdRng, 5, 2, ref oMissing, ref oMissing);
-                oTable.Range.ParagraphFormat.SpaceAfter = 6;
-                for (r = 1; r <= 5; r++)
-                    for (c = 1; c <= 2; c++)
-                    {
-                        strText = "r" + r + "c" + c;
-                        oTable.Cell(r, c).Range.Text = strText;
-                    }
-                oTable.Columns[1].Width = oWord.InchesToPoints(2); //Change width of columns 1 & 2
-                oTable.Columns[2].Width = oWord.InchesToPoints(3);
-
-                //Keep inserting text. When you get to 7 inches from top of the
-                //document, insert a hard page break.
-                object oPos;
-                double dPos = oWord.InchesToPoints(7);
-                oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range.InsertParagraphAfter();
-                do
-                {
-                    wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-                    wrdRng.ParagraphFormat.SpaceAfter = 6;
-                    wrdRng.InsertAfter("A line of text");
-                    wrdRng.InsertParagraphAfter();
-                    oPos = wrdRng.get_Information
-                                           (Word.WdInformation.wdVerticalPositionRelativeToPage);
-                }
-                while (dPos >= Convert.ToDouble(oPos));
-                object oCollapseEnd = Word.WdCollapseDirection.wdCollapseEnd;
-                object oPageBreak = Word.WdBreakType.wdPageBreak;
-                wrdRng.Collapse(ref oCollapseEnd);
-                wrdRng.InsertBreak(ref oPageBreak);
-                wrdRng.Collapse(ref oCollapseEnd);
-                wrdRng.InsertAfter("We're now on page 2. Here's my chart:");
-                wrdRng.InsertParagraphAfter();
-
-                //Insert a chart.
-                Word.InlineShape oShape;
-                object oClassType = "MSGraph.Chart.8";
-                wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-                oShape = wrdRng.InlineShapes.AddOLEObject(ref oClassType, ref oMissing,
-                ref oMissing, ref oMissing, ref oMissing,
-                ref oMissing, ref oMissing, ref oMissing);
-
-                //Demonstrate use of late bound oChart and oChartApp objects to
-                //manipulate the chart object with MSGraph.
-                object oChart;
-                object oChartApp;
-                oChart = oShape.OLEFormat.Object;
-                oChartApp = oChart.GetType().InvokeMember("Application",
-                BindingFlags.GetProperty, null, oChart, null);
-
-                //Change the chart type to Line.
-                object[] Parameters = new Object[1];
-                Parameters[0] = 4; //xlLine = 4
-                oChart.GetType().InvokeMember("ChartType", BindingFlags.SetProperty,
-                null, oChart, Parameters);
-
-                //Update the chart image and quit MSGraph.
-                oChartApp.GetType().InvokeMember("Update",
-                BindingFlags.InvokeMethod, null, oChartApp, null);
-                oChartApp.GetType().InvokeMember("Quit",
-                BindingFlags.InvokeMethod, null, oChartApp, null);
-                //... If desired, you can proceed from here using the Microsoft Graph 
-                //Object model on the oChart and oChartApp objects to make additional
-                //changes to the chart.
-
-                //Set the width of the chart.
-                oShape.Width = oWord.InchesToPoints(6.25f);
-                oShape.Height = oWord.InchesToPoints(3.57f);
-
-                //Add text after the chart.
-                wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
-                wrdRng.InsertParagraphAfter();
-                wrdRng.InsertAfter("THE END.");
-
-                //Close this form.
-                this.Close();
-            }
             
         }
         
@@ -942,7 +789,7 @@ namespace SeleleTravel
             DateTime eventEnddate = dpEvents_endDate.DisplayDate;
             //in prep for quote insertion
             quoteAmount += eventAmount;
-            service = $"{service}\nEvent";
+            service = $"{service}Event|";
             // Data verification:
             // make sure that the supplied data is valid
             List<string> stringVs = new List<string> { nameOfEvent, eventSpecs };
@@ -965,7 +812,7 @@ namespace SeleleTravel
 
 
                 //sql insertion
-                var context = new postgresEntities12th();
+                var context = new SeleleEntities();
                 var currentEvent = new @event()
                 {
                     quote_no = quote_no,
@@ -1101,10 +948,10 @@ namespace SeleleTravel
             double amountOfconf = Convert.ToDouble(txbConference_total.Text);
             //in prep for quote insertion
             quoteAmount += amountOfconf;
-            service = $"{service}\nConference";
+            service = $"{service}Conference|";
             // Todo sql insertion
             // ...
-            var context = new postgresEntities12th();
+            var context = new SeleleEntities();
             var currentConference = new conference()
             {
 
@@ -1224,9 +1071,8 @@ namespace SeleleTravel
 
             //in prep for quote insertion
             quoteAmount += amount;
-            service = $"{service}\nFlight";
+            service = $"{service}Flight|";
 
-            var context = new postgresEntities12th();
             var context = new SeleleEntities();
             var currentFlight = new flight()
             {
@@ -1274,13 +1120,13 @@ namespace SeleleTravel
             string accomspecs = txbAccommodation_specifications.Text;
             //in prep for quote insertion
             quoteAmount += amount;
-            service = $"{service}\n Accommodation";
-            var context = new postgresEntities12th();
+            service = $"{service}Accommodation|";
+       
             var context = new SeleleEntities();
             var currentAccommodation = new accommodation()
             {
 
-                quote_no = ConsultantHomeWindow.currentQuoteNo,//This will be automatically generated. I'm using a dummy to test queries.
+                quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
                 accomname = accomname,
                 accom_id=accom_id,
                 checkin=checkin,
@@ -1462,197 +1308,25 @@ namespace SeleleTravel
                    
         }
 
-        // send verification to the manager
-        private void BtnQuote_requestVerification_Click(object sender, RoutedEventArgs e)
+        private void BtnFlight_addPassenger_Click_1(object sender, RoutedEventArgs e)
         {
-            // NB: SET UP LOCAL SERVER TO ALLOW COMM IN THE NETWORK
-            // send verification
-
-            // check the first and last day of the quote
-            List<DateTime> firstANDlastDay = GeneralMethods.checkFirst_lastDay(servicesDates);
+            string passangerName = txbFlight_passangerName.Text;
+            ltbFlight_passengersOutput.Items.Add(passangerName);
+            ltbFlight_passengersOutput.Items.Refresh();
+            _passengers.Add(passangerName);
+          
+           // List<DateTime> firstANDlastDay = GeneralMethods.checkFirst_lastDay(servicesDates);
 
             // save the quote details to the csv file
             // the format is: quote number, order Number, start date, end date
             quoteNum = GeneralMethods.makeQuote_no();
             string tempOrderNum = "To Be Added";
-            GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
-
-            //Extracting quoteDetails through a query
-            double quoteAmount = 0;
-            string service = "";
-            using (SeleleEntities currentQuote = new SeleleEntities())
-            {
-                var query = (from c in currentQuote.cabservices //cabservices
-
-                             where c.quote_no == ConsultantHomeWindow.currentQuoteNo
-                             select new
-                             {
-                                 c.amount,
-                                
-
-                             }).First();
-
-                if (query != null)
-                {
-                    quoteAmount += Convert.ToDouble(query.amount);
-                    if (query.amount != 0)
-                    {
-                        service = $"{service}\n cabservices";
-                    }
-                }
-                var query2 = (from c in currentQuote.carhires //car hires
-
-                              where c.quote_no == ConsultantHomeWindow.currentQuoteNo
-                              select new
-                              {
-                                  c.amount
-
-                              }).First();
-
-                if (query2 != null)
-                {
-                    quoteAmount += Convert.ToDouble(query2.amount);
-                    if (query2.amount != 0)
-                    {
-                        service = $"{service}\n carhire";
-                    }
-                }
-                var query3 = (from c in currentQuote.conferences //conferences
-
-                              where c.quote_no == ConsultantHomeWindow.currentQuoteNo
-                              select new
-                              {
-                                  c.amount
-
-                              }).First();
-
-                if (query3 != null)
-                {
-                    quoteAmount += Convert.ToDouble(query3.amount);
-                    if (query3.amount != 0)
-                    {
-                        service = $"{service}\n conference";
-                    }
-                }
-                var query4 = (from c in currentQuote.events
-
-                              where c.quote_no == ConsultantHomeWindow.currentQuoteNo
-                              select new
-                              {
-                                  c.amount
-
-                              }).First();
-
-                if (query4 != null)
-                {
-                    quoteAmount += Convert.ToDouble(query4.amount);
-                    if (query4.amount != 0)
-                    {
-                        service = $"{service}\n event";
-                    }
-                }
-                var query5 = (from c in currentQuote.flights
-
-                              where c.quote_no == ConsultantHomeWindow.currentQuoteNo
-                              select new
-                              {
-                                  c.amount
-
-                              }).First();
-
-                if (query5 != null)
-                {
-                    quoteAmount += Convert.ToDouble(query5.amount);
-                    if (query5.amount != 0)
-                    {
-                        service = $"{service}\n flight";
-                    }
-                }
-
-                var query6 = (from c in currentQuote.accommodations
-
-                              where c.quote_no == ConsultantHomeWindow.currentQuoteNo
-                              select new
-                              {
-                                  c.amount
-
-                              }).First();
-
-                if (query6 != null)
-                {
-                    quoteAmount += Convert.ToDouble(query6.amount);
-                    if (query6.amount != 0)
-                    {
-                        service = $"{service}\n accommodation";
-                    }
-                }
-            }
-
-
-
-        }
-
-        // add the mark percentage to the total amount of the quote
-        private void BtnQuote_markUp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnFlight_addPassenger_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void AmountChanged_WHOLENumber(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //Todo sql insertion
-                   // ...
-                   var context = new postgresEntities12th();
-            var currentQuote = new quote()
-            {
-               
-                quote_no=quote_no,
-                amount=quoteAmount,
-                service=service,
-                timequoted=timeQuoted,
-                quotedate=quoteDate,
-                consultant_no=consultant_no,
-                client_no=client_no,
-                clientname=clientname
-            };
-            //Add quote to database
-            try
-            {
-                context.quotes.Add(currentQuote);
-                context.SaveChanges();
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-                throw ex;
-            string passangerName = txbFlight_passangerName.Text;
-            ltbFlight_passengersOutput.Items.Add(passangerName);
-            ltbFlight_passengersOutput.Items.Refresh();
-            _passengers.Add(passangerName);
-            //for (int i = 0; i < ltbFlight_passengersOutput.Items.Count; i++)
-            //{
-            //    _passengers[i] = ltbFlight_passengersOutput.Items[i].ToString();
-            //}
-        }
+           // GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
+        } 
 
         private void TabItem_QuoteSummary_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            GeneralMethods.quoteSummary(ConsultantHomeWindow.currentQuoteNo);
+            txbQuote_quoteSummary.Text = GeneralMethods.quoteSummary("Q000001");//quote_no);
         }
     }
     }

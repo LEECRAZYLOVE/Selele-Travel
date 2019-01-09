@@ -156,7 +156,7 @@ namespace SeleleTravel
             string selected = cbxFinancial_entity.SelectedItem.ToString();
  
 
-            using (postgresEntities12th currentClient = new postgresEntities12th())
+            using (SeleleEntities currentClient = new SeleleEntities())
             {
                 var query = (from c in currentClient.clients
 
@@ -187,7 +187,7 @@ namespace SeleleTravel
             }
             
 
-            using (postgresEntities12th currentQuote = new postgresEntities12th())
+            using (SeleleEntities currentQuote = new SeleleEntities())
             {
                 var query = (from c in currentQuote.quotes 
 

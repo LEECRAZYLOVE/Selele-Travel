@@ -58,7 +58,7 @@ namespace SeleleTravel
                 string Position = txbNewEmployee_position.Text;
                 double Salary = Convert.ToDouble(txbNewEmployee_salary.Text);
 
-                var context = new postgresEntities12th();
+                var context = new SeleleEntities();
                 var currentEmployee = new staff()
                 {
                     staff_id = GeneralMethods.makeStaffID(Surname, Cellphone),
@@ -112,7 +112,7 @@ namespace SeleleTravel
             string staffName = txbEmployee_Name.Text;
             if (staff_ID != "")
             {
-                using (postgresEntities12th currentStaff = new postgresEntities12th())
+                using (SeleleEntities currentStaff = new SeleleEntities())
                 {
                     var query = (from c in currentStaff.staffs
 
@@ -150,7 +150,7 @@ namespace SeleleTravel
             }
             else if (staffName != "")
             {
-                using (postgresEntities12th currentStaff = new postgresEntities12th())
+                using (SeleleEntities currentStaff = new SeleleEntities())
                 {
                     var query = (from c in currentStaff.staffs
 

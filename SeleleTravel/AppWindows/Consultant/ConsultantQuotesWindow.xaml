@@ -312,9 +312,6 @@
                         </ListBox>
                         <Button  x:Name="btnOldClient_select"  Content="Select Client" FontSize="20" Width="300" Click="BtnOldClient_select_Click" />
                     </StackPanel>
-                    <Calendar HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <Label Content="Consultant no:" HorizontalAlignment="Left" Margin="516,582,0,0" VerticalAlignment="Top" Width="136" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="txbConsultant_no" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="516,617,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="157"/>
                 </Grid>
             </TabItem>
             <!--Car Hire -->
@@ -726,9 +723,7 @@
                     </Border>
                     <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="87,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
                     <Label x:Name="label" Content="Valid for:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="117,154,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-                    <Button Content="GenerateQuote" Grid.Column="1" HorizontalAlignment="Left" Margin="117,344,0,0" VerticalAlignment="Top" Width="110" Click="Button_Click_1"/>
-                    <Label Content="This is for adding quote to DB" Grid.Column="1" HorizontalAlignment="Left" Margin="55,304,0,0" VerticalAlignment="Top" Width="248" Height="35" RenderTransformOrigin="-0.154,-1.083"/>
+                    <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="117,154,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
                 </Grid>
             </TabItem>
             <!--Send Quotes-->
