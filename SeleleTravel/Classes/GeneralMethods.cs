@@ -432,6 +432,29 @@ namespace SeleleTravel
         }
 
         /// <summary>
+        /// It generates the voucher number.
+        /// </summary>
+        /// <returns></returns>
+        public static string makeVoucher_no()
+        {
+
+            string voucher_no = "";
+            string numOfVoucher = Convert.ToString(getNumberOfQuotes());
+            string _totalQts = numOfVoucher; // assigns the static value to the string
+
+            while (_totalQts.Length < 6)
+            {
+                // It adds a zero once to the left of the current string
+                _totalQts = "0" + _totalQts;
+            }
+            // generates the quote number using the time and string generated above
+           voucher_no = $"Q{_totalQts}";
+
+
+            return voucher_no;
+        }
+
+        /// <summary>
         /// This creats the agency number for each agency
         /// </summary>
         /// <returns></returns>
