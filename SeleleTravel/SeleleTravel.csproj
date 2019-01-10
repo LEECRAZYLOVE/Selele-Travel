@@ -248,24 +248,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="accommodation.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="accommodationdetail.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="agencydetail.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="airlinedetail.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cabservice.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="carhire.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Classes\GeneralMethods.cs" />
     <Compile Include="AppWindows\General\ComposeMessageWindow.xaml.cs">
       <DependentUpon>ComposeMessageWindow.xaml</DependentUpon>
@@ -308,51 +290,6 @@
     </Compile>
     <Compile Include="AppWindows\General\SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="client.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="conference.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="dailyserviceupdate.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="event.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="flight.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="invoice.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="order.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="quote.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SeleleModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SeleleModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SeleleModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SeleleModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SeleleModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="staff.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="voucher.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
     </Compile>
     <Page Include="AppWindows\General\ComposeMessageWindow.xaml">
       <SubType>Designer</SubType>
@@ -477,13 +414,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="SeleleModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SeleleModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="SeleleModel.edmx.diagram">
-      <DependentUpon>SeleleModel.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -532,18 +462,6 @@
     <Resource Include="Images\Selele Travel LOGO2.png" />
     <Resource Include="Images\Selele Travel BALLS.png" />
     <Resource Include="Images\SeleleLogoBalls.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SeleleModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SeleleModel.edmx</DependentUpon>
-      <LastGenOutput>SeleleModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="SeleleModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SeleleModel.edmx</DependentUpon>
-      <LastGenOutput>SeleleModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

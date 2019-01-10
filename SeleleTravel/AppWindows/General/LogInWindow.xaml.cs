@@ -15,7 +15,7 @@ using System.Data.SqlClient;
 //using Devart.Data.MySql;
 
 namespace SeleleTravel
-{
+{   
     /// <summary>
     /// Interaction logic for Log_In.xaml
     /// </summary>
@@ -35,7 +35,12 @@ namespace SeleleTravel
         }
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
-        {           
+        {
+            SqlConnection myConnect = new SqlConnection(MainWindow.ConnectionString);
+            SqlCommand myCommand = new SqlCommand("INSERT INTO client (client_no, quote_no) " + "Values ('string', 1)");
+            myCommand.Connection = myConnect;
+            myCommand.ExecuteNonQuery();
+
             switch (windowToLoad)
             {
                 case LoadWindow.Consultant:

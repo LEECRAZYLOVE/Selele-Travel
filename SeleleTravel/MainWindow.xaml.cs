@@ -22,11 +22,12 @@ namespace SeleleTravel
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public enum LoadWindow { Consultant, Manager, Owner}
+    
     public partial class MainWindow : Window
     {
         //instantiating all the windows as global objects
         public static LogInWindow logInWindow;
-        
+        public static string ConnectionString = "Host=localhost;Port=1998;Database=Selele;Username=postgres;Password=Linomtha;Persist Security Info=True; Connection Timeout=15";
 
         public MainWindow()
         {
