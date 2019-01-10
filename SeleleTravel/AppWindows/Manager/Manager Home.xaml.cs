@@ -144,14 +144,8 @@ namespace SeleleTravel
 
         #endregion
 
-        private void Manager_Home1_Closed(object sender, EventArgs e)
-        {
-            GeneralMethods.closeAllWindows();
-        }
-
         private void btnManager_logOut_Click(object sender, RoutedEventArgs e)
         {
-
             GeneralMethods.logOut(this);
         }
 

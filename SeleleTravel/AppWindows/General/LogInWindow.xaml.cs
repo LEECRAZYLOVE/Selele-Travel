@@ -23,6 +23,7 @@ namespace SeleleTravel
     {
         LoadWindow windowToLoad;
         public static SignUpWindow signUpWindow = new SignUpWindow();
+        public static MainWindow mainWindow = new MainWindow();
         public LogInWindow()
         {
             InitializeComponent();
@@ -34,18 +35,19 @@ namespace SeleleTravel
         }
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
-        {
+        {           
             switch (windowToLoad)
             {
                 case LoadWindow.Consultant:
                     ConsultantHomeWindow consultantWindow = new ConsultantHomeWindow();
                     consultantWindow.Owner = Owner;
-                    consultantWindow.Show();
+                    consultantWindow.Show();                    
                     break;
                 case LoadWindow.Manager:
                     Manager_Home managerWindow = new Manager_Home();
                     managerWindow.Owner = Owner;
-                    managerWindow.Show();
+ 
+                    managerWindow.Show();                  
                     break;
                 case LoadWindow.Owner:
                     OwnerHomeWindow ownerWindow = new OwnerHomeWindow();
@@ -53,19 +55,15 @@ namespace SeleleTravel
                     ownerWindow.Show();
                     break;
             }
-            Close();
+
+            Hide();
     }
 
         private void Log_In_Home_Closed(object sender, EventArgs e)
         {
-            //GeneralMethods.closeAllWindows();
-            Close();
-            Application.Current.MainWindow.Show();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
+            Hide();
+            mainWindow.Show();
+            //Application.Current.MainWindow.Show();
         }
 
         private void BtnSignUp_Click(object sender, RoutedEventArgs e)
@@ -73,6 +71,12 @@ namespace SeleleTravel
             this.Hide();
             signUpWindow.Show();
             
+        }
+
+        private void BtnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            mainWindow.Show();
         }
     }
 }

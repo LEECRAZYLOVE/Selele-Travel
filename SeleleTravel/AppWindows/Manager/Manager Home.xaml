@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        Title="Manager_Page" Height="750" Width="1006.4" Closed="Manager_Home1_Closed">
+        Title="Manager_Page" Height="750" Width="1006.4">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

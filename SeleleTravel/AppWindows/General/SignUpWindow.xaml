@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        Title="SignUpWindow" Height="400" Width="350">
+        Title="SignUpWindow" Height="400" Width="350" Closed="Sign_Up_Home_Closed">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -71,7 +71,7 @@
         <Label Content="Staff ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="31" Width="73" Canvas.Left="67" Canvas.Top="75" FontSize="16" FontFamily="Rockwell"/>
         <PasswordBox x:Name="pdbSignUp_password" Canvas.Left="67" Canvas.Top="176" Width="206" Height="41" BorderBrush="Black" FontSize="20"/>
         <Label Content="Enter Your Credentials" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="206" Canvas.Left="67" Canvas.Top="35" FontSize="18" FontFamily="Rockwell"/>
-        <Button x:Name="btnSignIn_goBack"  Content="GO BACK" Height="20" Width="70" Canvas.Left="10" Canvas.Top="10" Style="{DynamicResource LoginButtonStyle}" Background="#FFDDDDDD" BorderBrush="LightGray" Foreground="Black"/>
+        <Button x:Name="btnSignUp_goBack"  Content="GO BACK" Height="20" Width="70" Canvas.Left="10" Canvas.Top="10" Style="{DynamicResource LoginButtonStyle}" Background="#FFDDDDDD" BorderBrush="LightGray" Foreground="Black" Click="BtnSignUp_goBack_Click"/>
         <Button x:Name="btnSignUp_done" Content="SIGN UP" Canvas.Left="67" Canvas.Top="302" Width="206" Height="44"  BorderBrush="Black" FontSize="36" Style="{DynamicResource LoginButtonStyle}" Click="btnSignUp_done_Click"/>
         <Label Content="Confirm Password:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.632,1.231" Height="31" Width="158" Canvas.Left="67" Canvas.Top="222" FontSize="16" FontFamily="Rockwell"/>
         <PasswordBox x:Name="pdbSignUp_passwordConfirm" Canvas.Left="67" Canvas.Top="253" Width="206" Height="41" BorderBrush="Black" FontSize="20"/>
