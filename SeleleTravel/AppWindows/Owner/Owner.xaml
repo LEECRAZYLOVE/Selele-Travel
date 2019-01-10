@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        Title="Owner_Page" Height="800" Width="1398" Closed="Owner_Home_Closed">
+        Title="Owner_Page" Height="800" Width="1398">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -67,7 +67,7 @@
     </Window.Resources>
     <Grid Background="#FF84D8FF" Margin="0,0,-8,-3">
 
-        <Button x:Name="btnOwner_logOut" Content="LOGOUT" Width="150" Height="40" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0" >
+        <Button x:Name="btnOwner_logOut" Content="LOGOUT" Width="150" Height="40" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0" Click="BtnOwner_logOut_Click" >
             <Button.Background>
                 <ImageBrush ImageSource="..\..\images\SeleleLogoBalls.png" Stretch="Uniform">
                     <ImageBrush.RelativeTransform>

@@ -76,6 +76,19 @@ namespace SeleleTravel
                 }
             }
         }
+
+        private void BtnSignUp_goBack_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            Application.Current.MainWindow.Show();
+           // mainWindow.Show();
+        }
+
+        private void Sign_Up_Home_Closed(object sender, EventArgs e)
+        {
+            Hide();
+            Application.Current.MainWindow.Show();
+        }
     }
     
 }

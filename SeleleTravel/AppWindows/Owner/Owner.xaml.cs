@@ -29,17 +29,7 @@ namespace SeleleTravel
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
-        
-        private void Owner_Home_Closed(object sender, EventArgs e)
-        {
-            GeneralMethods.closeAllWindows();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            GeneralMethods.logOut(this);
-        }
-
+          
         private void btnOwner_search_Click(object sender, RoutedEventArgs e)
         {
 
@@ -82,6 +72,11 @@ namespace SeleleTravel
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void BtnOwner_logOut_Click(object sender, RoutedEventArgs e)
+        {
+            GeneralMethods.logOut(this);
         }
     }
 }
