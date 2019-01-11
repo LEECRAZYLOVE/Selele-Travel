@@ -34,7 +34,7 @@ namespace SeleleTravel
         private void btnSignUp_done_Click(object sender, RoutedEventArgs e)
         {
             NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-            string checktStaffID = txbSignUp_staffID.Text;
+            string checkStaffID = txbSignUp_staffID.Text;
             string checkPassword = pdbSignUp_password.Password;
             string checkConfirmPassword = pdbSignUp_passwordConfirm.Password;
 
@@ -52,49 +52,57 @@ namespace SeleleTravel
                 string staffFullName = "";
                 string StaffID = "";
                 string password = checkPassword;
-                string staff_id = checktStaffID;
+                string staff_id = checkStaffID;
+                //Query for updating the password side
                 try
                 {
                     myConnect.Open();
-                    NpgsqlCommand myCommand = new NpgsqlCommand($"UPDATE staff SET password={checkPassword} WHERE staff_id=={checktStaffID}", myConnect);
+                    NpgsqlCommand myCommand = new NpgsqlCommand($"UPDATE staff SET password='{checkPassword}' WHERE staff_id = '{checkStaffID}'", myConnect);
                     // Add paramaters.
                    
                      myCommand.Parameters.Add(new NpgsqlParameter("password", NpgsqlTypes.NpgsqlDbType.Varchar));
-
+                     myCommand.Parameters.Add(new NpgsqlParameter("staff_id", NpgsqlTypes.NpgsqlDbType.Varchar));
+                     
                     //Prepare command
-                    myCommand.Prepare();
+                    //myCommand.Prepare();
                     //add value to the parameter
                     myCommand.Parameters[0].Value = checkPassword;
+                    myCommand.Parameters[1].Value = checkStaffID;
                     //execute the command
-                    int recordAffected= myCommand.ExecuteNonQuery();
-  
-
+                    //int recordAffected= myCommand.ExecuteNonQuery();
+                    myCommand.ExecuteNonQuery();
+                    MessageBox.Show("Successfully saved into the database. You will now be redirected to your home page.");
                 }
                 catch (Exception h)
                 {
                     MessageBox.Show(h.ToString());
                 }
-                //retieve the object, adding the password and saving it into the database
-                //using (var context = new SeleleEntities())
-                //{
-                //    var retrievedEmployee = context.staffs.SingleOrDefault(c => c.staff_id == currentStaffID); //checking where it matches in the database
-                //    if (retrievedEmployee != null)
-                //    {
-                //        retrievedEmployee.password = Password;
-                //        context.SaveChanges();
 
-                //        Position = retrievedEmployee.staffposition;
-                //        staffFullName = retrievedEmployee.stafffirstnames + ' ' + retrievedEmployee.stafflastname;
-                //        StaffID = retrievedEmployee.staff_id;
-                //    }
-                //}
-                MessageBox.Show("Successfully saved into the database. You will now be redirected to your home page.");
-
+                try
+                {
+                    NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT staffposition FROM staff WHERE staff_id = '{checkStaffID}'", myConnect);
+                    // Add paramaters.
+                    NpgsqlDataReader dr = myCommand.ExecuteReader();
+                    string nje = "";
+                    while (dr.Read())
+                    {
+                        
+                        for (int k = 0; k < dr.FieldCount; k++)
+                        {
+                            Position += string.Format("{0}", dr[k]);
+                        }
+                    }
+                }
+                catch (Exception h)
+                {
+                    MessageBox.Show(h.ToString());
+                }
+                
                 //After signing up the new employee will be redirected to the relevant window
                 switch (Position)
                 {
                     case "Consultant": this.Hide(); consultantWindow.Show(); break;
-                    case "Manager": this.Hide(); managerWindow.Show(); break;
+                    case "Manager": this.Hide(); managerWindow.Show(); managerWindow.lblManagerName.Content = ""; managerWindow.lblManagerID.Content = ""; break;
                     case "Owner": this.Hide(); ownerWindow.Show(); break;
 
                 }
