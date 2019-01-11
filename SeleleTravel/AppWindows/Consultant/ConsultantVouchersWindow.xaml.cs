@@ -40,26 +40,26 @@ namespace SeleleTravel
             // extract data from the database and display it in the textbox for displaying
             // the data is the one partaining to the current quote number.
             string inputOrder = txbConsultant_Vouchers_inputOrder.Text;
-            using (SeleleEntities context = new SeleleEntities())
-            {
-                var query = (from c in context.orders
+            //using (SeleleEntities context = new SeleleEntities())
+            //{
+            //    var query = (from c in context.orders
 
-                             where c.order_no == inputOrder
-                             select new
-                             {
-                                 c.quote_no,
-                                c.order_no,
-                                c.datereceived,
-                                c.orderdate
-                             }).First();
+            //                 where c.order_no == inputOrder
+            //                 select new
+            //                 {
+            //                     c.quote_no,
+            //                    c.order_no,
+            //                    c.datereceived,
+            //                    c.orderdate
+            //                 }).First();
 
-                if (query != null)
-                {
-                    txbConsultant_Vouchers_viewOrder.Text = $"Quote number: {query.quote_no}\nOrder number: {query.order_no}\n" +
-                        $"Date received: {query.datereceived}\nDate ordered: {query.orderdate}";
-                }
+            //    if (query != null)
+            //    {
+            //        txbConsultant_Vouchers_viewOrder.Text = $"Quote number: {query.quote_no}\nOrder number: {query.order_no}\n" +
+            //            $"Date received: {query.datereceived}\nDate ordered: {query.orderdate}";
+            //    }
 
-            }
+            //}
 
         }
 
@@ -81,8 +81,8 @@ namespace SeleleTravel
             //Add voucher to database
             try
             {
-                context.vouchers.Add(currentVoucher);
-                context.SaveChanges();
+                //context.vouchers.Add(currentVoucher);
+                //context.SaveChanges();
                 //   MessageBox.Show($"Succesfully added into the database. The new Client ID is: {currentClient.client_no}");
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)

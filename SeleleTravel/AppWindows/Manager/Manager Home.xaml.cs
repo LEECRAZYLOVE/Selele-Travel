@@ -155,36 +155,36 @@ namespace SeleleTravel
             string filter = cbbManager_Search_entities.SelectionBoxItem.ToString();
             string search = txbManager_search.Text;
 
-            if (filter == "Staff")
-            {
-                using (SeleleEntities currentSearch = new SeleleEntities())
-                {
-                    var query = (from c in currentSearch.staffs
+            //if (filter == "Staff")
+            //{
+            //    using (SeleleEntities currentSearch = new SeleleEntities())
+            //    {
+            //        var query = (from c in currentSearch.staffs
 
-                                 where c.staff_id == search
-                                 select new
-                                 {
-                                     c.staff_id,
-                                     c.staffposition,
-                                     c.stafffirstnames,
-                                     c.stafflastname,
-                                     c.salary,
-                                     c.dateofhire,
-                                     c.address,
-                                     c.telephone,
-                                     c.cellphone,
-                                     c.password,
-                                     c.fax
+            //                     where c.staff_id == search
+            //                     select new
+            //                     {
+            //                         c.staff_id,
+            //                         c.staffposition,
+            //                         c.stafffirstnames,
+            //                         c.stafflastname,
+            //                         c.salary,
+            //                         c.dateofhire,
+            //                         c.address,
+            //                         c.telephone,
+            //                         c.cellphone,
+            //                         c.password,
+            //                         c.fax
  
-                                 }).First();
+            //                     }).First();
 
-                    if (query != null)
-                    {
-                        string staffmember = $"{query.staff_id} ,{query.stafffirstnames}, {query.stafflastname}, {query.staffposition}, {query.dateofhire}, {query.salary}, {query.password}, {query.cellphone}, {query.telephone}";
-                        ltbManager_Search_Results.Items.Add(staffmember);
-                    }
-                }
-            }
+            //        if (query != null)
+            //        {
+            //            string staffmember = $"{query.staff_id} ,{query.stafffirstnames}, {query.stafflastname}, {query.staffposition}, {query.dateofhire}, {query.salary}, {query.password}, {query.cellphone}, {query.telephone}";
+            //            ltbManager_Search_Results.Items.Add(staffmember);
+            //        }
+            //    }
+            //}
             
         }
 

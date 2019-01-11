@@ -51,19 +51,19 @@ namespace SeleleTravel
                 string staffFullName = "";
                 string StaffID = "";
                 //retieve the object, adding the password and saving it into the database
-                using (var context = new SeleleEntities())
-                {
-                    var retrievedEmployee = context.staffs.SingleOrDefault(c => c.staff_id == currentStaffID); //checking where it matches in the database
-                    if (retrievedEmployee != null)
-                    {
-                        retrievedEmployee.password = Password;
-                        context.SaveChanges();
+                //using (var context = new SeleleEntities())
+                //{
+                //    var retrievedEmployee = context.staffs.SingleOrDefault(c => c.staff_id == currentStaffID); //checking where it matches in the database
+                //    if (retrievedEmployee != null)
+                //    {
+                //        retrievedEmployee.password = Password;
+                //        context.SaveChanges();
 
-                        Position = retrievedEmployee.staffposition;
-                        staffFullName = retrievedEmployee.stafffirstnames + ' ' + retrievedEmployee.stafflastname;
-                        StaffID = retrievedEmployee.staff_id;
-                    }
-                }
+                //        Position = retrievedEmployee.staffposition;
+                //        staffFullName = retrievedEmployee.stafffirstnames + ' ' + retrievedEmployee.stafflastname;
+                //        StaffID = retrievedEmployee.staff_id;
+                //    }
+                //}
                 MessageBox.Show("Successfully saved into the database. You will now be redirected to your home page.");
 
                 //After signing up the new employee will be redirected to the relevant window

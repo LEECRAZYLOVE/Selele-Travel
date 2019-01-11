@@ -13,9 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 //using Devart.Data.MySql;
+using Npgsql;
 
 namespace SeleleTravel
-{
+{   
     /// <summary>
     /// Interaction logic for Log_In.xaml
     /// </summary>
@@ -35,7 +36,31 @@ namespace SeleleTravel
         }
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
-        {           
+        {
+           
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand("SELECT * FROM staff", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+                string nje = "";
+                int j = 0;
+                while (dr.Read())
+                {
+                    for (int k = 0; k < dr.FieldCount; k++)
+                    {
+                        nje += string.Format("{0}\n", dr[k]);
+                    }
+                }
+                MessageBox.Show(nje);
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+           
             switch (windowToLoad)
             {
                 case LoadWindow.Consultant:

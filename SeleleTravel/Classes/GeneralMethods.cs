@@ -415,20 +415,21 @@ namespace SeleleTravel
         public static string makeQuote_no()
         {
 
-            string quote_no = "";
-            string numOfQuotes = Convert.ToString(getNumberOfQuotes());
-            string _totalQts = numOfQuotes; // assigns the static value to the string
-            
-            while (_totalQts.Length < 6)
-            {
-                // It adds a zero once to the left of the current string
-                _totalQts = "0"+_totalQts;
-            }
-            // generates the quote number using the time and string generated above
-            quote_no = $"Q{_totalQts}";
-            
-            
-            return quote_no;
+            //string quote_no = "";
+            //string numOfQuotes = Convert.ToString(getNumberOfQuotes());
+            //string _totalQts = numOfQuotes; // assigns the static value to the string
+
+            //while (_totalQts.Length < 6)
+            //{
+            //    // It adds a zero once to the left of the current string
+            //    _totalQts = "0"+_totalQts;
+            //}
+            //// generates the quote number using the time and string generated above
+            //quote_no = $"Q{_totalQts}";
+
+
+            //return quote_no;
+            return "";
         }
 
         /// <summary>
@@ -438,20 +439,21 @@ namespace SeleleTravel
         public static string makeVoucher_no()
         {
 
-            string voucher_no = "";
-            string numOfVoucher = Convert.ToString(getNumberOfQuotes());
-            string _totalQts = numOfVoucher; // assigns the static value to the string
+            //  string voucher_no = "";
+            //  string numOfVoucher = Convert.ToString(getNumberOfQuotes());
+            //  string _totalQts = numOfVoucher; // assigns the static value to the string
 
-            while (_totalQts.Length < 6)
-            {
-                // It adds a zero once to the left of the current string
-                _totalQts = "0" + _totalQts;
-            }
-            // generates the quote number using the time and string generated above
-           voucher_no = $"Q{_totalQts}";
+            //  while (_totalQts.Length < 6)
+            //  {
+            //      It adds a zero once to the left of the current string
+            //     _totalQts = "0" + _totalQts;
+            //  }
+            //  generates the quote number using the time and string generated above
+            //voucher_no = $"Q{_totalQts}";
 
 
-            return voucher_no;
+            //  return voucher_no;
+            return "";
         }
 
         /// <summary>
@@ -493,38 +495,39 @@ namespace SeleleTravel
         /// <param name="client Number"></param>
         private static int getNumberOfClients()
         {
-            using (SeleleEntities context = new SeleleEntities())
-            {
-                var query = (from c in context.clients
+            //    using (SeleleEntities context = new SeleleEntities())
+            //    {
+            //        var query = (from c in context.clients
 
 
-                             select new
-                             {
-                                 c.client_no
-                             }).ToList().Count;
+            //                     select new
+            //                     {
+            //                         c.client_no
+            //                     }).ToList().Count;
 
-                return query;
-            }
-            
-        }
-            /// <summary>
-            /// gets the total number of quotes that have been generated thus far.
-            /// </summary>
-            /// <returns></returns>
-            private static int getNumberOfQuotes()
-        {
-            using (SeleleEntities context = new SeleleEntities())
-            {
-                var query = (from c in context.clients
+            //        return query;
+            //    }
+
+            //}
+            //    /// <summary>
+            //    /// gets the total number of quotes that have been generated thus far.
+            //    /// </summary>
+            //    /// <returns></returns>
+            //    private static int getNumberOfQuotes()
+            //{
+            //    using (SeleleEntities context = new SeleleEntities())
+            //    {
+            //        var query = (from c in context.clients
 
 
-                             select new
-                             {
-                                 c.client_no
-                             }).ToList().Count;
+            //                     select new
+            //                     {
+            //                         c.client_no
+            //                     }).ToList().Count;
 
-                return query;
-            }
+            //        return query;
+            //    }
+            return 0;
         }
 
         ///// <summary>
@@ -618,84 +621,84 @@ namespace SeleleTravel
         /// <returns></returns>
         public static string quoteSummary(string QuoteNo)
         {
-            SeleleEntities temp = new SeleleEntities();
-            List<string> services_list = new List<string>();
-            services_list = temp.quotes.Find(QuoteNo).service.Split('|').ToList(); //List with sevice names as elements
+            //SeleleEntities temp = new SeleleEntities();
+            //List<string> services_list = new List<string>();
+            //services_list = temp.quotes.Find(QuoteNo).service.Split('|').ToList(); //List with sevice names as elements
 
-            //The following lists should be in order and correspond with each other
-            List<string> quantities = new List<string>(); //List of all the quatities
-            List<string> descriptions = new List<string>(); //List of all the descriptions
-            List<string> amounts = new List<string>(); //List of all the amounts
+            ////The following lists should be in order and correspond with each other
+            //List<string> quantities = new List<string>(); //List of all the quatities
+            //List<string> descriptions = new List<string>(); //List of all the descriptions
+            //List<string> amounts = new List<string>(); //List of all the amounts
 
-                //Writing out the information for the quote
-                for (int j = 0; j < services_list.Count(); j++)
-                {
-                    switch (services_list[j])
-                    {
-                        case "Acccommodation":
-                            quantities.Add(Convert.ToString(temp.accommodations.Find(QuoteNo).numberofrooms));
-                            descriptions.Add($"Accomodation at {temp.accommodations.Find(QuoteNo).accomname} for {temp.accommodations.Find(QuoteNo).numberofguests} guests \n" +
-                                $" \t\t with the following specifications: {temp.accommodations.Find(QuoteNo).accomspecs} \n" +
-                                $" \t\t check in: {temp.accommodations.Find(QuoteNo).checkin.ToString()} \t check out: {temp.accommodations.Find(QuoteNo).checkout.ToString()}");
-                            amounts.Add(Convert.ToString(temp.accommodations.Find(QuoteNo).amount));
-                            break;
+            //    //Writing out the information for the quote
+            //    for (int j = 0; j < services_list.Count(); j++)
+            //    {
+            //        switch (services_list[j])
+            //        {
+            //            case "Acccommodation":
+            //                quantities.Add(Convert.ToString(temp.accommodations.Find(QuoteNo).numberofrooms));
+            //                descriptions.Add($"Accomodation at {temp.accommodations.Find(QuoteNo).accomname} for {temp.accommodations.Find(QuoteNo).numberofguests} guests \n" +
+            //                    $" \t\t with the following specifications: {temp.accommodations.Find(QuoteNo).accomspecs} \n" +
+            //                    $" \t\t check in: {temp.accommodations.Find(QuoteNo).checkin.ToString()} \t check out: {temp.accommodations.Find(QuoteNo).checkout.ToString()}");
+            //                amounts.Add(Convert.ToString(temp.accommodations.Find(QuoteNo).amount));
+            //                break;
 
-                        case "Cab Services":
-                            quantities.Add(Convert.ToString(temp.cabservices.Find(QuoteNo).numberofcabs));
-                            descriptions.Add($"Cab service with {temp.cabservices.Find(QuoteNo).nameofagency} from {temp.cabservices.Find(QuoteNo).pickup} to {temp.cabservices.Find(QuoteNo).dropoff} \n" +
-                                $" \t\t on the {temp.cabservices.Find(QuoteNo).dateofcab.ToString()} at {temp.cabservices.Find(QuoteNo).timeofcab.ToString()} \n" +
-                                $" \t\t with the following specifications: {temp.cabservices.Find(QuoteNo).cabspecs}");
-                            amounts.Add(Convert.ToString(temp.cabservices.Find(QuoteNo).amount));
-                            break;
+            //            case "Cab Services":
+            //                quantities.Add(Convert.ToString(temp.cabservices.Find(QuoteNo).numberofcabs));
+            //                descriptions.Add($"Cab service with {temp.cabservices.Find(QuoteNo).nameofagency} from {temp.cabservices.Find(QuoteNo).pickup} to {temp.cabservices.Find(QuoteNo).dropoff} \n" +
+            //                    $" \t\t on the {temp.cabservices.Find(QuoteNo).dateofcab.ToString()} at {temp.cabservices.Find(QuoteNo).timeofcab.ToString()} \n" +
+            //                    $" \t\t with the following specifications: {temp.cabservices.Find(QuoteNo).cabspecs}");
+            //                amounts.Add(Convert.ToString(temp.cabservices.Find(QuoteNo).amount));
+            //                break;
 
-                        case "Car Hire":
-                            quantities.Add(Convert.ToString(temp.carhires.Find(QuoteNo).numberofcars));
-                            descriptions.Add($"Car Hire service with {temp.carhires.Find(QuoteNo).agencyname} from {temp.carhires.Find(QuoteNo).pickuplocation} to {temp.carhires.Find(QuoteNo).dropofflocation} \n" +
-                                $" \t\t on the {temp.carhires.Find(QuoteNo).startday.ToString()} to the {temp.carhires.Find(QuoteNo).expectedenddate.ToString()} \n" +
-                                $" \t\t with the following specifications: {temp.carhires.Find(QuoteNo).carhirespecifications}");
-                            amounts.Add(Convert.ToString(temp.carhires.Find(QuoteNo).amount));
-                            break;
+            //            case "Car Hire":
+            //                quantities.Add(Convert.ToString(temp.carhires.Find(QuoteNo).numberofcars));
+            //                descriptions.Add($"Car Hire service with {temp.carhires.Find(QuoteNo).agencyname} from {temp.carhires.Find(QuoteNo).pickuplocation} to {temp.carhires.Find(QuoteNo).dropofflocation} \n" +
+            //                    $" \t\t on the {temp.carhires.Find(QuoteNo).startday.ToString()} to the {temp.carhires.Find(QuoteNo).expectedenddate.ToString()} \n" +
+            //                    $" \t\t with the following specifications: {temp.carhires.Find(QuoteNo).carhirespecifications}");
+            //                amounts.Add(Convert.ToString(temp.carhires.Find(QuoteNo).amount));
+            //                break;
 
-                        case "Flight":
-                            quantities.Add(Convert.ToString(temp.flights.Find(QuoteNo).passengernum));
-                            descriptions.Add($"Flight with {temp.flights.Find(QuoteNo).airline} from {temp.flights.Find(QuoteNo).fromcity} to {temp.flights.Find(QuoteNo).tocity} \n" +
-                            $" \t\t on the {temp.flights.Find(QuoteNo).departdate.ToString()} with {temp.flights.Find(QuoteNo).numberofbags} \n" +
-                            $" \t\t with the following specifications: {temp.flights.Find(QuoteNo).flightspecs}");
-                            amounts.Add(Convert.ToString(temp.flights.Find(QuoteNo).amount));
-                            break;
+            //            case "Flight":
+            //                quantities.Add(Convert.ToString(temp.flights.Find(QuoteNo).passengernum));
+            //                descriptions.Add($"Flight with {temp.flights.Find(QuoteNo).airline} from {temp.flights.Find(QuoteNo).fromcity} to {temp.flights.Find(QuoteNo).tocity} \n" +
+            //                $" \t\t on the {temp.flights.Find(QuoteNo).departdate.ToString()} with {temp.flights.Find(QuoteNo).numberofbags} \n" +
+            //                $" \t\t with the following specifications: {temp.flights.Find(QuoteNo).flightspecs}");
+            //                amounts.Add(Convert.ToString(temp.flights.Find(QuoteNo).amount));
+            //                break;
 
-                        case "Event":
-                            quantities.Add("1");
-                            descriptions.Add($"{temp.events.Find(QuoteNo).eventname} from {temp.events.Find(QuoteNo).startday} to {temp.events.Find(QuoteNo).endday} \n" +
-                            $" \t\t with the following specifications: {temp.events.Find(QuoteNo).eventspecs}");
-                            amounts.Add(Convert.ToString(temp.events.Find(QuoteNo).amount));
-                            break;
+            //            case "Event":
+            //                quantities.Add("1");
+            //                descriptions.Add($"{temp.events.Find(QuoteNo).eventname} from {temp.events.Find(QuoteNo).startday} to {temp.events.Find(QuoteNo).endday} \n" +
+            //                $" \t\t with the following specifications: {temp.events.Find(QuoteNo).eventspecs}");
+            //                amounts.Add(Convert.ToString(temp.events.Find(QuoteNo).amount));
+            //                break;
 
-                        case "Conference":
-                            quantities.Add("1");
-                            descriptions.Add($"{temp.conferences.Find(QuoteNo).conferencename} from {temp.conferences.Find(QuoteNo).startday} to {temp.conferences.Find(QuoteNo).endday} \n" +
-                                $" \t\t at {temp.conferences.Find(QuoteNo).venue}, at {temp.conferences.Find(QuoteNo).timeconference.ToString()} \n" +
-                                $" \t\t with the following specifications: {temp.conferences.Find(QuoteNo).conferencespecs}");
-                            amounts.Add(Convert.ToString(temp.conferences.Find(QuoteNo).amount));
-                            break;
+            //            case "Conference":
+            //                quantities.Add("1");
+            //                descriptions.Add($"{temp.conferences.Find(QuoteNo).conferencename} from {temp.conferences.Find(QuoteNo).startday} to {temp.conferences.Find(QuoteNo).endday} \n" +
+            //                    $" \t\t at {temp.conferences.Find(QuoteNo).venue}, at {temp.conferences.Find(QuoteNo).timeconference.ToString()} \n" +
+            //                    $" \t\t with the following specifications: {temp.conferences.Find(QuoteNo).conferencespecs}");
+            //                amounts.Add(Convert.ToString(temp.conferences.Find(QuoteNo).amount));
+            //                break;
                     
-                }
-            }
+            //    }
+            //}
            
-            //Displaying the informatoin
+            ////Displaying the informatoin
             string output = "\n\n";
-            if (quantities.Count() == descriptions.Count() && quantities.Count() == amounts.Count()) //checking if the lists are equal, meaning that they correspond
-            {
-                output = "QUANTIY \t DESCRIPTION \t\t\t\t\t\t\t\t AMOUNT \n"; //making the headers
-                for (int j = 0; j < amounts.Count(); j++) //extracting the information from the lists
-                {
-                    output += $"{quantities[j]} \t\t {descriptions[j]} \t\t\t {amounts[j]} \n\n";
-                }
-                //displaying and extracting the service fee, VAT and total for the quote
-                output += $"\t\t Service Fee \t\t\t\t\t\t\t\t {temp.quotes.Find(QuoteNo).servicefee} \n " +
-                          $"\t\t VAT 15% \t\t\t\t\t\t\t\t {temp.quotes.Find(QuoteNo).amount * 0.15} \n " +
-                          $"\t\t Total   \t\t\t\t\t\t\t\t {temp.quotes.Find(QuoteNo).amount * 0.15 + temp.quotes.Find(QuoteNo).amount}";
-            }
+            //if (quantities.Count() == descriptions.Count() && quantities.Count() == amounts.Count()) //checking if the lists are equal, meaning that they correspond
+            //{
+            //    output = "QUANTIY \t DESCRIPTION \t\t\t\t\t\t\t\t AMOUNT \n"; //making the headers
+            //    for (int j = 0; j < amounts.Count(); j++) //extracting the information from the lists
+            //    {
+            //        output += $"{quantities[j]} \t\t {descriptions[j]} \t\t\t {amounts[j]} \n\n";
+            //    }
+            //    //displaying and extracting the service fee, VAT and total for the quote
+            //    output += $"\t\t Service Fee \t\t\t\t\t\t\t\t {temp.quotes.Find(QuoteNo).servicefee} \n " +
+            //              $"\t\t VAT 15% \t\t\t\t\t\t\t\t {temp.quotes.Find(QuoteNo).amount * 0.15} \n " +
+            //              $"\t\t Total   \t\t\t\t\t\t\t\t {temp.quotes.Find(QuoteNo).amount * 0.15 + temp.quotes.Find(QuoteNo).amount}";
+            //}
 
             return output;
 

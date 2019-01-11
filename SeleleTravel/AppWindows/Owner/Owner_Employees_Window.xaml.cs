@@ -76,8 +76,8 @@ namespace SeleleTravel
                 //Add staff to database
                 try
                 {
-                    context.staffs.Add(currentEmployee);
-                    context.SaveChanges();
+                    //context.staffs.Add(currentEmployee);
+                    //context.SaveChanges();
                     MessageBox.Show($"Succesfully added into the database. New Employee ID is: {currentEmployee.staff_id}");
                     GeneralMethods.clearTextBoxes(new List<TextBox>() { txbNewEmployee_surname, txbNewEmployee_name, txbNewEmployee_address, txbNewEmployee_city, txbNewEmployee_areaCode, txbEmployee_cellphone, txbNewEmployee_telephone, txbNewEmployee_fax, txbNewEmployee_email, txbNewEmployee_position, txbNewEmployee_salary });
                 }//catching the validation error cause it kept popping up for no reason
@@ -108,83 +108,83 @@ namespace SeleleTravel
 
         private void btnEmplyees_find_Click_1(object sender, RoutedEventArgs e)
         {
-            string staff_ID = txbEmployees_find.Text;
-            string staffName = txbEmployee_Name.Text;
-            if (staff_ID != "")
-            {
-                using (SeleleEntities currentStaff = new SeleleEntities())
-                {
-                    var query = (from c in currentStaff.staffs
+        //    string staff_ID = txbEmployees_find.Text;
+        //    string staffName = txbEmployee_Name.Text;
+        //    if (staff_ID != "")
+        //    {
+        //        using (SeleleEntities currentStaff = new SeleleEntities())
+        //        {
+        //            var query = (from c in currentStaff.staffs
 
-                                 where c.staff_id == staff_ID
-                                 select new
-                                 {
-                                     c.staff_id,
-                                     c.address,
-                                     c.cellphone,
-                                     c.dateofhire,
-                                     c.fax,
-                                     c.salary,
-                                     c.stafffirstnames,
-                                     c.stafflastname,
-                                     c.staffposition,
-                                     c.telephone,
+        //                         where c.staff_id == staff_ID
+        //                         select new
+        //                         {
+        //                             c.staff_id,
+        //                             c.address,
+        //                             c.cellphone,
+        //                             c.dateofhire,
+        //                             c.fax,
+        //                             c.salary,
+        //                             c.stafffirstnames,
+        //                             c.stafflastname,
+        //                             c.staffposition,
+        //                             c.telephone,
 
-                                 }).First();
+        //                         }).First();
 
-                    if (query != null)
-                    {
+        //            if (query != null)
+        //            {
 
-                        ltbEmployees_employeeDetails.Items.Add($"Staff ID: {query.staff_id}");
-                        ltbEmployees_employeeDetails.Items.Add($"staff first names:{query.stafffirstnames}");
-                        ltbEmployees_employeeDetails.Items.Add($"staff last name: {query.stafflastname}");
-                        ltbEmployees_employeeDetails.Items.Add($"staff position: {query.staffposition}");
-                        ltbEmployees_employeeDetails.Items.Add($"dateofhire: {query.dateofhire}");
-                        ltbEmployees_employeeDetails.Items.Add($"salary: {query.salary}");
-                        ltbEmployees_employeeDetails.Items.Add($"cellphone: {query.cellphone}");
-                        ltbEmployees_employeeDetails.Items.Add($"telephone: {query.telephone}");
-                    }
+        //                ltbEmployees_employeeDetails.Items.Add($"Staff ID: {query.staff_id}");
+        //                ltbEmployees_employeeDetails.Items.Add($"staff first names:{query.stafffirstnames}");
+        //                ltbEmployees_employeeDetails.Items.Add($"staff last name: {query.stafflastname}");
+        //                ltbEmployees_employeeDetails.Items.Add($"staff position: {query.staffposition}");
+        //                ltbEmployees_employeeDetails.Items.Add($"dateofhire: {query.dateofhire}");
+        //                ltbEmployees_employeeDetails.Items.Add($"salary: {query.salary}");
+        //                ltbEmployees_employeeDetails.Items.Add($"cellphone: {query.cellphone}");
+        //                ltbEmployees_employeeDetails.Items.Add($"telephone: {query.telephone}");
+        //            }
 
-                }
+        //        }
 
-            }
-            else if (staffName != "")
-            {
-                using (SeleleEntities currentStaff = new SeleleEntities())
-                {
-                    var query = (from c in currentStaff.staffs
+        //    }
+        //    else if (staffName != "")
+        //    {
+        //        using (SeleleEntities currentStaff = new SeleleEntities())
+        //        {
+        //            var query = (from c in currentStaff.staffs
 
-                                 where c.stafffirstnames == staffName
-                                 select new
-                                 {
-                                     c.staff_id,
-                                     c.address,
-                                     c.cellphone,
-                                     c.dateofhire,
-                                     c.fax,
-                                     c.salary,
-                                     c.stafffirstnames,
-                                     c.stafflastname,
-                                     c.staffposition,
-                                     c.telephone,
+        //                         where c.stafffirstnames == staffName
+        //                         select new
+        //                         {
+        //                             c.staff_id,
+        //                             c.address,
+        //                             c.cellphone,
+        //                             c.dateofhire,
+        //                             c.fax,
+        //                             c.salary,
+        //                             c.stafffirstnames,
+        //                             c.stafflastname,
+        //                             c.staffposition,
+        //                             c.telephone,
 
-                                 }).First();
+        //                         }).First();
 
-                    if (query != null)
-                    {
+        //            if (query != null)
+        //            {
 
-                        ltbEmployees_employeeDetails.Items.Add($"Staff ID: {query.staff_id}");
-                        ltbEmployees_employeeDetails.Items.Add($"staff first names:{query.stafffirstnames}");
-                        ltbEmployees_employeeDetails.Items.Add($"staff last name: {query.stafflastname}");
-                        ltbEmployees_employeeDetails.Items.Add($"staff position: {query.staffposition}");
-                        ltbEmployees_employeeDetails.Items.Add($"dateofhire: {query.dateofhire}");
-                        ltbEmployees_employeeDetails.Items.Add($"salary: {query.salary}");
-                        ltbEmployees_employeeDetails.Items.Add($"cellphone: {query.cellphone}");
-                        ltbEmployees_employeeDetails.Items.Add($"telephone: {query.telephone}");
-                    }
-                }
+        //                ltbEmployees_employeeDetails.Items.Add($"Staff ID: {query.staff_id}");
+        //                ltbEmployees_employeeDetails.Items.Add($"staff first names:{query.stafffirstnames}");
+        //                ltbEmployees_employeeDetails.Items.Add($"staff last name: {query.stafflastname}");
+        //                ltbEmployees_employeeDetails.Items.Add($"staff position: {query.staffposition}");
+        //                ltbEmployees_employeeDetails.Items.Add($"dateofhire: {query.dateofhire}");
+        //                ltbEmployees_employeeDetails.Items.Add($"salary: {query.salary}");
+        //                ltbEmployees_employeeDetails.Items.Add($"cellphone: {query.cellphone}");
+        //                ltbEmployees_employeeDetails.Items.Add($"telephone: {query.telephone}");
+        //            }
+        //        }
 
-            }
+        //    }
         }
     }
 }
