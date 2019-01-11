@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 //using Devart.Data.MySql;
+using Npgsql;
 
 namespace SeleleTravel
 {
@@ -24,32 +25,55 @@ namespace SeleleTravel
         public static ConsultantHomeWindow consultantWindow = new ConsultantHomeWindow();
         public static Manager_Home managerWindow = new Manager_Home();
         public static OwnerHomeWindow ownerWindow = new OwnerHomeWindow();
-
+        public static MainWindow mainWindow = new MainWindow();
         public SignUpWindow()
         {
             InitializeComponent();
         }
-
+        
         private void btnSignUp_done_Click(object sender, RoutedEventArgs e)
         {
-            string currentStaffID = txbSignUp_staffID.Text;
-            string Password = pdbSignUp_password.Password;
-            string confirmPassword = pdbSignUp_passwordConfirm.Password;
+            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            string checktStaffID = txbSignUp_staffID.Text;
+            string checkPassword = pdbSignUp_password.Password;
+            string checkConfirmPassword = pdbSignUp_passwordConfirm.Password;
 
-            if (Password != confirmPassword)
+            if (checkPassword != checkConfirmPassword)
             {
                 MessageBox.Show("Password doest not match. Please try again.");
                 pdbSignUp_password.Clear();
                 pdbSignUp_passwordConfirm.Clear();
                 pdbSignUp_password.Clear();
                 pdbSignUp_passwordConfirm.Clear();
-                btnSignUp_done_Click(sender, e);
             }
-            else if (Password == confirmPassword)
+            else if (checkPassword == checkConfirmPassword)
             {
                 string Position = "";
                 string staffFullName = "";
                 string StaffID = "";
+                string password = checkPassword;
+                string staff_id = checktStaffID;
+                try
+                {
+                    myConnect.Open();
+                    NpgsqlCommand myCommand = new NpgsqlCommand($"UPDATE staff SET password={checkPassword} WHERE staff_id=={checktStaffID}", myConnect);
+                    // Add paramaters.
+                   
+                     myCommand.Parameters.Add(new NpgsqlParameter("password", NpgsqlTypes.NpgsqlDbType.Varchar));
+
+                    //Prepare command
+                    myCommand.Prepare();
+                    //add value to the parameter
+                    myCommand.Parameters[0].Value = checkPassword;
+                    //execute the command
+                    int recordAffected= myCommand.ExecuteNonQuery();
+  
+
+                }
+                catch (Exception h)
+                {
+                    MessageBox.Show(h.ToString());
+                }
                 //retieve the object, adding the password and saving it into the database
                 //using (var context = new SeleleEntities())
                 //{
@@ -87,7 +111,8 @@ namespace SeleleTravel
         private void Sign_Up_Home_Closed(object sender, EventArgs e)
         {
             Hide();
-            Application.Current.MainWindow.Show();
+            mainWindow.Show();
+            //Application.Current.MainWindow.Show();
         }
     }
     
