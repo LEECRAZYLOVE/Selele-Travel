@@ -16,5 +16,5 @@ C:\Users\Litha Stuurman\Desktop\Selele Travel App\SeleleTravel\App.xaml
 1941175515067
 AppWindows\General\ComposeMessageWindow.xaml;AppWindows\Consultant\ConsultantOrdersWindow.xaml;AppWindows\Consultant\ConsultantHomeWindow.xaml;AppWindows\Consultant\ConsultantQuotesWindow.xaml;AppWindows\Consultant\ConsultantUpdateWindow.xaml;AppWindows\Consultant\ConsultantVouchersWindow.xaml;AppWindows\General\LogInWindow.xaml;MainWindow.xaml;AppWindows\Manager\Manager Home.xaml;AppWindows\Manager\Manager_Authorizations_Window.xaml;AppWindows\Manager\Manager_Confirmations_Window.xaml;AppWindows\Manager\Manager_Payments_Window.xaml;AppWindows\Manager\Manager_Quotes_Window.xaml;AppWindows\Consultant\New Service Provider.xaml;AppWindows\Owner\Owner.xaml;AppWindows\Owner\OwnerPaymentsWindow.xaml;AppWindows\Owner\Owner_Employees_Window.xaml;AppWindows\Owner\Owner_Financial_Window.xaml;AppWindows\General\SignUpWindow.xaml;
 
-False
+True
 
