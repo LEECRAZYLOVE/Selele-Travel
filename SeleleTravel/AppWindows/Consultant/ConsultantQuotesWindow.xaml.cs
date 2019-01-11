@@ -97,8 +97,6 @@ namespace SeleleTravel
 
             string Telephone = txbNewClient_telephone.Text;
 
-            ContactDetails contactDetails = new ContactDetails(Cellphone, email, Telephone, Fax);
-
             //Get location details
             string address = txbNewClient_address.Text;
             string city = txbNewClient_city.Text;
@@ -124,8 +122,8 @@ namespace SeleleTravel
             //Add client to database
             try
             {
-                context.clients.Add(currentClient);
-                context.SaveChanges();
+                //context.clients.Add(currentClient);
+                //context.SaveChanges();
                 MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentClient.client_no}");
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
@@ -224,8 +222,8 @@ namespace SeleleTravel
             //Add client to database
             try
             {
-                context.clients.Add(currentClient);
-                context.SaveChanges();
+                //context.clients.Add(currentClient);
+                //context.SaveChanges();
                 MessageBox.Show($"Succesfully added into the database. The new Client ID is: {currentClient.client_no}");
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
@@ -288,8 +286,8 @@ namespace SeleleTravel
                 //sql insertion
                 try
                 {
-                    context.events.Add(currentEvent);
-                    context.SaveChanges();
+                    //context.events.Add(currentEvent);
+                    //context.SaveChanges();
                 }
                 catch (System.Data.Entity.Validation.DbEntityValidationException ex)
                 {
@@ -422,8 +420,8 @@ namespace SeleleTravel
                 //Add cabservice to database
                 try
                 {
-                    context.cabservices.Add(currentCabService);
-                    context.SaveChanges();
+                    //context.cabservices.Add(currentCabService);
+                    //context.SaveChanges();
                     MessageBox.Show($"Succesfully added cab details into the database");
                 }
                 catch (System.Data.Entity.Validation.DbEntityValidationException ex)
@@ -625,8 +623,8 @@ namespace SeleleTravel
             //Add cabservice to database
             try
             {
-                context.carhires.Add(currentCarHire);
-                context.SaveChanges();
+                //context.carhires.Add(currentCarHire);
+                //context.SaveChanges();
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {
@@ -781,8 +779,8 @@ namespace SeleleTravel
                 //Add cabservice to database
                 try
                 {
-                    context.events.Add(currentEvent);
-                    context.SaveChanges();
+                    //context.events.Add(currentEvent);
+                    //context.SaveChanges();
                 }
                 catch (System.Data.Entity.Validation.DbEntityValidationException ex)
                 {
@@ -831,7 +829,7 @@ namespace SeleleTravel
             double eventAmount = Convert.ToDouble(txbEvents_total.Text);
             DateTime eventStartdate = dpEvents_startDate.DisplayDate;
             DateTime eventEnddate = dpEvents_endDate.DisplayDate;
-            string quote_no = ConsultantHomeWindow.currentQuoteNo;
+           
             // Data verification:
             // make sure that the supplied data is valid
             List<string> stringVs = new List<string> { nameOfEvent, eventSpecs };
@@ -868,8 +866,8 @@ namespace SeleleTravel
                 //Add cabservice to database
                 try
                 {
-                    context.events.Add(currentEvent);
-                    context.SaveChanges();
+                    //context.events.Add(currentEvent);
+                    //context.SaveChanges();
                 }
                 catch (System.Data.Entity.Validation.DbEntityValidationException ex)
                 {
@@ -924,8 +922,8 @@ namespace SeleleTravel
             //Add conference to database
             try
             {
-                context.conferences.Add(currentConference);
-                context.SaveChanges();
+                //context.conferences.Add(currentConference);
+                //context.SaveChanges();
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {
@@ -999,8 +997,8 @@ namespace SeleleTravel
             //Add carhire to database
             try
             {
-                context.carhires.Add(currentCarHire);
-                context.SaveChanges();
+                //context.carhires.Add(currentCarHire);
+                //context.SaveChanges();
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {
@@ -1047,8 +1045,8 @@ namespace SeleleTravel
             //Add flight to database
             try
             {
-                context.flights.Add(currentFlight);
-                context.SaveChanges();
+                //context.flights.Add(currentFlight);
+                //context.SaveChanges();
                 MessageBox.Show($"Succesfully added flight details into the database");
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
@@ -1122,7 +1120,6 @@ namespace SeleleTravel
 
         private void btnAccommodation_done_Click_1(object sender, RoutedEventArgs e)
         {
-            string quote_no = ConsultantHomeWindow.currentQuoteNo;
             string accomname = txbAccommodation_name.Text;
             string accom_id = "AccoPE0001";//this is generated by function for accommodationID
             DateTime checkin = dpAccommodation_checkIn.DisplayDate;
@@ -1153,8 +1150,8 @@ namespace SeleleTravel
             //Add accommodation to database
             try
             {
-                context.accommodations.Add(currentAccommodation);
-                context.SaveChanges();
+                //context.accommodations.Add(currentAccommodation);
+                //context.SaveChanges();
                 MessageBox.Show($"Succesfully added acccomomodation details into the database");
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
@@ -1355,8 +1352,8 @@ namespace SeleleTravel
             //Add quote to database
             try
             {
-                context.quotes.Add(currentQuote);
-                context.SaveChanges();
+                //context.quotes.Add(currentQuote);
+                //context.SaveChanges();
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {
@@ -1433,8 +1430,8 @@ namespace SeleleTravel
             //Add quote to database
             try
             {
-                context.quotes.Add(CurrentQuote);
-                context.SaveChanges();
+                //context.quotes.Add(CurrentQuote);
+                //context.SaveChanges();
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {

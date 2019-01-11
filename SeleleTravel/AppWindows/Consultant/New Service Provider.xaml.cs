@@ -116,8 +116,8 @@ namespace SeleleTravel
             //Add service provider to database
             try
             {
-                context.agencydetails.Add(currentServiceProvider);
-                context.SaveChanges();
+                //context.agencydetails.Add(currentServiceProvider);
+                //context.SaveChanges();
                 //  MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentServiceProvider.client_no}");
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
@@ -135,34 +135,34 @@ namespace SeleleTravel
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {//Extracting data from the database DONE!
-            using (SeleleEntities currentServiceProvider = new SeleleEntities())
-            {
-                var query =(from c in currentServiceProvider.agencydetails
+            //using (SeleleEntities currentServiceProvider = new SeleleEntities())
+            //{
+            //    var query =(from c in currentServiceProvider.agencydetails
 
-                             where c.telephone=="0783861533"
-                             select new
-                             {
-                                 c.agency_id,
-                                 c.address,
-                                 c.cellphone,
-                                 c.emailaddress,
-                                 c.fax,
-                                 c.nameofagency,
-                                 c.service,
-                                 c.telephone,
+            //                 where c.telephone=="0783861533"
+            //                 select new
+            //                 {
+            //                     c.agency_id,
+            //                     c.address,
+            //                     c.cellphone,
+            //                     c.emailaddress,
+            //                     c.fax,
+            //                     c.nameofagency,
+            //                     c.service,
+            //                     c.telephone,
                                 
-                             }).First() ;
+            //                 }).First() ;
 
-                if (query != null)
-                {
-                    txbNewService_name.Text = query.nameofagency;
-                    txbNewService_address.Text = query.address ;
-                    txbNewService_cellphone.Text = query.cellphone;
-                    txbNewService_fax.Text = query.fax;
-                    txbNewService_telephone.Text = query.telephone;
-                    txbNewService_email.Text = query.emailaddress;
-                }
-            }
+            //    if (query != null)
+            //    {
+            //        txbNewService_name.Text = query.nameofagency;
+            //        txbNewService_address.Text = query.address ;
+            //        txbNewService_cellphone.Text = query.cellphone;
+            //        txbNewService_fax.Text = query.fax;
+            //        txbNewService_telephone.Text = query.telephone;
+            //        txbNewService_email.Text = query.emailaddress;
+            //    }
+            //}
 
         }
 

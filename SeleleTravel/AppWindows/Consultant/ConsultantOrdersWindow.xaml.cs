@@ -66,36 +66,36 @@ namespace SeleleTravel
             // extract data from the database and display it in the textbox for displaying
             // the data is the one partaining to the current quote number.
             string inputQuote = txbConsultant_Orders_inputQuote.Text;
-            using (SeleleEntities context = new SeleleEntities())
-            {
-                var query = (from c in context.quotes
+            //using (SeleleEntities context = new SeleleEntities())
+            //{
+            //    var query = (from c in context.quotes
 
-                             where c.quote_no == inputQuote
-                             select new
-                             {
-                                 c.quote_no,
-                                 c.amount,
-                                 c.service,
-                                 c.timequoted,
-                                 c.timesent,
-                                 c.datesent,
-                                 c.quotedate,
-                                 c.consultant_no,
-                                 c.servicefee,
-                                 c.client_no,
-                                 c.clientname
+            //                 where c.quote_no == inputQuote
+            //                 select new
+            //                 {
+            //                     c.quote_no,
+            //                     c.amount,
+            //                     c.service,
+            //                     c.timequoted,
+            //                     c.timesent,
+            //                     c.datesent,
+            //                     c.quotedate,
+            //                     c.consultant_no,
+            //                     c.servicefee,
+            //                     c.client_no,
+            //                     c.clientname
 
-                             }).First();
+            //                 }).First();
 
-                if (query != null)
-                {
-                    txbConsultant_Orders_viewQuote.Text = $"Quote number: {query.quote_no}\nTotal amount:{query.amount}\n" +
-                        $"Services: {query.service.Replace('|',' ')}\nTime Quoted: {query.timequoted}\nTime sent: {query.timesent}\n" +
-                        $"Date sent: {query.datesent}\nQuote Date: {query.quotedate}\nConsultant number: {query.consultant_no}\n" +
-                        $"Service fee: {query.servicefee}\nClient ID: {query.client_no}\nClient Name: {query.clientname}";
-                }
+            //    if (query != null)
+            //    {
+            //        txbConsultant_Orders_viewQuote.Text = $"Quote number: {query.quote_no}\nTotal amount:{query.amount}\n" +
+            //            $"Services: {query.service.Replace('|',' ')}\nTime Quoted: {query.timequoted}\nTime sent: {query.timesent}\n" +
+            //            $"Date sent: {query.datesent}\nQuote Date: {query.quotedate}\nConsultant number: {query.consultant_no}\n" +
+            //            $"Service fee: {query.servicefee}\nClient ID: {query.client_no}\nClient Name: {query.clientname}";
+            //    }
 
-            }
+            //}
         }
         private void BtnConsultant_Orders_selectQuote_Click(object sender, RoutedEventArgs e)
         {
@@ -113,8 +113,8 @@ namespace SeleleTravel
             //Add order to database
             try
             {
-                context.orders.Add(currentOrder);
-                context.SaveChanges();
+                //context.orders.Add(currentOrder);
+                //context.SaveChanges();
              //   MessageBox.Show($"Succesfully added into the database. The new Client ID is: {currentClient.client_no}");
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)

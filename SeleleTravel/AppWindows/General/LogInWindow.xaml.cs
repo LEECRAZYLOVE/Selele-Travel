@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 //using Devart.Data.MySql;
+using Npgsql;
 
 namespace SeleleTravel
 {   
@@ -36,11 +37,30 @@ namespace SeleleTravel
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection myConnect = new SqlConnection(MainWindow.ConnectionString);
-            SqlCommand myCommand = new SqlCommand("INSERT INTO client (client_no, quote_no) " + "Values ('string', 1)");
-            myCommand.Connection = myConnect;
-            myCommand.ExecuteNonQuery();
-
+           
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand("SELECT * FROM staff", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+                string nje = "";
+                int j = 0;
+                while (dr.Read())
+                {
+                    for (int k = 0; k < dr.FieldCount; k++)
+                    {
+                        nje += string.Format("{0}\n", dr[k]);
+                    }
+                }
+                MessageBox.Show(nje);
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+           
             switch (windowToLoad)
             {
                 case LoadWindow.Consultant:
