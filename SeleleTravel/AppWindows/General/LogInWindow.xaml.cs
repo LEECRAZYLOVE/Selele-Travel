@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 //using Devart.Data.MySql;
 using Npgsql;
 
@@ -42,7 +42,7 @@ namespace SeleleTravel
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                NpgsqlCommand myCommand = new NpgsqlCommand("SELECT * FROM staff", myConnect);
+                NpgsqlCommand myCommand = new NpgsqlCommand("SELECT * FROM client", myConnect);
                 NpgsqlDataReader dr = myCommand.ExecuteReader();
                 string nje = "";
                 int j = 0;
@@ -52,9 +52,10 @@ namespace SeleleTravel
                     {
                         nje += string.Format("{0}\n", dr[k]);
                     }
+                    break;
                 }
-                MessageBox.Show(nje);
                 myConnect.Close();
+                MessageBox.Show(nje);               
             }
             catch (Exception h)
             {

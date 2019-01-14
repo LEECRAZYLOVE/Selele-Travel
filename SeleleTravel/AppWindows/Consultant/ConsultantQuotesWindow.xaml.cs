@@ -16,6 +16,7 @@ using System.Reflection;
 using System.IO;
 //using Devart.Data.MySql;
 using System.Data.SqlClient;
+using Npgsql;
 
 namespace SeleleTravel
 {
@@ -807,6 +808,15 @@ namespace SeleleTravel
 
             // Results from the database
             //txblOldClient_Details.Text = "";
+            NpgsqlConnection myConnect = new NpgsqlConnection("Database=postgres;Port=5433;Server=127.0.0.1;User Id=postgres;Password=selele;");
+            try
+            {
+                myConnect.Open();
+            }
+            catch
+            {
+
+            }
         }
 
         private void btnOldClient_select_Click_1(object sender, RoutedEventArgs e)
