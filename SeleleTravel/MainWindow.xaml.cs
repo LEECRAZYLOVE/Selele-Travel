@@ -22,11 +22,12 @@ namespace SeleleTravel
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public enum LoadWindow { Consultant, Manager, Owner}
+    
     public partial class MainWindow : Window
     {
         //instantiating all the windows as global objects
         public static LogInWindow logInWindow;
-        
+        public static string ConnectionString = "Database=postgres;Port=5433;Server=127.0.0.1;User Id=postgres;Password=litha";
 
         public MainWindow()
         {
@@ -43,6 +44,7 @@ namespace SeleleTravel
             logInWindow = new LogInWindow(windowToLoad);
             logInWindow.Owner = this;
             logInWindow.Show();
+            Hide();
         }
 
         private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
@@ -62,12 +64,6 @@ namespace SeleleTravel
         {
             Hide();
             loadLogInWindow(LoadWindow.Owner);
-        }
-        
-        public string MakeQuoteSummmary () //function that will display the final information for the quote
-        {
-
-            return "";
         }
 
         private void Home_Page_Closed(object sender, EventArgs e)

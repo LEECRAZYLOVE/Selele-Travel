@@ -24,6 +24,11 @@ namespace SeleleTravel
     public partial class Manager_Home : Window
     {
         Timer timer = new Timer(1000);
+        Manager_Authorizations_Window managerAuthorizations;
+        Manager_Confirmations_Window managerConfirmations;
+        Manager_Payments_Window managerPayments;
+        Manager_Quotes_Window managerQuotes;
+        ComposeMessageWindow composeMessage;
 
         public Manager_Home()
         {
@@ -139,14 +144,8 @@ namespace SeleleTravel
 
         #endregion
 
-        private void Manager_Home1_Closed(object sender, EventArgs e)
-        {
-            GeneralMethods.closeAllWindows();
-        }
-
         private void btnManager_logOut_Click(object sender, RoutedEventArgs e)
         {
-
             GeneralMethods.logOut(this);
         }
 
@@ -156,48 +155,77 @@ namespace SeleleTravel
             string filter = cbbManager_Search_entities.SelectionBoxItem.ToString();
             string search = txbManager_search.Text;
 
-            if (filter == "Staff")
-            {
-                using (SeleleEntities currentSearch = new SeleleEntities())
-                {
-                    var query = (from c in currentSearch.staffs
+            //if (filter == "Staff")
+            //{
+            //    using (SeleleEntities currentSearch = new SeleleEntities())
+            //    {
+            //        var query = (from c in currentSearch.staffs
 
-                                 where c.staff_id == search
-                                 select new
-                                 {
-                                     c.staff_id,
-                                     c.staffposition,
-                                     c.stafffirstnames,
-                                     c.stafflastname,
-                                     c.salary,
-                                     c.dateofhire,
-                                     c.address,
-                                     c.telephone,
-                                     c.cellphone,
-                                     c.password,
-                                     c.fax,
-                                     c.email
+            //                     where c.staff_id == search
+            //                     select new
+            //                     {
+            //                         c.staff_id,
+            //                         c.staffposition,
+            //                         c.stafffirstnames,
+            //                         c.stafflastname,
+            //                         c.salary,
+            //                         c.dateofhire,
+            //                         c.address,
+            //                         c.telephone,
+            //                         c.cellphone,
+            //                         c.password,
+            //                         c.fax
+ 
+            //                     }).First();
 
-                                 }).First();
-
-                    if (query != null)
-                    {
-                        string staffmember = $"{query.staff_id} ,{query.stafffirstnames}, {query.stafflastname}, {query.staffposition}, {query.dateofhire}, {query.salary}, {query.password}, {query.cellphone}, {query.telephone}";
-                        ltbManager_Search_Results.Items.Add(staffmember);
-                    }
-                }
-            }
+            //        if (query != null)
+            //        {
+            //            string staffmember = $"{query.staff_id} ,{query.stafffirstnames}, {query.stafflastname}, {query.staffposition}, {query.dateofhire}, {query.salary}, {query.password}, {query.cellphone}, {query.telephone}";
+            //            ltbManager_Search_Results.Items.Add(staffmember);
+            //        }
+            //    }
+            //}
             
         }
 
         private void btnManager_Quotes_Click(object sender, RoutedEventArgs e)
         {
-            
+            managerQuotes = new Manager_Quotes_Window();
+            //Hide();
+            managerQuotes.Show();
         }
 
         private void cbbManager_Search_entities_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void BtnManager_authorize_Click(object sender, RoutedEventArgs e)
+        {
+            managerAuthorizations = new Manager_Authorizations_Window();
+            //Hide();
+            managerAuthorizations.Show();
+        }
+
+        private void BtnManager_Paymentss_Click(object sender, RoutedEventArgs e)
+        {
+            managerPayments = new Manager_Payments_Window();
+            //Hide();
+            managerPayments.Show();
+        }
+
+        private void BtnManager_Confirmatons_Click(object sender, RoutedEventArgs e)
+        {
+            managerConfirmations = new Manager_Confirmations_Window();
+            //Hide();
+            managerConfirmations.Show();
+        }
+
+        private void BtnManager_composeMessage_Click(object sender, RoutedEventArgs e)
+        {
+            composeMessage = new ComposeMessageWindow();
+            //Hide();
+            composeMessage.Show();
         }
     }
 }

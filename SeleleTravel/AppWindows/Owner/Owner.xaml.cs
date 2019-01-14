@@ -29,17 +29,7 @@ namespace SeleleTravel
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
-        
-        private void Owner_Home_Closed(object sender, EventArgs e)
-        {
-            GeneralMethods.closeAllWindows();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            GeneralMethods.logOut(this);
-        }
-
+          
         private void btnOwner_search_Click(object sender, RoutedEventArgs e)
         {
 
@@ -49,16 +39,16 @@ namespace SeleleTravel
         {
             ownerFinancialWindow = new OwnerFinancialWindow();
             ownerFinancialWindow.Owner = this;
-            Hide();
             ownerFinancialWindow.Show();
+            Hide();
         }
 
         private void BtnOwner_Employees_Click(object sender, RoutedEventArgs e)
         {
             ownerEmployeesWindow = new OwnerEmployeesWindow();
             ownerEmployeesWindow.Owner = this;
-            Hide();
             ownerEmployeesWindow.Show();
+            Hide();
         }
 
         private void BtnOwner_composeMessage_Click(object sender, RoutedEventArgs e)
@@ -72,9 +62,21 @@ namespace SeleleTravel
         private void BtnOwner_paymentProofs_Click(object sender, RoutedEventArgs e)
         {
             ownerPaymentsWindow = new OwnerPaymentsWindow();
-            ownerEmployeesWindow.Owner = this;
+            ownerPaymentsWindow.Owner = this;
             ownerPaymentsWindow.Show();
             Hide();
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.Hide();
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void BtnOwner_logOut_Click(object sender, RoutedEventArgs e)
+        {
+            GeneralMethods.logOut(this);
         }
     }
 }

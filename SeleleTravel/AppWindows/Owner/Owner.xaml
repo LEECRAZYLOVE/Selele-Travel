@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        Title="Owner_Page" Height="800" Width="1200" Closed="Owner_Home_Closed">
+        Title="Owner_Page" Height="800" Width="1398">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -65,9 +65,9 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Background="#FF84D8FF" Margin="0,0,-206,-300">
+    <Grid Background="#FF84D8FF" Margin="0,0,-8,-3">
 
-        <Button x:Name="btnOwner_logOut" Content="LOGOUT" Width="150" Height="40" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0" >
+        <Button x:Name="btnOwner_logOut" Content="LOGOUT" Width="150" Height="40" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0" Click="BtnOwner_logOut_Click" >
             <Button.Background>
                 <ImageBrush ImageSource="..\..\images\SeleleLogoBalls.png" Stretch="Uniform">
                     <ImageBrush.RelativeTransform>
@@ -130,5 +130,17 @@
                 </Canvas>
             </TabItem>
         </TabControl>
+        <Canvas HorizontalAlignment="Left" Margin="984,114,0,62" Width="409" Background="White">
+            <Button x:Name="btnClientAccount_findClient" Content="Find" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Canvas.Left="339" Canvas.Top="56"/>
+            <Label x:Name="label" Content="Client Accounts" Canvas.Left="10" Canvas.Top="10"/>
+            <Label x:Name="label1" Content="Enter Client ID/Name:" Canvas.Left="10" Canvas.Top="50"/>
+            <TextBox x:Name="txbClientAccount_paid" Height="22" Canvas.Left="180" TextWrapping="Wrap" Text="" Canvas.Top="302" Width="154"/>
+            <Label x:Name="label2" Content="How much did they pay?:" Canvas.Left="10" Canvas.Top="298"/>
+            <Button x:Name="btnClientAccount_update" Content="UODATE CLIENT ACCOUNT" Canvas.Left="10" Canvas.Top="344" Width="389"/>
+            <TextBox x:Name="txbClientAccount_clientNameorID" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194" Canvas.Left="140" Canvas.Top="53"/>
+            <ListBox x:Name="lbClientAccount_results" HorizontalAlignment="Left" Height="212" VerticalAlignment="Top" Width="389" Canvas.Left="10" Canvas.Top="81"/>
+            <Label x:Name="label3" Content="Reminders" Canvas.Left="10" Canvas.Top="392"/>
+            <ListBox x:Name="listBox" Height="165" Canvas.Left="10" Canvas.Top="423" Width="389"/>
+        </Canvas>
     </Grid>
 </Window>

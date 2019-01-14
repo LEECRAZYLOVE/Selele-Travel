@@ -21,6 +21,7 @@ namespace SeleleTravel
     /// </summary>
     public partial class ConsultantHomeWindow : Window
     {
+        ConsultantQuotesWindow consultantQuotesWindow = new ConsultantQuotesWindow();
 
         public ConsultantHomeWindow()
         {
@@ -35,11 +36,10 @@ namespace SeleleTravel
 
         private void btnConsultant_Quotes_Click(object sender, RoutedEventArgs e)
         {
-            ConsultantQuotesWindow consultantQuotesWindow = new ConsultantQuotesWindow();
             consultantQuotesWindow.Owner = this;
             consultantQuotesWindow.Show();
-            Hide();
-            
+            //Hide();
+            //MessageBox.Show($"New quote number: {quote_no}");
         }
 
         private void btnConsultant_search_Click(object sender, RoutedEventArgs e)
@@ -52,7 +52,7 @@ namespace SeleleTravel
             ConsultantOrdersWindow consultantOrdersWindow = new ConsultantOrdersWindow();
             consultantOrdersWindow.Owner = this;
             consultantOrdersWindow.Show();
-            Hide();
+            //Hide();
 
         }
 
@@ -61,7 +61,7 @@ namespace SeleleTravel
             ConsultantVouchersWindow consultantVouchersWindow = new ConsultantVouchersWindow();
             consultantVouchersWindow.Owner = this;
             consultantVouchersWindow.Show();
-            Hide();
+            //Hide();
 
         }
 
@@ -70,7 +70,7 @@ namespace SeleleTravel
             ComposeMessageWindow composeMessageWindow = new ComposeMessageWindow();
             composeMessageWindow.Owner = this;
             composeMessageWindow.Show();
-            Hide();
+            //Hide();
 
         }
 
@@ -79,7 +79,7 @@ namespace SeleleTravel
             ConsultantUpdateWindow consultantUpdateWindow = new ConsultantUpdateWindow();
             consultantUpdateWindow.Owner = this;
             consultantUpdateWindow.Show();
-            Hide();
+            //Hide();
 
             //ppConsultant_Update.Visibility = Visibility.Visible;
         }
@@ -89,7 +89,7 @@ namespace SeleleTravel
             New_Service_Provider provider = new New_Service_Provider();
             provider.Owner = this;
             provider.Show();
-            Hide();
+            //Hide();
         }
     }
 }

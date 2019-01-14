@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        Title="Manager_Page" Height="750" Width="1006.4" Closed="Manager_Home1_Closed">
+        Title="Manager_Page" Height="750" Width="1006.4">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -93,11 +93,12 @@
                     <Image Height="572.8" Canvas.Left="10" Canvas.Top="10" Width="947.6" Source="..\..\images\SeleleLogoBalls.png" Opacity=".5"/>
                     <Label Content="Choose an option..." VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" Canvas.Left="15.8" Canvas.Top="20" />
                     <StackPanel Height="513.6" Canvas.Left="10" Canvas.Top="69.2" Width="947.6">
-                        <Button x:Name="btnManager_Quotes" Content="Quote Verifications" Click="btnManager_Quotes_Click"  Style="{DynamicResource HomeButtonStyle}"/>
-                        <Button x:Name="btnManager_authorize" Content="Authorizations" Style="{DynamicResource HomeButtonStyle}"/>
-                        <Button x:Name="btnManager_invoices" Content="Invoices"  Style="{DynamicResource HomeButtonStyle}"/>
-                        <Button x:Name="btnManager_composeMessage" Content="Compose Message" Style="{DynamicResource HomeButtonStyle}"/>
-                        <Button x:Name="btnManager_Confirmatons" Content="Booking Confirmations"   Style="{DynamicResource HomeButtonStyle}"/>
+                        <Button x:Name="btnManager_Quotes" Content="Quote Verifications" Click="btnManager_Quotes_Click"  Style="{DynamicResource HomeButtonStyle}" Height="86"/>
+                        <Button x:Name="btnManager_authorize" Content="Authorizations" Style="{DynamicResource HomeButtonStyle}" Click="BtnManager_authorize_Click" Height="86"/>
+                        <Button x:Name="btnManager_invoices" Content="Invoices"  Style="{DynamicResource HomeButtonStyle}" Height="86"/>
+                        <Button x:Name="btnManager_composeMessage" Content="Compose Message" Style="{DynamicResource HomeButtonStyle}" Height="86" Click="BtnManager_composeMessage_Click"/>
+                        <Button x:Name="btnManager_Confirmatons" Content="Booking Confirmations"   Style="{DynamicResource HomeButtonStyle}" Height="86" Click="BtnManager_Confirmatons_Click"/>
+                        <Button x:Name="btnManager_Paymentss" Content="Payments" Style="{DynamicResource HomeButtonStyle}" Height="86" Click="BtnManager_Paymentss_Click"/>
                     </StackPanel>
                 </Canvas>
             </TabItem>

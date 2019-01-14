@@ -13,15 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 //using Devart.Data.MySql;
+using Npgsql;
 
 namespace SeleleTravel
-{
+{   
     /// <summary>
     /// Interaction logic for Log_In.xaml
     /// </summary>
     public partial class LogInWindow : Window
     {
         LoadWindow windowToLoad;
+        public static SignUpWindow signUpWindow = new SignUpWindow();
+        public static MainWindow mainWindow = new MainWindow();
         public LogInWindow()
         {
             InitializeComponent();
@@ -33,47 +36,128 @@ namespace SeleleTravel
         }
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
-        {
+        {        
+            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            string checkUserId = txbLogIn_staffID.Text;
+            string checkPassword = pdbLogIn_password.Password;
             switch (windowToLoad)
             {
                 case LoadWindow.Consultant:
                     ConsultantHomeWindow consultantWindow = new ConsultantHomeWindow();
                     consultantWindow.Owner = Owner;
-                    consultantWindow.Show();
+                    try
+                    {
+                        myConnect.Open();
+                        NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT password, staff_id, stafffirstnames FROM staff", myConnect);
+                        NpgsqlDataReader dr = myCommand.ExecuteReader();
+                        //string nje = "";
+                        while (dr.Read())
+                        {
+                            if (dr[0] == checkPassword && dr[1] == checkUserId)
+                            {
+                                consultantWindow.Show();
+                                MessageBox.Show($"Welcome {dr[2]}");
+                                Hide();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
+
+                            }
+                
+                        }
+                        myConnect.Close();
+                    }
+                    catch (Exception h)
+                    {
+                        MessageBox.Show(h.ToString());
+                    }                                      
                     break;
+
                 case LoadWindow.Manager:
                     Manager_Home managerWindow = new Manager_Home();
                     managerWindow.Owner = Owner;
-                    managerWindow.Show();
+                    try
+                    {
+                        myConnect.Open();
+                        NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT password, staff_id, stafffirstnames FROM staff", myConnect);
+                        NpgsqlDataReader dr = myCommand.ExecuteReader();
+                        string nje = "";
+                        while (dr.Read())
+                        {
+                            if (dr[0] == checkPassword && dr[1] == checkUserId)
+                            {
+                                MessageBox.Show($"Welcome {dr[2]}");
+                                managerWindow.Show();
+                                Hide();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
+                            }
+                        }
+                        myConnect.Close();
+                    }
+                    catch (Exception h)
+                    {
+                        MessageBox.Show(h.ToString());
+                    }                                      
                     break;
+
                 case LoadWindow.Owner:
                     OwnerHomeWindow ownerWindow = new OwnerHomeWindow();
                     ownerWindow.Owner = Owner;
-                    ownerWindow.Show();
+                    try
+                    {
+                        myConnect.Open();
+                        NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT password, staff_id, stafffirstnames FROM staff", myConnect);
+                        NpgsqlDataReader dr = myCommand.ExecuteReader();
+                        string nje = "";
+                        while (dr.Read())
+                        {
+                            if (dr[0] == checkPassword && dr[1] == checkUserId)
+                            {
+                                MessageBox.Show($"Welcome {dr[2]}");
+                                ownerWindow.Show();
+                                Hide();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
+                            }
+
+                        }
+                        myConnect.Close();
+                    }
+                    catch (Exception h)
+                    {
+                        MessageBox.Show(h.ToString());
+                    }
                     break;
             }
-            Close();
-    }
+            txbLogIn_staffID.Clear();
+            pdbLogIn_password.Clear();
+
+        }
 
         private void Log_In_Home_Closed(object sender, EventArgs e)
         {
-            //GeneralMethods.closeAllWindows();
-            if (Application.Current.MainWindow.OwnedWindows.Count <= 0)
-                Application.Current.MainWindow.Show();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
+            Hide();
+            mainWindow.Show();
+            //Application.Current.MainWindow.Show();
         }
 
         private void BtnSignUp_Click(object sender, RoutedEventArgs e)
         {
-            
-            SignUpWindow signUpWindow = new SignUpWindow();
-            signUpWindow.Owner = Owner;
+            this.Hide();
             signUpWindow.Show();
-            Close();
+            
+        }
+
+        private void BtnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            mainWindow.Show();
         }
     }
 }

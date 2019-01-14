@@ -55,11 +55,9 @@
     <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.2.0.4\lib\net46\CommonServiceLocator.dll</HintPath>
     </Reference>
-    <Reference Include="Devart.Data.Linq, Version=4.8.1615.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
-      <HintPath>..\packages\Devart.Data.Linq.4.8.1615\lib\netstandard2.0\Devart.Data.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="Devart.Data.MySql.Linq, Version=4.8.1615.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
-      <HintPath>..\packages\Devart.Data.MySql.Linq.4.8.1615\lib\netstandard2.0\Devart.Data.MySql.Linq.dll</HintPath>
+    <Reference Include="Devart.Data, Version=5.0.2070.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
+    <Reference Include="Devart.Data.MySql, Version=8.12.1278.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <HintPath>..\packages\Devart.Data.MySql.8.12.1278\lib\netstandard2.0\Devart.Data.MySql.dll</HintPath>
     </Reference>
     <Reference Include="Devart.Data.PostgreSql, Version=7.11.1278.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
       <HintPath>..\packages\dotConnect.Express.for.PostgreSQL.7.11.1278\lib\Devart.Data.PostgreSql.dll</HintPath>
@@ -80,6 +78,9 @@
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28\lib\net46\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.EntityFrameworkCore, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.EntityFrameworkCore.2.2.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
@@ -141,9 +142,6 @@
     <Reference Include="Npgsql, Version=4.0.4.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.4.0.4\lib\net451\Npgsql.dll</HintPath>
     </Reference>
-    <Reference Include="Npgsql.EntityFrameworkCore.PostgreSQL, Version=2.2.0.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Npgsql.EntityFrameworkCore.PostgreSQL.2.2.0\lib\netstandard2.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll</HintPath>
-    </Reference>
     <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\MicrosoftOfficeCore.15.0.0\lib\net35\Office.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -160,6 +158,9 @@
     <Reference Include="Platform.Xml.Serialization, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Xml.Serialization.1.2.5\lib\net452\Platform.Xml.Serialization.dll</HintPath>
     </Reference>
+    <Reference Include="RabbitMQ.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.5.1.0\lib\net451\RabbitMQ.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Remotion, Version=1.18.0.10000, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\packages\Remotion.1.18.0\lib\net45\Remotion.dll</HintPath>
     </Reference>
@@ -168,9 +169,6 @@
     </Reference>
     <Reference Include="Shaolinq, Version=1.9.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Shaolinq.1.9.4\lib\net452\Shaolinq.dll</HintPath>
-    </Reference>
-    <Reference Include="Shaolinq.Postgres, Version=1.9.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Shaolinq.Postgres.1.9.4\lib\net452\Shaolinq.Postgres.dll</HintPath>
     </Reference>
     <Reference Include="Shaolinq.Postgres.DotConnect, Version=1.9.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Shaolinq.Postgres.DotConnect.1.9.4\lib\net452\Shaolinq.Postgres.DotConnect.dll</HintPath>
@@ -204,9 +202,6 @@
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reflection.TypeExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Reflection.TypeExtensions.4.3.0\lib\net46\System.Reflection.TypeExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
@@ -247,24 +242,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="accommodation.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="accommodationdetail.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="agencydetail.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="airlinedetail.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cabservice.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="carhire.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="AppWindows\Consultant\accommodation.cs" />
+    <Compile Include="AppWindows\Consultant\agencydetail.cs" />
+    <Compile Include="AppWindows\Consultant\cabservice.cs" />
+    <Compile Include="AppWindows\Consultant\carhire.cs" />
+    <Compile Include="AppWindows\Consultant\client.cs" />
+    <Compile Include="AppWindows\Consultant\conference.cs" />
+    <Compile Include="AppWindows\Consultant\event.cs" />
+    <Compile Include="AppWindows\Consultant\flight.cs" />
+    <Compile Include="AppWindows\Consultant\order.cs" />
+    <Compile Include="AppWindows\Consultant\quote.cs" />
+    <Compile Include="AppWindows\Consultant\SeleleEntities.cs" />
+    <Compile Include="AppWindows\Consultant\voucher.cs" />
+    <Compile Include="AppWindows\Owner\staff.cs" />
     <Compile Include="Classes\GeneralMethods.cs" />
     <Compile Include="AppWindows\General\ComposeMessageWindow.xaml.cs">
       <DependentUpon>ComposeMessageWindow.xaml</DependentUpon>
@@ -308,51 +298,6 @@
     <Compile Include="AppWindows\General\SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="client.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="conference.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="dailyserviceupdate.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="event.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="flight.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="invoice.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="order.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="quote.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SeleleModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SeleleModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SeleleModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SeleleModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SeleleModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="staff.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="voucher.cs">
-      <DependentUpon>SeleleModel.tt</DependentUpon>
-    </Compile>
     <Page Include="AppWindows\General\ComposeMessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -389,9 +334,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\Boss.cs" />
-    <Compile Include="Classes\ContactDetails.cs" />
-    <Compile Include="Classes\Manager.cs" />
     <Compile Include="AppWindows\General\LogInWindow.xaml.cs">
       <DependentUpon>LogInWindow.xaml</DependentUpon>
     </Compile>
@@ -476,13 +418,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="SeleleModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SeleleModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="SeleleModel.edmx.diagram">
-      <DependentUpon>SeleleModel.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -531,18 +466,6 @@
     <Resource Include="Images\Selele Travel LOGO2.png" />
     <Resource Include="Images\Selele Travel BALLS.png" />
     <Resource Include="Images\SeleleLogoBalls.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SeleleModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SeleleModel.edmx</DependentUpon>
-      <LastGenOutput>SeleleModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="SeleleModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SeleleModel.edmx</DependentUpon>
-      <LastGenOutput>SeleleModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
