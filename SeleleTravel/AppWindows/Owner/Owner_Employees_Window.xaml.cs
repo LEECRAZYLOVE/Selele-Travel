@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
-//using Devart.Data.MySql;
+using Npgsql;
 
 namespace SeleleTravel
 {
@@ -44,6 +44,7 @@ namespace SeleleTravel
         private void BtnNewEmployee_generate_Click(object sender, RoutedEventArgs e)
         {
             bool boolValue = GeneralMethods.checkEmptytxtBox(new List<string>() { txbNewEmployee_surname.Text, txbNewEmployee_name.Text, txbNewEmployee_address.Text, txbNewEmployee_city.Text, txbNewEmployee_areaCode.Text, txbEmployee_cellphone.Text, txbNewEmployee_telephone.Text, txbNewEmployee_fax.Text, txbNewEmployee_email.Text, txbNewEmployee_position.Text, txbNewEmployee_salary.Text });
+            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
 
             if (!boolValue) //if all the text boxes are fine then this code will execute
             {
@@ -58,39 +59,18 @@ namespace SeleleTravel
                 string Position = txbNewEmployee_position.Text;
                 double Salary = Convert.ToDouble(txbNewEmployee_salary.Text);
 
-                var context = new SeleleEntities();
-                var currentEmployee = new staff()
-                {
-                    staff_id = GeneralMethods.makeStaffID(Surname, Cellphone),
-                    stafffirstnames = Name,
-                    stafflastname = Surname,
-                    address = FullAddress,
-                    cellphone = Cellphone,
-                    telephone = Telephone,
-                    fax = Fax,
-
-                    staffposition = Position,
-                    salary = Salary,
-                    dateofhire = DateTime.Today
-                };
-                //Add staff to database
                 try
                 {
-                    //context.staffs.Add(currentEmployee);
-                    //context.SaveChanges();
-                    MessageBox.Show($"Succesfully added into the database. New Employee ID is: {currentEmployee.staff_id}");
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"INSERT INTO staff (staff_id, stafffirstnames,stafflastname,address,cellphone,telephone,fax,staffposition,salary,dateofhire) " +
+                    $"VALUES ('{GeneralMethods.makeStaffID(Surname, Cellphone)}', '{Name}', '{Surname}', '{FullAddress}', '{Cellphone}', '{Telephone}', '{Fax}', '{Position}', '{Salary}', '{DateTime.Today}') ", myConnect);
+                    myCommand.ExecuteNonQuery();
+                    MessageBox.Show($"Succesfully added into the database. New Employee ID is: {GeneralMethods.makeStaffID(Surname, Cellphone)}");
                     GeneralMethods.clearTextBoxes(new List<TextBox>() { txbNewEmployee_surname, txbNewEmployee_name, txbNewEmployee_address, txbNewEmployee_city, txbNewEmployee_areaCode, txbEmployee_cellphone, txbNewEmployee_telephone, txbNewEmployee_fax, txbNewEmployee_email, txbNewEmployee_position, txbNewEmployee_salary });
-                }//catching the validation error cause it kept popping up for no reason
-                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-                {
-                    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
                 }
-                catch (Exception ex)
+                catch (Exception h)
                 {
-                    //other error
-                    throw ex;
-
+                MessageBox.Show(h.ToString());
                 }
             }
         }
@@ -108,83 +88,7 @@ namespace SeleleTravel
 
         private void btnEmplyees_find_Click_1(object sender, RoutedEventArgs e)
         {
-        //    string staff_ID = txbEmployees_find.Text;
-        //    string staffName = txbEmployee_Name.Text;
-        //    if (staff_ID != "")
-        //    {
-        //        using (SeleleEntities currentStaff = new SeleleEntities())
-        //        {
-        //            var query = (from c in currentStaff.staffs
-
-        //                         where c.staff_id == staff_ID
-        //                         select new
-        //                         {
-        //                             c.staff_id,
-        //                             c.address,
-        //                             c.cellphone,
-        //                             c.dateofhire,
-        //                             c.fax,
-        //                             c.salary,
-        //                             c.stafffirstnames,
-        //                             c.stafflastname,
-        //                             c.staffposition,
-        //                             c.telephone,
-
-        //                         }).First();
-
-        //            if (query != null)
-        //            {
-
-        //                ltbEmployees_employeeDetails.Items.Add($"Staff ID: {query.staff_id}");
-        //                ltbEmployees_employeeDetails.Items.Add($"staff first names:{query.stafffirstnames}");
-        //                ltbEmployees_employeeDetails.Items.Add($"staff last name: {query.stafflastname}");
-        //                ltbEmployees_employeeDetails.Items.Add($"staff position: {query.staffposition}");
-        //                ltbEmployees_employeeDetails.Items.Add($"dateofhire: {query.dateofhire}");
-        //                ltbEmployees_employeeDetails.Items.Add($"salary: {query.salary}");
-        //                ltbEmployees_employeeDetails.Items.Add($"cellphone: {query.cellphone}");
-        //                ltbEmployees_employeeDetails.Items.Add($"telephone: {query.telephone}");
-        //            }
-
-        //        }
-
-        //    }
-        //    else if (staffName != "")
-        //    {
-        //        using (SeleleEntities currentStaff = new SeleleEntities())
-        //        {
-        //            var query = (from c in currentStaff.staffs
-
-        //                         where c.stafffirstnames == staffName
-        //                         select new
-        //                         {
-        //                             c.staff_id,
-        //                             c.address,
-        //                             c.cellphone,
-        //                             c.dateofhire,
-        //                             c.fax,
-        //                             c.salary,
-        //                             c.stafffirstnames,
-        //                             c.stafflastname,
-        //                             c.staffposition,
-        //                             c.telephone,
-
-        //                         }).First();
-
-        //            if (query != null)
-        //            {
-
-        //                ltbEmployees_employeeDetails.Items.Add($"Staff ID: {query.staff_id}");
-        //                ltbEmployees_employeeDetails.Items.Add($"staff first names:{query.stafffirstnames}");
-        //                ltbEmployees_employeeDetails.Items.Add($"staff last name: {query.stafflastname}");
-        //                ltbEmployees_employeeDetails.Items.Add($"staff position: {query.staffposition}");
-        //                ltbEmployees_employeeDetails.Items.Add($"dateofhire: {query.dateofhire}");
-        //                ltbEmployees_employeeDetails.Items.Add($"salary: {query.salary}");
-        //                ltbEmployees_employeeDetails.Items.Add($"cellphone: {query.cellphone}");
-        //                ltbEmployees_employeeDetails.Items.Add($"telephone: {query.telephone}");
-        //            }
-        //        }
-
-        //    }
+       
         }
     }
 }

@@ -63,13 +63,11 @@ namespace SeleleTravel
                      myCommand.Parameters.Add(new NpgsqlParameter("password", NpgsqlTypes.NpgsqlDbType.Varchar));
                      myCommand.Parameters.Add(new NpgsqlParameter("staff_id", NpgsqlTypes.NpgsqlDbType.Varchar));
                      
-                    //Prepare command
-                    //myCommand.Prepare();
                     //add value to the parameter
                     myCommand.Parameters[0].Value = checkPassword;
                     myCommand.Parameters[1].Value = checkStaffID;
+
                     //execute the command
-                    //int recordAffected= myCommand.ExecuteNonQuery();
                     myCommand.ExecuteNonQuery();
                     MessageBox.Show("Successfully saved into the database. You will now be redirected to your home page.");
                 }
@@ -83,7 +81,6 @@ namespace SeleleTravel
                     NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT staffposition FROM staff WHERE staff_id = '{checkStaffID}'", myConnect);
                     // Add paramaters.
                     NpgsqlDataReader dr = myCommand.ExecuteReader();
-                    string nje = "";
                     while (dr.Read())
                     {
                         
