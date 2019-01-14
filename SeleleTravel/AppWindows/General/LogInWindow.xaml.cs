@@ -55,21 +55,17 @@ namespace SeleleTravel
                         {
                             if (dr[0] == checkPassword && dr[1] == checkUserId)
                             {
-                                MessageBox.Show($"Welcome {dr[2]}");
                                 consultantWindow.Show();
+                                MessageBox.Show($"Welcome {dr[2]}");
+                                Hide();
                             }
                             else
                             {
                                 MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
-                                txbLogIn_staffID.Clear();
-                                pdbLogIn_password.Clear();
+
                             }
-                            //for (int k = 0; k < dr.FieldCount; k++)
-                            //{
-                            //    nje += string.Format("{0}\n", dr[k]);
-                            //}
+                
                         }
-                        //MessageBox.Show(nje);
                         myConnect.Close();
                     }
                     catch (Exception h)
@@ -93,19 +89,13 @@ namespace SeleleTravel
                             {
                                 MessageBox.Show($"Welcome {dr[2]}");
                                 managerWindow.Show();
+                                Hide();
                             }
                             else
                             {
                                 MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
-                                txbLogIn_staffID.Clear();
-                                pdbLogIn_password.Clear();
                             }
-                            //for (int k = 0; k < dr.FieldCount; k++)
-                            //{
-                            //    nje += string.Format("{0}\n", dr[k]);
-                            //}
                         }
-                        //MessageBox.Show(nje);
                         myConnect.Close();
                     }
                     catch (Exception h)
@@ -129,19 +119,14 @@ namespace SeleleTravel
                             {
                                 MessageBox.Show($"Welcome {dr[2]}");
                                 ownerWindow.Show();
+                                Hide();
                             }
                             else
                             {
                                 MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
-                                txbLogIn_staffID.Clear();
-                                pdbLogIn_password.Clear();
                             }
-                            //for (int k = 0; k < dr.FieldCount; k++)
-                            //{
-                            //    nje += string.Format("{0}\n", dr[k]);
-                            //}
+
                         }
-                        //MessageBox.Show(nje);
                         myConnect.Close();
                     }
                     catch (Exception h)
@@ -150,9 +135,10 @@ namespace SeleleTravel
                     }
                     break;
             }
+            txbLogIn_staffID.Clear();
+            pdbLogIn_password.Clear();
 
-            Hide();
-    }
+        }
 
         private void Log_In_Home_Closed(object sender, EventArgs e)
         {
