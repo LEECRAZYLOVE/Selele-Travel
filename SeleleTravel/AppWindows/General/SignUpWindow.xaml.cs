@@ -24,10 +24,14 @@ namespace SeleleTravel
         public static ConsultantHomeWindow consultantWindow = new ConsultantHomeWindow();
         public static Manager_Home managerWindow = new Manager_Home();
         public static OwnerHomeWindow ownerWindow = new OwnerHomeWindow();
-
+        LoadWindow windowToLoad;
         public SignUpWindow()
         {
             InitializeComponent();
+        }
+        public SignUpWindow(LoadWindow windowToLoad) : this()
+        {
+            this.windowToLoad = windowToLoad;
         }
 
         private void btnSignUp_done_Click(object sender, RoutedEventArgs e)
@@ -62,13 +66,27 @@ namespace SeleleTravel
                 }
             }
             MessageBox.Show("Successfully saved into the database. You will now be redirected to your home page.");
-            switch (Position)
+            switch (windowToLoad)
             {
-                case "Consultant": consultantWindow.Show(); break;
-                case "Manager": managerWindow.Show(); break;
-                case "Owner" : ownerWindow.Show(); break;
-                
+                case  LoadWindow.Consultant:
+                    var consultantWindow = new ConsultantHomeWindow();
+                    consultantWindow.Show();
+                    break;
+                case LoadWindow.Manager:
+                    var managerWindow = new Manager_Home();
+                    managerWindow.Show();
+                    break;
+
+                case LoadWindow.Owner :
+                    var ownerWindow = new OwnerHomeWindow();
+                    ownerWindow.Show();
+                    break;
             }
+        }
+
+        private void Sign_Up_Home_Closed(object sender, EventArgs e)
+        {
+            Owner.Show();
         }
     }
     

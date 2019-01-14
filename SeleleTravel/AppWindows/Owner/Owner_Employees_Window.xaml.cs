@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
-using Devart.Data.MySql;
+//using Devart.Data.MySql;
 
 namespace SeleleTravel
 {
@@ -44,7 +44,8 @@ namespace SeleleTravel
         private void BtnNewEmployee_generate_Click(object sender, RoutedEventArgs e)
         {
             GeneralMethods.checkAmountTyped(txbNewEmployee_salary);
-            GeneralMethods.checkEmptytxtBox(new List<string>() { txbNewEmployee_surname.Text, txbNewEmployee_name.Text, txbNewEmployee_address.Text, txbNewEmployee_city.Text, txbNewEmployee_areaCode.Text, txbEmployee_cellphone.Text, txbNewEmployee_telephone.Text, txbNewEmployee_fax.Text, txbNewEmployee_email.Text, txbNewEmployee_position.Text, txbNewEmployee_salary.Text });
+            if (GeneralMethods.checkEmptytxtBox(new List<string>() { txbNewEmployee_surname.Text, txbNewEmployee_name.Text, txbNewEmployee_address.Text, txbNewEmployee_city.Text, txbNewEmployee_areaCode.Text, txbEmployee_cellphone.Text, txbNewEmployee_telephone.Text, txbNewEmployee_fax.Text, txbNewEmployee_email.Text, txbNewEmployee_position.Text, txbNewEmployee_salary.Text }))
+                return;
 
             //Extracting Informtaion
             string Surname = txbNewEmployee_surname.Text;

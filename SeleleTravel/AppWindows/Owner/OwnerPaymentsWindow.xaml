@@ -9,7 +9,7 @@
         Icon="..\..\images\SeleleLogoBalls.png"
         Closed="Window_Closed"
         Title="OwnerPaymentsWindow" Height="800" Width="1200">
-    <Grid Margin="0,0,2,0.5">
+    <Grid Margin="0,0,2,0.5" Background="#FF4F7DA8">
         <Label x:Name="label" Content="Payment Requests" HorizontalAlignment="Left" Margin="10,1.388,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="ltbOwner_Payments_paymentRequests" HorizontalAlignment="Left" Height="681.612" Margin="10,33.388,0,0" VerticalAlignment="Top" Width="282.5"/>
         <Label x:Name="label1" Content="Payments Completed:" HorizontalAlignment="Left" Margin="974.232,0,0,0" VerticalAlignment="Top"/>

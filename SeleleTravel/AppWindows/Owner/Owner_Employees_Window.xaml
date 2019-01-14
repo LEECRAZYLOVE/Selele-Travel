@@ -181,7 +181,7 @@
         </Grid.RowDefinitions>
         <Label Content="Employees" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="536.28,10,516.28,0" Grid.RowSpan="2" Width="137.44"/>
         <TabControl HorizontalAlignment="Left" Height="708.821" Margin="10,53.1,0,0" VerticalAlignment="Top" Width="1180" Grid.Row="1">
-            <TabItem Header="Employee Details" Margin="0,0,-20.309,0" Width="120.309" Height="30" HorizontalAlignment="Left">
+            <TabItem Header="Employee Details" Width="120" Height="30">
                 <Canvas x:Name="cvsUpdateCleint" HorizontalAlignment="Right" Width="1174.886" Background="#FFBFBFBF" Margin="0,0,-0.886,-8.2">
                     <Label Content="Search for an employee..." Canvas.Left="313.8" FontFamily="Rockvile" FontSize="20" BorderThickness="0,0,0,2" Canvas.Top="6.6" Width="290"/>
                     <Button x:Name="btnEmployees_update" Content="UPDATE EMPLOYEE"  Canvas.Left="770.891" Canvas.Top="65.6" Style="{DynamicResource UpdateButtonStyle}" Width="136.5" />
@@ -192,7 +192,7 @@
                     <Label Content="Results :" Canvas.Left="10" Canvas.Top="100.6" Style="{DynamicResource LabelStyle}"/>
                 </Canvas>
             </TabItem>
-            <TabItem Header="New Employee" Margin="0" Height="30">
+            <TabItem Header="New Employee" Width="120" Height="30">
                 <Grid Background="#FFBFBFBF">
 
                     <StackPanel  Margin="0,0,10,0">
@@ -266,7 +266,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Termination" Height="30" Width="100" Margin="0" HorizontalAlignment="Left">
+            <TabItem Header="Termination" Height="30" Width="120">
                 <Canvas Background="#FFBFBFBF">
                     <TextBox x:Name="txbOwner_search" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" Canvas.Left="61" Canvas.Top="50" BorderBrush="Black" FontSize="20" FontFamily="Times New Roman"/>
                     <Button x:Name="btnEmployees_terminate" Content="END CONTRACT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="30" Canvas.Left="739.2" Canvas.Top="50"/>

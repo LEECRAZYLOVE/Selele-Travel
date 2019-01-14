@@ -22,7 +22,6 @@ namespace SeleleTravel
     public partial class LogInWindow : Window
     {
         LoadWindow windowToLoad;
-        public static SignUpWindow signUpWindow = new SignUpWindow();
         public LogInWindow()
         {
             InitializeComponent();
@@ -59,8 +58,8 @@ namespace SeleleTravel
         private void Log_In_Home_Closed(object sender, EventArgs e)
         {
             //GeneralMethods.closeAllWindows();
-            Close();
-            Application.Current.MainWindow.Show();
+            if (Application.Current.MainWindow.OwnedWindows.Count <= 0)
+                Application.Current.MainWindow.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -70,9 +69,11 @@ namespace SeleleTravel
 
         private void BtnSignUp_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            signUpWindow.Show();
             
+            SignUpWindow signUpWindow = new SignUpWindow();
+            signUpWindow.Owner = Owner;
+            signUpWindow.Show();
+            Close();
         }
     }
 }
