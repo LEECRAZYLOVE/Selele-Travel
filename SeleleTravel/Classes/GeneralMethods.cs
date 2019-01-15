@@ -13,6 +13,7 @@ namespace SeleleTravel
 
     public static class GeneralMethods
     {
+        #region Fields and properties
         public static string seleleTelephone = "0435550116";
         public static string seleleCellphone = "0614724551";
         public static string seleleFax = "0895567837";
@@ -23,6 +24,7 @@ namespace SeleleTravel
         public static string seleleAccountNumber = "251389715";
         public static string seleleBranchName = "Vincent Park";
         public static string seleleBranchCode = "053721";
+        #endregion
 
         /// <summary>
         /// closes all windows open.
@@ -533,6 +535,10 @@ namespace SeleleTravel
                 myConnect.Open();
                 NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(quote_no) FROM quote", myConnect);
                 NpgsqlDataReader dr = myCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    numberOfQuotes = Convert.ToInt32(dr[0]);
+                }
                 numberOfQuotes = Convert.ToInt32(dr.Read());
                 myConnect.Close();
             }

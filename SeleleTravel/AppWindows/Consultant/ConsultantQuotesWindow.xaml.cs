@@ -220,13 +220,13 @@ namespace SeleleTravel
          
                 using (var cmd = new NpgsqlCommand($"INSERT INTO client (client_no,quote_no,address,telephone,emailaddress,fax,cellphone) VALUES (@client_no,@quote_no,@address,@telephone,@emailaddress,@fax,@cellphone)", myConnect))
                 {
-                    cmd.Parameters.AddWithValue("client_no", $"{client_no}");
-                    cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");
-                    cmd.Parameters.AddWithValue("address", $"{GeneralMethods.makeAddress(address,city,areaCode,province)}");
-                    cmd.Parameters.AddWithValue("telephone", $"{telephone}");
-                    cmd.Parameters.AddWithValue("emailaddress", $"{emailaddress}");
-                    cmd.Parameters.AddWithValue("fax", $"{fax}");
-                    cmd.Parameters.AddWithValue("cellphone", $"{cellphone}");
+                    cmd.Parameters.AddWithValue("client_no", client_no);
+                    cmd.Parameters.AddWithValue("quote_no", quote_no);
+                    cmd.Parameters.AddWithValue("address",GeneralMethods.makeAddress(address,city,areaCode,province));
+                    cmd.Parameters.AddWithValue("telephone", telephone);
+                    cmd.Parameters.AddWithValue("emailaddress", emailaddress);
+                    cmd.Parameters.AddWithValue("fax", fax);
+                    cmd.Parameters.AddWithValue("cellphone", cellphone);
                     cmd.ExecuteNonQuery();
                 }
                 MessageBox.Show($"Successfully added into database. Client No is: {client_no}");
@@ -402,17 +402,17 @@ namespace SeleleTravel
                         $" (nameofagency,agency_id,quote_no,nameofdriver,pickup,dropoff,dateofcab,numberofcabs,amount,timeofcab,cabspecs)" +
                         $" VALUES (@nameofagency,@agency_id,@quote_no,@nameofdriver,@pickup,@dropoff,@dateofcab,@numberofcabs,@amount,@timeofcab,@cabspecs)", myConnect))
                     {
-                        cmd.Parameters.AddWithValue("nameofagency", $"{_agencyName}");
-                        cmd.Parameters.AddWithValue("agency_id", $"{agency_id}");
-                        cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");
-                        cmd.Parameters.AddWithValue("nameofdriver", $"{_driverName}");
-                        cmd.Parameters.AddWithValue("pickup", $"{_pickUpLocation}");
-                        cmd.Parameters.AddWithValue("dropoff", $"{_dropOffLocation}");
-                        cmd.Parameters.AddWithValue("dateofcab", $"{_dateOfPickup.ToString().Substring(0, 10)}");
-                        cmd.Parameters.AddWithValue("numberofcabs", $"{_numberOfcabs}");
-                        cmd.Parameters.AddWithValue("amount", $"{_totalAmount}");
-                        cmd.Parameters.AddWithValue("timeofcab", $"{_timeOfPickUp}");
-                        cmd.Parameters.AddWithValue("cabspecs", $"{_taxicabSpecs}");
+                        cmd.Parameters.AddWithValue("nameofagency", _agencyName);
+                        cmd.Parameters.AddWithValue("agency_id",agency_id);
+                        cmd.Parameters.AddWithValue("quote_no", quote_no);
+                        cmd.Parameters.AddWithValue("nameofdriver", _driverName);
+                        cmd.Parameters.AddWithValue("pickup", _pickUpLocation);
+                        cmd.Parameters.AddWithValue("dropoff", _dropOffLocation);
+                        cmd.Parameters.AddWithValue("dateofcab", _dateOfPickup.ToString().Substring(0, 10));
+                        cmd.Parameters.AddWithValue("numberofcabs", _numberOfcabs);
+                        cmd.Parameters.AddWithValue("amount", _totalAmount);
+                        cmd.Parameters.AddWithValue("timeofcab", _timeOfPickUp);
+                        cmd.Parameters.AddWithValue("cabspecs", _taxicabSpecs);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Successfully added into the database");
                     }
@@ -601,14 +601,14 @@ namespace SeleleTravel
                     $" (agencyname, quote_no,pickuplocation,dropofflocation,dayofhire,expectedenddate,carhirespecifications,amount)"+
                     $" VALUES (@agencyname,@quote_no,@pickuplocation,@dropofflocation,@dayofhire,@expectedenddate,@carhirespecifications,@amount)", myConnect))
                 {
-                    cmd.Parameters.AddWithValue("agencyname", $"{agencyName}");
-                    cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");
-                    cmd.Parameters.AddWithValue("pickuplocation", $"{pickUpLocation}");
-                    cmd.Parameters.AddWithValue("dropofflocation", $"{dropOffLocation}");
-                    cmd.Parameters.AddWithValue("dayofhire", $"{_startday.Date.ToString().Substring(0, 10)}");
-                    cmd.Parameters.AddWithValue("expectedenddate", $"{_endDay.Date.ToString().Substring(0, 10)}");
-                    cmd.Parameters.AddWithValue("carhirespecifications", $"{carHireSpecs}");
-                    cmd.Parameters.AddWithValue("amount", $"{amount}");
+                    cmd.Parameters.AddWithValue("agencyname", agencyName);
+                    cmd.Parameters.AddWithValue("quote_no", quote_no);
+                    cmd.Parameters.AddWithValue("pickuplocation", pickUpLocation);
+                    cmd.Parameters.AddWithValue("dropofflocation",dropOffLocation);
+                    cmd.Parameters.AddWithValue("dayofhire", _startday.Date.ToString().Substring(0, 10));
+                    cmd.Parameters.AddWithValue("expectedenddate", _endDay.Date.ToString().Substring(0, 10));
+                    cmd.Parameters.AddWithValue("carhirespecifications", carHireSpecs);
+                    cmd.Parameters.AddWithValue("amount", amount);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Successfully added into the database");
                 }
@@ -710,6 +710,10 @@ namespace SeleleTravel
 
         private void BtnOldClient_select_Click(object sender, RoutedEventArgs e)
         {
+           //this is to be generated by make client ID function
+            clientname=
+            quote_no = GeneralMethods.makeQuote_no();//this is to be generated by make quote function
+            consultant_no = txbConsultant_no.Text;//it is entered by the consultant           
 
         }
 
@@ -753,12 +757,12 @@ namespace SeleleTravel
                         $" (quote_no,eventspecs,eventname,amount,startday,endday)" +
                         $" VALUES (@quote_no,@eventspecs,@eventname,@amount,@startday,@endday)", myConnect))
                     {
-                        cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");
-                        cmd.Parameters.AddWithValue("eventspecs", $"{eventSpecs}");
-                        cmd.Parameters.AddWithValue("eventname", $"{nameOfEvent}");
-                        cmd.Parameters.AddWithValue("amount", $"{eventAmount}");
-                        cmd.Parameters.AddWithValue("startday", $"{eventStartdate.ToString().Substring(0, 10)}");
-                        cmd.Parameters.AddWithValue("endday", $"{eventEnddate.ToString().Substring(0, 10)}");
+                        cmd.Parameters.AddWithValue("quote_no", quote_no);
+                        cmd.Parameters.AddWithValue("eventspecs", eventSpecs);
+                        cmd.Parameters.AddWithValue("eventname", nameOfEvent);
+                        cmd.Parameters.AddWithValue("amount", eventAmount);
+                        cmd.Parameters.AddWithValue("startday", eventStartdate.ToString().Substring(0, 10));
+                        cmd.Parameters.AddWithValue("endday", eventEnddate.ToString().Substring(0, 10));
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Successfully added into the database");
                     }
@@ -779,18 +783,42 @@ namespace SeleleTravel
         private void BtnOldClient_find_Click(object sender, RoutedEventArgs e)
         {
             // Assign the value to be searched to the variable
-            string findName = txbOldClient_find.Text;
-
+            string inputClient_no = txbOldClient_find.Text;
+            client_no = inputClient_no;
             // Results from the database
             //txblOldClient_Details.Text = "";
-            NpgsqlConnection myConnect = new NpgsqlConnection("Database=postgres;Port=5433;Server=127.0.0.1;User Id=postgres;Password=selele;");
+            //Query for retrieving client data
             try
             {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-            }
-            catch
-            {
 
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM client WHERE client_no = '{inputClient_no}'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    while (query.Read())
+                    {
+                        lbxOldClient_Details.Items.Add($"Client_no: {query[0]}");
+                        lbxOldClient_Details.Items.Add($"Quote_no:{query[1]}");
+                        lbxOldClient_Details.Items.Add($"Client name:{query[2]}");
+                        clientname = $"{query[2]}";
+                        lbxOldClient_Details.Items.Add($"Cellphone:{query[3]}");
+                        lbxOldClient_Details.Items.Add($"Address:{query[4]}");
+                        lbxOldClient_Details.Items.Add($"Email address:{query[5]}");
+                        lbxOldClient_Details.Items.Add($"Telephone:{query[6]}");
+                        lbxOldClient_Details.Items.Add($"Fax:{query[7]}");
+                        lbxOldClient_Details.Items.Add($"Paid:{query[8]}");
+                        lbxOldClient_Details.Items.Add($"Owe:{query[9]}");
+                        lbxOldClient_Details.Items.Add($"Broughtforward:{query[10]}");
+                        lbxOldClient_Details.Items.Add($"Dateadded:{query[11]}");
+                       
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
             }
         }
 
@@ -837,33 +865,33 @@ namespace SeleleTravel
 
                
                 //sql insertion
-                var context = new SeleleEntities();
-                var currentEvent = new @event()
-                {
-                    quote_no=quote_no,
-                    eventspecs=eventSpecs,
-                    eventname=nameOfEvent,
-                    amount=eventAmount,
-                    startday=eventStartdate,
-                    endday=eventEnddate
+                //var context = new SeleleEntities();
+                //var currentEvent = new @event()
+                //{
+                //    quote_no=quote_no,
+                //    eventspecs=eventSpecs,
+                //    eventname=nameOfEvent,
+                //    amount=eventAmount,
+                //    startday=eventStartdate,
+                //    endday=eventEnddate
 
-                };
-                //Add cabservice to database
-                try
-                {
-                    //context.events.Add(currentEvent);
-                    //context.SaveChanges();
-                }
-                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-                {
-                    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                }
-                catch (Exception ex)
-                {
-                    //other error
-                    throw ex;
+                //};
+                ////Add cabservice to database
+                //try
+                //{
+                //    //context.events.Add(currentEvent);
+                //    //context.SaveChanges();
+                //}
+                //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                //{
+                //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+                //}
+                //catch (Exception ex)
+                //{
+                //    //other error
+                //    throw ex;
 
-                }
+                //}
                 // reset texbox values to empty
                 // call the clear textbox method
                 List<TextBox> textBoxes = new List<TextBox> { txbEvents_name, txbEvents_specifications, txbEvents_total };
@@ -899,14 +927,14 @@ namespace SeleleTravel
                     $" (quote_no,conferencename,venue,startday,endday,timeconference,conferencespecs,amount)" +
                     $" VALUES (@quote_no,@conferencename,@venue,@startday,@endday,@timeconference,@conferencespecs,@amount)", myConnect))
                 {
-                    cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");              
-                    cmd.Parameters.AddWithValue("conferencename", $"{conferenceName}");
-                    cmd.Parameters.AddWithValue("venue", $"{conferenceVenue}");
-                    cmd.Parameters.AddWithValue("startday", $"{startDateOfConference.ToString().Substring(0,10)}");
-                    cmd.Parameters.AddWithValue("endday", $"{endDateofConference.ToString().Substring(0, 10)}");
-                    cmd.Parameters.AddWithValue("timeconference", $"{conferenceTime}");
-                    cmd.Parameters.AddWithValue("conferencespecs", $"{specsOfConference}");
-                    cmd.Parameters.AddWithValue("amount", $"{amountOfconf}");
+                    cmd.Parameters.AddWithValue("quote_no", quote_no);              
+                    cmd.Parameters.AddWithValue("conferencename", conferenceName);
+                    cmd.Parameters.AddWithValue("venue", conferenceVenue);
+                    cmd.Parameters.AddWithValue("startday", startDateOfConference.ToString().Substring(0,10));
+                    cmd.Parameters.AddWithValue("endday", endDateofConference.ToString().Substring(0, 10));
+                    cmd.Parameters.AddWithValue("timeconference", conferenceTime);
+                    cmd.Parameters.AddWithValue("conferencespecs", specsOfConference);
+                    cmd.Parameters.AddWithValue("amount", amountOfconf);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Successfully added into the database");
                 }
@@ -1016,15 +1044,15 @@ namespace SeleleTravel
                     $" VALUES (@quote_no,@airline,@fromcity,@tocity,@departdate,@numberofbags,@flightspecs,@amount,@passengernum)", myConnect))
                 {
                     
-                    cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");
-                    cmd.Parameters.AddWithValue("airline", $"{airline}");
-                    cmd.Parameters.AddWithValue("fromcity", $"{fromcity}");
-                    cmd.Parameters.AddWithValue("tocity", $"{tocity}");
-                    cmd.Parameters.AddWithValue("departdate", $"{departdate.ToString().Substring(0, 10)}");
+                    cmd.Parameters.AddWithValue("quote_no", quote_no);
+                    cmd.Parameters.AddWithValue("airline", airline);
+                    cmd.Parameters.AddWithValue("fromcity", fromcity);
+                    cmd.Parameters.AddWithValue("tocity", tocity);
+                    cmd.Parameters.AddWithValue("departdate", departdate.ToString().Substring(0, 10));
                     cmd.Parameters.AddWithValue("numberofbags", numberofbags);
-                    cmd.Parameters.AddWithValue("flightspecs", $"{flightspecs}");
-                    cmd.Parameters.AddWithValue("amount", $"{amount}");
-                    cmd.Parameters.AddWithValue("passengernum", $"{_passengers.Count()}");
+                    cmd.Parameters.AddWithValue("flightspecs", flightspecs);
+                    cmd.Parameters.AddWithValue("amount", amount);
+                    cmd.Parameters.AddWithValue("passengernum", _passengers.Count());
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Successfully added into the database");
                 }
@@ -1115,14 +1143,14 @@ namespace SeleleTravel
                     $" (quote_no,accomname,accom_id,checkin,checkout,numberofguests,numberofrooms,accomspecs,amount)" +
                     $" VALUES (@quote_no,@accomname,@accom_id,@checkin,@checkout,@numberofguests,@numberofrooms,@accomspecs,@amount)", myConnect))
                 {
-                    cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");
-                    cmd.Parameters.AddWithValue("accomname", $"{accomname}");
-                    cmd.Parameters.AddWithValue("accom_id", $"{accom_id}");
-                    cmd.Parameters.AddWithValue("checkin", $"{checkin.ToString().Substring(0, 10)}");
-                    cmd.Parameters.AddWithValue("checkout", $"{checkout.ToString().Substring(0, 10)}");
+                    cmd.Parameters.AddWithValue("quote_no", quote_no);
+                    cmd.Parameters.AddWithValue("accomname", accomname);
+                    cmd.Parameters.AddWithValue("accom_id", accom_id);
+                    cmd.Parameters.AddWithValue("checkin", checkin.ToString().Substring(0, 10));
+                    cmd.Parameters.AddWithValue("checkout", checkout.ToString().Substring(0, 10));
                     cmd.Parameters.AddWithValue("numberofguests", numberofguests);
                     cmd.Parameters.AddWithValue("numberofrooms", numberofrooms);
-                    cmd.Parameters.AddWithValue("accomspecs", $"{accomspecs}");
+                    cmd.Parameters.AddWithValue("accomspecs", accomspecs);
                     cmd.Parameters.AddWithValue("amount", amount);  
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Successfully added into the database");

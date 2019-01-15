@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        Title="SignUpWindow" Height="400" Width="350" Closed="Sign_Up_Home_Closed">
+        Title="SignUpWindow" Height="400" Width="350">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

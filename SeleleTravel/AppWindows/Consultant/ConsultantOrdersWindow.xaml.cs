@@ -52,10 +52,10 @@ namespace SeleleTravel
                 using (var cmd = new NpgsqlCommand($"INSERT INTO TABLE order  (quote_no,order_no,daterecieved,orderdate) VALUES (@quote_no,@order_no,@daterecieved,@orderdate)", myConnect))
                 {
 
-                    cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");
-                    cmd.Parameters.AddWithValue("order_no", $"{order_no}");
-                    cmd.Parameters.AddWithValue("daterecieved", $"{DateTime.Today}");
-                    cmd.Parameters.AddWithValue("orderdate", $"{orderDate}");
+                    cmd.Parameters.AddWithValue("quote_no",quote_no);
+                    cmd.Parameters.AddWithValue("order_no", order_no);
+                    cmd.Parameters.AddWithValue("daterecieved", DateTime.Today.ToString().Substring(0,10));
+                    cmd.Parameters.AddWithValue("orderdate", orderDate);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -151,7 +151,7 @@ namespace SeleleTravel
         {
             // Link the current quote number to the new order that will be generated
             quote_no = txbConsultant_Orders_inputQuote.Text;
-
+            
         }
     
         private void Window_Closed(object sender, EventArgs e)

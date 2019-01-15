@@ -30,7 +30,7 @@ namespace SeleleTravel
             cbxFinancial_period.Visibility = Visibility.Visible;
             txbYear.Visibility = Visibility.Hidden;
             cbxMultipleMonths_from.Visibility = Visibility.Hidden;
-            cbxMMultipleMonths_to.Visibility = Visibility.Hidden;
+            cbxMultipleMonths_to.Visibility = Visibility.Hidden;
             dpMonthly_from.Visibility = Visibility.Hidden;
             dpMonthly_to.Visibility = Visibility.Hidden;
             dpWeekly_day.Visibility = Visibility.Hidden;
@@ -55,7 +55,7 @@ namespace SeleleTravel
             //cbxFinancial_period.Visibility = Visibility.Visible;
             txbYear.Visibility = Visibility.Hidden;
             cbxMultipleMonths_from.Visibility = Visibility.Hidden;
-            cbxMMultipleMonths_to.Visibility = Visibility.Hidden;
+            cbxMultipleMonths_to.Visibility = Visibility.Hidden;
             dpMonthly_from.Visibility = Visibility.Hidden;
             dpMonthly_to.Visibility = Visibility.Hidden;
             dpWeekly_day.Visibility = Visibility.Hidden;
@@ -69,7 +69,7 @@ namespace SeleleTravel
             //cbxFinancial_period.Visibility = Visibility.Visible;
             txbYear.Visibility = Visibility.Hidden;
             cbxMultipleMonths_from.Visibility = Visibility.Hidden;
-            cbxMMultipleMonths_to.Visibility = Visibility.Hidden;
+            cbxMultipleMonths_to.Visibility = Visibility.Hidden;
             dpMonthly_from.Visibility = Visibility.Hidden;
             dpMonthly_to.Visibility = Visibility.Hidden;
             dpWeekly_day.Visibility = Visibility.Hidden;
@@ -82,7 +82,7 @@ namespace SeleleTravel
             //cbxFinancial_period.Visibility = Visibility.Visible;
             txbYear.Visibility = Visibility.Visible;
             cbxMultipleMonths_from.Visibility = Visibility.Hidden;
-            cbxMMultipleMonths_to.Visibility = Visibility.Hidden;
+            cbxMultipleMonths_to.Visibility = Visibility.Hidden;
             dpMonthly_from.Visibility = Visibility.Hidden;
             dpMonthly_to.Visibility = Visibility.Hidden;
             dpWeekly_day.Visibility = Visibility.Hidden;
@@ -100,10 +100,10 @@ namespace SeleleTravel
             //lbFinancial_servicesList.Visibility = Visibility.Hidden;
             //cbxFinancial_period.Visibility = Visibility.Visible;
             txbYear.Visibility = Visibility.Hidden;
-            cbxMultipleMonths_from.Visibility = Visibility.Hidden;
-            cbxMMultipleMonths_to.Visibility = Visibility.Hidden;
-            dpMonthly_from.Visibility = Visibility.Visible;
-            dpMonthly_to.Visibility = Visibility.Visible;
+            cbxMultipleMonths_from.Visibility = Visibility.Visible;
+            cbxMultipleMonths_to.Visibility = Visibility.Visible;
+            dpMonthly_from.Visibility = Visibility.Hidden;
+            dpMonthly_to.Visibility = Visibility.Hidden;
             dpWeekly_day.Visibility = Visibility.Hidden;
             lblYear.Visibility = Visibility.Hidden;
             lblMonthly_from.Visibility = Visibility.Hidden;
@@ -120,7 +120,7 @@ namespace SeleleTravel
             //cbxFinancial_period.Visibility = Visibility.Visible;
             txbYear.Visibility = Visibility.Hidden;
             cbxMultipleMonths_from.Visibility = Visibility.Hidden;
-            cbxMMultipleMonths_to.Visibility = Visibility.Hidden;
+            cbxMultipleMonths_to.Visibility = Visibility.Hidden;
             dpMonthly_from.Visibility = Visibility.Visible;
             dpMonthly_to.Visibility = Visibility.Visible;
             dpWeekly_day.Visibility = Visibility.Hidden;
@@ -139,7 +139,7 @@ namespace SeleleTravel
             //cbxFinancial_period.Visibility = Visibility.Visible;
             txbYear.Visibility = Visibility.Hidden;
             cbxMultipleMonths_from.Visibility = Visibility.Hidden;
-            cbxMMultipleMonths_to.Visibility = Visibility.Hidden;
+            cbxMultipleMonths_to.Visibility = Visibility.Hidden;
             dpMonthly_from.Visibility = Visibility.Hidden;
             dpMonthly_to.Visibility = Visibility.Hidden;
             dpWeekly_day.Visibility = Visibility.Visible;
@@ -214,4 +214,6 @@ namespace SeleleTravel
         {
 
         }
+
+        
     } }
