@@ -408,7 +408,7 @@ namespace SeleleTravel
                         cmd.Parameters.AddWithValue("nameofdriver", $"{_driverName}");
                         cmd.Parameters.AddWithValue("pickup", $"{_pickUpLocation}");
                         cmd.Parameters.AddWithValue("dropoff", $"{_dropOffLocation}");
-                        cmd.Parameters.AddWithValue("dateofcab", $"{_dateOfPickup}");
+                        cmd.Parameters.AddWithValue("dateofcab", $"{_dateOfPickup.ToString().Substring(0, 10)}");
                         cmd.Parameters.AddWithValue("numberofcabs", $"{_numberOfcabs}");
                         cmd.Parameters.AddWithValue("amount", $"{_totalAmount}");
                         cmd.Parameters.AddWithValue("timeofcab", $"{_timeOfPickUp}");
@@ -605,8 +605,8 @@ namespace SeleleTravel
                     cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");
                     cmd.Parameters.AddWithValue("pickuplocation", $"{pickUpLocation}");
                     cmd.Parameters.AddWithValue("dropofflocation", $"{dropOffLocation}");
-                    cmd.Parameters.AddWithValue("dayofhire", $"{_startday.Date}");
-                    cmd.Parameters.AddWithValue("expectedenddate", $"{_endDay.Date}");
+                    cmd.Parameters.AddWithValue("dayofhire", $"{_startday.Date.ToString().Substring(0, 10)}");
+                    cmd.Parameters.AddWithValue("expectedenddate", $"{_endDay.Date.ToString().Substring(0, 10)}");
                     cmd.Parameters.AddWithValue("carhirespecifications", $"{carHireSpecs}");
                     cmd.Parameters.AddWithValue("amount", $"{amount}");
                     cmd.ExecuteNonQuery();
@@ -757,8 +757,8 @@ namespace SeleleTravel
                         cmd.Parameters.AddWithValue("eventspecs", $"{eventSpecs}");
                         cmd.Parameters.AddWithValue("eventname", $"{nameOfEvent}");
                         cmd.Parameters.AddWithValue("amount", $"{eventAmount}");
-                        cmd.Parameters.AddWithValue("startday", $"{eventStartdate}");
-                        cmd.Parameters.AddWithValue("endday", $"{eventEnddate}");
+                        cmd.Parameters.AddWithValue("startday", $"{eventStartdate.ToString().Substring(0, 10)}");
+                        cmd.Parameters.AddWithValue("endday", $"{eventEnddate.ToString().Substring(0, 10)}");
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Successfully added into the database");
                     }
@@ -902,8 +902,8 @@ namespace SeleleTravel
                     cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");              
                     cmd.Parameters.AddWithValue("conferencename", $"{conferenceName}");
                     cmd.Parameters.AddWithValue("venue", $"{conferenceVenue}");
-                    cmd.Parameters.AddWithValue("startday", $"{startDateOfConference}");
-                    cmd.Parameters.AddWithValue("endday", $"{endDateofConference}");
+                    cmd.Parameters.AddWithValue("startday", $"{startDateOfConference.ToString().Substring(0,10)}");
+                    cmd.Parameters.AddWithValue("endday", $"{endDateofConference.ToString().Substring(0, 10)}");
                     cmd.Parameters.AddWithValue("timeconference", $"{conferenceTime}");
                     cmd.Parameters.AddWithValue("conferencespecs", $"{specsOfConference}");
                     cmd.Parameters.AddWithValue("amount", $"{amountOfconf}");
@@ -1020,7 +1020,7 @@ namespace SeleleTravel
                     cmd.Parameters.AddWithValue("airline", $"{airline}");
                     cmd.Parameters.AddWithValue("fromcity", $"{fromcity}");
                     cmd.Parameters.AddWithValue("tocity", $"{tocity}");
-                    cmd.Parameters.AddWithValue("departdate", $"{departdate}");
+                    cmd.Parameters.AddWithValue("departdate", $"{departdate.ToString().Substring(0, 10)}");
                     cmd.Parameters.AddWithValue("numberofbags", $"{numberofbags}");
                     cmd.Parameters.AddWithValue("flightspecs", $"{flightspecs}");
                     cmd.Parameters.AddWithValue("amount", $"{amount}");
@@ -1118,7 +1118,8 @@ namespace SeleleTravel
                     cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");
                     cmd.Parameters.AddWithValue("accomname", $"{accomname}");
                     cmd.Parameters.AddWithValue("accom_id", $"{accom_id}");
-                    cmd.Parameters.AddWithValue("checkin", $"{checkin}");
+                    cmd.Parameters.AddWithValue("checkin", $"{checkin.ToString().Substring(0, 10)}");
+                    cmd.Parameters.AddWithValue("checkout", $"{checkout.ToString().Substring(0, 10)}");
                     cmd.Parameters.AddWithValue("numberofguests", $"{numberofguests}");
                     cmd.Parameters.AddWithValue("numberofrooms", $"{numberofrooms}");
                     cmd.Parameters.AddWithValue("accomspecs", $"{accomspecs}");
@@ -1131,7 +1132,6 @@ namespace SeleleTravel
             {
                 MessageBox.Show(h.ToString());
             }
-
         }
 
         // Opening a word document from the program
@@ -1355,12 +1355,16 @@ namespace SeleleTravel
 
         private void btnQuote_markUp_Click_1(object sender, RoutedEventArgs e)
         {
+            double markup = Convert.ToDouble(txbQuote_markUp.Text);
+            quoteAmount += markup;
+            double vat = quoteAmount * 0.15;
+            quoteAmount += vat;
 
         }
 
         private void btnQuote_requestVerification_Click(object sender, RoutedEventArgs e)
         {
-            var context = new SeleleEntities();
+            //var context = new SeleleEntities();
 
             //Extracting quoteDetails through a query
 
@@ -1378,38 +1382,38 @@ namespace SeleleTravel
             string tempOrderNum = "To Be Added";
             //GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
 
-            servicefee = quoteAmount * 0.15;
-         
-            var CurrentQuote = new quote()
-            {
 
-                quote_no = quote_no,
-                amount = quoteAmount,
-                service = service,
-                timequoted = timeQuoted,
-                quotedate = quoteDate,
-                consultant_no = consultant_no,
-                client_no = client_no,
-                clientname = clientname,
-                servicefee=servicefee
+         
+            //var CurrentQuote = new quote()
+            //{
+
+            //    quote_no = quote_no,
+            //    amount = quoteAmount,
+            //    service = service,
+            //    timequoted = timeQuoted,
+            //    quotedate = quoteDate,
+            //    consultant_no = consultant_no,
+            //    client_no = client_no,
+            //    clientname = clientname,
+            //    servicefee=servicefee
                
-            };
+            //};
             //Add quote to database
-            try
-            {
-                //context.quotes.Add(CurrentQuote);
-                //context.SaveChanges();
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-                throw ex;
-            }
+            //try
+            //{
+            //    //context.quotes.Add(CurrentQuote);
+            //    //context.SaveChanges();
+            //}
+            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            //{
+            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            //}
+            //catch (Exception ex)
+            //{
+            //    //other error
+            //    throw ex;
+            //}
         }
 
         private void tabitemQuoteSummary_MouseDoubleClick(object sender, MouseButtonEventArgs e)

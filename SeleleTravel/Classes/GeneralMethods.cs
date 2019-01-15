@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.IO;
+using Npgsql;
 
 namespace SeleleTravel
 {
@@ -415,21 +416,21 @@ namespace SeleleTravel
         public static string makeQuote_no()
         {
 
-            //string quote_no = "";
-            //string numOfQuotes = Convert.ToString(getNumberOfQuotes());
-            //string _totalQts = numOfQuotes; // assigns the static value to the string
+            string quote_no = "";
+            string numOfQuotes = Convert.ToString(getNumberOfQuotes());
+            string _totalQts = numOfQuotes; // assigns the static value to the string
 
-            //while (_totalQts.Length < 6)
-            //{
-            //    // It adds a zero once to the left of the current string
-            //    _totalQts = "0"+_totalQts;
-            //}
-            //// generates the quote number using the time and string generated above
-            //quote_no = $"Q{_totalQts}";
+            while (_totalQts.Length < 6)
+            {
+                // It adds a zero once to the left of the current string
+                _totalQts = "0" + _totalQts;
+            }
+            // generates the quote number using the time and string generated above
+            quote_no = $"Q{_totalQts}";
 
 
-            //return quote_no;
-            return "";
+            return quote_no;
+           
         }
 
         /// <summary>
@@ -439,17 +440,17 @@ namespace SeleleTravel
         public static string makeVoucher_no()
         {
 
-            //  string voucher_no = "";
-            //  string numOfVoucher = Convert.ToString(getNumberOfQuotes());
-            //  string _totalQts = numOfVoucher; // assigns the static value to the string
+            string voucher_no = "";
+            string numOfVoucher = Convert.ToString(getNumberOfQuotes());
+            string _totalQts = numOfVoucher; // assigns the static value to the string
 
-            //  while (_totalQts.Length < 6)
-            //  {
-            //      It adds a zero once to the left of the current string
-            //     _totalQts = "0" + _totalQts;
-            //  }
-            //  generates the quote number using the time and string generated above
-            //voucher_no = $"Q{_totalQts}";
+            while (_totalQts.Length < 6)
+            {
+                //It adds a zero once to the left of the current string
+               _totalQts = "0" + _totalQts;
+            }
+            //generates the quote number using the time and string generated above
+          voucher_no = $"Q{_totalQts}";
 
 
             //  return voucher_no;
@@ -507,28 +508,57 @@ namespace SeleleTravel
 
             //        return query;
             //    }
-
-            //}
-            //    /// <summary>
-            //    /// gets the total number of quotes that have been generated thus far.
-            //    /// </summary>
-            //    /// <returns></returns>
-            //    private static int getNumberOfQuotes()
-            //{
-            //    using (SeleleEntities context = new SeleleEntities())
-            //    {
-            //        var query = (from c in context.clients
-
-
-            //                     select new
-            //                     {
-            //                         c.client_no
-            //                     }).ToList().Count;
-
-            //        return query;
-            //    }
-            return 0;
+            int numberOfClients = 0;
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(client_no) FROM client", myConnect);
+                numberOfClients = Convert.ToInt32(myCommand.ToString());
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            return numberOfClients;
+        
+           
         }
+            //}
+            /// <summary>
+            /// gets the total number of quotes that have been generated thus far.
+            /// </summary>
+            /// <returns></returns>
+            private static int getNumberOfQuotes()
+            {
+            //using (SeleleEntities context = new SeleleEntities())
+            //{
+            //    var query = (from c in context.clients
+
+
+            //                 select new
+            //                 {
+            //                     c.client_no
+            //                 }).ToList().Count;
+
+            //    return query;
+            //}
+            int numberOfQuotes = 0;
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(quote_no) FROM quote", myConnect);
+                numberOfQuotes = Convert.ToInt32(myCommand.ToString());
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            return numberOfQuotes;
+            }
 
         ///// <summary>
         /////increments the number of generated quotes by one and then stores the number.
