@@ -483,7 +483,7 @@
                         <!--Accomodation name-->
                         <DockPanel Margin="10">
                             <TextBlock  Text="Accommodation name :" Height="30"/>
-                            <TextBox x:Name="txbAccommodation_name" Margin="20 0"/>
+                            <TextBox x:Name="txbAccommodation_name" Text="Garden Court PE" Margin="20 0"/>
                         </DockPanel>
 
                         <!--Check-in and -out days-->
@@ -517,7 +517,7 @@
                         </Grid>
                         <!--Specifications-->
                         <TextBlock Text="Specifications :"/>
-                        <TextBox x:Name="txbAccommodation_specifications" AcceptsReturn="True" Margin="20" Height="200"/>
+                        <TextBox x:Name="txbAccommodation_specifications" Text="Breakfast included." AcceptsReturn="True" Margin="20" Height="200"/>
                         <!--Total-->
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -548,12 +548,12 @@
                         <!--Conference name-->
                         <DockPanel Margin="10">
                             <TextBlock  Text="Conference name :" Height="30"/>
-                            <TextBox x:Name="txbConference_name"  Margin="20 0"/>
+                            <TextBox x:Name="txbConference_name" Text="Golden Key Leadership Summit" Margin="20 0"/>
                         </DockPanel>
                         <!--Venue-->
                         <DockPanel Margin="10">
                             <TextBlock  Text="Venue :" Height="30"/>
-                            <TextBox x:Name="txbConference_venue"  Margin="90 0 20 0"/>
+                            <TextBox x:Name="txbConference_venue" Text="Radisson Blu" Margin="90 0 20 0"/>
                         </DockPanel>
                         <!--Start-date and End-Date-->
                         <Grid Margin="10">
@@ -579,12 +579,12 @@
                             </Grid.ColumnDefinitions>
                             <DockPanel HorizontalAlignment="Center" Grid.Column="1">
                                 <TextBlock Text="Starting time of Conference : "/>
-                                <TextBox x:Name="txbConference_time"  Width="150"/>
+                                <TextBox x:Name="txbConference_time" Text="10:00" Width="150"/>
                             </DockPanel>
                         </Grid>
                         <!--Specifications-->
                         <TextBlock Text="Specifications :"/>
-                        <TextBox x:Name="txbConference_specifications" AcceptsReturn="True"  Margin="20" Height="200"/>
+                        <TextBox x:Name="txbConference_specifications" Text="Include lunch for all conference guests" AcceptsReturn="True"  Margin="20" Height="200"/>
                         <!--Total-->
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -618,12 +618,12 @@
                         <!--Conference name-->
                         <DockPanel Margin="10">
                             <TextBlock  Text="Event name :" Height="30"/>
-                            <TextBox x:Name="txbEvents_name"   Margin="20 0"/>
+                            <TextBox x:Name="txbEvents_name" Text="Litha's 21st Bithday" Margin="20 0"/>
                         </DockPanel>
                         <!--Venue-->
                         <DockPanel Margin="10">
                             <TextBlock  Text="Venue :" Height="30"/>
-                            <TextBox x:Name="txbEvents_venue"  Margin="55 0 20 0"/>
+                            <TextBox x:Name="txbEvents_venue" Text="MSC Cruise to Hawaii" Margin="55 0 20 0"/>
                         </DockPanel>
                         <!--Start-date and End-Date-->
                         <Grid Margin="10">
@@ -654,7 +654,7 @@
                         </Grid>
                         <!--Specifications-->
                         <TextBlock Text="Specifications :"/>
-                        <TextBox x:Name="txbEvents_specifications" AcceptsReturn="True"  Margin="20" Height="200"/>
+                        <TextBox x:Name="txbEvents_specifications" Text="Order rooms for 100 passengers, all friends and a family. 5 days with the return." AcceptsReturn="True"  Margin="20" Height="200"/>
                         <!--Total-->
                             <Grid>
                                 <Grid.ColumnDefinitions>
