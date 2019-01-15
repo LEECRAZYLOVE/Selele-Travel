@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
-//using Devart.Data.MySql;
+using System.Data;
+using System.Windows.Threading;
+using Npgsql;
 
 namespace SeleleTravel
 {
@@ -24,12 +26,16 @@ namespace SeleleTravel
         public OwnerFinancialWindow ownerFinancialWindow;
         public OwnerEmployeesWindow ownerEmployeesWindow;
         public OwnerPaymentsWindow ownerPaymentsWindow;
+        // time to update
+        DispatcherTimer theLoadingTime;
         public OwnerHomeWindow()
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
+     
+
         }
-          
+
         private void btnOwner_search_Click(object sender, RoutedEventArgs e)
         {
 

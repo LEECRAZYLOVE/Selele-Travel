@@ -1021,7 +1021,7 @@ namespace SeleleTravel
                     cmd.Parameters.AddWithValue("fromcity", $"{fromcity}");
                     cmd.Parameters.AddWithValue("tocity", $"{tocity}");
                     cmd.Parameters.AddWithValue("departdate", $"{departdate.ToString().Substring(0, 10)}");
-                    cmd.Parameters.AddWithValue("numberofbags", $"{numberofbags}");
+                    cmd.Parameters.AddWithValue("numberofbags", numberofbags);
                     cmd.Parameters.AddWithValue("flightspecs", $"{flightspecs}");
                     cmd.Parameters.AddWithValue("amount", $"{amount}");
                     cmd.Parameters.AddWithValue("passengernum", $"{_passengers.Count()}");
@@ -1120,10 +1120,10 @@ namespace SeleleTravel
                     cmd.Parameters.AddWithValue("accom_id", $"{accom_id}");
                     cmd.Parameters.AddWithValue("checkin", $"{checkin.ToString().Substring(0, 10)}");
                     cmd.Parameters.AddWithValue("checkout", $"{checkout.ToString().Substring(0, 10)}");
-                    cmd.Parameters.AddWithValue("numberofguests", $"{numberofguests}");
-                    cmd.Parameters.AddWithValue("numberofrooms", $"{numberofrooms}");
+                    cmd.Parameters.AddWithValue("numberofguests", numberofguests);
+                    cmd.Parameters.AddWithValue("numberofrooms", numberofrooms);
                     cmd.Parameters.AddWithValue("accomspecs", $"{accomspecs}");
-                    cmd.Parameters.AddWithValue("amount", $"{amount}");  
+                    cmd.Parameters.AddWithValue("amount", amount);  
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Successfully added into the database");
                 }
