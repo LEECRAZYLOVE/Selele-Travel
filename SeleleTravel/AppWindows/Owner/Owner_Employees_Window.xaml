@@ -8,6 +8,7 @@
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
         Closed="Owner_Employees_Window_Closed"
+        FontSize="16"
         Title="Owner_Employees_Page" Height="800" Width="1200">
     <Window.Resources>
         <Style x:Key="FocusVisual">
@@ -179,46 +180,46 @@
             <RowDefinition Height="8*"/>
             <RowDefinition Height="86*"/>
         </Grid.RowDefinitions>
-        <Label Content="Employees" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="536.28,10,516.28,0" Grid.RowSpan="2" Width="137.44"/>
+        <Label Content="Employees" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 10 0 0" Grid.RowSpan="2"  Width="137.44"/>
         <TabControl  Width="1180" Grid.Row="1">
-            <TabItem Header="Employee Details" Width="120" Height="30">
-                <Canvas x:Name="cvsUpdateCleint" HorizontalAlignment="Right" Width="1174.886" Background="#FFA9ACE4" Margin="0,0,-0.886,-8.2">
+            <TabItem Header="Employee Details" Height="30">
+                <Canvas x:Name="cvsUpdateCleint" HorizontalAlignment="Right" Width="1174.886" Background="#FFBEE7FF" Margin="0,0,-0.886,-8.2">
                     <Label Content="Search for an employee..." Canvas.Left="313.8" FontFamily="Rockvile" FontSize="20" BorderThickness="0,0,0,2" Canvas.Top="6.6" Width="290"/>
-                    <Button x:Name="btnEmployees_update" Content="UPDATE EMPLOYEE"  Canvas.Left="770.891" Canvas.Top="65.6" Style="{DynamicResource UpdateButtonStyle}" Width="136.5" />
-                    <TextBox x:Name="txbEmployees_find" HorizontalAlignment="Left" Height="35" Width="215" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="Black" Canvas.Left="10" Canvas.Top="66" FontSize="20" />
-                    <Button x:Name="btnEmplyees_find" Content="FIND" Canvas.Left="657.391" Canvas.Top="65.6" Style="{DynamicResource ButtonStyle}" Background="#FF9DE1FA" Width="108.5" Click="btnEmplyees_find_Click_1"/>
-                    <ListBox x:Name="ltbEmployees_employeeDetails" Opacity="80" HorizontalAlignment="Left" Height="446.159" VerticalAlignment="Top" Width="897.6" BorderBrush="Black" Canvas.Left="10" Canvas.Top="136.241"/>
+                    <Button x:Name="btnEmployees_update" Content="UPDATE EMPLOYEE"  Canvas.Left="1024" Canvas.Top="66" Style="{DynamicResource UpdateButtonStyle}" Width="136" />
+                    <TextBox x:Name="txbEmployees_find" HorizontalAlignment="Left" Height="35" Width="435" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="Black" Canvas.Left="10" Canvas.Top="66" FontSize="20" />
+                    <Button x:Name="btnEmplyees_find" Content="FIND" Canvas.Left="910" Canvas.Top="66" Style="{DynamicResource ButtonStyle}" Background="#FF9DE1FA" Width="109" Click="btnEmplyees_find_Click_1"/>
+                    <ListBox x:Name="ltbEmployees_employeeDetails" Opacity="80" HorizontalAlignment="Left" Height="537" VerticalAlignment="Top" Width="1155" BorderBrush="Black" Canvas.Left="10" Canvas.Top="136"/>
                     <Label Content="Employee ID :" Canvas.Left="10" Canvas.Top="29.6"  Style="{DynamicResource LabelStyle}"/>
                     <Label Content="Results :" Canvas.Left="10" Canvas.Top="100.6" Style="{DynamicResource LabelStyle}"/>
                     <Label Content="Label"/>
-                    <Label Content="Employee Name:" Canvas.Left="301" Canvas.Top="41"  Style="{DynamicResource LabelStyle}"/>
-                    <TextBox x:Name="txbEmployee_Name" Height="35" Canvas.Left="301" TextWrapping="Wrap" Canvas.Top="66" Width="173"/>
+                    <Label Content="Employee Name:" Canvas.Left="456" Canvas.Top="36"  Style="{DynamicResource LabelStyle}"/>
+                    <TextBox x:Name="txbEmployee_Name" Height="35" Canvas.Left="455" TextWrapping="Wrap" Canvas.Top="66" Width="449" BorderBrush="Black"/>
                 </Canvas>
             </TabItem>
             <TabItem Header="New Employee" Width="120" Height="30">
-                <Grid Background="#FFA9ACE4">
+                <Grid Background="#FFBEE7FF">
 
                     <StackPanel  Margin="0,0,10,0">
                         <TextBlock Text="Enter Employee Details" Margin="10" FontSize="20" HorizontalAlignment="Center"/>
                         <!--Name and surname-->
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Name  :" FontSize="16" Margin="5" Width="82"/>
-                            <TextBox x:Name="txbNewEmployee_name" Text="Litha"  Width="489" Margin="5" Padding="5" Height="30"/>
+                            <TextBox x:Name="txbNewEmployee_name" Text="Litha"  Width="489" Margin="5" Padding="5" Height="30" BorderBrush="Black"/>
                             <TextBlock Text="Surname :" FontSize="16" Margin="5"/>
-                            <TextBox x:Name="txbNewEmployee_surname" Text="Stuurman" Margin="5" Padding="5" Height="30" Width="471"/>
+                            <TextBox x:Name="txbNewEmployee_surname" Text="Stuurman" Margin="5" Padding="5" Height="30" Width="471" BorderBrush="Black"/>
                         </StackPanel>
                         <!--CheckBoxes-->
                         <!--Address-->
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Address :" FontSize="16" Margin="10" Width="67"/>
-                            <TextBox x:Name="txbNewEmployee_address" Text="9 Rodin Place, Amalinda" Margin="10" Height="160" Width="1050"/>
+                            <TextBox x:Name="txbNewEmployee_address" Text="9 Rodin Place, Amalinda" Margin="10" Height="160" Width="1050" BorderBrush="Black"/>
                         </StackPanel>
                         <!--City, Area Code-->
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="City :" FontSize="16" Margin="10 10 35 10" Width="42"/>
-                            <TextBox x:Name="txbNewEmployee_city" Text="East London" Width="760" Margin="10"/>
+                            <TextBox x:Name="txbNewEmployee_city" Text="East London" Width="760" Margin="10" BorderBrush="Black"/>
                             <TextBlock Text="Area Code :" FontSize="16" Margin="10" Width="77.697"/>
-                            <TextBox x:Name="txbNewEmployee_areaCode" Text="5247" Margin="10" Height="30" Width="172"/>
+                            <TextBox x:Name="txbNewEmployee_areaCode" Text="5247" Margin="10" Height="30" Width="172" BorderBrush="Black"/>
                         </StackPanel>
 
                         <!--Province-->
@@ -239,43 +240,56 @@
                         <!--Contact details-->
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Cellphone :" Margin="10" Width="67"/>
-                            <TextBox x:Name="txbEmployee_cellphone" Text="0783861533" Margin="10" Height="30" Width="1050"/>
+                            <TextBox x:Name="txbEmployee_cellphone" Text="0783861533" Margin="10" Height="30" Width="1050" BorderBrush="Black"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Telephone :" Margin="10 10 8 10" Width="70"/>
-                            <TextBox x:Name="txbNewEmployee_telephone" Text="0437412589" Margin="10" Height="30" Width="1049"/>
+                            <TextBox x:Name="txbNewEmployee_telephone" Text="0437412589" Margin="10" Height="30" Width="1049" BorderBrush="Black"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Fax :" Margin="10 10 50 10" Width="27"/>
-                            <TextBox x:Name="txbNewEmployee_fax" Margin="10" Text="5"  Height="30" Width="1050"/>
+                            <TextBox x:Name="txbNewEmployee_fax" Margin="10" Text="5"  Height="30" Width="1050" BorderBrush="Black"/>
                         </StackPanel>
 
 
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Email :" Margin="10 10 40 10" Width="37"/>
-                            <TextBox x:Name="txbNewEmployee_email" Margin="10" Text="crazedoutlee@gmail.com" Height="30" Width="1050"/>
+                            <TextBox x:Name="txbNewEmployee_email" Margin="10" Text="crazedoutlee@gmail.com" Height="30" Width="1050" BorderBrush="Black"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Position :" Margin="10 10 8 10" Width="69"/>
-                            <TextBox x:Name="txbNewEmployee_position" Text="Manager" Margin="10" Width="418" Height="30"/>
+                        <Grid Margin="10 0 10 10" HorizontalAlignment="Left">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Position :"  Margin="0 0 10 0"/>
+                            <ComboBox  Name="cmbNewEmployee_position" Grid.Column="1" HorizontalAlignment="Left" Margin="0 0 10 0" SelectedIndex="1" >
+                                <ComboBoxItem Content="Consultant"/>
+                                <ComboBoxItem Content="Manager"/>
+                                <ComboBoxItem Content="Owner"/>
+                            </ComboBox>
 
-                            <TextBlock Text="Salary :" Margin="10 10 8 10"/>
-                            <TextBox x:Name="txbNewEmployee_salary" TextChanged="TxbNewEmployee_salary_TextChanged" Margin="10" Height="30" Width="556"/>
-                        </StackPanel>
+                            <TextBlock Text="Salary :" Grid.Column="2" Margin="0 0 10 0"/>
+                            <TextBox x:Name="txbNewEmployee_salary" Grid.Column="3" TextChanged="TxbNewEmployee_salary_TextChanged" BorderBrush="Black" Width="400"/>
+                        </Grid>
 
                         <Button x:Name="btnNewEmployee_generate" Content="Generate Employee ID" FontSize="20" Width="300" Margin="143.5,0" Click="BtnNewEmployee_generate_Click"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="Termination" Height="30" Width="120">
-                <Canvas Background="#FFA9ACE4">
-                    <TextBox x:Name="txbOwner_search" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" Canvas.Left="61" Canvas.Top="50" BorderBrush="Black" FontSize="20" FontFamily="Times New Roman"/>
-                    <Button x:Name="btnEmployees_terminate" Content="END CONTRACT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="30" Canvas.Left="739.2" Canvas.Top="50"/>
-                    <Label Content="Enter employee ID: " Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Height="33" Canvas.Left="366" Width="156" RenderTransformOrigin="0.494,0.527" Canvas.Top="10"/>
+                <Grid Background="#FFBEE7FF">
+                    <StackPanel HorizontalAlignment="Center" Margin="0 30" Orientation="Horizontal" VerticalAlignment="Top" >
+                        <Label Content="Enter employee ID: " Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS"/>
+                        <TextBox x:Name="txbOwner_search" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" Canvas.Left="61" Canvas.Top="50" BorderBrush="Black" FontSize="20" FontFamily="Times New Roman"/>
+                        <Button x:Name="btnEmployees_terminate" Content="END CONTRACT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="30" Canvas.Left="739.2" Canvas.Top="50"/>
+                    </StackPanel>
 
-                </Canvas>
+
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
