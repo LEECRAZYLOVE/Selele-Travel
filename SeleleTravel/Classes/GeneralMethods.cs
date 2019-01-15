@@ -533,6 +533,10 @@ namespace SeleleTravel
                 myConnect.Open();
                 NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(quote_no) FROM quote", myConnect);
                 NpgsqlDataReader dr = myCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    numberOfQuotes = Convert.ToInt32(dr[0]);
+                }
                 numberOfQuotes = Convert.ToInt32(dr.Read());
                 myConnect.Close();
             }

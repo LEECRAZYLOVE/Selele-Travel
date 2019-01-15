@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Npgsql;
 
 namespace SeleleTravel
 {
@@ -35,7 +36,32 @@ namespace SeleleTravel
         {
             //// Exract order number and assign it to the variable used to search
             //string orderNumber = txbConsultant_Vouchers_inputOrder.Text;
+            // extract data from the database and display it in the textbox for displaying
+            // the data is the one partaining to the current quote number.
+            string inputVoucher = txbConsultant_Vouchers_inputOrder.Text;
 
+            //Query for retrieving order data
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM order, voucher WHERE voucher_no = '{inputVoucher}'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    while (query.Read())
+                    {
+                        txbConsultant_Vouchers_inputOrder.Text = $"Voucher number: {query[0]}\nOrder_no:{query[1]}\n" +
+                        $"Client_ID: {query[2]}\nAccommodation_ID: {query[3]}\nAgency_ID: {query[4]}\n" +
+                        $"Staff_ID: {query[5]}\nAmount: {query[6]}";
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
             //// Output the desired information 
             //txbConsultant_Vouchers_viewOrder.Text = "";
             // extract data from the database and display it in the textbox for displaying
@@ -54,6 +80,33 @@ namespace SeleleTravel
         private void btnConsultant_Vouchers_selectOrder_Click(object sender, RoutedEventArgs e)
         {
             // Link the current order number to the new voucher that will be generated
+        }
+
+        private void btnConsultant_Voucher_addNewVoucher_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+               
+                using (var cmd = new NpgsqlCommand($"INSERT INTO TABLE voucher  (voucher_no,order_no,client_id,accomm_id,agency_id,staff_id,amount) VALUES (@voucher_no,@order_no,@client_id,@accomm_id,@agency_id,@staff_id,@amount)", myConnect))
+                {
+
+                    cmd.Parameters.AddWithValue("voucher_no",voucher_no);
+                    cmd.Parameters.AddWithValue("order_no",order_no);
+                    cmd.Parameters.AddWithValue("client_id",client_id);
+                    cmd.Parameters.AddWithValue("accomm_id",accomm_ID);
+                    cmd.Parameters.AddWithValue("agency_id",agency_ID);
+                    cmd.Parameters.AddWithValue("staff_id",staff_ID);
+                    cmd.Parameters.AddWithValue("amount",Voucheramount);
+                   
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }
