@@ -14,7 +14,9 @@ using System.Windows.Shapes;
 using System.Timers;
 using System.IO;
 using System.Data.SqlClient;
-//using Devart.Data.MySql;
+using System.Data;
+using System.Windows.Threading;
+using Npgsql;
 
 namespace SeleleTravel
 {
@@ -23,41 +25,156 @@ namespace SeleleTravel
     /// </summary>
     public partial class Manager_Home : Window
     {
+        public string currentStaffID = "";
         Timer timer = new Timer(1000);
         Manager_Authorizations_Window managerAuthorizations;
         Manager_Confirmations_Window managerConfirmations;
         Manager_Payments_Window managerPayments;
         Manager_Quotes_Window managerQuotes;
         ComposeMessageWindow composeMessage;
+        // time to update
+        DispatcherTimer theLoadingTime;
 
         public Manager_Home()
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
-           // timer.Elapsed += Timer_Elapsed;
+
+            // time to help load the program fully
+            theLoadingTime = new DispatcherTimer();
+            theLoadingTime.Interval = TimeSpan.FromSeconds(5);
+            theLoadingTime.IsEnabled = true;
+            theLoadingTime.Tick += TheLoadingTime_Tick;
         }
 
-        #region Refresh the list
-
-        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-
-        }
-
-        #endregion
-
-        
-        #region Quote Summary tab
-
-        #endregion
-
-        #region Compose Message tab
         /// <summary>
-        /// Returns true if the was an error
+        /// check for updates
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-      public bool checkForError(string name)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TheLoadingTime_Tick(object sender, EventArgs e)
+        {
+            // get the latest messages 
+            readSome(currentStaffID);
+        }
+
+        /// <summary>
+        /// Read all messages from the table
+        /// </summary>
+        /// <param name="idOfUser"> Name of the table to read from </param>
+        /// <param name="last_ID"> ID of the last item </param>
+        public void readSome(string idOfUser)
+        {
+            using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+            {
+                // open the connection
+                conn.Open();
+
+                // Last num in the list of the messages
+                int lastNum = lbManager_inboxList.Items.Count;
+
+                // Retrieve all rows
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM {idOfUser} WHERE tb_ID > {lastNum}", conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        TextBlock theTextBlock = new TextBlock()
+                        {
+                            Text = Convert.ToString(reader.GetValue(2)),
+                            Tag = Convert.ToString(reader.GetValue(0)),
+                            TextAlignment = TextAlignment.Center,
+                            FontSize = 25,
+                            Focusable = false,
+                            IsEnabled = false,
+                            Margin = new Thickness(2, 2, 2, 2)
+                        };
+
+                        lbManager_inboxList.Items.Insert(0, theTextBlock);
+                    }
+                    lbManager_inboxList.Items.Refresh();
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Read message from the table
+        /// </summary>
+        /// <param name="idOfUser">Id of sender </param>
+        public void readSelectedID(string idOfUser, int itemIndex)
+        {
+            using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+            {
+                // open the connection
+                conn.Open();
+
+                // Last num in the list of the messages
+                int lastNum = lbManager_inboxList.Items.Count;
+
+                // Retrieve the specific message with the given id rows 
+                using (var cmd = new NpgsqlCommand($"SELECT message FROM {idOfUser} WHERE tb_ID = {itemIndex}", conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    reader.Read();
+                    tbkManager_inboxMessages.Text = Convert.ToString(reader.GetValue(0));
+                }
+
+
+            }
+        }
+
+        /// <summary>
+        /// Read all messages from the table
+        /// </summary>
+        /// <param name="idOfUser"> Name of the table to read from </param>
+        public void getTheResults(string idOfUser)
+        {
+            //using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+            //{
+            //    // open the connection
+            //    conn.Open();
+
+
+            //    string commandToSend = $"SELECT staffid FROM staff_members WHERE staffid LIKE '{idOfUser}%'";
+
+            //    // Retrieve all rows
+            //    using (var cmd = new NpgsqlCommand(commandToSend, conn))
+            //    using (var reader = cmd.ExecuteReader())
+            //    {
+            //        while (reader.Read())
+            //        {
+            //            string yestext = Convert.ToString(reader.GetValue(0));
+            //            if (yestext != userId.Text.ToLower())
+            //            {
+            //                TextBlock theTextBlock = new TextBlock()
+            //                {
+            //                    Text = yestext,
+            //                    TextAlignment = TextAlignment.Center,
+            //                    FontSize = 16,
+            //                    Focusable = false,
+            //                    IsEnabled = false,
+            //                    Margin = new Thickness(2, 2, 2, 2)
+            //                };
+            //                searchResults.Items.Add(theTextBlock);
+            //            }
+            //        }
+            //        searchResults.Items.Refresh();
+            //    }
+            }
+
+
+            #region Quote Summary tab
+
+            #endregion
+
+            #region Compose Message tab
+            /// <summary>
+            /// Returns true if the was an error
+            /// </summary>
+            /// <param name="name"></param>
+            /// <returns></returns>
+            public bool checkForError(string name)
         {
             if(name.Trim() == "")
             {
@@ -226,6 +343,51 @@ namespace SeleleTravel
             composeMessage = new ComposeMessageWindow();
             //Hide();
             composeMessage.Show();
+        }
+
+        private void LbManager_inboxList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        //    // get the index of the selected item
+        //    int indexPath = lbManager_inboxList.SelectedIndex;
+        //    if (indexPath >= 0)
+        //    {
+        //        // the textbox that has the details
+        //        TextBlock id = (TextBlock)lbManager_inboxList.SelectedItem;
+
+        //        // change the font
+        //        id.FontSize = 16;
+
+        //        // get the ID
+        //        idOfmessageSender.Text = id.Text;
+
+        //        // Assign the new button
+        //        lbManager_inboxList.Items.RemoveAt(indexPath);
+        //        lbManager_inboxList.Items.Insert(indexPath, id);
+
+        //        // get the ID of the reciever 
+        //        string idContent = userId.Text.ToLower();
+
+        //        // get the index of the entry
+        //        int idNum = Convert.ToInt32(id.Tag);
+
+        //        // read the selected entry
+        //        readSelectedID(idContent, idNum);
+
+        //        // enable
+        //        sendMessage.IsEnabled = true;
+        //        sendMessageNow.IsEnabled = true;
+        //    }
+        }
+
+        private void TabItem_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+        //    if (!string.IsNullOrEmpty(userId.Text))
+        //    {
+        //        for (int i = lbManager_inboxList.Items.Count - 1; i >= 0; i--)
+        //            lbManager_inboxList.Items.RemoveAt(i);
+
+        //        readAll(userId.Text);
+        //    }
         }
     }
 }

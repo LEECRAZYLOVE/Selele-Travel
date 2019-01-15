@@ -61,17 +61,42 @@ namespace SeleleTravel
 
                 try
                 {
-                myConnect.Open();
-                NpgsqlCommand myCommand = new NpgsqlCommand($"INSERT INTO staff (staff_id, stafffirstnames,stafflastname,address,cellphone,telephone,fax,staffposition,salary,dateofhire) " +
-                    $"VALUES ('{GeneralMethods.makeStaffID(Surname, Cellphone)}', '{Name}', '{Surname}', '{FullAddress}', '{Cellphone}', '{Telephone}', '{Fax}', '{Position}', '{Salary}', '{DateTime.Today.ToString().Substring(0,10)}') ", myConnect);
+                    myConnect.Open();
+                    NpgsqlCommand myCommand = new NpgsqlCommand($"INSERT INTO staff (staff_id, stafffirstnames,stafflastname,address,cellphone,telephone,fax,staffposition,salary,dateofhire) " +
+                        $"VALUES ('{GeneralMethods.makeStaffID(Surname, Cellphone)}', '{Name}', '{Surname}', '{FullAddress}', '{Cellphone}', '{Telephone}', '{Fax}', '{Position}', '{Salary}', '{DateTime.Today.ToString().Substring(0, 10)}') ", myConnect);
                     myCommand.ExecuteNonQuery();
                     MessageBox.Show($"Succesfully added into the database. New Employee ID is: {GeneralMethods.makeStaffID(Surname, Cellphone)}");
                     GeneralMethods.clearTextBoxes(new List<TextBox>() { txbNewEmployee_surname, txbNewEmployee_name, txbNewEmployee_address, txbNewEmployee_city, txbNewEmployee_areaCode, txbEmployee_cellphone, txbNewEmployee_telephone, txbNewEmployee_fax, txbNewEmployee_email, txbNewEmployee_position, txbNewEmployee_salary });
                 }
                 catch (Exception h)
                 {
-                MessageBox.Show(h.ToString());
+                    MessageBox.Show(h.ToString());
                 }
+
+                // Creates a table in the database            
+                using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+                {
+                    // open the connection
+                    conn.Open();
+
+                    // create a table
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = string.Format("CREATE TABLE {0} ("
+                                                      + "tb_ID         serial          NOT NULL,"
+                                                      + "DateSent      varchar(30)     NOT NULL,"
+                                                      + "sender        varchar(30)     NOT NULL,"
+                                                      + "reciever      varchar(30)     NOT NULL,"
+                                                      + "message       varchar(500)    NOT NULL,"
+                                                      + "PRIMARY KEY(tb_ID)"
+                                                      + ")", GeneralMethods.makeStaffID(Surname, Cellphone));
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Table created", "Attention");
+                    }
+
+                }
+
             }
         }
 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using Npgsql;
 
 namespace SeleleTravel
 {
@@ -20,16 +21,77 @@ namespace SeleleTravel
     /// </summary>
     public partial class ComposeMessageWindow : Window
     {
+        public string currentStaffID;
+
         public ComposeMessageWindow()
         {
             InitializeComponent();
         
         }
 
+        /// <summary>
+        /// Send message
+        /// </summary>
+        /// <param name="receiver_ID"> The id of the reciever </param>
+        /// <param name="sender_ID"> The id of the sender </param>
+        /// <param name="messageToSend"> The message to send </param>
+        public void insertMessage(string receiver_ID, string sender_ID, string messageToSend)
+        {
+            using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+            {
+                conn.Open();
+
+                // "INSERT INTO data (some_field) VALUES (@p)"
+                //cmd.Parameters.AddWithValue("p", "Hello world");
+                //cmd.Parameters.AddWithValue("p", "Hello world");
+
+                // intsert into a table
+                using (var cmd = new NpgsqlCommand())
+                {
+                    // the date now
+                    string theDate = DateTime.Now.ToShortDateString();
+
+                    // The command to create the connection
+                    cmd.Connection = conn;
+
+                    // INSERT INTO Staff_id (datesent, sender, message) VALUES('1 jan 2018','meloo','Hello');
+                    cmd.CommandText = string.Format("INSERT INTO {0} (datesent, sender, message) VALUES('{1}','{2}','{3}')",
+                        receiver_ID, theDate, sender_ID, messageToSend);
+
+                    // execute the query
+                    cmd.ExecuteNonQuery();
+                }
+
+                // intsert into a table
+                using (var cmd2 = new NpgsqlCommand())
+                {
+                    // The date now
+                    string theDate = DateTime.Now.ToShortDateString();
+
+                    // The command to create the connection
+                    cmd2.Connection = conn;
+
+                    // INSERT INTO messages_tb (datesent, sender, reciever, message) VALUES('1 jan 2018','meloo','ok','Hello');
+                    cmd2.CommandText = string.Format("INSERT INTO messages_tb (datesent, sender, reciever, message) VALUES('{0}','{1}','{2}','{3}')",
+                        theDate, sender_ID, receiver_ID, messageToSend);
+
+                    // execute the query
+                    cmd2.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Message sent!", "Attention");
+            }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Owner.Show();
+        }
+
         private void BtnMessage_send_Click(object sender, RoutedEventArgs e)
         {
             // extract the value and assign them to variables
-            string nameOrStaff_id = txbMessage_name.Text;
+            string staffTo= txbMessage_staffnameTo.Text;
             string subjectOFmassage = txbMessage_subject.Text;
             string message = txbMessage_message.Text;
 
@@ -49,19 +111,16 @@ namespace SeleleTravel
             {
                 // .. todo
 
+                insertMessage(currentStaffID, staffTo, message);
+                txbMessage_message.Text = "";
 
                 // clear the textboxes
                 List<TextBox> textBoxes = new List<TextBox>();
-                textBoxes.Add(txbMessage_name);
+                textBoxes.Add(txbMessage_staffnameTo);
                 textBoxes.Add(txbMessage_subject);
                 textBoxes.Add(txbMessage_message);
                 GeneralMethods.clearTextBoxes(textBoxes);
             }
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            Owner.Show();
         }
     }
 }
