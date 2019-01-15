@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.IO;
+using Npgsql;
 
 namespace SeleleTravel
 {
-   
+
     public static class GeneralMethods
     {
         #region Fields and properties
@@ -42,7 +43,7 @@ namespace SeleleTravel
         {
             windowToLogOutOff.Hide();
             MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();           
+            mainWindow.Show();
         }
 
         /// <summary>
@@ -370,7 +371,7 @@ namespace SeleleTravel
             }
             return serviceDetails;
         }
-        
+
         /// <summary>
         /// Removes services which expire on the current date, and have been ticked by the manager.
         /// </summary>
@@ -417,21 +418,21 @@ namespace SeleleTravel
         public static string makeQuote_no()
         {
 
-            //string quote_no = "";
-            //string numOfQuotes = Convert.ToString(getNumberOfQuotes());
-            //string _totalQts = numOfQuotes; // assigns the static value to the string
+            string quote_no = "";
+            string numOfQuotes = Convert.ToString(getNumberOfQuotes());
+            string _totalQts = numOfQuotes; // assigns the static value to the string
 
-            //while (_totalQts.Length < 6)
-            //{
-            //    // It adds a zero once to the left of the current string
-            //    _totalQts = "0"+_totalQts;
-            //}
-            //// generates the quote number using the time and string generated above
-            //quote_no = $"Q{_totalQts}";
+            while (_totalQts.Length < 6)
+            {
+                // It adds a zero once to the left of the current string
+                _totalQts = "0" + _totalQts;
+            }
+            // generates the quote number using the time and string generated above
+            quote_no = $"Q{_totalQts}";
 
 
-            //return quote_no;
-            return "";
+            return quote_no;
+
         }
 
         /// <summary>
@@ -441,17 +442,17 @@ namespace SeleleTravel
         public static string makeVoucher_no()
         {
 
-            //  string voucher_no = "";
-            //  string numOfVoucher = Convert.ToString(getNumberOfQuotes());
-            //  string _totalQts = numOfVoucher; // assigns the static value to the string
+            string voucher_no = "";
+            string numOfVoucher = Convert.ToString(getNumberOfQuotes());
+            string _totalQts = numOfVoucher; // assigns the static value to the string
 
-            //  while (_totalQts.Length < 6)
-            //  {
-            //      It adds a zero once to the left of the current string
-            //     _totalQts = "0" + _totalQts;
-            //  }
-            //  generates the quote number using the time and string generated above
-            //voucher_no = $"Q{_totalQts}";
+            while (_totalQts.Length < 6)
+            {
+                //It adds a zero once to the left of the current string
+                _totalQts = "0" + _totalQts;
+            }
+            //generates the quote number using the time and string generated above
+            voucher_no = $"Q{_totalQts}";
 
 
             //  return voucher_no;
@@ -477,7 +478,7 @@ namespace SeleleTravel
 
         public static string makeClient_no(string typeOfClient)
         {
-            string client_no = ""; 
+            string client_no = "";
             string typeInitial = typeOfClient.Substring(0, 1);
             string numOfClients = Convert.ToString(getNumberOfClients());
             string totalClients = numOfClients; // assigns the static value to the string
@@ -487,8 +488,8 @@ namespace SeleleTravel
                 totalClients = "0" + totalClients;
             }
             // generates the client number using C and B or I for type of business and then the no. of clients
-            
-            client_no = "C" + typeInitial+totalClients ;
+
+            client_no = "C" + typeInitial + totalClients;
             return client_no;
         }
         /// <summary>
@@ -497,63 +498,52 @@ namespace SeleleTravel
         /// <param name="client Number"></param>
         private static int getNumberOfClients()
         {
-            //    using (SeleleEntities context = new SeleleEntities())
-            //    {
-            //        var query = (from c in context.clients
+
+            int numberOfClients = 0;
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(client_no) FROM client", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+                while(dr.Read())
+                {
+                    numberOfClients = Convert.ToInt32(dr[0]);                 
+                }
+
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            return numberOfClients;
 
 
-            //                     select new
-            //                     {
-            //                         c.client_no
-            //                     }).ToList().Count;
-
-            //        return query;
-            //    }
-
-            //}
-            //    /// <summary>
-            //    /// gets the total number of quotes that have been generated thus far.
-            //    /// </summary>
-            //    /// <returns></returns>
-            //    private static int getNumberOfQuotes()
-            //{
-            //    using (SeleleEntities context = new SeleleEntities())
-            //    {
-            //        var query = (from c in context.clients
-
-
-            //                     select new
-            //                     {
-            //                         c.client_no
-            //                     }).ToList().Count;
-
-            //        return query;
-            //    }
-            return 0;
         }
-
-        ///// <summary>
-        /////increments the number of generated quotes by one and then stores the number.
-        ///// </summary>
-        //private static void incrementNumOfQuotes()
-        //{
-        //    if(Directory.Exists("quoteNum") && File.Exists("quoteNum/numOfQuotes.seleleqs"))
-        //    {
-        //        TextReader reader = File.OpenText("quoteNum/numOfQuotes.seleleqs");
-        //        int number = Convert.ToInt32(reader.ReadLine());
-        //        reader.Close();
-        //        TextWriter writer = File.CreateText("quoteNum/numOfQuotes.seleleqs");
-        //        writer.WriteLine(number++);
-        //        writer.Close();
-        //    }
-        //    else
-        //    {
-        //        int number = 0;
-        //        TextWriter writer = File.CreateText("quoteNum/numOfQuotes.seleleqs");
-        //        writer.WriteLine(number++);
-        //        writer.Close();
-        //    }
         //}
+        /// <summary>
+        /// gets the total number of quotes that have been generated thus far.
+        /// </summary>
+        /// <returns></returns>
+        private static int getNumberOfQuotes()
+        {
+            int numberOfQuotes = 0;
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(quote_no) FROM quote", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+                numberOfQuotes = Convert.ToInt32(dr.Read());
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            return numberOfQuotes;
+        }
 
         /// <summary>
         /// checks if the quote number is empty.

@@ -208,64 +208,34 @@ namespace SeleleTravel
             string telephone = txbNewClient_telephone.Text;
             string fax = txbNewClient_fax.Text;
             string timeQuoted = Convert.ToString(DateTime.Now);
-         
-            //var context = new SeleleEntities();
-            //var currentClient = new client()
-            //{
-            //    client_no = client_no, //This will be automatically generated. I'm using a dummy to test queries.
-            //    quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
-            //    address = address,
-            //    telephone = telephone,
-            //    emailaddress = emailaddress,
-            //    fax = fax,
-            //    cellphone = cellphone,
-
-            //};
-            ////Add client to database
-            //try
-            //{
-            //    //context.clients.Add(currentClient);
-            //    //context.SaveChanges();
-            //    MessageBox.Show($"Succesfully added into the database. The new Client ID is: {currentClient.client_no}");
-            //}
-            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            //{
-            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            //}
-            //catch (Exception ex)
-            //{
-            //    //other error
-            //    throw ex;
-
-            //}
-
-
-
-
+            string city = txbNewClient_city.Text;
+            string province = DropBxNewClient_province.Text;
+            string areaCode = txbNewClient_areaCode.Text;
+        
             //Query for inserting the client
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
          
-                using (var cmd = new NpgsqlCommand($"INSERT INTO TABLE client  (client_no,quote_no,address,telephone,emailaddress,fax,cellphone) VALUES (@client_no,@quote_no,@address,@telephone,@emailaddress,@fax,@cellphone)", myConnect))
+                using (var cmd = new NpgsqlCommand($"INSERT INTO client (client_no,quote_no,address,telephone,emailaddress,fax,cellphone) VALUES (@client_no,@quote_no,@address,@telephone,@emailaddress,@fax,@cellphone)", myConnect))
                 {
                     cmd.Parameters.AddWithValue("client_no", $"{client_no}");
                     cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");
-                    cmd.Parameters.AddWithValue("address", $"{address}");
+                    cmd.Parameters.AddWithValue("address", $"{GeneralMethods.makeAddress(address,city,areaCode,province)}");
                     cmd.Parameters.AddWithValue("telephone", $"{telephone}");
                     cmd.Parameters.AddWithValue("emailaddress", $"{emailaddress}");
                     cmd.Parameters.AddWithValue("fax", $"{fax}");
                     cmd.Parameters.AddWithValue("cellphone", $"{cellphone}");
                     cmd.ExecuteNonQuery();
                 }
+                MessageBox.Show($"Successfully added into database. Client No is: {client_no}");
             }
-            catch
+            catch (Exception h)
             {
-
+                MessageBox.Show(h.ToString());
             }
-            }
+        }
         #endregion
 
         #region Event tab
@@ -424,49 +394,11 @@ namespace SeleleTravel
 
             if (!boolValue)//&& !valueOfBool)
             {
-                // todo
-                // create the instance after checking for errors
-
-                // Todo sql insertion
-                // ...
-                //var context = new SeleleEntities();
-                //var currentCabService = new cabservice()
-                //{
-                //    nameofagency = _agencyName,
-                //    agency_id = "Cab0002",//This will be automatically generated. I'm using a dummy to test queries.
-                //    quote_no = quote_no,
-                //    nameofdriver = _driverName,
-                //    pickup = _pickUpLocation,
-                //    dropoff = _dropOffLocation,
-                //    dateofcab = _dateOfPickup,
-                //    numberofcabs = _numberOfcabs,
-                //    amount = _totalAmount,
-                //    timeofcab = _timeOfPickUp,
-                //    cabspecs = _taxicabSpecs
-                //};
-                ////Add cabservice to database
-                //try
-                //{
-                //    //context.cabservices.Add(currentCabService);
-                //    //context.SaveChanges();
-                //    MessageBox.Show($"Succesfully added cab details into the database");
-                //}
-                //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-                //{
-                //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-                //}
-                //catch (Exception ex)
-                //{
-                //    //other error
-                //    throw ex;
-
-                //}
                 try
                 {
                     NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                     myConnect.Open();
-                    using (var cmd = new NpgsqlCommand($"INSERT INTO TABLE cabservices " +
+                    using (var cmd = new NpgsqlCommand($"INSERT INTO cabservices " +
                         $" (nameofagency,agency_id,quote_no,nameofdriver,pickup,dropoff,dateofcab,numberofcabs,amount,timeofcab,cabspecs)" +
                         $" VALUES (@nameofagency,@agency_id,@quote_no,@nameofdriver,@pickup,@dropoff,@dateofcab,@numberofcabs,@amount,@timeofcab,@cabspecs)", myConnect))
                     {
@@ -476,17 +408,18 @@ namespace SeleleTravel
                         cmd.Parameters.AddWithValue("nameofdriver", $"{_driverName}");
                         cmd.Parameters.AddWithValue("pickup", $"{_pickUpLocation}");
                         cmd.Parameters.AddWithValue("dropoff", $"{_dropOffLocation}");
-                        cmd.Parameters.AddWithValue("dateofcab", $"{_dateOfPickup}");
+                        cmd.Parameters.AddWithValue("dateofcab", $"{_dateOfPickup.ToString().Substring(0, 10)}");
                         cmd.Parameters.AddWithValue("numberofcabs", $"{_numberOfcabs}");
                         cmd.Parameters.AddWithValue("amount", $"{_totalAmount}");
                         cmd.Parameters.AddWithValue("timeofcab", $"{_timeOfPickUp}");
                         cmd.Parameters.AddWithValue("cabspecs", $"{_taxicabSpecs}");
                         cmd.ExecuteNonQuery();
+                        MessageBox.Show("Successfully added into the database");
                     }
                 }
-                catch
+                catch (Exception h)
                 {
-
+                    h.ToString();
                 }
                 // reset the textbox values to empty
                 // call the clear textbox method
@@ -659,43 +592,12 @@ namespace SeleleTravel
             quoteAmount += amount;
             service = $"{service}Car Hire|";
 
-            // Todo sql insertion
-            // ...
-            //var context = new SeleleEntities();
-            //var currentCarHire = new carhire()
-            //{
-            //    agencyname = agencyName,
-            //    quote_no = quote_no,
-            //    pickuplocation=pickUpLocation,
-            //    dropofflocation = dropOffLocation,
-            //    dayofhire =_startday,
-            //    expectedenddate = _endDay,
-            //    carhirespecifications = numberOfCars+"& "+ carHireSpecs,
-            //    amount =amount
-            //};
-            ////Add cabservice to database
-            //try
-            //{
-            //    //context.carhires.Add(currentCarHire);
-            //    //context.SaveChanges();
-            //}
-            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            //{
-            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            //}
-            //catch (Exception ex)
-            //{
-            //    //other error
-            //    throw ex;
-
-            //}
             //Query for inserting carhire data
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"INSERT INTO TABLE carhire " +
+                using (var cmd = new NpgsqlCommand($"INSERT INTO carhire " +
                     $" (agencyname, quote_no,pickuplocation,dropofflocation,dayofhire,expectedenddate,carhirespecifications,amount)"+
                     $" VALUES (@agencyname,@quote_no,@pickuplocation,@dropofflocation,@dayofhire,@expectedenddate,@carhirespecifications,@amount)", myConnect))
                 {
@@ -703,16 +605,17 @@ namespace SeleleTravel
                     cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");
                     cmd.Parameters.AddWithValue("pickuplocation", $"{pickUpLocation}");
                     cmd.Parameters.AddWithValue("dropofflocation", $"{dropOffLocation}");
-                    cmd.Parameters.AddWithValue("dayofhire", $"{_startday}");
-                    cmd.Parameters.AddWithValue("expectedenddate", $"{_endDay}");
+                    cmd.Parameters.AddWithValue("dayofhire", $"{_startday.Date.ToString().Substring(0, 10)}");
+                    cmd.Parameters.AddWithValue("expectedenddate", $"{_endDay.Date.ToString().Substring(0, 10)}");
                     cmd.Parameters.AddWithValue("carhirespecifications", $"{carHireSpecs}");
                     cmd.Parameters.AddWithValue("amount", $"{amount}");
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Successfully added into the database");
                 }
             }
-            catch
+            catch (Exception h)
             {
-
+                MessageBox.Show(h.ToString());
             }
             // Data Validation
             // Check for errors
@@ -836,51 +739,17 @@ namespace SeleleTravel
 
             if (!boolValue)
             {
-
-                // Add the date to the global list of dates that will be stored
+                //Add the date to the global list of dates that will be stored
                 servicesDates.Add(eventStartdate);
                 servicesDates.Add(eventEnddate);
 
-
-                //sql insertion
-                //var context = new SeleleEntities();
-                //var currentEvent = new @event()
-                //{
-                //    quote_no = quote_no,
-                //    eventspecs = eventSpecs,
-                //    eventname = nameOfEvent,
-                //    amount = eventAmount,
-                //    startday = eventStartdate,
-                //    endday = eventEnddate
-                //};
-                ////Add cabservice to database
-                //try
-                //{
-                //    //context.events.Add(currentEvent);
-                //    //context.SaveChanges();
-                //}
-                //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-                //{
-                //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                //}
-                //catch (Exception ex)
-                //{
-                //    //other error
-                //    throw ex;
-
-                //}
                 //Query for inserting the conferrence data
                 try
                 {
                     NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                     myConnect.Open();
-                    //    quote_no = quote_no,
-                    //    eventspecs = eventSpecs,
-                    //    eventname = nameOfEvent,
-                    //    amount = eventAmount,
-                    //    startday = eventStartdate,
-                    //    endday = eventEnddate
-                    using (var cmd = new NpgsqlCommand($"INSERT INTO TABLE events " +
+
+                    using (var cmd = new NpgsqlCommand($"INSERT INTO events " +
                         $" (quote_no,eventspecs,eventname,amount,startday,endday)" +
                         $" VALUES (@quote_no,@eventspecs,@eventname,@amount,@startday,@endday)", myConnect))
                     {
@@ -888,14 +757,15 @@ namespace SeleleTravel
                         cmd.Parameters.AddWithValue("eventspecs", $"{eventSpecs}");
                         cmd.Parameters.AddWithValue("eventname", $"{nameOfEvent}");
                         cmd.Parameters.AddWithValue("amount", $"{eventAmount}");
-                        cmd.Parameters.AddWithValue("startday", $"{eventStartdate}");
-                        cmd.Parameters.AddWithValue("endday", $"{eventEnddate}");
+                        cmd.Parameters.AddWithValue("startday", $"{eventStartdate.ToString().Substring(0, 10)}");
+                        cmd.Parameters.AddWithValue("endday", $"{eventEnddate.ToString().Substring(0, 10)}");
                         cmd.ExecuteNonQuery();
+                        MessageBox.Show("Successfully added into the database");
                     }
                 }
-                catch
+                catch (Exception h)
                 {
-
+                    MessageBox.Show(h.ToString());
                 }
 
                 // reset texbox values to empty
@@ -1018,71 +888,33 @@ namespace SeleleTravel
             //in prep for quote insertion
             quoteAmount += amountOfconf;
             service = $"{service}Conference|";
-            // Todo sql insertion
-            // ...
-            //var context = new SeleleEntities();
-            //var currentConference = new conference()
-            //{
-
-            //    quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
-            //    conferencename = conferenceName,
-            //    venue = conferenceVenue,
-            //    startday= startDateOfConference,
-            //    endday = endDateofConference,
-            //    timeconference = conferenceTime,
-            //    conferencespecs = specsOfConference,
-            //    amount = amountOfconf
-
-            //};
-            ////Add conference to database
-            //try
-            //{
-            //    //context.conferences.Add(currentConference);
-            //    //context.SaveChanges();
-            //}
-            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            //{
-            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            //}
-            //catch (Exception ex)
-            //{
-            //    //other error
-            //    throw ex;
-
-            //}
+    
             //Query for inserting the conferrence data
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                //    quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
-                //    conferencename = conferenceName,
-                //    venue = conferenceVenue,
-                //    startday= startDateOfConference,
-                //    endday = endDateofConference,
-                //    timeconference = conferenceTime,
-                //    conferencespecs = specsOfConference,
-                //    amount = amountOfconf
-                using (var cmd = new NpgsqlCommand($"INSERT INTO TABLE conferrence " +
+        
+                using (var cmd = new NpgsqlCommand($"INSERT INTO conferrence " +
                     $" (quote_no,conferencename,venue,startday,endday,timeconference,conferencespecs,amount)" +
                     $" VALUES (@quote_no,@conferencename,@venue,@startday,@endday,@timeconference,@conferencespecs,@amount)", myConnect))
                 {
                     cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");              
                     cmd.Parameters.AddWithValue("conferencename", $"{conferenceName}");
                     cmd.Parameters.AddWithValue("venue", $"{conferenceVenue}");
-                    cmd.Parameters.AddWithValue("startday", $"{startDateOfConference}");
-                    cmd.Parameters.AddWithValue("endday", $"{endDateofConference}");
+                    cmd.Parameters.AddWithValue("startday", $"{startDateOfConference.ToString().Substring(0,10)}");
+                    cmd.Parameters.AddWithValue("endday", $"{endDateofConference.ToString().Substring(0, 10)}");
                     cmd.Parameters.AddWithValue("timeconference", $"{conferenceTime}");
                     cmd.Parameters.AddWithValue("conferencespecs", $"{specsOfConference}");
                     cmd.Parameters.AddWithValue("amount", $"{amountOfconf}");
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Successfully added into the database");
                 }
             }
-            catch
+            catch (Exception h)
             {
-
-            }
+                MessageBox.Show(h.ToString())
+;            }
 
             // Data Verification:
             // check if the variables are empty
@@ -1101,10 +933,6 @@ namespace SeleleTravel
                 servicesDates.Add(startDateOfConference);
                 servicesDates.Add(endDateofConference);
 
-                // todo...
-                // conference selele_Conference = new conference(conferenceVenue, conferenceName, dateOfConference, conferenceTime, amountOfconf, specsOfConference);
-
-                
                 // reset texbox values to empty
                 // call the clear textbox method
                 List<TextBox> textBoxes = new List<TextBox> { txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total };
@@ -1142,6 +970,7 @@ namespace SeleleTravel
                 amount = amount
 
             };
+
             //Add carhire to database
             try
             {
@@ -1176,53 +1005,13 @@ namespace SeleleTravel
             quoteAmount += amount;
             service = $"{service}Flight|";
 
-            //var context = new SeleleEntities();
-            //var currentFlight = new flight()
-            //{
-
-            //    quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
-            //    airline = airline,
-            //    fromcity = fromcity,
-            //    tocity=tocity,
-            //    departdate=departdate,
-            //    numberofbags=numberofbags,
-            //    flightspecs=flightspecs,
-            //    amount = amount,
-            //   // passengernum = _passengers.Count()
-            //};
-            ////Add flight to database
-            //try
-            //{
-            //    //context.flights.Add(currentFlight);
-            //    //context.SaveChanges();
-            //    MessageBox.Show($"Succesfully added flight details into the database");
-            //}
-            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            //{
-            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            //}
-            //catch (Exception ex)
-            //{
-            //    //other error
-            //    throw ex;
-
-            //}
             //Query for inserting flight data
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                //    quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
-                //    airline = airline,
-                //    fromcity = fromcity,
-                //    tocity=tocity,
-                //    departdate=departdate,
-                //    numberofbags=numberofbags,
-                //    flightspecs=flightspecs,
-                //    amount = amount,
-                //   // passengernum = _passengers.Count()
-                using (var cmd = new NpgsqlCommand($"INSERT INTO TABLE flight " +
+
+                using (var cmd = new NpgsqlCommand($"INSERT INTO flight " +
                     $" (quote_no,airline,fromcity,tocity,departdate,numberofbags,flightspecs,amount,passengernum)" +
                     $" VALUES (@quote_no,@airline,@fromcity,@tocity,@departdate,@numberofbags,@flightspecs,@amount,@passengernum)", myConnect))
                 {
@@ -1231,17 +1020,18 @@ namespace SeleleTravel
                     cmd.Parameters.AddWithValue("airline", $"{airline}");
                     cmd.Parameters.AddWithValue("fromcity", $"{fromcity}");
                     cmd.Parameters.AddWithValue("tocity", $"{tocity}");
-                    cmd.Parameters.AddWithValue("departdate", $"{departdate}");
-                    cmd.Parameters.AddWithValue("numberofbags", $"{numberofbags}");
+                    cmd.Parameters.AddWithValue("departdate", $"{departdate.ToString().Substring(0, 10)}");
+                    cmd.Parameters.AddWithValue("numberofbags", numberofbags);
                     cmd.Parameters.AddWithValue("flightspecs", $"{flightspecs}");
                     cmd.Parameters.AddWithValue("amount", $"{amount}");
                     cmd.Parameters.AddWithValue("passengernum", $"{_passengers.Count()}");
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Successfully added into the database");
                 }
             }
-            catch
+            catch (Exception h)
             {
-
+                MessageBox.Show(h.ToString());
             }
             // Data validation
             // and Error checking
@@ -1315,65 +1105,33 @@ namespace SeleleTravel
             quoteAmount += amount;
             service = $"{service}Accommodation|";
 
-            //var context = new SeleleEntities();
-            //var currentAccommodation = new accommodation()
-            //{
-
-            //    quote_no = quote_no,//This will be automatically generated. I'm using a dummy to test queries.
-            //    accomname = accomname,
-            //    accom_id=accom_id,
-            //    checkin=checkin,
-            //    checkout=checkout,
-            //    numberofguests=numberofguests,
-            //    numberofrooms=numberofrooms,
-            //    accomspecs=accomspecs,
-            //    amount = amount
-
-            //};
-            //Add accommodation to database
-            //try
-            //{
-            //    //context.accommodations.Add(currentAccommodation);
-            //    //context.SaveChanges();
-            //    MessageBox.Show($"Succesfully added acccomomodation details into the database");
-            //}
-            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            //{
-            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            //}
-            //catch (Exception ex)
-            //{
-            //    //other error
-            //    throw ex;
-
-            //}
             //Query for inserting the accommodation data
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
                
-                using (var cmd = new NpgsqlCommand($"INSERT INTO TABLE accommodation " +
+                using (var cmd = new NpgsqlCommand($"INSERT INTO accommodation " +
                     $" (quote_no,accomname,accom_id,checkin,checkout,numberofguests,numberofrooms,accomspecs,amount)" +
                     $" VALUES (@quote_no,@accomname,@accom_id,@checkin,@checkout,@numberofguests,@numberofrooms,@accomspecs,@amount)", myConnect))
                 {
                     cmd.Parameters.AddWithValue("quote_no", $"{quote_no}");
                     cmd.Parameters.AddWithValue("accomname", $"{accomname}");
                     cmd.Parameters.AddWithValue("accom_id", $"{accom_id}");
-                    cmd.Parameters.AddWithValue("checkin", $"{checkin}");
-                    cmd.Parameters.AddWithValue("numberofguests", $"{numberofguests}");
-                    cmd.Parameters.AddWithValue("numberofrooms", $"{numberofrooms}");
+                    cmd.Parameters.AddWithValue("checkin", $"{checkin.ToString().Substring(0, 10)}");
+                    cmd.Parameters.AddWithValue("checkout", $"{checkout.ToString().Substring(0, 10)}");
+                    cmd.Parameters.AddWithValue("numberofguests", numberofguests);
+                    cmd.Parameters.AddWithValue("numberofrooms", numberofrooms);
                     cmd.Parameters.AddWithValue("accomspecs", $"{accomspecs}");
-                    cmd.Parameters.AddWithValue("amount", $"{amount}");  
+                    cmd.Parameters.AddWithValue("amount", amount);  
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Successfully added into the database");
                 }
             }
-            catch
+            catch (Exception h)
             {
-
+                MessageBox.Show(h.ToString());
             }
-
         }
 
         // Opening a word document from the program
@@ -1597,12 +1355,16 @@ namespace SeleleTravel
 
         private void btnQuote_markUp_Click_1(object sender, RoutedEventArgs e)
         {
+            double markup = Convert.ToDouble(txbQuote_markUp.Text);
+            quoteAmount += markup;
+            double vat = quoteAmount * 0.15;
+            quoteAmount += vat;
 
         }
 
         private void btnQuote_requestVerification_Click(object sender, RoutedEventArgs e)
         {
-            var context = new SeleleEntities();
+            //var context = new SeleleEntities();
 
             //Extracting quoteDetails through a query
 
@@ -1620,38 +1382,38 @@ namespace SeleleTravel
             string tempOrderNum = "To Be Added";
             //GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
 
-            servicefee = quoteAmount * 0.15;
-         
-            var CurrentQuote = new quote()
-            {
 
-                quote_no = quote_no,
-                amount = quoteAmount,
-                service = service,
-                timequoted = timeQuoted,
-                quotedate = quoteDate,
-                consultant_no = consultant_no,
-                client_no = client_no,
-                clientname = clientname,
-                servicefee=servicefee
+         
+            //var CurrentQuote = new quote()
+            //{
+
+            //    quote_no = quote_no,
+            //    amount = quoteAmount,
+            //    service = service,
+            //    timequoted = timeQuoted,
+            //    quotedate = quoteDate,
+            //    consultant_no = consultant_no,
+            //    client_no = client_no,
+            //    clientname = clientname,
+            //    servicefee=servicefee
                
-            };
+            //};
             //Add quote to database
-            try
-            {
-                //context.quotes.Add(CurrentQuote);
-                //context.SaveChanges();
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-                throw ex;
-            }
+            //try
+            //{
+            //    //context.quotes.Add(CurrentQuote);
+            //    //context.SaveChanges();
+            //}
+            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            //{
+            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            //}
+            //catch (Exception ex)
+            //{
+            //    //other error
+            //    throw ex;
+            //}
         }
 
         private void tabitemQuoteSummary_MouseDoubleClick(object sender, MouseButtonEventArgs e)
