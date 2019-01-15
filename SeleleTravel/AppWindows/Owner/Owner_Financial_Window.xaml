@@ -9,79 +9,99 @@
         Icon="..\..\images\SeleleLogoBalls.png"
         Closed="Owner_Financial_Window_Closed"
         FontSize="20"
+        FontFamily="Comic sans ms"
         Title="Owner_Financial_Page" Height="800" Width="1200">
-    <Grid Background="#FF84D8FF">
-        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <!--Left hand side-->
-        <StackPanel Margin ="10">
-            <!--Entity label and combobox-->
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Entity:" FontSize="20" Margin="10"/>
-                <ComboBox x:Name="cbxFinancial_entity" Margin="10" Width="170">
-                    <ComboBoxItem x:Name="cbxitemFinancial_clients" Content="Clients" HorizontalAlignment="Left" Width="118" Selected="CbxitemFinancial_clients_Selected"/>
-                    <ComboBoxItem x:Name="cbxitemFinancial_services" Content="Services" HorizontalAlignment="Left" Width="118" Selected="CbxitemFinancial_services_Selected"/>
+    <Grid Background="#FF82A2FA">
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <!--Entity and ComboBox-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Entity:" FontSize="20" Margin="1"/>
+                <ComboBox x:Name="cbxFinancial_entity" Grid.Column="1" Margin="1" Width="200" HorizontalAlignment="Left" >
+                    <ComboBoxItem x:Name="cbxitemFinancial_clients" Content="Clients" Selected="CbxitemFinancial_clients_Selected"/>
+                    <ComboBoxItem x:Name="cbxitemFinancial_services" Content="Services" Selected="CbxitemFinancial_services_Selected"/>
                 </ComboBox>
-            </StackPanel>
-            <ListBox x:Name="lbFinancial_clientList" Height="400"/>
-            <!--Time period and combobox-->
-            <StackPanel Orientation="Horizontal" Margin="10">
-                <TextBlock Text="Time Period:" FontSize="20" Margin="10"/>
-                <ComboBox x:Name="cbxFinancial_period" Width="311" >
-                    <ComboBoxItem x:Name="cbxitemFinancial_annually" Content="Annually" HorizontalAlignment="Left" Width="308.475" Selected="CbxitemFinancial_annually_Selected"/>
-                    <ComboBoxItem x:Name="cbxitemFinancial_multipleMonths" Content="Multiple Months" HorizontalAlignment="Left" Width="308.475" Selected="CbxitemFinancial_multipleMonths_Selected"/>
-                    <ComboBoxItem x:Name="cbxitemFinancial_monthly" Content="Monthly" HorizontalAlignment="Left" Width="308.475" Selected="CbxitemFinancial_monthly_Selected"/>
-                    <ComboBoxItem x:Name="cbxitemFinancial_weekly" Content="Weekly" HorizontalAlignment="Left" Width="308.475" Selected="CbxitemFinancial_weekly_Selected"/>
+            </Grid>
+            <!--Client ListBox-->
+            <ListBox x:Name="lbFinancial_clientList" Grid.Row="1" Margin="1" Background="#FFBAC8EE" BorderBrush="#FF4D4E54"/>
+            <!--Time period and comboBox-->
+            <Grid Grid.Row="2" Margin="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Time Period:" FontSize="20"/>
+                <ComboBox x:Name="cbxFinancial_period" Grid.Column="1" Width="200" HorizontalAlignment="Left">
+                    <ComboBoxItem x:Name="cbxitemFinancial_annually" Content="Annually" Selected="CbxitemFinancial_annually_Selected"/>
+                    <ComboBoxItem x:Name="cbxitemFinancial_multipleMonths" Content="Multiple Months" Selected="CbxitemFinancial_multipleMonths_Selected"/>
+                    <ComboBoxItem x:Name="cbxitemFinancial_monthly" Content="Monthly" Selected="CbxitemFinancial_monthly_Selected"/>
+                    <ComboBoxItem x:Name="cbxitemFinancial_weekly" Content="Weekly" Selected="CbxitemFinancial_weekly_Selected"/>
                 </ComboBox>
-            </StackPanel>
-            <!--From and to-->
-            <DockPanel x:Name="cvsMultipleMonths" Height="55">
+            </Grid>
+            <!--Multiple months-->
+            <Grid Grid.Row="3" Margin="1" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="lblMultipleMonths_from" Content="From:" />
+                <ComboBox x:Name="cbxMultipleMonths_from" Grid.Column="1">
+                    <ComboBoxItem Content="January"/>
+                    <ComboBoxItem Content="February"/>
+                    <ComboBoxItem Content="March"/>
+                    <ComboBoxItem Content="April"/>
+                    <ComboBoxItem Content="May"/>
+                    <ComboBoxItem Content="June"/>
+                    <ComboBoxItem Content="July"/>
+                    <ComboBoxItem Content="August"/>
+                    <ComboBoxItem Content="September"/>
+                    <ComboBoxItem Content="October"/>
+                    <ComboBoxItem Content="November"/>
+                    <ComboBoxItem Content="December"/>
+                </ComboBox>
 
-                
-                <Label x:Name="lblMultipleMonths_from" Content="From:" Margin="0 0 20 0"/>
-                
-                <ComboBox x:Name="cbxMultipleMonths_from" Width="200">
-                    
-                    <ComboBoxItem Content="January" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="February" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="March" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="April" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="May" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="June" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="July" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="August" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="September" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="October" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="November" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="December" HorizontalAlignment="Left" Width="132.005"/>
+                <Label x:Name="lblMultipleMonths_to"  Content="To:" Grid.Column="2" Margin="1"/>
+                <ComboBox x:Name="cbxMultipleMonths_to" Grid.Column="3">
+                    <ComboBoxItem Content="January"/>
+                    <ComboBoxItem Content="February"/>
+                    <ComboBoxItem Content="March"/>
+                    <ComboBoxItem Content="April"/>
+                    <ComboBoxItem Content="May"/>
+                    <ComboBoxItem Content="June"/>
+                    <ComboBoxItem Content="July"/>
+                    <ComboBoxItem Content="August"/>
+                    <ComboBoxItem Content="September"/>
+                    <ComboBoxItem Content="October"/>
+                    <ComboBoxItem Content="November"/>
+                    <ComboBoxItem Content="December"/>
                 </ComboBox>
-                <Label x:Name="lblMultipleMonths_to" Content="To:"/>
-                <ComboBox x:Name="cbxMMultipleMonths_to"  Width="200">
-                    <ComboBoxItem Content="January" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="February" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="March" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="April" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="May" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="June" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="July" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="August" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="September" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="October" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="November" HorizontalAlignment="Left" Width="132.005"/>
-                    <ComboBoxItem Content="December" HorizontalAlignment="Left" Width="132.005"/>
-                </ComboBox>
-
-            </DockPanel>
-                    
-            <DockPanel x:Name="cvsYear" Margin="5" >
-                <Label x:Name="lblYear" Content="Enter Year:" />
-                <TextBox x:Name="txbYear" Width="120"/>
-            </DockPanel>
-
-            <StackPanel x:Name="cvsMonthly">
+            </Grid>
+            <!--Yearly-->
+            <Grid x:Name="cvsYear" Grid.Row="3" Margin="5" VerticalAlignment="Top" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="lblYear" Content="Enter Year:" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+                <TextBox x:Name="txbYear" Grid.Column="1" Margin="0 10" VerticalAlignment="Top" Width="120" Height="25" />
+            </Grid>
+            <!--Monthly-->
+            <StackPanel x:Name="cvsMonthly" Grid.Row="3">
                 <DockPanel>
                     <Label x:Name="lblMonthly_from" Content="From:"/>
                     <DatePicker x:Name="dpMonthly_from"  Width="200"/>
@@ -91,40 +111,32 @@
                     <DatePicker x:Name="dpMonthly_to" Width="200"/>
                 </DockPanel>
             </StackPanel>
-            <Canvas x:Name="cvsWeekly" HorizontalAlignment="Left" Height="399" Margin="21,505,0,-129" VerticalAlignment="Top" Width="398" Grid.ColumnSpan="2" d:IsHidden="True" Grid.RowSpan="2">
-                <DatePicker x:Name="dpWeekly_day" Canvas.Left="37.927" Canvas.Top="10" Width="150.349"/>
-                <Label x:Name="lblWeekly" Content="Day:" Canvas.Top="10"/>
-            </Canvas>
-            <Grid VerticalAlignment="Bottom">
-                <Button x:Name="btnFinancial_view1" Content="View Summary One" HorizontalAlignment="Left" VerticalAlignment="Top" Width="189"/>
-                <Button x:Name="btnFinancial_view2" Content="View Summary Two" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="189" />
+
+            <DockPanel x:Name="cvsWeekly" Grid.Row="3" >
+                <Label x:Name="lblWeekly" Content="Day : " Canvas.Top="10"/>
+                <DatePicker x:Name="dpWeekly_day" Width="200" VerticalAlignment="Top"/>
+            </DockPanel>
+
+            <!--Buttons-->
+            <Grid Grid.Row="3" VerticalAlignment="Bottom" Height="50" Margin="1">
+                <Button x:Name="btnFinancial_view1" Content="View Summary One" HorizontalAlignment="Left" Padding="5"/>
+                <Button x:Name="btnFinancial_view2" Content="View Summary Two" HorizontalAlignment="Right" Padding="5"/>
             </Grid>
-            
-            
-        </StackPanel>
-        <!--Start of the second column-->
-        <Grid Grid.Column="1" Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel >
-                <TextBlock Text="A heading"/>
-                <ListBox x:Name="lbFinancial_results1" Background="#fff" Height="340"/>
-            </StackPanel>
-            <StackPanel Grid.Row="1">
-                <TextBlock Text="A heading"/>
-                <ListBox x:Name="lbFinancial_results2" Background="#fff"  Height="340"/>
-            </StackPanel>
-            
+
+            <!--Start of column 2-->
+            <TextBlock Text="A heading" Grid.Column="1"/>
+            <ListBox x:Name="lbFinancial_results1" Background="#FFBAC8EE" Grid.Column="1" Grid.Row="1" Margin="1" BorderBrush="#FF4D4E54"/>
+
+            <TextBlock Text="A heading" Grid.Column="1" Grid.Row="2"/>
+            <ListBox x:Name="lbFinancial_results2" Background="#FFBAC8EE" Grid.Column="1" Grid.Row="3" BorderBrush="#FF4D4E54"/>
+
+            <!--I don't know where this goes-->
+            <Grid x:Name="cvsService" d:IsHidden="True" Grid.Row="1" Margin="1"  >
+                <ListBox x:Name="lbFinancial_servicesList"/>
+            </Grid>
+
         </Grid>
-        
-        <!--I don't know where this goes-->
-        <Canvas x:Name="cvsService" HorizontalAlignment="Left" Height="368" Margin="10 65 10 10" VerticalAlignment="Top" Width="398" d:IsHidden="True" Grid.ColumnSpan="2">
-            <ListBox x:Name="lbFinancial_servicesList" Height="400" Width="570"/>
-        </Canvas>
-        
-        
+
 
     </Grid>
 </Window>

@@ -5,17 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
-        Icon="..\..\images\SeleleLogoBalls.png"
         Closed="Window_Closed"
-        Title="OwnerPaymentsWindow" Height="800" Width="1200">
-    <Grid Margin="0,0,2,0.5" Background="#FF4F7DA8">
-        <Label x:Name="label" Content="Payment Requests" HorizontalAlignment="Left" Margin="10,1.388,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="ltbOwner_Payments_paymentRequests" HorizontalAlignment="Left" Height="681.612" Margin="10,33.388,0,0" VerticalAlignment="Top" Width="282.5"/>
-        <Label x:Name="label1" Content="Payments Completed:" HorizontalAlignment="Left" Margin="974.232,0,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="ltbOwner_Payments_paid" HorizontalAlignment="Left" Height="681.612" VerticalAlignment="Top" Width="328.792" Margin="851.208,33.388,0,0"/>
-        <Button x:Name="btnOwner_paidPayments" Content="Payments Done" HorizontalAlignment="Left" Margin="851.208,738.54,0,0" VerticalAlignment="Top" Width="328.792"/>
-        <TextBox x:Name="txbOwner_Payments_preview" HorizontalAlignment="Left" Height="681.612" Margin="314,33.388,0,0" TextWrapping="Wrap" Text="No selected order" VerticalAlignment="Top" Width="517.5"/>
+        FontSize="20"
+        FontFamily="Comic sans ms"
+        Height="800"
+        Icon="..\..\images\SeleleLogoBalls.png"
+        Title="OwnerPaymentsWindow"  
+        Width="1200"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,2,0.5" Background="#FF6C9AC5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <ListBox x:Name="ltbOwner_Payments_paymentRequests" />
+            <TextBox x:Name="txbOwner_Payments_preview" Grid.Column="1" IsReadOnly="True" Margin="1" TextWrapping="Wrap" Text="No selected order"/>
+            <ListBox x:Name="ltbOwner_Payments_paid" Grid.Column="2"/>
+        </Grid>
+        <Label Content="Payment Requests" HorizontalAlignment="Left"  VerticalAlignment="Bottom"/>
+        <Label Content="Preview:" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="Bottom"/>
+        <Label Content="Payments Completed:" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Bottom"/>
+        <Button x:Name="btnOwner_paidPayments" Content="Payments Done" Grid.Column="2" Grid.Row="2" Height="38"  HorizontalContentAlignment="Center" Margin="5" Padding="5" VerticalAlignment="Top" />
 
     </Grid>
 </Window>
