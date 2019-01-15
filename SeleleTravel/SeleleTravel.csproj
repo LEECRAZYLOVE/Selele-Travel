@@ -306,9 +306,6 @@
     <Compile Include="AppWindows\General\SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TemporaryWindow.xaml.cs">
-      <DependentUpon>TemporaryWindow.xaml</DependentUpon>
-    </Compile>
     <Page Include="AppWindows\General\ComposeMessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -393,10 +390,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppWindows\General\SignUpWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TemporaryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
