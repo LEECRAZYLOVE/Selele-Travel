@@ -49,22 +49,26 @@ namespace SeleleTravel
                     try
                     {
                         myConnect.Open();
-                        NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT password, staff_id, stafffirstnames FROM staff WHERE staff_id = '{checkUserId}'", myConnect);
+                        NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT password, staff_id, stafffirstnames FROM staff", myConnect);
                         NpgsqlDataReader dr = myCommand.ExecuteReader();
+
                         while (dr.Read())
                         {
-                            if (dr[0] == checkPassword && dr[1] == checkUserId)
+                            for (int j = 0; j < dr.FieldCount; j++)
                             {
-                                consultantWindow.Show();
-                                MessageBox.Show($"Welcome {dr[2]}");
-                                Hide();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
+                                if (checkPassword == dr[0].ToString() && checkUserId == dr[1].ToString())
+                                {
+                                    consultantWindow.Show();
+                                    MessageBox.Show($"Welcome {dr[2]}");
+                                    Hide();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
+
+                                }
 
                             }
-                
                         }
                         myConnect.Close();
                     }
@@ -84,15 +88,20 @@ namespace SeleleTravel
                         NpgsqlDataReader dr = myCommand.ExecuteReader();
                         while (dr.Read())
                         {
-                            if (dr[0] == checkPassword && dr[1] == checkUserId)
+                            for (int j = 0; j < dr.FieldCount; j++)
                             {
-                                MessageBox.Show($"Welcome {dr[2]}");
-                                managerWindow.Show();
-                                Hide();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
+                                if (checkPassword == dr[0].ToString() && checkUserId == dr[1].ToString())
+                                {
+                                    managerWindow.Show();
+                                    MessageBox.Show($"Welcome {dr[2]}");
+                                    Hide();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
+
+                                }
+
                             }
                         }
                         myConnect.Close();
@@ -113,17 +122,21 @@ namespace SeleleTravel
                         NpgsqlDataReader dr = myCommand.ExecuteReader();
                         while (dr.Read())
                         {
-                            if (dr[0] == checkPassword && dr[1] == checkUserId)
+                            for (int j = 0; j < dr.FieldCount; j++)
                             {
-                                MessageBox.Show($"Welcome {dr[2]}");
-                                ownerWindow.Show();
-                                Hide();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
-                            }
+                                if (checkPassword == dr[0].ToString() && checkUserId == dr[1].ToString())
+                                {
+                                    ownerWindow.Show();
+                                    MessageBox.Show($"Welcome {dr[2]}");
+                                    Hide();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
 
+                                }
+
+                            }
                         }
                         myConnect.Close();
                     }

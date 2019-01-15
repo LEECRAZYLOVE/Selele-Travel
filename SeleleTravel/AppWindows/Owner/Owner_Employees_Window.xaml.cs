@@ -63,7 +63,7 @@ namespace SeleleTravel
                 {
                 myConnect.Open();
                 NpgsqlCommand myCommand = new NpgsqlCommand($"INSERT INTO staff (staff_id, stafffirstnames,stafflastname,address,cellphone,telephone,fax,staffposition,salary,dateofhire) " +
-                    $"VALUES ('{GeneralMethods.makeStaffID(Surname, Cellphone)}', '{Name}', '{Surname}', '{FullAddress}', '{Cellphone}', '{Telephone}', '{Fax}', '{Position}', '{Salary}', '{DateTime.Today}') ", myConnect);
+                    $"VALUES ('{GeneralMethods.makeStaffID(Surname, Cellphone)}', '{Name}', '{Surname}', '{FullAddress}', '{Cellphone}', '{Telephone}', '{Fax}', '{Position}', '{Salary}', '{DateTime.Today.ToString().Substring(0,10)}') ", myConnect);
                     myCommand.ExecuteNonQuery();
                     MessageBox.Show($"Succesfully added into the database. New Employee ID is: {GeneralMethods.makeStaffID(Surname, Cellphone)}");
                     GeneralMethods.clearTextBoxes(new List<TextBox>() { txbNewEmployee_surname, txbNewEmployee_name, txbNewEmployee_address, txbNewEmployee_city, txbNewEmployee_areaCode, txbEmployee_cellphone, txbNewEmployee_telephone, txbNewEmployee_fax, txbNewEmployee_email, txbNewEmployee_position, txbNewEmployee_salary });
