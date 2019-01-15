@@ -39,7 +39,8 @@ namespace SeleleTravel
         }
 
         private void createNewClient_Click(object sender, RoutedEventArgs e)
-        {//new edit
+        {
+            //new edit
             string name = txbNewService_name.Text;
             string address = txbNewService_address.Text;
             string telephone = txbNewService_telephone.Text;
