@@ -146,6 +146,28 @@ namespace SeleleTravel
             {
                 MessageBox.Show(h.ToString());
             }
+
+            //Query for retrieving staff_id
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+
+                using (var cmd = new NpgsqlCommand($"SELECT consultant_no FROM orders,quote WHERE orders.quote_no=quote.quote_no", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    while (query.Read())
+                    {
+                        staff_ID = query[0].ToString();
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
