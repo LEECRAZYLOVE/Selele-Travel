@@ -24,12 +24,12 @@
         </StackPanel>
         <!-- Middle -->
         <StackPanel Grid.Column="1">
-            <TextBox x:Name="txbMessage_name" FontSize="16" Height="30" Padding="5" Margin="10" FontFamily="Arial" Background="#FFFFFCE4"/>
+            <TextBox x:Name="txbMessage_staffnameTo" FontSize="16" Height="30" Padding="5" Margin="10" FontFamily="Arial" Background="#FFFFFCE4"/>
             <TextBox x:Name="txbMessage_subject" FontSize="16" Height="30" Padding="5" Margin="10 0" Background="#FFFFFCE4"/>
             <TextBox x:Name="txbMessage_message" FontSize="16" Margin="10" Padding="5" Height="340" Background="#FFFFFCE4"/>
         </StackPanel>
 
         <!--Right hand side-->
-        <Button x:Name="btnMessage_send" Grid.Column="2" Content="Send Message" Height="40" Margin="10 20" VerticalAlignment="Bottom" Background="#FFBDF0BD"/>
+        <Button x:Name="btnMessage_send" Grid.Column="2" Content="Send Message" Height="40" Margin="10 20" VerticalAlignment="Bottom" Background="#FFBDF0BD" Click="BtnMessage_send_Click" />
     </Grid>
 </Window>

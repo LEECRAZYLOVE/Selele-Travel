@@ -60,7 +60,9 @@ namespace SeleleTravel
                                 {
                                     consultantWindow.Show();
                                     MessageBox.Show($"Welcome {dr[2]}");
+                                    consultantWindow.currentStaffID = dr[1].ToString();
                                     Hide();
+                                    break;
                                 }
                                 else
                                 {
@@ -94,7 +96,9 @@ namespace SeleleTravel
                                 {
                                     managerWindow.Show();
                                     MessageBox.Show($"Welcome {dr[2]}");
+                                    managerWindow.currentStaffID = dr[1].ToString();
                                     Hide();
+                                    break;
                                 }
                                 else
                                 {
@@ -128,7 +132,9 @@ namespace SeleleTravel
                                 {
                                     ownerWindow.Show();
                                     MessageBox.Show($"Welcome {dr[2]}");
+                                    ownerWindow.currentStaffID = dr[1].ToString();
                                     Hide();
+                                    break;
                                 }
                                 else
                                 {

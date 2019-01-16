@@ -22,7 +22,7 @@ namespace SeleleTravel
     public partial class ConsultantHomeWindow : Window
     {
         ConsultantQuotesWindow consultantQuotesWindow = new ConsultantQuotesWindow();
-
+        public string currentStaffID = "";
         public ConsultantHomeWindow()
         {
             InitializeComponent();

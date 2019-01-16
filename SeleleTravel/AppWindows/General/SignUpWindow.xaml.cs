@@ -50,7 +50,6 @@ namespace SeleleTravel
             {
                 string Position = "";
                 string staffFullName = "";
-                string StaffID = "";
                 string password = checkPassword;
                 string staff_id = checkStaffID;
                 //Query for updating the password side
@@ -78,15 +77,15 @@ namespace SeleleTravel
 
                 try
                 {
-                    NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT staffposition FROM staff WHERE staff_id = '{checkStaffID}'", myConnect);
+                    NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT staffposition, stafffirstnames FROM staff WHERE staff_id = '{checkStaffID}'", myConnect);
                     // Add paramaters.
                     NpgsqlDataReader dr = myCommand.ExecuteReader();
                     while (dr.Read())
-                    {
-                        
+                    {          
                         for (int k = 0; k < dr.FieldCount; k++)
                         {
-                            Position += string.Format("{0}", dr[k]);
+                            Position += string.Format("{0}", dr[0]);
+                            staffFullName = dr[1].ToString();
                         }
                     }
                 }
@@ -98,9 +97,9 @@ namespace SeleleTravel
                 //After signing up the new employee will be redirected to the relevant window
                 switch (Position)
                 {
-                    case "Consultant": this.Hide(); consultantWindow.Show(); break;
-                    case "Manager": this.Hide(); managerWindow.Show(); managerWindow.lblManagerName.Content = ""; managerWindow.lblManagerID.Content = ""; break;
-                    case "Owner": this.Hide(); ownerWindow.Show(); break;
+                    case "Consultant": this.Hide(); consultantWindow.Show(); consultantWindow.lblConsultantName.Content = staffFullName; consultantWindow.lblConsultantID.Content = staff_id; consultantWindow.currentStaffID = staff_id; break;
+                    case "Manager": this.Hide(); managerWindow.Show(); managerWindow.lblManagerName.Content = staffFullName; managerWindow.lblManagerID.Content = staff_id; managerWindow.currentStaffID = staff_id; break;
+                    case "Owner": this.Hide(); ownerWindow.Show(); ownerWindow.lblOwnerName.Content = staffFullName; ownerWindow.lblOwnerID.Content = staff_id; ownerWindow.currentStaffID = staff_id; break;
 
                 }
             }

@@ -37,7 +37,7 @@ namespace SeleleTravel
 
 
             //Grab the information of the client and send it to the 'compose message' name textbox
-            composeMessage.txbMessage_name.Text = txblockQuoteSummary_consultantID.Text;
+            composeMessage.txbMessage_staffnameTo.Text = txblockQuoteSummary_consultantID.Text;
             //view the 'compose message' tab
             Manager_tabControl.SelectedIndex = 1;
             //Grab the information of the quote we just rejected

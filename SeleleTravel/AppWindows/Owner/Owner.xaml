@@ -97,14 +97,14 @@
                     </StackPanel>
                 </Canvas>
             </TabItem>
-            <TabItem Header="Messages" Margin="0" Height="30" Width="100" HorizontalAlignment="Left">
+            <TabItem Header="Messages" Margin="0" Height="30" Width="100" HorizontalAlignment="Left" MouseDown="TabItem_MouseDown">
                 <Canvas Background="White">
                     <TextBlock x:Name="tbkOwner_inboxMessages" Text="No Message selected." Padding="5" TextWrapping="Wrap" FontFamily="Comic Sans MS" Height="525" Canvas.Left="420" Canvas.Top="51" Width="526"/>
                     <Label Content="Inbox :" Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Height="33" Canvas.Left="25" Canvas.Top="12" Width="77"/>
-                    <ListBox x:Name="lbOwner_inboxList" Background="#FFD5D9E6" Opacity="0.5" Height="523" Canvas.Left="21" Canvas.Top="51" Width="355">
+                    <ListBox x:Name="lbOwner_inboxList" Background="#FFD5D9E6" Opacity="0.5" Height="523" Canvas.Left="21" Canvas.Top="51" Width="355" SelectionChanged="LbOwner_inboxList_SelectionChanged">
                         <ListBoxItem Content="No New Messages.."/>
                     </ListBox>
-                    <Label Content="Selected Message :" Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Canvas.Left="418" Canvas.Top="9" />
+                    <Label x:Name="txbMessageFrom" Content="Selected Message :" Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Canvas.Left="418" Canvas.Top="9" />
                 </Canvas>
             </TabItem>
             <TabItem Header="Search" Height="30" Width="100" Margin="0" HorizontalAlignment="Left">
