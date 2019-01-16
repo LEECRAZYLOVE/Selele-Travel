@@ -38,22 +38,21 @@ namespace SeleleTravel
             //string orderNumber = txbConsultant_Vouchers_inputOrder.Text;
             // extract data from the database and display it in the textbox for displaying
             // the data is the one partaining to the current quote number.
-            string inputVoucher = txbConsultant_Vouchers_inputOrder.Text;
-
+            string inputOrder = txbConsultant_Vouchers_inputOrder.Text;
+            
             //Query for retrieving order data
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
 
-                using (var cmd = new NpgsqlCommand($"SELECT * FROM order, voucher WHERE voucher_no = '{inputVoucher}'", myConnect))
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM orders WHERE order_no = '{inputOrder}'", myConnect))
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
                     while (query.Read())
                     {
-                        txbConsultant_Vouchers_inputOrder.Text = $"Voucher number: {query[0]}\nOrder_no:{query[1]}\n" +
-                        $"Client_ID: {query[2]}\nAccommodation_ID: {query[3]}\nAgency_ID: {query[4]}\n" +
-                        $"Staff_ID: {query[5]}\nAmount: {query[6]}";
+                        txbConsultant_Vouchers_viewOrder.Text = $"Order_no: {query[0]}\nQuote_no:{query[1]}\n" +
+                        $"Date received: {query[2]}\nOrder date: {query[3]}";
                     }
                     myConnect.Close();
                 }
@@ -66,24 +65,25 @@ namespace SeleleTravel
             //txbConsultant_Vouchers_viewOrder.Text = "";
             // extract data from the database and display it in the textbox for displaying
             // the data is the one partaining to the current quote number.
-            string inputOrder = txbConsultant_Vouchers_inputOrder.Text;
-
 
 
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Owner.Show();
+            Hide();
         }
 
         private void btnConsultant_Vouchers_selectOrder_Click(object sender, RoutedEventArgs e)
         {
             // Link the current order number to the new voucher that will be generated
+            order_no = txbConsultant_Vouchers_inputOrder.Text;
         }
 
         private void btnConsultant_Voucher_addNewVoucher_Click(object sender, RoutedEventArgs e)
         {
+            voucher_no = GeneralMethods.makeVoucher_no();
+            txbConsultsnt_Vouchers_outputVoucherNumber.Text = voucher_no;
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);

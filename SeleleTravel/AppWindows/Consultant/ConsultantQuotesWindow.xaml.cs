@@ -207,7 +207,6 @@ namespace SeleleTravel
             string emailaddress = txbNewClient_email.Text;
             string telephone = txbNewClient_telephone.Text;
             string fax = txbNewClient_fax.Text;
-            string timeQuoted = Convert.ToString(DateTime.Now);
             string city = txbNewClient_city.Text;
             string province = DropBxNewClient_province.Text;
             string areaCode = txbNewClient_areaCode.Text;
@@ -598,14 +597,14 @@ namespace SeleleTravel
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
                 using (var cmd = new NpgsqlCommand($"INSERT INTO carhire " +
-                    $" (agencyname, quote_no,pickuplocation,dropofflocation,dayofhire,expectedenddate,carhirespecifications,amount)"+
-                    $" VALUES (@agencyname,@quote_no,@pickuplocation,@dropofflocation,@dayofhire,@expectedenddate,@carhirespecifications,@amount)", myConnect))
+                    $" (agencyname, quote_no,pickuplocation,dropofflocation,startday,expectedenddate,carhirespecifications,amount)"+
+                    $" VALUES (@agencyname,@quote_no,@pickuplocation,@dropofflocation,@startday,@expectedenddate,@carhirespecifications,@amount)", myConnect))
                 {
                     cmd.Parameters.AddWithValue("agencyname", agencyName);
                     cmd.Parameters.AddWithValue("quote_no", quote_no);
                     cmd.Parameters.AddWithValue("pickuplocation", pickUpLocation);
                     cmd.Parameters.AddWithValue("dropofflocation",dropOffLocation);
-                    cmd.Parameters.AddWithValue("dayofhire", _startday.Date.ToString().Substring(0, 10));
+                    cmd.Parameters.AddWithValue("startday", _startday.Date.ToString().Substring(0, 10));
                     cmd.Parameters.AddWithValue("expectedenddate", _endDay.Date.ToString().Substring(0, 10));
                     cmd.Parameters.AddWithValue("carhirespecifications", carHireSpecs);
                     cmd.Parameters.AddWithValue("amount", amount);
@@ -1302,36 +1301,36 @@ namespace SeleleTravel
         {
             //Todo sql insertion
                    // ...
-            var context = new SeleleEntities();
-            var currentQuote = new quote()
-            {
+            //var context = new SeleleEntities();
+            //var currentQuote = new quote()
+            //{
                
-                quote_no=quote_no,
-                amount=quoteAmount,
-                service=service,
-                timequoted=timeQuoted,
-                quotedate=quoteDate,
-                consultant_no=consultant_no,
-                client_no=client_no,
-                clientname=clientname
-            };
-            //Add quote to database
-            try
-            {
-                //context.quotes.Add(currentQuote);
-                //context.SaveChanges();
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-                throw ex;
+            //    quote_no=quote_no,
+            //    amount=quoteAmount,
+            //    service=service,
+            //    timequoted=timeQuoted,
+            //    quotedate=quoteDate,
+            //    consultant_no=consultant_no,
+            //    client_no=client_no,
+            //    clientname=clientname
+            //};
+            ////Add quote to database
+            //try
+            //{
+            //    //context.quotes.Add(currentQuote);
+            //    //context.SaveChanges();
+            //}
+            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            //{
+            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            //}
+            //catch (Exception ex)
+            //{
+            //    //other error
+            //    throw ex;
 
-            }
+            //}
         }
 
    
@@ -1355,7 +1354,8 @@ namespace SeleleTravel
         private void btnQuote_markUp_Click_1(object sender, RoutedEventArgs e)
         {
             double markup = Convert.ToDouble(txbQuote_markUp.Text);
-            quoteAmount += markup;
+            servicefee = quoteAmount*0.1;
+            quoteAmount += servicefee;
             double vat = quoteAmount * 0.15;
             quoteAmount += vat;
 
@@ -1381,38 +1381,6 @@ namespace SeleleTravel
             string tempOrderNum = "To Be Added";
             //GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
 
-
-
-            //var CurrentQuote = new quote()
-            //{
-
-            //    quote_no = quote_no,
-            //    amount = quoteAmount,
-            //    service = service,
-            //    timequoted = timeQuoted,
-            //    quotedate = quoteDate,
-            //    consultant_no = consultant_no,
-            //    client_no = client_no,
-            //    clientname = clientname,
-            //    servicefee=servicefee
-
-            //};
-            //Add quote to database
-            //try
-            //{
-            //    //context.quotes.Add(CurrentQuote);
-            //    //context.SaveChanges();
-            //}
-            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            //{
-            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            //}
-            //catch (Exception ex)
-            //{
-            //    //other error
-            //    throw ex;
-            //}
             //Query for inserting the client
             try
             {
@@ -1425,7 +1393,7 @@ namespace SeleleTravel
                     cmd.Parameters.AddWithValue("amount",quoteAmount );
                     cmd.Parameters.AddWithValue("service",service );
                     cmd.Parameters.AddWithValue("timequoted", timeQuoted);
-                    cmd.Parameters.AddWithValue("quotedate",quoteDate );
+                    cmd.Parameters.AddWithValue("quotedate",quoteDate.ToString().Substring(0,9) );
                     cmd.Parameters.AddWithValue("consultant_no",consultant_no );
                     cmd.Parameters.AddWithValue("client_no", client_no);
                     cmd.Parameters.AddWithValue("clientname", clientname);

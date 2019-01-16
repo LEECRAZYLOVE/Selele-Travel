@@ -428,13 +428,41 @@ namespace SeleleTravel
                 _totalQts = "0" + _totalQts;
             }
             // generates the quote number using the time and string generated above
-            quote_no = $"Q{_totalQts}";
+            quote_no = $"V{_totalQts}";
 
 
             return quote_no;
 
         }
+        /// <summary>
+        /// gets the total number of vouchers that are in the system
+        /// </summary>
+        /// <param name="voucher_no"></param>
+        private static int getNumberOfVouchers()
+        {
 
+            int numberOfVouchers = 0;
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(voucher_no) FROM voucher", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    numberOfVouchers = Convert.ToInt32(dr[0]);
+                }
+
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            return numberOfVouchers;
+
+
+        }
         /// <summary>
         /// It generates the voucher number.
         /// </summary>
@@ -443,7 +471,7 @@ namespace SeleleTravel
         {
 
             string voucher_no = "";
-            string numOfVoucher = Convert.ToString(getNumberOfQuotes());
+            string numOfVoucher = Convert.ToString(getNumberOfVouchers());
             string _totalQts = numOfVoucher; // assigns the static value to the string
 
             while (_totalQts.Length < 6)
@@ -452,11 +480,11 @@ namespace SeleleTravel
                 _totalQts = "0" + _totalQts;
             }
             //generates the quote number using the time and string generated above
-            voucher_no = $"Q{_totalQts}";
+            voucher_no = $"V{_totalQts}";
 
 
             //  return voucher_no;
-            return "";
+            return voucher_no;
         }
 
         /// <summary>
@@ -539,7 +567,6 @@ namespace SeleleTravel
                 {
                     numberOfQuotes = Convert.ToInt32(dr[0]);
                 }
-                numberOfQuotes = Convert.ToInt32(dr.Read());
                 myConnect.Close();
             }
             catch (Exception h)

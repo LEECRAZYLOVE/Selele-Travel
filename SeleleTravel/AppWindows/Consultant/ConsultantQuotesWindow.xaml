@@ -318,7 +318,7 @@
                     </Grid>
             </TabItem>
             <!--Car Hire -->
-            <TabItem Header="Car Hire" Style="{DynamicResource TabItemStyle}">
+            <TabItem Header="Car Hire" Style="{DynamicResource TabItemStyle}" Height="42" Margin="0,-2,0,0" VerticalAlignment="Top">
                 <Grid Background="#eee">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="49*"/>
