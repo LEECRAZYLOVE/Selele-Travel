@@ -894,7 +894,7 @@ namespace SeleleTravel
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
         
-                using (var cmd = new NpgsqlCommand($"INSERT INTO conferrence " +
+                using (var cmd = new NpgsqlCommand($"INSERT INTO conference " +
                     $" (quote_no,conferencename,venue,startday,endday,timeconference,conferencespecs,amount)" +
                     $" VALUES (@quote_no,@conferencename,@venue,@startday,@endday,@timeconference,@conferencespecs,@amount)", myConnect))
                 {
@@ -1382,7 +1382,7 @@ namespace SeleleTravel
             //GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
 
 
-         
+
             //var CurrentQuote = new quote()
             //{
 
@@ -1395,7 +1395,7 @@ namespace SeleleTravel
             //    client_no = client_no,
             //    clientname = clientname,
             //    servicefee=servicefee
-               
+
             //};
             //Add quote to database
             //try
@@ -1413,6 +1413,31 @@ namespace SeleleTravel
             //    //other error
             //    throw ex;
             //}
+            //Query for inserting the client
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"INSERT INTO quote (quote_no,amount,service,timequoted,quotedate,consultant_no,client_no,clientname,servicefee) VALUES (@quote_no,@amount,@service,@timequoted,@quotedate,@consultant_no,@client_no,@clientname,@servicefee)", myConnect))
+                {
+                    
+                    cmd.Parameters.AddWithValue("quote_no", quote_no);
+                    cmd.Parameters.AddWithValue("amount",quoteAmount );
+                    cmd.Parameters.AddWithValue("service",service );
+                    cmd.Parameters.AddWithValue("timequoted", timeQuoted);
+                    cmd.Parameters.AddWithValue("quotedate",quoteDate );
+                    cmd.Parameters.AddWithValue("consultant_no",consultant_no );
+                    cmd.Parameters.AddWithValue("client_no", client_no);
+                    cmd.Parameters.AddWithValue("clientname", clientname);
+                    cmd.Parameters.AddWithValue("servicefee",servicefee );
+                    cmd.ExecuteNonQuery();
+                }
+                MessageBox.Show($"Successfully added into database. Quote_no is: {quote_no}");
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
         }
 
         private void tabitemQuoteSummary_MouseDoubleClick(object sender, MouseButtonEventArgs e)
