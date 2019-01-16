@@ -34,30 +34,31 @@ namespace SeleleTravel
         private void BtnConsultant_Orders_addNewOrder_Click(object sender, RoutedEventArgs e)
         {
             // Extract and assign to variables
-            string orderNumber = txbConsultant_Orders_orderNumber.Text;
+            order_no = txbConsultant_Orders_orderNumber.Text;
             string orderDate = txbConsultant_Orders_orderdate.Text;
 
             // check if the textboxes are empty or the strings associated with the textboxes
-            List<string> stringValueCheck = new List<string> { orderNumber};
+            List<string> stringValueCheck = new List<string> { order_no};
             bool checkEmptyStringBool = GeneralMethods.checkEmptytxtBox(stringValueCheck);
 
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"INSERT INTO TABLE order  (quote_no,order_no,daterecieved,orderdate) VALUES (@quote_no,@order_no,@daterecieved,@orderdate)", myConnect))
+                using (var cmd = new NpgsqlCommand($"INSERT INTO orders (quote_no,order_no,datereceived,orderdate) VALUES (@quote_no,@order_no,@datereceived,@orderdate)", myConnect))
                 {
 
                     cmd.Parameters.AddWithValue("quote_no",quote_no);
                     cmd.Parameters.AddWithValue("order_no", order_no);
-                    cmd.Parameters.AddWithValue("daterecieved", DateTime.Today.ToString().Substring(0,10));
+                    cmd.Parameters.AddWithValue("datereceived", DateTime.Today.ToString().Substring(0,10));
                     cmd.Parameters.AddWithValue("orderdate", orderDate);
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Successfully added into the database.");
                 }
             }
-            catch
+            catch (Exception h)
             {
-
+                MessageBox.Show(h.ToString());
             }
 
 
@@ -77,42 +78,12 @@ namespace SeleleTravel
             // extract data from the database and display it in the textbox for displaying
             // the data is the one partaining to the current quote number.
             string inputQuote = txbConsultant_Orders_inputQuote.Text;
-            //using (SeleleEntities context = new SeleleEntities())
-            //{
-            //    var query = (from c in context.quotes
-
-            //                 where c.quote_no == inputQuote
-            //                 select new
-            //                 {
-            //                     c.quote_no,
-            //                     c.amount,
-            //                     c.service,
-            //                     c.timequoted,
-            //                     c.timesent,
-            //                     c.datesent,
-            //                     c.quotedate,
-            //                     c.consultant_no,
-            //                     c.servicefee,
-            //                     c.client_no,
-            //                     c.clientname
-
-            //                 }).First();
-
-            //    if (query != null)
-            //    {
-            //        txbConsultant_Orders_viewQuote.Text = $"Quote number: {query.quote_no}\nTotal amount:{query.amount}\n" +
-            //            $"Services: {query.service.Replace('|',' ')}\nTime Quoted: {query.timequoted}\nTime sent: {query.timesent}\n" +
-            //            $"Date sent: {query.datesent}\nQuote Date: {query.quotedate}\nConsultant number: {query.consultant_no}\n" +
-            //            $"Service fee: {query.servicefee}\nClient ID: {query.client_no}\nClient Name: {query.clientname}";
-            //    }
-
-            //}
             //Query for retrieving quote data
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"SELECT * FROM quote, order WHERE quote_no = '{inputQuote}'", myConnect))
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM quote WHERE quote_no = '{inputQuote}'", myConnect))
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
 
@@ -140,7 +111,7 @@ namespace SeleleTravel
     
         private void Window_Closed(object sender, EventArgs e)
         {
-            Owner?.Show();
+            Hide();
         }
     }
 }

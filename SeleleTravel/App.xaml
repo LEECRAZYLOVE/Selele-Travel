@@ -2,11 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:SeleleTravel"
-             StartupUri="AppWindows\Manager\Manager_Quotes_Window.xaml">
+             StartupUri="AppWindows\Consultant\ConsultantVouchersWindow.xaml">
     <Application.Resources>
          
     </Application.Resources>
-    <Application.MainWindow>
-        <local:MainWindow/>
-    </Application.MainWindow>
 </Application>
