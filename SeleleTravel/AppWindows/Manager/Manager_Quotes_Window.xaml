@@ -13,8 +13,8 @@
     <Grid Background="#FFFF8888">
         <TabControl x:Name="Manager_tabControl" HorizontalAlignment="Left" Height="626" VerticalAlignment="Top" Width="1078" Margin="8,38,0,0">
             <!--Quote Summary-->
-            <TabItem Header="Quote Summary">
-                <Grid Background="#eee">
+            <TabItem Header="Quote Summary" Height="50" Padding="10" Background="{x:Null}" BorderBrush="Black">
+                <Grid Background="#FFFFC7C7">
                     <!--Separating grid into 3-->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -44,8 +44,8 @@
                 </Grid>
             </TabItem>
             <!--Verified quotes-->
-            <TabItem Header="Verified Quotes" >
-                <Grid Background="#eee" HorizontalAlignment="Left" Width="1073" Height="591" VerticalAlignment="Top" >
+            <TabItem Header="Verified Quotes" Height="50" Padding="10" Background="{x:Null}" BorderBrush="Black" >
+                <Grid Background="#FFFFC7C7" HorizontalAlignment="Left" Width="1073" Height="591" VerticalAlignment="Top" >
                     <!--Divide the grid into 2 columns-->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>

@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        Title="Selele" Height="700" Width="1000">
-    
-    <Grid Background="#FFCADEFF">
+        Title="Selele" Height="700" Width="1000" FontSize="16" Background="#FFFCFCFC">
+
+    <Grid Background="#FFFF8888">
         <!--Separating the grid into 3 parts-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -18,19 +18,19 @@
         </Grid.ColumnDefinitions>
         <!--Left hand side-->
         <TextBlock Text="Incoming Vouchers :" Margin="10"/>
-        <ListBox x:Name="ltbManager_incomingVouchers" Margin="10 40 10 10">
+        <ListBox x:Name="ltbManager_incomingVouchers" Margin="10 40 10 10" Background="#FFFFDFDF">
             <ListBoxItem Content="No incoming vouchers."/>
         </ListBox>
         <!--Middle-->
         <TextBlock Grid.Column="1" Text="Outgoing Vouchers :" Margin="10"/>
-        <ListBox x:Name="ltbManager_outgoingVouchers" Grid.Column="1"  Background="#fff"  Margin="10 40 10 10" >
+        <ListBox x:Name="ltbManager_outgoingVouchers" Grid.Column="1"  Background="#FFFFDFDF"  Margin="10 40 10 10" >
             <ListBoxItem Content="No outgoing vouchers."/>
         </ListBox>
 
         <!-- Right hand side-->
-        <Button x:Name="btnManager_sendVoucher" Grid.Column="2" FontSize="10" Content="Send vouchers and booking confirmations" VerticalAlignment="Bottom" Height="50" Margin="0 10 2 10" Background="#FFB4ECF1"/>
+        <Button x:Name="btnManager_sendVoucher" Grid.Column="2" FontSize="10" Content="Send vouchers and booking confirmations" VerticalAlignment="Bottom" Height="50" Margin="0 10 2 10" Background="#FFFFA06B"/>
 
 
     </Grid>
-    
+
 </Window>
