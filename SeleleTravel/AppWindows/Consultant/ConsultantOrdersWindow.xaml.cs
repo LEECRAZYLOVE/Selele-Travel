@@ -140,7 +140,7 @@ namespace SeleleTravel
     
         private void Window_Closed(object sender, EventArgs e)
         {
-            Owner.Show();
+            Owner?.Show();
         }
     }
 }

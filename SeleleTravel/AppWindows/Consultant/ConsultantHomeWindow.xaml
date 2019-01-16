@@ -88,7 +88,7 @@
         <Label x:Name="lblConsultantID" Content="-Consultant ID-" Margin="2,33.047,854.648,645.8" FontFamily="Comic Sans MS" FontSize="16"/>
         <Label Content="Welcome" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0"/>
         <TabControl HorizontalAlignment="Left" Height="630.8" Margin="10,79.6,0,0" VerticalAlignment="Top" Width="973.6">
-            <TabItem Header="Home" Margin="0" Width="100" Height="30" HorizontalAlignment="Left">
+            <TabItem Header="Home" Margin="0" Width="100" Height="30" HorizontalAlignment="Left" FontSize="14">
                 <Canvas Background="White" >
                     <Image Height="572.8" Canvas.Left="10" Canvas.Top="10" Width="947.6" Source="..\..\images\SeleleLogoBalls.png" Opacity=".5"/>
                     <Label Content="Choose an option..." VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" Canvas.Left="15.8" Canvas.Top="20" />
@@ -103,7 +103,7 @@
                     </StackPanel>
                 </Canvas>
             </TabItem>
-            <TabItem Header="Messages" Margin="0" Height="30" Width="100" HorizontalAlignment="Left">
+            <TabItem Header="Messages" Margin="0" Height="30" Width="100" HorizontalAlignment="Left" FontSize="14">
                 <Canvas Background="White">
                     <TextBlock x:Name="tbkConsultant_inboxMessages" Text="No Message selected." Padding="5" TextWrapping="Wrap" FontFamily="Comic Sans MS" Height="525" Canvas.Left="420" Canvas.Top="51" Width="526"/>
                     <Label Content="Inbox :" Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Height="33" Canvas.Left="25" Canvas.Top="12" Width="77"/>
@@ -113,7 +113,7 @@
                     <Label Content="Selected Message :" Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Canvas.Left="418" Canvas.Top="9" />
                 </Canvas>
             </TabItem>
-            <TabItem Header="Search" Height="30" Width="100" Margin="0" HorizontalAlignment="Left">
+            <TabItem Header="Search" Height="30" Width="100" Margin="0" HorizontalAlignment="Left" FontSize="14">
                 <Canvas Background="White">
                     <TextBox x:Name="txbConsultant_search" Text="Name or ID..." HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" Canvas.Left="10" Canvas.Top="10" BorderBrush="Black" FontSize="20" FontFamily="Times New Roman"/>
                     <Button x:Name="btnConsultant_search" Content="SEARCH" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="30" Click="btnConsultant_search_Click" Canvas.Left="674.2" Canvas.Top="10"/>

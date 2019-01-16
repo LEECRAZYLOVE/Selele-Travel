@@ -74,7 +74,7 @@ namespace SeleleTravel
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Owner.Show();
+            Owner?.Show();
         }
 
         private void btnConsultant_Vouchers_selectOrder_Click(object sender, RoutedEventArgs e)
