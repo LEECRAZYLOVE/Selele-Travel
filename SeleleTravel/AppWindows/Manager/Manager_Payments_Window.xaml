@@ -10,7 +10,7 @@
         FontFamily="Comic Sans MS"
         FontSize="20"
         Title="Manager_Payments_Window" Height="700" Width="1000">
-    <Grid>
+    <Grid Background="#FFEB6E6E">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -21,19 +21,19 @@
             <ListBox x:Name="ltbManager_recievedInvoices" Margin="0,10,-0.2,10" Height="520">
                 <ListBoxItem Content="No payments received."/>
             </ListBox>
-            <Button x:Name="btnManager_generateVoucher" Content="Generate vouchers" Height="50"/>
+            <Button x:Name="btnManager_generateVoucher" Content="Generate vouchers" Height="50" Background="#FFE8BFBF"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="10">
             <DockPanel Margin="10">
                 <TextBlock Text="Order number: "/>
                 <TextBox x:Name="txbManager_Invoices_orderNumber" Width="197" Margin="2 0"/>
-                <Button x:Name="btnManager_Invoices_add" Content="Add order"/>
+                <Button x:Name="btnManager_Invoices_add" Content="Add order" Background="#FFE8BFBF"/>
             </DockPanel >
             <TextBlock Text="Orders :"/>
             <ListBox x:Name="ltbManager_Invoices_Orders" Margin="0,10,-0.2,10" Height="465">
                 <ListBoxItem Content="No orders added."/>
             </ListBox>
-            <Button x:Name="btnManager_requestPayments" Content="Request payments" Height="50"/>
+            <Button x:Name="btnManager_requestPayments" Content="Request payments" Height="50" Background="#FFE8BFBF"/>
         </StackPanel>
         <!--
         <Label x:Name="label" Content="Recieved Payments" HorizontalAlignment="Left" Margin="10,1.388,0,0" VerticalAlignment="Top"/>
