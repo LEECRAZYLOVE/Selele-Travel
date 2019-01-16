@@ -26,7 +26,10 @@ namespace SeleleTravel
         public ComposeMessageWindow()
         {
             InitializeComponent();
-        
+
+            // don't these now because they need the user to select the id of the user
+            txbMessage_message.IsEnabled = false;
+            btnMessage_send.IsEnabled = false;
         }
 
         /// <summary>

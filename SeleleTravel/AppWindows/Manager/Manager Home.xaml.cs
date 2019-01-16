@@ -31,7 +31,7 @@ namespace SeleleTravel
         Manager_Confirmations_Window managerConfirmations;
         Manager_Payments_Window managerPayments;
         Manager_Quotes_Window managerQuotes;
-        ComposeMessageWindow composeMessage;
+        ComposeMessageWindow composeMessageWindow;
         // time to update
         DispatcherTimer theLoadingTime;
 
@@ -48,6 +48,41 @@ namespace SeleleTravel
         }
 
         /// <summary>
+        /// Read all messages from the table
+        /// </summary>
+        /// <param name="idOfUser"> Name of the table to read from </param>
+        public void readAll(string idOfUser)
+        {
+            using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+            {
+                // open the connection
+                conn.Open();
+
+                // Retrieve all rows
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM {idOfUser}", conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        TextBlock theTextBlock = new TextBlock()
+                        {
+                            Text = Convert.ToString(reader.GetValue(2)),
+                            Tag = Convert.ToString(reader.GetValue(0)),
+                            TextAlignment = TextAlignment.Center,
+                            FontSize = 16,
+                            Focusable = false,
+                            IsEnabled = false,
+                            Margin = new Thickness(2, 2, 2, 2)
+                        };
+
+                        lbManager_inboxList.Items.Add(theTextBlock);
+                    }
+                    lbManager_inboxList.Items.Refresh();
+                }
+            }
+        }
+
+        /// <summary>
         /// check for updates
         /// </summary>
         /// <param name="sender"></param>
@@ -55,7 +90,7 @@ namespace SeleleTravel
         private void TheLoadingTime_Tick(object sender, EventArgs e)
         {
             // get the latest messages 
-            readSome(currentStaffID);
+         //   readSome(currentStaffID);
         }
 
         /// <summary>
@@ -124,44 +159,44 @@ namespace SeleleTravel
             }
         }
 
-        /// <summary>
-        /// Read all messages from the table
-        /// </summary>
-        /// <param name="idOfUser"> Name of the table to read from </param>
-        public void getTheResults(string idOfUser)
-        {
-            //using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
-            //{
-            //    // open the connection
-            //    conn.Open();
+        ///// <summary>
+        ///// Read all messages from the table
+        ///// </summary>
+        ///// <param name="idOfUser"> Name of the table to read from </param>
+        //public void getTheResults(string idOfUser)
+        //{
+        //    using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+        //    {
+        //        // open the connection
+        //        conn.Open();
 
 
-            //    string commandToSend = $"SELECT staffid FROM staff_members WHERE staffid LIKE '{idOfUser}%'";
+        //        string commandToSend = $"SELECT staffid FROM staff_members WHERE staffid LIKE '{idOfUser}%'";
 
-            //    // Retrieve all rows
-            //    using (var cmd = new NpgsqlCommand(commandToSend, conn))
-            //    using (var reader = cmd.ExecuteReader())
-            //    {
-            //        while (reader.Read())
-            //        {
-            //            string yestext = Convert.ToString(reader.GetValue(0));
-            //            if (yestext != userId.Text.ToLower())
-            //            {
-            //                TextBlock theTextBlock = new TextBlock()
-            //                {
-            //                    Text = yestext,
-            //                    TextAlignment = TextAlignment.Center,
-            //                    FontSize = 16,
-            //                    Focusable = false,
-            //                    IsEnabled = false,
-            //                    Margin = new Thickness(2, 2, 2, 2)
-            //                };
-            //                searchResults.Items.Add(theTextBlock);
-            //            }
-            //        }
-            //        searchResults.Items.Refresh();
-            //    }
-            }
+        //        // Retrieve all rows
+        //        using (var cmd = new NpgsqlCommand(commandToSend, conn))
+        //        using (var reader = cmd.ExecuteReader())
+        //        {
+        //            while (reader.Read())
+        //            {
+        //                string yestext = Convert.ToString(reader.GetValue(0));
+        //                if (yestext != userId.Text.ToLower())
+        //                {
+        //                    TextBlock theTextBlock = new TextBlock()
+        //                    {
+        //                        Text = yestext,
+        //                        TextAlignment = TextAlignment.Center,
+        //                        FontSize = 16,
+        //                        Focusable = false,
+        //                        IsEnabled = false,
+        //                        Margin = new Thickness(2, 2, 2, 2)
+        //                    };
+        //                    searchResults.Items.Add(theTextBlock);
+        //                }
+        //            }
+        //            searchResults.Items.Refresh();
+        //        }
+        //    }
 
 
             #region Quote Summary tab
@@ -270,39 +305,7 @@ namespace SeleleTravel
         {
             //New edit
             string filter = cbbManager_Search_entities.SelectionBoxItem.ToString();
-            string search = txbManager_search.Text;
-
-            //if (filter == "Staff")
-            //{
-            //    using (SeleleEntities currentSearch = new SeleleEntities())
-            //    {
-            //        var query = (from c in currentSearch.staffs
-
-            //                     where c.staff_id == search
-            //                     select new
-            //                     {
-            //                         c.staff_id,
-            //                         c.staffposition,
-            //                         c.stafffirstnames,
-            //                         c.stafflastname,
-            //                         c.salary,
-            //                         c.dateofhire,
-            //                         c.address,
-            //                         c.telephone,
-            //                         c.cellphone,
-            //                         c.password,
-            //                         c.fax
- 
-            //                     }).First();
-
-            //        if (query != null)
-            //        {
-            //            string staffmember = $"{query.staff_id} ,{query.stafffirstnames}, {query.stafflastname}, {query.staffposition}, {query.dateofhire}, {query.salary}, {query.password}, {query.cellphone}, {query.telephone}";
-            //            ltbManager_Search_Results.Items.Add(staffmember);
-            //        }
-            //    }
-            //}
-            
+            string search = txbManager_search.Text;           
         }
 
         private void btnManager_Quotes_Click(object sender, RoutedEventArgs e)
@@ -340,54 +343,54 @@ namespace SeleleTravel
 
         private void BtnManager_composeMessage_Click(object sender, RoutedEventArgs e)
         {
-            composeMessage = new ComposeMessageWindow();
+            composeMessageWindow = new ComposeMessageWindow();
             //Hide();
-            composeMessage.Show();
+            composeMessageWindow.Show();
         }
 
         private void LbManager_inboxList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-        //    // get the index of the selected item
-        //    int indexPath = lbManager_inboxList.SelectedIndex;
-        //    if (indexPath >= 0)
-        //    {
-        //        // the textbox that has the details
-        //        TextBlock id = (TextBlock)lbManager_inboxList.SelectedItem;
+            // get the index of the selected item
+            int indexPath = lbManager_inboxList.SelectedIndex;
+            if (indexPath >= 0)
+            {
+                // the textbox that has the details
+                TextBlock id = (TextBlock)lbManager_inboxList.SelectedItem;
 
-        //        // change the font
-        //        id.FontSize = 16;
+                // change the font
+                id.FontSize = 16;
 
-        //        // get the ID
-        //        idOfmessageSender.Text = id.Text;
+                // get the ID
+                txbMessageFrom.Content += id.Text;
 
-        //        // Assign the new button
-        //        lbManager_inboxList.Items.RemoveAt(indexPath);
-        //        lbManager_inboxList.Items.Insert(indexPath, id);
+                // Assign the new button
+                lbManager_inboxList.Items.RemoveAt(indexPath);
+                lbManager_inboxList.Items.Insert(indexPath, id);
 
-        //        // get the ID of the reciever 
-        //        string idContent = userId.Text.ToLower();
+                // get the ID of the reciever 
+                string idContent = currentStaffID.ToLower();
 
-        //        // get the index of the entry
-        //        int idNum = Convert.ToInt32(id.Tag);
+                // get the index of the entry
+                int idNum = Convert.ToInt32(id.Tag);
 
-        //        // read the selected entry
-        //        readSelectedID(idContent, idNum);
+                // read the selected entry
+                readSelectedID(idContent, idNum);
 
-        //        // enable
-        //        sendMessage.IsEnabled = true;
-        //        sendMessageNow.IsEnabled = true;
-        //    }
+                // enable
+                composeMessageWindow.txbMessage_message.IsEnabled = true;
+                composeMessageWindow.btnMessage_send.IsEnabled = true;
+            }
         }
 
         private void TabItem_MouseDown(object sender, MouseButtonEventArgs e)
         {
-        //    if (!string.IsNullOrEmpty(userId.Text))
-        //    {
-        //        for (int i = lbManager_inboxList.Items.Count - 1; i >= 0; i--)
-        //            lbManager_inboxList.Items.RemoveAt(i);
+            if (!string.IsNullOrEmpty(currentStaffID))
+            {
+                for (int i = lbManager_inboxList.Items.Count - 1; i >= 0; i--)
+                    lbManager_inboxList.Items.RemoveAt(i);
 
-        //        readAll(userId.Text);
-        //    }
+                readAll(currentStaffID);
+            }
         }
     }
 }

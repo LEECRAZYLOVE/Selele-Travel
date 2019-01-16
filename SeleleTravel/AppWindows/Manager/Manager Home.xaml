@@ -109,7 +109,7 @@
                     <ListBox x:Name="lbManager_inboxList" Background="#FFD5D9E6" Opacity="0.5" Height="523" Canvas.Left="21" Canvas.Top="51" Width="355" SelectionChanged="LbManager_inboxList_SelectionChanged">
                         <ListBoxItem Content="No New Messages.."/>
                     </ListBox>
-                    <Label Content="Selected Message :" Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Canvas.Left="418" Canvas.Top="9" />
+                    <Label x:Name="txbMessageFrom" Content="Selected Message :" Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Canvas.Left="418" Canvas.Top="9" />
                 </Canvas>
             </TabItem>
             <TabItem Header="Search" Height="30" Width="100" Margin="0" HorizontalAlignment="Left">

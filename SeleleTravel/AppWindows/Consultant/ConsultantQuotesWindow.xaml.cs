@@ -863,35 +863,6 @@ namespace SeleleTravel
                 servicesDates.Add(eventStartdate);
                 servicesDates.Add(eventEnddate);
 
-               
-                //sql insertion
-                //var context = new SeleleEntities();
-                //var currentEvent = new @event()
-                //{
-                //    quote_no=quote_no,
-                //    eventspecs=eventSpecs,
-                //    eventname=nameOfEvent,
-                //    amount=eventAmount,
-                //    startday=eventStartdate,
-                //    endday=eventEnddate
-
-                //};
-                ////Add cabservice to database
-                //try
-                //{
-                //    //context.events.Add(currentEvent);
-                //    //context.SaveChanges();
-                //}
-                //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-                //{
-                //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                //}
-                //catch (Exception ex)
-                //{
-                //    //other error
-                //    throw ex;
-
-                //}
                 // reset texbox values to empty
                 // call the clear textbox method
                 List<TextBox> textBoxes = new List<TextBox> { txbEvents_name, txbEvents_specifications, txbEvents_total };
