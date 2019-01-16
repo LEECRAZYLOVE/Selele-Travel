@@ -45,10 +45,6 @@ namespace SeleleTravel
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                //    quote_no=quote_no,
-                //    order_no=order_no,
-                //    orderdate=orderdate
-
                 using (var cmd = new NpgsqlCommand($"INSERT INTO TABLE order  (quote_no,order_no,daterecieved,orderdate) VALUES (@quote_no,@order_no,@daterecieved,@orderdate)", myConnect))
                 {
 
@@ -116,18 +112,6 @@ namespace SeleleTravel
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                // c.quote_no,
-                //                     c.amount,
-                //                     c.service,
-                //                     c.timequoted,
-                //                     c.timesent,
-                //                     c.datesent,
-                //                     c.quotedate,
-                //                     c.consultant_no,
-                //                     c.servicefee,
-                //                     c.client_no,
-                //                     c.clientname
-
                 using (var cmd = new NpgsqlCommand($"SELECT * FROM quote, order WHERE quote_no = '{inputQuote}'", myConnect))
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
