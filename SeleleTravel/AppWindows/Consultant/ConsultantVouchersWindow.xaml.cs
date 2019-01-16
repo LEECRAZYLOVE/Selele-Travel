@@ -84,12 +84,74 @@ namespace SeleleTravel
         {
             voucher_no = GeneralMethods.makeVoucher_no();
             txbConsultsnt_Vouchers_outputVoucherNumber.Text = voucher_no;
+            //Query for retrieving client_id
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+
+                using (var cmd = new NpgsqlCommand($"SELECT client_no FROM orders,client WHERE order_no = '{order_no}' AND orders.quote_no=client.quote_no", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    while (query.Read())
+                    {
+                        client_id = query[0].ToString() ;
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+
+            //Query for retrieving accomm_id
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+
+                using (var cmd = new NpgsqlCommand($"SELECT accomm_id FROM orders,accommodation WHERE order_no = '{order_no}' AND orders.quote_no=accommmodation.quote_no", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    while (query.Read())
+                    {
+                        accomm_ID = query[0].ToString();
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+
+            //Query for retrieving agency_id
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM orders WHERE order_no = '{order_no}' AND orders.quote_no=quote.quote_no", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    while (query.Read())
+                    {
+                        agency_ID = query[0].ToString();
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
                
-                using (var cmd = new NpgsqlCommand($"INSERT INTO voucher (voucher_no,order_no,client_id,accomm_id,agency_id,staff_id,amount) VALUES (@voucher_no,@order_no,@client_id,@accomm_id,@agency_id,@staff_id,@amount)", myConnect))
+                using (var cmd = new NpgsqlCommand($"INSERT INTO voucher  (voucher_no,order_no,client_id,accomm_id,agency_id,staff_id,amount) VALUES (@voucher_no,@order_no,@client_id,@accomm_id,@agency_id,@staff_id,@amount)", myConnect))
                 {
 
                     cmd.Parameters.AddWithValue("voucher_no",voucher_no);

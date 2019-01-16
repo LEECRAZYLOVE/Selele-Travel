@@ -46,7 +46,7 @@
             <Label x:Name="lbl4" Content="Fax:" Canvas.Top="357.73" Style="{DynamicResource LabelStyle1}"/>
             <Label x:Name="lbl5" Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="421.13" Style="{DynamicResource LabelStyle1}"/>
 
-            <TextBox x:Name="txbNewService_name" HorizontalAlignment="Left" Height="30" Width="361.066" TextWrapping="Wrap" VerticalAlignment="Top"  Canvas.Left="119.999" Canvas.Top="55.661" FontSize="16" FontFamily="Comic Sans MS" Text="British Airways"/>
+            <TextBox x:Name="txbNewService_name" HorizontalAlignment="Left" Height="30" Width="361.066" TextWrapping="Wrap" VerticalAlignment="Top"  Canvas.Left="119.999" Canvas.Top="55.661" FontSize="16" FontFamily="Comic Sans MS" Text="Avis"/>
             <ComboBox x:Name="cbbNewService_entities" Height="32" Width="260" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="120" Canvas.Top="93" BorderBrush="#FFB2E4CA" SelectionChanged="cbbNewService_entities_SelectionChanged">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
@@ -84,7 +84,7 @@
             <TextBox x:Name="txbNewService_cellphone" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="324.23" FontSize="16" FontFamily="Comic Sans MS" Text="0123456789"/>
             <TextBox x:Name="txbNewService_fax" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="359.23" FontSize="16" FontFamily="Comic Sans MS" Text="0246812345"/>
             <TextBox x:Name="txbNewService_telephone" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="394.23" FontSize="16" FontFamily="Comic Sans MS" Text="0135791234"/>
-            <TextBox x:Name="txbNewService_email" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" Text="bish@ai.com" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="429.23" FontSize="16" FontFamily="Comic Sans MS"/>
+            <TextBox x:Name="txbNewService_email" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" Text="avis@gmail.com" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="429.23" FontSize="16" FontFamily="Comic Sans MS"/>
             <Button x:Name="btnNewService_add" Content="Add" RenderTransformOrigin="0.5,0.5" Canvas.Left="300" Canvas.Top="498" Width="171" Height="55" FontFamily="Rockwell" FontSize="36" Background="#FFB2E4CA" Click="BtnNewService_add_Click"/>
 
             <Label x:Name="label" Content="Entity:" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Canvas.Left="1.42" Canvas.Top="93.221"/>
