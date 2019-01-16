@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
-
+using Npgsql
 
 namespace SeleleTravel
 {
@@ -26,10 +26,10 @@ namespace SeleleTravel
     {
         //instantiating all the windows as global objects
         public static LogInWindow logInWindow;
-        public static string ConnectionString = "Database=Selele;Port=1998;Server=127.0.0.1;User Id=postgres;Password=Linomtha";
+        public static string ConnectionString = "Database=Selele;Port=1998;Server=192.168.1.5;User Id=postgres;Password=Linomtha";
         public static string ChatConnectionString = string.Format("Server={0}; Port={1}; User Id={2}; Password={3}; Database={4};",
            "localhost", "1998", "postgres", "Linomtha", "postgres");
-
+        
         
 
         public MainWindow()
@@ -76,5 +76,17 @@ namespace SeleleTravel
         {
             GeneralMethods.closeAllWindows();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection(ConnectionString);
+            try {
+                conn.Open();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
     }
 }
