@@ -534,9 +534,9 @@ namespace SeleleTravel
                 myConnect.Open();
                 NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(client_no) FROM client", myConnect);
                 NpgsqlDataReader dr = myCommand.ExecuteReader();
-                while(dr.Read())
+                while (dr.Read())
                 {
-                    numberOfClients = Convert.ToInt32(dr[0]);                 
+                    numberOfClients = Convert.ToInt32(dr[0]);
                 }
 
                 myConnect.Close();
@@ -644,10 +644,36 @@ namespace SeleleTravel
         /// <returns></returns>
         public static string quoteSummary(string QuoteNo)
         {
-            //SeleleEntities temp = new SeleleEntities();
-            //List<string> services_list = new List<string>();
-            //services_list = temp.quotes.Find(QuoteNo).service.Split('|').ToList(); //List with sevice names as elements
+            List<string> services_list = new List<string>();
+            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            try
+            {
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT service FROM quote where quote_no = {QuoteNo}", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    services_list = dr[0].ToString().Split('|').ToList(); //List with sevice names as elements
+                }
 
+                for (int j = 0; j < services_list.Count(); j++)
+                {
+                    switch (services_list[j])
+                    {
+                        case "Acccommodation":
+                            NpgsqlCommand myCommmand1 = new NpgsqlCommand($"SELECT numberofrooms,accomname,numberofguests,accomspecs,checkin,checkout,amount", myConnect);
+                            break;
+                    }
+
+                    myConnect.Close();
+
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        
             ////The following lists should be in order and correspond with each other
             //List<string> quantities = new List<string>(); //List of all the quatities
             //List<string> descriptions = new List<string>(); //List of all the descriptions
