@@ -183,7 +183,6 @@ namespace SeleleTravel
                     cmd.Parameters.AddWithValue("agency_id",agency_ID);
                     cmd.Parameters.AddWithValue("staff_id",staff_ID);
                     cmd.Parameters.AddWithValue("amount",Voucheramount);
-                   
                     cmd.ExecuteNonQuery();
                 }
             }

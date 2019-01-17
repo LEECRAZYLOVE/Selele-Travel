@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="./images/SeleleLogoBalls.png"
-        Title="Home" SizeToContent="WidthAndHeight" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Loaded="Window_Loaded" Width="647.2" Height="432" Closed="Home_Page_Closed">
+        Title="Home" SizeToContent="WidthAndHeight" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Width="647.2" Height="432" Closed="Home_Page_Closed">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -83,7 +83,6 @@
                 <Button x:Name="btn_bossSide" Content="Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="127" Background="#FF4CBDFF" Click="btn_bossSide_Click" Margin="0,2,0,0" BorderBrush="Black" Style="{DynamicResource ButtonTemplate}" FontSize="20"  />
             </Grid>
         </Viewbox>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
 
     </Grid>

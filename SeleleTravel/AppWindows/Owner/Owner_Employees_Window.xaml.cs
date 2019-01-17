@@ -43,7 +43,11 @@ namespace SeleleTravel
 
         private void BtnNewEmployee_generate_Click(object sender, RoutedEventArgs e)
         {
-            bool boolValue = GeneralMethods.checkEmptytxtBox(new List<string>() { txbNewEmployee_surname.Text, txbNewEmployee_name.Text, txbNewEmployee_address.Text, txbNewEmployee_city.Text, txbNewEmployee_areaCode.Text, txbEmployee_cellphone.Text, txbNewEmployee_telephone.Text, txbNewEmployee_fax.Text, txbNewEmployee_email.Text, cmbNewEmployee_position.Text, txbNewEmployee_salary.Text });
+            bool boolValue = GeneralMethods.checkEmptytxtBox(txbNewEmployee_surname.Text, 
+                txbNewEmployee_name.Text, txbNewEmployee_address.Text, txbNewEmployee_city.Text, txbNewEmployee_areaCode.Text, 
+                txbEmployee_cellphone.Text, txbNewEmployee_telephone.Text, txbNewEmployee_fax.Text, txbNewEmployee_email.Text, 
+                cmbNewEmployee_position.Text, txbNewEmployee_salary.Text );
+
             NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
 
             if (!boolValue) //if all the text boxes are fine then this code will execute
@@ -66,7 +70,9 @@ namespace SeleleTravel
                         $"VALUES ('{GeneralMethods.makeStaffID(Surname, Cellphone)}', '{Name}', '{Surname}', '{FullAddress}', '{Cellphone}', '{Telephone}', '{Fax}', '{Position}', '{Salary}', '{DateTime.Today.ToString().Substring(0, 10)}') ", myConnect);
                     myCommand.ExecuteNonQuery();
                     MessageBox.Show($"Succesfully added into the database. New Employee ID is: {GeneralMethods.makeStaffID(Surname, Cellphone)}");
-                    GeneralMethods.clearTextBoxes(new List<TextBox>() { txbNewEmployee_surname, txbNewEmployee_name, txbNewEmployee_address, txbNewEmployee_city, txbNewEmployee_areaCode, txbEmployee_cellphone, txbNewEmployee_telephone, txbNewEmployee_fax, txbNewEmployee_email,  txbNewEmployee_salary });
+                    GeneralMethods.clearTextBoxes(txbNewEmployee_surname, txbNewEmployee_name, txbNewEmployee_address,
+                        txbNewEmployee_city, txbNewEmployee_areaCode, txbEmployee_cellphone, txbNewEmployee_telephone,
+                        txbNewEmployee_fax, txbNewEmployee_email, txbNewEmployee_salary);
                 }
                 catch (Exception h)
                 {
@@ -108,7 +114,7 @@ namespace SeleleTravel
 
         private void TxbNewEmployee_salary_TextChanged(object sender, TextChangedEventArgs e)
         {
-            GeneralMethods.checkAmountTyped(sender, false);
+            GeneralMethods.checkAmountTyped((TextBox)sender, false);
         }
 
         private void btnEmplyees_find_Click_1(object sender, RoutedEventArgs e)

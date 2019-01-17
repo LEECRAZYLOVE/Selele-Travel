@@ -38,8 +38,7 @@ namespace SeleleTravel
             string orderDate = txbConsultant_Orders_orderdate.Text;
 
             // check if the textboxes are empty or the strings associated with the textboxes
-            List<string> stringValueCheck = new List<string> { order_no};
-            bool checkEmptyStringBool = GeneralMethods.checkEmptytxtBox(stringValueCheck);
+            bool checkEmptyStringBool = GeneralMethods.checkEmptytxtBox(order_no);
 
             try
             {
@@ -69,8 +68,7 @@ namespace SeleleTravel
    
 
             // reset the textboxes
-            List<TextBox> textBoxes = new List<TextBox> { txbConsultant_Orders_orderNumber, txbConsultant_Orders_inputQuote };
-            GeneralMethods.clearTextBoxes(textBoxes);
+            GeneralMethods.clearTextBoxes(txbConsultant_Orders_orderNumber, txbConsultant_Orders_inputQuote);
         }
 
         private void BtnConvsultant_Orders_viewQuote_Click(object sender, RoutedEventArgs e)

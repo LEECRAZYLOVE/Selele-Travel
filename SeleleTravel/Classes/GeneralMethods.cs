@@ -26,33 +26,14 @@ namespace SeleleTravel
         public static string seleleBranchCode = "053721";
         #endregion
 
-        /// <summary>
-        /// closes all windows open.
-        /// </summary>
-        public static void closeAllWindows()
-        {
-            foreach (Window w in Application.Current.Windows)
-                w.Close();
-        }
-
-        /// <summary>
-        /// Logs out the window
-        /// </summary>
-        /// <param name="windowToLogOutOff"></param>
-        public static void logOut(Window windowToLogOutOff)
-        {
-            windowToLogOutOff.Hide();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-        }
-
+        #region Methods
         /// <summary>
         /// Check if the texboxes are empty.
         /// </summary>
         /// <param name="stringValues"></param>
-        public static bool checkEmptytxtBox(List<string> stringValues)
+        public static bool checkEmptytxtBox(params string[] stringValues)
         {
-            for (int i = 0; i < stringValues.Count; i++)
+            for (int i = 0; i < stringValues.Length; i++)
             {
                 if (stringValues[i] == "")
                 {
@@ -64,61 +45,28 @@ namespace SeleleTravel
         }
 
         /// <summary>
-        /// Checks if the date is null or the toString() method is an empty string.
-        /// </summary>
-        /// <param name="dateTimeValues"></param>
-        /// <returns></returns>
-        //public static bool checkDateTimeBox(List<DateTime> dateTimeValues)
-        //{
-        //    // check if the end date is bigger that the start date
-        //    bool greaterORless = dateTimeValues[1] >= dateTimeValues[0];
-        //    if (greaterORless)
-        //    {
-        //        for (int i = 0; i < dateTimeValues.Count; i++)
-        //        {
-        //            // checks if the dates are null or empty strings.
-        //            if (dateTimeValues[i] == null || dateTimeValues[i].ToString() == "")
-        //            {
-        //                MessageBox.Show("Please select a date", "Error, selected dates are invalid", MessageBoxButton.OK, MessageBoxImage.Error);
-        //                return true;
-        //            }
-        //        }
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Please select a date that is valid", "Error, Selected dates are invalid", MessageBoxButton.OK, MessageBoxImage.Error);
-        //        return true;
-        //    }
-        //}
-
-        /// <summary>
         /// checks if the number typed is a valid number.
         /// If the value to be checked is not a whole number then assign the bool to false. 
         /// </summary>
-        /// <param name="sender"></param>
-        /// /// <param name="int_double"></param>
-        public static void checkAmountTyped(object sender, bool int_double = true)
+        /// <param name="reference"></param>
+        /// /// <param name="isInterger">Set this to true if we are working with and int value and false if it's a double</param>
+        public static void checkAmountTyped(TextBox reference, bool isInterger = true)
         {
-            string acceptedCharacters = "";
-            // if it's true then the number being validated is an integer
-            // else it's a double
-            if (int_double)
-            {
-                acceptedCharacters = "0123456789";
-            }
-            else
-            {
-                acceptedCharacters = "0123456789.";
-            }
+            string text = reference.Text;
+            //Assume the number is an int
+            string acceptedCharacters = "0123456789";
 
-            TextBox reference = (TextBox)sender;
-            if (reference.Text.Length <= 0) return;
+            //Verify your assumption:
+            //If it is indeed an int then we won't change the value of the acceptedChars
+            //Else if it isn't and we don't yet have a point, we change it
+            if (!isInterger && text.IndexOf('.') < 0) acceptedCharacters = "0123456789.";
+           
+            if (text.Length <= 0) return;
 
-            string letterEntered = reference.Text.Last().ToString().ToLower();
+            string letterEntered = text.Last().ToString().ToLower();
             if (!acceptedCharacters.Contains(letterEntered))
             {
-                reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
+                reference.Text = text.TrimEnd(letterEntered.ToCharArray());
                 reference.SelectionStart = reference.Text.Length;
                 MessageBox.Show("'" + letterEntered + "' is not an accepted character for an amount!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -128,11 +76,14 @@ namespace SeleleTravel
         /// checks if the phone/telephone/fax number typed is valid
         /// </summary>
         /// <param name="sender"></param>
-        public static void checkPhoneNumber(object sender)
+        public static void checkPhoneNumber(TextBox reference)
         {
-            string acceptedCharacters = "+0123456789 ";
-            TextBox reference = (TextBox)sender;
             if (reference.Text.Length <= 0) return;
+
+            string acceptedCharacters = "+0123456789 ";
+            string copy = reference.Text;
+
+            
 
             string letterEntered = reference.Text.Last().ToString().ToLower();
             if (!acceptedCharacters.Contains(letterEntered))
@@ -144,10 +95,25 @@ namespace SeleleTravel
         }
 
         /// <summary>
+        /// checks if the quote number is empty.
+        /// </summary>
+        /// <param name="q_number"></param>
+        /// <returns></returns>
+        public static bool checkQuoteNotEmpty(string q_number)
+        {
+            if (q_number == "")
+            {
+                MessageBox.Show("The quote number has not been generated, please press the \"Request Verification\" button", "Error: Quote number not generated", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
         /// clears the texboxes in the list.
         /// </summary>
         /// <param name="textBoxes"></param>
-        public static void clearTextBoxes(List<TextBox> textBoxes)
+        public static void clearTextBoxes(params TextBox[] textBoxes)
         {
             foreach (TextBox x in textBoxes)
             {
@@ -191,87 +157,119 @@ namespace SeleleTravel
         }
 
         /// <summary>
-        /// Gets the first and last day of service rendered from the services that are currently being created. 
-        /// It stores the dates in a csv file.
+        /// closes all windows open.
         /// </summary>
-        /// <param name="orderNumber"> Order number of the service that will be rendered </param>
-        /// <param name="firstDayOFservice"> Date of the first day of service </param>
-        /// <param name="lastDayOfService"> Date of the last day of service </param>
-        /// <returns></returns>
-        public static void saveDataToCSVfile(string quoteNumber, string orderNumber, List<DateTime> dates)
+        public static void closeAllWindows()
         {
-            // format for storing: quote number, order Number, start date, end date
+            foreach (Window w in Application.Current.Windows)
+                w.Close();
+        }
 
-            // for first time launch: create a directory relative to the .exe file.
-            // hide the folder once created.
+        /// <summary>
+        /// Checks if the date is null or the toString() method is an empty string.
+        /// </summary>
+        /// <param name="dateTimeValues"></param>
+        /// <returns></returns>
+        //public static bool checkDateTimeBox(List<DateTime> dateTimeValues)
+        //{
+        //    // check if the end date is bigger that the start date
+        //    bool greaterORless = dateTimeValues[1] >= dateTimeValues[0];
+        //    if (greaterORless)
+        //    {
+        //        for (int i = 0; i < dateTimeValues.Count; i++)
+        //        {
+        //            // checks if the dates are null or empty strings.
+        //            if (dateTimeValues[i] == null || dateTimeValues[i].ToString() == "")
+        //            {
+        //                MessageBox.Show("Please select a date", "Error, selected dates are invalid", MessageBoxButton.OK, MessageBoxImage.Error);
+        //                return true;
+        //            }
+        //        }
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Please select a date that is valid", "Error, Selected dates are invalid", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        return true;
+        //    }
+        //}
 
-            // 1. Get the order number
-            // 2. Get the dates
-            // 3. store the info in a csv file
+        /// <summary>
+        /// Extract the data from the csv file and then sends it to manager
+        /// </summary>
+        /// <returns></returns>
+        public static List<string[]> getServiceDates()
+        {
+            // 0. create a list of a list
+            // 1. extract data
+            // 2. compare todays date with the last day
+            // 3. If today is the last day then send it to the manager 
+            // 4. and then delete it from the csv file
 
-            // create variables and assign then to the
-            // make sure that the dates are correctly sorted
-            // MAKE SURE THAT THE LIST HAS A LENGTH OF 2!
-            dates.Sort();
-            if (dates.Count > 2)
-            {
-                throw new Exception("list is bigger than 2. By default it should have two elements.");
-            }
+            // 0. 
+            List<string[]> serviceDetails = new List<string[]>();
 
-            // create a string that follows the format stated above
-            // create a textwriter variables
-            string orderDetails = $"{quoteNumber},{orderNumber},{dates[0]},{dates[1]}";
-            TextWriter writer;
-
-            // first time launch
+            // 1.
             string DirectoryPath = "DatesOfServices";
             string Filepath = $"{DirectoryPath}/serviceDates.csv";
-            string metaData = "Quote Number, Order Number, Start date, End Date";
 
-            if (!Directory.Exists(DirectoryPath))
+            // check if the directory and the filr exist
+            if (Directory.Exists(DirectoryPath) && File.Exists(Filepath))
             {
-                // create directory
-                Directory.CreateDirectory(DirectoryPath);
+                // Assign to reader the file line
+                // read the first line which is the metadata
+                TextReader reader = File.OpenText(Filepath);
+                string headings = reader.ReadLine();
 
-                // set access control
-                // Directory.SetAccessControl(DirectoryPath,)
-
-                // create file
-                writer = File.CreateText(Filepath);
-
-                // Write metadata first
-                writer.WriteLine(metaData);
-
-                // write data to the file
-                writer.WriteLine(orderDetails);
-                writer.Close();
+                // read all lines and add them to a dictionary
+                string line = reader.ReadLine();
+                while (line != null)
+                {
+                    // recycle the List for service dates.
+                    // extract the data from the read
+                    string[] orderDetails = line.Split(',');
+                    serviceDetails.Add(orderDetails);
+                }
+                reader.Close();
             }
             else
             {
-                if (!File.Exists(Filepath))
-                {
-                    // create file
-                    writer = File.CreateText(Filepath);
-
-                    // Write metadata first
-                    writer.WriteLine(metaData);
-
-                    // write data to the file
-                    writer.WriteLine(orderDetails);
-                    writer.Close();
-                }
-                else
-                {
-                    // create file
-                    writer = File.AppendText(Filepath);
-
-                    // write data to the file
-                    writer.WriteLine(orderDetails);
-                    writer.Close();
-                }
+                throw new Exception("The folder or the file do not exist in the system!");
             }
+            return serviceDetails;
         }
 
+        /// <summary>
+        /// gets the total number of clients that are in the system
+        /// </summary>
+        /// <param name="client Number"></param>
+        private static int getNumberOfClients()
+        {
+
+            int numberOfClients = 0;
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(client_no) FROM client", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    numberOfClients = Convert.ToInt32(dr[0]);
+                }
+
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            return numberOfClients;
+
+
+        }
+
+        
         /// <summary>
         /// It links the order number to the quote number and then saves the info to the csv file.
         /// </summary>
@@ -328,87 +326,14 @@ namespace SeleleTravel
         }
 
         /// <summary>
-        /// Extract the data from the csv file and then sends it to manager
+        /// Logs out the window
         /// </summary>
-        /// <returns></returns>
-        public static List<string[]> getServiceDates()
+        /// <param name="windowToLogOutOff"></param>
+        public static void logOut(Window windowToLogOutOff)
         {
-            // 0. create a list of a list
-            // 1. extract data
-            // 2. compare todays date with the last day
-            // 3. If today is the last day then send it to the manager 
-            // 4. and then delete it from the csv file
-
-            // 0. 
-            List<string[]> serviceDetails = new List<string[]>();
-
-            // 1.
-            string DirectoryPath = "DatesOfServices";
-            string Filepath = $"{DirectoryPath}/serviceDates.csv";
-
-            // check if the directory and the filr exist
-            if (Directory.Exists(DirectoryPath) && File.Exists(Filepath))
-            {
-                // Assign to reader the file line
-                // read the first line which is the metadata
-                TextReader reader = File.OpenText(Filepath);
-                string headings = reader.ReadLine();
-
-                // read all lines and add them to a dictionary
-                string line = reader.ReadLine();
-                while (line != null)
-                {
-                    // recycle the List for service dates.
-                    // extract the data from the read
-                    string[] orderDetails = line.Split(',');
-                    serviceDetails.Add(orderDetails);
-                }
-                reader.Close();
-            }
-            else
-            {
-                throw new Exception("The folder or the file do not exist in the system!");
-            }
-            return serviceDetails;
-        }
-
-        /// <summary>
-        /// Removes services which expire on the current date, and have been ticked by the manager.
-        /// </summary>
-        /// <param name="serviceDetails"></param>
-        public static void removeTodaysService(List<string[]> serviceDetails, List<string> orderNumbers)
-        {
-            // Removes all the order numbers that are in the from the list
-            for (int i = 0; i < orderNumbers.Count; i++)
-            {
-                for (int k = 0; k < serviceDetails.Count; k++)
-                {
-                    string[] temp = serviceDetails[k];
-                    // compare the order number on the file with the one on the list
-                    if (temp[1] == orderNumbers[i]) serviceDetails.Remove(temp);
-                }
-            }
-
-            // the path to the file
-            // create a variable of the for writing to the file.
-            string Filepath = "DatesOfServices/serviceDates.csv";
-            string metaData = "Order Number, Start date, End Date";
-            TextWriter writer;
-
-            // create file
-            writer = File.CreateText(Filepath);
-
-            // Write metadata first
-            writer.WriteLine(metaData);
-
-            // write data to the file
-            for (int i = 0; i < serviceDetails.Count; i++)
-            {
-                string[] mytemp = serviceDetails[i];
-                string line = $"{mytemp[0]},{mytemp[1]},{mytemp[2]},{mytemp[3]}";
-                writer.WriteLine();
-            }
-            writer.Close();
+            windowToLogOutOff.Hide();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
         }
 
         /// <summary>
@@ -491,19 +416,19 @@ namespace SeleleTravel
         /// This creats the agency number for each agency
         /// </summary>
         /// <returns></returns>
-        public static string makeAgency_ID(string agencyName, string typeOfAgency)
+        public static string makeAgency_ID(string agencyName, string postalcode)
         {
 
             string agency_ID = "";
-            agency_ID = "A" + typeOfAgency.Substring(0, 1) + agencyName;
+            agency_ID = agencyName + postalcode;
 
             return agency_ID;
         }
+
         /// <summary>
         /// Creates the client number for each client
         /// </summary>
         /// <param name="client Number"></param>
-
         public static string makeClient_no(string typeOfClient)
         {
             string client_no = "";
@@ -520,35 +445,7 @@ namespace SeleleTravel
             client_no = "C" + typeInitial + totalClients;
             return client_no;
         }
-        /// <summary>
-        /// gets the total number of clients that are in the system
-        /// </summary>
-        /// <param name="client Number"></param>
-        private static int getNumberOfClients()
-        {
 
-            int numberOfClients = 0;
-            try
-            {
-                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-                myConnect.Open();
-                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(client_no) FROM client", myConnect);
-                NpgsqlDataReader dr = myCommand.ExecuteReader();
-                while (dr.Read())
-                {
-                    numberOfClients = Convert.ToInt32(dr[0]);
-                }
-
-                myConnect.Close();
-            }
-            catch (Exception h)
-            {
-                MessageBox.Show(h.ToString());
-            }
-            return numberOfClients;
-
-
-        }
         //}
         /// <summary>
         /// gets the total number of quotes that have been generated thus far.
@@ -577,21 +474,6 @@ namespace SeleleTravel
         }
 
         /// <summary>
-        /// checks if the quote number is empty.
-        /// </summary>
-        /// <param name="q_number"></param>
-        /// <returns></returns>
-        public static bool checkQuoteNotEmpty(string q_number)
-        {
-            if (q_number == "")
-            {
-                MessageBox.Show("The quote number has not been generated, please press the \"Request Verification\" button", "Error: Quote number not generated", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            return true;
-        }
-
-        /// <summary>
         /// Generates a staff ID by taking the surname and the last four number in the cellphone e.g. Stuurman1533
         /// shows it in a popup
         /// </summary>
@@ -614,24 +496,6 @@ namespace SeleleTravel
         public static string makeAddress(string address, string city, string areaCode, string province)
         {
             return $"{address} \n {city} \n {areaCode} \n {province}";
-        }
-
-        /// <summary>
-        /// This will return the office details for the quote summary or any other situation.
-        /// </summary>
-        /// <returns></returns>
-        public static string SeleleOfficeDetails()
-        {
-            return $" Tel: {seleleTelephone} \n Cell: {seleleCellphone} \n Fax: {seleleFax} \n {seleleEmail} \n {seleleAddress}";
-        }
-
-        /// <summary>
-        /// This will return the banking details for the quote summary or any other situation.
-        /// </summary>
-        /// <returns></returns>
-        public static string SeleleBankDetails()
-        {
-            return $" Bank Name: {seleleBank} \n Account Name: {seleleAccountName} \n Account no: {seleleAccountNumber} \n Branch Name: {seleleBranchName} \n  Branch Code: {seleleBranchCode}";
         }
 
         /// <summary>
@@ -730,10 +594,10 @@ namespace SeleleTravel
             //                    $" \t\t with the following specifications: {temp.conferences.Find(QuoteNo).conferencespecs}");
             //                amounts.Add(Convert.ToString(temp.conferences.Find(QuoteNo).amount));
             //                break;
-                    
+
             //    }
             //}
-           
+
             ////Displaying the informatoin
             string output = "\n\n";
             //if (quantities.Count() == descriptions.Count() && quantities.Count() == amounts.Count()) //checking if the lists are equal, meaning that they correspond
@@ -753,7 +617,146 @@ namespace SeleleTravel
 
         }
 
+        /// <summary>
+        /// Removes services which expire on the current date, and have been ticked by the manager.
+        /// </summary>
+        /// <param name="serviceDetails"></param>
+        public static void removeTodaysService(List<string[]> serviceDetails, List<string> orderNumbers)
+        {
+            // Removes all the order numbers that are in the from the list
+            for (int i = 0; i < orderNumbers.Count; i++)
+            {
+                for (int k = 0; k < serviceDetails.Count; k++)
+                {
+                    string[] temp = serviceDetails[k];
+                    // compare the order number on the file with the one on the list
+                    if (temp[1] == orderNumbers[i]) serviceDetails.Remove(temp);
+                }
+            }
 
+            // the path to the file
+            // create a variable of the for writing to the file.
+            string Filepath = "DatesOfServices/serviceDates.csv";
+            string metaData = "Order Number, Start date, End Date";
+            TextWriter writer;
+
+            // create file
+            writer = File.CreateText(Filepath);
+
+            // Write metadata first
+            writer.WriteLine(metaData);
+
+            // write data to the file
+            for (int i = 0; i < serviceDetails.Count; i++)
+            {
+                string[] mytemp = serviceDetails[i];
+                string line = $"{mytemp[0]},{mytemp[1]},{mytemp[2]},{mytemp[3]}";
+                writer.WriteLine();
+            }
+            writer.Close();
+        }
+
+        /// <summary>
+        /// Gets the first and last day of service rendered from the services that are currently being created. 
+        /// It stores the dates in a csv file.
+        /// </summary>
+        /// <param name="orderNumber"> Order number of the service that will be rendered </param>
+        /// <param name="firstDayOFservice"> Date of the first day of service </param>
+        /// <param name="lastDayOfService"> Date of the last day of service </param>
+        /// <returns></returns>
+        public static void saveDataToCSVfile(string quoteNumber, string orderNumber, List<DateTime> dates)
+        {
+            // format for storing: quote number, order Number, start date, end date
+
+            // for first time launch: create a directory relative to the .exe file.
+            // hide the folder once created.
+
+            // 1. Get the order number
+            // 2. Get the dates
+            // 3. store the info in a csv file
+
+            // create variables and assign then to the
+            // make sure that the dates are correctly sorted
+            // MAKE SURE THAT THE LIST HAS A LENGTH OF 2!
+            dates.Sort();
+            if (dates.Count > 2)
+            {
+                throw new Exception("list is bigger than 2. By default it should have two elements.");
+            }
+
+            // create a string that follows the format stated above
+            // create a textwriter variables
+            string orderDetails = $"{quoteNumber},{orderNumber},{dates[0]},{dates[1]}";
+            TextWriter writer;
+
+            // first time launch
+            string DirectoryPath = "DatesOfServices";
+            string Filepath = $"{DirectoryPath}/serviceDates.csv";
+            string metaData = "Quote Number, Order Number, Start date, End Date";
+
+            if (!Directory.Exists(DirectoryPath))
+            {
+                // create directory
+                Directory.CreateDirectory(DirectoryPath);
+
+                // set access control
+                // Directory.SetAccessControl(DirectoryPath,)
+
+                // create file
+                writer = File.CreateText(Filepath);
+
+                // Write metadata first
+                writer.WriteLine(metaData);
+
+                // write data to the file
+                writer.WriteLine(orderDetails);
+                writer.Close();
+            }
+            else
+            {
+                if (!File.Exists(Filepath))
+                {
+                    // create file
+                    writer = File.CreateText(Filepath);
+
+                    // Write metadata first
+                    writer.WriteLine(metaData);
+
+                    // write data to the file
+                    writer.WriteLine(orderDetails);
+                    writer.Close();
+                }
+                else
+                {
+                    // create file
+                    writer = File.AppendText(Filepath);
+
+                    // write data to the file
+                    writer.WriteLine(orderDetails);
+                    writer.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// This will return the office details for the quote summary or any other situation.
+        /// </summary>
+        /// <returns></returns>
+        public static string SeleleOfficeDetails()
+        {
+            return $" Tel: {seleleTelephone} \n Cell: {seleleCellphone} \n Fax: {seleleFax} \n {seleleEmail} \n {seleleAddress}";
+        }
+
+        /// <summary>
+        /// This will return the banking details for the quote summary or any other situation.
+        /// </summary>
+        /// <returns></returns>
+        public static string SeleleBankDetails()
+        {
+            return $" Bank Name: {seleleBank} \n Account Name: {seleleAccountName} \n Account no: {seleleAccountNumber} \n Branch Name: {seleleBranchName} \n  Branch Code: {seleleBranchCode}";
+        }
+
+        #endregion
     }
 }
 
