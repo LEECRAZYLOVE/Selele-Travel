@@ -1352,10 +1352,6 @@ namespace SeleleTravel
             }
         }
 
-        private void tabitemQuoteSummary_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            txbQuote_quoteSummary.Text = GeneralMethods.quoteSummary(quote_no);
-        }
         private void BtnCheckCarHire_Click(object sender, RoutedEventArgs e)
         {
             string agencyname = txbCarHire_agency.Text;
@@ -1503,6 +1499,11 @@ namespace SeleleTravel
             {
                 MessageBox.Show(h.ToString());
             }
+        }
+
+        private void tabitemQuoteSummary_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            txbQuote_quoteSummary.Text = GeneralMethods.quoteSummary(quote_no);
         }
     }
 }

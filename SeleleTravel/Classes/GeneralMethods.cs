@@ -509,11 +509,16 @@ namespace SeleleTravel
         public static string quoteSummary(string QuoteNo)
         {
             List<string> services_list = new List<string>();
+            //The following lists should be in order and correspond with each other
+            List<string> quantities = new List<string>(); //List of all the quatities
+            List<string> descriptions = new List<string>(); //List of all the descriptions
+            List<string> amounts = new List<string>(); //List of all the amounts
+
             NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
             try
             {
                 myConnect.Open();
-                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT service FROM quote where quote_no = {QuoteNo}", myConnect);
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT service FROM quote where quote_no = '{QuoteNo}'", myConnect);
                 NpgsqlDataReader dr = myCommand.ExecuteReader();
                 while (dr.Read())
                 {
@@ -525,7 +530,80 @@ namespace SeleleTravel
                     switch (services_list[j])
                     {
                         case "Acccommodation":
-                            NpgsqlCommand myCommmand1 = new NpgsqlCommand($"SELECT numberofrooms,accomname,numberofguests,accomspecs,checkin,checkout,amount", myConnect);
+                            NpgsqlCommand myCommand1 = new NpgsqlCommand($"SELECT numberofrooms,accomname,numberofguests,accomspecs,checkin,checkout,amount FROM accommodation WHERE quote_no = '{QuoteNo}'", myConnect);
+                            NpgsqlDataReader dr1 = myCommand1.ExecuteReader();
+                            while (dr1.Read())
+                            {
+                                quantities.Add(Convert.ToString(dr1[0]));
+                                descriptions.Add($"Accomodation at {dr1[1]} for {dr1[2]} guests \n" +
+                                    $" \t\t with the following specifications: {dr1[3]} \n" +
+                                    $" \t\t check in: {dr1[4]} \t check out: {dr1[5]}");
+                                amounts.Add(Convert.ToString(dr1[6]));
+                            }
+                            break;
+
+                        case "Cab Services":
+                            NpgsqlCommand myCommand2 = new NpgsqlCommand($"SELECT numberofcabs,nameofagency,pickup,dropoff,dateofcab,timeofcab,cabspecs,amount FROM cabservices WHERE quote_no = '{QuoteNo}'", myConnect);
+                            NpgsqlDataReader dr2 = myCommand2.ExecuteReader();
+                            while (dr2.Read())
+                            {
+                                quantities.Add(Convert.ToString(dr2[0]));
+                                descriptions.Add($"Cab service with {dr2[1]} from {dr2[2]} to {dr2[3]} \n" +
+                                    $" \t\t on the {dr2[4]} at {dr2[5]} \n" +
+                                    $" \t\t with the following specifications: {dr2[6]}");
+                                amounts.Add(Convert.ToString(dr2[7]));
+                            }
+                            break;
+
+                        case "Car Hire":
+                            NpgsqlCommand myCommand3 = new NpgsqlCommand($"SELECT numberofcars,agencyname,pickuplocation,dropofflocation,startday,expectedend date,carhirespecifications,amount WHERE quote_no = '{QuoteNo}'", myConnect);
+                            NpgsqlDataReader dr3 = myCommand3.ExecuteReader();
+                            while (dr3.Read())
+                            {
+                                quantities.Add(Convert.ToString(dr3[0]));
+                                descriptions.Add($"Car Hire service with {dr3[1]} from {dr3[2]} to {dr3[3]} \n" +
+                                    $" \t\t on the {dr3[4]} to the {dr3[4]} \n" +
+                                    $" \t\t with the following specifications: {dr3[5]}");
+                                amounts.Add(Convert.ToString(dr3[6]));
+                            }
+                            break;
+
+                        case "Flight":
+                            NpgsqlCommand myCommand4 = new NpgsqlCommand($"SELECT passengernum,airline,fromcity,tocity,departdate,numberofbags,flightspecs,amount WHERE quote_no = '{QuoteNo}'", myConnect);
+                            NpgsqlDataReader dr4 = myCommand4.ExecuteReader();
+                            while (dr4.Read())
+                            {
+                                quantities.Add(Convert.ToString(dr4[0]));
+                                descriptions.Add($"Flight with {dr4[1]} from {dr4[2]} to {dr4[3]} \n" +
+                                $" \t\t on the {dr4[4]} with {dr4[5]} \n" +
+                                $" \t\t with the following specifications: {dr4[6]}");
+                                amounts.Add(Convert.ToString(dr4[7]));
+                            }
+                            break;
+
+                        case "Event":
+                            NpgsqlCommand myCommand5 = new NpgsqlCommand($"SELECT eventname,startday,endday,eventspecs,amount WHERE quote_no = '{QuoteNo}'", myConnect);
+                            NpgsqlDataReader dr5 = myCommand5.ExecuteReader();
+                            while (dr5.Read())
+                            {
+                                quantities.Add("1");
+                                descriptions.Add($"{dr5[0]} from {dr5[1]} to {dr5[2]} \n" +
+                                $" \t\t with the following specifications: {dr5[3]}");
+                                amounts.Add(Convert.ToString(dr5[4]));
+                            }
+                            break;
+
+                        case "Conference":
+                            NpgsqlCommand myCommand6 = new NpgsqlCommand($"SELECT conferencename,startday,endday,venue,timeofconference,conferencespecs,amount WHERE quote_no = '{QuoteNo}'", myConnect);
+                            NpgsqlDataReader dr6 = myCommand6.ExecuteReader();
+                            while (dr6.Read())
+                            {
+                                quantities.Add("1");
+                                descriptions.Add($"{dr6[0]} from {dr6[1]} to {dr6[2]} \n" +
+                                    $" \t\t at {dr6[3]}, at {dr6[4]} \n" +
+                                    $" \t\t with the following specifications: {dr6[5]}");
+                                amounts.Add(Convert.ToString(dr6[6]));
+                            }
                             break;
                     }
 
@@ -537,81 +615,36 @@ namespace SeleleTravel
             {
                 MessageBox.Show(h.ToString());
             }
-        
-            ////The following lists should be in order and correspond with each other
-            //List<string> quantities = new List<string>(); //List of all the quatities
-            //List<string> descriptions = new List<string>(); //List of all the descriptions
-            //List<string> amounts = new List<string>(); //List of all the amounts
 
-            //    //Writing out the information for the quote
-            //    for (int j = 0; j < services_list.Count(); j++)
-            //    {
-            //        switch (services_list[j])
-            //        {
-            //            case "Acccommodation":
-            //                quantities.Add(Convert.ToString(temp.accommodations.Find(QuoteNo).numberofrooms));
-            //                descriptions.Add($"Accomodation at {temp.accommodations.Find(QuoteNo).accomname} for {temp.accommodations.Find(QuoteNo).numberofguests} guests \n" +
-            //                    $" \t\t with the following specifications: {temp.accommodations.Find(QuoteNo).accomspecs} \n" +
-            //                    $" \t\t check in: {temp.accommodations.Find(QuoteNo).checkin.ToString()} \t check out: {temp.accommodations.Find(QuoteNo).checkout.ToString()}");
-            //                amounts.Add(Convert.ToString(temp.accommodations.Find(QuoteNo).amount));
-            //                break;
-
-            //            case "Cab Services":
-            //                quantities.Add(Convert.ToString(temp.cabservices.Find(QuoteNo).numberofcabs));
-            //                descriptions.Add($"Cab service with {temp.cabservices.Find(QuoteNo).nameofagency} from {temp.cabservices.Find(QuoteNo).pickup} to {temp.cabservices.Find(QuoteNo).dropoff} \n" +
-            //                    $" \t\t on the {temp.cabservices.Find(QuoteNo).dateofcab.ToString()} at {temp.cabservices.Find(QuoteNo).timeofcab.ToString()} \n" +
-            //                    $" \t\t with the following specifications: {temp.cabservices.Find(QuoteNo).cabspecs}");
-            //                amounts.Add(Convert.ToString(temp.cabservices.Find(QuoteNo).amount));
-            //                break;
-
-            //            case "Car Hire":
-            //                quantities.Add(Convert.ToString(temp.carhires.Find(QuoteNo).numberofcars));
-            //                descriptions.Add($"Car Hire service with {temp.carhires.Find(QuoteNo).agencyname} from {temp.carhires.Find(QuoteNo).pickuplocation} to {temp.carhires.Find(QuoteNo).dropofflocation} \n" +
-            //                    $" \t\t on the {temp.carhires.Find(QuoteNo).startday.ToString()} to the {temp.carhires.Find(QuoteNo).expectedenddate.ToString()} \n" +
-            //                    $" \t\t with the following specifications: {temp.carhires.Find(QuoteNo).carhirespecifications}");
-            //                amounts.Add(Convert.ToString(temp.carhires.Find(QuoteNo).amount));
-            //                break;
-
-            //            case "Flight":
-            //                quantities.Add(Convert.ToString(temp.flights.Find(QuoteNo).passengernum));
-            //                descriptions.Add($"Flight with {temp.flights.Find(QuoteNo).airline} from {temp.flights.Find(QuoteNo).fromcity} to {temp.flights.Find(QuoteNo).tocity} \n" +
-            //                $" \t\t on the {temp.flights.Find(QuoteNo).departdate.ToString()} with {temp.flights.Find(QuoteNo).numberofbags} \n" +
-            //                $" \t\t with the following specifications: {temp.flights.Find(QuoteNo).flightspecs}");
-            //                amounts.Add(Convert.ToString(temp.flights.Find(QuoteNo).amount));
-            //                break;
-
-            //            case "Event":
-            //                quantities.Add("1");
-            //                descriptions.Add($"{temp.events.Find(QuoteNo).eventname} from {temp.events.Find(QuoteNo).startday} to {temp.events.Find(QuoteNo).endday} \n" +
-            //                $" \t\t with the following specifications: {temp.events.Find(QuoteNo).eventspecs}");
-            //                amounts.Add(Convert.ToString(temp.events.Find(QuoteNo).amount));
-            //                break;
-
-            //            case "Conference":
-            //                quantities.Add("1");
-            //                descriptions.Add($"{temp.conferences.Find(QuoteNo).conferencename} from {temp.conferences.Find(QuoteNo).startday} to {temp.conferences.Find(QuoteNo).endday} \n" +
-            //                    $" \t\t at {temp.conferences.Find(QuoteNo).venue}, at {temp.conferences.Find(QuoteNo).timeconference.ToString()} \n" +
-            //                    $" \t\t with the following specifications: {temp.conferences.Find(QuoteNo).conferencespecs}");
-            //                amounts.Add(Convert.ToString(temp.conferences.Find(QuoteNo).amount));
-            //                break;
-
-            //    }
-            //}
-
-            ////Displaying the informatoin
+            //Displaying the informatoin
             string output = "\n\n";
-            //if (quantities.Count() == descriptions.Count() && quantities.Count() == amounts.Count()) //checking if the lists are equal, meaning that they correspond
-            //{
-            //    output = "QUANTIY \t DESCRIPTION \t\t\t\t\t\t\t\t AMOUNT \n"; //making the headers
-            //    for (int j = 0; j < amounts.Count(); j++) //extracting the information from the lists
-            //    {
-            //        output += $"{quantities[j]} \t\t {descriptions[j]} \t\t\t {amounts[j]} \n\n";
-            //    }
-            //    //displaying and extracting the service fee, VAT and total for the quote
-            //    output += $"\t\t Service Fee \t\t\t\t\t\t\t\t {temp.quotes.Find(QuoteNo).servicefee} \n " +
-            //              $"\t\t VAT 15% \t\t\t\t\t\t\t\t {temp.quotes.Find(QuoteNo).amount * 0.15} \n " +
-            //              $"\t\t Total   \t\t\t\t\t\t\t\t {temp.quotes.Find(QuoteNo).amount * 0.15 + temp.quotes.Find(QuoteNo).amount}";
-            //}
+            if (quantities.Count() == descriptions.Count() && quantities.Count() == amounts.Count()) //checking if the lists are equal, meaning that they correspond
+            {
+                output = "QUANTIY \t DESCRIPTION \t\t\t\t\t\t\t\t AMOUNT \n"; //making the headers
+                for (int j = 0; j < amounts.Count(); j++) //extracting the information from the lists
+                {
+                    output += $"{quantities[j]} \t\t {descriptions[j]} \t\t\t {amounts[j]} \n\n";
+                }
+
+                //displaying and extracting the service fee, VAT and total for the quote
+                myConnect.Open();
+                try
+                {
+                    NpgsqlCommand myCommand7 = new NpgsqlCommand($"SELECT servicefee, amount FROM quote WHERE quote_no = '{QuoteNo}'", myConnect);
+                    NpgsqlDataReader dr7 = myCommand7.ExecuteReader(); 
+                    myCommand7.ExecuteReader();
+                    while (dr7.Read())
+                    {
+                        output += $"\t\t Service Fee \t\t\t\t\t\t\t\t {dr7[0]} \n " +
+                        $"\t\t VAT 15% \t\t\t\t\t\t\t\t {Convert.ToDouble(dr7[1]) * 0.15} \n " +
+                        $"\t\t Total   \t\t\t\t\t\t\t\t {Convert.ToDouble(dr7[1]) * 0.15 + Convert.ToDouble(dr7[1])}";
+                    }
+                }catch (Exception h)
+                {
+                    MessageBox.Show(h.ToString());
+                }
+
+            }
 
             return output;
 

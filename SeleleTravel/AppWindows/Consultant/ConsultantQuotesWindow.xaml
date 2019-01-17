@@ -684,7 +684,7 @@
 
                 </TabItem>
                 <!--Quote Summary-->
-                <TabItem x:Name="tabitemQuoteSummary" Header="Quote Summary" Style="{DynamicResource TabItemStyle}" MouseDoubleClick="tabitemQuoteSummary_MouseDoubleClick">
+                <TabItem x:Name="tabitemQuoteSummary" Header="Quote Summary" Style="{DynamicResource TabItemStyle}" MouseDown="tabitemQuoteSummary_MouseDown">
 
                     <Grid Background="#eee">
                         <!--Separate into two sides-->
