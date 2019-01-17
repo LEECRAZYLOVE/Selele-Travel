@@ -220,443 +220,449 @@
         </Style>
     </Window.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-    <Grid Background="#FFFFF485">
-        <TabControl x:Name="Consultant_tabControl" Margin="0,40,0,0">
-            <!--Client Details-->
-            <TabItem Header="Client Details" Style="{DynamicResource TabItemStyle}" >
-                <Grid Background="#eee">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <!--Left Hand Side-->
-                    <StackPanel>
-                        <TextBlock Text="Enter Client Details" Margin="10" FontSize="20" HorizontalAlignment="Center"/>
-                        <!--Name and surname-->
-                        <DockPanel>
-                            <TextBlock Text="Name :" FontSize="16" Margin="5"/>
+        <Grid Background="#FFFFF485">
+            <TabControl x:Name="Consultant_tabControl" Margin="0,40,0,0">
+                <!--Client Details-->
+                <TabItem Header="Client Details" Style="{DynamicResource TabItemStyle}" >
+                    <Grid Background="#eee">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Left Hand Side-->
+                        <StackPanel>
+                            <TextBlock Text="Enter Client Details" Margin="10" FontSize="20" HorizontalAlignment="Center"/>
+                            <!--Name and surname-->
+                            <DockPanel>
+                                <TextBlock Text="Name :" FontSize="16" Margin="5"/>
                                 <TextBox x:Name="txbNewClient_name" Text="AB" Width="200" Margin="5" Padding="5" Height="30"/>
-                            <TextBlock Text="Surname :" FontSize="16" Margin="5"/>
+                                <TextBlock Text="Surname :" FontSize="16" Margin="5"/>
                                 <TextBox x:Name="txbNewClient_surname" Text="de Villiers" Margin="5" Padding="5" Height="30"/>
-                        </DockPanel>
-                        <!--CheckBoxes-->
-                        <StackPanel Orientation="Horizontal" >
-                            <CheckBox x:Name="ckbBusiness" Content="Business" Margin="200 5 0 0" />
-                            <CheckBox x:Name="ckbIndividual" Content="Individual" Margin="5 5 5 0"/>
-                        </StackPanel>
-                        <!--Address-->
-                        <DockPanel>
-                            <TextBlock Text="Address" FontSize="16" Margin="10"/>
+                            </DockPanel>
+                            <!--CheckBoxes-->
+                            <StackPanel Orientation="Horizontal" >
+                                <CheckBox x:Name="ckbBusiness" Content="Business" Margin="200 5 0 0" />
+                                <CheckBox x:Name="ckbIndividual" Content="Individual" Margin="5 5 5 0"/>
+                            </StackPanel>
+                            <!--Address-->
+                            <DockPanel>
+                                <TextBlock Text="Address" FontSize="16" Margin="10"/>
                                 <TextBox x:Name="txbNewClient_address" Text="23 Topi Street" AcceptsReturn="True" Margin="10" Height="100"/>
-                        </DockPanel>
-                        <!--City, Area Code-->
-                        <DockPanel>
-                            <TextBlock Text="City :" FontSize="16" Margin="10 10 35 10"/>
+                            </DockPanel>
+                            <!--City, Area Code-->
+                            <DockPanel>
+                                <TextBlock Text="City :" FontSize="16" Margin="10 10 35 10"/>
                                 <TextBox x:Name="txbNewClient_city" Text="Sandton" Width="250" Margin="10"/>
-                            <TextBlock Text="Area Code :" FontSize="16" Margin="10"/>
+                                <TextBlock Text="Area Code :" FontSize="16" Margin="10"/>
                                 <TextBox x:Name="txbNewClient_areaCode" Text="3001" TextChanged="AmountChanged_WHOLENumber" Margin="10" Height="40"/>
-                        </DockPanel>
-                        <!--Province-->
-                        <DockPanel >
-                            <TextBlock Text="Province :" Margin="10 10 20 10"/>
-                            <ComboBox x:Name="DropBxNewClient_province" Margin="10">
-                                <ComboBoxItem Content="Eastern Cape"/>
-                                <ComboBoxItem Content="Free State"/>
-                                <ComboBoxItem Content="Gauteng"/>
-                                <ComboBoxItem Content="KwaZulu-Natal"/>
-                                <ComboBoxItem Content="Limpopo"/>
-                                <ComboBoxItem Content="Mpumalanga"/>
-                                <ComboBoxItem Content="North West"/>
-                                <ComboBoxItem Content="Northern Cape"/>
-                                <ComboBoxItem Content="Western Cape"/>
-                            </ComboBox>
-                        </DockPanel>
-                        <!--Contact details-->
-                        <StackPanel>
-                            <DockPanel>
-                                <TextBlock Text="Cellphone :" Margin="10"/>
+                            </DockPanel>
+                            <!--Province-->
+                            <DockPanel >
+                                <TextBlock Text="Province :" Margin="10 10 20 10"/>
+                                <ComboBox x:Name="DropBxNewClient_province" Margin="10">
+                                    <ComboBoxItem Content="Eastern Cape"/>
+                                    <ComboBoxItem Content="Free State"/>
+                                    <ComboBoxItem Content="Gauteng"/>
+                                    <ComboBoxItem Content="KwaZulu-Natal"/>
+                                    <ComboBoxItem Content="Limpopo"/>
+                                    <ComboBoxItem Content="Mpumalanga"/>
+                                    <ComboBoxItem Content="North West"/>
+                                    <ComboBoxItem Content="Northern Cape"/>
+                                    <ComboBoxItem Content="Western Cape"/>
+                                </ComboBox>
+                            </DockPanel>
+                            <!--Contact details-->
+                            <StackPanel>
+                                <DockPanel>
+                                    <TextBlock Text="Cellphone :" Margin="10"/>
                                     <TextBox x:Name="txbNewClient_cellphone" Text="0821234123" TextChanged="phoneNumberCheck" Margin="10" Height="40"/>
-                            </DockPanel>
-                        </StackPanel>
+                                </DockPanel>
+                            </StackPanel>
 
-                        <StackPanel>
-                            <DockPanel>
-                                <TextBlock Text="Telephone :" Margin="10 10 8 10"/>
+                            <StackPanel>
+                                <DockPanel>
+                                    <TextBlock Text="Telephone :" Margin="10 10 8 10"/>
                                     <TextBox x:Name="txbNewClient_telephone" Text="0461231234" TextChanged="phoneNumberCheck" Margin="10" Height="40"/>
-                            </DockPanel>
-                        </StackPanel>
-                        <StackPanel>
-                            <DockPanel>
-                                <TextBlock Text="Fax :" Margin="10 10 50 10"/>
+                                </DockPanel>
+                            </StackPanel>
+                            <StackPanel>
+                                <DockPanel>
+                                    <TextBlock Text="Fax :" Margin="10 10 50 10"/>
                                     <TextBox x:Name="txbNewClient_fax" Text="0461212123" TextChanged="phoneNumberCheck" Margin="10" Height="40"/>
-                            </DockPanel>
-                        </StackPanel>
-                        <StackPanel>
-                            <DockPanel>
-                                <TextBlock Text="Email :" Margin="10 10 40 10"/>
+                                </DockPanel>
+                            </StackPanel>
+                            <StackPanel>
+                                <DockPanel>
+                                    <TextBlock Text="Email :" Margin="10 10 40 10"/>
                                     <TextBox x:Name="txbNewClient_email" Text="a.devilliers@gmail.com" Margin="10" Height="40"/>
-                            </DockPanel>
+                                </DockPanel>
+                            </StackPanel>
+                            <Button Content="Add Client" FontSize="20" Width="300" Click="add_Button_Click"/>
                         </StackPanel>
-                        <Button Content="Add Client" FontSize="20" Width="300" Click="add_Button_Click"/>
-                    </StackPanel>
 
-                    <!--Right hand Side-->
-                    <StackPanel Grid.Column="1">
-                        <TextBlock Text="Already a client" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
-                        <DockPanel>
-                            <TextBox x:Name="txbOldClient_find" Width="400" Height="30" Margin="10"/>
-                            <Button x:Name="btnOldClient_find" Content="Search" Margin="10" Click="BtnOldClient_find_Click"/>
+                        <!--Right hand Side-->
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Already a client" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
+                            <DockPanel>
+                                <TextBox x:Name="txbOldClient_find" Width="400" Height="30" Margin="10"/>
+                                <Button x:Name="btnOldClient_find" Content="Search" Margin="10" Click="BtnOldClient_find_Click"/>
 
-                        </DockPanel>
-                        <ListBox x:Name="lbxOldClient_Details" Margin="10" Height="450">
-                            <ListBoxItem Content="No results found."/>
-                        </ListBox>
-                        <Button  x:Name="btnOldClient_select"  Content="Select Client" FontSize="20" Width="300" Click="BtnOldClient_select_Click" />
-                    </StackPanel>
-                    <Label Content="Consultant no:" HorizontalAlignment="Left" Margin="457,582,0,0" VerticalAlignment="Top" Width="136"/>
+                            </DockPanel>
+                            <ListBox x:Name="lbxOldClient_Details" Margin="10" Height="450">
+                                <ListBoxItem Content="No results found."/>
+                            </ListBox>
+                            <Button  x:Name="btnOldClient_select"  Content="Select Client" FontSize="20" Width="300" Click="BtnOldClient_select_Click" />
+                        </StackPanel>
+                        <Label Content="Consultant no:" HorizontalAlignment="Left" Margin="457,582,0,0" VerticalAlignment="Top" Width="136"/>
                         <TextBox x:Name="txbConsultant_no"  Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="562,582,0,0" TextWrapping="Wrap" Text="jmahlangu" VerticalAlignment="Top" Width="158"/>
                     </Grid>
-            </TabItem>
-            <!--Car Hire -->
-            <TabItem Header="Car Hire" Style="{DynamicResource TabItemStyle}" Height="42" Margin="0,-2,0,0" VerticalAlignment="Top">
-                <Grid Background="#eee">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="49*"/>
-                        <ColumnDefinition Width="263*"/>
-                        <ColumnDefinition Width="875*"/>
-                    </Grid.ColumnDefinitions>
+                </TabItem>
+                <!--Car Hire -->
+                <TabItem Header="Car Hire" Style="{DynamicResource TabItemStyle}" Height="42" Margin="0,-2,0,0" VerticalAlignment="Top">
+                    <Grid Background="#eee">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="49*"/>
+                            <ColumnDefinition Width="263*"/>
+                            <ColumnDefinition Width="875*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <!--Labels-->
-                    <Label Content="Name of Agency:" Margin="11.5,20,114,617" Grid.Column="1" />
-                    <Label Content="Pick Up location:" Margin="11.5,94,108,529" Grid.Column="1"/>
-                    <Label Content="Drop Off location:" Margin="150,95,593,529" Grid.Column="2"/>
-                    <Label Content="Start Day:" Margin="11.5,159,156,487" Grid.Column="1"/>
-                    <Label Content="End Day:" Margin="150,159,646,487" Grid.Column="2"/>
-                    <Label Content="R" Margin="667,587,158,61" Grid.Column="2" />
-                    <Label Content="Specifications:" Margin="11.5,274,114,365" Grid.Column="1" />
-                    <Label Content="Number of cars:" Height="48" VerticalAlignment="Top" Margin="11.5,221,114,0" Grid.Column="1"/>
-                    <Label Content="TOTAL:" Margin="667,543,43,101" Grid.Column="2" />
+                        <!--Labels-->
+                        <Label Content="Name of Agency:" Margin="11.5,20,114,617" Grid.Column="1" />
+                        <Label Content="Pick Up location:" Margin="11.5,94,108,529" Grid.Column="1"/>
+                        <Label Content="Drop Off location:" Margin="150,95,593,529" Grid.Column="2"/>
+                        <Label Content="Start Day:" Margin="11.5,159,156,487" Grid.Column="1"/>
+                        <Label Content="End Day:" Margin="150,159,646,487" Grid.Column="2"/>
+                        <Label Content="R" Margin="667,587,158,61" Grid.Column="2" />
+                        <Label Content="Specifications:" Margin="11.5,274,114,365" Grid.Column="1" />
+                        <Label Content="Number of cars:" Height="48" VerticalAlignment="Top" Margin="11.5,221,114,0" Grid.Column="1"/>
+                        <Label Content="TOTAL:" Margin="667,543,43,101" Grid.Column="2" />
 
-                    <!--Input region-->
-                    <TextBox x:Name="txbCarHire_agency" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Avis" VerticalAlignment="Top" Width="650" Margin="161.5,23,0,0" Grid.ColumnSpan="2" Grid.Column="1"/>
-                    <TextBox x:Name="txbCarHire_pickUp" HorizontalAlignment="Left" Height="30" Margin="161.5,95,0,0" TextWrapping="Wrap" Text="PE" VerticalAlignment="Top" Width="246" Grid.ColumnSpan="2" Grid.Column="1"/>
-                    <TextBox x:Name="txbCarHire_dropOff" HorizontalAlignment="Left" Height="30" Margin="289,94,0,0" TextWrapping="Wrap" Text="Jhb" VerticalAlignment="Top" Width="260" Grid.Column="2"/>
-                    <DatePicker x:Name="dpCarHire_startDay" HorizontalAlignment="Left" Margin="161.5,160,0,0" VerticalAlignment="Top" Width="246" d:IsHidden="False" Grid.ColumnSpan="2" Grid.Column="1"/>
-                    <DatePicker x:Name="dpCarHire_endDay" HorizontalAlignment="Left" Margin="289,160,0,0" VerticalAlignment="Top" Width="260" Grid.Column="2"/>
-                    <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Margin="161.5,221,0,0" Grid.ColumnSpan="2" Grid.Column="1"/>
+                        <!--Input region-->
+                        <TextBox x:Name="txbCarHire_agency" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Avis" VerticalAlignment="Top" Width="650" Margin="161.5,23,0,0" Grid.ColumnSpan="2" Grid.Column="1"/>
+                        <TextBox x:Name="txbCarHire_pickUp" HorizontalAlignment="Left" Height="30" Margin="161.5,95,0,0" TextWrapping="Wrap" Text="PE" VerticalAlignment="Top" Width="246" Grid.ColumnSpan="2" Grid.Column="1"/>
+                        <TextBox x:Name="txbCarHire_dropOff" HorizontalAlignment="Left" Height="30" Margin="289,94,0,0" TextWrapping="Wrap" Text="Jhb" VerticalAlignment="Top" Width="260" Grid.Column="2"/>
+                        <DatePicker x:Name="dpCarHire_startDay" HorizontalAlignment="Left" Margin="161.5,160,0,0" VerticalAlignment="Top" Width="246" d:IsHidden="False" Grid.ColumnSpan="2" Grid.Column="1"/>
+                        <DatePicker x:Name="dpCarHire_endDay" HorizontalAlignment="Left" Margin="289,160,0,0" VerticalAlignment="Top" Width="260" Grid.Column="2"/>
+                        <TextBox x:Name="txbCarHire_numCars" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Margin="161.5,221,0,0" Grid.ColumnSpan="2" Grid.Column="1"/>
 
-                    <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="335" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Width="895" Margin="11.5,323,0,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.Column="1"/>
+                        <TextBox x:Name="txbCarHire_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="335" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Width="895" Margin="11.5,323,0,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.Column="1"/>
 
 
-                    <TextBox x:Name="txbCarHire_total" Text="150"  HorizontalAlignment="Left" Height="30" Margin="723,587,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113" TextChanged="AmountChanged" Grid.Column="2"/>
-                    <Button x:Name="btnCarHire_Done" Content="DONE" HorizontalAlignment="Left" Margin="668,503,0,0" VerticalAlignment="Top" Width="168" Click="BtnCarHire_Done_Click" Height="35" Grid.Column="2"/>
-                        <Button Content="Check Car Hire" Grid.Column="2" HorizontalAlignment="Left" Margin="668,431,0,0" Click="BtnCheckCarHire_Click" VerticalAlignment="Top" Width="168" Height="35"/>
-                        <ComboBox x:Name="CheckCarHireCombo" Grid.Column="2" HorizontalAlignment="Left" Margin="583,23,0,0" VerticalAlignment="Top" Width="155"/>
+                        <TextBox x:Name="txbCarHire_total" Text="150"  HorizontalAlignment="Left" Height="30" Margin="723,587,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113" TextChanged="AmountChanged" Grid.Column="2"/>
+                        <Button x:Name="btnCarHire_Done" Content="DONE" HorizontalAlignment="Left" Margin="668,503,0,0" VerticalAlignment="Top" Width="168" Click="BtnCarHire_Done_Click" Height="35" Grid.Column="2"/>
+                        <Button Content="Check Car Hire" Grid.Column="2" HorizontalAlignment="Left" Margin="583,71,0,0" Click="BtnCheckCarHire_Click" VerticalAlignment="Top" Width="168" Height="35"/>
+                        <ComboBox x:Name="CheckCarHireCombo" Grid.Column="2" HorizontalAlignment="Left" Margin="583,23,0,0" VerticalAlignment="Top"  Width="175"/>
 
                     </Grid>
-            </TabItem>
-            <!--Taxi Cab-->
-            <TabItem Header="Taxi Cab" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="437*"/>
-                        <ColumnDefinition Width="749*"/>
-                    </Grid.ColumnDefinitions>
-                    <!--Labels-->
-                    <Label x:Name="label25" Content="Agency:" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label26" Content="Driver:" HorizontalAlignment="Left" Margin="111,11,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <Label x:Name="label27" Content="Pick Up:" HorizontalAlignment="Left" Margin="31,73,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label28" Content="Pick-up time :" HorizontalAlignment="Left" Margin="31,111,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label29" Content="Date:" HorizontalAlignment="Left" Margin="111,121,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <Label x:Name="label30" Content="Drop Off:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="111,68,0,0" Grid.Column="1"/>
-                    <Label x:Name="label31" Content="Specifications:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.579,3.192" Margin="31,215,0,0"/>
-                    <Label Content="R" HorizontalAlignment="Left" Margin="504,598,0,0" VerticalAlignment="Top" Height="29" Grid.Column="1"/>
-                    <Label x:Name="label34" Content="TOTAL:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="504,563,0,0" Grid.Column="1"/>
-                    <Label x:Name="label32" Content="Number of cabs:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,159,0,0"/>
+                </TabItem>
+                <!--Taxi Cab-->
+                <TabItem Header="Taxi Cab" Style="{DynamicResource TabItemStyle}">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="437*"/>
+                            <ColumnDefinition Width="749*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Labels-->
+                        <Label x:Name="label25" Content="Agency:" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="label26" Content="Driver:" HorizontalAlignment="Left" Margin="111,11,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                        <Label x:Name="label27" Content="Pick Up:" HorizontalAlignment="Left" Margin="31,73,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="label28" Content="Pick-up time :" HorizontalAlignment="Left" Margin="31,111,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="label29" Content="Date:" HorizontalAlignment="Left" Margin="111,121,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                        <Label x:Name="label30" Content="Drop Off:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="111,68,0,0" Grid.Column="1"/>
+                        <Label x:Name="label31" Content="Specifications:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.579,3.192" Margin="31,215,0,0"/>
+                        <Label Content="R" HorizontalAlignment="Left" Margin="504,598,0,0" VerticalAlignment="Top" Height="29" Grid.Column="1"/>
+                        <Label x:Name="label34" Content="TOTAL:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="504,563,0,0" Grid.Column="1"/>
+                        <Label x:Name="label32" Content="Number of cabs:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,159,0,0"/>
 
-                    <!--Input region-->
-                    <TextBox x:Name="txbCab_agency" HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="Toyota" VerticalAlignment="Top" Width="400" Margin="102,11,0,0" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="txbCab_driver" HorizontalAlignment="Left" Height="29" Margin="202,11,0,0" TextWrapping="Wrap" Text="Jj" VerticalAlignment="Top" Width="400" Grid.Column="1"/>
+                        <!--Input region-->
+                        <TextBox x:Name="txbCab_agency" HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="Toyota" VerticalAlignment="Top" Width="400" Margin="102,11,0,0" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="txbCab_driver" HorizontalAlignment="Left" Height="29" Margin="202,11,0,0" TextWrapping="Wrap" Text="Jj" VerticalAlignment="Top" Width="400" Grid.Column="1"/>
 
-                    <TextBox x:Name="txbCab_pickUp" HorizontalAlignment="Left" Height="29" Margin="102,71,0,0" TextWrapping="Wrap" Text="PE" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="txbCab_pickUp" HorizontalAlignment="Left" Height="29" Margin="102,71,0,0" TextWrapping="Wrap" Text="PE" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2"/>
 
-                    <TextBox x:Name="txbCab_dropOff" HorizontalAlignment="Left" Height="29" Margin="202,73,0,0" TextWrapping="Wrap" Text="Jhb" VerticalAlignment="Top" Width="400" Grid.Column="1" TextChanged="txbCab_dropOff_TextChanged"/>
-                    <TextBox x:Name="txbCab_pickUpTime" HorizontalAlignment="Left" Height="29" Margin="168,112,0,0" TextWrapping="Wrap" Text="16:40" VerticalAlignment="Top" Width="334" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="txbCab_dropOff" HorizontalAlignment="Left" Height="29" Margin="202,73,0,0" TextWrapping="Wrap" Text="Jhb" VerticalAlignment="Top" Width="400" Grid.Column="1" TextChanged="txbCab_dropOff_TextChanged"/>
+                        <TextBox x:Name="txbCab_pickUpTime" HorizontalAlignment="Left" Height="29" Margin="168,112,0,0" TextWrapping="Wrap" Text="16:40" VerticalAlignment="Top" Width="334" Grid.ColumnSpan="2"/>
 
-                    <TextBox x:Name="txbCab_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="409" Margin="31,264,0,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Width="644" Grid.ColumnSpan="2"/>
-                    <DatePicker x:Name="dpCab_pickUpDate" HorizontalAlignment="Left" Margin="202,121,0,0" VerticalAlignment="Top" Width="201" Grid.Column="1"/>
-                    <TextBox x:Name="txbCab_numCabs" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="29" Margin="168,161,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="329" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="txbCab_total" Text="150" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" Margin="539,598,0,0" Grid.Column="1"/>
-                    <Button x:Name="btnCab_done" Content="DONE" HorizontalAlignment="Left" Margin="504,504,0,0" VerticalAlignment="Top" Width="150" Click="BtnCab_done_Click" Height="30" Grid.Column="1"/>
-                    <Button x:Name="btnCab_update" Content="UPDATE" HorizontalAlignment="Left" Margin="262,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden" Grid.Column="1"/>
-                        <Button x:Name="btnCab_check" Content="Check Cab Services" Grid.Column="1" HorizontalAlignment="Left" Margin="501,431,0,0" VerticalAlignment="Top" Width="150" Click="BtnCheckCabServices_done_Click" Height="30"/>
-                        <ComboBox x:Name="CheckCabServicesCombo" Grid.Column="1" HorizontalAlignment="Left" Margin="429,215,0,0" VerticalAlignment="Top" Width="173"/>
+                        <TextBox x:Name="txbCab_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="409" Margin="31,264,0,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Width="644" Grid.ColumnSpan="2"/>
+                        <DatePicker x:Name="dpCab_pickUpDate" HorizontalAlignment="Left" Margin="202,121,0,0" VerticalAlignment="Top" Width="201" Grid.Column="1"/>
+                        <TextBox x:Name="txbCab_numCabs" TextChanged="AmountChanged_WHOLENumber" HorizontalAlignment="Left" Height="29" Margin="168,161,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="329" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="txbCab_total" Text="150" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" Margin="539,598,0,0" Grid.Column="1"/>
+                        <Button x:Name="btnCab_done" Content="DONE" HorizontalAlignment="Left" Margin="504,504,0,0" VerticalAlignment="Top" Width="150" Click="BtnCab_done_Click" Height="30" Grid.Column="1"/>
+                        <Button x:Name="btnCab_update" Content="UPDATE" HorizontalAlignment="Left" Margin="262,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden" Grid.Column="1"/>
+                        <Button x:Name="btnCab_check" Content="Check Cab Services" Grid.Column="1" HorizontalAlignment="Left" Margin="504,195,0,0" VerticalAlignment="Top" Click="BtnCheckCabServices_done_Click" Width="168" Height="35"/>
+                        <ComboBox x:Name="CheckCabServicesCombo" Grid.Column="1" HorizontalAlignment="Left" Margin="501,143,0,0" VerticalAlignment="Top" Width="175"/>
                     </Grid>
-            </TabItem>
-            <!--Flight-->
-            <TabItem Header="Flight" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#eee">
-                    <StackPanel>
-                        <TextBlock Text="Enter flight details" HorizontalAlignment="Center" FontSize="20" Margin="10"/>
-                        <!--Airline and textbox-->
-                        <DockPanel>
-                            <TextBlock Text="Airline:" Margin="10"/>
-                            <TextBox x:Name="txbFlight_airline" Text="SAA" Margin="95 10 100 0" />
-                        </DockPanel>
-                        <!--Location Details-->
-                        <TextBlock Text="Location details" HorizontalAlignment="Center"/>
-                        <DockPanel>
-                            <TextBlock Text="From:" Margin="10"/>
-                            <TextBox x:Name="txbFlight_from" Text="Jhb" Margin="105 10 100 0" />
-                        </DockPanel>
-                        <DockPanel>
-                            <TextBlock Text="To:" Margin="10"/>
-                            <TextBox x:Name="txbFlight_to" Text="China" Margin="120 10 100 0"/>
-                        </DockPanel>
-                        <!--Additional Information-->
-                        <TextBlock Text="Additional information :" HorizontalAlignment="Center"/>
-                        <DockPanel>
-                            <TextBlock Text="Departure Date :" Margin="10"/>
-                            <DatePicker x:Name="dpFlight_departure" Margin="10" Width="150"/>
-                            <TextBlock Text="Prefered departure time :" Margin="10"/>
-                            <TextBox x:Name="txbFlight_time" Text="18:00"  Margin=" 10" Width="150"/>
-                            <TextBlock Text="Number of bags :" Margin="10"/>
-                            <TextBox x:Name="txbFlight_numBags" TextChanged="AmountChanged_WHOLENumber" Margin=" 10" Text="3" Width="191"/>
-                        </DockPanel>
-                        <!--Passanger Information-->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel>
-                                <TextBlock Text="Passanger details" Margin="10 0 0 0"/>
-                                <DockPanel Margin="10">
-                                    <TextBlock Text="Name(s) &amp; surname :   "/>
-                                    <TextBox x:Name="txbFlight_passangerName" Text="Simpiwe Sobici" Height="30"/>
-                                </DockPanel>
-                                <DockPanel Margin="10">
-                                    <TextBlock Text="Id Number :              " Margin="5"/>
-                                    <TextBox x:Name="txbFlight_passangerSurname" Text="98020305551086" TextChanged="AmountChanged_WHOLENumber" Height="30" Width="300"/>
-                                    <TextBlock Text="Cell no :   " Margin="5"/>
-                                    <TextBox x:Name="txbFlight_passangerCellphone" Text="0831231234" TextChanged="phoneNumberCheck" Height="30"/>
-                                </DockPanel>
-                                <DockPanel Margin="10">
-                                    <TextBlock Text="Work no          :           " Margin="0 5"/>
-                                    <TextBox x:Name="txbFlight_passangerTitle" Text="0461231234" TextChanged="phoneNumberCheck" Height="30" Width="200"/>
-                                    <TextBlock Text="email address          :   " Margin="5"/>
-                                    <TextBox x:Name="txbFlight_passanger" Text="s.sobici@gmail.com" Height="30"/>
-
-                                </DockPanel>
-                                <DockPanel Margin="10">
-                                    <TextBlock Text="Adress          :             " Margin="0 5"/>
-                                    <TextBox x:Name="txbFlight_passangerAddress" Text="34 Egg street, Green Village, PE" AcceptsReturn="True" Height="50"/>
-                                </DockPanel>
-                                <Button x:Name="btnFlight_addPassenger" Content="Add Passanger" Width=" 200" Click="BtnFlight_addPassenger_Click_1"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="1">
-                                <TextBlock Text="Added passangers :" Margin="10"/>
-                                <ListBox x:Name="ltbFlight_passengersOutput" Height="200" Margin="0 0 100 0">
-                                    <ListBoxItem Content="No passangers added"/>
-                                </ListBox>
-                            </StackPanel>
-                        </Grid>
-                        <!--Specifications-->
-                        <DockPanel>
-                            <TextBlock Text="Specifications :             " Margin="10"/>
-                            <TextBox x:Name="txbFlight_specifications" Text="None" AcceptsReturn="True" TextWrapping="Wrap" Margin="10 10 100 10" Height="50"/>
-                        </DockPanel>
-                        <!--Total-->
-                        <Grid HorizontalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="TOTAL R :" Margin="10"/>
-                            <TextBox x:Name="txbFlight_total" Text="300" TextChanged="AmountChanged" Grid.Column="1" Width="200" Height="40" Margin="10"/>
-                        </Grid>
-                        <Button x:Name="btnFlight_done" Content="Done!" Height="25" Margin="444,0,449,0" Click="btnFlight_done_Click_1"/>
-                    </StackPanel>
-                </Grid>
-            </TabItem>
-            <!--Accommodation-->
-            <TabItem Header="Accommodation" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#eee">
-                    <StackPanel  Margin="10 20" >
-                        <!--Accomodation name-->
-                        <DockPanel Margin="10">
-                            <TextBlock  Text="Accommodation name :" Height="30"/>
-                            <TextBox x:Name="txbAccommodation_name" Text="Garden Court PE" Margin="20 0"/>
-                        </DockPanel>
-
-                        <!--Check-in and -out days-->
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <DockPanel Grid.Column="1">
-                                <TextBlock Text="Check-in day : "/>
-                                <DatePicker x:Name="dpAccommodation_checkIn" Width="200"/>
-                                <TextBlock Text=" Check-out day : "/>
-                                <DatePicker x:Name="dpAccommodation_checkOut"/>
+                </TabItem>
+                <!--Flight-->
+                <TabItem Header="Flight" Style="{DynamicResource TabItemStyle}">
+                    <Grid Background="#eee">
+                        <StackPanel>
+                            <TextBlock Text="Enter flight details" HorizontalAlignment="Center" FontSize="20" Margin="10"/>
+                            <!--Airline and textbox-->
+                            <DockPanel>
+                                <TextBlock Text="Airline:" Margin="10"/>
+                                <TextBox x:Name="txbFlight_airline" Text="SAA" Margin="95 10 100 0" Width="467" />
                             </DockPanel>
-
-                        </Grid>
-                        <!--Number of guests and rooms-->
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <DockPanel Grid.Column="1">
-                                <TextBlock Text="Number of guests : "/>
-                                <TextBox x:Name="txbAccommodation_numGuests" TextChanged="AmountChanged_WHOLENumber" Width="150"/>
-                                <TextBlock Text=" Number of rooms : "/>
-                                <TextBox x:Name="txbAccommodation_numRooms" TextChanged="AmountChanged_WHOLENumber"/>
+                            <!--Location Details-->
+                            <TextBlock Text="Location details" HorizontalAlignment="Center"/>
+                            <DockPanel>
+                                <TextBlock Text="From:" Margin="10"/>
+                                <TextBox x:Name="txbFlight_from" Text="Jhb" Margin="105 10 100 0" Width="467" />
                             </DockPanel>
-                        </Grid>
-                        <!--Specifications-->
-                        <TextBlock Text="Specifications :"/>
-                        <TextBox x:Name="txbAccommodation_specifications" Text="Breakfast included." AcceptsReturn="True" Margin="20" Height="200"/>
-                        <!--Total-->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Column="1" Text="Total      R :"/>
-                            <TextBox x:Name="txbAccommodation_total" Text="0" TextChanged="AmountChanged" Grid.Column="2" Height="30"/>
-                            <Button x:Name="btnAccommodation_done" Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" Click="btnAccommodation_done_Click_1"/>
+                            <DockPanel>
+                                <TextBlock Text="To:" Margin="10"/>
+                                <TextBox x:Name="txbFlight_to" Text="China" Margin="120 10 100 0" Width="472"/>
+                            </DockPanel>
+                            <!--Additional Information-->
+                            <TextBlock Text="Additional information :" HorizontalAlignment="Center"/>
+                            <DockPanel>
+                                <TextBlock Text="Departure Date :" Margin="10"/>
+                                <DatePicker x:Name="dpFlight_departure" Margin="10" Width="150"/>
+                                <TextBlock Text="Prefered departure time :" Margin="10"/>
+                                <TextBox x:Name="txbFlight_time" Text="18:00"  Margin=" 10" Width="150"/>
+                                <TextBlock Text="Number of bags :" Margin="10"/>
+                                <TextBox x:Name="txbFlight_numBags" TextChanged="AmountChanged_WHOLENumber" Margin=" 10" Text="3" Width="191"/>
+                            </DockPanel>
+                            <!--Passanger Information-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock Text="Passanger details" Margin="10 0 0 0"/>
+                                    <DockPanel Margin="10">
+                                        <TextBlock Text="Name(s) &amp; surname :   "/>
+                                        <TextBox x:Name="txbFlight_passangerName" Text="Simpiwe Sobici" Height="30"/>
+                                    </DockPanel>
+                                    <DockPanel Margin="10">
+                                        <TextBlock Text="Id Number :              " Margin="5"/>
+                                        <TextBox x:Name="txbFlight_passangerSurname" Text="98020305551086" TextChanged="AmountChanged_WHOLENumber" Height="30" Width="300"/>
+                                        <TextBlock Text="Cell no :   " Margin="5"/>
+                                        <TextBox x:Name="txbFlight_passangerCellphone" Text="0831231234" TextChanged="phoneNumberCheck" Height="30"/>
+                                    </DockPanel>
+                                    <DockPanel Margin="10">
+                                        <TextBlock Text="Work no          :           " Margin="0 5"/>
+                                        <TextBox x:Name="txbFlight_passangerTitle" Text="0461231234" TextChanged="phoneNumberCheck" Height="30" Width="200"/>
+                                        <TextBlock Text="email address          :   " Margin="5"/>
+                                        <TextBox x:Name="txbFlight_passanger" Text="s.sobici@gmail.com" Height="30"/>
+
+                                    </DockPanel>
+                                    <DockPanel Margin="10">
+                                        <TextBlock Text="Adress          :             " Margin="0 5"/>
+                                        <TextBox x:Name="txbFlight_passangerAddress" Text="34 Egg street, Green Village, PE" AcceptsReturn="True" Height="50"/>
+                                    </DockPanel>
+                                    <Button x:Name="btnFlight_addPassenger" Content="Add Passanger" Width=" 200" Click="BtnFlight_addPassenger_Click_1"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="Added passangers :" Margin="10"/>
+                                    <ListBox x:Name="ltbFlight_passengersOutput" Height="200" Margin="0 0 100 0">
+                                        <ListBoxItem Content="No passangers added"/>
+                                    </ListBox>
+                                </StackPanel>
                             </Grid>
-                    </StackPanel>
-                </Grid>
-
-            </TabItem>
-            <!--Conference-->
-            <TabItem Header="Conference" Style="{DynamicResource TabItemStyle}">
-
-                <Grid Background="#eee">
-                    <StackPanel  Margin="10 20" >
-                        <!--Conference name-->
-                        <DockPanel Margin="10">
-                            <TextBlock  Text="Conference name :" Height="30"/>
-                            <TextBox x:Name="txbConference_name" Text="Golden Key Leadership Summit" Margin="20 0"/>
-                        </DockPanel>
-                        <!--Venue-->
-                        <DockPanel Margin="10">
-                            <TextBlock  Text="Venue :" Height="30"/>
-                            <TextBox x:Name="txbConference_venue" Text="Radisson Blu" Margin="90 0 20 0"/>
-                        </DockPanel>
-                        <!--Start-date and End-Date-->
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <DockPanel Grid.Column="1">
-                                <TextBlock Text="Start date : "/>
-                                <DatePicker x:Name="dpConference_startDate"  Width="200"/>
-                                <TextBlock Text=" End date : "/>
-                                <DatePicker x:Name="dpConference_endDate" />
+                            <!--Specifications-->
+                            <DockPanel>
+                                <TextBlock Text="Specifications :             " Margin="10"/>
+                                <TextBox x:Name="txbFlight_specifications" Text="None" AcceptsReturn="True" TextWrapping="Wrap" Margin="10 10 100 10" Height="50"/>
                             </DockPanel>
-
-                        </Grid>
-                        <!--Time of conference-->
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <DockPanel HorizontalAlignment="Center" Grid.Column="1">
-                                <TextBlock Text="Starting time of Conference : "/>
-                                <TextBox x:Name="txbConference_time" Text="10:00" Width="150"/>
-                            </DockPanel>
-                        </Grid>
-                        <!--Specifications-->
-                        <TextBlock Text="Specifications :"/>
-                        <TextBox x:Name="txbConference_specifications" Text="Include lunch for all conference guests" AcceptsReturn="True"  Margin="20" Height="200"/>
-                        <!--Total-->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Column="1" Text="Total      R :"/>
-                            <TextBox x:Name="txbConference_total"  Text="0" TextChanged="AmountChanged" Grid.Column="2" Height="30"/>
-                            <Button x:Name="btnConference_done"  Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" Click="btnConference_done_Click_1"/>
+                            <!--Total-->
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="TOTAL R :" Margin="10"/>
+                                <TextBox x:Name="txbFlight_total" Text="300" TextChanged="AmountChanged" Grid.Column="1" Width="200" Height="40" Margin="10"/>
                             </Grid>
-                    </StackPanel>
-                </Grid>
-
-            </TabItem>
-            <!--Events-->
-            <TabItem Header="Events" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#eee">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="351*"/>
-                        <ColumnDefinition Width="242*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel  Margin="10 20" Grid.ColumnSpan="2" >
-                        <!--Conference name-->
-                        <DockPanel Margin="10">
-                            <TextBlock  Text="Event name :" Height="30"/>
-                            <TextBox x:Name="txbEvents_name" Text="Litha's 21st Bithday" Margin="20 0"/>
-                        </DockPanel>
-                        <!--Venue-->
-                        <DockPanel Margin="10">
-                            <TextBlock  Text="Venue :" Height="30"/>
-                            <TextBox x:Name="txbEvents_venue" Text="MSC Cruise to Hawaii" Margin="55 0 20 0"/>
-                        </DockPanel>
-                        <!--Start-date and End-Date-->
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <DockPanel Grid.Column="1">
-                                <TextBlock Text="Start date : "/>
-                                <DatePicker x:Name="dpEvents_startDate"  Width="200"/>
-                                <TextBlock Text=" End date : "/>
-                                <DatePicker x:Name="dpEvents_endDate" />
+                            <Button x:Name="btnFlight_done" Content="Done!" Height="25" Margin="444,0,449,0" Click="btnFlight_done_Click_1"/>
+                        </StackPanel>
+                        <ComboBox x:Name="CheckFlightCombo" HorizontalAlignment="Left" Margin="898,13,0,0" VerticalAlignment="Top"  Width="175"/>
+                        <Button Content="Check Flight" HorizontalAlignment="Left" Margin="898,64,0,0" VerticalAlignment="Top" Width="168" Height="35" Click="Button_Click_2"/>
+                    </Grid>
+                </TabItem>
+                <!--Accommodation-->
+                <TabItem Header="Accommodation" Style="{DynamicResource TabItemStyle}">
+                    <Grid Background="#eee">
+                        <StackPanel  Margin="10 20" >
+                            <!--Accomodation name-->
+                            <DockPanel Margin="10">
+                                <TextBlock  Text="Accommodation name :" Height="30"/>
+                                <TextBox x:Name="txbAccommodation_name" Text="Garden Court PE" Margin="20 0" Width="535"/>
                             </DockPanel>
 
-                        </Grid>
-                        <!--Time of conference-->
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <DockPanel HorizontalAlignment="Center" Grid.Column="1">
-                                <TextBlock Text="Starting time of Event : "/>
-                                <TextBox x:Name="txbEvents_time"  Width="150"/>
+                            <!--Check-in and -out days-->
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <DockPanel Grid.Column="1">
+                                    <TextBlock Text="Check-in day : "/>
+                                    <DatePicker x:Name="dpAccommodation_checkIn" Width="200"/>
+                                    <TextBlock Text=" Check-out day : "/>
+                                    <DatePicker x:Name="dpAccommodation_checkOut"/>
+                                </DockPanel>
+
+                            </Grid>
+                            <!--Number of guests and rooms-->
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <DockPanel Grid.Column="1">
+                                    <TextBlock Text="Number of guests : "/>
+                                    <TextBox x:Name="txbAccommodation_numGuests" TextChanged="AmountChanged_WHOLENumber" Width="150"/>
+                                    <TextBlock Text=" Number of rooms : "/>
+                                    <TextBox x:Name="txbAccommodation_numRooms" TextChanged="AmountChanged_WHOLENumber"/>
+                                </DockPanel>
+                            </Grid>
+                            <!--Specifications-->
+                            <TextBlock Text="Specifications :"/>
+                            <TextBox x:Name="txbAccommodation_specifications" Text="Breakfast included." AcceptsReturn="True" Margin="20" Height="200"/>
+                            <!--Total-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Column="1" Text="Total      R :"/>
+                                <TextBox x:Name="txbAccommodation_total" Text="0" TextChanged="AmountChanged" Grid.Column="2" Height="30"/>
+                                <Button x:Name="btnAccommodation_done" Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" Click="btnAccommodation_done_Click_1"/>
+                            </Grid>
+                        </StackPanel>
+                        <ComboBox x:Name="CheckAccommCombo" HorizontalAlignment="Left" Margin="970,20,0,0" VerticalAlignment="Top" Width="175"/>
+                        <Button Content="Check Accommodation" HorizontalAlignment="Left" Margin="970,72,0,0" VerticalAlignment="Top" Width="168" Height="36" Click="Button_Click_3"/>
+                    </Grid>
+
+                </TabItem>
+                <!--Conference-->
+                <TabItem Header="Conference" Style="{DynamicResource TabItemStyle}">
+
+                    <Grid Background="#eee">
+                        <StackPanel  Margin="10 20" >
+                            <!--Conference name-->
+                            <DockPanel Margin="10">
+                                <TextBlock  Text="Conference name :" Height="30"/>
+                                <TextBox x:Name="txbConference_name" Text="Golden Key Leadership Summit" Margin="20 0" Width="512"/>
                             </DockPanel>
-                        </Grid>
-                        <!--Specifications-->
-                        <TextBlock Text="Specifications :"/>
-                        <TextBox x:Name="txbEvents_specifications" Text="Order rooms for 100 passengers, all friends and a family. 5 days with the return." AcceptsReturn="True"  Margin="20" Height="200"/>
-                        <!--Total-->
+                            <!--Venue-->
+                            <DockPanel Margin="10">
+                                <TextBlock  Text="Venue :" Height="30"/>
+                                <TextBox x:Name="txbConference_venue" Text="Radisson Blu" Margin="90 0 20 0" Width="506"/>
+                            </DockPanel>
+                            <!--Start-date and End-Date-->
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <DockPanel Grid.Column="1">
+                                    <TextBlock Text="Start date : "/>
+                                    <DatePicker x:Name="dpConference_startDate"  Width="200"/>
+                                    <TextBlock Text=" End date : "/>
+                                    <DatePicker x:Name="dpConference_endDate" />
+                                </DockPanel>
+
+                            </Grid>
+                            <!--Time of conference-->
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <DockPanel HorizontalAlignment="Center" Grid.Column="1">
+                                    <TextBlock Text="Starting time of Conference : "/>
+                                    <TextBox x:Name="txbConference_time" Text="10:00" Width="150"/>
+                                </DockPanel>
+                            </Grid>
+                            <!--Specifications-->
+                            <TextBlock Text="Specifications :"/>
+                            <TextBox x:Name="txbConference_specifications" Text="Include lunch for all conference guests" AcceptsReturn="True"  Margin="20" Height="200"/>
+                            <!--Total-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Column="1" Text="Total      R :"/>
+                                <TextBox x:Name="txbConference_total"  Text="0" TextChanged="AmountChanged" Grid.Column="2" Height="30"/>
+                                <Button x:Name="btnConference_done"  Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" Click="btnConference_done_Click_1"/>
+                            </Grid>
+                        </StackPanel>
+                        <ComboBox x:Name="CheckConferenceCombo" HorizontalAlignment="Left" Margin="986,20,0,0" VerticalAlignment="Top" Width="175"/>
+                        <Button Content="Check Conferrence" HorizontalAlignment="Left" Margin="986,76,0,0" VerticalAlignment="Top" Width="168" Height="35" Click="Button_Click_4"/>
+                    </Grid>
+
+                </TabItem>
+                <!--Events-->
+                <TabItem Header="Events" Style="{DynamicResource TabItemStyle}">
+                    <Grid Background="#eee">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="351*"/>
+                            <ColumnDefinition Width="242*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel  Margin="10 20" Grid.ColumnSpan="2" >
+                            <!--Conference name-->
+                            <DockPanel Margin="10">
+                                <TextBlock  Text="Event name :" Height="30"/>
+                                <TextBox x:Name="txbEvents_name" Text="Litha's 21st Bithday" Margin="20 0"/>
+                            </DockPanel>
+                            <!--Venue-->
+                            <DockPanel Margin="10">
+                                <TextBlock  Text="Venue :" Height="30"/>
+                                <TextBox x:Name="txbEvents_venue" Text="MSC Cruise to Hawaii" Margin="55 0 20 0"/>
+                            </DockPanel>
+                            <!--Start-date and End-Date-->
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <DockPanel Grid.Column="1">
+                                    <TextBlock Text="Start date : "/>
+                                    <DatePicker x:Name="dpEvents_startDate"  Width="200"/>
+                                    <TextBlock Text=" End date : "/>
+                                    <DatePicker x:Name="dpEvents_endDate" />
+                                </DockPanel>
+
+                            </Grid>
+                            <!--Time of conference-->
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <DockPanel HorizontalAlignment="Center" Grid.Column="1">
+                                    <TextBlock Text="Starting time of Event : "/>
+                                    <TextBox x:Name="txbEvents_time"  Width="150"/>
+                                </DockPanel>
+                            </Grid>
+                            <!--Specifications-->
+                            <TextBlock Text="Specifications :"/>
+                            <TextBox x:Name="txbEvents_specifications" Text="Order rooms for 100 passengers, all friends and a family. 5 days with the return." AcceptsReturn="True"  Margin="20" Height="200"/>
+                            <!--Total-->
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -674,87 +680,87 @@
                                 <Button x:Name="btnEvents_done"  Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" Click="BtnEvents_done_Click"/>
                             </Grid>
                         </StackPanel>
-                </Grid>
+                    </Grid>
 
-            </TabItem>
-            <!--Quote Summary-->
-            <TabItem x:Name="tabitemQuoteSummary" Header="Quote Summary" Style="{DynamicResource TabItemStyle}" MouseDoubleClick="tabitemQuoteSummary_MouseDoubleClick">
+                </TabItem>
+                <!--Quote Summary-->
+                <TabItem x:Name="tabitemQuoteSummary" Header="Quote Summary" Style="{DynamicResource TabItemStyle}" MouseDoubleClick="tabitemQuoteSummary_MouseDoubleClick">
 
-                <Grid Background="#eee">
-                    <!--Separate into two sides-->
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <!--Display for left-hand-side-->
-                    <TextBlock x:Name="txbQuote_quoteSummary" Margin="10" RenderTransformOrigin="0.5,0.5">
-                        <TextBlock.Background>
-                            <ImageBrush ImageSource="/SeleleTravel;component/Images/Selele Travel LOGO2.png" Stretch="None" TileMode="Tile" Viewbox="0.4,1,1,1">
-                                <ImageBrush.RelativeTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform ScaleY="1" ScaleX="1"/>
-                                        <SkewTransform AngleY="0" AngleX="0"/>
-                                        <RotateTransform Angle="0"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </ImageBrush.RelativeTransform>
-                            </ImageBrush>
-                        </TextBlock.Background><Run>
+                    <Grid Background="#eee">
+                        <!--Separate into two sides-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Display for left-hand-side-->
+                        <TextBlock x:Name="txbQuote_quoteSummary" Margin="10" RenderTransformOrigin="0.5,0.5">
+                            <TextBlock.Background>
+                                <ImageBrush ImageSource="/SeleleTravel;component/Images/Selele Travel LOGO2.png" Stretch="None" TileMode="Tile" Viewbox="0.4,1,1,1">
+                                    <ImageBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="1" ScaleX="1"/>
+                                            <SkewTransform AngleY="0" AngleX="0"/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </ImageBrush.RelativeTransform>
+                                </ImageBrush>
+                            </TextBlock.Background><Run>
                             <Run.Background>
                                 <ImageBrush/>
                             </Run.Background>
                         </Run></TextBlock>
-                    <!--Right-hand-side-->
-                    <!--Mark-up stuff-->
-                    <StackPanel Grid.Column="1" Margin="10">
-                        <DockPanel>
-                            <TextBlock Text="Mark-Up % : "/>
-                            <TextBox x:Name="txbQuote_markUp" TextChanged="AmountChanged" Height="30"/>
-                        </DockPanel>
-                        <Button x:Name="btnQuote_markUp" Content="Add Mark-up" HorizontalAlignment="Center" Width="300" Margin="10" Click="btnQuote_markUp_Click_1"/>
-                    </StackPanel>
-                    <!--Document and verification-->
-                    <Border VerticalAlignment="Bottom" Grid.Column="1">
-                        <StackPanel >
-                            <Button x:Name="btnQuoteSummar_document" Content="View as document and print" Margin="10" Click="btnQuoteSummar_document_Click"/>
-                            <Button x:Name="btnQuote_requestVerification" Content="Request Verification" Margin="10 0 10 10" Click="btnQuote_requestVerification_Click"/>
+                        <!--Right-hand-side-->
+                        <!--Mark-up stuff-->
+                        <StackPanel Grid.Column="1" Margin="10">
+                            <DockPanel>
+                                <TextBlock Text="Mark-Up % : "/>
+                                <TextBox x:Name="txbQuote_markUp" TextChanged="AmountChanged" Height="30"/>
+                            </DockPanel>
+                            <Button x:Name="btnQuote_markUp" Content="Add Mark-up" HorizontalAlignment="Center" Width="300" Margin="10" Click="btnQuote_markUp_Click_1"/>
                         </StackPanel>
-                    </Border>
-                    <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="87,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                    <Label x:Name="label" Content="Valid for:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="117,154,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+                        <!--Document and verification-->
+                        <Border VerticalAlignment="Bottom" Grid.Column="1">
+                            <StackPanel >
+                                <Button x:Name="btnQuoteSummar_document" Content="View as document and print" Margin="10" Click="btnQuoteSummar_document_Click"/>
+                                <Button x:Name="btnQuote_requestVerification" Content="Request Verification" Margin="10 0 10 10" Click="btnQuote_requestVerification_Click"/>
+                            </StackPanel>
+                        </Border>
+                        <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="87,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                        <Label x:Name="label" Content="Valid for:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+                        <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="117,154,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
                     </Grid>
-            </TabItem>
-            <!--Send Quotes-->
-            <TabItem Header="Send Quotes" Style="{DynamicResource TabItemStyle}">
+                </TabItem>
+                <!--Send Quotes-->
+                <TabItem Header="Send Quotes" Style="{DynamicResource TabItemStyle}">
 
-                <Grid Background="#eee">
-                    <!--Separating the grid into 3 parts-->
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <!--Left hand side-->
-                    <TextBlock Text="Verified quotes :" Margin="10"/>
-                    <ListBox Margin="10 40 10 10">
-                        <ListBoxItem Content="No quote verified."/>
-                    </ListBox>
-                    <!--Middle-->
-                    <TextBlock Grid.Column="1" Text="Quote preview :" Margin="10"/>
-                    <TextBlock Grid.Column="1"  Background="#fff" Text="No quote selected." Margin="10 40 10 10" Padding="10"/>
+                    <Grid Background="#eee">
+                        <!--Separating the grid into 3 parts-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Left hand side-->
+                        <TextBlock Text="Verified quotes :" Margin="10"/>
+                        <ListBox Margin="10 40 10 10">
+                            <ListBoxItem Content="No quote verified."/>
+                        </ListBox>
+                        <!--Middle-->
+                        <TextBlock Grid.Column="1" Text="Quote preview :" Margin="10"/>
+                        <TextBlock Grid.Column="1"  Background="#fff" Text="No quote selected." Margin="10 40 10 10" Padding="10"/>
 
-                    <!-- Right hand side-->
-                    <StackPanel Grid.Column="2">
-                        <TextBlock Text="Password :" Margin="10"/>
-                        <PasswordBox Margin="10 0 10 10" Height="30"/>
-                        <Button Content="Send to clients" Margin="10 0 10 10"/>
-                    </StackPanel>
+                        <!-- Right hand side-->
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="Password :" Margin="10"/>
+                            <PasswordBox Margin="10 0 10 10" Height="30"/>
+                            <Button Content="Send to clients" Margin="10 0 10 10"/>
+                        </StackPanel>
 
-                </Grid>
-            </TabItem>
-        </TabControl>
-  
-    </Grid>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+        </Grid>
     </ScrollViewer>
 </Window>

@@ -1359,20 +1359,19 @@ namespace SeleleTravel
         private void BtnCheckCarHire_Click(object sender, RoutedEventArgs e)
         {
             string agencyname = txbCarHire_agency.Text;
-            string agency_id = "";
             //Query for finding the agency_IDs available
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceprovider WHERE agencyname = '{agencyname}'", myConnect))
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceproviders WHERE agencyname = '{agencyname}'", myConnect))
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
                     int k = 0;
                     while (query.Read())
                     {
 
-                        agency_id = agency_id + "|" + $"{query[k]}";
+                        CheckCarHireCombo.Items.Add(query[k]);
                         k++;
                     }
                     myConnect.Close();
@@ -1387,7 +1386,7 @@ namespace SeleleTravel
         private void BtnCheckCabServices_done_Click(object sender, RoutedEventArgs e)
         {
             string agencyname = txbCab_agency.Text;
-            string agency_id = "";
+          
             //Query for finding the agency_IDs available
             try
                 {
@@ -1411,6 +1410,92 @@ namespace SeleleTravel
                     MessageBox.Show(h.ToString());
                 }
 
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            string agencyname = txbFlight_airline.Text;
+         
+            //Query for finding the agency_IDs available
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceproviders WHERE agencyname = '{agencyname}'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    int k = 0;
+                    while (query.Read())
+                    {
+
+                        CheckFlightCombo.Items.Add(query[k]);
+                        k++;
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            
+            string agencyname = txbAccommodation_name.Text;
+
+           
+            //Query for finding the agency_IDs available
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceproviders WHERE agencyname = '{agencyname}'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    int k = 0;
+                    while (query.Read())
+                    {
+
+                        CheckAccommCombo.Items.Add(query[k]);
+                        k++;
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+           string agencyname= txbConference_name.Text;
+
+            //Query for finding the agency_IDs available
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceproviders WHERE agencyname = '{agencyname}'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    int k = 0;
+                    while (query.Read())
+                    {
+
+                        CheckConferenceCombo.Items.Add(query[k]);
+                        k++;
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
         }
     }
 }
