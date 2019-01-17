@@ -48,25 +48,25 @@ namespace SeleleTravel
         /// checks if the number typed is a valid number.
         /// If the value to be checked is not a whole number then assign the bool to false. 
         /// </summary>
-        /// <param name="sender"></param>
-        /// /// <param name="int_double"></param>
-        public static void checkAmountTyped(object sender, bool int_double = true)
+        /// <param name="reference"></param>
+        /// /// <param name="isInterger">Set this to true if we are working with and int value and false if it's a double</param>
+        public static void checkAmountTyped(TextBox reference, bool isInterger = true)
         {
-            string acceptedCharacters = "";
-            // if it's true then the number being validated is an integer
-            // else it's a double
-            if (int_double) acceptedCharacters = "0123456789";
-            else acceptedCharacters = "0123456789.";
+            string text = reference.Text;
+            //Assume the number is an int
+            string acceptedCharacters = "0123456789";
+
+            //Verify your assumption:
+            //If it is indeed an int then we won't change the value of the acceptedChars
+            //Else if it isn't and we don't yet have a point, we change it
+            if (!isInterger && text.IndexOf('.') < 0) acceptedCharacters = "0123456789.";
            
-            
+            if (text.Length <= 0) return;
 
-            TextBox reference = (TextBox)sender;
-            if (reference.Text.Length <= 0) return;
-
-            string letterEntered = reference.Text.Last().ToString().ToLower();
+            string letterEntered = text.Last().ToString().ToLower();
             if (!acceptedCharacters.Contains(letterEntered))
             {
-                reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
+                reference.Text = text.TrimEnd(letterEntered.ToCharArray());
                 reference.SelectionStart = reference.Text.Length;
                 MessageBox.Show("'" + letterEntered + "' is not an accepted character for an amount!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
