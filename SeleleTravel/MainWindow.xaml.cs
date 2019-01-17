@@ -24,11 +24,6 @@ namespace SeleleTravel
 
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
-
         //instantiating all the windows as global objects
         public static LogInWindow logInWindow;
         public static string ConnectionString = "Database=Selele;Port=1998;Server=192.168.1.5;User Id=postgres;Password=Linomtha";
@@ -75,6 +70,7 @@ namespace SeleleTravel
             try
             {
                 conn.Open();
+                MessageBox.Show("Connection is successful. You may cry tears of joy");
             }
             catch (Exception ex)
             {
