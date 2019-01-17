@@ -1416,6 +1416,62 @@ namespace SeleleTravel
         {
            txbQuote_quoteSummary.Text = GeneralMethods.quoteSummary(quote_no);
         }
+        private void BtnCheckCarHire_Click(object sender, RoutedEventArgs e)
+        {
+            string agencyname = txbCarHire_agency.Text;
+            string agency_id = "";
+            //Query for finding the agency_IDs available
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceprovider WHERE agencyname = '{agencyname}'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    int k = 0;
+                    while (query.Read())
+                    {
+
+                        agency_id = agency_id + "|" + $"{query[k]}";
+                        k++;
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
+
+        private void BtnCheckCabServices_done_Click(object sender, RoutedEventArgs e)
+        {
+            string agencyname = txbCab_agency.Text;
+            string agency_id = "";
+            //Query for finding the agency_IDs available
+            //try
+            //{
+            //    NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            //    myConnect.Open();
+            //    using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceprovider WHERE agencyname = '{agencyname}'", myConnect))
+            //    {
+            //        NpgsqlDataReader query = cmd.ExecuteReader();
+            //        int k = 0;
+            //        while (query.Read())
+            //        {
+
+            //            .Items.Add(query[k]); 
+            //            k++;
+            //        }
+            //        myConnect.Close();
+            //    }
+            //}
+            //catch (Exception h)
+            //{
+            //    MessageBox.Show(h.ToString());
+            //}
+           
+        }
     }
-    }
+}
 

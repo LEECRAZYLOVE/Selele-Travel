@@ -491,11 +491,11 @@ namespace SeleleTravel
         /// This creats the agency number for each agency
         /// </summary>
         /// <returns></returns>
-        public static string makeAgency_ID(string agencyName, string typeOfAgency)
+        public static string makeAgency_ID(string agencyName, string postalcode)
         {
 
             string agency_ID = "";
-            agency_ID = "A" + typeOfAgency.Substring(0, 1) + agencyName;
+            agency_ID = agencyName + postalcode;
 
             return agency_ID;
         }

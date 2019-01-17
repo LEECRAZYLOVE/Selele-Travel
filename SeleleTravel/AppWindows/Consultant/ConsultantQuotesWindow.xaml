@@ -350,6 +350,8 @@
 
                     <TextBox x:Name="txbCarHire_total" Text="150"  HorizontalAlignment="Left" Height="30" Margin="723,587,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113" TextChanged="AmountChanged" Grid.Column="2"/>
                     <Button x:Name="btnCarHire_Done" Content="DONE" HorizontalAlignment="Left" Margin="668,503,0,0" VerticalAlignment="Top" Width="168" Click="BtnCarHire_Done_Click" Height="35" Grid.Column="2"/>
+                        <Button Content="Check Car Hire" Grid.Column="2" HorizontalAlignment="Left" Margin="668,431,0,0" Click="BtnCheckCarHire_Click" VerticalAlignment="Top" Width="168" Height="35"/>
+                        <ComboBox x:Name="CheckCarHireCombo" Grid.Column="2" HorizontalAlignment="Left" Margin="583,23,0,0" VerticalAlignment="Top" Width="155"/>
 
                     </Grid>
             </TabItem>
@@ -387,7 +389,9 @@
                     <TextBox x:Name="txbCab_total" Text="150" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" Margin="539,598,0,0" Grid.Column="1"/>
                     <Button x:Name="btnCab_done" Content="DONE" HorizontalAlignment="Left" Margin="504,504,0,0" VerticalAlignment="Top" Width="150" Click="BtnCab_done_Click" Height="30" Grid.Column="1"/>
                     <Button x:Name="btnCab_update" Content="UPDATE" HorizontalAlignment="Left" Margin="262,312,0,0" VerticalAlignment="Top" Width="75" Background="#FF45D310" Visibility="Hidden" Grid.Column="1"/>
-                </Grid>
+                        <Button x:Name="btnCab_check" Content="Check Cab Services" Grid.Column="1" HorizontalAlignment="Left" Margin="501,431,0,0" VerticalAlignment="Top" Width="150" Click="BtnCheckCabServices_done_Click" Height="30"/>
+                        <ComboBox x:Name="CheckCabServicesCombo" Grid.Column="1" HorizontalAlignment="Left" Margin="429,215,0,0" VerticalAlignment="Top" Width="173"/>
+                    </Grid>
             </TabItem>
             <!--Flight-->
             <TabItem Header="Flight" Style="{DynamicResource TabItemStyle}">
