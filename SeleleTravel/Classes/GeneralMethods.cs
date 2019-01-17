@@ -31,9 +31,9 @@ namespace SeleleTravel
         /// Check if the texboxes are empty.
         /// </summary>
         /// <param name="stringValues"></param>
-        public static bool checkEmptytxtBox(List<string> stringValues)
+        public static bool checkEmptytxtBox(params string[] stringValues)
         {
-            for (int i = 0; i < stringValues.Count; i++)
+            for (int i = 0; i < stringValues.Length; i++)
             {
                 if (stringValues[i] == "")
                 {
@@ -48,25 +48,25 @@ namespace SeleleTravel
         /// checks if the number typed is a valid number.
         /// If the value to be checked is not a whole number then assign the bool to false. 
         /// </summary>
-        /// <param name="sender"></param>
-        /// /// <param name="int_double"></param>
-        public static void checkAmountTyped(object sender, bool int_double = true)
+        /// <param name="reference"></param>
+        /// /// <param name="isInterger">Set this to true if we are working with and int value and false if it's a double</param>
+        public static void checkAmountTyped(TextBox reference, bool isInterger = true)
         {
-            string acceptedCharacters = "";
-            // if it's true then the number being validated is an integer
-            // else it's a double
-            if (int_double) acceptedCharacters = "0123456789";
-            else acceptedCharacters = "0123456789.";
+            string text = reference.Text;
+            //Assume the number is an int
+            string acceptedCharacters = "0123456789";
+
+            //Verify your assumption:
+            //If it is indeed an int then we won't change the value of the acceptedChars
+            //Else if it isn't and we don't yet have a point, we change it
+            if (!isInterger && text.IndexOf('.') < 0) acceptedCharacters = "0123456789.";
            
-            
+            if (text.Length <= 0) return;
 
-            TextBox reference = (TextBox)sender;
-            if (reference.Text.Length <= 0) return;
-
-            string letterEntered = reference.Text.Last().ToString().ToLower();
+            string letterEntered = text.Last().ToString().ToLower();
             if (!acceptedCharacters.Contains(letterEntered))
             {
-                reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
+                reference.Text = text.TrimEnd(letterEntered.ToCharArray());
                 reference.SelectionStart = reference.Text.Length;
                 MessageBox.Show("'" + letterEntered + "' is not an accepted character for an amount!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -78,8 +78,12 @@ namespace SeleleTravel
         /// <param name="sender"></param>
         public static void checkPhoneNumber(TextBox reference)
         {
-            string acceptedCharacters = "+0123456789 ";
             if (reference.Text.Length <= 0) return;
+
+            string acceptedCharacters = "+0123456789 ";
+            string copy = reference.Text;
+
+            
 
             string letterEntered = reference.Text.Last().ToString().ToLower();
             if (!acceptedCharacters.Contains(letterEntered))
@@ -265,33 +269,7 @@ namespace SeleleTravel
 
         }
 
-        /// <summary>
-        /// gets the total number of quotes that have been generated thus far.
-        /// </summary>
-        /// <returns></returns>
-        private static int getNumberOfQuotes()
-        {
-            int numberOfQuotes = 0;
-            try
-            {
-                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-                myConnect.Open();
-                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(quote_no) FROM quote", myConnect);
-                NpgsqlDataReader dr = myCommand.ExecuteReader();
-                while (dr.Read())
-                {
-                    numberOfQuotes = Convert.ToInt32(dr[0]);
-                }
-                numberOfQuotes = Convert.ToInt32(dr.Read());
-                myConnect.Close();
-            }
-            catch (Exception h)
-            {
-                MessageBox.Show(h.ToString());
-            }
-            return numberOfQuotes;
-        }
-
+        
         /// <summary>
         /// It links the order number to the quote number and then saves the info to the csv file.
         /// </summary>
@@ -467,35 +445,7 @@ namespace SeleleTravel
             client_no = "C" + typeInitial + totalClients;
             return client_no;
         }
-        /// <summary>
-        /// gets the total number of clients that are in the system
-        /// </summary>
-        /// <param name="client Number"></param>
-        private static int getNumberOfClients()
-        {
 
-            int numberOfClients = 0;
-            try
-            {
-                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-                myConnect.Open();
-                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(client_no) FROM client", myConnect);
-                NpgsqlDataReader dr = myCommand.ExecuteReader();
-                while(dr.Read())
-                {
-                    numberOfClients = Convert.ToInt32(dr[0]);                 
-                }
-
-                myConnect.Close();
-            }
-            catch (Exception h)
-            {
-                MessageBox.Show(h.ToString());
-            }
-            return numberOfClients;
-
-
-        }
         //}
         /// <summary>
         /// gets the total number of quotes that have been generated thus far.
@@ -521,21 +471,6 @@ namespace SeleleTravel
                 MessageBox.Show(h.ToString());
             }
             return numberOfQuotes;
-        }
-
-        /// <summary>
-        /// checks if the quote number is empty.
-        /// </summary>
-        /// <param name="q_number"></param>
-        /// <returns></returns>
-        public static bool checkQuoteNotEmpty(string q_number)
-        {
-            if (q_number == "")
-            {
-                MessageBox.Show("The quote number has not been generated, please press the \"Request Verification\" button", "Error: Quote number not generated", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            return true;
         }
 
         /// <summary>

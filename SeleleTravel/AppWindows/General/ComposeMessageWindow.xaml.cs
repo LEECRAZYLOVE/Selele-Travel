@@ -105,10 +105,7 @@ namespace SeleleTravel
             // 1.
 
             // 2.
-            List<string> stringVs = new List<string>();
-            stringVs.Add(subjectOFmassage);
-            stringVs.Add(message);
-            bool t_or_f = GeneralMethods.checkEmptytxtBox(stringVs);
+            bool t_or_f = GeneralMethods.checkEmptytxtBox(subjectOFmassage, message);
 
             if (!t_or_f)
             {
@@ -118,11 +115,7 @@ namespace SeleleTravel
                 txbMessage_message.Text = "";
 
                 // clear the textboxes
-                List<TextBox> textBoxes = new List<TextBox>();
-                textBoxes.Add(txbMessage_staffnameTo);
-                textBoxes.Add(txbMessage_subject);
-                textBoxes.Add(txbMessage_message);
-                GeneralMethods.clearTextBoxes(textBoxes);
+                GeneralMethods.clearTextBoxes(txbMessage_staffnameTo, txbMessage_subject, txbMessage_message);
             }
         }
     }

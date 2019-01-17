@@ -38,8 +38,7 @@ namespace SeleleTravel
             string orderDate = txbConsultant_Orders_orderdate.Text;
 
             // check if the textboxes are empty or the strings associated with the textboxes
-            List<string> stringValueCheck = new List<string> { order_no};
-            bool checkEmptyStringBool = GeneralMethods.checkEmptytxtBox(stringValueCheck);
+            bool checkEmptyStringBool = GeneralMethods.checkEmptytxtBox(order_no);
 
             try
             {

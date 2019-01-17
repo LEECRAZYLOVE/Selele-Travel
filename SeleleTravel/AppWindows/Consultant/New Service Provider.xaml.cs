@@ -30,12 +30,12 @@ namespace SeleleTravel
 
         private void validateValue(object sender, TextChangedEventArgs e)
         {
-            GeneralMethods.checkAmountTyped(sender);
+            GeneralMethods.checkAmountTyped((TextBox)sender);
         }
 
         private void validateNumber(object sender, TextChangedEventArgs e)
         {
-            GeneralMethods.checkPhoneNumber(sender);
+            GeneralMethods.checkPhoneNumber((TextBox)sender);
         }
 
         private void createNewClient_Click(object sender, RoutedEventArgs e)
