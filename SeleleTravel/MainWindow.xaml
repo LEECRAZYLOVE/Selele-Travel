@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="./images/SeleleLogoBalls.png"
-        Title="Home" SizeToContent="WidthAndHeight" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Loaded="Window_Loaded" Width="647.2" Height="432" Closed="Home_Page_Closed">
+        Title="Home" SizeToContent="WidthAndHeight" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Width="647.2" Height="432" Closed="Home_Page_Closed">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

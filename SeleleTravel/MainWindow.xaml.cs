@@ -24,27 +24,19 @@ namespace SeleleTravel
     
     public partial class MainWindow : Window
     {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
         //instantiating all the windows as global objects
         public static LogInWindow logInWindow;
         public static string ConnectionString = "Database=Selele;Port=1998;Server=127.0.0.1;User Id=postgres;Password=Linomtha";
         public static string ChatConnectionString = string.Format("Server={0}; Port={1}; User Id={2}; Password={3}; Database={4};",
            "localhost", "1998", "postgres", "Linomtha", "postgres");
 
-        
+       
 
-        public MainWindow()
-        {
-            InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            Application.Current.MainWindow = this;
-
-          
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            //this.WindowState = WindowState.Maximized;
-        }
         private void loadLogInWindow(LoadWindow windowToLoad)
         {
             logInWindow = new LogInWindow(windowToLoad);

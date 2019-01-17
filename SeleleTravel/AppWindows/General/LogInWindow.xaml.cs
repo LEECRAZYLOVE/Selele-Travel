@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Data.SqlClient;
-//using Devart.Data.MySql;
+﻿//using Devart.Data.MySql;
 using Npgsql;
+using System;
+using System.Windows;
 
 namespace SeleleTravel
-{   
+{
     /// <summary>
     /// Interaction logic for Log_In.xaml
     /// </summary>
@@ -30,13 +18,14 @@ namespace SeleleTravel
             InitializeComponent();
         }
 
-        public LogInWindow(LoadWindow windowToLoad) :this()
+        public LogInWindow(LoadWindow windowToLoad) : this()
         {
             this.windowToLoad = windowToLoad;
         }
 
+
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
-        {        
+        {
             NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
 
             string checkUserId = txbLogIn_staffID.Text;
@@ -77,7 +66,7 @@ namespace SeleleTravel
                     catch (Exception h)
                     {
                         MessageBox.Show(h.ToString());
-                    }                                      
+                    }
                     break;
 
                 case LoadWindow.Manager:
@@ -113,7 +102,7 @@ namespace SeleleTravel
                     catch (Exception h)
                     {
                         MessageBox.Show(h.ToString());
-                    }                                      
+                    }
                     break;
 
                 case LoadWindow.Owner:
@@ -168,7 +157,7 @@ namespace SeleleTravel
         {
             this.Hide();
             signUpWindow.Show();
-            
+
         }
 
         private void BtnGoBack_Click(object sender, RoutedEventArgs e)
