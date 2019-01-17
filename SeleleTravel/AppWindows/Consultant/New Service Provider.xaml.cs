@@ -30,7 +30,7 @@ namespace SeleleTravel
 
         private void validateValue(object sender, TextChangedEventArgs e)
         {
-            GeneralMethods.checkAmountTyped(sender);
+            GeneralMethods.checkAmountTyped((TextBox)sender);
         }
 
         private void validateNumber(object sender, TextChangedEventArgs e)

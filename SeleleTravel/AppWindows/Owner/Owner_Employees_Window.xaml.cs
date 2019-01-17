@@ -114,7 +114,7 @@ namespace SeleleTravel
 
         private void TxbNewEmployee_salary_TextChanged(object sender, TextChangedEventArgs e)
         {
-            GeneralMethods.checkAmountTyped(sender, false);
+            GeneralMethods.checkAmountTyped((TextBox)sender, false);
         }
 
         private void btnEmplyees_find_Click_1(object sender, RoutedEventArgs e)

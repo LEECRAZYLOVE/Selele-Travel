@@ -78,8 +78,12 @@ namespace SeleleTravel
         /// <param name="sender"></param>
         public static void checkPhoneNumber(TextBox reference)
         {
-            string acceptedCharacters = "+0123456789 ";
             if (reference.Text.Length <= 0) return;
+
+            string acceptedCharacters = "+0123456789 ";
+            string copy = reference.Text;
+
+            
 
             string letterEntered = reference.Text.Last().ToString().ToLower();
             if (!acceptedCharacters.Contains(letterEntered))

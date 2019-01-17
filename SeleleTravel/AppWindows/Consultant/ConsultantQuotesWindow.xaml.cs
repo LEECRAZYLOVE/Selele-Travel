@@ -160,7 +160,7 @@ namespace SeleleTravel
         private void AmountChanged(object sender, TextChangedEventArgs e)
         {
             bool intOrDouble = false;
-            GeneralMethods.checkAmountTyped(sender, intOrDouble);
+            GeneralMethods.checkAmountTyped((TextBox)sender, intOrDouble);
         }
 
         /// <summary>
