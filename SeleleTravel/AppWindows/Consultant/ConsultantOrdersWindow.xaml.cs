@@ -69,8 +69,7 @@ namespace SeleleTravel
    
 
             // reset the textboxes
-            List<TextBox> textBoxes = new List<TextBox> { txbConsultant_Orders_orderNumber, txbConsultant_Orders_inputQuote };
-            GeneralMethods.clearTextBoxes(textBoxes);
+            GeneralMethods.clearTextBoxes(txbConsultant_Orders_orderNumber, txbConsultant_Orders_inputQuote);
         }
 
         private void BtnConvsultant_Orders_viewQuote_Click(object sender, RoutedEventArgs e)
