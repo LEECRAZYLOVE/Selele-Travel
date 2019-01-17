@@ -24,6 +24,14 @@ namespace SeleleTravel
 
     public partial class MainWindow : Window
     {
+        #region Constructor
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+        #endregion
+
+
         //instantiating all the windows as global objects
         public static LogInWindow logInWindow;
         public static string ConnectionString = "Database=Selele;Port=1998;Server=192.168.1.5;User Id=postgres;Password=Linomtha";
