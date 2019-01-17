@@ -180,7 +180,7 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void phoneNumberCheck(object sender, TextChangedEventArgs e)
         {
-            GeneralMethods.checkPhoneNumber(sender);
+            GeneralMethods.checkPhoneNumber((TextBox)sender);
         }
 
         #endregion
@@ -1449,28 +1449,28 @@ namespace SeleleTravel
             string agencyname = txbCab_agency.Text;
             string agency_id = "";
             //Query for finding the agency_IDs available
-            //try
-            //{
-            //    NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-            //    myConnect.Open();
-            //    using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceprovider WHERE agencyname = '{agencyname}'", myConnect))
-            //    {
-            //        NpgsqlDataReader query = cmd.ExecuteReader();
-            //        int k = 0;
-            //        while (query.Read())
-            //        {
+            try
+                {
+                    NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                    myConnect.Open();
+                    using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceprovider WHERE agencyname = '{agencyname}'", myConnect))
+                    {
+                        NpgsqlDataReader query = cmd.ExecuteReader();
+                        int k = 0;
+                        while (query.Read())
+                        {
 
-            //            .Items.Add(query[k]); 
-            //            k++;
-            //        }
-            //        myConnect.Close();
-            //    }
-            //}
-            //catch (Exception h)
-            //{
-            //    MessageBox.Show(h.ToString());
-            //}
-           
+                       CheckCabServicesCombo.Items.Add(query[k]);
+                            k++;
+                        }
+                        myConnect.Close();
+                    }
+                }
+                catch (Exception h)
+                {
+                    MessageBox.Show(h.ToString());
+                }
+
         }
     }
 }
