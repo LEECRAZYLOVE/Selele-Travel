@@ -375,13 +375,41 @@ namespace SeleleTravel
                 _totalQts = "0" + _totalQts;
             }
             // generates the quote number using the time and string generated above
-            quote_no = $"Q{_totalQts}";
+            quote_no = $"V{_totalQts}";
 
 
             return quote_no;
 
         }
+        /// <summary>
+        /// gets the total number of vouchers that are in the system
+        /// </summary>
+        /// <param name="voucher_no"></param>
+        private static int getNumberOfVouchers()
+        {
 
+            int numberOfVouchers = 0;
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(voucher_no) FROM voucher", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    numberOfVouchers = Convert.ToInt32(dr[0]);
+                }
+
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            return numberOfVouchers;
+
+
+        }
         /// <summary>
         /// It generates the voucher number.
         /// </summary>
@@ -390,7 +418,7 @@ namespace SeleleTravel
         {
 
             string voucher_no = "";
-            string numOfVoucher = Convert.ToString(getNumberOfQuotes());
+            string numOfVoucher = Convert.ToString(getNumberOfVouchers());
             string _totalQts = numOfVoucher; // assigns the static value to the string
 
             while (_totalQts.Length < 6)
@@ -399,11 +427,11 @@ namespace SeleleTravel
                 _totalQts = "0" + _totalQts;
             }
             //generates the quote number using the time and string generated above
-            voucher_no = $"Q{_totalQts}";
+            voucher_no = $"V{_totalQts}";
 
 
             //  return voucher_no;
-            return "";
+            return voucher_no;
         }
 
         /// <summary>
@@ -438,6 +466,76 @@ namespace SeleleTravel
 
             client_no = "C" + typeInitial + totalClients;
             return client_no;
+        }
+        /// <summary>
+        /// gets the total number of clients that are in the system
+        /// </summary>
+        /// <param name="client Number"></param>
+        private static int getNumberOfClients()
+        {
+
+            int numberOfClients = 0;
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(client_no) FROM client", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+                while(dr.Read())
+                {
+                    numberOfClients = Convert.ToInt32(dr[0]);                 
+                }
+
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            return numberOfClients;
+
+
+        }
+        //}
+        /// <summary>
+        /// gets the total number of quotes that have been generated thus far.
+        /// </summary>
+        /// <returns></returns>
+        private static int getNumberOfQuotes()
+        {
+            int numberOfQuotes = 0;
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(quote_no) FROM quote", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    numberOfQuotes = Convert.ToInt32(dr[0]);
+                }
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            return numberOfQuotes;
+        }
+
+        /// <summary>
+        /// checks if the quote number is empty.
+        /// </summary>
+        /// <param name="q_number"></param>
+        /// <returns></returns>
+        public static bool checkQuoteNotEmpty(string q_number)
+        {
+            if (q_number == "")
+            {
+                MessageBox.Show("The quote number has not been generated, please press the \"Request Verification\" button", "Error: Quote number not generated", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
         }
 
         /// <summary>

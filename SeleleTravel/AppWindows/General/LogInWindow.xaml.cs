@@ -56,9 +56,9 @@ namespace SeleleTravel
                                 else
                                 {
                                     MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
-
+                                    break;
                                 }
-
+                                
                             }
                         }
                         myConnect.Close();
@@ -92,7 +92,7 @@ namespace SeleleTravel
                                 else
                                 {
                                     MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
-
+                                    break;
                                 }
 
                             }
@@ -128,7 +128,7 @@ namespace SeleleTravel
                                 else
                                 {
                                     MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
-
+                                    break;
                                 }
 
                             }

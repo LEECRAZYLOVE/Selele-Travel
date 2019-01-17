@@ -41,7 +41,7 @@ namespace SeleleTravel
         string timeQuoted = Convert.ToString(DateTime.Now.TimeOfDay).Substring(0,9);
         double servicefee = 0;
         DateTime quoteDate = DateTime.Today.Date;
-        
+        string Agencies = "";
         #region Client tab
 
         #region New Client
@@ -189,7 +189,7 @@ namespace SeleleTravel
         //Create New Client
         private void add_Button_Click(object sender, RoutedEventArgs e)
         {
-             clientname = txbNewClient_name.Text + " " + txbNewClient_surname.Text;
+            clientname = txbNewClient_name.Text + " " + txbNewClient_surname.Text;
             string typeOfClient = "";
            if(ckbBusiness.IsChecked == true)
             {
@@ -207,7 +207,6 @@ namespace SeleleTravel
             string emailaddress = txbNewClient_email.Text;
             string telephone = txbNewClient_telephone.Text;
             string fax = txbNewClient_fax.Text;
-            string timeQuoted = Convert.ToString(DateTime.Now);
             string city = txbNewClient_city.Text;
             string province = DropBxNewClient_province.Text;
             string areaCode = txbNewClient_areaCode.Text;
@@ -360,7 +359,8 @@ namespace SeleleTravel
         {
             // Asign vars to texbox values
             string _agencyName = txbCab_agency.Text;
-            string _driverName = txbCab_driver.Text;
+            Agencies = Agencies + "|" + _agencyName;
+           string _driverName = txbCab_driver.Text;
             string _pickUpLocation = txbCab_pickUp.Text;
             string _dropOffLocation = txbCab_dropOff.Text;
             string _timeOfPickUp = txbCab_pickUpTime.Text;
@@ -580,7 +580,7 @@ namespace SeleleTravel
         private void BtnCarHire_Done_Click(object sender, RoutedEventArgs e)
         {
             // Asign variable to textbox text
-            string agencyName = txbCarHire_agency.Text;
+             Agencies =Agencies+"|"+ txbCarHire_agency.Text;
             string pickUpLocation = txbCarHire_pickUp.Text;
             string dropOffLocation = txbCarHire_dropOff.Text;
             DateTime _startday =dpCarHire_startDay.DisplayDate;
@@ -598,14 +598,14 @@ namespace SeleleTravel
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
                 using (var cmd = new NpgsqlCommand($"INSERT INTO carhire " +
-                    $" (agencyname, quote_no,pickuplocation,dropofflocation,dayofhire,expectedenddate,carhirespecifications,amount)"+
-                    $" VALUES (@agencyname,@quote_no,@pickuplocation,@dropofflocation,@dayofhire,@expectedenddate,@carhirespecifications,@amount)", myConnect))
+                    $" (agencyname, quote_no,pickuplocation,dropofflocation,startday,expectedenddate,carhirespecifications,amount)"+
+                    $" VALUES (@agencyname,@quote_no,@pickuplocation,@dropofflocation,@startday,@expectedenddate,@carhirespecifications,@amount)", myConnect))
                 {
-                    cmd.Parameters.AddWithValue("agencyname", agencyName);
+                    cmd.Parameters.AddWithValue("agencyname", Agencies);
                     cmd.Parameters.AddWithValue("quote_no", quote_no);
                     cmd.Parameters.AddWithValue("pickuplocation", pickUpLocation);
                     cmd.Parameters.AddWithValue("dropofflocation",dropOffLocation);
-                    cmd.Parameters.AddWithValue("dayofhire", _startday.Date.ToString().Substring(0, 10));
+                    cmd.Parameters.AddWithValue("startday", _startday.Date.ToString().Substring(0, 10));
                     cmd.Parameters.AddWithValue("expectedenddate", _endDay.Date.ToString().Substring(0, 10));
                     cmd.Parameters.AddWithValue("carhirespecifications", carHireSpecs);
                     cmd.Parameters.AddWithValue("amount", amount);
@@ -620,7 +620,7 @@ namespace SeleleTravel
             // Data Validation
             // Check for errors
             List<DateTime> dateTimes = new List<DateTime> (2) { _startday, _endDay};
-            List<string> stringVs = new List<string> { agencyName, pickUpLocation, dropOffLocation, carHireSpecs};
+            List<string> stringVs = new List<string> { Agencies, pickUpLocation, dropOffLocation, carHireSpecs};
             
             // This returns a bool value,
             // if it returns true then one of the strings are empty
@@ -878,7 +878,8 @@ namespace SeleleTravel
         private void btnConference_done_Click_1(object sender, RoutedEventArgs e)
         {
             string conferenceName = txbConference_name.Text;
-            string conferenceVenue = txbConference_venue.Text;
+            Agencies = Agencies + "|" + conferenceName;
+           string conferenceVenue = txbConference_venue.Text;
             DateTime startDateOfConference = dpConference_startDate.DisplayDate;
             DateTime endDateofConference = dpConference_endDate.DisplayDate;
             string conferenceTime = txbConference_time.Text;
@@ -992,7 +993,8 @@ namespace SeleleTravel
         private void btnFlight_done_Click_1(object sender, RoutedEventArgs e)
         {
             string airline = txbFlight_airline.Text;
-            string fromcity = txbFlight_from.Text;
+            Agencies = Agencies + "|" + airline;
+           string fromcity = txbFlight_from.Text;
             string tocity = txbFlight_to.Text;
             DateTime departdate = dpFlight_departure.DisplayDate;
             int numberofbags = Convert.ToInt32(txbFlight_numBags.Text);
@@ -1093,7 +1095,8 @@ namespace SeleleTravel
         private void btnAccommodation_done_Click_1(object sender, RoutedEventArgs e)
         {
             string accomname = txbAccommodation_name.Text;
-            string accom_id = "AccoPE0001";//this is generated by function for accommodationID
+            Agencies = Agencies + "|" + accomname;
+           string accom_id = "AccoPE0001";//this is generated by function for accommodationID
             DateTime checkin = dpAccommodation_checkIn.DisplayDate;
             DateTime checkout = dpAccommodation_checkOut.DisplayDate;
             int numberofguests = Convert.ToInt32(txbAccommodation_numGuests.Text);
@@ -1302,36 +1305,36 @@ namespace SeleleTravel
         {
             //Todo sql insertion
                    // ...
-            var context = new SeleleEntities();
-            var currentQuote = new quote()
-            {
+            //var context = new SeleleEntities();
+            //var currentQuote = new quote()
+            //{
                
-                quote_no=quote_no,
-                amount=quoteAmount,
-                service=service,
-                timequoted=timeQuoted,
-                quotedate=quoteDate,
-                consultant_no=consultant_no,
-                client_no=client_no,
-                clientname=clientname
-            };
-            //Add quote to database
-            try
-            {
-                //context.quotes.Add(currentQuote);
-                //context.SaveChanges();
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-                throw ex;
+            //    quote_no=quote_no,
+            //    amount=quoteAmount,
+            //    service=service,
+            //    timequoted=timeQuoted,
+            //    quotedate=quoteDate,
+            //    consultant_no=consultant_no,
+            //    client_no=client_no,
+            //    clientname=clientname
+            //};
+            ////Add quote to database
+            //try
+            //{
+            //    //context.quotes.Add(currentQuote);
+            //    //context.SaveChanges();
+            //}
+            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            //{
+            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
+            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
+            //}
+            //catch (Exception ex)
+            //{
+            //    //other error
+            //    throw ex;
 
-            }
+            //}
         }
 
    
@@ -1355,7 +1358,8 @@ namespace SeleleTravel
         private void btnQuote_markUp_Click_1(object sender, RoutedEventArgs e)
         {
             double markup = Convert.ToDouble(txbQuote_markUp.Text);
-            quoteAmount += markup;
+            servicefee = quoteAmount*0.1;
+            quoteAmount += servicefee;
             double vat = quoteAmount * 0.15;
             quoteAmount += vat;
 
@@ -1381,38 +1385,6 @@ namespace SeleleTravel
             string tempOrderNum = "To Be Added";
             //GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
 
-
-
-            //var CurrentQuote = new quote()
-            //{
-
-            //    quote_no = quote_no,
-            //    amount = quoteAmount,
-            //    service = service,
-            //    timequoted = timeQuoted,
-            //    quotedate = quoteDate,
-            //    consultant_no = consultant_no,
-            //    client_no = client_no,
-            //    clientname = clientname,
-            //    servicefee=servicefee
-
-            //};
-            //Add quote to database
-            //try
-            //{
-            //    //context.quotes.Add(CurrentQuote);
-            //    //context.SaveChanges();
-            //}
-            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            //{
-            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            //}
-            //catch (Exception ex)
-            //{
-            //    //other error
-            //    throw ex;
-            //}
             //Query for inserting the client
             try
             {
@@ -1425,7 +1397,7 @@ namespace SeleleTravel
                     cmd.Parameters.AddWithValue("amount",quoteAmount );
                     cmd.Parameters.AddWithValue("service",service );
                     cmd.Parameters.AddWithValue("timequoted", timeQuoted);
-                    cmd.Parameters.AddWithValue("quotedate",quoteDate );
+                    cmd.Parameters.AddWithValue("quotedate",quoteDate.ToString().Substring(0,9) );
                     cmd.Parameters.AddWithValue("consultant_no",consultant_no );
                     cmd.Parameters.AddWithValue("client_no", client_no);
                     cmd.Parameters.AddWithValue("clientname", clientname);

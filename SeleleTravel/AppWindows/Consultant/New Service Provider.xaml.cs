@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
-
+using Npgsql;
 
 namespace SeleleTravel
 {
@@ -171,15 +171,15 @@ namespace SeleleTravel
 
         private void BtnNewService_add_Click(object sender, RoutedEventArgs e)
         {
-            ////For insertion Done
-            //string name = txbNewService_name.Text;
-            //string address = txbNewService_address.Text;
-            //string telephone = txbNewService_telephone.Text;
-            //string emailadress = txbNewService_email.Text;
-            //string fax = txbNewService_fax.Text;
-            //string cellphone = txbNewService_cellphone.Text;
-            //string service = cbbNewService_entities.SelectionBoxItem.ToString();
-            //string agency_ID = GeneralMethods.makeAgency_ID(name, service);
+            //For insertion Done
+            string name = txbNewService_name.Text;
+            string address = txbNewService_address.Text;
+            string telephone = txbNewService_telephone.Text;
+            string emailadress = txbNewService_email.Text;
+            string fax = txbNewService_fax.Text;
+            string cellphone = txbNewService_cellphone.Text;
+            string service = cbbNewService_entities.SelectionBoxItem.ToString();
+            string agency_ID = GeneralMethods.makeAgency_ID(name, service);
             //var context = new SeleleEntities();
             //var currentServiceProvider = new agencydetail()
             //{
@@ -210,6 +210,30 @@ namespace SeleleTravel
             //    throw ex;
 
             //}
+
+            //Query for inserting the service provider
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"INSERT INTO serviceproviders (agency_id,nameofagency,address,telephone,emailaddress,fax,cellphone,service) VALUES (@agency_id,@nameofagency,@address,@telephone,@emailaddress,@fax,@cellphone,@service)", myConnect))
+                {
+                    cmd.Parameters.AddWithValue("agency_id", agency_ID);
+                    cmd.Parameters.AddWithValue("nameofagency",name );
+                    cmd.Parameters.AddWithValue("address", address);
+                    cmd.Parameters.AddWithValue("telephone", telephone);
+                    cmd.Parameters.AddWithValue("emailaddress",emailadress );
+                    cmd.Parameters.AddWithValue("fax",fax );
+                    cmd.Parameters.AddWithValue("cellphone",cellphone );
+                    cmd.Parameters.AddWithValue("service",service );
+                    cmd.ExecuteNonQuery();
+                }
+                MessageBox.Show($"Successfully added into database. Agency_Id is: {agency_ID}");
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
         }
 
         private void btnUpdateClient_Click_1(object sender, RoutedEventArgs e)
