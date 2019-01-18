@@ -518,12 +518,12 @@ namespace SeleleTravel
             NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
             try
             {
-                myConnect.Open();
                 for (int j = 0; j < services_list.Count(); j++)
                 {
                     switch (services_list[j])
                     {
                         case "Acccommodation":
+                            myConnect.Open();
                             NpgsqlCommand myCommand1 = new NpgsqlCommand($"SELECT numberofrooms,accomname,numberofguests,accomspecs,checkin,checkout,amount FROM accommodation WHERE quote_no = '{QuoteNo}'", myConnect);
                             NpgsqlDataReader dr1 = myCommand1.ExecuteReader();
                             while (dr1.Read())
@@ -534,9 +534,11 @@ namespace SeleleTravel
                                     $" \t\t check in: {dr1[4]} \t check out: {dr1[5]}");
                                 amounts.Add(Convert.ToString(dr1[6]));
                             }
+                            myConnect.Close();
                             break;
 
                         case "Cab Services":
+                            myConnect.Open();
                             NpgsqlCommand myCommand2 = new NpgsqlCommand($"SELECT numberofcabs,nameofagency,pickup,dropoff,dateofcab,timeofcab,cabspecs,amount FROM cabservices WHERE quote_no = '{QuoteNo}'", myConnect);
                             NpgsqlDataReader dr2 = myCommand2.ExecuteReader();
                             while (dr2.Read())
@@ -547,9 +549,11 @@ namespace SeleleTravel
                                     $" \t\t with the following specifications: {dr2[6]}");
                                 amounts.Add(Convert.ToString(dr2[7]));
                             }
+                            myConnect.Close();
                             break;
 
                         case "Car Hire":
+                            myConnect.Open();
                             NpgsqlCommand myCommand3 = new NpgsqlCommand($"SELECT numberofcars,agencyname,pickuplocation,dropofflocation,startday,expectedenddate,carhirespecifications,amount FROM carhire WHERE quote_no = '{QuoteNo}'", myConnect);
                             NpgsqlDataReader dr3 = myCommand3.ExecuteReader();
                             while (dr3.Read())
@@ -560,9 +564,11 @@ namespace SeleleTravel
                                     $" \t\t with the following specifications: {dr3[5]}");
                                 amounts.Add(Convert.ToString(dr3[6]));
                             }
+                            myConnect.Close();
                             break;
 
                         case "Flight":
+                            myConnect.Open();
                             NpgsqlCommand myCommand4 = new NpgsqlCommand($"SELECT passengernum,airline,fromcity,tocity,departdate,numberofbags,flightspecs,amount FROM flight WHERE quote_no = '{QuoteNo}'", myConnect);
                             NpgsqlDataReader dr4 = myCommand4.ExecuteReader();
                             while (dr4.Read())
@@ -573,9 +579,11 @@ namespace SeleleTravel
                                 $" \t\t with the following specifications: {dr4[6]}");
                                 amounts.Add(Convert.ToString(dr4[7]));
                             }
+                            myConnect.Close();
                             break;
 
                         case "Event":
+                            myConnect.Open();
                             NpgsqlCommand myCommand5 = new NpgsqlCommand($"SELECT eventname,startday,endday,eventspecs,amount FROM event WHERE quote_no = '{QuoteNo}'", myConnect);
                             NpgsqlDataReader dr5 = myCommand5.ExecuteReader();
                             while (dr5.Read())
@@ -585,9 +593,11 @@ namespace SeleleTravel
                                 $" \t\t with the following specifications: {dr5[3]}");
                                 amounts.Add(Convert.ToString(dr5[4]));
                             }
+                            myConnect.Close();
                             break;
 
                         case "Conference":
+                            myConnect.Open();
                             NpgsqlCommand myCommand6 = new NpgsqlCommand($"SELECT conferencename,startday,endday,venue,timeofconference,conferencespecs,amount FROM conference WHERE quote_no = '{QuoteNo}'", myConnect);
                             NpgsqlDataReader dr6 = myCommand6.ExecuteReader();
                             while (dr6.Read())
@@ -598,10 +608,10 @@ namespace SeleleTravel
                                     $" \t\t with the following specifications: {dr6[5]}");
                                 amounts.Add(Convert.ToString(dr6[6]));
                             }
+                            myConnect.Close();
                             break;
                     }
                 }
-                myConnect.Close();
             }
             catch (Exception h)
             {
@@ -634,7 +644,6 @@ namespace SeleleTravel
                 myConnect.Open();
                 NpgsqlCommand myCommand7 = new NpgsqlCommand($"SELECT servicefee, amount FROM quote WHERE quote_no = '{QuoteNo}'", myConnect);
                 NpgsqlDataReader dr7 = myCommand7.ExecuteReader();
-                myCommand7.ExecuteReader();
                 while (dr7.Read())
                 {
                     outputQuoteSummary += $"\t\t Service Fee \t\t\t\t\t\t\t\t {dr7[0]} \n " +
