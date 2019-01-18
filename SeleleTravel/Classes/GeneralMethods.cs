@@ -24,6 +24,7 @@ namespace SeleleTravel
         public static string seleleAccountNumber = "251389715";
         public static string seleleBranchName = "Vincent Park";
         public static string seleleBranchCode = "053721";
+        public static string outputQuoteSummary = "";
         #endregion
 
         #region Methods
@@ -607,47 +608,53 @@ namespace SeleleTravel
                             break;
                     }
                 }
+                myConnect.Close();
             }
             catch (Exception h)
             {
                 MessageBox.Show(h.ToString());
             }
-            myConnect.Close();
 
             //Displaying the informatoin
-            string output = "\n\n";
+            outputQuoteSummary = "\n\n";
             if (quantities.Count() == descriptions.Count() && quantities.Count() == amounts.Count()) //checking if the lists are equal, meaning that they correspond
             {
-                output = "QUANTIY \t DESCRIPTION \t\t\t\t\t\t\t\t AMOUNT \n"; //making the headers
+                outputQuoteSummary = "QUANTIY \t DESCRIPTION \t\t\t\t\t\t\t\t AMOUNT \n"; //making the headers
                 for (int j = 0; j < amounts.Count(); j++) //extracting the information from the lists
                 {
-                    output += $"{quantities[j]} \t\t {descriptions[j]} \t\t\t {amounts[j]} \n\n";
-                }
+                    outputQuoteSummary += $"{quantities[j]} \t\t {descriptions[j]} \t\t\t {amounts[j]} \n\n";
+                }               
+            }           
+            return outputQuoteSummary;
+        }
 
-                NpgsqlConnection myConnect1 = new NpgsqlConnection(MainWindow.ConnectionString);
-
-                //displaying and extracting the service fee, VAT and total for the quote
-                try
+        /// <summary>
+        /// displaying and extracting the service fee, VAT and total for the quote
+        /// </summary>
+        /// <param name="QuoteNo"></param>
+        /// <returns></returns>
+        public static string quoteSummaryAmounts(string QuoteNo)
+        {
+            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            try
+            {
+                myConnect.Open();
+                NpgsqlCommand myCommand7 = new NpgsqlCommand($"SELECT servicefee, amount FROM quote WHERE quote_no = '{QuoteNo}'", myConnect);
+                NpgsqlDataReader dr7 = myCommand7.ExecuteReader();
+                myCommand7.ExecuteReader();
+                while (dr7.Read())
                 {
-                    myConnect1.Open();
-                    NpgsqlCommand myCommand7 = new NpgsqlCommand($"SELECT servicefee, amount FROM quote WHERE quote_no = '{QuoteNo}'", myConnect1);
-                    NpgsqlDataReader dr7 = myCommand7.ExecuteReader(); 
-                    myCommand7.ExecuteReader();
-                    while (dr7.Read())
-                    {
-                        output += $"\t\t Service Fee \t\t\t\t\t\t\t\t {dr7[0]} \n " +
-                        $"\t\t VAT 15% \t\t\t\t\t\t\t\t {Convert.ToDouble(dr7[1]) * 0.15} \n " +
-                        $"\t\t Total   \t\t\t\t\t\t\t\t {Convert.ToDouble(dr7[1]) * 0.15 + Convert.ToDouble(dr7[0])}";
-                    }
-                }catch (Exception h)
-                {
-                    MessageBox.Show(h.ToString());
+                    outputQuoteSummary += $"\t\t Service Fee \t\t\t\t\t\t\t\t {dr7[0]} \n " +
+                    $"\t\t VAT 15% \t\t\t\t\t\t\t\t {Convert.ToDouble(dr7[1]) * 0.15} \n " +
+                    $"\t\t Total   \t\t\t\t\t\t\t\t {Convert.ToDouble(dr7[1]) * 0.15 + Convert.ToDouble(dr7[0])}";
                 }
-                myConnect1.Close();
+                myConnect.Close();
             }
-
-            return output;
-
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            return outputQuoteSummary;
         }
 
         /// <summary>
