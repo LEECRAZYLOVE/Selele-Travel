@@ -180,7 +180,7 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void phoneNumberCheck(object sender, TextChangedEventArgs e)
         {
-            GeneralMethods.checkPhoneNumber(sender);
+            GeneralMethods.checkPhoneNumber((TextBox)sender);
         }
 
         #endregion
@@ -297,9 +297,7 @@ namespace SeleleTravel
                 }
 
                 // reset texbox values to empty
-                // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox> { txbEvents_name, txbEvents_specifications, txbEvents_total };
-                GeneralMethods.clearTextBoxes(textBoxes);
+                GeneralMethods.clearTextBoxes(txbEvents_name, txbEvents_specifications, txbEvents_total);
 
             }
 
@@ -344,9 +342,7 @@ namespace SeleleTravel
                 // ...
 
                 // reset texbox values to empty
-                // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox> { txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total };
-                GeneralMethods.clearTextBoxes(textBoxes);
+                GeneralMethods.clearTextBoxes(txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total);
                 
             }
         }
@@ -422,17 +418,7 @@ namespace SeleleTravel
                     h.ToString();
                 }
                 // reset the textbox values to empty
-                // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox>();
-                textBoxes.Add(txbCab_agency);
-                textBoxes.Add(txbCab_driver);
-                textBoxes.Add(txbCab_pickUp);
-                textBoxes.Add(txbCab_dropOff);
-                textBoxes.Add(txbCab_pickUpTime);
-                textBoxes.Add(txbCab_numCabs);
-                textBoxes.Add(txbCab_specifications);
-                textBoxes.Add(txbCab_total);
-                GeneralMethods.clearTextBoxes(textBoxes);
+                GeneralMethods.clearTextBoxes(txbCab_agency, txbCab_driver, txbCab_pickUp, txbCab_dropOff , txbCab_pickUpTime, txbCab_numCabs, txbCab_specifications, txbCab_total);
             }
         }
     
@@ -493,14 +479,7 @@ namespace SeleleTravel
                 }
 
                 // reset the textbox values to empty
-                // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox>();
-                textBoxes.Add(txbAccommodation_name);
-                textBoxes.Add(txbAccommodation_specifications);
-                textBoxes.Add(txbAccommodation_numGuests);
-                textBoxes.Add(txbAccommodation_numRooms);
-                textBoxes.Add(txbAccommodation_total);
-                GeneralMethods.clearTextBoxes(textBoxes);
+                GeneralMethods.clearTextBoxes(txbAccommodation_name, txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_total);
 
                 // clear the passangers
                 _passengers = new List<string>();
@@ -564,9 +543,7 @@ namespace SeleleTravel
                 //};
 
                 // Reset the texboxes to empty
-                // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox> { txbAccommodation_name, txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_numRooms, txbAccommodation_total };
-                GeneralMethods.clearTextBoxes(textBoxes);
+                GeneralMethods.clearTextBoxes(txbAccommodation_name, txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_numRooms, txbAccommodation_total);
             }
 
 
@@ -639,9 +616,7 @@ namespace SeleleTravel
                 
               
                 // Reset the textboxes
-                // call the clear textbox method
-                List<TextBox> toBeCleared = new List<TextBox> { txbCarHire_agency, txbCarHire_pickUp, txbCarHire_dropOff, txbCarHire_numCars, txbCarHire_specifications };
-                GeneralMethods.clearTextBoxes(toBeCleared);
+                GeneralMethods.clearTextBoxes(txbCarHire_agency, txbCarHire_pickUp, txbCarHire_dropOff, txbCarHire_numCars, txbCarHire_specifications);
             }
 
             
@@ -773,9 +748,7 @@ namespace SeleleTravel
                 }
 
                 // reset texbox values to empty
-                // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox> { txbEvents_name, txbEvents_specifications, txbEvents_total };
-                GeneralMethods.clearTextBoxes(textBoxes);
+                GeneralMethods.clearTextBoxes(txbEvents_name, txbEvents_specifications, txbEvents_total);
 
             }
         }
@@ -864,9 +837,7 @@ namespace SeleleTravel
                 servicesDates.Add(eventEnddate);
 
                 // reset texbox values to empty
-                // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox> { txbEvents_name, txbEvents_specifications, txbEvents_total };
-                GeneralMethods.clearTextBoxes(textBoxes);
+                GeneralMethods.clearTextBoxes(txbEvents_name, txbEvents_specifications, txbEvents_total);
 
             }
         }
@@ -934,9 +905,7 @@ namespace SeleleTravel
                 servicesDates.Add(endDateofConference);
 
                 // reset texbox values to empty
-                // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox> { txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total };
-                GeneralMethods.clearTextBoxes(textBoxes);
+                GeneralMethods.clearTextBoxes(txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total);
 
             }
         }
@@ -1074,14 +1043,7 @@ namespace SeleleTravel
                 }
 
                 // reset the textbox values to empty
-                // call the clear textbox method
-                List<TextBox> textBoxes = new List<TextBox>();
-                textBoxes.Add(txbAccommodation_name);
-                textBoxes.Add(txbAccommodation_specifications);
-                textBoxes.Add(txbAccommodation_numGuests);
-                textBoxes.Add(txbAccommodation_numRooms);
-                textBoxes.Add(txbAccommodation_total);
-                GeneralMethods.clearTextBoxes(textBoxes);
+                GeneralMethods.clearTextBoxes(txbAccommodation_name, txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_numRooms, txbAccommodation_total);
 
                 // clear the passangers
                 _passengers = new List<string>();

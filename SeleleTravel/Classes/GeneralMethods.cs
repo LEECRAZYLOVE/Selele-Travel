@@ -265,33 +265,7 @@ namespace SeleleTravel
 
         }
 
-        /// <summary>
-        /// gets the total number of quotes that have been generated thus far.
-        /// </summary>
-        /// <returns></returns>
-        private static int getNumberOfQuotes()
-        {
-            int numberOfQuotes = 0;
-            try
-            {
-                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-                myConnect.Open();
-                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(quote_no) FROM quote", myConnect);
-                NpgsqlDataReader dr = myCommand.ExecuteReader();
-                while (dr.Read())
-                {
-                    numberOfQuotes = Convert.ToInt32(dr[0]);
-                }
-                numberOfQuotes = Convert.ToInt32(dr.Read());
-                myConnect.Close();
-            }
-            catch (Exception h)
-            {
-                MessageBox.Show(h.ToString());
-            }
-            return numberOfQuotes;
-        }
-
+        
         /// <summary>
         /// It links the order number to the quote number and then saves the info to the csv file.
         /// </summary>
@@ -467,35 +441,7 @@ namespace SeleleTravel
             client_no = "C" + typeInitial + totalClients;
             return client_no;
         }
-        /// <summary>
-        /// gets the total number of clients that are in the system
-        /// </summary>
-        /// <param name="client Number"></param>
-        private static int getNumberOfClients()
-        {
 
-            int numberOfClients = 0;
-            try
-            {
-                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-                myConnect.Open();
-                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT COUNT(client_no) FROM client", myConnect);
-                NpgsqlDataReader dr = myCommand.ExecuteReader();
-                while(dr.Read())
-                {
-                    numberOfClients = Convert.ToInt32(dr[0]);                 
-                }
-
-                myConnect.Close();
-            }
-            catch (Exception h)
-            {
-                MessageBox.Show(h.ToString());
-            }
-            return numberOfClients;
-
-
-        }
         //}
         /// <summary>
         /// gets the total number of quotes that have been generated thus far.
@@ -521,21 +467,6 @@ namespace SeleleTravel
                 MessageBox.Show(h.ToString());
             }
             return numberOfQuotes;
-        }
-
-        /// <summary>
-        /// checks if the quote number is empty.
-        /// </summary>
-        /// <param name="q_number"></param>
-        /// <returns></returns>
-        public static bool checkQuoteNotEmpty(string q_number)
-        {
-            if (q_number == "")
-            {
-                MessageBox.Show("The quote number has not been generated, please press the \"Request Verification\" button", "Error: Quote number not generated", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            return true;
         }
 
         /// <summary>
