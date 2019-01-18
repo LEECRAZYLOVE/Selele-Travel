@@ -129,8 +129,7 @@
                     <ComboBox x:Name="cbxConsultant_Search_entities" HorizontalAlignment="Left" VerticalAlignment="Top" Width="341.792" Canvas.Top="71.723" Canvas.Left="10" >
                         <ComboBoxItem Content="Staff" HorizontalAlignment="Left" Width="339"/>
                         <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="339"/>
-                        <ComboBoxItem Content="Accommodation" HorizontalAlignment="Left" Width="340" Margin="0,0,-0.8,0"/>
-                        <ComboBoxItem Content="Agency/Airline" HorizontalAlignment="Left" Width="336.632"/>
+                        <ComboBoxItem Content="Service Providers" HorizontalAlignment="Left" Width="340"/>
                     </ComboBox>
 
                 </Canvas>

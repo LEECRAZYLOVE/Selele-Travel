@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using Npgsql;
 //using Devart.Data.MySql;
 
 namespace SeleleTravel
@@ -44,6 +45,39 @@ namespace SeleleTravel
 
         private void btnConsultant_search_Click(object sender, RoutedEventArgs e)
         {
+            int intCKB = 0;
+            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            if (ckbConsultant_Search_quotes.IsChecked == true)
+                intCKB = 1;
+            if (ckbConsultant_Search_orders.IsChecked == true)
+                intCKB = 2;
+            if (ckbConsultant_Search_vouchers.IsChecked == true)
+                intCKB = 3;
+            if (ckbConsultant_Search_invoices.IsChecked == true)
+                intCKB = 4;
+            if (ckbConsultant_Search_all.IsChecked == true)
+                intCKB = 5;
+            
+            switch(intCKB)
+            {
+                case 1:
+                    try
+                    {
+                        myConnect.Open();
+                        NpgsqlCommand cmdQuotes = new NpgsqlCommand("SELECT * from quote", myConnect);
+                        NpgsqlDataReader drQuotes = cmdQuotes.ExecuteReader();
+                        while (drQuotes.Read())
+                        {
+                            ltbConsultant_Search_Results.Items.Add(drQuotes);
+                        }
+                        myConnect.Close();
+                    }
+                    catch (Exception h)
+                    {
+                        MessageBox.Show(h.ToString());
+                    }
+                    break;
+            }
 
         }
 
