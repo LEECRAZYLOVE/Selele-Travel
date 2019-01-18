@@ -507,25 +507,18 @@ namespace SeleleTravel
         /// <param name="in_services"></param>
         /// <param name="numPassenger"></param>
         /// <returns></returns>
-        public static string quoteSummary(string QuoteNo)
+        public static string quoteSummary(string QuoteNo, string service)
         {
             List<string> services_list = new List<string>();
             //The following lists should be in order and correspond with each other
             List<string> quantities = new List<string>(); //List of all the quatities
             List<string> descriptions = new List<string>(); //List of all the descriptions
             List<string> amounts = new List<string>(); //List of all the amounts
-
+            services_list = service.ToString().Split('|').ToList(); //List with sevice names as elements
             NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
             try
             {
                 myConnect.Open();
-                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT service FROM quote where quote_no = '{QuoteNo}'", myConnect);
-                NpgsqlDataReader dr = myCommand.ExecuteReader();
-                while (dr.Read())
-                {
-                    services_list = dr[0].ToString().Split('|').ToList(); //List with sevice names as elements
-                }
-
                 for (int j = 0; j < services_list.Count(); j++)
                 {
                     switch (services_list[j])
@@ -557,7 +550,7 @@ namespace SeleleTravel
                             break;
 
                         case "Car Hire":
-                            NpgsqlCommand myCommand3 = new NpgsqlCommand($"SELECT numberofcars,agencyname,pickuplocation,dropofflocation,startday,expectedend date,carhirespecifications,amount WHERE quote_no = '{QuoteNo}'", myConnect);
+                            NpgsqlCommand myCommand3 = new NpgsqlCommand($"SELECT numberofcars,agencyname,pickuplocation,dropofflocation,startday,expectedenddate,carhirespecifications,amount FROM carhire WHERE quote_no = '{QuoteNo}'", myConnect);
                             NpgsqlDataReader dr3 = myCommand3.ExecuteReader();
                             while (dr3.Read())
                             {
@@ -570,7 +563,7 @@ namespace SeleleTravel
                             break;
 
                         case "Flight":
-                            NpgsqlCommand myCommand4 = new NpgsqlCommand($"SELECT passengernum,airline,fromcity,tocity,departdate,numberofbags,flightspecs,amount WHERE quote_no = '{QuoteNo}'", myConnect);
+                            NpgsqlCommand myCommand4 = new NpgsqlCommand($"SELECT passengernum,airline,fromcity,tocity,departdate,numberofbags,flightspecs,amount FROM flight WHERE quote_no = '{QuoteNo}'", myConnect);
                             NpgsqlDataReader dr4 = myCommand4.ExecuteReader();
                             while (dr4.Read())
                             {
@@ -583,7 +576,7 @@ namespace SeleleTravel
                             break;
 
                         case "Event":
-                            NpgsqlCommand myCommand5 = new NpgsqlCommand($"SELECT eventname,startday,endday,eventspecs,amount WHERE quote_no = '{QuoteNo}'", myConnect);
+                            NpgsqlCommand myCommand5 = new NpgsqlCommand($"SELECT eventname,startday,endday,eventspecs,amount FROM event WHERE quote_no = '{QuoteNo}'", myConnect);
                             NpgsqlDataReader dr5 = myCommand5.ExecuteReader();
                             while (dr5.Read())
                             {
@@ -595,7 +588,7 @@ namespace SeleleTravel
                             break;
 
                         case "Conference":
-                            NpgsqlCommand myCommand6 = new NpgsqlCommand($"SELECT conferencename,startday,endday,venue,timeofconference,conferencespecs,amount WHERE quote_no = '{QuoteNo}'", myConnect);
+                            NpgsqlCommand myCommand6 = new NpgsqlCommand($"SELECT conferencename,startday,endday,venue,timeofconference,conferencespecs,amount FROM conference WHERE quote_no = '{QuoteNo}'", myConnect);
                             NpgsqlDataReader dr6 = myCommand6.ExecuteReader();
                             while (dr6.Read())
                             {
