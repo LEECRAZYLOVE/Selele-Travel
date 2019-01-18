@@ -148,9 +148,11 @@ namespace SeleleTravel
                      // 1.
 
                      // 2.
-                     List<string> stringVs = new List<string>();
-                     stringVs.Add(subjectOFmassage);
-                     stringVs.Add(message);
+                     string[] stringVs = new string[] {
+                            subjectOFmassage,
+                            message
+                     };
+
                      bool t_or_f = GeneralMethods.checkEmptytxtBox(stringVs);
 
                      if (!t_or_f)
