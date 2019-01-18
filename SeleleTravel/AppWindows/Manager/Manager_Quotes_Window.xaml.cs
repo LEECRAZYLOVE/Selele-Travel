@@ -59,5 +59,11 @@ namespace SeleleTravel
             ltbQuoteSummary_incomingQuotes.Items.Refresh();
             listbxVerifiedQuotes.Items.Refresh();           
         }
+
+        private void LtbQuoteSummary_incomingQuotes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string quote_no=ltbQuoteSummary_incomingQuotes.SelectedItem.ToString();
+    
+        }
     }
 }
