@@ -353,7 +353,7 @@ namespace SeleleTravel
                 _totalQts = "0" + _totalQts;
             }
             // generates the quote number using the time and string generated above
-            quote_no = $"V{_totalQts}";
+            quote_no = $"Q{_totalQts}";
 
 
             return quote_no;

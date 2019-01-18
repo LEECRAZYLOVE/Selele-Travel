@@ -684,7 +684,7 @@
 
                 </TabItem>
                 <!--Quote Summary-->
-                <TabItem x:Name="tabitemQuoteSummary" Header="Quote Summary" Style="{DynamicResource TabItemStyle}" MouseUp="TabitemQuoteSummary_MouseUp">
+                <TabItem x:Name="tabitemQuoteSummary" Header="Quote Summary" Style="{DynamicResource TabItemStyle}" MouseUp="TabitemQuoteSummary_MouseUp" Height="44" Margin="0,-2,0,0" VerticalAlignment="Bottom">
 
                     <Grid Background="#eee">
                         <!--Separate into two sides-->
@@ -727,9 +727,8 @@
                                 <Button x:Name="btnQuote_requestVerification" Content="Request Verification" Margin="10 0 10 10" Click="btnQuote_requestVerification_Click"/>
                             </StackPanel>
                         </Border>
-                        <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="87,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="87,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                         <Label x:Name="label" Content="Valid for:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
-                        <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="117,154,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
                     </Grid>
                 </TabItem>
                 <!--Send Quotes-->

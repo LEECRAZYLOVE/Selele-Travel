@@ -106,6 +106,27 @@ namespace SeleleTravel
                 MessageBox.Show(h.ToString());
             }
 
+            //Query for retrieving voucher amount
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+
+                using (var cmd = new NpgsqlCommand($"SELECT amount FROM orders, quote WHERE order_no = '{order_no}' AND orders.quote_no=quote.quote_no", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    while (query.Read())
+                    {
+                        Voucheramount = Convert.ToDouble(query[0].ToString());
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+
             //Query for retrieving accomm_id
             //try
             //{

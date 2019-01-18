@@ -1304,27 +1304,6 @@ namespace SeleleTravel
             double vat = quoteAmount * 0.15;
             quoteAmount += vat;
 
-        }
-
-        private void btnQuote_requestVerification_Click(object sender, RoutedEventArgs e)
-        {
-            //var context = new SeleleEntities();
-
-            //Extracting quoteDetails through a query
-
-
-
-            // NB: SET UP LOCAL SERVER TO ALLOW COMM IN THE NETWORK
-            // send verification
-
-            // check the first and last day of the quote
-            //List<DateTime> firstANDlastDay = GeneralMethods.checkFirst_lastDay(servicesDates);
-
-            // save the quote details to the csv file
-            // the format is: quote number, order Number, start date, end date
-            quoteNum = GeneralMethods.makeQuote_no();
-            //GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
-
             //Query for inserting the client
             try
             {
@@ -1350,6 +1329,52 @@ namespace SeleleTravel
             {
                 MessageBox.Show(h.ToString());
             }
+        }
+
+        private void btnQuote_requestVerification_Click(object sender, RoutedEventArgs e)
+        {
+            //var context = new SeleleEntities();
+
+            //Extracting quoteDetails through a query
+
+
+
+            // NB: SET UP LOCAL SERVER TO ALLOW COMM IN THE NETWORK
+            // send verification
+
+            // check the first and last day of the quote
+            //List<DateTime> firstANDlastDay = GeneralMethods.checkFirst_lastDay(servicesDates);
+
+            // save the quote details to the csv file
+            // the format is: quote number, order Number, start date, end date
+
+            //GeneralMethods.saveDataToCSVfile(quoteNum, tempOrderNum, firstANDlastDay);
+            Manager_Quotes_Window managerQuotesWindow = new Manager_Quotes_Window();
+
+            //Query for retrieving quote data
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT quote_no,consultant_no FROM quote", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    int k = 0;
+                    while (query.Read())
+                    {
+                        managerQuotesWindow.ltbQuoteSummary_incomingQuotes.Items.Add(query[k]);
+                        k++;
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            managerQuotesWindow.Show();
+
+           
         }
 
         private void BtnCheckCarHire_Click(object sender, RoutedEventArgs e)
@@ -1503,7 +1528,7 @@ namespace SeleleTravel
 
         private void TabitemQuoteSummary_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            txbQuote_quoteSummary.Text = GeneralMethods.quoteSummary(quote_no);
+            //txbQuote_quoteSummary.Text = GeneralMethods.quoteSummary(quote_no);
         }
     }
 }
