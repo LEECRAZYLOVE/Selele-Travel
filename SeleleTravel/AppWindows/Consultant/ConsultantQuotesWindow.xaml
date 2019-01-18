@@ -743,19 +743,20 @@
                         </Grid.ColumnDefinitions>
                         <!--Left hand side-->
                         <TextBlock Text="Verified quotes :" Margin="10"/>
-                        <ListBox Margin="10 40 10 10">
+                        <ListBox  x:Name="ltbVerified_Quotes" Margin="10 40 10 10" SelectionChanged="ListBox_SelectionChanged">
                             <ListBoxItem Content="No quote verified."/>
                         </ListBox>
                         <!--Middle-->
                         <TextBlock Grid.Column="1" Text="Quote preview :" Margin="10"/>
-                        <TextBlock Grid.Column="1"  Background="#fff" Text="No quote selected." Margin="10 40 10 10" Padding="10"/>
+                        <TextBlock x:Name="txbQuotePreview" Grid.Column="1"  Background="#fff" Text="No quote selected." Margin="10 40 10 10" Padding="10"/>
 
                         <!-- Right hand side-->
                         <StackPanel Grid.Column="2">
                             <TextBlock Text="Password :" Margin="10"/>
                             <PasswordBox Margin="10 0 10 10" Height="30"/>
-                            <Button Content="Send to clients" Margin="10 0 10 10"/>
+                            <Button Content="Send to clients" Margin="10 0 10 10" Click="Button_Click_6"/>
                         </StackPanel>
+                        <Button x:Name="button" Content="Get verified Quotes" Grid.Column="2" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Width="217" Click="Button_Click_5"/>
 
                     </Grid>
                 </TabItem>

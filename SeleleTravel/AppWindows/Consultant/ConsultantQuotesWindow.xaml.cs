@@ -1333,7 +1333,7 @@ namespace SeleleTravel
                 MessageBox.Show(h.ToString());
             }
 
-            txbQuote_quoteSummary.Text = GeneralMethods.quoteSummaryAmounts(quote_no);
+           // txbQuote_quoteSummary.Text = GeneralMethods.quoteSummaryAmounts(quote_no);
         }
 
         private void btnQuote_requestVerification_Click(object sender, RoutedEventArgs e)
@@ -1364,7 +1364,6 @@ namespace SeleleTravel
                 using (var cmd = new NpgsqlCommand($"SELECT quote_no FROM quote", myConnect))
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
-                    string quotedetails = "";
                     while (query.Read())
                     {
                         managerQuotesWindow.ltbQuoteSummary_incomingQuotes.Items.Add($"{query[0]}");
@@ -1532,7 +1531,85 @@ namespace SeleleTravel
 
         private void TabitemQuoteSummary_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            txbQuote_quoteSummary.Text = GeneralMethods.quoteSummary(quote_no,service);
+          //  txbQuote_quoteSummary.Text = GeneralMethods.quoteSummary(quote_no,service);
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            quote_no = ltbVerified_Quotes.SelectedItem.ToString();
+            //Query for retrieving quote data
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM quote WHERE quote_no = '{quote_no}'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                       txbQuotePreview.Text =
+                        $"Quote number: {query[0]}\n" +
+                        $"Services: {query[2].ToString().Replace('|', ' ')}\nTime Quoted: {query[3]}\nQuote Date: {query[6]}\n" +
+                        $"Client ID: {query[9]}\nClient Name: {query[10]}\n" + $"Service fee: R{query[8]}\n" + $"Total amount: R{query[1]}\n";    
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            //Query for retrieving quote data
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT quote_no FROM quote WHERE consultant_no='{consultant_no}' AND verification='yes'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    while (query.Read())
+                    {
+                       ltbVerified_Quotes.Items.Add($"{query[0]}");
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            string passwordDB = "";
+            //Query for retrieving password for consultant data
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT password FROM staff WHERE staff_id = '{consultant_no}'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                        passwordDB = query[0].ToString();
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            MessageBox.Show("Dummy test to check if retrieved password" +passwordDB);
         }
     }
 }
