@@ -606,15 +606,13 @@ namespace SeleleTravel
                             }
                             break;
                     }
-
-                    myConnect.Close();
-
                 }
             }
             catch (Exception h)
             {
                 MessageBox.Show(h.ToString());
             }
+            myConnect.Close();
 
             //Displaying the informatoin
             string output = "\n\n";
@@ -626,24 +624,26 @@ namespace SeleleTravel
                     output += $"{quantities[j]} \t\t {descriptions[j]} \t\t\t {amounts[j]} \n\n";
                 }
 
+                NpgsqlConnection myConnect1 = new NpgsqlConnection(MainWindow.ConnectionString);
+
                 //displaying and extracting the service fee, VAT and total for the quote
-                myConnect.Open();
                 try
                 {
-                    NpgsqlCommand myCommand7 = new NpgsqlCommand($"SELECT servicefee, amount FROM quote WHERE quote_no = '{QuoteNo}'", myConnect);
+                    myConnect1.Open();
+                    NpgsqlCommand myCommand7 = new NpgsqlCommand($"SELECT servicefee, amount FROM quote WHERE quote_no = '{QuoteNo}'", myConnect1);
                     NpgsqlDataReader dr7 = myCommand7.ExecuteReader(); 
                     myCommand7.ExecuteReader();
                     while (dr7.Read())
                     {
                         output += $"\t\t Service Fee \t\t\t\t\t\t\t\t {dr7[0]} \n " +
                         $"\t\t VAT 15% \t\t\t\t\t\t\t\t {Convert.ToDouble(dr7[1]) * 0.15} \n " +
-                        $"\t\t Total   \t\t\t\t\t\t\t\t {Convert.ToDouble(dr7[1]) * 0.15 + Convert.ToDouble(dr7[1])}";
+                        $"\t\t Total   \t\t\t\t\t\t\t\t {Convert.ToDouble(dr7[1]) * 0.15 + Convert.ToDouble(dr7[0])}";
                     }
                 }catch (Exception h)
                 {
                     MessageBox.Show(h.ToString());
                 }
-
+                myConnect1.Close();
             }
 
             return output;

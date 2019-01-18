@@ -684,13 +684,14 @@
 
                 </TabItem>
                 <!--Quote Summary-->
-                <TabItem x:Name="tabitemQuoteSummary" Header="Quote Summary" Style="{DynamicResource TabItemStyle}" MouseDown="tabitemQuoteSummary_MouseDown">
+                <TabItem x:Name="tabitemQuoteSummary" Header="Quote Summary" Style="{DynamicResource TabItemStyle}" MouseUp="TabitemQuoteSummary_MouseUp">
 
                     <Grid Background="#eee">
                         <!--Separate into two sides-->
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="791*"/>
+                            <ColumnDefinition Width="360*"/>
+                            <ColumnDefinition Width="35*"/>
                         </Grid.ColumnDefinitions>
                         <!--Display for left-hand-side-->
                         <TextBlock x:Name="txbQuote_quoteSummary" Margin="10" RenderTransformOrigin="0.5,0.5">
@@ -712,7 +713,7 @@
                         </Run></TextBlock>
                         <!--Right-hand-side-->
                         <!--Mark-up stuff-->
-                        <StackPanel Grid.Column="1" Margin="10">
+                        <StackPanel Grid.Column="1" Margin="10" Grid.ColumnSpan="2">
                             <DockPanel>
                                 <TextBlock Text="Mark-Up % : "/>
                                 <TextBox x:Name="txbQuote_markUp" TextChanged="AmountChanged" Height="30"/>
@@ -720,7 +721,7 @@
                             <Button x:Name="btnQuote_markUp" Content="Add Mark-up" HorizontalAlignment="Center" Width="300" Margin="10" Click="btnQuote_markUp_Click_1"/>
                         </StackPanel>
                         <!--Document and verification-->
-                        <Border VerticalAlignment="Bottom" Grid.Column="1">
+                        <Border VerticalAlignment="Bottom" Grid.Column="1" Grid.ColumnSpan="2">
                             <StackPanel >
                                 <Button x:Name="btnQuoteSummar_document" Content="View as document and print" Margin="10" Click="btnQuoteSummar_document_Click"/>
                                 <Button x:Name="btnQuote_requestVerification" Content="Request Verification" Margin="10 0 10 10" Click="btnQuote_requestVerification_Click"/>
