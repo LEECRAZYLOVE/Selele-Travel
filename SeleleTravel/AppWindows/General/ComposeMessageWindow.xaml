@@ -7,29 +7,57 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
         Closed="Window_Closed"
         Icon="..\..\images\SeleleLogoBalls.png"
         Title="Compose a message" Height="500" Width="850">
-    <Grid Background="#FFFDF5BD">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <!-- Left hand Side-->
-        <StackPanel>
-            <TextBlock Text="Name/Staff ID :" FontFamily="Comic Sans MS" FontSize="16" Margin="12" />
-            <TextBlock Text="Subject :" FontFamily="Comic Sans MS" FontSize="16" Margin="12 7"/>
-            <TextBlock Text="Message :" FontFamily="Comic Sans MS" FontSize="16" Margin="12 7"/>
-        </StackPanel>
-        <!-- Middle -->
-        <StackPanel Grid.Column="1">
-            <TextBox x:Name="txbMessage_staffnameTo" FontSize="16" Height="30" Padding="5" Margin="10" FontFamily="Arial" Background="#FFFFFCE4"/>
-            <TextBox x:Name="txbMessage_subject" FontSize="16" Height="30" Padding="5" Margin="10 0" Background="#FFFFFCE4"/>
-            <TextBox x:Name="txbMessage_message" FontSize="16" Margin="10" Padding="5" Height="340" Background="#FFFFFCE4"/>
-        </StackPanel>
+       <Grid Background="#FFFDF5BD">
+              <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="*"/>
+                     <ColumnDefinition Width="3*"/>
+                     <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <!-- Left hand Side-->
+              <StackPanel>
+                     <TextBlock Text="Name/Staff ID :" FontFamily="Comic Sans MS" FontSize="16" Margin="12" />
+                     <TextBlock Text="Subject :" FontFamily="Comic Sans MS" FontSize="16" Margin="12 7"/>
+                     <TextBlock Text="Message :" FontFamily="Comic Sans MS" FontSize="16" Margin="12 7"/>
+              </StackPanel>
+              <!-- Middle -->
+              <StackPanel Grid.Column="1">
 
-        <!--Right hand side-->
-        <Button x:Name="btnMessage_send" Grid.Column="2" Content="Send Message" Height="40" Margin="10 20" VerticalAlignment="Bottom" Background="#FFBDF0BD" Click="BtnMessage_send_Click" />
-    </Grid>
+                     <ComboBox Grid.Column="2" 
+                                     SelectionChanged="SearchResultComboBox_SelectionChanged"
+                                     x:Name="SearchResultComboBox"
+                                     Background="#FFFFFCE4"
+                                     HorizontalAlignment="Left" 
+                                     FontFamily="Arial"
+                                     FontSize="16" 
+                                     Height="30" 
+                                     Padding="5" 
+                                     Margin="10,10,0,10" 
+                                     VerticalAlignment="Top" 
+                                     Width="486" />
+
+                     <TextBox x:Name="txbMessage_subject" FontSize="16" Height="30" Padding="5" Margin="10 0" Background="#FFFFFCE4"/>
+
+                     <TextBox x:Name="txbMessage_message" 
+                              FontSize="16" 
+                              Margin="10" 
+                              Padding="5" 
+                              Height="340" 
+                              Background="#FFFFFCE4"
+                              TextChanged="TxbMessage_message_TextChanged"/>
+              </StackPanel>
+
+              <!--Right hand side-->
+              <Button x:Name="btnMessage_send" 
+                      Grid.Column="2" 
+                      Content="Send Message" 
+                      Height="40" Margin="10 20" 
+                      VerticalAlignment="Bottom" 
+                      Background="#FFBDF0BD" 
+                      Click="BtnMessage_send_Click" />
+
+       </Grid>
 </Window>
