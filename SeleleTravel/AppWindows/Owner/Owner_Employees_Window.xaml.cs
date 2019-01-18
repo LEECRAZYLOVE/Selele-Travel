@@ -43,7 +43,11 @@ namespace SeleleTravel
 
         private void BtnNewEmployee_generate_Click(object sender, RoutedEventArgs e)
         {
-            bool boolValue = GeneralMethods.checkEmptytxtBox(new List<string>() { txbNewEmployee_surname.Text, txbNewEmployee_name.Text, txbNewEmployee_address.Text, txbNewEmployee_city.Text, txbNewEmployee_areaCode.Text, txbEmployee_cellphone.Text, txbNewEmployee_telephone.Text, txbNewEmployee_fax.Text, txbNewEmployee_email.Text, cmbNewEmployee_position.Text, txbNewEmployee_salary.Text });
+            bool boolValue = GeneralMethods.checkEmptytxtBox(txbNewEmployee_surname.Text, 
+                txbNewEmployee_name.Text, txbNewEmployee_address.Text, txbNewEmployee_city.Text, txbNewEmployee_areaCode.Text, 
+                txbEmployee_cellphone.Text, txbNewEmployee_telephone.Text, txbNewEmployee_fax.Text, txbNewEmployee_email.Text, 
+                cmbNewEmployee_position.Text, txbNewEmployee_salary.Text );
+
             NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
 
             if (!boolValue) //if all the text boxes are fine then this code will execute
@@ -110,7 +114,7 @@ namespace SeleleTravel
 
         private void TxbNewEmployee_salary_TextChanged(object sender, TextChangedEventArgs e)
         {
-            GeneralMethods.checkAmountTyped(sender, false);
+            GeneralMethods.checkAmountTyped((TextBox)sender, false);
         }
 
         private void btnEmplyees_find_Click_1(object sender, RoutedEventArgs e)

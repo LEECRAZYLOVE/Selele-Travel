@@ -30,7 +30,7 @@ namespace SeleleTravel
 
         private void validateValue(object sender, TextChangedEventArgs e)
         {
-            GeneralMethods.checkAmountTyped(sender);
+            GeneralMethods.checkAmountTyped((TextBox)sender);
         }
 
         private void validateNumber(object sender, TextChangedEventArgs e)
@@ -179,7 +179,9 @@ namespace SeleleTravel
             string fax = txbNewService_fax.Text;
             string cellphone = txbNewService_cellphone.Text;
             string service = cbbNewService_entities.SelectionBoxItem.ToString();
-            string agency_ID = GeneralMethods.makeAgency_ID(name, service);
+            string postalcode = txbNewService_areaCode.Text;
+            string agency_ID = GeneralMethods.makeAgency_ID(name, postalcode);
+            
             //var context = new SeleleEntities();
             //var currentServiceProvider = new agencydetail()
             //{
