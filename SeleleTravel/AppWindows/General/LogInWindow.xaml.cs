@@ -38,7 +38,7 @@ namespace SeleleTravel
                     try
                     {
                         myConnect.Open();
-                        NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT password, staff_id, stafffirstnames FROM staff", myConnect);
+                        NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT password, staff_id, stafffirstnames FROM staff WHERE staff_id = '{checkUserId}'", myConnect);
                         NpgsqlDataReader dr = myCommand.ExecuteReader();
 
                         while (dr.Read())

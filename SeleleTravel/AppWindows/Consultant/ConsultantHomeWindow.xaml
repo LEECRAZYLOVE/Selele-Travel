@@ -142,7 +142,7 @@
                         <CheckBox x:Name="ckbConsultant_Search_invoices" Content="Invoices" Width="75" Margin="3, 0"/>
                         <CheckBox x:Name="ckbConsultant_Search_all" Content="All" Width="75" Margin="3, 0"/>
                     </DockPanel>
-                    <ListBox x:Name="ltbConsultant_Search_Results" HorizontalAlignment="Left" Height="464" VerticalAlignment="Top" Width="944" FontFamily="Comic Sans MS" Opacity="0.8" Canvas.Left="10" Canvas.Top="118"/>
+                    <ListBox x:Name="ltbConsultant_Search_Results" HorizontalAlignment="Left" Height="464" VerticalAlignment="Top" Width="944" FontFamily="Comic Sans MS" Opacity="0.8" Canvas.Left="10" Canvas.Top="118" SelectionChanged="LtbConsultant_Search_Results_SelectionChanged"/>
                     <ComboBox x:Name="cbxConsultant_Search_entities" HorizontalAlignment="Left" VerticalAlignment="Top" Width="341.792" Canvas.Top="71.723" Canvas.Left="10" >
                         <ComboBoxItem Content="Staff" HorizontalAlignment="Left" Width="339"/>
                         <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="339"/>

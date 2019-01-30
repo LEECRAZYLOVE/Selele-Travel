@@ -68,7 +68,6 @@ namespace SeleleTravel
 
                     //execute the command
                     myCommand.ExecuteNonQuery();
-                    MessageBox.Show("Successfully saved into the database. You will now be redirected to your home page.");
                 }
                 catch (Exception h)
                 {
@@ -84,24 +83,26 @@ namespace SeleleTravel
                     {          
                         for (int k = 0; k < dr.FieldCount; k++)
                         {
-                            Position += string.Format("{0}", dr[0]);
+                            Position = string.Format("{0}", dr[0]);
                             staffFullName = dr[1].ToString();
                         }
+                    }
+                    MessageBox.Show("Successfully saved into the database. You will now be redirected to your home page.");
+                    //After signing up the new employee will be redirected to the relevant window
+                    switch (Position)
+                    {
+                        case "Consultant": this.Hide(); consultantWindow.Show(); consultantWindow.lblConsultantName.Content = staffFullName; consultantWindow.lblConsultantID.Content = staff_id; consultantWindow.currentStaffID = staff_id; break;
+                        case "Manager": this.Hide(); managerWindow.Show(); managerWindow.lblManagerName.Content = staffFullName; managerWindow.lblManagerID.Content = staff_id; managerWindow.currentStaffID = staff_id; break;
+                        case "Owner": this.Hide(); ownerWindow.Show(); ownerWindow.lblOwnerName.Content = staffFullName; ownerWindow.lblOwnerID.Content = staff_id; ownerWindow.currentStaffID = staff_id; break;
+
                     }
                 }
                 catch (Exception h)
                 {
                     MessageBox.Show(h.ToString());
                 }
-                
-                //After signing up the new employee will be redirected to the relevant window
-                switch (Position)
-                {
-                    case "Consultant": this.Hide(); consultantWindow.Show(); consultantWindow.lblConsultantName.Content = staffFullName; consultantWindow.lblConsultantID.Content = staff_id; consultantWindow.currentStaffID = staff_id; break;
-                    case "Manager": this.Hide(); managerWindow.Show(); managerWindow.lblManagerName.Content = staffFullName; managerWindow.lblManagerID.Content = staff_id; managerWindow.currentStaffID = staff_id; break;
-                    case "Owner": this.Hide(); ownerWindow.Show(); ownerWindow.lblOwnerName.Content = staffFullName; ownerWindow.lblOwnerID.Content = staff_id; ownerWindow.currentStaffID = staff_id; break;
 
-                }
+               
             }
         }
 

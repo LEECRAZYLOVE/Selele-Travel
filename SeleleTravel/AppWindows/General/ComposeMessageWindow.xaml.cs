@@ -32,59 +32,65 @@ namespace SeleleTravel
                      btnMessage_send.IsEnabled = false;
               }
 
-              /// <summary>
-              /// Send message
-              /// </summary>
-              /// <param name="receiver_ID"> The id of the reciever </param>
-              /// <param name="sender_ID"> The id of the sender </param>
-              /// <param name="messageToSend"> The message to send </param>
-              public void insertMessage(string receiver_ID, string sender_ID, string messageToSend)
-              {
-                     using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
-                     {
-                            conn.Open();
+        /// <summary>
+        /// Send message
+        /// </summary>
+        /// <param name="receiver_ID"> The id of the reciever </param>
+        /// <param name="sender_ID"> The id of the sender </param>
+        /// <param name="messageToSend"> The message to send </param>
+        public void insertMessage(string receiver_ID, string sender_ID, string messageToSend)
+        {
+            try
+            {
+                using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+                {
+                    conn.Open();
 
-                            // "INSERT INTO data (some_field) VALUES (@p)"
-                            //cmd.Parameters.AddWithValue("p", "Hello world");
-                            //cmd.Parameters.AddWithValue("p", "Hello world");
+                    // "INSERT INTO data (some_field) VALUES (@p)"
+                    //cmd.Parameters.AddWithValue("p", "Hello world");
+                    //cmd.Parameters.AddWithValue("p", "Hello world");
 
-                            // intsert into a table
-                            using (var cmd = new NpgsqlCommand())
-                            {
-                                   // the date now
-                                   string theDate = DateTime.Now.ToShortDateString();
+                    // intsert into a table
+                    using (var cmd = new NpgsqlCommand($"INSERT INTO {receiver_ID} (datesent, sender, reciever, message) VALUES(@theDate,@sender_ID,@receiver_ID,@messageTosend)", conn))
+                    {
+                        // the date now
+                        string theDate = DateTime.Now.ToShortDateString();
 
-                                   // The command to create the connection
-                                   cmd.Connection = conn;
+                        // INSERT INTO Staff_id (datesent, sender, message) VALUES('1 jan 2018','meloo','Hello');
+                        cmd.Parameters.AddWithValue("theDate", theDate);
+                        cmd.Parameters.AddWithValue("sender_ID", sender_ID);
+                        cmd.Parameters.AddWithValue("receiver_ID", receiver_ID);
+                        cmd.Parameters.AddWithValue("messageToSend", messageToSend);
 
-                                   // INSERT INTO Staff_id (datesent, sender, message) VALUES('1 jan 2018','meloo','Hello');
-                                   cmd.CommandText = string.Format("INSERT INTO {0} (datesent, sender, message) VALUES('{1}','{2}','{3}')",
-                                       receiver_ID, theDate, sender_ID, messageToSend);
 
-                                   // execute the query
-                                   cmd.ExecuteNonQuery();
-                            }
+                        // execute the query
+                        cmd.ExecuteNonQuery();
+                    }
 
-                            // intsert into a table
-                            using (var cmd2 = new NpgsqlCommand())
-                            {
-                                   // The date now
-                                   string theDate = DateTime.Now.ToShortDateString();
+                    // intsert into a table
+                    using (var cmd2 = new NpgsqlCommand("INSERT INTO messages_tb (datesent, sender, reciever, message) VALUES(@theDate,@sender_ID,@receiver_ID,@messageTosend)", conn))
+                    {
+                        // The date now
+                        string theDate = DateTime.Now.ToShortDateString();
 
-                                   // The command to create the connection
-                                   cmd2.Connection = conn;
+                        // INSERT INTO messages_tb (datesent, sender, reciever, message) VALUES('1 jan 2018','meloo','ok','Hello');
+                        cmd2.Parameters.AddWithValue("theDate", theDate);
+                        cmd2.Parameters.AddWithValue("sender_ID", sender_ID);
+                        cmd2.Parameters.AddWithValue("receiver_ID", receiver_ID);
+                        cmd2.Parameters.AddWithValue("messageToSend", messageToSend);
 
-                                   // INSERT INTO messages_tb (datesent, sender, reciever, message) VALUES('1 jan 2018','meloo','ok','Hello');
-                                   cmd2.CommandText = string.Format("INSERT INTO messages_tb (datesent, sender, reciever, message) VALUES('{0}','{1}','{2}','{3}')",
-                                       theDate, sender_ID, receiver_ID, messageToSend);
+                        // execute the query
+                        cmd2.ExecuteNonQuery();
+                    }
 
-                                   // execute the query
-                                   cmd2.ExecuteNonQuery();
-                            }
-
-                            MessageBox.Show("Message sent!", "Attention");
-                     }
-              }
+                    MessageBox.Show("Message sent!", "Attention");
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
 
               /// <summary>
               /// Get all staff members from the table
@@ -123,7 +129,7 @@ namespace SeleleTravel
               
               private void Window_Closed(object sender, EventArgs e)
               {
-                     Owner.Show();
+                      Owner.Show();
               }
 
               /// <summary>

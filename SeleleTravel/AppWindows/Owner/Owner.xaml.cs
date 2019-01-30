@@ -216,7 +216,8 @@ namespace SeleleTravel
                             currentStaffID = currentStaffID
                      };
                      composeMessageWindow.Show();
-                     Hide();
+                    composeMessageWindow.txbMessage_message.IsEnabled = true;
+                    composeMessageWindow.btnMessage_send.IsEnabled = true;
               }
 
               private void BtnOwner_paymentProofs_Click(object sender, RoutedEventArgs e)
@@ -273,8 +274,8 @@ namespace SeleleTravel
                             readSelectedID(idContent, idNum);
 
                             // enable
-                            composeMessageWindow.txbMessage_message.IsEnabled = true;
-                            composeMessageWindow.btnMessage_send.IsEnabled = true;
+                            //composeMessageWindow.txbMessage_message.IsEnabled = true;
+                            //composeMessageWindow.btnMessage_send.IsEnabled = true;
                      }
               }
 

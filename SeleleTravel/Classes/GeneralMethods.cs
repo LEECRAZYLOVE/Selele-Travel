@@ -18,7 +18,7 @@ namespace SeleleTravel
         public static string seleleCellphone = "0614724551";
         public static string seleleFax = "0895567837";
         public static string seleleEmail = "seleletravel@live.com";
-        public static string seleleAddress = "Office 3 \n Mantis Business Centre \n 14 Byron Street \n Cambridge \n East London \n 5206";
+        public static string seleleAddress = "Office 3 \n\t\t\t\t\t\t\t\t Mantis Business Centre \n\t\t\t\t\t\t\t\t 14 Byron Street \n\t\t\t\t\t\t\t\t Cambridge \n\t\t\t\t\t\t\t\t East London \n\t\t\t\t\t\t\t\t 5206";
         public static string seleleBank = "Standard Bank";
         public static string seleleAccountName = "Selele Travelling and Accommodation cc";
         public static string seleleAccountNumber = "251389715";
@@ -531,7 +531,7 @@ namespace SeleleTravel
                                 quantities.Add(Convert.ToString(dr1[0]));
                                 descriptions.Add($"Accomodation at {dr1[1]} for {dr1[2]} guests \n" +
                                     $" \t\t with the following specifications: {dr1[3]} \n" +
-                                    $" \t\t check in: {dr1[4]} \t check out: {dr1[5]}");
+                                    $" \t\t check in: {dr1[4]} check out: {dr1[5]}");
                                 amounts.Add(Convert.ToString(dr1[6]));
                             }
                             myConnect.Close();
@@ -554,7 +554,7 @@ namespace SeleleTravel
 
                         case "Car Hire":
                             myConnect.Open();
-                            NpgsqlCommand myCommand3 = new NpgsqlCommand($"SELECT numberofcars,agencyname,pickuplocation,dropofflocation,startday,expectedenddate,carhirespecifications,amount FROM carhire WHERE quote_no = '{QuoteNo}'", myConnect);
+                            NpgsqlCommand myCommand3 = new NpgsqlCommand($"SELECT numberofcars,agencyname,pickuplocation,dropofflocation,startday,expectedenddate,carhirespecifications,amount FROM carhire WHERE quote_no = '{QuoteNo}'", myConnect);                      
                             NpgsqlDataReader dr3 = myCommand3.ExecuteReader();
                             while (dr3.Read())
                             {
@@ -564,7 +564,7 @@ namespace SeleleTravel
                                     $" \t\t with the following specifications: {dr3[6]}");
                                 amounts.Add(Convert.ToString(dr3[7]));
                             }
-                            myConnect.Close();
+                                myConnect.Close();
                             break;
 
                         case "Flight":
@@ -618,14 +618,32 @@ namespace SeleleTravel
                 MessageBox.Show(h.ToString());
             }
 
-            //Displaying the informatoin
-            outputQuoteSummary = "\n\n";
+            //Displaying Selele office details 
+            try
+            {
+                myConnect.Open();
+                NpgsqlCommand getClientDets = new NpgsqlCommand($"SELECT clientname, client_no FROM quote WHERE quote_no ='{QuoteNo}'", myConnect);
+                NpgsqlDataReader drgetClientDets = getClientDets.ExecuteReader();
+                while (drgetClientDets.Read())
+                {
+                    outputQuoteSummary = SeleleOfficeDetails(drgetClientDets[0].ToString(), drgetClientDets[1].ToString());
+                }
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+
+
+            //Displaying the information
+            outputQuoteSummary += "\n\n";
             if (quantities.Count() == descriptions.Count() && quantities.Count() == amounts.Count()) //checking if the lists are equal, meaning that they correspond
             {
-                outputQuoteSummary = "QUANTIY \t DESCRIPTION \t\t\t\t\t\t\t\t AMOUNT \n"; //making the headers
+                outputQuoteSummary += "QUANTIY \t DESCRIPTION \t\t\t\t\t\t\t\t AMOUNT \n"; //making the headers
                 for (int j = 0; j < amounts.Count(); j++) //extracting the information from the lists
                 {
-                    outputQuoteSummary += $"{quantities[j]} \t\t {descriptions[j]} \t\t\t {amounts[j]} \n\n";
+                    outputQuoteSummary += $"{quantities[j]} \t\t {descriptions[j]} \t\t\t\t\t R{amounts[j]} \n\n";
                 }               
             }           
             return outputQuoteSummary;
@@ -646,11 +664,13 @@ namespace SeleleTravel
                 NpgsqlDataReader dr7 = myCommand7.ExecuteReader();
                 while (dr7.Read())
                 {
-                    outputQuoteSummary += $"\t\t Service Fee \t\t\t\t\t\t\t\t {dr7[0]} \n " +
-                    $"\t\t VAT 15% \t\t\t\t\t\t\t\t {Convert.ToDouble(dr7[1]) * 0.15} \n " +
-                    $"\t\t Total   \t\t\t\t\t\t\t\t {Convert.ToDouble(dr7[1]) * 0.15 + Convert.ToDouble(dr7[0])}";
+                    outputQuoteSummary = $"\t\t Service Fee \t\t\t\t\t\t\t\t R{dr7[0]} \n " +
+                    $"\t\t VAT 15% \t\t\t\t\t\t\t\t R{Convert.ToDouble(dr7[1]) * 0.15} \n " +
+                    $"\t\t Total   \t\t\t\t\t\t\t\t\t R{Convert.ToDouble(dr7[1]) * 0.15 + Convert.ToDouble(dr7[0])}";
                 }
                 myConnect.Close();
+
+                outputQuoteSummary += "\n\n\n" + SeleleBankDetails();
             }
             catch (Exception h)
             {
@@ -781,12 +801,12 @@ namespace SeleleTravel
         }
 
         /// <summary>
-        /// This will return the office details for the quote summary or any other situation.
+        /// This will return the office details and client name and ID for the quote summary or any other situation.
         /// </summary>
         /// <returns></returns>
-        public static string SeleleOfficeDetails()
+        public static string SeleleOfficeDetails(string clientName, string ClientID)
         {
-            return $" Tel: {seleleTelephone} \n Cell: {seleleCellphone} \n Fax: {seleleFax} \n {seleleEmail} \n {seleleAddress}";
+            return $"Tel: {seleleTelephone} \t\t\t\t\t\t\t\t\t\t Office 3 \n Cell: {seleleCellphone} \t\t\t\t\t\t\t\t\t Mantis Business Centre \n Fax: {seleleFax} \t\t\t\t\t\t\t\t\t\t 14 Byron Street \n {seleleEmail} \t\t\t\t\t\t\t\t\t Cambridge \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t East London \n Client Name: {clientName} \t\t\t\t\t\t\t\t\t 5206  \n Client ID: {ClientID}";
         }
 
         /// <summary>
@@ -795,7 +815,7 @@ namespace SeleleTravel
         /// <returns></returns>
         public static string SeleleBankDetails()
         {
-            return $" Bank Name: {seleleBank} \n Account Name: {seleleAccountName} \n Account no: {seleleAccountNumber} \n Branch Name: {seleleBranchName} \n  Branch Code: {seleleBranchCode}";
+            return $" Bank Name: {seleleBank} \n Account Name: {seleleAccountName} \n Account no: {seleleAccountNumber} \n Branch Name: {seleleBranchName} \n Branch Code: {seleleBranchCode}";
         }
 
         #endregion

@@ -49,36 +49,7 @@ namespace SeleleTravel
             string cellphone = txbNewService_cellphone.Text;
             string service = cbbNewService_entities.SelectionBoxItem.ToString() ;
 
-            //var context = new SeleleEntities();
-            var currentServiceProvider = new agencydetail()
-            {
-                agency_id = "A0001", //This will be automatically generated. I'm using a dummy to test queries.
-                nameofagency = name,
-               address = address,
-                telephone = telephone,
-                emailaddress = emailadress,
-                fax = fax,
-               cellphone  = cellphone,
-              service=service
-            };
-           //Add service provider to database
-            //try
-            //{
-            //    context.agencydetails.Add(currentServiceProvider);
-            //    context.SaveChanges();
-            //    //  MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentServiceProvider.client_no}");
-            //}
-            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            //{
-            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            //}
-            //catch (Exception ex)
-            //{
-            //    //other error
-            //    throw ex;
-
-            //}
+    
         }
 
         private void New_Service_Provider_Home_Closed(object sender, EventArgs e)
@@ -102,68 +73,12 @@ namespace SeleleTravel
             string cellphone = txbNewService_cellphone.Text;
             string service = cbbNewService_entities.SelectionBoxItem.ToString();
             string agency_ID = GeneralMethods.makeAgency_ID(name, service);
-            var context = new SeleleEntities();
-            var currentServiceProvider = new agencydetail()
-            {
-                agency_id =agency_ID, //This will be automatically generated. I'm using a dummy to test queries.
-                nameofagency = name,
-                address = address,
-                telephone = telephone,
-                emailaddress = emailadress,
-                fax = fax,
-                cellphone = cellphone,
-                service = service
-            };
-            //Add service provider to database
-            try
-            {
-                //context.agencydetails.Add(currentServiceProvider);
-                //context.SaveChanges();
-                //  MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentServiceProvider.client_no}");
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-                var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            }
-            catch (Exception ex)
-            {
-                //other error
-                throw ex;
-
-            }
+          
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {//Extracting data from the database DONE!
-            //using (SeleleEntities currentServiceProvider = new SeleleEntities())
-            //{
-            //    var query =(from c in currentServiceProvider.agencydetails
 
-            //                 where c.telephone=="0783861533"
-            //                 select new
-            //                 {
-            //                     c.agency_id,
-            //                     c.address,
-            //                     c.cellphone,
-            //                     c.emailaddress,
-            //                     c.fax,
-            //                     c.nameofagency,
-            //                     c.service,
-            //                     c.telephone,
-                                
-            //                 }).First() ;
-
-            //    if (query != null)
-            //    {
-            //        txbNewService_name.Text = query.nameofagency;
-            //        txbNewService_address.Text = query.address ;
-            //        txbNewService_cellphone.Text = query.cellphone;
-            //        txbNewService_fax.Text = query.fax;
-            //        txbNewService_telephone.Text = query.telephone;
-            //        txbNewService_email.Text = query.emailaddress;
-            //    }
-            //}
 
         }
 
@@ -182,37 +97,6 @@ namespace SeleleTravel
             string postalcode = txbNewService_areaCode.Text;
             string agency_ID = GeneralMethods.makeAgency_ID(name, postalcode);
             
-            //var context = new SeleleEntities();
-            //var currentServiceProvider = new agencydetail()
-            //{
-            //    agency_id = agency_ID, //This will be automatically generated. I'm using a dummy to test queries.
-            //    nameofagency = name,
-            //    address = address,
-            //    telephone = telephone,
-            //    emailaddress = emailadress,
-            //    fax = fax,
-            //    cellphone = cellphone,
-            //    service = service
-            //};
-            ////Add service provider to database
-            //try
-            //{
-            //    context.agencydetails.Add(currentServiceProvider);
-            //    context.SaveChanges();
-            //    //  MessageBox.Show($"Succesfully added into the database. The new Accommodation ID is: {currentServiceProvider.client_no}");
-            //}
-            //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            //{
-            //    var errorMessage = ex.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage;
-            //    var propertyName = ex.EntityValidationErrors.First().ValidationErrors.First().PropertyName;
-            //}
-            //catch (Exception ex)
-            //{
-            //    //other error
-            //    throw ex;
-
-            //}
-
             //Query for inserting the service provider
             try
             {

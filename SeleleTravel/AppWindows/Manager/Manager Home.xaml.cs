@@ -360,6 +360,10 @@ namespace SeleleTravel
                      };
                      //Hide();
                      composeMessageWindow.Show();
+
+                    // enable
+                    composeMessageWindow.txbMessage_message.IsEnabled = true;
+                    composeMessageWindow.btnMessage_send.IsEnabled = true;
               }
 
               /// <summary>
@@ -396,8 +400,8 @@ namespace SeleleTravel
                             readSelectedID(idContent, idNum);
 
                             // enable
-                            composeMessageWindow.txbMessage_message.IsEnabled = true;
-                            composeMessageWindow.btnMessage_send.IsEnabled = true;
+                            //composeMessageWindow.txbMessage_message.IsEnabled = true;
+                            //composeMessageWindow.btnMessage_send.IsEnabled = true;
                      }
               }
               
