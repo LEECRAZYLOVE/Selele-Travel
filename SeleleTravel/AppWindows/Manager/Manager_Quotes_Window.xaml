@@ -24,7 +24,7 @@
                     <!--Incoming quotes and listbox-->
                     <StackPanel Margin="10">
                         <TextBlock Text="Incoming Quotes :"/>
-                        <ListBox x:Name="ltbQuoteSummary_incomingQuotes" Height="571"  />
+                        <ListBox x:Name="ltbQuoteSummary_incomingQuotes" Height="571" SelectionChanged="LtbQuoteSummary_incomingQuotes_SelectionChanged"  />
                     </StackPanel>
                     <!--Preview and textblock-->
                     <StackPanel Margin="10" Grid.Column="1">

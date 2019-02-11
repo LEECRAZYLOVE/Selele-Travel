@@ -1,0 +1,14 @@
+﻿<Window x:Name="SearchResultsWindow" x:Class="SeleleTravel.SearchResults"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SeleleTravel"
+        mc:Ignorable="d"
+        Title="SearchResults" Height="550" Width="800">
+    <Grid>
+        <TextBlock x:Name="tbkSearchResults" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="519" Width="792" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+        <Button x:Name="btnSearchResults_document" Content="View as document and print" Margin="584,470,10,10" Click="BtnSearchResults_document_Click" />
+
+    </Grid>
+</Window>

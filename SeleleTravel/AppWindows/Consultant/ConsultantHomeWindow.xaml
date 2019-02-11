@@ -96,21 +96,38 @@
                         <Button x:Name="btnConsultant_Quotes" Content=" New Quotes" Height="85" Click="btnConsultant_Quotes_Click" BorderBrush="Black" BorderThickness="0,0,0,1" FontSize="24" Background="{x:Null}"/>
                         <Button x:Name="btnConsultant_Orders" Content="New Orders" Height="85" Click="btnConsultant_Orders_Click" BorderBrush="Black" BorderThickness="0,0,0,1" FontSize="24" Background="{x:Null}"/>
                         <Button x:Name="btnConsultant_Vouchers" Content="New Vouchers"  Height="85" Click="btnConsultant_Vouchers_Click" BorderBrush="Black" BorderThickness="0,0,0,1" FontSize="24" Background="{x:Null}"/>
-                        <Button x:Name="btnConsultant_composeMessage" Content="Compose Message" Height="85" Click="btnConsultant_composeMessage_Click" BorderBrush="Black" BorderThickness="0,0,0,1" FontSize="24" Background="{x:Null}"/>
+                        <Button x:Name="btnConsultant_composeMessage" 
+                                Content="Compose Message" 
+                                Height="85" 
+                                Click="btnConsultant_composeMessage_Click" BorderBrush="Black" BorderThickness="0,0,0,1" FontSize="24" Background="{x:Null}"/>
                         <Button x:Name="btnConsultant_NewServiceProvider" Content="New Service Provider"  Height="85" Click="BtnConsultant_NewServiceProvider_Click" BorderBrush="Black" BorderThickness="0,0,0,1" FontSize="24" Background="{x:Null}"/>
                         <Button x:Name="btnConsultant_Update" Content="Update Info" Height="85" Click="btnConsultant_Update_Click" BorderBrush="Black" BorderThickness="0,0,0,1" FontSize="24" Background="{x:Null}"/>
 
                     </StackPanel>
                 </Canvas>
             </TabItem>
-            <TabItem Header="Messages" Margin="0" Height="30" Width="100" HorizontalAlignment="Left" FontSize="14">
+            <TabItem Header="Messages" 
+                     Margin="0" Height="30" 
+                     Width="100" 
+                     HorizontalAlignment="Left" 
+                     FontSize="14"
+                     MouseDown="TabItem_MouseDown">
                 <Canvas Background="White">
                     <TextBlock x:Name="tbkConsultant_inboxMessages" Text="No Message selected." Padding="5" TextWrapping="Wrap" FontFamily="Comic Sans MS" Height="525" Canvas.Left="420" Canvas.Top="51" Width="526"/>
                     <Label Content="Inbox :" Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Height="33" Canvas.Left="25" Canvas.Top="12" Width="77"/>
-                    <ListBox x:Name="lblConsultant_inboxList" Background="#FFD5D9E6" Opacity="0.5" Height="523" Canvas.Left="21" Canvas.Top="51" Width="355">
+                    <ListBox x:Name="lblConsultant_inboxList" 
+                             Background="#FFD5D9E6" 
+                             Opacity="0.5" Height="523" 
+                             Canvas.Left="21" Canvas.Top="51" 
+                             Width="355"
+                             SelectionChanged="LblConsultant_inboxList_SelectionChanged">
                         <ListBoxItem Content="No New Messages.."/>
                     </ListBox>
-                    <Label Content="Selected Message :" Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Canvas.Left="418" Canvas.Top="9" />
+                    <Label Content="Selected Message :" 
+                           x:Name="TxtBoxFrom"
+                           Opacity="1.5" FontSize="16" 
+                           FontFamily="Comic Sans MS" 
+                           Canvas.Left="418" Canvas.Top="9" />
                 </Canvas>
             </TabItem>
             <TabItem Header="Search" Height="30" Width="100" Margin="0" HorizontalAlignment="Left" FontSize="14">
@@ -125,12 +142,11 @@
                         <CheckBox x:Name="ckbConsultant_Search_invoices" Content="Invoices" Width="75" Margin="3, 0"/>
                         <CheckBox x:Name="ckbConsultant_Search_all" Content="All" Width="75" Margin="3, 0"/>
                     </DockPanel>
-                    <ListBox x:Name="ltbConsultant_Search_Results" HorizontalAlignment="Left" Height="464" VerticalAlignment="Top" Width="944" FontFamily="Comic Sans MS" Opacity="0.8" Canvas.Left="10" Canvas.Top="118"/>
+                    <ListBox x:Name="ltbConsultant_Search_Results" HorizontalAlignment="Left" Height="464" VerticalAlignment="Top" Width="944" FontFamily="Comic Sans MS" Opacity="0.8" Canvas.Left="10" Canvas.Top="118" SelectionChanged="LtbConsultant_Search_Results_SelectionChanged"/>
                     <ComboBox x:Name="cbxConsultant_Search_entities" HorizontalAlignment="Left" VerticalAlignment="Top" Width="341.792" Canvas.Top="71.723" Canvas.Left="10" >
                         <ComboBoxItem Content="Staff" HorizontalAlignment="Left" Width="339"/>
                         <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="339"/>
-                        <ComboBoxItem Content="Accommodation" HorizontalAlignment="Left" Width="340" Margin="0,0,-0.8,0"/>
-                        <ComboBoxItem Content="Agency/Airline" HorizontalAlignment="Left" Width="336.632"/>
+                        <ComboBoxItem Content="Service Providers" HorizontalAlignment="Left" Width="340"/>
                     </ComboBox>
 
                 </Canvas>
