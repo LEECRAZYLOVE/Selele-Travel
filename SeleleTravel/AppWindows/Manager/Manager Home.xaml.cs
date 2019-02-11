@@ -294,6 +294,14 @@ namespace SeleleTravel
             }
         }
 
+        private void btnManager_search_Click_1(object sender, RoutedEventArgs e)
+        {
+            //New edit
+            string filter = cbbManager_Search_entities.SelectionBoxItem.ToString();
+            string search = txbManager_search.Text;
+        }
+
+
         #endregion
 
         private void btnManager_logOut_Click(object sender, RoutedEventArgs e)
@@ -301,12 +309,6 @@ namespace SeleleTravel
             GeneralMethods.logOut(this);
         }
 
-        private void btnManager_search_Click_1(object sender, RoutedEventArgs e)
-        {
-            //New edit
-            string filter = cbbManager_Search_entities.SelectionBoxItem.ToString();
-            string search = txbManager_search.Text;           
-        }
 
         private void btnManager_Quotes_Click(object sender, RoutedEventArgs e)
         {

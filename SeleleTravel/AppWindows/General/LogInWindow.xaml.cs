@@ -23,121 +23,85 @@ namespace SeleleTravel
             this.windowToLoad = windowToLoad;
         }
 
+        #region Helper Methods
+
+        private bool loginViaDatabase(string staffID, string password)
+        {
+            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            try
+            {
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT password, staff_id, stafffirstnames FROM staff WHERE staff_id = '{staffID}", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    bool checkedAll = false;
+                    for (int j = 0; j < dr.FieldCount; j++)
+                    {
+                        if (password == dr[0].ToString() && staffID == dr[1].ToString())
+                        {
+                            MessageBox.Show($"Welcome {dr[2]}");
+                            
+                            Hide();
+                            break;
+                        }
+                        checkedAll = j + 1 == dr.FieldCount;
+                    }
+                    if (checkedAll)
+                    {
+                        MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
+                    }
+                }
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+                return false;
+            }
+            return true;
+        }
+
+        #endregion
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
         {
-            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            string staffID = txbLogIn_staffID.Text;
+            string password = pdbLogIn_password.Password;
 
-            string checkUserId = txbLogIn_staffID.Text;
-            string checkPassword = pdbLogIn_password.Password;
             switch (windowToLoad)
             {
                 case LoadWindow.Consultant:
                     ConsultantHomeWindow consultantWindow = new ConsultantHomeWindow();
                     consultantWindow.Owner = Owner;
-                    try
+                    //If we connect properly to the database
+                    if (loginViaDatabase(staffID, password))
                     {
-                        myConnect.Open();
-                        NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT password, staff_id, stafffirstnames FROM staff", myConnect);
-                        NpgsqlDataReader dr = myCommand.ExecuteReader();
-
-                        while (dr.Read())
-                        {
-                            for (int j = 0; j < dr.FieldCount; j++)
-                            {
-                                if (checkPassword == dr[0].ToString() && checkUserId == dr[1].ToString())
-                                {
-                                    consultantWindow.Show();
-                                    MessageBox.Show($"Welcome {dr[2]}");
-                                    consultantWindow.currentStaffID = dr[1].ToString();
-                                    Hide();
-                                    break;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
-                                    break;
-                                }
-                                
-                            }
-                        }
-                        myConnect.Close();
-                    }
-                    catch (Exception h)
-                    {
-                        MessageBox.Show(h.ToString());
+                        consultantWindow.currentStaffID = staffID;
+                        consultantWindow.Show();
                     }
                     break;
 
                 case LoadWindow.Manager:
                     Manager_Home managerWindow = new Manager_Home();
                     managerWindow.Owner = Owner;
-                    try
+                    //If we connect properly to the database
+                    if (loginViaDatabase(staffID, password))
                     {
-                        myConnect.Open();
-                        NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT password, staff_id, stafffirstnames FROM staff WHERE staff_id = '{checkUserId}'", myConnect);
-                        NpgsqlDataReader dr = myCommand.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            for (int j = 0; j < dr.FieldCount; j++)
-                            {
-                                if (checkPassword == dr[0].ToString() && checkUserId == dr[1].ToString())
-                                {
-                                    managerWindow.Show();
-                                    MessageBox.Show($"Welcome {dr[2]}");
-                                    managerWindow.currentStaffID = dr[1].ToString();
-                                    Hide();
-                                    break;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
-                                    break;
-                                }
-
-                            }
-                        }
-                        myConnect.Close();
-                    }
-                    catch (Exception h)
-                    {
-                        MessageBox.Show(h.ToString());
+                        managerWindow.currentStaffID = staffID;
+                        managerWindow.Show();
                     }
                     break;
 
                 case LoadWindow.Owner:
                     OwnerHomeWindow ownerWindow = new OwnerHomeWindow();
                     ownerWindow.Owner = Owner;
-                    try
+                    //If we connect properly to the database
+                    if (loginViaDatabase(staffID, password))
                     {
-                        myConnect.Open();
-                        NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT password, staff_id, stafffirstnames FROM staff WHERE staff_id ='{checkUserId}'", myConnect);
-                        NpgsqlDataReader dr = myCommand.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            for (int j = 0; j < dr.FieldCount; j++)
-                            {
-                                if (checkPassword == dr[0].ToString() && checkUserId == dr[1].ToString())
-                                {
-                                    ownerWindow.Show();
-                                    MessageBox.Show($"Welcome {dr[2]}");
-                                    ownerWindow.currentStaffID = dr[1].ToString();
-                                    Hide();
-                                    break;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Password and Staff ID do not match, or do not exist. Please try again.");
-                                    break;
-                                }
-
-                            }
-                        }
-                        myConnect.Close();
-                    }
-                    catch (Exception h)
-                    {
-                        MessageBox.Show(h.ToString());
+                        ownerWindow.currentStaffID = staffID;
+                        ownerWindow.Show();
                     }
                     break;
             }
