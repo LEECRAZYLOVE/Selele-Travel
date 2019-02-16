@@ -6,8 +6,8 @@ namespace SeleleTravel
     {
         public conference()
         {
-        }
 
+        }
         public string quote_no { get; set; }
         public string conferencename { get; set; }
         public string venue { get; set; }

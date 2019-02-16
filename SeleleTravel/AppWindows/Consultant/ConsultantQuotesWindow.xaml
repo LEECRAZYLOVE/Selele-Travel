@@ -400,18 +400,18 @@
                             <TextBlock Text="Enter flight details" HorizontalAlignment="Center" FontSize="20" Margin="10"/>
                             <!--Airline and textbox-->
                             <DockPanel>
-                                <TextBlock Text="Airline:" Margin="10"/>
-                                <TextBox x:Name="txbFlight_airline" Text="SAA" Margin="95 10 100 0" Width="467" />
+                                <TextBlock Margin="10" Text="Airline:"/>
+                                <ComboBox x:Name="CheckFlightCombo"  HorizontalAlignment="Left" Margin="100 0 0 0" VerticalAlignment="Top"  Width="910"/>
                             </DockPanel>
                             <!--Location Details-->
                             <TextBlock Text="Location details" HorizontalAlignment="Center"/>
                             <DockPanel>
                                 <TextBlock Text="From:" Margin="10"/>
-                                <TextBox x:Name="txbFlight_from" Text="Jhb" Margin="105 10 100 0" Width="467" />
+                                <TextBox x:Name="txbFlight_from" Text="Jhb" Margin="105 10 100 0"  />
                             </DockPanel>
                             <DockPanel>
                                 <TextBlock Text="To:" Margin="10"/>
-                                <TextBox x:Name="txbFlight_to" Text="China" Margin="120 10 100 0" Width="472"/>
+                                <TextBox x:Name="txbFlight_to" Text="China" Margin="120 10 100 0" />
                             </DockPanel>
                             <!--Additional Information-->
                             <TextBlock Text="Additional information :" HorizontalAlignment="Center"/>
@@ -429,31 +429,34 @@
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <StackPanel>
-                                    <TextBlock Text="Passanger details" Margin="10 0 0 0"/>
-                                    <DockPanel Margin="10">
-                                        <TextBlock Text="Name(s) &amp; surname :   "/>
-                                        <TextBox x:Name="txbFlight_passangerName" Text="Simpiwe Sobici" Height="30"/>
-                                    </DockPanel>
-                                    <DockPanel Margin="10">
-                                        <TextBlock Text="Id Number :              " Margin="5"/>
-                                        <TextBox x:Name="txbFlight_passangerSurname" Text="98020305551086" TextChanged="AmountChanged_WHOLENumber" Height="30" Width="300"/>
-                                        <TextBlock Text="Cell no :   " Margin="5"/>
-                                        <TextBox x:Name="txbFlight_passangerCellphone" Text="0831231234" TextChanged="phoneNumberCheck" Height="30"/>
-                                    </DockPanel>
-                                    <DockPanel Margin="10">
-                                        <TextBlock Text="Work no          :           " Margin="0 5"/>
-                                        <TextBox x:Name="txbFlight_passangerTitle" Text="0461231234" TextChanged="phoneNumberCheck" Height="30" Width="200"/>
-                                        <TextBlock Text="email address          :   " Margin="5"/>
-                                        <TextBox x:Name="txbFlight_passanger" Text="s.sobici@gmail.com" Height="30"/>
+                                <Border BorderThickness="0 1 0 1" BorderBrush="Black" Padding="2">
+                                    <StackPanel>
+                                        <TextBlock Text="Passanger details" Margin="10 0 0 0"/>
+                                        <DockPanel Margin="10">
+                                            <TextBlock Text="Name(s) &amp; surname :   "/>
+                                            <TextBox x:Name="txbFlight_passangerName" Text="Simpiwe Sobici" Height="30"/>
+                                        </DockPanel>
+                                        <DockPanel Margin="10">
+                                            <TextBlock Text="Id Number :              " Margin="5"/>
+                                            <TextBox x:Name="txbFlight_passangerSurname" Text="98020305551086" TextChanged="AmountChanged_WHOLENumber" Height="30" Width="300"/>
+                                            <TextBlock Text="Cell no :   " Margin="5"/>
+                                            <TextBox x:Name="txbFlight_passangerCellphone" Text="0831231234" TextChanged="phoneNumberCheck" Height="30"/>
+                                        </DockPanel>
+                                        <DockPanel Margin="10">
+                                            <TextBlock Text="Work no          :           " Margin="0 5"/>
+                                            <TextBox x:Name="txbFlight_passangerTitle" Text="0461231234" TextChanged="phoneNumberCheck" Height="30" Width="200"/>
+                                            <TextBlock Text="email address          :   " Margin="5"/>
+                                            <TextBox x:Name="txbFlight_passanger" Text="s.sobici@gmail.com" Height="30"/>
 
-                                    </DockPanel>
-                                    <DockPanel Margin="10">
-                                        <TextBlock Text="Adress          :             " Margin="0 5"/>
-                                        <TextBox x:Name="txbFlight_passangerAddress" Text="34 Egg street, Green Village, PE" AcceptsReturn="True" Height="50"/>
-                                    </DockPanel>
-                                    <Button x:Name="btnFlight_addPassenger" Content="Add Passanger" Width=" 200" Click="BtnFlight_addPassenger_Click_1"/>
-                                </StackPanel>
+                                        </DockPanel>
+                                        <DockPanel Margin="10">
+                                            <TextBlock Text="Adress          :             " Margin="0 5"/>
+                                            <TextBox x:Name="txbFlight_passangerAddress" Text="34 Egg street, Green Village, PE" AcceptsReturn="True" Height="50"/>
+                                        </DockPanel>
+                                        <Button x:Name="btnFlight_addPassenger" Content="Add Passanger" Width=" 200" Click="BtnFlight_addPassenger_Click_1" Margin="293,0,292.6,0"/>
+                                    </StackPanel>
+                                </Border>
+
                                 <StackPanel Grid.Column="1">
                                     <TextBlock Text="Added passangers :" Margin="10"/>
                                     <ListBox x:Name="ltbFlight_passengersOutput" Height="200" Margin="0 0 100 0">
@@ -477,8 +480,7 @@
                             </Grid>
                             <Button x:Name="btnFlight_done" Content="Done!" Height="25" Margin="444,0,449,0" Click="btnFlight_done_Click_1"/>
                         </StackPanel>
-                        <ComboBox x:Name="CheckFlightCombo" HorizontalAlignment="Left" Margin="898,13,0,0" VerticalAlignment="Top"  Width="175"/>
-                        <Button Content="Check Flight" HorizontalAlignment="Left" Margin="898,64,0,0" VerticalAlignment="Top" Width="168" Height="35" Click="Button_Click_2"/>
+                        <Button Content="Check Flight" HorizontalAlignment="Left" Margin="989,16,0,0" VerticalAlignment="Top" Width="168" Height="35" Click="Button_Click_2"/>
                     </Grid>
                 </TabItem>
                 <!--Accommodation-->
@@ -487,8 +489,9 @@
                         <StackPanel  Margin="10 20" >
                             <!--Accomodation name-->
                             <DockPanel Margin="10">
-                                <TextBlock  Text="Accommodation name :" Height="30"/>
-                                <TextBox x:Name="txbAccommodation_name" Text="Garden Court PE" Margin="20 0" Width="535"/>
+                                <TextBlock Height="30" Text="Accommodation name :"/>
+                                <ComboBox x:Name="CheckAccommCombo" HorizontalAlignment="Left" Margin="100 0 0 0" VerticalAlignment="Top" Width="883"/>
+
                             </DockPanel>
 
                             <!--Check-in and -out days-->
@@ -522,7 +525,7 @@
                             </Grid>
                             <!--Specifications-->
                             <TextBlock Text="Specifications :"/>
-                            <TextBox x:Name="txbAccommodation_specifications" Text="Breakfast included." AcceptsReturn="True" Margin="20" Height="200"/>
+                            <TextBox x:Name="txbAccommodation_specifications" Text="Breakfast included." AcceptsReturn="True" Margin="20" Height="353"/>
                             <!--Total-->
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -538,11 +541,10 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock Grid.Column="1" Text="Total      R :"/>
                                 <TextBox x:Name="txbAccommodation_total" Text="0" TextChanged="AmountChanged" Grid.Column="2" Height="30"/>
-                                <Button x:Name="btnAccommodation_done" Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" Click="btnAccommodation_done_Click_1"/>
+                                <Button x:Name="btnAccommodation_done" Content="Done!" FontSize="20" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,9.6,10,16" Click="btnAccommodation_done_Click_1"/>
                             </Grid>
                         </StackPanel>
-                        <ComboBox x:Name="CheckAccommCombo" HorizontalAlignment="Left" Margin="970,20,0,0" VerticalAlignment="Top" Width="175"/>
-                        <Button Content="Check Accommodation" HorizontalAlignment="Left" Margin="970,72,0,0" VerticalAlignment="Top" Width="168" Height="36" Click="Button_Click_3"/>
+                        <Button Content="Check Accommodation" HorizontalAlignment="Left" Margin="979,140,0,0" VerticalAlignment="Top" Width="168" Height="36" Click="Button_Click_3"/>
                     </Grid>
 
                 </TabItem>
@@ -552,9 +554,11 @@
                     <Grid Background="#eee">
                         <StackPanel  Margin="10 20" >
                             <!--Conference name-->
+
                             <DockPanel Margin="10">
-                                <TextBlock  Text="Conference name :" Height="30"/>
-                                <TextBox x:Name="txbConference_name" Text="Golden Key Leadership Summit" Margin="20 0" Width="512"/>
+                                <TextBlock Height="30" Text="Conference name :" Width="128"/>
+                                <ComboBox x:Name="CheckConferenceCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1005"/>
+
                             </DockPanel>
                             <!--Venue-->
                             <DockPanel Margin="10">
@@ -609,7 +613,6 @@
                                 <Button x:Name="btnConference_done"  Content="Done!" FontSize="20" Height="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" Click="btnConference_done_Click_1"/>
                             </Grid>
                         </StackPanel>
-                        <ComboBox x:Name="CheckConferenceCombo" HorizontalAlignment="Left" Margin="986,20,0,0" VerticalAlignment="Top" Width="175"/>
                         <Button Content="Check Conferrence" HorizontalAlignment="Left" Margin="986,76,0,0" VerticalAlignment="Top" Width="168" Height="35" Click="Button_Click_4"/>
                     </Grid>
 

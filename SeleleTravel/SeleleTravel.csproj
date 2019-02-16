@@ -252,18 +252,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AppWindows\Consultant\accommodation.cs" />
-    <Compile Include="AppWindows\Consultant\agencydetail.cs" />
-    <Compile Include="AppWindows\Consultant\cabservice.cs" />
-    <Compile Include="AppWindows\Consultant\carhire.cs" />
-    <Compile Include="AppWindows\Consultant\client.cs" />
-    <Compile Include="AppWindows\Consultant\conference.cs" />
-    <Compile Include="AppWindows\Consultant\event.cs" />
-    <Compile Include="AppWindows\Consultant\flight.cs" />
-    <Compile Include="AppWindows\Consultant\order.cs" />
-    <Compile Include="AppWindows\Consultant\quote.cs" />
-    <Compile Include="AppWindows\Consultant\SeleleEntities.cs" />
-    <Compile Include="AppWindows\Consultant\voucher.cs" />
+    <Compile Include="Classes\accommodation.cs" />
+    <Compile Include="Classes\agencydetail.cs" />
+    <Compile Include="Classes\cabservice.cs" />
+    <Compile Include="Classes\carhire.cs" />
+    <Compile Include="Classes\client.cs" />
+    <Compile Include="Classes\conference.cs" />
+    <Compile Include="Classes\event.cs" />
+    <Compile Include="Classes\flight.cs" />
+    <Compile Include="Classes\order.cs" />
+    <Compile Include="Classes\quote.cs" />
+    <Compile Include="Classes\SeleleEntities.cs" />
+    <Compile Include="Classes\voucher.cs" />
     <Compile Include="AppWindows\Owner\staff.cs" />
     <Compile Include="Classes\GeneralMethods.cs" />
     <Compile Include="AppWindows\General\ComposeMessageWindow.xaml.cs">

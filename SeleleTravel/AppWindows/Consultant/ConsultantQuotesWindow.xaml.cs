@@ -306,7 +306,7 @@ namespace SeleleTravel
 
         private void BtnConference_done_Click(object sender, RoutedEventArgs e)
         {
-            string conferenceName = txbConference_name.Text;
+            string conferenceName = CheckConferenceCombo.Text;
             string conferenceVenue = txbConference_venue.Text;
             DateTime dateOfConference = dpConference_startDate.DisplayDate;
             DateTime endDateofConference = dpConference_endDate.DisplayDate;
@@ -336,7 +336,7 @@ namespace SeleleTravel
                 // ...
 
                 // reset texbox values to empty
-                GeneralMethods.clearTextBoxes(txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total);
+                GeneralMethods.clearTextBoxes(txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total);
 
             }
         }
@@ -417,7 +417,7 @@ namespace SeleleTravel
         private void BtnFlight_done_Click(object sender, RoutedEventArgs e)
         {
             // assign valuesfrom the texbox to the variables
-            string airlineName = txbFlight_airline.Text;
+            //string airlineName = txbFlight_airline.Text;
             string fromLoc = txbFlight_from.Text;
             string toLoc = txbFlight_to.Text;
             DateTime departureDate = dpFlight_departure.DisplayDate;
@@ -444,7 +444,7 @@ namespace SeleleTravel
             // This returns a bool value,
             // if it returns true then one of the strings are empty
             // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
-            bool boolValue = GeneralMethods.checkEmptytxtBox(airlineName,
+            bool boolValue = GeneralMethods.checkEmptytxtBox(
                 fromLoc,
                 toLoc,
                 preferedTime,
@@ -466,7 +466,7 @@ namespace SeleleTravel
                 }
 
                 // reset the textbox values to empty
-                GeneralMethods.clearTextBoxes(txbAccommodation_name, txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_total);
+                GeneralMethods.clearTextBoxes( txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_total);
 
                 // clear the passangers
                 _passengers = new List<string>();
@@ -496,7 +496,7 @@ namespace SeleleTravel
 
         private void BtnAccommodation_done_Click(object sender, RoutedEventArgs e)
         {
-            string nameOfAgency = txbAccommodation_name.Text;
+            string nameOfAgency = CheckAccommCombo.Text;
             string accommodationSpecs = txbAccommodation_specifications.Text;
             DateTime checkInDate = dpAccommodation_checkIn.DisplayDate;
             DateTime checkOutDate = dpAccommodation_checkOut.DisplayDate;
@@ -529,7 +529,7 @@ namespace SeleleTravel
                 //};
 
                 // Reset the texboxes to empty
-                GeneralMethods.clearTextBoxes(txbAccommodation_name, txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_numRooms, txbAccommodation_total);
+                GeneralMethods.clearTextBoxes( txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_numRooms, txbAccommodation_total);
             }
 
 
@@ -832,7 +832,7 @@ namespace SeleleTravel
 
         private void btnConference_done_Click_1(object sender, RoutedEventArgs e)
         {
-            string conferenceName = txbConference_name.Text;
+            string conferenceName = CheckConferenceCombo.Text;
             Agency_IDs = Agency_IDs + "|" + conferenceName;
             string conferenceVenue = txbConference_venue.Text;
             DateTime startDateOfConference = dpConference_startDate.DisplayDate;
@@ -889,7 +889,7 @@ namespace SeleleTravel
                 servicesDates.Add(endDateofConference);
 
                 // reset texbox values to empty
-                GeneralMethods.clearTextBoxes(txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total);
+                GeneralMethods.clearTextBoxes( txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total);
 
             }
         }
@@ -945,7 +945,7 @@ namespace SeleleTravel
 
         private void btnFlight_done_Click_1(object sender, RoutedEventArgs e)
         {
-            string airline = txbFlight_airline.Text;
+            string airline = CheckFlightCombo.SelectedValue.ToString();
             Agency_IDs = Agency_IDs + "|" + airline;
             string fromcity = txbFlight_from.Text;
             string tocity = txbFlight_to.Text;
@@ -1024,7 +1024,7 @@ namespace SeleleTravel
                 }
 
                 // reset the textbox values to empty
-                GeneralMethods.clearTextBoxes(txbAccommodation_name, txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_numRooms, txbAccommodation_total);
+                GeneralMethods.clearTextBoxes( txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_numRooms, txbAccommodation_total);
 
                 // clear the passangers
                 _passengers = new List<string>();
@@ -1037,7 +1037,7 @@ namespace SeleleTravel
 
         private void btnAccommodation_done_Click_1(object sender, RoutedEventArgs e)
         {
-            string accomname = txbAccommodation_name.Text;
+            string accomname = CheckAccommCombo.Text;
             Agency_IDs = Agency_IDs + "|" + accomname;
             string accom_id = "AccoPE0001";//this is generated by function for accommodationID
             DateTime checkin = dpAccommodation_checkIn.DisplayDate;
@@ -1441,8 +1441,8 @@ namespace SeleleTravel
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            string agencyname = txbFlight_airline.Text;
-         
+            string agencyname = CheckFlightCombo.SelectedValue.ToString();
+
             //Query for finding the agency_IDs available
             try
             {
@@ -1471,7 +1471,7 @@ namespace SeleleTravel
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             
-            string agencyname = txbAccommodation_name.Text;
+            string agencyname = CheckAccommCombo.Text;
 
            
             //Query for finding the agency_IDs available
@@ -1501,7 +1501,7 @@ namespace SeleleTravel
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-           string agencyname= txbConference_name.Text;
+           string agencyname= CheckConferenceCombo.Text;
 
             //Query for finding the agency_IDs available
             try
@@ -1610,6 +1610,8 @@ namespace SeleleTravel
             }
             MessageBox.Show("Dummy test to check if retrieved password" +passwordDB);
         }
+
+        
     }
 }
 
