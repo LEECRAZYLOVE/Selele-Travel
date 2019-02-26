@@ -350,7 +350,7 @@ namespace SeleleTravel
             // Asign vars to texbox values
             string _agencyName = txbCab_agency.Text;
             Agency_IDs = Agency_IDs + "|" + _agencyName;
-            string _driverName = txbCab_driver.Text;
+            //string _driverName = txbCab_driver.Text;
             string _pickUpLocation = txbCab_pickUp.Text;
             string _dropOffLocation = txbCab_dropOff.Text;
             string _timeOfPickUp = txbCab_pickUpTime.Text;
@@ -372,7 +372,7 @@ namespace SeleleTravel
             // This returns a bool value,
             // if it returns true then one of the strings are empty
             // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
-            bool boolValue = GeneralMethods.checkEmptytxtBox(_agencyName, _driverName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _taxicabSpecs);
+            bool boolValue = GeneralMethods.checkEmptytxtBox(_agencyName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _taxicabSpecs);
             // bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
             if (!boolValue)//&& !valueOfBool)
@@ -383,12 +383,11 @@ namespace SeleleTravel
                     myConnect.Open();
                     using (var cmd = new NpgsqlCommand($"INSERT INTO cabservices " +
                         $" (nameofagency,agency_id,quote_no,nameofdriver,pickup,dropoff,dateofcab,numberofcabs,amount,timeofcab,cabspecs)" +
-                        $" VALUES (@nameofagency,@agency_id,@quote_no,@nameofdriver,@pickup,@dropoff,@dateofcab,@numberofcabs,@amount,@timeofcab,@cabspecs)", myConnect))
+                        $" VALUES (@nameofagency,@agency_id,@quote_no,@pickup,@dropoff,@dateofcab,@numberofcabs,@amount,@timeofcab,@cabspecs)", myConnect))
                     {
                         cmd.Parameters.AddWithValue("nameofagency", _agencyName);
                         cmd.Parameters.AddWithValue("agency_id", agency_id);
                         cmd.Parameters.AddWithValue("quote_no", quote_no);
-                        cmd.Parameters.AddWithValue("nameofdriver", _driverName);
                         cmd.Parameters.AddWithValue("pickup", _pickUpLocation);
                         cmd.Parameters.AddWithValue("dropoff", _dropOffLocation);
                         cmd.Parameters.AddWithValue("dateofcab", _dateOfPickup.ToString().Substring(0, 10));
@@ -405,7 +404,7 @@ namespace SeleleTravel
                     h.ToString();
                 }
                 // reset the textbox values to empty
-                GeneralMethods.clearTextBoxes(txbCab_agency, txbCab_driver, txbCab_pickUp, txbCab_dropOff, txbCab_pickUpTime, txbCab_numCabs, txbCab_specifications, txbCab_total);
+                GeneralMethods.clearTextBoxes(txbCab_agency,  txbCab_pickUp, txbCab_dropOff, txbCab_pickUpTime, txbCab_numCabs, txbCab_specifications, txbCab_total);
             }
         }
 
