@@ -8,12 +8,16 @@
         Closed="Window_Closed"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        Title="Consultant_Update_Window" 
+        Title="Consultant Update" 
         x:Name="_ConsultantUpdateWindow_"
-        Height="700" Width="864" Background="#FFE4D64D">
+        Height="700" Width="937.5" Background="#FFE4D64D">
 
-    <Grid Background="#FFFDFDA3">
-        <TabControl x:Name="Consultant_tabControl" Margin="0,10,0,0" Background="#FFFFD86B">
+    <Grid Background="{StaticResource seleleOrangeBrush}"
+          Margin="0 0 0 0" 
+          x:Name="TheTconsulantView">
+        
+        <TabControl x:Name="Consultant_tabControl"
+                    Background="#FFFFD86B">
 
             <!-- Client details Tab -->
             <TabItem Header="Client Details" 
@@ -83,14 +87,10 @@
             </TabItem>
 
             <!-- Car Hire -->
-            <TabItem Header="Car Hire" Margin="8.338,0,-8.339,0" Style="{DynamicResource TabItemStyle}">
+            <TabItem Header="Car Hire" 
+                     Margin="8.338,0,-8.339,0" Style="{DynamicResource TabItemStyle}">
 
-                <Grid Background="#FFFFD86B" 
-                      Height="588.154" 
-                      VerticalAlignment="Bottom" 
-                      Margin="0,0,0,14.246" 
-                      HorizontalAlignment="Left" 
-                      Width="908.924">
+                <Grid Margin="10 0 10 0" x:Name="TheView">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -204,7 +204,9 @@
                                  AcceptsReturn="True"
                                  TextWrapping="Wrap" 
                                  Tag="Specifications of the hire" 
-                                 BorderBrush="Black"/>
+                                 BorderBrush="Black"
+                                 Margin="0 0 0 0"
+                                 Width="{Binding ActualWidth, ElementName=TheView}"/>
 
                     </Grid>
 
@@ -237,7 +239,7 @@
                      Margin="7.124,0,-7.124,0"
                      Style="{DynamicResource TabItemStyle}">
 
-                <Grid>
+                <Grid Margin="10" x:Name="TaxiCabView">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
@@ -338,37 +340,38 @@
                     </Grid>
 
                     <!-- Specifications and total amount section -->
-                    <Grid Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                    <Border Grid.Row="1"
+                            Padding="0 0 30 0"  
+                            Width="{Binding ActualWidth, 
+                                                    ElementName=Consultant_tabControl}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
-                        <TextBox x:Name="txbCab_specifications" 
-                                 AcceptsReturn="True"
-                                 Margin="10,5"
-                                 Tag="Specifications"/>
+                            <TextBox x:Name="txbCab_specifications" 
+                                     Grid.Row="0"
+                                     AcceptsReturn="True"
+                                     Tag="Specifications"/>
 
-                        <Label Content="TOTAL:"
-                               Grid.Row="1"/>
+                            <TextBox x:Name="txbCab_total" 
+                                     Tag="Total amount in rands"
+                                     TextChanged="AmountChanged"
+                                     Grid.Row="1"/>
 
-                        <TextBox x:Name="txbCab_total" 
-                                 TextChanged="AmountChanged"
-                                 Grid.Row="1"/>
+                            <Button x:Name="btnCab_update"
+                                    Content="UPDATE" 
+                                    Click="BtnCab_update_Click"
+                                    Grid.Row="3"/>
 
-                        <Button x:Name="btnCab_update"
-                                Content="UPDATE" 
-                                Click="BtnCab_update_Click"
-                                Grid.Row="1"/>
-
-                        <Label Content="R" 
-                               Grid.Row="1"/>
-
-                    </Grid>
-
+                        </Grid>
+                    </Border>
                 </Grid>
 
             </TabItem>
+            
             <TabItem Header="Flight" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2.693,0,-2.693,0" Style="{DynamicResource TabItemStyle}">
                 <Canvas Background="#FFFFD86B" Width="901.583" Margin="0,10,0,22.152">
                     <Label x:Name="label21" Content="Airline:" />
