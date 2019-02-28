@@ -209,6 +209,7 @@
                                  Tag="Specifications of the hire" 
                                  BorderBrush="Black"
                                  Margin="0 0 0 0"
+                                 FontSize="{StaticResource FontSizeSmall}"
                                  Width="{Binding ActualWidth, ElementName=TheView}"/>
 
                     </Grid>
@@ -358,6 +359,7 @@
                             <TextBox x:Name="txbCab_specifications" 
                                      Grid.Row="0"
                                      AcceptsReturn="True"
+                                     FontSize="{StaticResource FontSizeSmall}"
                                      Tag="Specifications"/>
 
                             <TextBox x:Name="txbCab_total" 
@@ -463,6 +465,7 @@
                             <TextBox x:Name="txbFlight_specifications"
                                      AcceptsReturn="True"
                                      TextWrapping="Wrap" 
+                                     FontSize="{StaticResource FontSizeSmall}"
                                      Grid.Row="4"
                                      Tag="Specifications"/>
                             
@@ -587,6 +590,7 @@
                                  Tag="Specifications"
                                  AcceptsReturn="True" 
                                  Grid.ColumnSpan="2"
+                                 FontSize="{StaticResource FontSizeSmall}"
                                  Grid.Row="3"
                                  TextWrapping="Wrap" />
                     
@@ -684,6 +688,7 @@
                                  Tag="Specifications"
                                  Grid.Column="1"
                                  Grid.RowSpan="6"
+                                 FontSize="{StaticResource FontSizeSmall}"
                                  Margin="5 0 0 0"
                                  TextWrapping="Wrap" />
 
@@ -734,6 +739,7 @@
                                  AcceptsReturn="True" 
                                  Grid.Column="1"
                                  TextWrapping="Wrap" 
+                                 FontSize="{StaticResource FontSizeSmall}"
                                  Margin="5 5 0 5"/>
                     </Grid>
                 </Border>
@@ -752,6 +758,7 @@
 
                         <TextBox x:Name="txbQuote_quoteSummary" 
                                  Grid.Column="0"
+                                 FontSize="{StaticResource FontSizeSmall}"
                                  Tag="quoteSummary"/>
 
                         <Grid Grid.Column="1">
@@ -837,6 +844,7 @@
                         <TextBox x:Name="txbSendQuotes_preview"
                                  Grid.Column="1" 
                                  TextWrapping="Wrap"
+                                 FontSize="{StaticResource FontSizeSmall}"
                                  Margin="5"
                                  Tag="Quote Preview"/>
 
