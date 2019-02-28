@@ -17,7 +17,8 @@
           x:Name="TheTconsulantView">
         
         <TabControl x:Name="Consultant_tabControl"
-                    Background="#FFFFD86B">
+                    Background="#FFFFD86B"
+                    HorizontalContentAlignment="Center">
 
             <!-- Client details Tab -->
             <TabItem Header="Client Details" 
@@ -695,39 +696,188 @@
             
             <!-- Events -->
             <TabItem Header="Events" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-4.06,0,0,0" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFFFD86B">
-                    <Label x:Name="label49" Content="Name:" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label50" Content="Specifications:" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txbEvents_name" HorizontalAlignment="Left" Height="23" Margin="94,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593"/>
-                    <TextBox x:Name="txbEvents_specifications" AcceptsReturn="True" HorizontalAlignment="Left" Height="258" Margin="94,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="593"/>
-                    <Label x:Name="label51" Content="TOTAL:" HorizontalAlignment="Left" Margin="699,253,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txbEvents_total" TextChanged="AmountChanged" HorizontalAlignment="Left" Height="23" Margin="722,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52"/>
-                    <Button x:Name="btnEvents_update" Content="UPDATE" Margin="422.253,371.769,231.746,205.63"/>
-                    <Label x:Name="rands" Content="R" HorizontalAlignment="Left" Margin="699,284,0,0" VerticalAlignment="Top" Height="23"/>
-                </Grid>
+
+                <Border Padding="10 0 30 0"
+                        Width="{Binding ActualWidth, ElementName=_ConsultantUpdateWindow_}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBox x:Name="txbEvents_name" 
+                                     Tag="Name" 
+                                     Grid.Row="0"
+                                     TextWrapping="Wrap" />
+
+                            <TextBox x:Name="txbEvents_total"
+                                     Tag="TOTAL"
+                                     TextChanged="AmountChanged"
+                                     Grid.Row="1"
+                                     TextWrapping="Wrap"/>
+
+                            <Button x:Name="btnEvents_update"
+                                    Content="UPDATE" 
+                                    Grid.Row="2"/>
+
+                        </Grid>
+
+                        <TextBox x:Name="txbEvents_specifications" 
+                                 Tag="Specifications"
+                                 AcceptsReturn="True" 
+                                 Grid.Column="1"
+                                 TextWrapping="Wrap" 
+                                 Margin="5 5 0 5"/>
+                    </Grid>
+                </Border>
             </TabItem>
             
+            <!-- Quote Summary -->
             <TabItem Header="Quote Summary" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="-8.489,-0.107,0,0" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFFFD86B">
-                    <TextBox x:Name="txbQuote_quoteSummary" HorizontalAlignment="Left" Height="322" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="486"/>
-                    <Label x:Name="label52" Content="Mark Up %:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="514,11,0,0"/>
-                    <TextBox x:Name="txbQuote_markUp" HorizontalAlignment="Left" Height="23" Margin="590,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="127"/>
-                    <Label x:Name="label53" Content="Total:" HorizontalAlignment="Left" Margin="514,80,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnQuote_requestVerification" Content="Request Verification"  Width="250" Margin="496,291.96,16,285.44"/>
-                    <Label x:Name="lblQuote_total" Content="R" HorizontalAlignment="Left" Margin="590,80,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnQuote_update" Content="Update" Click="BtnQuote_update_Click"  Margin="357.55,351.832,284.449,225.567"/>
-                    <Button x:Name="btnQuoteSummar_document" Content="View as document and print" Width="250" Click="Button_Click" Margin="502,331.96,10,245.44"/>
-                </Grid>
+
+                <Border Padding="10 0 20 0"
+                        Width="{Binding ActualWidth, ElementName=_ConsultantUpdateWindow_}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox x:Name="txbQuote_quoteSummary" 
+                                 Grid.Column="0"
+                                 Tag="quoteSummary"/>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label x:Name="label52" 
+                                       Grid.Column="0"
+                                       Content="Mark Up %:"
+                                       VerticalContentAlignment="Center"/>
+
+                                <TextBox x:Name="txbQuote_markUp"
+                                         Grid.Column="1"
+                                         TextWrapping="Wrap"
+                                         Margin="5"/>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Label x:Name="label53" 
+                                       Content="Total: " 
+                                       Grid.Column="0" />
+
+                                <TextBox Tag="Total in rands"
+                                         Grid.Column="1"/>
+
+                            </Grid>
+
+                            <Button x:Name="btnQuote_update" 
+                                    Content="Update"
+                                    Click="BtnQuote_update_Click"
+                                    Grid.Row="2"/>
+
+                            <Button x:Name="btnQuoteSummar_document"
+                                    Content="View as document and print"
+                                    Click="Button_Click"
+                                    Grid.Row="3"/>
+                            
+                            <Button x:Name="btnQuote_requestVerification"
+                                    Content="Request Verification"
+                                    Grid.Row="4"/>
+
+                        </Grid>
+
+                    </Grid>
+
+                </Border>
+               
             </TabItem>
+            
+            <!-- Send Quotes -->
             <TabItem Header="Send Quotes" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="-8.809,0,0,0" Style="{DynamicResource TabItemStyle}">
-                <Grid Background="#FFFFD86B">
-                    <ListBox x:Name="ltbSendQuotes_verifiedQuotes" HorizontalAlignment="Left" Height="367" VerticalAlignment="Top" Width="210" Background="#FFB2B2A3"/>
-                    <TextBox x:Name="txbSendQuotes_preview" HorizontalAlignment="Left" Height="367" Margin="210,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
-                    <PasswordBox x:Name="pdbSendQuotes_password" HorizontalAlignment="Left" Margin="105.476,12,0,0" VerticalAlignment="Top" Width="136" Height="27" Grid.Column="1"/>
-                    <Label Content="Password:" HorizontalAlignment="Left" Margin="28.752,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.192" Grid.Column="1"/>
-                    <Button x:Name="btnSendQuotes_send" Content="SEND TO CLIENTS" Width="250"   Click="BtnSendQuotes_send_Click" />
-                </Grid>
+
+                <Border Padding="10 0 20 0"
+                        Width="{Binding ActualWidth, ElementName=_ConsultantUpdateWindow_}">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <ListBox x:Name="ltbSendQuotes_verifiedQuotes"
+                                 Grid.Column="0"
+                                 Margin="5"/>
+
+                        <TextBox x:Name="txbSendQuotes_preview"
+                                 Grid.Column="1" 
+                                 TextWrapping="Wrap"
+                                 Margin="5"
+                                 Tag="Quote Preview"/>
+
+
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" Margin="5">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                
+                                <Label Content="Password:" 
+                                       Grid.Row="0"
+                                       />
+                                
+                                <PasswordBox x:Name="pdbSendQuotes_password"
+                                             FontSize="{StaticResource FontSizeRegular}"
+                                             Grid.Row="1"/>
+
+                            </Grid>
+
+                            <Button x:Name="btnSendQuotes_send"
+                                    Content="SEND TO CLIENTS"
+                                    Click="BtnSendQuotes_send_Click" 
+                                    Grid.Row="2" />
+                        </Grid>
+                        
+                    
+
+                    </Grid>
+                    
+                </Border>
+                
             </TabItem>
+
         </TabControl>
 
     </Grid>
