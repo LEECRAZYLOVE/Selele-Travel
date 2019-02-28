@@ -30,15 +30,11 @@
                 <!-- Name of the consultant -->
                 <Label x:Name="lblConsultantName" 
                        Content="-Consultant Name-" 
-                       FontFamily="Comic Sans MS" 
-                       FontSize="{StaticResource FontSizeRegular}"
                        Margin="2"/>
                 
                 <!-- Consultant ID -->
                 <Label x:Name="lblConsultantID" 
                        Content="-Consultant ID-"
-                       FontFamily="Comic Sans MS" 
-                       FontSize="{StaticResource FontSizeRegular}"
                        Margin="2"/>
 
             </StackPanel>
@@ -57,7 +53,6 @@
             <Button x:Name="btnManager_logOut" 
                     Grid.Column="2"
                     Content="LOGOUT"
-                    FontFamily="Comic Sans MS"
                     FontWeight="Bold"
                     FontSize="{StaticResource FontSizeLarge}" 
                     BorderThickness="1"
@@ -109,8 +104,7 @@
                            Grid.Row="0"
                            VerticalAlignment="Top" 
                            FontFamily="Comic Sans MS" 
-                           FontSize="{StaticResource FontSizeRegular}"  
-                           Canvas.Top="20" />
+                           FontSize="{StaticResource FontSizeRegular}"/>
                     
                     <!-- The buttons -->
                     <Grid Panel.ZIndex="10" Grid.Row="1">
@@ -130,7 +124,6 @@
                                 BorderThickness="2" 
                                 BorderBrush="{StaticResource ForegroundDarkBrush}" 
                                 FontSize="{StaticResource FontSizeLarge}"
-                                Background="{StaticResource seleleBlueBrush}"
                                 Click="btnConsultant_Quotes_Click"/>
 
                         <!-- Consultant Orders -->
@@ -139,8 +132,7 @@
                                 Content="New Orders" 
                                 Click="btnConsultant_Orders_Click" 
                                 BorderBrush="{StaticResource ForegroundDarkBrush}" 
-                                FontSize="{StaticResource FontSizeLarge}"
-                                Background="{StaticResource seleleBlueBrush}"/>
+                                FontSize="{StaticResource FontSizeLarge}"/>
 
                         <!-- Consultant Vouchers -->
                         <Button x:Name="btnConsultant_Vouchers" 
@@ -148,8 +140,7 @@
                                 Content="New Vouchers"  
                                 Click="btnConsultant_Vouchers_Click" 
                                 BorderBrush="{StaticResource ForegroundDarkBrush}" 
-                                FontSize="{StaticResource FontSizeLarge}"
-                                Background="{StaticResource seleleBlueBrush}"/>
+                                FontSize="{StaticResource FontSizeLarge}"/>
 
                         <!-- Consultant Compose Message -->
                         <Button x:Name="btnConsultant_composeMessage"
@@ -157,8 +148,7 @@
                                 Content="Compose Message" 
                                 Click="btnConsultant_composeMessage_Click" 
                                 BorderBrush="{StaticResource ForegroundDarkBrush}" 
-                                FontSize="{StaticResource FontSizeLarge}"
-                                Background="{StaticResource seleleBlueBrush}" />
+                                FontSize="{StaticResource FontSizeLarge}"/>
 
                         <!-- Consultant New Service Provider -->
                         <Button x:Name="btnConsultant_NewServiceProvider" 
@@ -166,8 +156,7 @@
                                 Content="New Service Provider"  
                                 Click="BtnConsultant_NewServiceProvider_Click"
                                 BorderBrush="{StaticResource ForegroundDarkBrush}" 
-                                FontSize="{StaticResource FontSizeLarge}"
-                                Background="{StaticResource seleleBlueBrush}" />
+                                FontSize="{StaticResource FontSizeLarge}"/>
 
                         <!-- Consultant Update -->
                         <Button x:Name="btnConsultant_Update" 
@@ -204,7 +193,6 @@
 
                         <Label Content="Selected Message :" 
                                Grid.Row="0"
-                               Opacity="1.5" 
                                FontSize="{StaticResource FontSizeRegular}" 
                                FontFamily="Comic Sans MS" />
 
@@ -212,7 +200,9 @@
                                  Grid.Row="1"
                                  Background="#FFD5D9E6" 
                                  Opacity="0.5" >
+                            
                             <ListBoxItem Content="No New Messages.."/>
+                        
                         </ListBox>
 
                     </Grid>
@@ -270,17 +260,16 @@
                         </Grid.ColumnDefinitions>
                         
                         <TextBox x:Name="txbConsultant_search"
-                                 Text="Name or ID..."
-                                 Style="{StaticResource Base}"
+                                 Tag="Name or ID..."
+                                 Padding="5"
                                  TextWrapping="Wrap"
                                  BorderBrush="Black" 
-                                 FontSize="20"
+                                 FontSize="{StaticResource FontSizeRegular}"
                                  FontFamily="Times New Roman"/>
 
                         <Button x:Name="btnConsultant_search"
                                 Grid.Column="1"
                                 Content="SEARCH"
-                                HorizontalAlignment="Right" 
                                 Click="btnConsultant_search_Click" 
                                 Padding="20 5"/>
 
