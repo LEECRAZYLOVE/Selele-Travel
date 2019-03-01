@@ -57,8 +57,8 @@ namespace SeleleTravel
 
         #region Fields and Properties
         public static LogInWindow logInWindow;
-        public static string ConnectionString = "Database=Selele;Port=1998;Server=127.0.0.1;User Id=postgres;Password=Linomtha";
-        public static string ChatConnectionString = "Server=127.0.0.1; Port=1998; User Id=postgres; Password=Linomtha; Database=postgres;";
+        public static string ConnectionString = "Database=SeleleMain;Port=1998;Server=127.0.0.1;User Id=postgres;Password=Linomtha";
+        public static string ChatConnectionString = "Server=127.0.0.1; Port=1998; User Id=postgres; Password=Linomtha; Database=SeleleChat;";
         #endregion
 
         #region Helper Methods

@@ -318,7 +318,7 @@
                     </Grid>
                 </TabItem>
                 <!--Car Hire -->
-                <TabItem Header="Car Hire" Style="{DynamicResource TabItemStyle}" Height="42" Margin="0,-2,0,0" VerticalAlignment="Top">
+                <TabItem Header="Car Hire" Style="{DynamicResource TabItemStyle}" Height="42" Margin="0,-2,0,4" VerticalAlignment="Bottom">
                     <Grid Background="#eee">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="49*"/>
@@ -396,7 +396,7 @@
                 <!--Flight-->
                 <TabItem Header="Flight" Style="{DynamicResource TabItemStyle}">
                     <Grid Background="#eee">
-                        <StackPanel>
+                        <StackPanel Margin="0,0,9,0">
                             <TextBlock Text="Enter flight details" HorizontalAlignment="Center" FontSize="20" Margin="10"/>
                             <!--Airline and textbox-->
                             <DockPanel>
