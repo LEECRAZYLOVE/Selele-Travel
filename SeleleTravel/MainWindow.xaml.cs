@@ -29,27 +29,11 @@ namespace SeleleTravel
             InitializeComponent();
         }
 
-        //instantiating all the windows as global objects
-        public static LogInWindow logInWindow;
-        public static string ConnectionString = "Database=Selele;Port=1998;Server=192.168.1.5;User Id=postgres;Password=Linomtha";
-        public static string ChatConnectionString = string.Format("Server={0}; Port={1}; User Id={2}; Password={3}; Database={4};",
-           "192.168.1.5", "1998", "postgres", "Linomtha", "postgres");
-
-
-
-        private void loadLogInWindow(LoadWindow windowToLoad)
-        {
-            logInWindow = new LogInWindow(windowToLoad);
-            logInWindow.Owner = this;
-            logInWindow.Show();
-            Hide();
-        }
-
+        #region ClickEvents
         private void btn_consultantSide_Click(object sender, RoutedEventArgs e)
         {
             Hide();
             loadLogInWindow(LoadWindow.Consultant);
-
         }
 
         private void btn_managerSide_Click(object sender, RoutedEventArgs e)
@@ -69,18 +53,22 @@ namespace SeleleTravel
             GeneralMethods.closeAllWindows();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NpgsqlConnection conn = new NpgsqlConnection(ConnectionString);
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+        #endregion
 
+        #region Fields and Properties
+        public static LogInWindow logInWindow;
+        public static string ConnectionString = "Database=Selele;Port=1998;Server=127.0.0.1;User Id=postgres;Password=Linomtha";
+        public static string ChatConnectionString = "Server=127.0.0.1; Port=1998; User Id=postgres; Password=Linomtha; Database=postgres;";
+        #endregion
+
+        #region Helper Methods
+        private void loadLogInWindow(LoadWindow windowToLoad)
+        {
+            logInWindow = new LogInWindow(windowToLoad);
+            logInWindow.Owner = this;
+            logInWindow.Show();
+            Hide();
         }
+        #endregion
     }
 }

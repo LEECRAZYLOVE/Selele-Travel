@@ -84,6 +84,7 @@ namespace SeleleTravel
         {
             voucher_no = GeneralMethods.makeVoucher_no();
             txbConsultsnt_Vouchers_outputVoucherNumber.Text = voucher_no;
+            
             //Query for retrieving client_id
             try
             {
@@ -105,18 +106,18 @@ namespace SeleleTravel
                 MessageBox.Show(h.ToString());
             }
 
-            //Query for retrieving accomm_id
+            //Query for retrieving voucher amount
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
 
-                using (var cmd = new NpgsqlCommand($"SELECT accomm_id FROM orders,accommodation WHERE order_no = '{order_no}' AND orders.quote_no=accommmodation.quote_no", myConnect))
+                using (var cmd = new NpgsqlCommand($"SELECT amount FROM orders, quote WHERE order_no = '{order_no}' AND orders.quote_no=quote.quote_no", myConnect))
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
                     while (query.Read())
                     {
-                        accomm_ID = query[0].ToString();
+                        Voucheramount = Convert.ToDouble(query[0].ToString());
                     }
                     myConnect.Close();
                 }
@@ -126,13 +127,34 @@ namespace SeleleTravel
                 MessageBox.Show(h.ToString());
             }
 
+            //Query for retrieving accomm_id
+            //try
+            //{
+            //    NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            //    myConnect.Open();
+
+            //    using (var cmd = new NpgsqlCommand($"SELECT accomm_id FROM orders,accommodation WHERE order_no = '{order_no}' AND orders.quote_no=accommmodation.quote_no", myConnect))
+            //    {
+            //        NpgsqlDataReader query = cmd.ExecuteReader();
+            //        while (query.Read())
+            //        {
+            //            accomm_ID = query[0].ToString();
+            //        }
+            //        myConnect.Close();
+            //    }
+            //}
+            //catch (Exception h)
+            //{
+            //    MessageBox.Show(h.ToString());
+            //}
+
             //Query for retrieving agency_id
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
 
-                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM orders WHERE order_no = '{order_no}' AND orders.quote_no=quote.quote_no", myConnect))
+                using (var cmd = new NpgsqlCommand($"SELECT agencyids FROM orders,quote WHERE order_no = '{order_no}' AND orders.quote_no=quote.quote_no", myConnect))
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
                     while (query.Read())
@@ -173,23 +195,21 @@ namespace SeleleTravel
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
                
-                using (var cmd = new NpgsqlCommand($"INSERT INTO voucher  (voucher_no,order_no,client_id,accomm_id,agency_id,staff_id,amount) VALUES (@voucher_no,@order_no,@client_id,@accomm_id,@agency_id,@staff_id,@amount)", myConnect))
+                using (var cmd = new NpgsqlCommand($"INSERT INTO voucher  (voucher_no,order_no,client_id,agency_id,staff_id,amount) VALUES (@voucher_no,@order_no,@client_id,@agency_id,@staff_id,@amount)", myConnect))
                 {
 
                     cmd.Parameters.AddWithValue("voucher_no",voucher_no);
                     cmd.Parameters.AddWithValue("order_no",order_no);
                     cmd.Parameters.AddWithValue("client_id",client_id);
-                    cmd.Parameters.AddWithValue("accomm_id",accomm_ID);
                     cmd.Parameters.AddWithValue("agency_id",agency_ID);
                     cmd.Parameters.AddWithValue("staff_id",staff_ID);
                     cmd.Parameters.AddWithValue("amount",Voucheramount);
-                   
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch
+            catch (Exception h)
             {
-
+                MessageBox.Show(h.ToString());
             }
         }
     }

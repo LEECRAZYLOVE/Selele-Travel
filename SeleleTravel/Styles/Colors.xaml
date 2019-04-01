@@ -1,0 +1,59 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SeleleTravel">
+
+    <Color x:Key="BackgroundLight">#efefef</Color>
+    <SolidColorBrush x:Key="BackgroundLightBrush" Color="{StaticResource BackgroundLight}" />
+
+    <Color x:Key="BackgroundVeryLight">#fafafa</Color>
+    <SolidColorBrush x:Key="BackgroundVeryLightBrush" Color="{StaticResource BackgroundVeryLight}" />
+
+    <Color x:Key="ForegroundMain">#686868</Color>
+    <SolidColorBrush x:Key="ForegroundMainBrush" Color="{StaticResource ForegroundMain}" />
+
+    <Color x:Key="ForegroundVeryDark">#000000</Color>
+    <SolidColorBrush x:Key="ForegroundVeryDarkBrush" Color="{StaticResource ForegroundVeryDark}" />
+
+    <Color x:Key="ForegroundLight">#ffffff</Color>
+    <SolidColorBrush x:Key="ForegroundLightBrush" Color="{StaticResource ForegroundLight}" />
+
+    <Color x:Key="ForegroundDark">#bdbdbd</Color>
+    <SolidColorBrush x:Key="ForegroundDarkBrush" Color="{StaticResource ForegroundDark}" />
+
+    <Color x:Key="seleleOrange">#ffa800</Color>
+    <SolidColorBrush x:Key="seleleOrangeBrush" Color="{StaticResource seleleOrange}" />
+
+    <Color x:Key="seleleDarkOrange">#534800</Color>
+    <SolidColorBrush x:Key="seleleDarkOrangeBrush" Color="{StaticResource seleleDarkOrange}" />
+
+    <Color x:Key="seleleBlue">#3099c5</Color>
+    <SolidColorBrush x:Key="seleleBlueBrush" Color="{StaticResource seleleBlue}" />
+
+    <Color x:Key="seleleRed">#ff4747</Color>
+    <SolidColorBrush x:Key="seleleRedBrush" Color="{StaticResource seleleRed}" />
+
+    <Color x:Key="seleleDarkRed">#A72F2F</Color>
+    <SolidColorBrush x:Key="seleleDarkRedBrush" Color="{StaticResource seleleDarkRed}" />
+
+
+    <Color x:Key="seleleGreen">#00c541</Color>
+    <SolidColorBrush x:Key="seleleGreenBrush" Color="{StaticResource seleleGreen}" />
+
+    <Color x:Key="seleleGreenish">#FF4DA996</Color>
+    <SolidColorBrush x:Key="seleleGreenishBrush" Color="{StaticResource seleleGreenish}" />
+
+    <Color x:Key="selelepurplish">#713cdb</Color>
+    <SolidColorBrush x:Key="selelepurplishBrush" Color="{StaticResource selelepurplish}" />
+
+    <Color x:Key="seleleDarkgreen">#3e6c4d</Color>
+    <SolidColorBrush x:Key="seleleDarkgreenBrush" Color="{StaticResource seleleDarkgreen}" />
+
+
+
+    <Color x:Key="seleleVeryLightBlue">#c3e5f3</Color>
+    <SolidColorBrush x:Key="seleleVeryLightBlueBrush" Color="{StaticResource seleleVeryLightBlue}" />
+
+    <Color x:Key="seleleVeryVeryLightBlue">#ecf6fb</Color>
+    <SolidColorBrush x:Key="seleleVeryVeryLightBlueBrush" Color="{StaticResource seleleVeryVeryLightBlue}" />
+
+</ResourceDictionary>
