@@ -35,7 +35,7 @@ namespace SeleleTravel
 
         private void validateNumber(object sender, TextChangedEventArgs e)
         {
-            GeneralMethods.checkPhoneNumber(sender);
+            GeneralMethods.checkPhoneNumber((TextBox)sender);
         }
 
         private void createNewClient_Click(object sender, RoutedEventArgs e)

@@ -115,7 +115,60 @@ namespace SeleleTravel
 
         private void btnEmplyees_find_Click_1(object sender, RoutedEventArgs e)
         {
-       
+            string inputEmployeeID = txbEmployees_find.Text;
+            //Query for retrieving quote data
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM staff WHERE staff_no = '{inputEmployeeID}'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                        ltbEmployees_employeeDetails.Items.Add( $"Staff ID: {query[0]}\nStaff first names:{query[1]}\n" +
+                        $"Staff last names: {query[2]}\nstaff position: {query[3]}\ndate of hire: {query[4]}\n" +
+                        $"salary: {query[5]}\npassword: {query[6]}\ncellphone: {query[7]}\n" +
+                        $"telephone: {query[8]}\nfax: {query[9]}\nemail address: {query[10]}\naddress: {query[11]}");
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
+
+        private void btnEmployees_update_Click_1(object sender, RoutedEventArgs e)
+        {
+            order_no = txbConsultant_Orders_orderNumber.Text;
+            string orderDate = txbConsultant_Orders_orderdate.Text;
+
+            // check if the textboxes are empty or the strings associated with the textboxes
+            List<string> stringValueCheck = new List<string> { order_no };
+            bool checkEmptyStringBool = GeneralMethods.checkEmptytxtBox(stringValueCheck);
+
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"INSERT INTO staff (staff_id,stafffirstnames,stafflast)", myConnect))
+                {
+
+                    cmd.Parameters.AddWithValue("quote_no", quote_no);
+                    cmd.Parameters.AddWithValue("order_no", order_no);
+                    cmd.Parameters.AddWithValue("datereceived", DateTime.Today.ToString().Substring(0, 10));
+                    cmd.Parameters.AddWithValue("orderdate", orderDate);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Successfully added into the database.");
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
         }
     }
 }

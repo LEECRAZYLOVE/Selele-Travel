@@ -185,7 +185,7 @@
             <TabItem Header="Employee Details" Height="30">
                 <Canvas x:Name="cvsUpdateCleint" HorizontalAlignment="Right" Width="1174.886" Background="#FFBEE7FF" Margin="0,0,-0.886,-8.2">
                     <Label Content="Search for an employee..." Canvas.Left="313.8" FontFamily="Rockvile" FontSize="20" BorderThickness="0,0,0,2" Canvas.Top="6.6" Width="290"/>
-                    <Button x:Name="btnEmployees_update" Content="UPDATE EMPLOYEE"  Canvas.Left="1024" Canvas.Top="66" Style="{DynamicResource UpdateButtonStyle}" Width="136" />
+                    <Button x:Name="btnEmployees_update" Content="UPDATE EMPLOYEE"  Canvas.Left="1024" Canvas.Top="66" Style="{DynamicResource UpdateButtonStyle}" Width="136" Click="btnEmployees_update_Click_1" />
                     <TextBox x:Name="txbEmployees_find" HorizontalAlignment="Left" Height="35" Width="435" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="Black" Canvas.Left="10" Canvas.Top="66" FontSize="20" />
                     <Button x:Name="btnEmplyees_find" Content="FIND" Canvas.Left="910" Canvas.Top="66" Style="{DynamicResource ButtonStyle}" Background="#FF9DE1FA" Width="109" Click="btnEmplyees_find_Click_1"/>
                     <ListBox x:Name="ltbEmployees_employeeDetails" Opacity="80" HorizontalAlignment="Left" Height="537" VerticalAlignment="Top" Width="1155" BorderBrush="Black" Canvas.Left="10" Canvas.Top="136"/>

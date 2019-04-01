@@ -25,5 +25,10 @@ namespace SeleleTravel
         {
             InitializeComponent();
         }
+
+        private void btnManager_generateVoucher_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

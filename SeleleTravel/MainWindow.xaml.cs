@@ -13,15 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
-using Npgsql
+using Npgsql;
 
 namespace SeleleTravel
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public enum LoadWindow { Consultant, Manager, Owner}
-    
+    public enum LoadWindow { Consultant, Manager, Owner }
+
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -33,9 +33,9 @@ namespace SeleleTravel
         public static LogInWindow logInWindow;
         public static string ConnectionString = "Database=Selele;Port=1998;Server=192.168.1.5;User Id=postgres;Password=Linomtha";
         public static string ChatConnectionString = string.Format("Server={0}; Port={1}; User Id={2}; Password={3}; Database={4};",
-           "localhost", "1998", "postgres", "Linomtha", "postgres");
+           "192.168.1.5", "1998", "postgres", "Linomtha", "postgres");
 
-       
+
 
         private void loadLogInWindow(LoadWindow windowToLoad)
         {
@@ -72,13 +72,15 @@ namespace SeleleTravel
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NpgsqlConnection conn = new NpgsqlConnection(ConnectionString);
-            try {
+            try
+            {
                 conn.Open();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
 
+        }
     }
 }

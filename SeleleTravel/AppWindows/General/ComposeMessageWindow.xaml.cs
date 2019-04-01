@@ -118,11 +118,7 @@ namespace SeleleTravel
                 txbMessage_message.Text = "";
 
                 // clear the textboxes
-                List<TextBox> textBoxes = new List<TextBox>();
-                textBoxes.Add(txbMessage_staffnameTo);
-                textBoxes.Add(txbMessage_subject);
-                textBoxes.Add(txbMessage_message);
-                GeneralMethods.clearTextBoxes(textBoxes);
+                GeneralMethods.clearTextBoxes(txbMessage_staffnameTo, txbMessage_subject, txbMessage_message);
             }
         }
     }
