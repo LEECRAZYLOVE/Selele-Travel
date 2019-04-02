@@ -195,7 +195,7 @@ namespace SeleleTravel
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
                
-                using (var cmd = new NpgsqlCommand($"INSERT INTO voucher  (voucher_no,order_no,client_id,agency_id,staff_id,amount) VALUES (@voucher_no,@order_no,@client_id,@agency_id,@staff_id,@amount)", myConnect))
+                using (var cmd = new NpgsqlCommand($"INSERT INTO voucher (voucher_no,order_no,client_id,agency_id,staff_id,amount) VALUES (@voucher_no,@order_no,@client_id,@agency_id,@staff_id,@amount)", myConnect))
                 {
 
                     cmd.Parameters.AddWithValue("voucher_no",voucher_no);
