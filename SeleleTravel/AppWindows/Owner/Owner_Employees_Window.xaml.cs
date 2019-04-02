@@ -66,8 +66,8 @@ namespace SeleleTravel
                 try
                 {
                     myConnect.Open();
-                    NpgsqlCommand myCommand = new NpgsqlCommand($"INSERT INTO staff (staff_id, stafffirstnames,stafflastname,address,cellphone,telephone,fax,staffposition,salary,dateofhire) " +
-                        $"VALUES ('{GeneralMethods.makeStaffID(Surname, Cellphone)}', '{Name}', '{Surname}', '{FullAddress}', '{Cellphone}', '{Telephone}', '{Fax}', '{Position}', '{Salary}', '{DateTime.Today.ToString().Substring(0, 10)}') ", myConnect);
+                    NpgsqlCommand myCommand = new NpgsqlCommand($"INSERT INTO staff (staff_id, firstnames, lastname,address,cellphone,telephone,fax,position,salary,dateofhire,email) " +
+                        $"VALUES ('{GeneralMethods.makeStaffID(Surname, Cellphone)}', '{Name}', '{Surname}', '{FullAddress}', '{Cellphone}', '{Telephone}', '{Fax}', '{Position}', '{Salary}', '{DateTime.Today.ToString().Substring(0, 10)}', '{Email}') ", myConnect);
                     myCommand.ExecuteNonQuery();
 
                     GeneralMethods.clearTextBoxes(txbNewEmployee_surname, txbNewEmployee_name, txbNewEmployee_address,
@@ -100,15 +100,24 @@ namespace SeleleTravel
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Table created", "Attention");
                     }
-
                 }
 
-                using (var myCommand1 = new NpgsqlCommand($"INSERT INTO staff_members (staffid) VALUES {GeneralMethods.makeStaffID(Surname, Cellphone)}"))
+                try
                 {
-                    myCommand1.ExecuteNonQuery();
-                }
+                    myConnect = new NpgsqlConnection(MainWindow.ChatConnectionString);
+                    myConnect.Open();
+                    using (var cmd = new NpgsqlCommand($"INSERT INTO staff_members (staffid) VALUES (@staffid)", myConnect))
+                    {
 
-                MessageBox.Show($"Succesfully added into the database. New Employee ID is: {GeneralMethods.makeStaffID(Surname, Cellphone)}");
+                        cmd.Parameters.AddWithValue("staffid", GeneralMethods.makeStaffID(Surname, Cellphone));
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show($"Successfully added into the database.New Employee ID is: {GeneralMethods.makeStaffID(Surname, Cellphone)}");
+                    }
+                }
+                catch (Exception h)
+                {
+                    MessageBox.Show(h.ToString());
+                }
             }
         }
 
@@ -152,33 +161,6 @@ namespace SeleleTravel
         }
 
         private void btnEmployees_update_Click_1(object sender, RoutedEventArgs e)
-        {
-            order_no = txbConsultant_Orders_orderNumber.Text;
-            string orderDate = txbConsultant_Orders_orderdate.Text;
-
-            // check if the textboxes are empty or the strings associated with the textboxes
-            List<string> stringValueCheck = new List<string> { order_no };
-            bool checkEmptyStringBool = GeneralMethods.checkEmptytxtBox(stringValueCheck);
-
-            try
-            {
-                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-                myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"INSERT INTO staff (staff_id,stafffirstnames,stafflast)", myConnect))
-                {
-
-                    cmd.Parameters.AddWithValue("quote_no", quote_no);
-                    cmd.Parameters.AddWithValue("order_no", order_no);
-                    cmd.Parameters.AddWithValue("datereceived", DateTime.Today.ToString().Substring(0, 10));
-                    cmd.Parameters.AddWithValue("orderdate", orderDate);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Successfully added into the database.");
-                }
-            }
-            catch (Exception h)
-            {
-                MessageBox.Show(h.ToString());
-            }
-        }
+        { }
     }
 }
