@@ -284,7 +284,7 @@
                     <StackPanel HorizontalAlignment="Center" Margin="0 30" Orientation="Horizontal" VerticalAlignment="Top" >
                         <Label Content="Enter employee ID: " Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS"/>
                         <TextBox x:Name="txbOwner_search" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" BorderBrush="Black" FontSize="20" FontFamily="Times New Roman"/>
-                        <Button x:Name="btnEmployees_terminate" Content="END CONTRACT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="181" Height="30"/>
+                        <Button x:Name="btnEmployees_terminate" Content="END CONTRACT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="181" Height="30" Click="btnEmployees_terminate_Click"/>
                     </StackPanel>
 
 
