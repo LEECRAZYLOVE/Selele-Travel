@@ -21,7 +21,7 @@
             <ListBox x:Name="ltbManager_recievedInvoices" Margin="0,10,-0.2,10" Height="520">
                 <ListBoxItem Content="No payments received."/>
             </ListBox>
-            <Button x:Name="btnManager_generateVoucher" Content="Generate vouchers" Height="50" Background="#FFE8BFBF"/>
+            <Button x:Name="btnManager_generateVoucher" Content="Generate vouchers" Height="50" Background="#FFE8BFBF" Click="btnManager_generateVoucher_Click"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="10">
             <DockPanel Margin="10">

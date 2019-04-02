@@ -144,6 +144,10 @@
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word1">
+      <HintPath>..\..\..\Selele-Travel\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Registry.4.5.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
     </Reference>
@@ -252,18 +256,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AppWindows\Consultant\accommodation.cs" />
-    <Compile Include="AppWindows\Consultant\agencydetail.cs" />
-    <Compile Include="AppWindows\Consultant\cabservice.cs" />
-    <Compile Include="AppWindows\Consultant\carhire.cs" />
-    <Compile Include="AppWindows\Consultant\client.cs" />
-    <Compile Include="AppWindows\Consultant\conference.cs" />
-    <Compile Include="AppWindows\Consultant\event.cs" />
-    <Compile Include="AppWindows\Consultant\flight.cs" />
-    <Compile Include="AppWindows\Consultant\order.cs" />
-    <Compile Include="AppWindows\Consultant\quote.cs" />
-    <Compile Include="AppWindows\Consultant\SeleleEntities.cs" />
-    <Compile Include="AppWindows\Consultant\voucher.cs" />
+    <Compile Include="Classes\accommodation.cs" />
+    <Compile Include="Classes\agencydetail.cs" />
+    <Compile Include="Classes\cabservice.cs" />
+    <Compile Include="Classes\carhire.cs" />
+    <Compile Include="Classes\client.cs" />
+    <Compile Include="Classes\conference.cs" />
+    <Compile Include="Classes\event.cs" />
+    <Compile Include="Classes\flight.cs" />
+    <Compile Include="Classes\order.cs" />
+    <Compile Include="Classes\quote.cs" />
+    <Compile Include="Classes\SeleleEntities.cs" />
+    <Compile Include="Classes\voucher.cs" />
     <Compile Include="AppWindows\Owner\staff.cs" />
     <Compile Include="Classes\GeneralMethods.cs" />
     <Compile Include="AppWindows\General\ComposeMessageWindow.xaml.cs">
@@ -401,6 +405,30 @@
     <Page Include="AppWindows\General\SearchResultsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Fonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Images.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Texts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Windows.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

@@ -306,7 +306,7 @@ namespace SeleleTravel
 
         private void BtnConference_done_Click(object sender, RoutedEventArgs e)
         {
-            string conferenceName = txbConference_name.Text;
+            string conferenceName = CheckConferenceCombo.Text;
             string conferenceVenue = txbConference_venue.Text;
             DateTime dateOfConference = dpConference_startDate.DisplayDate;
             DateTime endDateofConference = dpConference_endDate.DisplayDate;
@@ -336,7 +336,7 @@ namespace SeleleTravel
                 // ...
 
                 // reset texbox values to empty
-                GeneralMethods.clearTextBoxes(txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total);
+                GeneralMethods.clearTextBoxes(txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total);
 
             }
         }
@@ -348,8 +348,9 @@ namespace SeleleTravel
         private void BtnCab_done_Click(object sender, RoutedEventArgs e)
         {
             // Asign vars to texbox values
-            string _agencyid = CheckFlightCombo.SelectedItem.ToString();
-            Agency_IDs = Agency_IDs + "|" + _agencyid;
+            string _agencyName = txbCab_agency.Text;
+            Agency_IDs = Agency_IDs + "|" + _agencyName;
+            //string _driverName = txbCab_driver.Text;
             string _pickUpLocation = txbCab_pickUp.Text;
             string _dropOffLocation = txbCab_dropOff.Text;
             string _timeOfPickUp = txbCab_pickUpTime.Text;
@@ -371,7 +372,7 @@ namespace SeleleTravel
             // This returns a bool value,
             // if it returns true then one of the strings are empty
             // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
-            bool boolValue = GeneralMethods.checkEmptytxtBox(Agency_IDs, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _taxicabSpecs);
+            bool boolValue = GeneralMethods.checkEmptytxtBox(_agencyName, _pickUpLocation, _dropOffLocation, _timeOfPickUp, _taxicabSpecs);
             // bool valueOfBool = GeneralMethods.checkDateTimeBox(dateTimes);
 
             if (!boolValue)//&& !valueOfBool)
@@ -380,19 +381,20 @@ namespace SeleleTravel
                 {
                     NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                     myConnect.Open();
-                    using (var cmd = new NpgsqlCommand($"INSERT INTO taxicab " +
-                        $" (agencyid,quote_no,pickup,dropoff,cabdate,numberofcabs,amount,timeofcab,specifications)" +
-                        $" VALUES (@agencyid,@quote_no,@nameofdriver,@pickup,@dropoff,@cabdate,@numberofcabs,@amount,@timeofcab,@specifications)", myConnect))
+                    using (var cmd = new NpgsqlCommand($"INSERT INTO cabservices " +
+                        $" (nameofagency,agency_id,quote_no,nameofdriver,pickup,dropoff,dateofcab,numberofcabs,amount,timeofcab,cabspecs)" +
+                        $" VALUES (@nameofagency,@agency_id,@quote_no,@pickup,@dropoff,@dateofcab,@numberofcabs,@amount,@timeofcab,@cabspecs)", myConnect))
                     {
-                        cmd.Parameters.AddWithValue("agencyid", agency_id);
+                        cmd.Parameters.AddWithValue("nameofagency", _agencyName);
+                        cmd.Parameters.AddWithValue("agency_id", agency_id);
                         cmd.Parameters.AddWithValue("quote_no", quote_no);
-                        cmd.Parameters.AddWithValue("pickuplocation", _pickUpLocation);
-                        cmd.Parameters.AddWithValue("dropofflocation", _dropOffLocation);
-                        cmd.Parameters.AddWithValue("cabdate", _dateOfPickup.ToString().Substring(0, 10));
+                        cmd.Parameters.AddWithValue("pickup", _pickUpLocation);
+                        cmd.Parameters.AddWithValue("dropoff", _dropOffLocation);
+                        cmd.Parameters.AddWithValue("dateofcab", _dateOfPickup.ToString().Substring(0, 10));
                         cmd.Parameters.AddWithValue("numberofcabs", _numberOfcabs);
                         cmd.Parameters.AddWithValue("amount", _totalAmount);
                         cmd.Parameters.AddWithValue("timeofcab", _timeOfPickUp);
-                        cmd.Parameters.AddWithValue("specifications", _taxicabSpecs);
+                        cmd.Parameters.AddWithValue("cabspecs", _taxicabSpecs);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Successfully added into the database");
                     }
@@ -402,7 +404,7 @@ namespace SeleleTravel
                     h.ToString();
                 }
                 // reset the textbox values to empty
-                GeneralMethods.clearTextBoxes(txbCab_agency, txbCab_driver, txbCab_pickUp, txbCab_dropOff, txbCab_pickUpTime, txbCab_numCabs, txbCab_specifications, txbCab_total);
+                GeneralMethods.clearTextBoxes(txbCab_agency,  txbCab_pickUp, txbCab_dropOff, txbCab_pickUpTime, txbCab_numCabs, txbCab_specifications, txbCab_total);
             }
         }
 
@@ -414,7 +416,7 @@ namespace SeleleTravel
         private void BtnFlight_done_Click(object sender, RoutedEventArgs e)
         {
             // assign valuesfrom the texbox to the variables
-            string airlineName = txbFlight_airline.Text;
+            //string airlineName = txbFlight_airline.Text;
             string fromLoc = txbFlight_from.Text;
             string toLoc = txbFlight_to.Text;
             DateTime departureDate = dpFlight_departure.DisplayDate;
@@ -441,7 +443,7 @@ namespace SeleleTravel
             // This returns a bool value,
             // if it returns true then one of the strings are empty
             // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
-            bool boolValue = GeneralMethods.checkEmptytxtBox(airlineName,
+            bool boolValue = GeneralMethods.checkEmptytxtBox(
                 fromLoc,
                 toLoc,
                 preferedTime,
@@ -463,7 +465,7 @@ namespace SeleleTravel
                 }
 
                 // reset the textbox values to empty
-                GeneralMethods.clearTextBoxes(txbAccommodation_name, txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_total);
+                GeneralMethods.clearTextBoxes( txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_total);
 
                 // clear the passangers
                 _passengers = new List<string>();
@@ -493,7 +495,7 @@ namespace SeleleTravel
 
         private void BtnAccommodation_done_Click(object sender, RoutedEventArgs e)
         {
-            string nameOfAgency = txbAccommodation_name.Text;
+            string nameOfAgency = CheckAccommCombo.Text;
             string accommodationSpecs = txbAccommodation_specifications.Text;
             DateTime checkInDate = dpAccommodation_checkIn.DisplayDate;
             DateTime checkOutDate = dpAccommodation_checkOut.DisplayDate;
@@ -526,7 +528,7 @@ namespace SeleleTravel
                 //};
 
                 // Reset the texboxes to empty
-                GeneralMethods.clearTextBoxes(txbAccommodation_name, txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_numRooms, txbAccommodation_total);
+                GeneralMethods.clearTextBoxes( txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_numRooms, txbAccommodation_total);
             }
 
 
@@ -540,8 +542,7 @@ namespace SeleleTravel
         private void BtnCarHire_Done_Click(object sender, RoutedEventArgs e)
         {
             // Asign variable to textbox text
-            string _agencyid = CheckCarHireCombo.SelectedItem.ToString();
-            Agency_IDs = Agency_IDs + "|" + _agencyid;
+            Agency_IDs = Agency_IDs + "|" + txbCarHire_agency.Text;
             string pickUpLocation = txbCarHire_pickUp.Text;
             string dropOffLocation = txbCarHire_dropOff.Text;
             DateTime _startday = dpCarHire_startDay.DisplayDate;
@@ -559,17 +560,17 @@ namespace SeleleTravel
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
                 using (var cmd = new NpgsqlCommand($"INSERT INTO carhire " +
-                    $" (agencyid, quote_no,pickuplocation,dropofflocation,startday,expectedendday,specifications,amount,numberofcars)" +
-                    $" VALUES (@agencyid,@quote_no,@pickuplocation,@dropofflocation,@startday,@expectedendday,@specifications,@amount,@numberofcars)", myConnect))
+                    $" (agencyname, quote_no,pickuplocation,dropofflocation,startday,expectedenddate,carhirespecifications,amount,numberofcars)" +
+                    $" VALUES (@agencyname,@quote_no,@pickuplocation,@dropofflocation,@startday,@expectedenddate,@carhirespecifications,@amount,@numberofcars)", myConnect))
                 {
-                    cmd.Parameters.AddWithValue("agencyid", Agency_IDs);
+                    cmd.Parameters.AddWithValue("agencyname", Agency_IDs);
                     cmd.Parameters.AddWithValue("numberofcars", numberOfCars);
                     cmd.Parameters.AddWithValue("quote_no", quote_no);
                     cmd.Parameters.AddWithValue("pickuplocation", pickUpLocation);
                     cmd.Parameters.AddWithValue("dropofflocation", dropOffLocation);
                     cmd.Parameters.AddWithValue("startday", _startday.Date.ToString().Substring(0, 10));
-                    cmd.Parameters.AddWithValue("expectedendday", _endDay.Date.ToString().Substring(0, 10));
-                    cmd.Parameters.AddWithValue("specifications", carHireSpecs);
+                    cmd.Parameters.AddWithValue("expectedenddate", _endDay.Date.ToString().Substring(0, 10));
+                    cmd.Parameters.AddWithValue("carhirespecifications", carHireSpecs);
                     cmd.Parameters.AddWithValue("amount", amount);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Successfully added into the database");
@@ -714,11 +715,11 @@ namespace SeleleTravel
                     myConnect.Open();
 
                     using (var cmd = new NpgsqlCommand($"INSERT INTO events " +
-                        $" (quote_no,specifications,eventname,amount,startday,endday)" +
-                        $" VALUES (@quote_no,@specifications,@eventname,@amount,@startday,@endday)", myConnect))
+                        $" (quote_no,eventspecs,eventname,amount,startday,endday)" +
+                        $" VALUES (@quote_no,@eventspecs,@eventname,@amount,@startday,@endday)", myConnect))
                     {
                         cmd.Parameters.AddWithValue("quote_no", quote_no);
-                        cmd.Parameters.AddWithValue("specifications", eventSpecs);
+                        cmd.Parameters.AddWithValue("eventspecs", eventSpecs);
                         cmd.Parameters.AddWithValue("eventname", nameOfEvent);
                         cmd.Parameters.AddWithValue("amount", eventAmount);
                         cmd.Parameters.AddWithValue("startday", eventStartdate.ToString().Substring(0, 10));
@@ -830,9 +831,9 @@ namespace SeleleTravel
 
         private void btnConference_done_Click_1(object sender, RoutedEventArgs e)
         {
-            string conferenceName = txbConference_name.Text;
-            string conferenceVenue = CheckConferenceCombo.SelectedItem.ToString();
-            Agency_IDs = Agency_IDs + "|" + conferenceVenue;
+            string conferenceName = CheckConferenceCombo.Text;
+            Agency_IDs = Agency_IDs + "|" + conferenceName;
+            string conferenceVenue = txbConference_venue.Text;
             DateTime startDateOfConference = dpConference_startDate.DisplayDate;
             DateTime endDateofConference = dpConference_endDate.DisplayDate;
             string conferenceTime = txbConference_time.Text;
@@ -849,13 +850,12 @@ namespace SeleleTravel
                 myConnect.Open();
 
                 using (var cmd = new NpgsqlCommand($"INSERT INTO conference " +
-                    $" (quote_no,conferencename,confid,venue,startday,endday,timeconference,specifications,amount)" +
-                    $" VALUES (@quote_no,@conferencename,@confid,@venue,@startday,@endday,@timeconference,@specifications,@amount)", myConnect))
+                    $" (quote_no,conferencename,venue,startday,endday,timeconference,conferencespecs,amount)" +
+                    $" VALUES (@quote_no,@conferencename,@venue,@startday,@endday,@timeconference,@conferencespecs,@amount)", myConnect))
                 {
                     cmd.Parameters.AddWithValue("quote_no", quote_no);
                     cmd.Parameters.AddWithValue("conferencename", conferenceName);
                     cmd.Parameters.AddWithValue("venue", conferenceVenue);
-                    cmd.Parameters.AddWithValue("confid", conferenceVenue);
                     cmd.Parameters.AddWithValue("startday", startDateOfConference.ToString().Substring(0, 10));
                     cmd.Parameters.AddWithValue("endday", endDateofConference.ToString().Substring(0, 10));
                     cmd.Parameters.AddWithValue("timeconference", conferenceTime);
@@ -888,7 +888,7 @@ namespace SeleleTravel
                 servicesDates.Add(endDateofConference);
 
                 // reset texbox values to empty
-                GeneralMethods.clearTextBoxes(txbConference_name, txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total);
+                GeneralMethods.clearTextBoxes( txbConference_venue, txbConference_time, txbConference_specifications, txbConference_total);
 
             }
         }
@@ -944,8 +944,8 @@ namespace SeleleTravel
 
         private void btnFlight_done_Click_1(object sender, RoutedEventArgs e)
         {
-            string airlineid = CheckFlightCombo. SelectedItem.ToString();
-            Agency_IDs = Agency_IDs + "|" + airlineid;
+            string airline = CheckFlightCombo.SelectedValue.ToString();
+            Agency_IDs = Agency_IDs + "|" + airline;
             string fromcity = txbFlight_from.Text;
             string tocity = txbFlight_to.Text;
             DateTime departdate = dpFlight_departure.DisplayDate;
@@ -965,17 +965,17 @@ namespace SeleleTravel
                 myConnect.Open();
 
                 using (var cmd = new NpgsqlCommand($"INSERT INTO flight " +
-                    $" (quote_no,airlineid,fromcity,tocity,departdate,numberofbags,specifications,amount,passengernum)" +
+                    $" (quote_no,airline,fromcity,tocity,departdate,numberofbags,flightspecs,amount,passengernum)" +
                     $" VALUES (@quote_no,@airline,@fromcity,@tocity,@departdate,@numberofbags,@flightspecs,@amount,@passengernum)", myConnect))
                 {
 
                     cmd.Parameters.AddWithValue("quote_no", quote_no);
-                    cmd.Parameters.AddWithValue("airlineid", airlineid);
+                    cmd.Parameters.AddWithValue("airline", airline);
                     cmd.Parameters.AddWithValue("fromcity", fromcity);
                     cmd.Parameters.AddWithValue("tocity", tocity);
                     cmd.Parameters.AddWithValue("departdate", departdate.ToString().Substring(0, 10));
                     cmd.Parameters.AddWithValue("numberofbags", numberofbags);
-                    cmd.Parameters.AddWithValue("specifications", flightspecs);
+                    cmd.Parameters.AddWithValue("flightspecs", flightspecs);
                     cmd.Parameters.AddWithValue("amount", amount);
                     cmd.Parameters.AddWithValue("passengernum", _passengers.Count());
                     cmd.ExecuteNonQuery();
@@ -1001,7 +1001,7 @@ namespace SeleleTravel
             // This returns a bool value,
             // if it returns true then one of the strings are empty
             // if it returns flse then there are no empty strings then the program will continue to execute the following commands.
-            bool boolValue = GeneralMethods.checkEmptytxtBox(
+            bool boolValue = GeneralMethods.checkEmptytxtBox(airline,
                 fromcity,
                 tocity,
                 preferredtime,
@@ -1023,7 +1023,7 @@ namespace SeleleTravel
                 }
 
                 // reset the textbox values to empty
-                GeneralMethods.clearTextBoxes(txbAccommodation_name, txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_numRooms, txbAccommodation_total);
+                GeneralMethods.clearTextBoxes( txbAccommodation_specifications, txbAccommodation_numGuests, txbAccommodation_numRooms, txbAccommodation_total);
 
                 // clear the passangers
                 _passengers = new List<string>();
@@ -1036,7 +1036,7 @@ namespace SeleleTravel
 
         private void btnAccommodation_done_Click_1(object sender, RoutedEventArgs e)
         {
-            string accomname = CheckAccommCombo.SelectedItem.ToString();
+            string accomname = CheckAccommCombo.Text;
             Agency_IDs = Agency_IDs + "|" + accomname;
             string accom_id = "AccoPE0001";//this is generated by function for accommodationID
             DateTime checkin = dpAccommodation_checkIn.DisplayDate;
@@ -1056,16 +1056,17 @@ namespace SeleleTravel
                 myConnect.Open();
 
                 using (var cmd = new NpgsqlCommand($"INSERT INTO accommodation " +
-                    $" (quote_no,accomname,accommid,checkin,checkout,numberofguests,numberofrooms,specifications,amount)" +
-                    $" VALUES (@quote_no,@accomname,@accomm_id,@checkin,@checkout,@numberofguests,@numberofrooms,@specifications,@amount)", myConnect))
+                    $" (quote_no,accomname,accom_id,checkin,checkout,numberofguests,numberofrooms,accomspecs,amount)" +
+                    $" VALUES (@quote_no,@accomname,@accom_id,@checkin,@checkout,@numberofguests,@numberofrooms,@accomspecs,@amount)", myConnect))
                 {
                     cmd.Parameters.AddWithValue("quote_no", quote_no);
-                    cmd.Parameters.AddWithValue("accommid", accom_id);
+                    cmd.Parameters.AddWithValue("accomname", accomname);
+                    cmd.Parameters.AddWithValue("accom_id", accom_id);
                     cmd.Parameters.AddWithValue("checkin", checkin.ToString().Substring(0, 10));
                     cmd.Parameters.AddWithValue("checkout", checkout.ToString().Substring(0, 10));
                     cmd.Parameters.AddWithValue("numberofguests", numberofguests);
                     cmd.Parameters.AddWithValue("numberofrooms", numberofrooms);
-                    cmd.Parameters.AddWithValue("specifications", accomspecs);
+                    cmd.Parameters.AddWithValue("accomspecs", accomspecs);
                     cmd.Parameters.AddWithValue("amount", amount);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Successfully added into the database");
@@ -1308,12 +1309,12 @@ namespace SeleleTravel
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"INSERT INTO quote (quote_no,amount,services,timequoted,quotedate,consultant_no,client_no,clientname,servicefee,agencyids) VALUES (@quote_no,@amount,@services,@timequoted,@quotedate,@consultant_no,@client_no,@clientname,@servicefee,@agencyids)", myConnect))
+                using (var cmd = new NpgsqlCommand($"INSERT INTO quote (quote_no,amount,service,timequoted,quotedate,consultant_no,client_no,clientname,servicefee,agencyids) VALUES (@quote_no,@amount,@service,@timequoted,@quotedate,@consultant_no,@client_no,@clientname,@servicefee,@agencyids)", myConnect))
                 {
 
                     cmd.Parameters.AddWithValue("quote_no", quote_no);
                     cmd.Parameters.AddWithValue("amount", quoteAmount);
-                    cmd.Parameters.AddWithValue("servicesvarchar", service);
+                    cmd.Parameters.AddWithValue("service", service);
                     cmd.Parameters.AddWithValue("timequoted", timeQuoted);
                     cmd.Parameters.AddWithValue("quotedate", quoteDate.ToString().Substring(0, 9));
                     cmd.Parameters.AddWithValue("consultant_no", consultant_no);
@@ -1439,8 +1440,8 @@ namespace SeleleTravel
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            string agencyname = txbFlight_airline.Text;
-         
+            string agencyname = CheckFlightCombo.SelectedValue.ToString();
+
             //Query for finding the agency_IDs available
             try
             {
@@ -1469,7 +1470,7 @@ namespace SeleleTravel
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             
-            string agencyname = txbAccommodation_name.Text;
+            string agencyname = CheckAccommCombo.Text;
 
            
             //Query for finding the agency_IDs available
@@ -1499,7 +1500,7 @@ namespace SeleleTravel
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-           string agencyname= txbConference_name.Text;
+           string agencyname= CheckConferenceCombo.Text;
 
             //Query for finding the agency_IDs available
             try
@@ -1608,6 +1609,8 @@ namespace SeleleTravel
             }
             MessageBox.Show("Dummy test to check if retrieved password" +passwordDB);
         }
+
+        
     }
 }
 
