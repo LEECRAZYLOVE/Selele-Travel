@@ -67,7 +67,7 @@ namespace SeleleTravel
                 try
                 {
                     myConnect.Open();
-                    NpgsqlCommand myCommand = new NpgsqlCommand($"INSERT INTO staff (staff_id, stafffirstnames,stafflastname,address,cellphone,telephone,fax,staffposition,salary,dateofhire,emailaddress) " +
+                    NpgsqlCommand myCommand = new NpgsqlCommand($"INSERT INTO staff (staff_id, firstnames,lastname,address,cellphone,telephone,fax,position,salary,dateofhire,email) " +
                         $"VALUES ('{GeneralMethods.makeStaffID(Surname, Cellphone)}', '{Name}', '{Surname}', '{FullAddress}', '{Cellphone}', '{Telephone}', '{Fax}', '{Position}', '{Salary}', '{dateofhire}','{Email}') ", myConnect);
                     myCommand.ExecuteNonQuery();
 
@@ -80,6 +80,7 @@ namespace SeleleTravel
                 catch (Exception h)
                 {
                     MessageBox.Show(h.ToString());
+
                 }
 
                 // Creates a table in the database            
