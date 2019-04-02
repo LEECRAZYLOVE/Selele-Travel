@@ -482,7 +482,7 @@ namespace SeleleTravel
         /// <param name="cellphone"></param>
         public static string makeStaffID(string surname, string cellphone)
         {
-            string ID = surname + cellphone.Substring(1, 4);
+            string ID = surname.Substring(0,4) + cellphone.Substring(6, 4);
             return ID;
         }
 

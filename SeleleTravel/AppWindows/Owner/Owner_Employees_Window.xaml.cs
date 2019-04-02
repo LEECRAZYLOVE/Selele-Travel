@@ -25,7 +25,7 @@ namespace SeleleTravel
         {
             InitializeComponent();
         }
-
+       
         private void btnOwner_search_Click(object sender, RoutedEventArgs e)
         {
 
@@ -40,11 +40,12 @@ namespace SeleleTravel
         {
 
         }
-
+        string passwword = "";
+        string dateofhire = $"{DateTime.Today.ToString().Substring(0, 10)}";
         private void BtnNewEmployee_generate_Click(object sender, RoutedEventArgs e)
         {
             bool boolValue = GeneralMethods.checkEmptytxtBox(txbNewEmployee_surname.Text, 
-                txbNewEmployee_name.Text, txbNewEmployee_address.Text, txbNewEmployee_city.Text, txbNewEmployee_areaCode.Text, 
+                txbNewEmployee_name.Text, txbNewEmployee_address.Text, 
                 txbEmployee_cellphone.Text, txbNewEmployee_telephone.Text, txbNewEmployee_fax.Text, txbNewEmployee_email.Text, 
                 cmbNewEmployee_position.Text, txbNewEmployee_salary.Text );
 
@@ -55,7 +56,7 @@ namespace SeleleTravel
                 //Extracting Informtaion
                 string Surname = txbNewEmployee_surname.Text;
                 string Name = txbNewEmployee_name.Text;
-                string FullAddress = GeneralMethods.makeAddress(txbNewEmployee_address.Text, txbNewEmployee_city.Text, txbNewEmployee_areaCode.Text, DropBxNewEmployee_province.SelectionBoxItem.ToString());
+                string FullAddress = txbNewEmployee_address.Text;
                 string Cellphone = txbEmployee_cellphone.Text;
                 string Telephone = txbNewEmployee_telephone.Text;
                 string Fax = txbNewEmployee_fax.Text;
@@ -66,49 +67,51 @@ namespace SeleleTravel
                 try
                 {
                     myConnect.Open();
-                    NpgsqlCommand myCommand = new NpgsqlCommand($"INSERT INTO staff (staff_id, stafffirstnames,stafflastname,address,cellphone,telephone,fax,staffposition,salary,dateofhire) " +
-                        $"VALUES ('{GeneralMethods.makeStaffID(Surname, Cellphone)}', '{Name}', '{Surname}', '{FullAddress}', '{Cellphone}', '{Telephone}', '{Fax}', '{Position}', '{Salary}', '{DateTime.Today.ToString().Substring(0, 10)}') ", myConnect);
+                    NpgsqlCommand myCommand = new NpgsqlCommand($"INSERT INTO staff (staff_id, stafffirstnames,stafflastname,address,cellphone,telephone,fax,staffposition,salary,dateofhire,emailaddress) " +
+                        $"VALUES ('{GeneralMethods.makeStaffID(Surname, Cellphone)}', '{Name}', '{Surname}', '{FullAddress}', '{Cellphone}', '{Telephone}', '{Fax}', '{Position}', '{Salary}', '{dateofhire}','{Email}') ", myConnect);
                     myCommand.ExecuteNonQuery();
 
                     GeneralMethods.clearTextBoxes(txbNewEmployee_surname, txbNewEmployee_name, txbNewEmployee_address,
-                        txbNewEmployee_city, txbNewEmployee_areaCode, txbEmployee_cellphone, txbNewEmployee_telephone,
+                         txbEmployee_cellphone, txbNewEmployee_telephone,
                         txbNewEmployee_fax, txbNewEmployee_email, txbNewEmployee_salary);
+                    myConnect.Close();
+
                 }
                 catch (Exception h)
                 {
                     MessageBox.Show(h.ToString());
                 }
 
-                // Creates a table in the database            
-                using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
-                {
-                    // open the connection
-                    conn.Open();
+                //// Creates a table in the database            
+                //using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+                //{
+                //    // open the connection
+                //    conn.Open();
 
-                    // create a table
-                    using (var cmd = new NpgsqlCommand())
-                    {
-                        cmd.Connection = conn;
-                        cmd.CommandText = string.Format("CREATE TABLE {0} ("
-                                                      + "tb_ID         serial          NOT NULL,"
-                                                      + "DateSent      varchar(30)     NOT NULL,"
-                                                      + "sender        varchar(30)     NOT NULL,"
-                                                      + "reciever      varchar(30)     NOT NULL,"
-                                                      + "message       varchar(500)    NOT NULL,"
-                                                      + "PRIMARY KEY(tb_ID)"
-                                                      + ")", GeneralMethods.makeStaffID(Surname, Cellphone));
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Table created", "Attention");
-                    }
+                //    // create a table
+                //    using (var cmd = new NpgsqlCommand())
+                //    {
+                //        cmd.Connection = conn;
+                //        cmd.CommandText = string.Format("CREATE TABLE {0} ("
+                //                                      + "tb_ID         serial          NOT NULL,"
+                //                                      + "DateSent      varchar(30)     NOT NULL,"
+                //                                      + "sender        varchar(30)     NOT NULL,"
+                //                                      + "reciever      varchar(30)     NOT NULL,"
+                //                                      + "message       varchar(500)    NOT NULL,"
+                //                                      + "PRIMARY KEY(tb_ID)"
+                //                                      + ")", GeneralMethods.makeStaffID(Surname, Cellphone));
+                //        cmd.ExecuteNonQuery();
+                //        MessageBox.Show("Table created", "Attention");
+                //    }
+                //    conn.Close();
+                //}
 
-                }
+                //using (var myCommand1 = new NpgsqlCommand($"INSERT INTO staff_members (staff_id) VALUES {GeneralMethods.makeStaffID(Surname, Cellphone)}"))
+                //{
+                //    myCommand1.ExecuteNonQuery();
+                //}
 
-                using (var myCommand1 = new NpgsqlCommand($"INSERT INTO staff_members (staffid) VALUES {GeneralMethods.makeStaffID(Surname, Cellphone)}"))
-                {
-                    myCommand1.ExecuteNonQuery();
-                }
-
-                MessageBox.Show($"Succesfully added into the database. New Employee ID is: {GeneralMethods.makeStaffID(Surname, Cellphone)}");
+                //MessageBox.Show($"Succesfully added into the database. New Employee ID is: {GeneralMethods.makeStaffID(Surname, Cellphone)}");
             }
         }
 
@@ -131,7 +134,7 @@ namespace SeleleTravel
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"SELECT * FROM staff WHERE staff_no = '{inputEmployeeID}'", myConnect))
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM staff WHERE staff_id = '{inputEmployeeID}'", myConnect))
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
 
@@ -150,35 +153,87 @@ namespace SeleleTravel
                 MessageBox.Show(h.ToString());
             }
         }
-
+      
         private void btnEmployees_update_Click_1(object sender, RoutedEventArgs e)
         {
-            order_no = txbConsultant_Orders_orderNumber.Text;
-            string orderDate = txbConsultant_Orders_orderdate.Text;
+            //string inputEmployeeID = txbEmployees_find.Text;
 
-            // check if the textboxes are empty or the strings associated with the textboxes
-            List<string> stringValueCheck = new List<string> { order_no };
-            bool checkEmptyStringBool = GeneralMethods.checkEmptytxtBox(stringValueCheck);
+            // try
+            // {
+            //     NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            //     myConnect.Open();
+            //     using (var cmd = new NpgsqlCommand($"INSERT INTO staff (staff_id,stafffirstnames,stafflastname,staffposition,dateofhire,salary,password,cellphone,telephone,fax,emailaddress,address)", myConnect))
+            //     {
 
+            //         cmd.Parameters.AddWithValue("staff_id", staff_id);
+            //         cmd.Parameters.AddWithValue("stafffirstnames", stafffirstnames);
+            //         cmd.Parameters.AddWithValue("stafflastname", stafflastname);
+            //         cmd.Parameters.AddWithValue("staffposition", staffposition);
+            //         cmd.Parameters.AddWithValue("dateofhire", dateofhire);
+            //         cmd.Parameters.AddWithValue("salary", salary);
+            //         cmd.Parameters.AddWithValue("password", password);
+            //         cmd.Parameters.AddWithValue("cellphone", cellphone;
+            //         cmd.Parameters.AddWithValue("telephone", telephone);
+            //         cmd.Parameters.AddWithValue("fax", fax);
+            //         cmd.Parameters.AddWithValue("emailaddress", emailaddress);
+            //         cmd.Parameters.AddWithValue("address", address);
+            //         cmd.ExecuteNonQuery();
+            //         MessageBox.Show("Successfully added into the database.");
+            //     }
+            // }
+            // catch (Exception h)
+            // {
+            //     MessageBox.Show(h.ToString());
+            // }
+            string inputEmployeeID = txbEmployees_find.Text;
+            //Query for retrieving quote data
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"INSERT INTO staff (staff_id,stafffirstnames,stafflast)", myConnect))
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM staff WHERE staff_id = '{inputEmployeeID}'", myConnect))
                 {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
 
-                    cmd.Parameters.AddWithValue("quote_no", quote_no);
-                    cmd.Parameters.AddWithValue("order_no", order_no);
-                    cmd.Parameters.AddWithValue("datereceived", DateTime.Today.ToString().Substring(0, 10));
-                    cmd.Parameters.AddWithValue("orderdate", orderDate);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Successfully added into the database.");
+                    while (query.Read())
+                    {
+
+                        txbNewEmployee_name.Text = $"{query[1]}";
+                        txbNewEmployee_surname.Text = $"{query[2]}";
+                        txbNewEmployee_address.Text = $"{query[11]}";
+                        txbEmployee_cellphone.Text = $"{query[7]}";
+                        cmbNewEmployee_position.Text = $"{query[3]}";
+                        txbNewEmployee_email.Text = $"{query[10]}";
+                       
+                        txbNewEmployee_salary.Text = $"{query[5]}";
+                        txbNewEmployee_fax.Text = $"{query[9]}";
+                        passwword= $"{query[6]}";
+                        txbNewEmployee_telephone.Text = $"{query[8]}";
+                        dateofhire= $"{query[4]}";
+                    }
+                    myConnect.Close();
                 }
             }
             catch (Exception h)
             {
                 MessageBox.Show(h.ToString());
             }
-        }
+            try { 
+            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            myConnect.Open();
+               
+                
+                using (var cmd = new NpgsqlCommand($"DELETE FROM staff WHERE staff_id = '{inputEmployeeID}'", myConnect))
+            {
+                    cmd.ExecuteNonQuery();
+                   
+            }
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+}
     }
 }

@@ -204,59 +204,41 @@
                         <!--Name and surname-->
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Name  :" FontSize="16" Margin="5" Width="82"/>
-                            <TextBox x:Name="txbNewEmployee_name" Text="Litha"  Width="489" Margin="5" Padding="5" Height="30" BorderBrush="Black"/>
+                            <TextBox x:Name="txbNewEmployee_name" Text="Litha"  Width="489" Margin="5" Padding="5" FontSize="16" Height="30" BorderBrush="Black"/>
                             <TextBlock Text="Surname :" FontSize="16" Margin="5"/>
-                            <TextBox x:Name="txbNewEmployee_surname" Text="Stuurman" Margin="5" Padding="5" Height="30" Width="471" BorderBrush="Black"/>
+                            <TextBox x:Name="txbNewEmployee_surname" Text="Stuurman" FontSize="16" Margin="5" Padding="5" Height="30" Width="471" BorderBrush="Black"/>
                         </StackPanel>
                         <!--CheckBoxes-->
                         <!--Address-->
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Address :" FontSize="16" Margin="10" Width="67"/>
-                            <TextBox x:Name="txbNewEmployee_address" Text="9 Rodin Place, Amalinda" Margin="10" Height="160" Width="1050" BorderBrush="Black"/>
+                            <TextBox x:Name="txbNewEmployee_address" FontSize="16" Text="9 Rodin Place, Amalinda" Margin="10" Height="160" Width="1050" BorderBrush="Black"/>
                         </StackPanel>
                         <!--City, Area Code-->
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="City :" FontSize="16" Margin="10 10 35 10" Width="42"/>
-                            <TextBox x:Name="txbNewEmployee_city" Text="East London" Width="760" Margin="10" BorderBrush="Black"/>
-                            <TextBlock Text="Area Code :" FontSize="16" Margin="10" Width="77.697"/>
-                            <TextBox x:Name="txbNewEmployee_areaCode" Text="5247" Margin="10" Height="30" Width="172" BorderBrush="Black"/>
-                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"/>
 
                         <!--Province-->
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="Province :" Margin="10 10 20 10" Width="57"/>
-                            <ComboBox x:Name="DropBxNewEmployee_province" Margin="10" Height="30" Width="1050">
-                                <ComboBoxItem Content="Eastern Cape"/>
-                                <ComboBoxItem Content="Free State"/>
-                                <ComboBoxItem Content="Gauteng"/>
-                                <ComboBoxItem Content="KwaZulu-Natal"/>
-                                <ComboBoxItem Content="Limpopo"/>
-                                <ComboBoxItem Content="Mpumalanga"/>
-                                <ComboBoxItem Content="North West"/>
-                                <ComboBoxItem Content="Northern Cape"/>
-                                <ComboBoxItem Content="Western Cape"/>
-                            </ComboBox>
-                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" />
                         <!--Contact details-->
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Cellphone :" Margin="10" Width="67"/>
-                            <TextBox x:Name="txbEmployee_cellphone" Text="0783861533" Margin="10" Height="30" Width="1050" BorderBrush="Black"/>
+                            <TextBox x:Name="txbEmployee_cellphone" FontSize="16" Text="0783861533" Margin="10" Height="30" Width="1050" BorderBrush="Black"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Telephone :" Margin="10 10 8 10" Width="70"/>
-                            <TextBox x:Name="txbNewEmployee_telephone" Text="0437412589" Margin="10" Height="30" Width="1049" BorderBrush="Black"/>
+                            <TextBox x:Name="txbNewEmployee_telephone" FontSize="16" Text="0437412589" Margin="10" Height="30" Width="1049" BorderBrush="Black"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Fax :" Margin="10 10 50 10" Width="27"/>
-                            <TextBox x:Name="txbNewEmployee_fax" Margin="10" Text="5"  Height="30" Width="1050" BorderBrush="Black"/>
+                            <TextBox x:Name="txbNewEmployee_fax" Margin="10" FontSize="16" Text="5"  Height="30" Width="1050" BorderBrush="Black"/>
                         </StackPanel>
 
 
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Email :" Margin="10 10 40 10" Width="37"/>
-                            <TextBox x:Name="txbNewEmployee_email" Margin="10" Text="crazedoutlee@gmail.com" Height="30" Width="1050" BorderBrush="Black"/>
+                            <TextBox x:Name="txbNewEmployee_email" Margin="10" FontSize="16" Text="crazedoutlee@gmail.com" Height="30" Width="1050" BorderBrush="Black"/>
                         </StackPanel>
                         <Grid Margin="10 0 10 10" HorizontalAlignment="Left">
                             <Grid.ColumnDefinitions>
