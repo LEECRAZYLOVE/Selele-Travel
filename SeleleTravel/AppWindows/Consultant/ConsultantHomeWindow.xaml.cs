@@ -44,6 +44,7 @@ namespace SeleleTravel
         {
             consultantQuotesWindow.Owner = this;
             consultantQuotesWindow.Show();
+            consultantQuotesWindow.consultant_no = currentStaffID;
             //Hide();
             //MessageBox.Show($"New quote number: {quote_no}");
         }

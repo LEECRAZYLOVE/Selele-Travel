@@ -304,7 +304,7 @@
                         <StackPanel Grid.Column="1">
                             <TextBlock Text="Already a client" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
                             <DockPanel>
-                                <TextBox x:Name="txbOldClient_find" Width="400" Height="30" Margin="10"/>
+                                <TextBox x:Name="txbOldClient_find" Width="400" Height="30" Margin="10" FontSize="16"/>
                                 <Button x:Name="btnOldClient_find" Content="Search" Margin="10" Click="BtnOldClient_find_Click"/>
 
                             </DockPanel>
@@ -313,8 +313,6 @@
                             </ListBox>
                             <Button  x:Name="btnOldClient_select"  Content="Select Client" FontSize="20" Width="300" Click="BtnOldClient_select_Click" />
                         </StackPanel>
-                        <Label Content="Consultant no:" HorizontalAlignment="Left" Margin="457,582,0,0" VerticalAlignment="Top" Width="136"/>
-                        <TextBox x:Name="txbConsultant_no"  Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="562,582,0,0" TextWrapping="Wrap" Text="jmahlangu" VerticalAlignment="Top" Width="158"/>
                     </Grid>
                 </TabItem>
                 <!--Car Hire -->
@@ -338,7 +336,7 @@
                         <Label Content="TOTAL:" Margin="667,543,43,101" Grid.Column="2" />
 
                         <!--Input region-->
-                        <TextBox x:Name="txbCarHire_agency" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Avis" VerticalAlignment="Top" Width="650" Margin="161.5,23,0,0" Grid.ColumnSpan="2" Grid.Column="1" FontSize="16"/>
+                        <TextBox x:Name="txbCarHire_agency" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Avis" VerticalAlignment="Top" Width="650" Margin="194,26,0,0" Grid.ColumnSpan="2" Grid.Column="1" FontSize="16"/>
                         <TextBox x:Name="txbCarHire_pickUp" HorizontalAlignment="Left" Height="30" Margin="161.5,95,0,0" TextWrapping="Wrap" Text="PE" VerticalAlignment="Top" Width="246" Grid.ColumnSpan="2" Grid.Column="1" FontSize="16"/>
                         <TextBox x:Name="txbCarHire_dropOff" HorizontalAlignment="Left" Height="30" Margin="289,94,0,0" TextWrapping="Wrap" Text="Jhb" VerticalAlignment="Top" Width="260" Grid.Column="2" FontSize="16"/>
                         <DatePicker x:Name="dpCarHire_startDay" HorizontalAlignment="Left" Margin="161.5,160,0,0" VerticalAlignment="Top" Width="246" d:IsHidden="False" Grid.ColumnSpan="2" Grid.Column="1"/>
