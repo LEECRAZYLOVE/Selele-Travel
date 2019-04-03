@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 //using Devart.Data.MySql;
+using Npgsql;
 
 namespace SeleleTravel
 {
@@ -156,64 +157,101 @@ namespace SeleleTravel
             string selected = cbxFinancial_entity.SelectedItem.ToString();
  
 
-            //using (SeleleEntities currentClient = new SeleleEntities())
-            //{
-            //    var query = (from c in currentClient.clients
-
-
-            //                 select new
-            //                 {
-            //                     c.dateadded,
-            //                     c.address,
-            //                     c.cellphone,
-            //                     c.broughtforward,
-            //                     c.clientname,
-            //                     c.client_no,
-            //                     c.emailaddress,
-            //                     c.fax,
-            //                     c.owe,
-            //                     c.telephone,
-            //                     c.quote_no
-
-
-            //                 }).First();
-
-            //    if (query != null)
-            //    {
-            //        lbFinancial_clientList.Items.Add(query.client_no);
-            //        selected = query.client_no;
-            //    }
-
-            //}
-            
-
-            //using (SeleleEntities currentQuote = new SeleleEntities())
-            //{
-            //    var query = (from c in currentQuote.quotes 
-
-            //                 where c.client_no == selected
-            //                 select new
-            //                 {
-            //                     c.quote_no,
-            //                     c.client_no,
-            //                     c.amount,
-            //                     c.service
-            //                 }).First();
-
-            //    if (query != null)
-            //    {
-            //        lbFinancial_results1.Items.Add(query.quote_no);
-            //    }
-            //}
-
-
-
-        }
+  }
 
         private void cbxFinancial_entity_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
-        
-    } }
+        private void btnFinancial_view1_Click_1(object sender, RoutedEventArgs e)
+        {
+            //checking if date is between certain dates
+
+            //SELECT
+            //FROM table1
+            //WHERE date_col BETWEEN '2012-10-25' and 2012 - 10 - 28
+
+            //Query for retrieving quote data between certain dates
+          
+                try
+                {
+                    NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                    myConnect.Open();
+                    using (var cmd = new NpgsqlCommand($"SELECT client.clientname FROM client,quote,orders WHERE quote.quote_no=orders.quote_no AND quote.client_no=client.client_no AND quotedate BETWEEN '2019-01-01' AND '2019-01-20' ", myConnect))
+                    {
+                        NpgsqlDataReader query = cmd.ExecuteReader();
+
+                        while (query.Read())
+                        {
+                            lbFinancial_results1.Items.Add($"{query[0]}");
+                        }
+
+                    }
+                    myConnect.Close();
+                }
+                catch (Exception h)
+                {
+                    MessageBox.Show(h.ToString());
+                }
+
+            }
+            //try
+            //{
+            //    NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            //    myConnect.Open();
+            //    using (var cmd = new NpgsqlCommand($"SELECT * FROM quote,orders WHERE quote.quote_no=orders.quote_no AND quotedate BETWEEN '2019-01-01' AND '2019-01-20' ", myConnect))
+            //    {
+            //        NpgsqlDataReader query = cmd.ExecuteReader();
+
+            //        while (query.Read())
+            //        {
+            //            lbFinancial_results1.Items.Add($"{query[0]}");
+            //        }
+                    
+            //    }
+            //    myConnect.Close();
+            //}
+            //catch (Exception h)
+            //{
+            //    MessageBox.Show(h.ToString());
+            //}
+      
+
+        private void lbFinancial_results1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+          string  clientname = lbFinancial_results1.SelectedItem.ToString();
+            //Query for retrieving quote data
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM client WHERE clientname = '{clientname}'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                        lbFinancial_results2.Items.Add($"Client number: {query[0]}");
+                        lbFinancial_results2.Items.Add($"Client name: { query[1]}\n");
+                        lbFinancial_results2.Items.Add($"Cellphone: {query[2].ToString().Replace('|', ' ')}");
+                        lbFinancial_results2.Items.Add($"Address: {query[3]}");
+                        lbFinancial_results2.Items.Add($"Emailaddress: {query[5]}");
+                        lbFinancial_results2.Items.Add($"Telephone: {query[6]}");
+                        lbFinancial_results2.Items.Add($"fax: {query[7]}");
+                        lbFinancial_results2.Items.Add($"paid: {query[4]}");
+                        lbFinancial_results2.Items.Add($"owe: {query[8]}");
+                        lbFinancial_results2.Items.Add($"Brought forward: {query[9]}");
+                        lbFinancial_results2.Items.Add($"Dateadded: {query[10]}");
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+
+        }
+    }
+    } 

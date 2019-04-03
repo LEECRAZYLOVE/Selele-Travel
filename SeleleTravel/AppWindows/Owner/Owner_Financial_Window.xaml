@@ -30,7 +30,7 @@
                     <ColumnDefinition Width="7*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Entity:" FontSize="20" Margin="1"/>
-                <ComboBox x:Name="cbxFinancial_entity" Grid.Column="1" Margin="1" Width="200" HorizontalAlignment="Left" >
+                <ComboBox x:Name="cbxFinancial_entity" Grid.Column="1" Margin="1,1,0,0" Width="200" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" >
                     <ComboBoxItem x:Name="cbxitemFinancial_clients" Content="Clients" Selected="CbxitemFinancial_clients_Selected"/>
                     <ComboBoxItem x:Name="cbxitemFinancial_services" Content="Services" Selected="CbxitemFinancial_services_Selected"/>
                 </ComboBox>
@@ -119,13 +119,13 @@
 
             <!--Buttons-->
             <Grid Grid.Row="3" VerticalAlignment="Bottom" Height="50" Margin="1">
-                <Button x:Name="btnFinancial_view1" Content="View Summary One" HorizontalAlignment="Left" Padding="5"/>
+                <Button x:Name="btnFinancial_view1" Content="View Summary One" HorizontalAlignment="Left" Padding="5" Click="btnFinancial_view1_Click_1" Margin="5,10,0,0" Height="30" VerticalAlignment="Top"/>
                 <Button x:Name="btnFinancial_view2" Content="View Summary Two" HorizontalAlignment="Right" Padding="5"/>
             </Grid>
 
             <!--Start of column 2-->
             <TextBlock Text="A heading" Grid.Column="1"/>
-            <ListBox x:Name="lbFinancial_results1" Background="#FFBAC8EE" Grid.Column="1" Grid.Row="1" Margin="1" BorderBrush="#FF4D4E54"/>
+            <ListBox x:Name="lbFinancial_results1" Background="#FFBAC8EE" Grid.Column="1" Grid.Row="1" Margin="1" BorderBrush="#FF4D4E54" SelectionChanged="lbFinancial_results1_SelectionChanged"/>
 
             <TextBlock Text="A heading" Grid.Column="1" Grid.Row="2"/>
             <ListBox x:Name="lbFinancial_results2" Background="#FFBAC8EE" Grid.Column="1" Grid.Row="3" BorderBrush="#FF4D4E54"/>

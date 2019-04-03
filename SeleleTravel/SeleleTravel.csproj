@@ -256,6 +256,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppWindows\Owner\ViewQuoteWindow.xaml.cs">
+      <DependentUpon>ViewQuoteWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\accommodation.cs" />
     <Compile Include="Classes\agencydetail.cs" />
     <Compile Include="Classes\cabservice.cs" />
@@ -340,6 +343,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppWindows\General\LogInWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppWindows\Owner\ViewQuoteWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
