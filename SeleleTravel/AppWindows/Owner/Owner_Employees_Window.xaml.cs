@@ -83,45 +83,46 @@ namespace SeleleTravel
 
                 }
 
-                //// Creates a table in the database            
-                //using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
-                //{
-                //    // open the connection
-                //    conn.Open();
+                try
+                {
+                    myConnect = new NpgsqlConnection(MainWindow.ChatConnectionString);
+                    myConnect.Open();
+                    using (var cmd = new NpgsqlCommand($"INSERT INTO staff_members (staffid) VALUES (@staffid)", myConnect))
+                    {
 
-                //    // create a table
-                //    using (var cmd = new NpgsqlCommand())
-                //    {
-                //        cmd.Connection = conn;
-                //        cmd.CommandText = string.Format("CREATE TABLE {0} ("
-                //                                      + "tb_ID         serial          NOT NULL,"
-                //                                      + "DateSent      varchar(30)     NOT NULL,"
-                //                                      + "sender        varchar(30)     NOT NULL,"
-                //                                      + "reciever      varchar(30)     NOT NULL,"
-                //                                      + "message       varchar(500)    NOT NULL,"
-                //                                      + "PRIMARY KEY(tb_ID)"
-                //                                      + ")", GeneralMethods.makeStaffID(Surname, Cellphone));
-                //        cmd.ExecuteNonQuery();
-                //        MessageBox.Show("Table created", "Attention");
-                //    }
-                //}
+                        cmd.Parameters.AddWithValue("staffid", GeneralMethods.makeStaffID(Surname, Cellphone));
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show($"Successfully added into the database. New Employee ID is: {GeneralMethods.makeStaffID(Surname, Cellphone)}");
+                    }
+                }
+                catch (Exception h)
+                {
+                    MessageBox.Show(h.ToString());
+                }
 
-                //try
-                //{
-                //    myConnect = new NpgsqlConnection(MainWindow.ChatConnectionString);
-                //    myConnect.Open();
-                //    using (var cmd = new NpgsqlCommand($"INSERT INTO staff_members (staffid) VALUES (@staffid)", myConnect))
-                //    {
+                // Creates a table in the database            
+                using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+                {
+                    // open the connection
+                    conn.Open();
 
-                //        cmd.Parameters.AddWithValue("staffid", GeneralMethods.makeStaffID(Surname, Cellphone));
-                //        cmd.ExecuteNonQuery();
-                //        MessageBox.Show($"Successfully added into the database.New Employee ID is: {GeneralMethods.makeStaffID(Surname, Cellphone)}");
-                //    }
-                //}
-                //catch (Exception h)
-                //{
-                //    MessageBox.Show(h.ToString());
-                //}
+                    // create a table
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = string.Format("CREATE TABLE {0} ("
+                                                      + "tb_ID         serial          NOT NULL,"
+                                                      + "DateSent      varchar(30)     NOT NULL,"
+                                                      + "sender        varchar(30)     NOT NULL,"
+                                                      + "reciever      varchar(30)     NOT NULL,"
+                                                      + "message       varchar(500)    NOT NULL,"
+                                                      + "PRIMARY KEY(tb_ID)"
+                                                      + ")", GeneralMethods.makeStaffID(Surname, Cellphone));
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Table created", "Attention");
+                    }
+                }
+
             }
         }
 
