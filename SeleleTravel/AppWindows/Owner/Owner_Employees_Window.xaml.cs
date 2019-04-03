@@ -83,45 +83,45 @@ namespace SeleleTravel
 
                 }
 
-                try
-                {
-                    myConnect = new NpgsqlConnection(MainWindow.ChatConnectionString);
-                    myConnect.Open();
-                    using (var cmd = new NpgsqlCommand($"INSERT INTO staff_members (staffid) VALUES (@staffid)", myConnect))
-                    {
+                //try
+                //{
+                //    myConnect = new NpgsqlConnection(MainWindow.ChatConnectionString);
+                //    myConnect.Open();
+                //    using (var cmd = new NpgsqlCommand($"INSERT INTO staff_members (staffid) VALUES (@staffid)", myConnect))
+                //    {
 
-                        cmd.Parameters.AddWithValue("staffid", GeneralMethods.makeStaffID(Surname, Cellphone));
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show($"Successfully added into the database. New Employee ID is: {GeneralMethods.makeStaffID(Surname, Cellphone)}");
-                    }
-                }
-                catch (Exception h)
-                {
-                    MessageBox.Show(h.ToString());
-                }
+                //        cmd.Parameters.AddWithValue("staffid", GeneralMethods.makeStaffID(Surname, Cellphone));
+                //        cmd.ExecuteNonQuery();
+                //        MessageBox.Show($"Successfully added into the database. New Employee ID is: {GeneralMethods.makeStaffID(Surname, Cellphone)}");
+                //    }
+                //}
+                //catch (Exception h)
+                //{
+                //    MessageBox.Show(h.ToString());
+                //}
 
-                // Creates a table in the database            
-                using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
-                {
-                    // open the connection
-                    conn.Open();
+                //// Creates a table in the database            
+                //using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+                //{
+                //    // open the connection
+                //    conn.Open();
 
-                    // create a table
-                    using (var cmd = new NpgsqlCommand())
-                    {
-                        cmd.Connection = conn;
-                        cmd.CommandText = string.Format("CREATE TABLE {0} ("
-                                                      + "tb_ID         serial          NOT NULL,"
-                                                      + "DateSent      varchar(30)     NOT NULL,"
-                                                      + "sender        varchar(30)     NOT NULL,"
-                                                      + "reciever      varchar(30)     NOT NULL,"
-                                                      + "message       varchar(500)    NOT NULL,"
-                                                      + "PRIMARY KEY(tb_ID)"
-                                                      + ")", GeneralMethods.makeStaffID(Surname, Cellphone));
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Table created", "Attention");
-                    }
-                }
+                //    // create a table
+                //    using (var cmd = new NpgsqlCommand())
+                //    {
+                //        cmd.Connection = conn;
+                //        cmd.CommandText = string.Format("CREATE TABLE {0} ("
+                //                                      + "tb_ID         serial          NOT NULL,"
+                //                                      + "DateSent      varchar(30)     NOT NULL,"
+                //                                      + "sender        varchar(30)     NOT NULL,"
+                //                                      + "reciever      varchar(30)     NOT NULL,"
+                //                                      + "message       varchar(500)    NOT NULL,"
+                //                                      + "PRIMARY KEY(tb_ID)"
+                //                                      + ")", GeneralMethods.makeStaffID(Surname, Cellphone));
+                //        cmd.ExecuteNonQuery();
+                //        MessageBox.Show("Table created", "Attention");
+                //    }
+                //}
 
             }
         }
@@ -220,7 +220,19 @@ namespace SeleleTravel
         private void btnEmployees_terminate_Click(object sender, RoutedEventArgs e)
         {
             string inputEmployeeID = txbOwner_search.Text;
-
+            //Query for updating the status of employee
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"UPDATE staff SET status='inactive' WHERE staff_id = '{inputEmployeeID}'", myConnect);
+                //execute the command
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
 
         }
     }
