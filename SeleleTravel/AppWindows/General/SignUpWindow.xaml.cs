@@ -40,7 +40,7 @@ namespace SeleleTravel
 
             if (checkPassword != checkConfirmPassword)
             {
-                MessageBox.Show("Password doest not match. Please try again.");
+                MessageBox.Show("Password does not match. Please try again.");
                 pdbSignUp_password.Clear();
                 pdbSignUp_passwordConfirm.Clear();
                 pdbSignUp_password.Clear();
