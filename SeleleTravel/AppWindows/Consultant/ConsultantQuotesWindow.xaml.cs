@@ -1547,7 +1547,30 @@ namespace SeleleTravel
             MessageBox.Show("Dummy test to check if retrieved password" +passwordDB);
         }
 
-        
+        private void CheckCarHireCombo_Initialized(object sender, EventArgs e)
+        {
+            //Query for retrieving all the car hire agency ids
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM agencydetails WHERE service = 'Car Hire'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                        CheckCarHireCombo.Items.Add(query[0].ToString());
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            //MessageBox.Show("Dummy test to check if retrieved password" + passwordDB);
+        }
     }
 }
 

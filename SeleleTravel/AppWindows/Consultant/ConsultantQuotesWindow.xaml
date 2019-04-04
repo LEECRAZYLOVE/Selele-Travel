@@ -346,7 +346,7 @@
                         <TextBox x:Name="txbCarHire_total" Text="150"  HorizontalAlignment="Left" Height="30" Margin="723,587,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113" TextChanged="AmountChanged" Grid.Column="2" FontSize="16"/>
                         <Button x:Name="btnCarHire_Done" Content="DONE" HorizontalAlignment="Left" Margin="668,503,0,0" VerticalAlignment="Top" Width="168" Click="BtnCarHire_Done_Click" Height="35" Grid.Column="2"/>
                         <Button Content="Check Car Hire" Grid.Column="2" HorizontalAlignment="Left" Margin="583,71,0,0" Click="BtnCheckCarHire_Click" VerticalAlignment="Top" Width="168" Height="35"/>
-                        <ComboBox x:Name="CheckCarHireCombo" Grid.Column="2" HorizontalAlignment="Left" Margin="583,23,0,0" VerticalAlignment="Top"  Width="175"/>
+                        <ComboBox x:Name="CheckCarHireCombo" Grid.Column="2" HorizontalAlignment="Left" Margin="583,23,0,0" VerticalAlignment="Top"  Width="175" Initialized="CheckCarHireCombo_Initialized"/>
 
                     </Grid>
                 </TabItem>
