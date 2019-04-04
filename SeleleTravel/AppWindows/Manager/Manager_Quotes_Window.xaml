@@ -44,7 +44,7 @@
                 </Grid>
             </TabItem>
             <!--Verified quotes-->
-            <TabItem Header="Verified Quotes" Height="50" Padding="10" Background="{x:Null}" BorderBrush="Black" >
+            <TabItem Name="tbItem_QuoteVerify" Header="Verified Quotes" Height="50" Padding="10" Background="{x:Null}" BorderBrush="Black" Initialized="TbItem_QuoteVerify_Initialized" >
                 <Grid Background="#FFFFC7C7" HorizontalAlignment="Left" Width="1073" Height="591" VerticalAlignment="Top" >
                     <!--Divide the grid into 2 columns-->
                     <Grid.ColumnDefinitions>
@@ -58,12 +58,12 @@
                     </Grid.RowDefinitions>
                     <!--Left hand side-->
                     <TextBlock Text="Verified quotes :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <ListBox x:Name="listbxVerifiedQuotes" Grid.Row="1" Margin="10 0 10 10">
+                    <ListBox x:Name="listbxVerifiedQuotes" Grid.Row="1" Margin="10 0 10 10" SelectionChanged="ListbxVerifiedQuotes_SelectionChanged">
 
                     </ListBox>
                     <!--Right hand side-->
                     <TextBlock Grid.Column="1" Text="Preview :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBlock Background="#fff" Grid.Column="1" Grid.Row="1" Margin="10 0 10 10"/>
+                    <TextBlock Name="txbQuoteVerify_preview" Background="#fff" Grid.Column="1" Grid.Row="1" Margin="10 0 10 10"/>
                 </Grid>
             </TabItem>
         </TabControl>
