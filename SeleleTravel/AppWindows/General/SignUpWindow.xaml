@@ -7,19 +7,75 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        Title="SignUpWindow" Height="400" Width="350">
-   
-    <Canvas Background="LightGray" Margin="0,0,-2,-2">
+        Title="SignUpWindow" 
+        MinHeight="400" MinWidth="350" Width="350" Height="418.105">
 
-        <TextBox x:Name="txbSignUp_staffID" TextWrapping="Wrap" Text="Stuurman7838" Canvas.Left="67" Canvas.Top="106" Width="206" Height="34" BorderBrush="Black" FontSize="16"/>
-        <Label Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.632,1.231" Height="31" Width="92" Canvas.Left="67" Canvas.Top="145" FontSize="16" FontFamily="Rockwell"/>
-        <Label Content="Staff ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="31" Width="73" Canvas.Left="67" Canvas.Top="75" FontSize="16" FontFamily="Rockwell"/>
-        <PasswordBox x:Name="pdbSignUp_password" Canvas.Left="67" Canvas.Top="176" Width="206" Height="41" BorderBrush="Black" FontSize="20"/>
-        <Label Content="Enter Your Credentials" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="206" Canvas.Left="67" Canvas.Top="35" FontSize="18" FontFamily="Rockwell"/>
-        <Button x:Name="btnSignUp_goBack"  Content="GO BACK" Height="20" Width="70" Canvas.Left="10" Canvas.Top="10" Click="BtnSignUp_goBack_Click"/>
-        <Button x:Name="btnSignUp_done" Content="SIGN UP" Canvas.Left="67" Canvas.Top="302" Width="206" Height="44"  BorderBrush="Black" FontSize="36" Click="btnSignUp_done_Click"/>
-        <Label Content="Confirm Password:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.632,1.231" Height="31" Width="158" Canvas.Left="67" Canvas.Top="222" FontSize="16" FontFamily="Rockwell"/>
-        <PasswordBox x:Name="pdbSignUp_passwordConfirm" Canvas.Left="67" Canvas.Top="253" Width="206" Height="41" BorderBrush="Black" FontSize="20"/>
+    <Grid Background="{StaticResource BackgroundLightBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-    </Canvas>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Button x:Name="btnSignUp_goBack" 
+                Content="GO BACK" 
+                Grid.Column="0"
+                Grid.Row="0"
+                Margin="5"
+                Click="BtnSignUp_goBack_Click"/>
+
+        <Label Content="Enter Your Credentials"
+               Grid.ColumnSpan="2"
+               Margin="5"
+               Grid.Row="1"/>
+
+        <TextBox x:Name="txbSignUp_staffID" 
+                 TextWrapping="Wrap" 
+                 Margin="5"
+                 Tag="Staff ID"
+                 Text="Stuurman7838" 
+                 Grid.ColumnSpan="2"
+                 Grid.Row="2"/>
+
+        <TextBlock Text="Password:"
+                   Margin="5"
+                   Grid.Column="0"
+                   Grid.Row="3"
+                   FontSize="{StaticResource FontSizeRegular}"/>
+
+        <PasswordBox x:Name="pdbSignUp_password"
+                     Grid.Column="1"
+                     Margin="5"
+                     Grid.Row="3"
+                     FontSize="{StaticResource FontSizeRegular}"/>
+
+
+        <TextBlock Grid.Column="0"
+                    Margin="5"
+                    Grid.Row="4"
+                    FontSize="{StaticResource FontSizeRegular}"><Run Text="Confirm"/><LineBreak/><Run Text="Password:"/></TextBlock>
+
+        <PasswordBox x:Name="pdbSignUp_passwordConfirm"
+                     Margin="5"
+                     Grid.Column="1"
+                     Grid.Row="4"
+                     FontSize="{StaticResource FontSizeRegular}"/>
+
+        <Button x:Name="btnSignUp_done" 
+                Content="SIGN UP" 
+                Grid.ColumnSpan="2"
+                Grid.Row="5"
+                Margin="5"
+                Click="btnSignUp_done_Click"/>
+    </Grid>
+
 </Window>

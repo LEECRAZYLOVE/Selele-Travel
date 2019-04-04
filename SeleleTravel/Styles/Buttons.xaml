@@ -9,14 +9,13 @@
 
     <!-- Regular button -->
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
-
         <Setter Property="Background" Value="{StaticResource seleleOrangeBrush}" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
         <Setter Property="Padding" Value="50 10" />
         <Setter Property="Margin" Value="5 10" />
-        <Setter Property="FontFamily" Value="Comic Sans MS" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -40,9 +39,9 @@
                                        VerticalAlignment="Center"/>
                         </Grid>
                     </Border>
-                    
+
                     <ControlTemplate.Triggers>
-                        
+
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
@@ -50,7 +49,7 @@
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
-                        
+
                         <EventTrigger RoutedEvent="MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard>
@@ -58,12 +57,12 @@
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
-                        
+
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Background" TargetName="border" Value="{StaticResource ForegroundDarkBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
-                    
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -75,7 +74,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{StaticResource seleleOrangeBrush}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
         <Setter Property="Padding" Value="50 10" />
         <Setter Property="Margin" Value="0 10" />
@@ -125,7 +124,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="TabItemStyle" TargetType="{x:Type TabItem}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Foreground" Value="Black"/>
@@ -142,20 +141,20 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
-                        
+
                         <Border x:Name="mainBorder" 
                                 BorderBrush="{TemplateBinding BorderBrush}" 
                                 BorderThickness="1,1,1,0" 
                                 Background="{TemplateBinding Background}" 
                                 Margin="0">
-                            
+
                             <Border x:Name="innerBorder" 
                                     BorderBrush="{StaticResource seleleBlueBrush}" 
                                     BorderThickness="1,1,1,0" 
                                     Background="{StaticResource seleleOrangeBrush}" 
                                     Margin="-1" Opacity="0"/>
                         </Border>
-                        
+
                         <ContentPresenter x:Name="contentPresenter" 
                                           ContentSource="Header" 
                                           Focusable="False" 
@@ -206,7 +205,7 @@
                             <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,1,0"/>
                             <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,1,0"/>
                         </MultiDataTrigger>
-                        
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
@@ -218,7 +217,7 @@
                             <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,0,1"/>
                             <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,0,1"/>
                         </MultiDataTrigger>
-                        
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
@@ -230,7 +229,7 @@
                             <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,0,1,1"/>
                             <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,0,1,1"/>
                         </MultiDataTrigger>
-                        
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
@@ -242,7 +241,7 @@
                             <Setter Property="BorderThickness" TargetName="innerBorder" Value="0,1,1,1"/>
                             <Setter Property="BorderThickness" TargetName="mainBorder" Value="0,1,1,1"/>
                         </MultiDataTrigger>
-                        
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
@@ -254,7 +253,7 @@
                             <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,1,0"/>
                             <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,1,0"/>
                         </MultiDataTrigger>
-                        
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="false"/>
@@ -263,7 +262,7 @@
                             <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,0,1"/>
                             <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,0,1"/>
                         </MultiDataTrigger>
-                        
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true"/>
@@ -276,7 +275,7 @@
                             <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,0,1"/>
                             <Setter Property="Background" TargetName="innerBorder" Value="#FFFFD86B"/>
                         </MultiDataTrigger>
-                        
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="false"/>
@@ -286,7 +285,7 @@
                             <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,0,1,1"/>
 
                         </MultiDataTrigger>
-                        
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true"/>
@@ -299,7 +298,7 @@
                             <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,0,1,1"/>
                             <Setter Property="Background" TargetName="innerBorder" Value="#FFFFD86B"/>
                         </MultiDataTrigger>
-                        
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="false"/>

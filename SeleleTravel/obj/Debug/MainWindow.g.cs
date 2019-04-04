@@ -9,6 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Microsoft.Expression.Controls;
+using Microsoft.Expression.Media;
+using Microsoft.Expression.Shapes;
 using SeleleTravel;
 using System;
 using System.Diagnostics;

@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        FontSize="20"
         Title="Selele | Manager | Authorize" Height="700" Width="1200">
+
     <Grid Background="#FFF6E5A6">
         <!--Separating the grid into 3 parts-->
         <Grid.ColumnDefinitions>
@@ -16,34 +16,80 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
         <!--Left hand side-->
-        <TextBlock Text="Authorization requests :" Margin="10"/>
-        <ListBox x:Name="ltbAuthorizations_incomingAuthorizations" Margin="10 40 10 10">
-            <ListBoxItem Content="No authorization requests."/>
-        </ListBox>
+        <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                BorderThickness="5"
+                CornerRadius="10"
+                Margin="5"
+                Grid.Column="0">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Authorization requests :" 
+                   Grid.Row="0"
+                   Margin="5"/>
+
+                <ListBox x:Name="ltbAuthorizations_incomingAuthorizations" 
+                     Margin="5"
+                     Grid.Row="1">
+                    <ListBoxItem Content="No authorization requests."/>
+                </ListBox>
+            </Grid>
+        </Border>
+
         <!--Middle-->
-        <TextBlock Grid.Column="1" Text="Accept Authorizations :" Margin="10"/>
-        <ListBox Grid.Column="1"  Background="#fff" Margin="10 40 10 10" >
-            <ListBoxItem Content="Nothing authorized."/>
-        </ListBox>
+        <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                BorderThickness="5"
+                CornerRadius="10"
+                Grid.Column="1"
+                Margin="5">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                   Content="Accept Authorizations :" 
+                   Margin="5"/>
+                <ListBox Grid.Row="1"  
+                     Margin="5">
+                    <ListBoxItem Content="Nothing authorized."/>
+                </ListBox>
+            </Grid>
+        </Border>
 
         <!-- Right hand side-->
-        <StackPanel Grid.Column="2">
-            <TextBlock Text="Password :" Margin="10"/>
-            <PasswordBox x:Name="pdbAuthorizations_password" Margin="10 0 10 10" Height="30"/>
-            <Button x:Name="btnAuthorizations_Authorize" Content="Authorize" Margin="10,0,10.4,10" Height="39" Background="#FFD3EB6B"/>
-        </StackPanel>
+        <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                BorderThickness="5"
+                CornerRadius="10"
+                Grid.Column="2"
+                Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" MinHeight="50"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
+                <Label Content="Password :" 
+                   Grid.Row="0"/>
+                <PasswordBox x:Name="pdbAuthorizations_password" 
+                         Grid.Row="1"
+                         Margin="5"/>
+                <Button x:Name="btnAuthorizations_Authorize" 
+                    Grid.Row="2"
+                    Content="Authorize" 
+                    Margin="5"
+                    Background="{StaticResource seleleRedBrush}"/>
+            </Grid>
+        </Border>
     </Grid>
 
-    <!--
-        <ListBox  HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="270" Background="#FFB2B2A3" Margin="0,0,0,-2"/>
-        <PasswordBox  HorizontalAlignment="Left" Margin="184,20,0,0" VerticalAlignment="Top" Width="136" Grid.Column="1" Height="17.96"/>
-        <Label Content="Password:" HorizontalAlignment="Left" Margin="110,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.192" Grid.Column="1" Height="25.96" Width="62.147"/>
-        <Button  Content="Authorize" HorizontalAlignment="Left" Margin="195,56,0,0" VerticalAlignment="Top" Width="114" Grid.Column="1" Click="BtnAuthorizations_Authorize_Click" Height="19.96"/>
-        <ListBox x:Name="ltbAuthorizations_outgoingAuthorizations" HorizontalAlignment="Left" Height="342" Margin="270,0,0,-2" VerticalAlignment="Top" Width="270" Grid.ColumnSpan="2"/>
-        <Label x:Name="label" Content="Authorization Requests" HorizontalAlignment="Left" Margin="65.171,-47.01,0,0" VerticalAlignment="Top" Height="25.96" Width="132.6"/>
-        <Label x:Name="label1" Content="Accept Authorizations" HorizontalAlignment="Left" Margin="346.292,-47.01,0,0" VerticalAlignment="Top" Height="25.96" Width="126.427" Grid.ColumnSpan="2"/>
-    -->
     
 </Window>
