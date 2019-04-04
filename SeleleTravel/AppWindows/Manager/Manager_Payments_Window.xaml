@@ -16,12 +16,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <!--Left hand side-->
-        <StackPanel Margin="10">
+        <StackPanel Margin="15" Grid.ColumnSpan="2">
             <TextBlock Text="Received Payments :"/>
             <ListBox x:Name="ltbManager_recievedInvoices" Margin="0,10,-0.2,10" Height="520">
                 <ListBoxItem Content="No payments received."/>
             </ListBox>
-            <Button x:Name="btnManager_generateVoucher" Content="Generate vouchers" Height="50" Background="#FFE8BFBF"/>
+            <Button x:Name="btnManager_generateVoucher" Content="Generate vouchers" Height="50" Background="#FFE8BFBF" Click="btnManager_generateVoucher_Click"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="10">
             <DockPanel Margin="10">
@@ -29,11 +29,7 @@
                 <TextBox x:Name="txbManager_Invoices_orderNumber" Width="197" Margin="2 0"/>
                 <Button x:Name="btnManager_Invoices_add" Content="Add order" Background="#FFE8BFBF"/>
             </DockPanel >
-            <TextBlock Text="Orders :"/>
-            <ListBox x:Name="ltbManager_Invoices_Orders" Margin="0,10,-0.2,10" Height="465">
-                <ListBoxItem Content="No orders added."/>
-            </ListBox>
-            <Button x:Name="btnManager_requestPayments" Content="Request payments" Height="50" Background="#FFE8BFBF"/>
+            
         </StackPanel>
         <!--
         <Label x:Name="label" Content="Recieved Payments" HorizontalAlignment="Left" Margin="10,1.388,0,0" VerticalAlignment="Top"/>

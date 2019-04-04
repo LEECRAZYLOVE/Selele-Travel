@@ -24,12 +24,12 @@ namespace SeleleTravel
     public partial class ConsultantHomeWindow : Window
     {
         ConsultantQuotesWindow consultantQuotesWindow = new ConsultantQuotesWindow();
-              ComposeMessageWindow composeMessageWindow;
+        ComposeMessageWindow composeMessageWindow;
 
-              public string currentStaffID;
-              DispatcherTimer theLoadingTime;
+        public string currentStaffID;
+        DispatcherTimer theLoadingTime;
 
-              public ConsultantHomeWindow()
+        public ConsultantHomeWindow()
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -44,6 +44,7 @@ namespace SeleleTravel
         {
             consultantQuotesWindow.Owner = this;
             consultantQuotesWindow.Show();
+            consultantQuotesWindow.consultant_no = currentStaffID;
             //Hide();
             //MessageBox.Show($"New quote number: {quote_no}");
         }
@@ -67,8 +68,8 @@ namespace SeleleTravel
                 intCKB = 4;
             if (ckbConsultant_Search_all.IsChecked == true)
                 intCKB = 5;
-            
-            switch(intCKB)
+
+            switch (intCKB)
             {
                 case 1:
                     try
@@ -160,7 +161,7 @@ namespace SeleleTravel
                         myConnect.Close();
                     }
                     catch (Exception h)
-                    { 
+                    {
                         MessageBox.Show(h.ToString());
                     }
                     break;
@@ -254,12 +255,12 @@ namespace SeleleTravel
 
         private void btnConsultant_composeMessage_Click(object sender, RoutedEventArgs e)
         {
-                     ComposeMessageWindow composeMessageWindow = new ComposeMessageWindow
-                     {
-                            currentStaffID = currentStaffID,
-                            Owner = this
-                     };
-                     composeMessageWindow.Show();
+            ComposeMessageWindow composeMessageWindow = new ComposeMessageWindow
+            {
+                currentStaffID = currentStaffID,
+                Owner = this
+            };
+            composeMessageWindow.Show();
             //Hide();
 
         }
@@ -282,144 +283,144 @@ namespace SeleleTravel
             //Hide();
         }
 
-              /// <summary>
-              /// Indicates whether the tab is being pressed for the first time
-              /// </summary>
-              bool mIsItFirstTime = true;
+        /// <summary>
+        /// Indicates whether the tab is being pressed for the first time
+        /// </summary>
+        bool mIsItFirstTime = true;
 
-              /// <summary>
-              /// Go to the inbox
-              /// </summary>
-              /// <param name="sender"></param>
-              /// <param name="e"></param>
-              private void TabItem_MouseDown(object sender, MouseButtonEventArgs e)
-              {
-                     if (mIsItFirstTime)
-                     {
-                            mIsItFirstTime = false;
-                            // time to help load the program fully
-                            theLoadingTime = new DispatcherTimer();
-                            theLoadingTime.Interval = TimeSpan.FromSeconds(5);
-                            theLoadingTime.IsEnabled = true;
-                            theLoadingTime.Tick += TheLoadingTime_Tick;
-                     }
-              }
+        /// <summary>
+        /// Go to the inbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TabItem_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (mIsItFirstTime)
+            {
+                mIsItFirstTime = false;
+                // time to help load the program fully
+                theLoadingTime = new DispatcherTimer();
+                theLoadingTime.Interval = TimeSpan.FromSeconds(5);
+                theLoadingTime.IsEnabled = true;
+                theLoadingTime.Tick += TheLoadingTime_Tick;
+            }
+        }
 
-              /// <summary>
-              /// check for updates
-              /// </summary>
-              /// <param name="sender"></param>
-              /// <param name="e"></param>
-              private void TheLoadingTime_Tick(object sender, EventArgs e)
-              {
-                     // get the latest messages 
-                     readSome(currentStaffID);
-              }
+        /// <summary>
+        /// check for updates
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TheLoadingTime_Tick(object sender, EventArgs e)
+        {
+            // get the latest messages 
+            readSome(currentStaffID);
+        }
 
-              /// <summary>
-              /// Read all messages from the table
-              /// </summary>
-              /// <param name="idOfUser"> Name of the table to read from </param>
-              /// <param name="last_ID"> ID of the last item </param>
-              public void readSome(string idOfUser)
-              {
-                     using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
-                     {
-                            // open the connection
-                            conn.Open();
+        /// <summary>
+        /// Read all messages from the table
+        /// </summary>
+        /// <param name="idOfUser"> Name of the table to read from </param>
+        /// <param name="last_ID"> ID of the last item </param>
+        public void readSome(string idOfUser)
+        {
+            using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+            {
+                // open the connection
+                conn.Open();
 
-                            // Last num in the list of the messages
-                            int lastNum = lblConsultant_inboxList.Items.Count;
+                // Last num in the list of the messages
+                int lastNum = lblConsultant_inboxList.Items.Count;
 
-                            // Retrieve all rows
-                            using (var cmd = new NpgsqlCommand($"SELECT * FROM {idOfUser} WHERE tb_ID > {lastNum}", conn))
-                            using (var reader = cmd.ExecuteReader())
-                            {
-                                   while (reader.Read())
-                                   {
-                                          TextBlock theTextBlock = new TextBlock()
-                                          {
-                                                 Text = Convert.ToString(reader.GetValue(2)),
-                                                 Tag = Convert.ToString(reader.GetValue(0)),
-                                                 TextAlignment = TextAlignment.Center,
-                                                 FontSize = 25,
-                                                 Focusable = false,
-                                                 IsEnabled = false,
-                                                 Margin = new Thickness(2, 2, 2, 2)
-                                          };
+                // Retrieve all rows
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM {idOfUser} WHERE tb_ID > {lastNum}", conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        TextBlock theTextBlock = new TextBlock()
+                        {
+                            Text = Convert.ToString(reader.GetValue(2)),
+                            Tag = Convert.ToString(reader.GetValue(0)),
+                            TextAlignment = TextAlignment.Center,
+                            FontSize = 25,
+                            Focusable = false,
+                            IsEnabled = false,
+                            Margin = new Thickness(2, 2, 2, 2)
+                        };
 
-                                          lblConsultant_inboxList.Items.Insert(0, theTextBlock);
-                                   }
-                                   lblConsultant_inboxList.Items.Refresh();
-                            }
+                        lblConsultant_inboxList.Items.Insert(0, theTextBlock);
+                    }
+                    lblConsultant_inboxList.Items.Refresh();
+                }
 
-                     }
-              }
+            }
+        }
 
-              /// <summary>
-              /// Read message from the table
-              /// </summary>
-              /// <param name="idOfUser">Id of sender </param>
-              public void readSelectedID(string idOfUser, int itemIndex)
-              {
-                     using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
-                     {
-                            // open the connection
-                            conn.Open();
+        /// <summary>
+        /// Read message from the table
+        /// </summary>
+        /// <param name="idOfUser">Id of sender </param>
+        public void readSelectedID(string idOfUser, int itemIndex)
+        {
+            using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+            {
+                // open the connection
+                conn.Open();
 
-                            // Last num in the list of the messages
-                            int lastNum = lblConsultant_inboxList.Items.Count;
+                // Last num in the list of the messages
+                int lastNum = lblConsultant_inboxList.Items.Count;
 
-                            // Retrieve the specific message with the given id rows 
-                            using (var cmd = new NpgsqlCommand($"SELECT message FROM {idOfUser} WHERE tb_ID = {itemIndex}", conn))
-                            using (var reader = cmd.ExecuteReader())
-                            {
-                                   reader.Read();
-                                   tbkConsultant_inboxMessages.Text = Convert.ToString(reader.GetValue(0));
-                            }
+                // Retrieve the specific message with the given id rows 
+                using (var cmd = new NpgsqlCommand($"SELECT message FROM {idOfUser} WHERE tb_ID = {itemIndex}", conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    reader.Read();
+                    tbkConsultant_inboxMessages.Text = Convert.ToString(reader.GetValue(0));
+                }
 
 
-                     }
-              }
+            }
+        }
 
-              /// <summary>
-              /// Go to message
-              /// </summary>
-              /// <param name="sender"></param>
-              /// <param name="e"></param>
-              private void LblConsultant_inboxList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-              {
-                     // get the index of the selected item
-                     int indexPath = lblConsultant_inboxList.SelectedIndex;
-                     if (indexPath >= 0)
-                     {
-                            // the textbox that has the details
-                            TextBlock id = (TextBlock)lblConsultant_inboxList.SelectedItem;
+        /// <summary>
+        /// Go to message
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LblConsultant_inboxList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // get the index of the selected item
+            int indexPath = lblConsultant_inboxList.SelectedIndex;
+            if (indexPath >= 0)
+            {
+                // the textbox that has the details
+                TextBlock id = (TextBlock)lblConsultant_inboxList.SelectedItem;
 
-                            // change the font
-                            id.FontSize = 16;
+                // change the font
+                id.FontSize = 16;
 
-                            // get the ID
-                            TxtBoxFrom.Content = id.Text;
+                // get the ID
+                lblConsultantID.Content = id.Text;
 
-                            // Assign the new button
-                            lblConsultant_inboxList.Items.RemoveAt(indexPath);
-                            lblConsultant_inboxList.Items.Insert(indexPath, id);
+                // Assign the new button
+                lblConsultant_inboxList.Items.RemoveAt(indexPath);
+                lblConsultant_inboxList.Items.Insert(indexPath, id);
 
-                            // get the ID of the reciever 
-                            string idContent = currentStaffID.ToLower();
+                // get the ID of the reciever 
+                string idContent = currentStaffID.ToLower();
 
-                            // get the index of the entry
-                            int idNum = Convert.ToInt32(id.Tag);
+                // get the index of the entry
+                int idNum = Convert.ToInt32(id.Tag);
 
-                            // read the selected entry
-                            readSelectedID(idContent, idNum);
+                // read the selected entry
+                readSelectedID(idContent, idNum);
 
-                            // enable
-                            composeMessageWindow.txbMessage_message.IsEnabled = true;
-                            composeMessageWindow.btnMessage_send.IsEnabled = true;
-                     }
-              }
+                // enable
+                composeMessageWindow.txbMessage_message.IsEnabled = true;
+                composeMessageWindow.btnMessage_send.IsEnabled = true;
+            }
+        }
 
         /// <summary>
         /// Going to the Search results window if anything is picked from the list
@@ -428,7 +429,7 @@ namespace SeleleTravel
         /// <param name="e"></param>
         private void LtbConsultant_Search_Results_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string qoviNum = ltbConsultant_Search_Results.SelectedItem.ToString() ; //order/quote/invoice/voucher number that has been selected by the user
+            string qoviNum = ltbConsultant_Search_Results.SelectedItem.ToString(); //order/quote/invoice/voucher number that has been selected by the user
             SearchResults searchResultsWindow = new SearchResults();
             searchResultsWindow.Owner = this;
             searchResultsWindow.Show();
@@ -443,7 +444,7 @@ namespace SeleleTravel
                 NpgsqlDataReader drView = cmdView.ExecuteReader();
                 while (drView.Read())
                 {
-                    searchResultsWindow.tbkSearchResults.Text = GeneralMethods.quoteSummary(qoviNum.Replace(" ",""),drView[0].ToString()); //Viewing the selected quote's summary in the new window
+                    searchResultsWindow.tbkSearchResults.Text = GeneralMethods.quoteSummary(qoviNum.Replace(" ", ""), drView[0].ToString()); //Viewing the selected quote's summary in the new window
                     searchResultsWindow.tbkSearchResults.Text += GeneralMethods.quoteSummaryAmounts(qoviNum);
                 }
                 myConnect.Close();
@@ -465,14 +466,14 @@ namespace SeleleTravel
             //End display invoice
 
             //Display staff, client or service proivder
-            switch(cbxStatus)
+            switch (cbxStatus)
             {
                 case "Staff":
                     try
                     {
-                        
+
                         myConnect.Open();
-                        NpgsqlCommand cmdStaff = new NpgsqlCommand($"SELECT staff_id, stafffirstnames, stafflastname, staffposition,email,cellphone,telephone,fax,address FROM staff WHERE staff_id = '{ltbConsultant_Search_Results.SelectedItem.ToString().Remove(0, ltbConsultant_Search_Results.SelectedItem.ToString().IndexOf(',') + 1).Replace(" ","")}'", myConnect); //Removes the name of the staff because I'm seraching it with the staff_id in the databse
+                        NpgsqlCommand cmdStaff = new NpgsqlCommand($"SELECT staff_id, stafffirstnames, stafflastname, staffposition,email,cellphone,telephone,fax,address FROM staff WHERE staff_id = '{ltbConsultant_Search_Results.SelectedItem.ToString().Remove(0, ltbConsultant_Search_Results.SelectedItem.ToString().IndexOf(',') + 1).Replace(" ", "")}'", myConnect); //Removes the name of the staff because I'm seraching it with the staff_id in the databse
                         NpgsqlDataReader drStaff = cmdStaff.ExecuteReader();
                         while (drStaff.Read())
                         {
@@ -522,7 +523,7 @@ namespace SeleleTravel
                     }
                     break;
 
-            }          
+            }
             //End display staff, client or service provider
         }
     }

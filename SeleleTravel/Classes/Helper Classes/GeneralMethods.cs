@@ -18,13 +18,12 @@ namespace SeleleTravel
         public static string seleleCellphone = "0614724551";
         public static string seleleFax = "0895567837";
         public static string seleleEmail = "seleletravel@live.com";
-        public static string seleleAddress = "Office 3 \n\t\t\t\t\t\t\t\t Mantis Business Centre \n\t\t\t\t\t\t\t\t 14 Byron Street \n\t\t\t\t\t\t\t\t Cambridge \n\t\t\t\t\t\t\t\t East London \n\t\t\t\t\t\t\t\t 5206";
+        public static string seleleAddress = "Office 3 \n Mantis Business Centre \n 14 Byron Street \n Cambridge \n East London \n 5206";
         public static string seleleBank = "Standard Bank";
         public static string seleleAccountName = "Selele Travelling and Accommodation cc";
         public static string seleleAccountNumber = "251389715";
         public static string seleleBranchName = "Vincent Park";
         public static string seleleBranchCode = "053721";
-        public static string outputQuoteSummary = "";
         #endregion
 
         #region Methods
@@ -32,13 +31,13 @@ namespace SeleleTravel
         /// Check if the texboxes are empty.
         /// </summary>
         /// <param name="stringValues"></param>
-        public static bool checkEmptytxtBox(params string[] stringValues)
+        public static bool checkEmptytxtBox(params TextBox[] textBoxes)
         {
+            string[] stringValues = textBoxes.Select(textbox => textbox.Text).ToArray();
             for (int i = 0; i < stringValues.Length; i++)
             {
                 if (stringValues[i] == "")
                 {
-                    MessageBox.Show("Please type a valid text", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return true;
                 }
             }
@@ -73,41 +72,23 @@ namespace SeleleTravel
             }
         }
 
-        /// <summary>
-        /// checks if the phone/telephone/fax number typed is valid
-        /// </summary>
-        /// <param name="sender"></param>
-        public static void checkPhoneNumber(TextBox reference)
-        {
-            if (reference.Text.Length <= 0) return;
-
-            string acceptedCharacters = "+0123456789 ";
-            string copy = reference.Text;
-
-            
-
-            string letterEntered = reference.Text.Last().ToString().ToLower();
-            if (!acceptedCharacters.Contains(letterEntered))
-            {
-                reference.Text = reference.Text.TrimEnd(letterEntered.ToCharArray());
-                reference.SelectionStart = reference.Text.Length;
-                MessageBox.Show("'" + letterEntered + "' is not an accepted character for a phone/telephone number!", "Invalid Character!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
 
         /// <summary>
-        /// checks if the quote number is empty.
+        /// True if a phone number is valid, and false if it isn't.
         /// </summary>
-        /// <param name="q_number"></param>
-        /// <returns></returns>
-        public static bool checkQuoteNotEmpty(string q_number)
+        /// <param name="phoneNumber">The number to check.</param>
+        /// <returns>True if a phone number is valid, and false if it isn't.</returns>
+        public static bool checkPhoneNumber(string phoneNumber)
         {
-            if (q_number == "")
-            {
-                MessageBox.Show("The quote number has not been generated, please press the \"Request Verification\" button", "Error: Quote number not generated", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            return true;
+            phoneNumber = phoneNumber.Replace(" ", "");
+            //if a number starts with "0"
+            string pattern = @"(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)";
+            //if a number startswith  +27
+            string pattern2 = @"(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)";
+
+            if (phoneNumber.StartsWith("0")) return System.Text.RegularExpressions.Regex.Match(phoneNumber, pattern).Success;
+            else if (phoneNumber.StartsWith("+27")) return System.Text.RegularExpressions.Regex.Match(phoneNumber.Substring(3, phoneNumber.Length - 3), pattern2).Success;
+            return false;
         }
 
         /// <summary>
@@ -354,7 +335,7 @@ namespace SeleleTravel
                 _totalQts = "0" + _totalQts;
             }
             // generates the quote number using the time and string generated above
-            quote_no = $"Q{_totalQts}";
+            quote_no = $"V{_totalQts}";
 
 
             return quote_no;
@@ -469,7 +450,7 @@ namespace SeleleTravel
             }
             catch (Exception h)
             {
-                MessageBox.Show(h.ToString());  
+                MessageBox.Show(h.ToString());
             }
             return numberOfQuotes;
         }
@@ -482,7 +463,7 @@ namespace SeleleTravel
         /// <param name="cellphone"></param>
         public static string makeStaffID(string surname, string cellphone)
         {
-            string ID = surname.Substring(0,4) + cellphone.Substring(6, 4);
+            string ID = surname + cellphone.Substring(1, 4);
             return ID;
         }
 
@@ -507,176 +488,89 @@ namespace SeleleTravel
         /// <param name="in_services"></param>
         /// <param name="numPassenger"></param>
         /// <returns></returns>
-        public static string quoteSummary(string QuoteNo, string service)
+        public static string quoteSummary(string QuoteNo)
         {
-            List<string> services_list = new List<string>();
-            //The following lists should be in order and correspond with each other
-            List<string> quantities = new List<string>(); //List of all the quatities
-            List<string> descriptions = new List<string>(); //List of all the descriptions
-            List<string> amounts = new List<string>(); //List of all the amounts
-            services_list = service.Split('|').ToList(); //List with sevice names as elements
-            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-            try
-            {
-                for (int j = 0; j < services_list.Count(); j++)
-                {
-                    switch (services_list[j])
-                    {
-                        case "Accommodation":
-                            myConnect.Open();
-                            NpgsqlCommand myCommand1 = new NpgsqlCommand($"SELECT numberofrooms,accomname,numberofguests,accomspecs,checkin,checkout,amount FROM accommodation WHERE quote_no = '{QuoteNo}'", myConnect);
-                            NpgsqlDataReader dr1 = myCommand1.ExecuteReader();
-                            while (dr1.Read())
-                            {
-                                quantities.Add(Convert.ToString(dr1[0]));
-                                descriptions.Add($"Accomodation at {dr1[1]} for {dr1[2]} guests \n" +
-                                    $" \t\t with the following specifications: {dr1[3]} \n" +
-                                    $" \t\t check in: {dr1[4]} check out: {dr1[5]}");
-                                amounts.Add(Convert.ToString(dr1[6]));
-                            }
-                            myConnect.Close();
-                            break;
+            //SeleleEntities temp = new SeleleEntities();
+            //List<string> services_list = new List<string>();
+            //services_list = temp.quotes.Find(QuoteNo).service.Split('|').ToList(); //List with sevice names as elements
 
-                        case "Cab Services":
-                            myConnect.Open();
-                            NpgsqlCommand myCommand2 = new NpgsqlCommand($"SELECT numberofcabs,nameofagency,pickup,dropoff,dateofcab,timeofcab,cabspecs,amount FROM cabservices WHERE quote_no = '{QuoteNo}'", myConnect);
-                            NpgsqlDataReader dr2 = myCommand2.ExecuteReader();
-                            while (dr2.Read())
-                            {
-                                quantities.Add(Convert.ToString(dr2[0]));
-                                descriptions.Add($"Cab service with {dr2[1]} from {dr2[2]} to {dr2[3]} \n" +
-                                    $" \t\t on the {dr2[4]} at {dr2[5]} \n" +
-                                    $" \t\t with the following specifications: {dr2[6]}");
-                                amounts.Add(Convert.ToString(dr2[7]));
-                            }
-                            myConnect.Close();
-                            break;
+            ////The following lists should be in order and correspond with each other
+            //List<string> quantities = new List<string>(); //List of all the quatities
+            //List<string> descriptions = new List<string>(); //List of all the descriptions
+            //List<string> amounts = new List<string>(); //List of all the amounts
 
-                        case "Car Hire":
-                            myConnect.Open();
-                            NpgsqlCommand myCommand3 = new NpgsqlCommand($"SELECT numberofcars,agencyname,pickuplocation,dropofflocation,startday,expectedenddate,carhirespecifications,amount FROM carhire WHERE quote_no = '{QuoteNo}'", myConnect);                      
-                            NpgsqlDataReader dr3 = myCommand3.ExecuteReader();
-                            while (dr3.Read())
-                            {
-                                quantities.Add(Convert.ToString(dr3[0]));
-                                descriptions.Add($"Car Hire service with {dr3[1]} from {dr3[2]} to {dr3[3]} \n" +
-                                    $" \t\t on the {dr3[4]} to the {dr3[5]} \n" +
-                                    $" \t\t with the following specifications: {dr3[6]}");
-                                amounts.Add(Convert.ToString(dr3[7]));
-                            }
-                                myConnect.Close();
-                            break;
+            //    //Writing out the information for the quote
+            //    for (int j = 0; j < services_list.Count(); j++)
+            //    {
+            //        switch (services_list[j])
+            //        {
+            //            case "Acccommodation":
+            //                quantities.Add(Convert.ToString(temp.accommodations.Find(QuoteNo).numberofrooms));
+            //                descriptions.Add($"Accomodation at {temp.accommodations.Find(QuoteNo).accomname} for {temp.accommodations.Find(QuoteNo).numberofguests} guests \n" +
+            //                    $" \t\t with the following specifications: {temp.accommodations.Find(QuoteNo).accomspecs} \n" +
+            //                    $" \t\t check in: {temp.accommodations.Find(QuoteNo).checkin.ToString()} \t check out: {temp.accommodations.Find(QuoteNo).checkout.ToString()}");
+            //                amounts.Add(Convert.ToString(temp.accommodations.Find(QuoteNo).amount));
+            //                break;
 
-                        case "Flight":
-                            myConnect.Open();
-                            NpgsqlCommand myCommand4 = new NpgsqlCommand($"SELECT passengernum,airline,fromcity,tocity,departdate,numberofbags,flightspecs,amount FROM flight WHERE quote_no = '{QuoteNo}'", myConnect);
-                            NpgsqlDataReader dr4 = myCommand4.ExecuteReader();
-                            while (dr4.Read())
-                            {
-                                quantities.Add(Convert.ToString(dr4[0]));
-                                descriptions.Add($"Flight with {dr4[1]} from {dr4[2]} to {dr4[3]} \n" +
-                                $" \t\t on the {dr4[4]} with {dr4[5]} \n" +
-                                $" \t\t with the following specifications: {dr4[6]}");
-                                amounts.Add(Convert.ToString(dr4[7]));
-                            }
-                            myConnect.Close();
-                            break;
+            //            case "Cab Services":
+            //                quantities.Add(Convert.ToString(temp.cabservices.Find(QuoteNo).numberofcabs));
+            //                descriptions.Add($"Cab service with {temp.cabservices.Find(QuoteNo).nameofagency} from {temp.cabservices.Find(QuoteNo).pickup} to {temp.cabservices.Find(QuoteNo).dropoff} \n" +
+            //                    $" \t\t on the {temp.cabservices.Find(QuoteNo).dateofcab.ToString()} at {temp.cabservices.Find(QuoteNo).timeofcab.ToString()} \n" +
+            //                    $" \t\t with the following specifications: {temp.cabservices.Find(QuoteNo).cabspecs}");
+            //                amounts.Add(Convert.ToString(temp.cabservices.Find(QuoteNo).amount));
+            //                break;
 
-                        case "Event":
-                            myConnect.Open();
-                            NpgsqlCommand myCommand5 = new NpgsqlCommand($"SELECT eventname,startday,endday,eventspecs,amount FROM event WHERE quote_no = '{QuoteNo}'", myConnect);
-                            NpgsqlDataReader dr5 = myCommand5.ExecuteReader();
-                            while (dr5.Read())
-                            {
-                                quantities.Add("1");
-                                descriptions.Add($"{dr5[0]} from {dr5[1]} to {dr5[2]} \n" +
-                                $" \t\t with the following specifications: {dr5[3]}");
-                                amounts.Add(Convert.ToString(dr5[4]));
-                            }
-                            myConnect.Close();
-                            break;
+            //            case "Car Hire":
+            //                quantities.Add(Convert.ToString(temp.carhires.Find(QuoteNo).numberofcars));
+            //                descriptions.Add($"Car Hire service with {temp.carhires.Find(QuoteNo).agencyname} from {temp.carhires.Find(QuoteNo).pickuplocation} to {temp.carhires.Find(QuoteNo).dropofflocation} \n" +
+            //                    $" \t\t on the {temp.carhires.Find(QuoteNo).startday.ToString()} to the {temp.carhires.Find(QuoteNo).expectedenddate.ToString()} \n" +
+            //                    $" \t\t with the following specifications: {temp.carhires.Find(QuoteNo).carhirespecifications}");
+            //                amounts.Add(Convert.ToString(temp.carhires.Find(QuoteNo).amount));
+            //                break;
 
-                        case "Conference":
-                            myConnect.Open();
-                            NpgsqlCommand myCommand6 = new NpgsqlCommand($"SELECT conferencename,startday,endday,venue,timeconference,conferencespecs,amount FROM conference WHERE quote_no = '{QuoteNo}'", myConnect);
-                            NpgsqlDataReader dr6 = myCommand6.ExecuteReader();
-                            while (dr6.Read())
-                            {
-                                quantities.Add("1");
-                                descriptions.Add($"{dr6[0]} from {dr6[1]} to {dr6[2]} \n" +
-                                    $" \t\t at {dr6[3]}, at {dr6[4]} \n" +
-                                    $" \t\t with the following specifications: {dr6[5]}");
-                                amounts.Add(Convert.ToString(dr6[6]));
-                            }
-                            myConnect.Close();
-                            break;
-                    }
-                }
-            }
-            catch (Exception h)
-            {
-                MessageBox.Show(h.ToString());
-            }
+            //            case "Flight":
+            //                quantities.Add(Convert.ToString(temp.flights.Find(QuoteNo).passengernum));
+            //                descriptions.Add($"Flight with {temp.flights.Find(QuoteNo).airline} from {temp.flights.Find(QuoteNo).fromcity} to {temp.flights.Find(QuoteNo).tocity} \n" +
+            //                $" \t\t on the {temp.flights.Find(QuoteNo).departdate.ToString()} with {temp.flights.Find(QuoteNo).numberofbags} \n" +
+            //                $" \t\t with the following specifications: {temp.flights.Find(QuoteNo).flightspecs}");
+            //                amounts.Add(Convert.ToString(temp.flights.Find(QuoteNo).amount));
+            //                break;
 
-            //Displaying Selele office details 
-            try
-            {
-                myConnect.Open();
-                NpgsqlCommand getClientDets = new NpgsqlCommand($"SELECT clientname, client_no FROM quote WHERE quote_no ='{QuoteNo}'", myConnect);
-                NpgsqlDataReader drgetClientDets = getClientDets.ExecuteReader();
-                while (drgetClientDets.Read())
-                {
-                    outputQuoteSummary = SeleleOfficeDetails(drgetClientDets[0].ToString(), drgetClientDets[1].ToString());
-                }
-                myConnect.Close();
-            }
-            catch (Exception h)
-            {
-                MessageBox.Show(h.ToString());
-            }
+            //            case "Event":
+            //                quantities.Add("1");
+            //                descriptions.Add($"{temp.events.Find(QuoteNo).eventname} from {temp.events.Find(QuoteNo).startday} to {temp.events.Find(QuoteNo).endday} \n" +
+            //                $" \t\t with the following specifications: {temp.events.Find(QuoteNo).eventspecs}");
+            //                amounts.Add(Convert.ToString(temp.events.Find(QuoteNo).amount));
+            //                break;
 
+            //            case "Conference":
+            //                quantities.Add("1");
+            //                descriptions.Add($"{temp.conferences.Find(QuoteNo).conferencename} from {temp.conferences.Find(QuoteNo).startday} to {temp.conferences.Find(QuoteNo).endday} \n" +
+            //                    $" \t\t at {temp.conferences.Find(QuoteNo).venue}, at {temp.conferences.Find(QuoteNo).timeconference.ToString()} \n" +
+            //                    $" \t\t with the following specifications: {temp.conferences.Find(QuoteNo).conferencespecs}");
+            //                amounts.Add(Convert.ToString(temp.conferences.Find(QuoteNo).amount));
+            //                break;
 
-            //Displaying the information
-            outputQuoteSummary += "\n\n";
-            if (quantities.Count() == descriptions.Count() && quantities.Count() == amounts.Count()) //checking if the lists are equal, meaning that they correspond
-            {
-                outputQuoteSummary += "QUANTIY \t DESCRIPTION \t\t\t\t\t\t\t\t AMOUNT \n"; //making the headers
-                for (int j = 0; j < amounts.Count(); j++) //extracting the information from the lists
-                {
-                    outputQuoteSummary += $"{quantities[j]} \t\t {descriptions[j]} \t\t\t\t\t R{amounts[j]} \n\n";
-                }               
-            }           
-            return outputQuoteSummary;
-        }
+            //    }
+            //}
 
-        /// <summary>
-        /// displaying and extracting the service fee, VAT and total for the quote
-        /// </summary>
-        /// <param name="QuoteNo"></param>
-        /// <returns></returns>
-        public static string quoteSummaryAmounts(string QuoteNo)
-        {
-            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-            try
-            {
-                myConnect.Open();
-                NpgsqlCommand myCommand7 = new NpgsqlCommand($"SELECT servicefee, amount FROM quote WHERE quote_no = '{QuoteNo}'", myConnect);
-                NpgsqlDataReader dr7 = myCommand7.ExecuteReader();
-                while (dr7.Read())
-                {
-                    outputQuoteSummary = $"\t\t Service Fee \t\t\t\t\t\t\t\t R{dr7[0]} \n " +
-                    $"\t\t VAT 15% \t\t\t\t\t\t\t\t R{Convert.ToDouble(dr7[1]) * 0.15} \n " +
-                    $"\t\t Total   \t\t\t\t\t\t\t\t\t R{Convert.ToDouble(dr7[1]) * 0.15 + Convert.ToDouble(dr7[0])}";
-                }
-                myConnect.Close();
+            ////Displaying the informatoin
+            string output = "\n\n";
+            //if (quantities.Count() == descriptions.Count() && quantities.Count() == amounts.Count()) //checking if the lists are equal, meaning that they correspond
+            //{
+            //    output = "QUANTIY \t DESCRIPTION \t\t\t\t\t\t\t\t AMOUNT \n"; //making the headers
+            //    for (int j = 0; j < amounts.Count(); j++) //extracting the information from the lists
+            //    {
+            //        output += $"{quantities[j]} \t\t {descriptions[j]} \t\t\t {amounts[j]} \n\n";
+            //    }
+            //    //displaying and extracting the service fee, VAT and total for the quote
+            //    output += $"\t\t Service Fee \t\t\t\t\t\t\t\t {temp.quotes.Find(QuoteNo).servicefee} \n " +
+            //              $"\t\t VAT 15% \t\t\t\t\t\t\t\t {temp.quotes.Find(QuoteNo).amount * 0.15} \n " +
+            //              $"\t\t Total   \t\t\t\t\t\t\t\t {temp.quotes.Find(QuoteNo).amount * 0.15 + temp.quotes.Find(QuoteNo).amount}";
+            //}
 
-                outputQuoteSummary += "\n\n\n" + SeleleBankDetails();
-            }
-            catch (Exception h)
-            {
-                MessageBox.Show(h.ToString());
-            }
-            return outputQuoteSummary;
+            return output;
+
         }
 
         /// <summary>
@@ -801,12 +695,12 @@ namespace SeleleTravel
         }
 
         /// <summary>
-        /// This will return the office details and client name and ID for the quote summary or any other situation.
+        /// This will return the office details for the quote summary or any other situation.
         /// </summary>
         /// <returns></returns>
-        public static string SeleleOfficeDetails(string clientName, string ClientID)
+        public static string SeleleOfficeDetails()
         {
-            return $"Tel: {seleleTelephone} \t\t\t\t\t\t\t\t\t\t Office 3 \n Cell: {seleleCellphone} \t\t\t\t\t\t\t\t\t Mantis Business Centre \n Fax: {seleleFax} \t\t\t\t\t\t\t\t\t\t 14 Byron Street \n {seleleEmail} \t\t\t\t\t\t\t\t\t Cambridge \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t East London \n Client Name: {clientName} \t\t\t\t\t\t\t\t\t 5206  \n Client ID: {ClientID}";
+            return $" Tel: {seleleTelephone} \n Cell: {seleleCellphone} \n Fax: {seleleFax} \n {seleleEmail} \n {seleleAddress}";
         }
 
         /// <summary>
@@ -815,7 +709,7 @@ namespace SeleleTravel
         /// <returns></returns>
         public static string SeleleBankDetails()
         {
-            return $" Bank Name: {seleleBank} \n Account Name: {seleleAccountName} \n Account no: {seleleAccountNumber} \n Branch Name: {seleleBranchName} \n Branch Code: {seleleBranchCode}";
+            return $" Bank Name: {seleleBank} \n Account Name: {seleleAccountName} \n Account no: {seleleAccountNumber} \n Branch Name: {seleleBranchName} \n  Branch Code: {seleleBranchCode}";
         }
 
         #endregion

@@ -11,24 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Data.SqlClient;
-//using Devart.Data.MySql;
 
-namespace SeleleTravel
+namespace SeleleTravel.AppWindows.Owner
 {
     /// <summary>
-    /// Interaction logic for Manager_Invoices_Window.xaml
+    /// Interaction logic for ViewQuoteWindow.xaml
     /// </summary>
-    public partial class Manager_Payments_Window : Window
-   {
-        public Manager_Payments_Window()
+    public partial class ViewQuoteWindow : Window
+    {
+        public ViewQuoteWindow()
         {
             InitializeComponent();
-        }
-
-        private void btnManager_generateVoucher_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
