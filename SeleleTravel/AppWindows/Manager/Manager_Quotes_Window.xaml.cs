@@ -59,10 +59,10 @@ namespace SeleleTravel
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                NpgsqlCommand myCommand = new NpgsqlCommand($"UPDATE quote SET verification='yes' WHERE quote_no = '{quote_no}'", myConnect);
+                NpgsqlCommand myCommand = new NpgsqlCommand($"UPDATE quote SET verified ='Yes' WHERE quote_no = '{quote_no}'", myConnect);
                 // Add paramaters.
 
-                myCommand.Parameters.Add(new NpgsqlParameter("verification", NpgsqlTypes.NpgsqlDbType.Varchar));
+                myCommand.Parameters.Add(new NpgsqlParameter("verified", NpgsqlTypes.NpgsqlDbType.Varchar));
                 myCommand.Parameters.Add(new NpgsqlParameter("quote_no", NpgsqlTypes.NpgsqlDbType.Varchar));
 
                 //add value to the parameter
