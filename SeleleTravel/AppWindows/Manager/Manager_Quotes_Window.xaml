@@ -13,7 +13,7 @@
     <Grid Background="#FFFF8888">
         <TabControl x:Name="Manager_tabControl" HorizontalAlignment="Left" Height="626" VerticalAlignment="Top" Width="1078" Margin="8,38,0,0">
             <!--Quote Summary-->
-            <TabItem Header="Quote Summary" Height="50" Padding="10" Background="{x:Null}" BorderBrush="Black">
+            <TabItem x:Name="tbItem_QuoteSummary" Header="Quote Summary" Height="50" Padding="10" Background="{x:Null}" BorderBrush="Black" Initialized="TbItem_QuoteSummary_Initialized">
                 <Grid Background="#FFFFC7C7">
                     <!--Separating grid into 3-->
                     <Grid.ColumnDefinitions>
