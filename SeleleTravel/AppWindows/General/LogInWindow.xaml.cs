@@ -13,6 +13,11 @@ namespace SeleleTravel
         LoadWindow windowToLoad;
         public static SignUpWindow signUpWindow = new SignUpWindow();
         public static MainWindow mainWindow = new MainWindow();
+        public static ConsultantHomeWindow consultantWindow = new ConsultantHomeWindow();
+        public static Manager_Home managerWindow = new Manager_Home();
+        public static OwnerHomeWindow ownerWindow = new OwnerHomeWindow();
+        string staffID = "";
+        string staffName = "";
         public LogInWindow()
         {
             InitializeComponent();
@@ -42,7 +47,8 @@ namespace SeleleTravel
                         if (password == dr[0].ToString() && staffID == dr[1].ToString())
                         {
                             MessageBox.Show($"Welcome {dr[2]}");
-                            
+                            staffID = dr[1].ToString();
+                            staffName = dr[2].ToString();
                             Hide();
                             break;
                         }
@@ -79,7 +85,8 @@ namespace SeleleTravel
                     if (loginViaDatabase(staffID, password))
                     {
                         consultantWindow.currentStaffID = staffID;
-                        
+                        consultantWindow.lblConsultantName.Content = staffName;
+                        consultantWindow.lblConsultantID.Content = staffID;
                         consultantWindow.Show();
                     }
                     break;
@@ -91,6 +98,8 @@ namespace SeleleTravel
                     if (loginViaDatabase(staffID, password))
                     {
                         managerWindow.currentStaffID = staffID;
+                        managerWindow.lblManagerName.Content = staffName;
+                        managerWindow.lblManagerID.Content = staffID;
                         managerWindow.Show();
                     }
                     break;
@@ -102,6 +111,8 @@ namespace SeleleTravel
                     if (loginViaDatabase(staffID, password))
                     {
                         ownerWindow.currentStaffID = staffID;
+                        ownerWindow.lblOwnerID.Content = staffID;
+                        ownerWindow.lblOwnerName.Content = staffName;
                         ownerWindow.Show();
                     }
                     break;

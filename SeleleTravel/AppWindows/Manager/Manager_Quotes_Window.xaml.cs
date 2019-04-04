@@ -115,5 +115,29 @@ namespace SeleleTravel
             }
 
         }
+
+        private void TbItem_QuoteSummary_Initialized(object sender, EventArgs e)
+        {
+            //Query for retrieving unverifified quotes
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT quote_no FROM quote WHERE verified = 'No'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                        ltbQuoteSummary_incomingQuotes.Items.Add($"{query[0]}");
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
     }
 }
