@@ -30,11 +30,11 @@ namespace SeleleTravel
         {
             InitializeComponent();
         }
-        
+        string checkStaffID = "";
         private void btnSignUp_done_Click(object sender, RoutedEventArgs e)
         {
             NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-            string checkStaffID = txbSignUp_staffID.Text;
+           string checkStaffID = txbSignUp_staffID.Text;
             string checkPassword = pdbSignUp_password.Password;
             string checkConfirmPassword = pdbSignUp_passwordConfirm.Password;
 

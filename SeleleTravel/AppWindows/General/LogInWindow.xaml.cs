@@ -79,6 +79,7 @@ namespace SeleleTravel
                     if (loginViaDatabase(staffID, password))
                     {
                         consultantWindow.currentStaffID = staffID;
+                        
                         consultantWindow.Show();
                     }
                     break;
