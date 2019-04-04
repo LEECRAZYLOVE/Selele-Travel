@@ -1505,7 +1505,7 @@ namespace SeleleTravel
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"SELECT quote_no FROM quote WHERE consultant_no='{consultant_no}' AND verification='yes'", myConnect))
+                using (var cmd = new NpgsqlCommand($"SELECT quote_no FROM quote WHERE consultant_no='{consultant_no}' AND verified='yes'", myConnect))
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
                     while (query.Read())
