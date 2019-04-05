@@ -746,7 +746,7 @@
                         <!-- Right hand side-->
                         <StackPanel Grid.Column="2">
                             <TextBlock Text="Password :" Margin="10"/>
-                            <PasswordBox Margin="10 0 10 10" Height="30"/>
+                            <PasswordBox x:Name="txb_password" Margin="10 0 10 10" Height="30"/>
                             <Button Content="Send to clients" Margin="10 0 10 10" Click="Button_Click_6"/>
                         </StackPanel>
                         <Button x:Name="button" Content="Get verified Quotes" Grid.Column="2" HorizontalAlignment="Left" Margin="38,159,0,0" VerticalAlignment="Top" Width="217" Click="Button_Click_5"/>
