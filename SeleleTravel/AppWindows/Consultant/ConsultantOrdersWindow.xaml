@@ -8,22 +8,80 @@
         Closed="Window_Closed"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        Title="Consultant_Orders_Window" Height="450" Width="800" Background="#FFF9F094" FontSize="16">
+        Title="Consultant_Orders_Window" Height="450" 
+        Width="800" Background="#FFF9F094">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="label" Grid.ColumnSpan="2" Content="Quote Number:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txbConsultant_Orders_inputQuote" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="170,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="198" FontSize="10"/>
-        <Button x:Name="btnConvsultant_Orders_viewQuote" Grid.ColumnSpan="2" Content="View" HorizontalAlignment="Left" Margin="373,9,0,0" VerticalAlignment="Top" Width="95" Click="BtnConvsultant_Orders_viewQuote_Click" Height="35"/>
-        <Button x:Name="btnConsultant_Orders_selectQuote" Grid.ColumnSpan="2" Content="Select" HorizontalAlignment="Left" Margin="473,9,0,0" VerticalAlignment="Top" Width="94" Click="BtnConsultant_Orders_selectQuote_Click" Height="35"/>
-        <TextBox x:Name="txbConsultant_Orders_viewQuote" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="360" Margin="10,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="557" Opacity="0.6" FontSize="20"/>
-        <TextBox x:Name="txbConsultant_Orders_orderNumber" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="585.963,51.96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185.904" FontSize="10"/>
-        <Label x:Name="label1" Grid.ColumnSpan="2" Content="Order Number:" HorizontalAlignment="Left" Margin="608,9,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnConsultant_Orders_addNewOrder" Grid.ColumnSpan="2" Content="Add New Order" Margin="586,375,0,10" HorizontalAlignment="Left" Width="186" Click="BtnConsultant_Orders_addNewOrder_Click"/>
-        <Label Grid.ColumnSpan="2" Content="Order Date :" HorizontalAlignment="Left" Margin="620,78,0,0" VerticalAlignment="Top" Width="131"/>
-        <TextBox x:Name="txbConsultant_Orders_orderdate" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="586,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186" FontSize="10"/>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBox x:Name="txbConsultant_Orders_inputQuote"
+                     Tag="Quote Number"
+                     Grid.Column="0" 
+                     Grid.Row="0"
+                     Margin="5"
+                     TextWrapping="Wrap"/>
+
+            <Button x:Name="btnConvsultant_Orders_viewQuote"
+                    Grid.Column="1" 
+                    Content="View" 
+                    Grid.Row="0"
+                    Margin="5"
+                    Click="BtnConvsultant_Orders_viewQuote_Click"/>
+
+            <Button x:Name="btnConsultant_Orders_selectQuote" 
+                    Grid.Column="2" 
+                    Content="Select"
+                    Grid.Row="0"
+                    Margin="5"
+                    Click="BtnConsultant_Orders_selectQuote_Click"/>
+            
+            <TextBox x:Name="txbConsultant_Orders_viewQuote"
+                     Grid.ColumnSpan="3" 
+                     Grid.Row="1"
+                     Margin="5"
+                     TextWrapping="Wrap" />
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBox x:Name="txbConsultant_Orders_orderNumber"
+                     Tag="Order Number"
+                     Grid.Row="0"
+                     TextWrapping="Wrap" 
+                     Margin="5"/>
+
+            <TextBox x:Name="txbConsultant_Orders_orderdate" 
+                     Tag="Order Date" 
+                     Grid.Row="1"
+                     TextWrapping="Wrap" 
+                     Margin="5"/>
+
+            <Button x:Name="btnConsultant_Orders_addNewOrder" 
+                    Grid.Row="2"
+                    Content="Add New Order"
+                    Margin="5"
+                    Click="BtnConsultant_Orders_addNewOrder_Click"/>
+
+        </Grid>
 
     </Grid>
 </Window>

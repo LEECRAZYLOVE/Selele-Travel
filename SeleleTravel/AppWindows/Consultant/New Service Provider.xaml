@@ -8,99 +8,163 @@
         Closed="New_Service_Provider_Home_Closed"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        Title="SeleleApp" Height="706.352" Width="556.557">
-    <Window.Resources>
-        <Style x:Key="LabelStyle1" TargetType="{x:Type Label}">
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="VerticalContentAlignment" Value="Top"/>
-            <Setter Property="FontFamily" Value="Rockville"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Label}">
-                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-    <Grid x:Name="mainGrid" Background="#FFD9EAD3" >
-        <Canvas x:Name="container" Height="568.377" Canvas.Left="34.502" Canvas.Top="44.423" Width="481.065">
-            <Label x:Name="label9" Content="Name:" Style="{DynamicResource LabelStyle1}" Canvas.Top="56.461"/>
-            <Label x:Name="label11" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Canvas.Top="131.694"/>
-            <Label x:Name="label12" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1.42" Canvas.Top="214.454" Style="{DynamicResource LabelStyle1}"/>
-            <Label x:Name="label13" Content="Province:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="284.046" Style="{DynamicResource LabelStyle1}"/>
-            <Label x:Name="lbl1" Content="Cellphone:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="325.03" Style="{DynamicResource LabelStyle1}"/>
-            <Label x:Name="lbl2" Content="Area Code:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="248.654" Style="{DynamicResource LabelStyle1}"/>
-            <Label x:Name="lbl3" Content="Telephone:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="391.93" Style="{DynamicResource LabelStyle1}"/>
-            <Label x:Name="lbl4" Content="Fax:" Canvas.Top="357.73" Style="{DynamicResource LabelStyle1}"/>
-            <Label x:Name="lbl5" Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="421.13" Style="{DynamicResource LabelStyle1}"/>
+        Title="SeleleApp" MinHeight="700" Height="745.056" Width="556.557">
 
-            <TextBox x:Name="txbNewService_name" HorizontalAlignment="Left" Height="30" Width="361.066" TextWrapping="Wrap" VerticalAlignment="Top"  Canvas.Left="119.999" Canvas.Top="55.661" FontSize="16" FontFamily="Comic Sans MS" Text="Avis"/>
-            <ComboBox x:Name="cbbNewService_entities" Height="32" Width="260" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="120" Canvas.Top="93" BorderBrush="#FFB2E4CA" SelectionChanged="cbbNewService_entities_SelectionChanged">
-                <ComboBox.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                        <GradientStop Color="#FFB2E4CA" Offset="1"/>
-                    </LinearGradientBrush>
-                </ComboBox.Background>
-                <ComboBoxItem Content="Flight" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
-                <ComboBoxItem Content="Events" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
-                <ComboBoxItem Content="Accommodation" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15" Margin="0,0,-2.934,0"/>
-                <ComboBoxItem Content="Taxi Cab" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
-                <ComboBoxItem Content="Car Hire" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15" Margin="0,0,-2.934,0"/>
-                <ComboBoxItem Content="Conferences" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15" Margin="0,0,-2.934,0"/>
-                            </ComboBox>
-            <TextBox x:Name="txbNewService_address" HorizontalAlignment="Left" Height="80" Width="361.066" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="129.457" FontSize="16" FontFamily="Comic Sans MS" Text="PE Airport"/>
-            <TextBox x:Name="txbNewService_city" Height="30" Width="361.066" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="214.457" FontSize="16" FontFamily="Comic Sans MS" Text="Port Elizabeth"/>
-            <TextBox x:Name="txbNewService_areaCode" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="6139" VerticalAlignment="Top" Width="361.066" Canvas.Left="119.999" Canvas.Top="249.457" FontSize="16" FontFamily="Comic Sans MS"/>
-            <ComboBox Height="32" Width="260" Canvas.Left="119.999" Canvas.Top="284.046" BorderBrush="#FFB2E4CA" >
-                <ComboBox.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                        <GradientStop Color="#FFB2E4CA" Offset="1"/>
-                    </LinearGradientBrush>
-                </ComboBox.Background>
-                <ComboBoxItem Content="Eastern Cape" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
-                <ComboBoxItem Content="Free State" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
-                <ComboBoxItem Content="Gauteng" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
-                <ComboBoxItem Content="Kwazulu Natal" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
-                <ComboBoxItem Content="Limpopo" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
-                <ComboBoxItem Content="Mpumalanga" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
-                <ComboBoxItem Content="North West" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
-                <ComboBoxItem Content="Northen Cape" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
-                <ComboBoxItem Content="Western Cape" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15"/>
-            </ComboBox>
-            <TextBox x:Name="txbNewService_cellphone" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="324.23" FontSize="16" FontFamily="Comic Sans MS" Text="0123456789"/>
-            <TextBox x:Name="txbNewService_fax" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="359.23" FontSize="16" FontFamily="Comic Sans MS" Text="0246812345"/>
-            <TextBox x:Name="txbNewService_telephone" TextChanged="validateNumber" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="394.23" FontSize="16" FontFamily="Comic Sans MS" Text="0135791234"/>
-            <TextBox x:Name="txbNewService_email" Height="30" Width="361.066" HorizontalAlignment="Left" TextWrapping="Wrap" Text="avis@gmail.com" VerticalAlignment="Top" Canvas.Left="119.999" Canvas.Top="429.23" FontSize="16" FontFamily="Comic Sans MS"/>
-            <Button x:Name="btnNewService_add" Content="Add" RenderTransformOrigin="0.5,0.5" Canvas.Left="300" Canvas.Top="498" Width="171" Height="55" FontFamily="Rockwell" FontSize="36" Background="#FFB2E4CA" Click="BtnNewService_add_Click"/>
+    <Grid x:Name="mainGrid" Background="#FFD9EAD3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <Label x:Name="label" Content="Entity:" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Canvas.Left="1.42" Canvas.Top="93.221"/>
-            <Label x:Name="label1" Content="Enter service provider details here :" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" Canvas.Left="78.157" FontSize="20"/>
-            <ComboBox x:Name="cbxUpdateClient" Canvas.Left="119.999" Canvas.Top="90.661" Width="226.5" Height="29.2" d:IsHidden="True">
-                <ComboBoxItem Content="Business" HorizontalAlignment="Left" Width="224.5"/>
-                <ComboBoxItem Content="Individual" HorizontalAlignment="Left" Width="224.5"/>
-            </ComboBox>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
+        <Label x:Name="label1" 
+                       Content="Enter service provider details here :"
+                       Grid.ColumnSpan="2"
+                       Grid.Row="0"/>
 
+        <TextBox x:Name="txbNewService_name"
+                     Tag="Name" 
+                     TextWrapping="Wrap"
+                     Text="Avis"
+                     Margin="5"
+                     Grid.ColumnSpan="2"
+                     Grid.Row="1"/>
 
-        </Canvas>
-        <Button x:Name="btnUpdateClient" Content="Update"  RenderTransformOrigin="0.5,0.5" FontFamily="Rockwell" FontSize="36" Background="#FFB2E4CA" Margin="48,552,331,68" />
-        <Label x:Name="lblUpdateClient" Content="Enter client details here :" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource LabelStyle1}" FontSize="20" Margin="152.999,53.487,0,0" d:IsHidden="True"/>
+        <Label x:Name="label" Content="Entity:"
+                   Grid.Column="0"
+                   Grid.Row="2"/>
+        <ComboBox x:Name="cbxUpdateClient" 
+                      Grid.Column="1"
+                      Grid.Row="2"
+                      Margin="5">
+            <ComboBoxItem Content="Business"/>
+            <ComboBoxItem Content="Individual"/>
+        </ComboBox>
 
+        <Label x:Name="labe"
+                   Content="Type of Service:"
+                   Grid.Column="0"
+                   Grid.Row="3"/>
 
+        <ComboBox x:Name="cbbNewService_entities" 
+                      Grid.Column="1"
+                      Grid.Row="3"
+                      Margin="5"
+                      SelectionChanged="cbbNewService_entities_SelectionChanged">
+            <ComboBoxItem Content="Flight" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
+            <ComboBoxItem Content="Events" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
+            <ComboBoxItem Content="Accommodation" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15" Margin="0,0,-2.934,0"/>
+            <ComboBoxItem Content="Taxi Cab" HorizontalAlignment="Left" Width="260" Margin="0,0,-2,0" FontFamily="Rockville" FontSize="15"/>
+            <ComboBoxItem Content="Car Hire" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15" Margin="0,0,-2.934,0"/>
+            <ComboBoxItem Content="Conferences" HorizontalAlignment="Left" Width="260" FontFamily="Rockville" FontSize="15" Margin="0,0,-2.934,0"/>
+        </ComboBox>
 
+        <TextBox x:Name="txbNewService_address" 
+                     Tag="Address"
+                     TextWrapping="Wrap"
+                     Text="PE Airport"
+                     Grid.Row="4"
+                     Grid.ColumnSpan="2"
+                     Margin="5"/>
+
+        <TextBox x:Name="txbNewService_city" 
+                     Grid.Row="5"
+                     Grid.ColumnSpan="2"
+                     Margin="5"
+                     Tag="City" 
+                     TextWrapping="Wrap" 
+                     Text="Port Elizabeth"/>
+
+        <TextBox x:Name="txbNewService_areaCode"
+                     Grid.Row="6"
+                     Grid.ColumnSpan="2"
+                     Margin="5"
+                     Tag="Area Code" 
+                     TextWrapping="Wrap"
+                     Text="6139"/>
+
+        <Label x:Name="label13" 
+                   Content="Province:"
+                   Grid.Row="7"
+                   Grid.Column="0"
+                   Margin="5"/>
+
+        <ComboBox  Grid.Row="7"
+                       Grid.Column="1"
+                       Margin="5">
+            <ComboBoxItem Content="Eastern Cape"/>
+            <ComboBoxItem Content="Free State" />
+            <ComboBoxItem Content="Gauteng" />
+            <ComboBoxItem Content="Kwazulu Natal" />
+            <ComboBoxItem Content="Limpopo" />
+            <ComboBoxItem Content="Mpumalanga" />
+            <ComboBoxItem Content="North West"/>
+            <ComboBoxItem Content="Northen Cape" />
+            <ComboBoxItem Content="Western Cape" />
+        </ComboBox>
+
+        <TextBox x:Name="txbNewService_cellphone" 
+                     Tag="Cellphone"
+                     Grid.Row="8"
+                     Grid.ColumnSpan="2"
+                     Margin="5"
+                     TextChanged="validateNumber" 
+                     TextWrapping="Wrap" 
+                     Text="0123456789"/>
+
+        <TextBox x:Name="txbNewService_fax" 
+                     Tag="Fax" 
+                     Grid.Row="9"
+                     Grid.ColumnSpan="2"
+                     Margin="5"
+                     TextChanged="validateNumber"
+                     TextWrapping="Wrap"
+                     Text="0246812345"/>
+
+        <TextBox x:Name="txbNewService_telephone"
+                     Grid.Row="10"
+                     Grid.ColumnSpan="2"
+                     Margin="5"
+                     Tag="Telephone"
+                     TextChanged="validateNumber"
+                     Text="0135791234"/>
+
+        <TextBox x:Name="txbNewService_email"
+                     Grid.Row="11"
+                     Grid.ColumnSpan="2"
+                     Margin="5"
+                     Tag="Email" 
+                     TextWrapping="Wrap" 
+                     Text="avis@gmail.com"/>
+
+        <Button x:Name="btnNewService_add" 
+                    Grid.Row="12"
+                    Grid.ColumnSpan="2"
+                    Margin="5"
+                    Content="Add"
+                    Click="BtnNewService_add_Click"/>
+
+        <Button x:Name="btnUpdateClient" 
+                    Grid.Row="13"
+                    Grid.ColumnSpan="2"
+                    Margin="5"
+                    Content="Update"  />
     </Grid>
+
 </Window>

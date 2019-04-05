@@ -8,146 +8,302 @@
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
         Title="Manager_Page" Height="750" Width="1006.4">
-    <Window.Resources>
-        <Style x:Key="FocusVisual">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
-        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
-        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
-        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
-        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
-        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
-        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
-        <Style x:Key="HomeButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background" Value="{x:Null}"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="BorderThickness" Value="0,1,0,1"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="1"/>
-            <Setter Property="FontFamily" Value="Comic Sans MS"/>
-            <Setter Property="FontSize" Value="40"/>
-            <Setter Property="Height" Value="102.72"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="#FFFF9E9E"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-    <Grid Background="#FFF35353">
 
-        <Button x:Name="btnManager_logOut" Content="LOGOUT" Width="150" Height="40" FontFamily="Comic Sans MS" FontSize="16" BorderBrush="#FF1F1515" Click="btnManager_logOut_Click" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0" >
-            <Button.Background>
-                <ImageBrush ImageSource="..\..\images\SeleleLogoBalls.png" Stretch="Uniform">
-                    <ImageBrush.RelativeTransform>
-                        <TransformGroup>
-                            <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="5" ScaleY="5"/>
-                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                            <RotateTransform CenterY="0.5" CenterX="0.5"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </ImageBrush.RelativeTransform>
-                </ImageBrush>
-            </Button.Background>
-        </Button>
-        <Label x:Name="lblManagerName" Content="-Manager Name-" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33.047" Width="136.952" Margin="2,0,0,0" FontFamily="Comic Sans MS" FontSize="16"/>
-        <Label x:Name="lblManagerID" Content="-Manager ID-" Margin="2,33.047,854.648,645.8" FontFamily="Comic Sans MS" FontSize="16"/>
-        <Label Content="Welcome" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0"/>
-        <TabControl HorizontalAlignment="Left" 
-                    Height="630.8" Margin="10,79.6,0,0" 
-                    VerticalAlignment="Top" 
-                    Width="973.6"
-                    SelectionChanged="TabControl_SelectionChanged">
-            <TabItem Header="Home" Margin="0" 
-                     Width="100" Height="30" 
+    <Grid Background="#FFF35353">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Label Section -->
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- The consultant ID and Name section -->
+            <StackPanel  Grid.Column="0">
+
+                <!-- Name of the consultant -->
+                <Label x:Name="lblManagerName"
+                       Content="-Manager Name-" 
+                       FontSize="{StaticResource FontSizeLarge}"
+                       Margin="2"/>
+
+                <!-- Consultant ID -->
+                <Label x:Name="lblManagerID" 
+                       Content="-Manager ID-" 
+                       FontSize="{StaticResource FontSizeLarge}"
+                       Margin="2"/>
+
+            </StackPanel>
+
+            <!-- Welcome label -->
+            <Label Content="Welcome" 
+                   Grid.Column="1"
+                   
+                   FontSize="{StaticResource FontSizeXLarge}" 
+                   FontWeight="Bold" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Margin="0"/>
+
+            <!-- The logout button -->
+            <Button x:Name="btnOwner_logOut" 
+                    Grid.Column="2"
+                    Content="LOGOUT"
+                    FontWeight="Bold"
+                    FontSize="{StaticResource FontSizeLarge}" 
+                    BorderThickness="1"
+                    BorderBrush="#FF1F1515" 
+                    Click="BtnConsultant_logOut_Click" 
+                    Margin="20" >
+
+                <Button.Background>
+                    <ImageBrush ImageSource="..\..\images\SeleleLogoBalls.png" Stretch="Uniform">
+                        <ImageBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="5" ScaleY="5"/>
+                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ImageBrush.RelativeTransform>
+                    </ImageBrush>
+                </Button.Background>
+            </Button>
+
+        </Grid>
+
+        <TabControl Grid.Row="1">
+
+            <TabItem Header="Home" 
+                     Margin="0"
+                     Height="Auto" Width="Auto" 
+                     FontSize="{StaticResource FontSizeRegular}"
                      HorizontalAlignment="Left">
-                <Canvas Background="White">
-                    <Image Height="572.8" Canvas.Left="10" Canvas.Top="10" Width="947.6" Source="..\..\images\SeleleLogoBalls.png" Opacity=".5"/>
-                    <Label Content="Choose an option..." VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24" Canvas.Left="15.8" Canvas.Top="20" />
-                    <StackPanel Height="513.6" Canvas.Left="10" Canvas.Top="69.2" Width="947.6">
-                        <Button x:Name="btnManager_Quotes" Content="Quote Verifications" Click="btnManager_Quotes_Click"  Style="{DynamicResource HomeButtonStyle}" Height="86"/>
-                        <Button x:Name="btnManager_authorize" Content="Authorizations" Style="{DynamicResource HomeButtonStyle}" Click="BtnManager_authorize_Click" Height="86"/>
-                        <Button x:Name="btnManager_invoices" Content="Invoices"  Style="{DynamicResource HomeButtonStyle}" Height="86"/>
+                <!-- The Choose an option section -->
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- The Background image -->
+                    <Image Source="..\..\images\SeleleLogoBalls.png" 
+                           Grid.RowSpan="2"
+                           Opacity=".5"/>
+
+                    <!-- The label -->
+                    <Label Content="Choose an option..." 
+                           Grid.Row="0"
+                           VerticalAlignment="Top" 
+                           FontSize="{StaticResource FontSizeLarge}" />
+
+                    <!-- The buttons -->
+                    <Grid Panel.ZIndex="10" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Quote Verifications -->
+                        <Button x:Name="btnManager_Quotes" 
+                                Content="Quote Verifications"
+                                Grid.Row="0"
+                                FontSize="{StaticResource FontSizeLarge}"
+                                Background="{StaticResource seleleBlueBrush}"
+                                Click="btnManager_Quotes_Click" />
+
+                        <!-- Authorizations -->
+                        <Button x:Name="btnManager_authorize"
+                                Content="Authorizations" 
+                                Grid.Row="1"
+                                FontSize="{StaticResource FontSizeLarge}"
+                                Background="{StaticResource seleleBlueBrush}"
+                                Click="BtnManager_authorize_Click" />
+
+                        <!-- Invoices -->
+                        <Button x:Name="btnManager_invoices" 
+                                Content="Invoices" 
+                                Grid.Row="2"
+                                FontSize="{StaticResource FontSizeLarge}"
+                                Background="{StaticResource seleleBlueBrush}"/>
+
+                        <!-- Compose Message -->
                         <Button x:Name="btnManager_composeMessage" 
                                 Content="Compose Message" 
-                                Style="{DynamicResource HomeButtonStyle}" 
-                                Height="86" 
+                                Grid.Row="3"
+                                FontSize="{StaticResource FontSizeLarge}"
+                                Background="{StaticResource seleleBlueBrush}"
                                 Click="BtnManager_composeMessage_Click"/>
-                        <Button x:Name="btnManager_Confirmatons" Content="Booking Confirmations"   Style="{DynamicResource HomeButtonStyle}" Height="86" Click="BtnManager_Confirmatons_Click"/>
-                        <Button x:Name="btnManager_Paymentss" Content="Payments" Style="{DynamicResource HomeButtonStyle}" Height="86" Click="BtnManager_Paymentss_Click"/>
-                    </StackPanel>
-                </Canvas>
-            </TabItem>
-            <TabItem Header="Messages" 
-                     Margin="0" Height="30" 
-                     Width="100" 
-                     HorizontalAlignment="Left" 
-                     MouseDown="TabItem_MouseDown">
-                <Canvas Background="White">
-                    <TextBlock x:Name="tbkManager_inboxMessages" Text="No Message selected." Padding="5" TextWrapping="Wrap" FontFamily="Comic Sans MS" Height="525" Canvas.Left="420" Canvas.Top="51" Width="526"/>
-                    <Label Content="Inbox :" Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Height="33" Canvas.Left="25" Canvas.Top="12" Width="77"/>
-                    <ListBox x:Name="lbManager_inboxList" Background="#FFD5D9E6" Opacity="0.5" Height="523" Canvas.Left="21" Canvas.Top="51" Width="355" SelectionChanged="LbManager_inboxList_SelectionChanged">
-                        <ListBoxItem Content="No New Messages.."/>
-                    </ListBox>
-                    <Label x:Name="txbMessageFrom" Content="Selected Message :" Opacity="1.5" FontSize="16" FontFamily="Comic Sans MS" Canvas.Left="418" Canvas.Top="9" />
-                </Canvas>
-            </TabItem>
-            <TabItem Header="Search" Height="30" Width="100" Margin="0" HorizontalAlignment="Left">
-                <Canvas Background="White">
-                    <TextBox x:Name="txbManager_search" Text="Name or ID..." HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" Canvas.Left="10" Canvas.Top="10" BorderBrush="Black" FontSize="20" FontFamily="Times New Roman"/>
-                    <Button x:Name="btnManager_search" Content="SEARCH" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="30" Click="btnManager_search_Click_1" Canvas.Left="674.2" Canvas.Top="10"/>
-                    <Label Content="Filter Search:" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" Canvas.Left="10" Canvas.Top="45"/>
-                    <DockPanel Canvas.Left="10" Canvas.Top="98.683">
-                        <CheckBox x:Name="ckbManager_Search_quotes" Content="Quotes"  Width="75" Margin="3, 0"/>
-                        <CheckBox x:Name="ckbManager_Search_orders" Content="Orders" Width="75"  Margin="3, 0"/>
-                        <CheckBox x:Name="ckbManager_Search_vouchers" Content="Vouchers"  Width="75" Margin="3, 0"/>
-                        <CheckBox x:Name="ckbManager_Search_invoices" Content="Invoices" Width="75" Margin="3, 0"/>
-                        <CheckBox x:Name="ckbManager_Search_all" Content="All" Width="75" Margin="3, 0"/>
-                    </DockPanel>
-                    <ListBox x:Name="ltbManager_Search_Results" HorizontalAlignment="Left" Height="464" VerticalAlignment="Top" Width="944" FontFamily="Comic Sans MS" Opacity="0.8" Canvas.Left="10" Canvas.Top="118"/>
-                    <ComboBox x:Name="cbbManager_Search_entities" HorizontalAlignment="Left" VerticalAlignment="Top" Width="341.792" Canvas.Top="71.723" Canvas.Left="10" SelectionChanged="cbbManager_Search_entities_SelectionChanged">
-                        <ComboBoxItem Content="Staff" HorizontalAlignment="Left" Width="339"/>
-                        <ComboBoxItem Content="Clients" HorizontalAlignment="Left" Width="339"/>
-                        <ComboBoxItem Content="Accommodation" HorizontalAlignment="Left" Width="340" Margin="0,0,-0.8,0"/>
-                        <ComboBoxItem Content="Agency/Airline" HorizontalAlignment="Left" Width="336.632"/>
-                    </ComboBox>
 
-                </Canvas>
+                        <!-- Booking Confirmations -->
+                        <Button x:Name="btnManager_Confirmatons" 
+                                Content="Booking Confirmations"   
+                                Grid.Row="4"
+                                FontSize="{StaticResource FontSizeLarge}"
+                                Background="{StaticResource seleleBlueBrush}"
+                                Click="BtnManager_Confirmatons_Click"/>
+
+                        <!-- Payments -->
+                        <Button x:Name="btnManager_Paymentss" 
+                                Grid.Row="5"
+                                Content="Payments" 
+                                FontSize="{StaticResource FontSizeLarge}"
+                                Background="{StaticResource seleleBlueBrush}"
+                                Click="BtnManager_Paymentss_Click"/>
+
+                    </Grid>
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Messages" 
+                     Margin="0"
+                     Height="Auto" Width="Auto" 
+                     FontSize="{StaticResource FontSizeRegular}"
+                     HorizontalAlignment="Left" MouseDown="TabItem_MouseDown">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- List of messages received -->
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Selected Message :" 
+                               Grid.Row="0"
+                               Opacity="1.5" 
+                               FontSize="{StaticResource FontSizeRegular}" 
+                                />
+
+                        <ListBox x:Name="lblConsultant_inboxList" 
+                                 Grid.Row="1"
+                                 Background="#FFD5D9E6" 
+                                 Opacity="0.5" >
+                            <ListBoxItem Content="No New Messages.."/>
+                        </ListBox>
+
+                    </Grid>
+
+                    <!-- View message section -->
+                    <Grid Grid.Column="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Inbox :"
+                               Opacity="1.5" 
+                               Margin="11 2"
+                               FontSize="{StaticResource FontSizeRegular}"
+                                />
+
+                        <Border Grid.Row="1" BorderBrush="{StaticResource ForegroundDarkBrush}"
+                                BorderThickness="5"
+                                CornerRadius="10"
+                                Margin="10 2">
+
+                            <TextBlock x:Name="tbkConsultant_inboxMessages" 
+                                        Text="No Message selected."
+                                        Grid.Row="1"
+                                        Padding="5" 
+                                        Margin="5"
+                                        TextWrapping="Wrap" 
+                                        />
+                        </Border>
+
+                    </Grid>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Search" 
+                     Height="Auto" Width="Auto" 
+                     FontSize="{StaticResource FontSizeRegular}"
+                     Margin="0"
+                     HorizontalAlignment="Left">
+                <Grid Background="White">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox x:Name="txbOwner_search"
+                                 Text="Name or ID..."
+                                 TextWrapping="Wrap"
+                                 BorderBrush="Black" 
+                                 FontSize="{StaticResource FontSizeRegular}"/>
+
+                        <Button x:Name="btnOwner_search"
+                                Grid.Column="1"
+                                Content="SEARCH"
+                                HorizontalAlignment="Right" 
+                                Padding="20 5"/>
+
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Filter Search:" 
+                               Grid.Row="0"
+                               />
+
+                        <ComboBox x:Name="cbxConsultant_Search_entities" 
+                                  Grid.Row="1">
+                            <ComboBoxItem Content="Staff" />
+                            <ComboBoxItem Content="Clients" />
+                            <ComboBoxItem Content="Accommodation" />
+                            <ComboBoxItem Content="Agency/Airline" />
+                        </ComboBox>
+
+                        <DockPanel Grid.Row="2">
+                            <CheckBox x:Name="ckbOwner_Search_quotes" Content="Quotes" Margin="15 5"/>
+                            <CheckBox x:Name="ckbOwner_Search_orders" Content="Orders" Margin="15 5" />
+                            <CheckBox x:Name="ckbOwner_Search_vouchers" Content="Vouchers" Margin="15 5"/>
+                            <CheckBox x:Name="ckbOwner_Search_invoices" Content="Invoices" Margin="15 5" />
+                            <CheckBox x:Name="ckbOwner_Search_all" Content="All" Margin="15 5"/>
+                        </DockPanel>
+
+                        <ListBox x:Name="ltbConsultant_Search_Results" 
+                                 Grid.Row="3"
+                                 FontSize="{StaticResource FontSizeLarge}"
+                                 Opacity="0.8"/>
+
+                    </Grid>
+
+                </Grid>
+
             </TabItem>
         </TabControl>
     </Grid>
+
 </Window>

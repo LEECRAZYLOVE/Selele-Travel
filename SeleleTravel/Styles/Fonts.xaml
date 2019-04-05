@@ -3,11 +3,17 @@
                     xmlns:local="clr-namespace:SeleleTravel"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-       <!-- Creates a base style for the control elements -->
+    <!-- Creates a base style for the control elements -->
     <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
-        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
     </Style>
 
+    <Style TargetType="{x:Type TextBlock}" x:Key="BaseTextBlockStyle">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
+    </Style>
+    
     <!-- sets the default style that each should inherit -->
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}"/>
     <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseStyle}"/>
@@ -23,6 +29,7 @@
     <system:Double x:Key="FontSizeXxXLarge">44</system:Double>
     <system:Double x:Key="FontSizeXxXxLarge">50</system:Double>
     <system:Double x:Key="FontSizeMasterxXLarge">58</system:Double>
-    
-       
+
+
+
 </ResourceDictionary>
