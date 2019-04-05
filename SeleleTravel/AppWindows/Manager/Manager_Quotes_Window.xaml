@@ -7,66 +7,192 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        FontFamily="Comic sans ms"
-        FontSize="16"
         Title="Selele | ManagerQuotesPage" Height="700" Width="1100">
+
     <Grid Background="#FFFF8888">
-        <TabControl x:Name="Manager_tabControl" HorizontalAlignment="Left" Height="626" VerticalAlignment="Top" Width="1078" Margin="8,38,0,0">
+        <TabControl x:Name="Manager_tabControl" >
+
             <!--Quote Summary-->
-            <TabItem x:Name="tbItem_QuoteSummary" Header="Quote Summary" Height="50" Padding="10" Background="{x:Null}" BorderBrush="Black" Initialized="TbItem_QuoteSummary_Initialized">
+            <TabItem Header="Quote Summary" 
+                     Height="Auto"
+                     FontSize="{StaticResource FontSizeRegular}">
                 <Grid Background="#FFFFC7C7">
                     <!--Separating grid into 3-->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
+
                     <!--Incoming quotes and listbox-->
-                    <StackPanel Margin="10">
-                        <TextBlock Text="Incoming Quotes :"/>
-                        <ListBox x:Name="ltbQuoteSummary_incomingQuotes" Height="571" SelectionChanged="LtbQuoteSummary_incomingQuotes_SelectionChanged"  />
-                    </StackPanel>
+                    <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                            BorderThickness="2"
+                            CornerRadius="10"
+                            Grid.Column="0"
+                            Margin="5">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Incoming Quotes :" 
+                                   Margin="5"
+                                   Grid.Row="0"/>
+
+                            <ListBox x:Name="ltbQuoteSummary_incomingQuotes" 
+                                     Margin="5"
+                                     Grid.Row="1">
+                            </ListBox>
+
+                        </Grid>
+
+                    </Border>
+
                     <!--Preview and textblock-->
-                    <StackPanel Margin="10" Grid.Column="1">
-                        <TextBlock Text="Preview :"/>
-                        <TextBlock x:Name="txbQuoteSummary_preview" TextWrapping="Wrap" Height="540" Background="#fff" />
-                    </StackPanel>
-                    <!--From and textblock-->
-                    <DockPanel Margin="10" Grid.Column="2" VerticalAlignment="Top">
-                        <TextBlock Text="From : "/>
-                        <TextBlock x:Name="txblockQuoteSummary_consultantID" Background="#fff"/>
-                    </DockPanel>
+                    <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                            BorderThickness="2"
+                            CornerRadius="10"
+                            Grid.Column="1"
+                            Margin="5">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Preview :" 
+                                   Margin="5"
+                                   Grid.Row="0"
+                                   Grid.Column="0"/>
+
+                            <TextBox x:Name="txblockQuoteSummary_consultantID"
+                                     Tag="From..."
+                                     IsReadOnly="True"
+                                     Grid.Row="0"
+                                     Grid.Column="1"
+                                     Margin="5"/>
+
+                            <TextBlock x:Name="txbQuoteSummary_preview"
+                                       Grid.Row="1"
+                                       Grid.ColumnSpan="2"
+                                       TextWrapping="Wrap" 
+                                       Margin="5"
+                                       Background="{StaticResource ForegroundLightBrush}"/>
+
+
+                        </Grid>
+
+                    </Border>
+
                     <!--Approve and reject buttons-->
-                    <StackPanel VerticalAlignment="Bottom" Margin="10" Grid.Column="2">
-                        <Button x:Name="btnQuoteSummary_verifyApprove" Content="APPROVE VERIFICATION" Width="250" Height="40" HorizontalAlignment="Center" Click="BtnQuoteSummary_verifyAccept_Click" Margin="10"/>
-                        <Button x:Name="btnQuoteSummary_verifyReject" Content="REJECT VERIFICATION" Width="250" Height="40" HorizontalAlignment="Center"   Click="BtnQuoteSummary_verifyReject_Click" Margin="10 0 10 10"/>
-                    </StackPanel>
+                    <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                            BorderThickness="2"
+                            CornerRadius="10"
+                            Grid.Column="2"
+                            Margin="5">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Button x:Name="btnQuoteSummary_verifyApprove" 
+                                    Content="APPROVE VERIFICATION"
+                                    Grid.Row="0"
+                                    Click="BtnQuoteSummary_verifyAccept_Click" 
+                                    Margin="5"/>
+
+                            <Button x:Name="btnQuoteSummary_verifyReject" 
+                                    Content="REJECT VERIFICATION"
+                                    Grid.Row="1"
+                                    Click="BtnQuoteSummary_verifyReject_Click"
+                                    Margin="5"
+                                    Background="{StaticResource seleleRedBrush}"/>
+
+
+                        </Grid>
+
+                    </Border>
+
                 </Grid>
             </TabItem>
+
             <!--Verified quotes-->
-            <TabItem Name="tbItem_QuoteVerify" Header="Verified Quotes" Height="50" Padding="10" Background="{x:Null}" BorderBrush="Black" Initialized="TbItem_QuoteVerify_Initialized" >
-                <Grid Background="#FFFFC7C7" HorizontalAlignment="Left" Width="1073" Height="591" VerticalAlignment="Top" >
+            <TabItem Header="Verified Quotes" 
+                     Height="Auto"
+                     FontSize="{StaticResource FontSizeRegular}">
+
+                <Grid Background="#FFFF8888">
                     <!--Divide the grid into 2 columns-->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <!--Divide the grid into 2 rows-->
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="12*"/>
-                    </Grid.RowDefinitions>
-                    <!--Left hand side-->
-                    <TextBlock Text="Verified quotes :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <ListBox x:Name="listbxVerifiedQuotes" Grid.Row="1" Margin="10 0 10 10" SelectionChanged="ListbxVerifiedQuotes_SelectionChanged">
 
-                    </ListBox>
+                    <!--Left hand side-->
+                    <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                            BorderThickness="2"
+                            CornerRadius="10"
+                            Grid.Column="0"
+                            Margin="5">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Verified quotes :" 
+                                   Margin="5"
+                                   Grid.Row="0"/>
+
+                            <ListBox x:Name="listbxVerifiedQuotes"
+                                     Margin="5"
+                                     Grid.Row="1">
+                            </ListBox>
+
+                        </Grid>
+
+                    </Border>
+
                     <!--Right hand side-->
-                    <TextBlock Grid.Column="1" Text="Preview :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBlock Name="txbQuoteVerify_preview" Background="#fff" Grid.Column="1" Grid.Row="1" Margin="10 0 10 10"/>
+                    <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                            BorderThickness="2"
+                            CornerRadius="10"
+                            Grid.Column="1"
+                            Margin="5">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Preview :" 
+                                   Margin="5"
+                                   Grid.Row="0"/>
+
+                            <TextBlock Background="#fff"
+                                       Grid.Row="1" 
+                                       Margin="5"/>
+
+                        </Grid>
+
+                    </Border>
+
                 </Grid>
             </TabItem>
         </TabControl>
 
     </Grid>
+
 </Window>

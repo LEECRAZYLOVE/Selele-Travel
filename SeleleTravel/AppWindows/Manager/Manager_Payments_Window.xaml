@@ -7,39 +7,99 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        FontFamily="Comic Sans MS"
-        FontSize="20"
         Title="Manager_Payments_Window" Height="700" Width="1000">
+
     <Grid Background="#FFEB6E6E">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
         <!--Left hand side-->
-        <StackPanel Margin="15" Grid.ColumnSpan="2">
-            <TextBlock Text="Received Payments :"/>
-            <ListBox x:Name="ltbManager_recievedInvoices" Margin="0,10,-0.2,10" Height="520">
-                <ListBoxItem Content="No payments received."/>
-            </ListBox>
-            <Button x:Name="btnManager_generateVoucher" Content="Generate vouchers" Height="50" Background="#FFE8BFBF" Click="btnManager_generateVoucher_Click"/>
-        </StackPanel>
-        <StackPanel Grid.Column="1" Margin="10">
-            <DockPanel Margin="10">
-                <TextBlock Text="Order number: "/>
-                <TextBox x:Name="txbManager_Invoices_orderNumber" Width="197" Margin="2 0"/>
-                <Button x:Name="btnManager_Invoices_add" Content="Add order" Background="#FFE8BFBF"/>
-            </DockPanel >
-            
-        </StackPanel>
-        <!--
-        <Label x:Name="label" Content="Recieved Payments" HorizontalAlignment="Left" Margin="10,1.388,0,0" VerticalAlignment="Top"/>
-        <ListBox  HorizontalAlignment="Left" Height="350.652" Margin="10,33.388,0,0" VerticalAlignment="Top" Width="328.792"/>
-        <Label x:Name="label1" Content="Order Number:" HorizontalAlignment="Left" Margin="350.232,1.388,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="453.208,5.388,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186.934"/>
-        <Button  Content="Add" HorizontalAlignment="Left" Margin="665.336,4.388,0,0" VerticalAlignment="Top" Width="116.664" RenderTransformOrigin="0.494,0.557"/>
-        <ListBox  HorizontalAlignment="Left" Height="350.652" VerticalAlignment="Top" Width="328.792" Margin="453.208,33.388,0,0"/>
-        <Button  Content="Request Payments" HorizontalAlignment="Left" Margin="453.208,389.04,0,0" VerticalAlignment="Top" Width="328.792"/>
-        <Button  Content="Generate Vouchers" HorizontalAlignment="Left" Margin="10,389.04,0,0" VerticalAlignment="Top" Width="328.792"/>
-    -->
+        <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                BorderThickness="5"
+                CornerRadius="10"
+                Grid.Column="0"
+                Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Received Payments :" 
+                   Grid.Row="0"/>
+
+                <ListBox x:Name="ltbManager_recievedInvoices" 
+                         Grid.Row="1"
+                         Margin="5"
+                         FontSize="{StaticResource FontSizeRegular}">
+                    <ListBoxItem Content="No payments received."/>
+                </ListBox>
+
+                <Button x:Name="btnManager_generateVoucher"
+                    Grid.Row="2"
+                    Content="Generate vouchers" 
+                    Margin="5"/>
+            </Grid>
+        </Border>
+
+        <!--Left hand side-->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txbManager_Invoices_orderNumber" 
+                         Tag="Order number..." 
+                         Margin="5"
+                         Grid.Column="0"/>
+
+                <Button x:Name="btnManager_Invoices_add" 
+                        Content="Add order"
+                        Grid.Column="1"/>
+            </Grid >
+
+            <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                    BorderThickness="5"
+                    CornerRadius="10"
+                    Grid.Row="1"
+                    Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Orders :" 
+                           Grid.Row="1"/>
+
+                    <ListBox x:Name="ltbManager_Invoices_Orders"
+                             Grid.Row="2"
+                             Margin="5"
+                             FontSize="{StaticResource FontSizeRegular}">
+
+                        <ListBoxItem Content="No orders added."/>
+                    </ListBox>
+
+                    <Button x:Name="btnManager_requestPayments"
+                            Grid.Row="3"
+                            Content="Generate vouchers" 
+                            Margin="5"/>
+
+                </Grid>
+            </Border>
+        </Grid>
+
     </Grid>
+
 </Window>

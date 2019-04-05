@@ -13,7 +13,7 @@
         Height="746.667" Width="1035.5" Background="#FFE4D64D">
 
     <Grid Background="{StaticResource seleleOrangeBrush}"
-          Margin="0 0 0 0" 
+          Margin="0" 
           x:Name="TheTconsulantView">
         
         <TabControl x:Name="Consultant_tabControl"
@@ -23,7 +23,9 @@
             <!-- Client details Tab -->
             <TabItem Header="Client Details" 
                      Style="{DynamicResource TabItemStyle}" 
-                     Margin="10,0,-10,0">
+                     Width="Auto"
+                     Height="Auto"
+                     FontSize="{StaticResource FontSizeRegular}">
 
                 <Grid Margin="5">
                     <Grid.RowDefinitions>
@@ -34,7 +36,6 @@
 
                     <Label Content="Search for an existing client..." 
                            Grid.Row="0"
-                           FontFamily="Rockvile" 
                            FontSize="{StaticResource FontSizeRegular}"/>
 
                     <Grid Grid.Row="1">
@@ -89,7 +90,10 @@
 
             <!-- Car Hire -->
             <TabItem Header="Car Hire" 
-                     Margin="8.338,0,-8.339,0" Style="{DynamicResource TabItemStyle}">
+                     Width="Auto"
+                     Height="Auto" 
+                     FontSize="{StaticResource FontSizeRegular}"
+                     Style="{DynamicResource TabItemStyle}">
 
                 <Border Padding="0 0 10 0" Width="{Binding ActualWidth, ElementName=_ConsultantUpdateWindow_}">
                     
@@ -239,9 +243,9 @@
 
             <!-- Taxi Cab -->
             <TabItem Header="Taxi Cab" 
-                     HorizontalAlignment="Left" 
-                     VerticalAlignment="Top"
-                     Margin="7.124,0,-7.124,0"
+                     Width="Auto"
+                     Height="Auto"
+                     FontSize="{StaticResource FontSizeRegular}"
                      Style="{DynamicResource TabItemStyle}">
 
                 <Grid Margin="10" x:Name="TaxiCabView">
@@ -379,7 +383,11 @@
             </TabItem>
             
             <!-- The flight tab -->
-            <TabItem Header="Flight" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2.693,0,-2.693,0" Style="{DynamicResource TabItemStyle}">
+            <TabItem Header="Flight" 
+                     Width="Auto"
+                     Height="Auto" 
+                     FontSize="{StaticResource FontSizeRegular}"
+                     Style="{DynamicResource TabItemStyle}">
 
                 <Border Padding="10 0 20 0" Width="{Binding ActualWidth, ElementName=_ConsultantUpdateWindow_}">
                     
@@ -521,7 +529,12 @@
             </TabItem>
             
             <!-- Accomodation -->
-            <TabItem Header="Accommodation" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-0.629,0,0,0" Style="{DynamicResource TabItemStyle}" VerticalContentAlignment="Stretch">
+            <TabItem Header="Accommodation"
+                     Width="Auto"
+                     Height="Auto" 
+                     FontSize="{StaticResource FontSizeRegular}"
+                     Style="{DynamicResource TabItemStyle}"
+                     VerticalContentAlignment="Stretch">
 
                 <Border Padding="0 0 20 0" 
                         Width="{Binding ActualWidth, ElementName=_ConsultantUpdateWindow_}">
@@ -617,7 +630,11 @@
             </TabItem>
             
             <!-- Conference -->
-            <TabItem Header="Conference" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="-1.845,0,0,0" Style="{DynamicResource TabItemStyle}">
+            <TabItem Header="Conference" 
+                     Width="Auto"
+                     Height="Auto"
+                     FontSize="{StaticResource FontSizeRegular}"
+                     Style="{DynamicResource TabItemStyle}">
 
                 <Border Padding="10 5 20 5" 
                         Width="{Binding ActualWidth, ElementName=_ConsultantUpdateWindow_}">
@@ -700,7 +717,11 @@
             </TabItem>
             
             <!-- Events -->
-            <TabItem Header="Events" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-4.06,0,0,0" Style="{DynamicResource TabItemStyle}">
+            <TabItem Header="Events"
+                     Width="Auto"
+                     Height="Auto"
+                     FontSize="{StaticResource FontSizeRegular}"
+                     Style="{DynamicResource TabItemStyle}">
 
                 <Border Padding="10 0 30 0"
                         Width="{Binding ActualWidth, ElementName=_ConsultantUpdateWindow_}">
@@ -746,7 +767,11 @@
             </TabItem>
             
             <!-- Quote Summary -->
-            <TabItem Header="Quote Summary" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="-8.489,-0.107,0,0" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource TabItemStyle}">
+            <TabItem Header="Quote Summary" 
+                     Width="Auto"
+                     Height="Auto"
+                     FontSize="{StaticResource FontSizeRegular}"
+                     Style="{DynamicResource TabItemStyle}">
 
                 <Border Padding="10 0 20 0"
                         Width="{Binding ActualWidth, ElementName=_ConsultantUpdateWindow_}">
@@ -825,7 +850,11 @@
             </TabItem>
             
             <!-- Send Quotes -->
-            <TabItem Header="Send Quotes" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="-8.809,0,0,0" Style="{DynamicResource TabItemStyle}">
+            <TabItem Header="Send Quotes" 
+                     Width="Auto"
+                     Height="Auto"
+                     FontSize="{StaticResource FontSizeRegular}"
+                     Style="{DynamicResource TabItemStyle}">
 
                 <Border Padding="10 0 20 0"
                         Width="{Binding ActualWidth, ElementName=_ConsultantUpdateWindow_}">

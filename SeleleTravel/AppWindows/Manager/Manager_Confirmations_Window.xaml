@@ -9,28 +9,80 @@
         Icon="..\..\images\SeleleLogoBalls.png"
         Title="Selele" Height="700" Width="1000" FontSize="16" Background="#FFFCFCFC">
 
-    <Grid Background="#FFFF8888">
+    <Grid Background="{StaticResource seleleVeryLightBlueBrush}">
         <!--Separating the grid into 3 parts-->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
         <!--Left hand side-->
-        <TextBlock Text="Incoming Vouchers :" Margin="10"/>
-        <ListBox x:Name="ltbManager_incomingVouchers" Margin="10 40 10 10" Background="#FFFFDFDF">
-            <ListBoxItem Content="No incoming vouchers."/>
-        </ListBox>
+        <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                BorderThickness="5"
+                CornerRadius="10"
+                Grid.Column="0"
+                Margin="5">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Incoming Vouchers :" 
+                           Margin="5"
+                           Grid.Row="0"/>
+
+                <ListBox x:Name="ltbManager_incomingVouchers" 
+                         Margin="5"
+                         Grid.Row="1">
+                    <ListBoxItem Content="No incoming vouchers."/>
+                </ListBox>
+
+            </Grid>
+
+        </Border>
+
         <!--Middle-->
-        <TextBlock Grid.Column="1" Text="Outgoing Vouchers :" Margin="10"/>
-        <ListBox x:Name="ltbManager_outgoingVouchers" Grid.Column="1"  Background="#FFFFDFDF"  Margin="10 40 10 10" >
-            <ListBoxItem Content="No outgoing vouchers."/>
-        </ListBox>
+        <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                BorderThickness="5"
+                CornerRadius="10"
+                Grid.Column="1"
+                Margin="5">
 
-        <!-- Right hand side-->
-        <Button x:Name="btnManager_sendVoucher" Grid.Column="2" FontSize="10" Content="Send vouchers and booking confirmations" VerticalAlignment="Bottom" Height="50" Margin="0 10 2 10" Background="#FFFFA06B"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
+                <Label Grid.Row="0"
+                           Content="Outgoing Vouchers :"
+                           Margin="5"/>
+
+                <ListBox x:Name="ltbManager_outgoingVouchers" 
+                         Grid.Row="1"
+                         Margin="5" >
+                    <ListBoxItem Content="No outgoing vouchers."/>
+                </ListBox>
+
+            </Grid>
+
+        </Border>
+
+        <!-- Bottom-->
+        <Button x:Name="btnManager_sendVoucher" 
+                Grid.ColumnSpan="2"
+                Grid.Row="1"
+                Content="Send vouchers and booking confirmations"
+                Margin="5"/>
 
     </Grid>
+
 
 </Window>

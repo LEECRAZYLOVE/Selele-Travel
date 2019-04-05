@@ -319,6 +319,8 @@
     <Compile Include="AppWindows\General\SearchResultsWindow.xaml.cs">
       <DependentUpon>SearchResultsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ValueConverters\BaseValueConverter.cs" />
+    <Compile Include="ValueConverters\PathToImageBrushConverter.cs" />
     <Page Include="AppWindows\General\ComposeMessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

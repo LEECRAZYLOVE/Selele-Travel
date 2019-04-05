@@ -8,7 +8,8 @@
         Closed="Window_Closed"
         WindowStartupLocation="CenterScreen"
         Icon="..\..\images\SeleleLogoBalls.png"
-        Title="Consultant_Vouchers_Window" Height="450" Width="848.2" FontSize="16">
+        Title="Consultant_Vouchers_Window" 
+        Height="450" Width="848.2" >
    
     <Grid Background="#FFEEE47D">
         <Grid.ColumnDefinitions>
@@ -30,40 +31,39 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
                 <TextBox x:Name="txbConsultant_Vouchers_inputOrder" 
                          Grid.Row="0"
+                         Grid.ColumnSpan="2"
                          Tag="Enter the Order Number"
                          VerticalAlignment="Center"
-                         FontSize="{StaticResource FontSizeRegular}"
                          TextWrapping="Wrap"/>
 
-                <StackPanel Grid.Row="1" 
-                            HorizontalAlignment="Center" 
-                            Orientation="Horizontal">
-                    
-                    <Button x:Name="btnConvsultant_Vouchers_viewOrder" 
-                            Grid.Column="1" 
-                            Content="View" 
-                            Margin="5 2"
-                            Click="BtnConvsultant_Vouchers_viewOrder_Click" 
-                            BorderBrush="Black" />
+                <Button x:Name="btnConvsultant_Vouchers_viewOrder" 
+                        Grid.Column="0"
+                        Grid.Row="1" 
+                        Content="View" 
+                        Margin="5"
+                        Click="BtnConvsultant_Vouchers_viewOrder_Click" />
 
-                    <Button x:Name="btnConsultant_Vouchers_selectOrder" 
-                            Grid.Column="2" 
-                            Margin="5 2"
-                            Content="Select" 
-                            Click="btnConsultant_Vouchers_selectOrder_Click" 
-                            BorderBrush="Black" />
-                </StackPanel>
+                <Button x:Name="btnConsultant_Vouchers_selectOrder" 
+                        Grid.Column="1" 
+                        Grid.Row="1" 
+                        Margin="5"
+                        Content="Select" 
+                        Click="btnConsultant_Vouchers_selectOrder_Click" />
 
             </Grid>
 
-            <Grid Grid.Row="1">
-                <TextBox x:Name="txbConsultant_Vouchers_viewOrder"
-                         Margin="0 5 5 5"
-                         TextWrapping="Wrap"/>
+            <TextBox x:Name="txbConsultant_Vouchers_viewOrder"
+                     Margin="5"
+                     Grid.Row="1"
+                     TextWrapping="Wrap"/>
 
-            </Grid>
             
         </Grid>
 
@@ -88,8 +88,6 @@
                            HorizontalAlignment="Center" 
                            TextWrapping="Wrap" 
                            Text="Generated Voucher Number" 
-                           VerticalAlignment="Top" 
-                           Height="23" 
                            FontSize="{StaticResource FontSizeRegular}"/>
 
             </StackPanel>
