@@ -15,104 +15,251 @@
                
                 <!--Client Details-->
                 <TabItem Header="Client Details" 
+                         Width="Auto"
+                         Height="Auto"
                          FontSize="{StaticResource FontSizeRegular}"
                          Style="{DynamicResource TabItemStyle}" >
-                    <Grid Background="#eee">
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <!--Left Hand Side-->
-                        <StackPanel>
-                            <TextBlock Text="Enter Client Details" Margin="10" FontSize="20" HorizontalAlignment="Center"/>
-                            <!--Name and surname-->
-                            <DockPanel>
-                                <TextBlock Text="Name :" FontSize="16" Margin="5"/>
-                                <TextBox x:Name="txbNewClient_name" Text="AB" Width="200" Margin="5" Padding="5" Height="30"/>
-                                <TextBlock Text="Surname :" FontSize="16" Margin="5"/>
-                                <TextBox x:Name="txbNewClient_surname" Text="de Villiers" Margin="5" Padding="5" Height="30"/>
-                            </DockPanel>
-                            <!--CheckBoxes-->
-                            <StackPanel Orientation="Horizontal" >
-                                <CheckBox x:Name="ckbBusiness" Content="Business" Margin="200 5 0 0" />
-                                <CheckBox x:Name="ckbIndividual" Content="Individual" Margin="5 5 5 0"/>
-                            </StackPanel>
-                            <!--Address-->
-                            <DockPanel>
-                                <TextBlock Text="Address" FontSize="16" Margin="10"/>
-                                <TextBox x:Name="txbNewClient_address" Text="23 Topi Street" AcceptsReturn="True" Margin="10" Height="100"/>
-                            </DockPanel>
-                            <!--City, Area Code-->
-                            <DockPanel>
-                                <TextBlock Text="City :" FontSize="16" Margin="10 10 35 10"/>
-                                <TextBox x:Name="txbNewClient_city" Text="Sandton" Width="250" Margin="10"/>
-                                <TextBlock Text="Area Code :" FontSize="16" Margin="10"/>
-                                <TextBox x:Name="txbNewClient_areaCode" Text="3001" TextChanged="AmountChanged_WHOLENumber" Margin="10" Height="40"/>
-                            </DockPanel>
-                            <!--Province-->
-                            <DockPanel >
-                                <TextBlock Text="Province :" Margin="10 10 20 10"/>
-                                <ComboBox x:Name="DropBxNewClient_province" Margin="10">
-                                    <ComboBoxItem Content="Eastern Cape"/>
-                                    <ComboBoxItem Content="Free State"/>
-                                    <ComboBoxItem Content="Gauteng"/>
-                                    <ComboBoxItem Content="KwaZulu-Natal"/>
-                                    <ComboBoxItem Content="Limpopo"/>
-                                    <ComboBoxItem Content="Mpumalanga"/>
-                                    <ComboBoxItem Content="North West"/>
-                                    <ComboBoxItem Content="Northern Cape"/>
-                                    <ComboBoxItem Content="Western Cape"/>
-                                </ComboBox>
-                            </DockPanel>
-                            <!--Contact details-->
-                            <StackPanel>
-                                <DockPanel>
-                                    <TextBlock Text="Cellphone :" Margin="10"/>
-                                    <TextBox x:Name="txbNewClient_cellphone" Text="0821234123" TextChanged="phoneNumberCheck" Margin="10" Height="40"/>
-                                </DockPanel>
-                            </StackPanel>
+                        <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                                BorderThickness="2"
+                                CornerRadius="10"
+                                Margin="5"
+                                Padding="5"
+                                Grid.Column="0">
+                            <!--Left Hand Side-->
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
 
-                            <StackPanel>
-                                <DockPanel>
-                                    <TextBlock Text="Telephone :" Margin="10 10 8 10"/>
-                                    <TextBox x:Name="txbNewClient_telephone" Text="0461231234" TextChanged="phoneNumberCheck" Margin="10" Height="40"/>
-                                </DockPanel>
-                            </StackPanel>
-                            <StackPanel>
-                                <DockPanel>
-                                    <TextBlock Text="Fax :" Margin="10 10 50 10"/>
-                                    <TextBox x:Name="txbNewClient_fax" Text="0461212123" TextChanged="phoneNumberCheck" Margin="10" Height="40"/>
-                                </DockPanel>
-                            </StackPanel>
-                            <StackPanel>
-                                <DockPanel>
-                                    <TextBlock Text="Email :" Margin="10 10 40 10"/>
-                                    <TextBox x:Name="txbNewClient_email" Text="a.devilliers@gmail.com" Margin="10" Height="40"/>
-                                </DockPanel>
-                            </StackPanel>
-                            <Button Content="Add Client" FontSize="20" Width="300" Click="add_Button_Click" Margin="146,0,147,0"/>
-                        </StackPanel>
+                                <!--Name and surname-->
+                                <Grid Grid.Row="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
 
-                        <!--Right hand Side-->
-                        <StackPanel Grid.Column="1">
-                            <TextBlock Text="Already a client" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
-                            <DockPanel>
-                                <TextBox x:Name="txbOldClient_find" Width="400" Height="30" Margin="10"/>
-                                <Button x:Name="btnOldClient_find" Content="Search" Margin="10" Click="BtnOldClient_find_Click"/>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                            </DockPanel>
-                            <ListBox x:Name="lbxOldClient_Details" Margin="10" Height="450">
-                                <ListBoxItem Content="No results found."/>
-                            </ListBox>
-                            <Button  x:Name="btnOldClient_select"  Content="Select Client" FontSize="20" Width="300" Click="BtnOldClient_select_Click" />
-                        </StackPanel>
-                        <Label Content="Consultant no:" HorizontalAlignment="Left" Margin="457,582,0,0" VerticalAlignment="Top" Width="136"/>
-                        <TextBox x:Name="txbConsultant_no"  Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="562,582,0,0" TextWrapping="Wrap" Text="jmahlangu" VerticalAlignment="Top" Width="158"/>
+                                    <Label Content="Enter Client Details" 
+                                       Grid.ColumnSpan="2"
+                                       Grid.Row="0"
+                                       HorizontalAlignment="Center"/>
+
+                                    <TextBox x:Name="txbNewClient_name"
+                                         Tag="Name" 
+                                         Text="AB"
+                                         Grid.Row="1"
+                                         Grid.Column="0"
+                                         Margin="5" />
+
+                                    <TextBox x:Name="txbNewClient_surname" 
+                                         Tag="Surname" 
+                                         Text="de Villiers" 
+                                         Grid.Row="1"
+                                         Grid.Column="1"
+                                         Margin="5"/>
+
+                                </Grid>
+
+                                <!--CheckBoxes-->
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <CheckBox x:Name="ckbBusiness"
+                                          Content="Business"
+                                          Margin="5" 
+                                          Grid.Column="0"/>
+
+                                    <CheckBox x:Name="ckbIndividual" 
+                                          Content="Individual" 
+                                          Margin="5"
+                                          Grid.Column="1"/>
+
+                                </Grid>
+
+                                <!--Address-->
+                                <TextBox x:Name="txbNewClient_address" 
+                                     Tag="Address" 
+                                     Text="23 Topi Street"
+                                     AcceptsReturn="True"  
+                                     Grid.Row="2" 
+                                     Margin="5"/>
+
+                                <!--City, Area Code-->
+                                <Grid Grid.Row="3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox x:Name="txbNewClient_city"
+                                         Tag="City" 
+                                         Text="Sandton"
+                                         Grid.Column="0"
+                                         Margin="5"/>
+
+                                    <TextBox x:Name="txbNewClient_areaCode" 
+                                         Tag="Area Code" 
+                                         Text="3001" 
+                                         TextChanged="AmountChanged_WHOLENumber" 
+                                         Grid.Column="1"
+                                         Margin="5"/>
+                                </Grid>
+
+                                <!--Province-->
+                                <Grid Grid.Row="4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Content="Province :"
+                                       Grid.Column="0"
+                                       VerticalAlignment="Center"
+                                       Margin="5 5 20 5"/>
+
+                                    <ComboBox x:Name="DropBxNewClient_province"
+                                          Margin="5"
+                                          Grid.Column="1"
+                                          SelectedIndex="0"
+                                          HorizontalContentAlignment="Center"
+                                          VerticalContentAlignment="Center">
+                                        <ComboBoxItem Content="Eastern Cape"/>
+                                        <ComboBoxItem Content="Free State"/>
+                                        <ComboBoxItem Content="Gauteng"/>
+                                        <ComboBoxItem Content="KwaZulu-Natal"/>
+                                        <ComboBoxItem Content="Limpopo"/>
+                                        <ComboBoxItem Content="Mpumalanga"/>
+                                        <ComboBoxItem Content="North West"/>
+                                        <ComboBoxItem Content="Northern Cape"/>
+                                        <ComboBoxItem Content="Western Cape"/>
+                                    </ComboBox>
+
+                                </Grid>
+
+                                <!--Contact details-->
+                                <Grid Grid.Row="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBox x:Name="txbNewClient_cellphone" 
+                                         Tag="Cellphone" 
+                                         Text="0821234123"
+                                         Grid.Row="0"
+                                         TextChanged="phoneNumberCheck"  
+                                         Margin="5"/>
+
+                                    <TextBox x:Name="txbNewClient_telephone"
+                                         Tag="Telephone" 
+                                         Text="0461231234" 
+                                         Grid.Row="1"
+                                         TextChanged="phoneNumberCheck" 
+                                         Margin="5" />
+
+                                    <TextBox x:Name="txbNewClient_fax"
+                                         Tag="Fax" 
+                                         Text="0461212123" 
+                                         Grid.Row="2"
+                                         TextChanged="phoneNumberCheck"
+                                         Margin="5" />
+
+                                    <TextBox x:Name="txbNewClient_email"
+                                         Tag="Email"
+                                         Grid.Row="3"
+                                         Text="a.devilliers@gmail.com"
+                                         Margin="5"/>
+
+                                </Grid>
+
+                                <Button x:Name="btnNewEmployee_generate" 
+                                    Grid.Row="6"
+                                    Content="Add Client"  
+                                    Click="add_Button_Click" />
+
+                            </Grid>
+                        </Border>
+                        
+                        <Border BorderBrush="{StaticResource seleleGreenBrush}"
+                                BorderThickness="3"
+                                CornerRadius="10"
+                                Margin="5"
+                                Padding="5"
+                                Grid.Column="1">
+                            <!--Right hand Side-->
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Already a client" 
+                                   Grid.Row="0"/>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox x:Name="txbOldClient_find"
+                                         Grid.Column="0"
+                                         Margin="5"
+                                         Tag="Enter Client Name..."/>
+
+                                    <Button x:Name="btnOldClient_find"
+                                        Content="Search" 
+                                        Grid.Column="1"
+                                        Margin="10" 
+                                        Click="BtnOldClient_find_Click"/>
+
+                                </Grid>
+
+                                <ListBox x:Name="lbxOldClient_Details"
+                                     Margin="5" 
+                                     Grid.Row="2">
+                                    <ListBoxItem Content="No results found."/>
+                                </ListBox>
+
+                                <Button  x:Name="btnOldClient_select" 
+                                     Content="Select Client"
+                                     Grid.Row="3"
+                                     Margin="5"
+                                     Click="BtnOldClient_select_Click" />
+
+                            </Grid>
+                        </Border>
+                        
                     </Grid>
+
                 </TabItem>
                 
                 <!--Car Hire -->
                 <TabItem Header="Car Hire" 
+                         Width="Auto"
+                         Height="Auto"
                          FontSize="{StaticResource FontSizeRegular}"
                          Style="{DynamicResource TabItemStyle}">
 
@@ -272,11 +419,13 @@
                 </TabItem>
                 
                 <!--Taxi Cab-->
-                <TabItem Header="Taxi Cab" 
-                     FontSize="{StaticResource FontSizeRegular}"
-                     Style="{DynamicResource TabItemStyle}">
+                <TabItem Header="Taxi Cab"
+                         Width="Auto"
+                         Height="Auto"
+                         FontSize="{StaticResource FontSizeRegular}"
+                         Style="{DynamicResource TabItemStyle}">
 
-                    <Grid Margin="10" x:Name="TaxiCabView">
+                    <Grid x:Name="TaxiCabView">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
@@ -348,9 +497,7 @@
                                      TextWrapping="Wrap"
                                      Grid.Column="1"
                                      Tag="hh:mm"
-                                     Margin="5 10"
-                                     GotFocus="TxbCab_pickUpTime_GotFocus"
-                                     LostFocus="TxbCab_pickUpTime_LostFocus" />
+                                     Margin="5" />
 
                             </Grid>
 
@@ -377,41 +524,41 @@
                         </Grid>
 
                         <!-- Specifications and total amount section -->
-                        <Border Grid.Row="1"
-                            Padding="0 0 30 0"  
-                            Width="{Binding ActualWidth, 
-                                                    ElementName=Consultant_tabControl}">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
-                                <TextBox x:Name="txbCab_specifications" 
+                            <TextBox x:Name="txbCab_specifications" 
                                      Grid.Row="0"
                                      AcceptsReturn="True"
                                      Tag="Specifications"/>
 
-                                <TextBox x:Name="txbCab_total" 
+                            <TextBox x:Name="txbCab_total" 
                                      Tag="Total amount in rands"
                                      TextChanged="AmountChanged"
                                      Grid.Row="1"/>
 
-                                <Button x:Name="btnCab_update"
-                                    Content="UPDATE" 
+                            <Button x:Name="btnCab_done"
+                                    Content="DONE"
+                                    Click="BtnCab_done_Click"
+                                    Margin="5"
                                     Grid.Row="3"/>
 
-                            </Grid>
-                        </Border>
+                        </Grid>
+                    
                     </Grid>
 
                 </TabItem>
 
                 <!--Flight-->
                 <TabItem Header="Flight" 
-                     FontSize="{StaticResource FontSizeRegular}"
-                     Style="{DynamicResource TabItemStyle}">
+                         Width="Auto"
+                         Height="Auto"
+                         FontSize="{StaticResource FontSizeRegular}"
+                         Style="{DynamicResource TabItemStyle}">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -551,8 +698,7 @@
 
                             <Button x:Name="btnFlight_addPassenger" 
                                         Content="ADD" 
-                                        Grid.Row="2"
-                                        Click="BtnFlight_addPassenger_Click"/>
+                                        Grid.Row="2"/>
 
 
                             <ListBox x:Name="ltbFlight_passengersOutput"
@@ -567,8 +713,10 @@
 
                 <!--Accommodation-->
                 <TabItem Header="Accommodation"
-                     FontSize="{StaticResource FontSizeRegular}"
-                     Style="{DynamicResource TabItemStyle}">
+                         Width="Auto"
+                         Height="Auto"
+                         FontSize="{StaticResource FontSizeRegular}"
+                         Style="{DynamicResource TabItemStyle}">
 
                     <Grid Background="#FFFFD86B">
                         <Grid.RowDefinitions>
@@ -675,8 +823,10 @@
 
                 <!--Conference-->
                 <TabItem Header="Conference" 
-                     FontSize="{StaticResource FontSizeRegular}"
-                     Style="{DynamicResource TabItemStyle}">
+                         Width="Auto"
+                         Height="Auto"
+                         FontSize="{StaticResource FontSizeRegular}"
+                         Style="{DynamicResource TabItemStyle}">
 
                     <Border Padding="10 5 20 5" 
                         Width="{Binding ActualWidth, ElementName=_ConsultantUpdateWindow_}">
@@ -771,8 +921,10 @@
                 
                 <!--Events-->
                 <TabItem Header="Events"
-                     FontSize="{StaticResource FontSizeRegular}"
-                     Style="{DynamicResource TabItemStyle}">
+                         Width="Auto"
+                         Height="Auto"
+                         FontSize="{StaticResource FontSizeRegular}"
+                         Style="{DynamicResource TabItemStyle}">
                     <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -788,18 +940,21 @@
 
                                 <TextBox x:Name="txbEvents_name" 
                                      Tag="Name" 
+                                         Margin="5"
                                      Grid.Row="0"
                                      TextWrapping="Wrap" />
 
                                 <TextBox x:Name="txbEvents_total"
                                      Tag="TOTAL"
                                      TextChanged="AmountChanged"
+                                         Margin="5"
                                      Grid.Row="1"
                                      TextWrapping="Wrap"/>
 
                                 <Button x:Name="btnEvents_done"
                                     Content="Done!" 
                                     Grid.Row="2"
+                                        Margin="5"
                                          Click="BtnEvents_done_Click"/>
                                 
                             </Grid>
@@ -809,86 +964,196 @@
                                  AcceptsReturn="True" 
                                  Grid.Column="1"
                                  TextWrapping="Wrap" 
-                                 Margin="5 5 0 5"/>
+                                 Margin="5"/>
                         </Grid>
                 </TabItem>
 
                 <!--Quote Summary-->
-                <TabItem x:Name="tabitemQuoteSummary" Header="Quote Summary" Style="{DynamicResource TabItemStyle}" MouseUp="TabitemQuoteSummary_MouseUp" Height="44" Margin="0,-2,0,0" VerticalAlignment="Bottom">
+                <TabItem x:Name="tabitemQuoteSummary"
+                         Header="Quote Summary"
+                         FontSize="{StaticResource FontSizeRegular}"
+                         Style="{DynamicResource TabItemStyle}" 
+                         Width="Auto"
+                         Height="Auto"
+                         MouseUp="TabitemQuoteSummary_MouseUp">
 
-                    <Grid Background="#eee">
+                    <Grid>
                         <!--Separate into two sides-->
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="791*"/>
-                            <ColumnDefinition Width="360*"/>
-                            <ColumnDefinition Width="35*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        
                         <!--Display for left-hand-side-->
-                        <TextBlock x:Name="txbQuote_quoteSummary" Margin="10" RenderTransformOrigin="0.5,0.5">
-                            <TextBlock.Background>
-                                <ImageBrush ImageSource="/SeleleTravel;component/Images/Selele Travel LOGO2.png" Stretch="None" TileMode="Tile" Viewbox="0.4,1,1,1">
-                                    <ImageBrush.RelativeTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform ScaleY="1" ScaleX="1"/>
-                                            <SkewTransform AngleY="0" AngleX="0"/>
-                                            <RotateTransform Angle="0"/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </ImageBrush.RelativeTransform>
-                                </ImageBrush>
-                            </TextBlock.Background><Run>
-                            <Run.Background>
-                                <ImageBrush/>
-                            </Run.Background>
-                        </Run></TextBlock>
+                        <TextBlock x:Name="txbQuote_quoteSummary" 
+                                   Margin="5" 
+                                   RenderTransformOrigin="0.5,0.5"
+                                   Padding="10"
+                                   Background="{StaticResource BackgroundLightBrush}"
+                                   Tag="../Images/Selele Travel LOGO2.png"
+                                   FontSize="{StaticResource FontSizeRegular}"/>
+
                         <!--Right-hand-side-->
-                        <!--Mark-up stuff-->
-                        <StackPanel Grid.Column="1" Margin="10" Grid.ColumnSpan="2">
-                            <DockPanel>
-                                <TextBlock Text="Mark-Up % : "/>
-                                <TextBox x:Name="txbQuote_markUp" TextChanged="AmountChanged" Height="30"/>
-                            </DockPanel>
-                            <Button x:Name="btnQuote_markUp" Content="Add Mark-up" HorizontalAlignment="Center" Width="300" Margin="10" Click="btnQuote_markUp_Click_1"/>
-                        </StackPanel>
-                        <!--Document and verification-->
-                        <Border VerticalAlignment="Bottom" Grid.Column="1" Grid.ColumnSpan="2">
-                            <StackPanel >
-                                <Button x:Name="btnQuoteSummar_document" Content="View as document and print" Margin="10" Click="btnQuoteSummar_document_Click"/>
-                                <Button x:Name="btnQuote_requestVerification" Content="Request Verification" Margin="10 0 10 10" Click="btnQuote_requestVerification_Click"/>
-                            </StackPanel>
-                        </Border>
-                        <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="87,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                        <Label x:Name="label" Content="Valid for:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Mark-up stuff-->
+                            <Label Content="Mark-Up % : "
+                                   Margin="5"
+                                   Grid.Column="0"
+                                   Grid.Row="0"/>
+
+                            <TextBox x:Name="txbQuote_markUp" 
+                                     TextChanged="AmountChanged"
+                                     Grid.Column="1"
+                                     Margin="5"
+                                     Grid.Row="0"/>
+
+                            <Label x:Name="label" 
+                                   Content="Valid for:" 
+                                   Grid.Column="0" 
+                                   Grid.Row="1"/>
+
+                            <TextBox x:Name="textBox" 
+                                     Grid.Column="1"
+                                     Grid.Row="1"
+                                     Margin="5" 
+                                     TextWrapping="Wrap" />
+
+                            <Button x:Name="btnQuote_markUp"
+                                    Content="Add Mark-up"
+                                    Margin="5"
+                                    Grid.ColumnSpan="2"
+                                    Grid.Row="2"
+                                    Click="btnQuote_markUp_Click_1"/>
+
+                            <!--Document and verification-->
+                            <Button x:Name="btnQuoteSummar_document"
+                                    Content="View as document and print"
+                                    Margin="5" 
+                                    Grid.ColumnSpan="2"
+                                    Grid.Row="3"
+                                    Click="btnQuoteSummar_document_Click"/>
+
+                            <Button x:Name="btnQuote_requestVerification" 
+                                    Content="Request Verification" 
+                                    Margin="5"
+                                    Grid.ColumnSpan="2"
+                                    Grid.Row="4"
+                                    Click="btnQuote_requestVerification_Click"/>
+
+                        </Grid>
                     </Grid>
                 </TabItem>
                 
                 <!--Send Quotes-->
-                <TabItem Header="Send Quotes" Style="{DynamicResource TabItemStyle}">
+                <TabItem Header="Send Quotes"
+                         Width="Auto"
+                         Height="Auto"
+                         FontSize="{StaticResource FontSizeRegular}"
+                         Style="{DynamicResource TabItemStyle}">
 
-                    <Grid Background="#eee">
+                    <Grid Background="#FFF6E5A6">
                         <!--Separating the grid into 3 parts-->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+
                         <!--Left hand side-->
-                        <TextBlock Text="Verified quotes :" Margin="10"/>
-                        <ListBox  x:Name="ltbVerified_Quotes" Margin="10 40 10 10" SelectionChanged="ListBox_SelectionChanged">
-                            <ListBoxItem Content="No quote verified."/>
-                        </ListBox>
+                        <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                                BorderThickness="5"
+                                CornerRadius="10"
+                                Margin="5"
+                                Grid.Column="0">
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Verified quotes :" 
+                                       Grid.Row="0"
+                                       Margin="5"/>
+
+                                <ListBox x:Name="ltbVerified_Quotes" 
+                                         SelectionChanged="ListBox_SelectionChanged"
+                                         Margin="5"
+                                         Grid.Row="1">
+                                    <ListBoxItem Content="No quote verified."/>
+                                </ListBox>
+                            </Grid>
+                        </Border>
+
                         <!--Middle-->
-                        <TextBlock Grid.Column="1" Text="Quote preview :" Margin="10"/>
-                        <TextBlock x:Name="txbQuotePreview" Grid.Column="1"  Background="#fff" Text="No quote selected." Margin="10 40 10 10" Padding="10"/>
+                        <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                                BorderThickness="5"
+                                CornerRadius="10"
+                                Grid.Column="1"
+                                Margin="5">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0"
+                                       Content="Quote preview :" 
+                                       Margin="5"/>
+                                <TextBox x:Name="txbQuotePreview" 
+                                         Grid.Row="1" 
+                                         Tag="No quote selected."
+                                         Margin="5" 
+                                         IsReadOnly="True"/>
+                            </Grid>
+                        </Border>
 
                         <!-- Right hand side-->
-                        <StackPanel Grid.Column="2">
-                            <TextBlock Text="Password :" Margin="10"/>
-                            <PasswordBox Margin="10 0 10 10" Height="30"/>
-                            <Button Content="Send to clients" Margin="10 0 10 10" Click="Button_Click_6"/>
-                        </StackPanel>
-                        <Button x:Name="button" Content="Get verified Quotes" Grid.Column="2" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Width="217" Click="Button_Click_5"/>
+                        <Border BorderBrush="{StaticResource seleleBlueBrush}"
+                                BorderThickness="5"
+                                CornerRadius="10"
+                                Grid.Column="2"
+                                Margin="5">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto" MinHeight="50"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
 
+                                <Label Content="Password :" 
+                                        Margin="5"
+                                        Grid.Row="0"/>
+                                <PasswordBox x:Name="pdbAuthorizations_password" 
+                                             Grid.Row="1"
+                                             Margin="5"/>
+                                <Button x:Name="btnAuthorizations_Authorize" 
+                                        Grid.Row="2"
+                                        Content="Send to clients" 
+                                        Margin="5"
+                                        Click="Button_Click_6"/>
+                                
+                                <Button x:Name="button" 
+                                        Content="Get verified Quotes"
+                                        Grid.Row="3"
+                                        Margin="5" 
+                                        Click="Button_Click_5"/>
+                            </Grid>
+                        </Border>
                     </Grid>
                 </TabItem>
             

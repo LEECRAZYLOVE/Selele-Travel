@@ -36,7 +36,6 @@
 
                     <Label Content="Search for an existing client..." 
                            Grid.Row="0"
-                           FontFamily="Rockvile" 
                            FontSize="{StaticResource FontSizeRegular}"/>
 
                     <Grid Grid.Row="1">

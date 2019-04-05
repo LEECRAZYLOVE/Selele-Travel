@@ -6,8 +6,14 @@
     <!-- Creates a base style for the control elements -->
     <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
         <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
     </Style>
 
+    <Style TargetType="{x:Type TextBlock}" x:Key="BaseTextBlockStyle">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
+    </Style>
+    
     <!-- sets the default style that each should inherit -->
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}"/>
     <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseStyle}"/>

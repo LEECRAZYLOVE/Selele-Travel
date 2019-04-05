@@ -21,6 +21,7 @@
         <Border BorderBrush="{StaticResource seleleBlueBrush}"
                 BorderThickness="5"
                 CornerRadius="10"
+                Padding="5"
                 Margin="5"
                 Grid.Column="0">
             <Grid >
@@ -46,6 +47,7 @@
                 BorderThickness="5"
                 CornerRadius="10"
                 Grid.Column="1"
+                Padding="5"
                 Margin="5">
 
             <Grid>
@@ -68,6 +70,7 @@
         <Border BorderBrush="{StaticResource seleleBlueBrush}"
                 BorderThickness="5"
                 CornerRadius="10"
+                Padding="5"
                 Grid.Column="2"
                 Margin="5">
             <Grid>
