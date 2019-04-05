@@ -59,10 +59,10 @@ namespace SeleleTravel
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                NpgsqlCommand myCommand = new NpgsqlCommand($"UPDATE quote SET verification='yes' WHERE quote_no = '{quote_no}'", myConnect);
+                NpgsqlCommand myCommand = new NpgsqlCommand($"UPDATE quote SET verified ='Yes' WHERE quote_no = '{quote_no}'", myConnect);
                 // Add paramaters.
 
-                myCommand.Parameters.Add(new NpgsqlParameter("verification", NpgsqlTypes.NpgsqlDbType.Varchar));
+                myCommand.Parameters.Add(new NpgsqlParameter("verified", NpgsqlTypes.NpgsqlDbType.Varchar));
                 myCommand.Parameters.Add(new NpgsqlParameter("quote_no", NpgsqlTypes.NpgsqlDbType.Varchar));
 
                 //add value to the parameter
@@ -71,7 +71,9 @@ namespace SeleleTravel
 
                 //execute the command
                 myCommand.ExecuteNonQuery();
-                MessageBox.Show("Successfully saved into the database. You will now be redirected to your home page.");
+                MessageBox.Show("Verified successfully");
+                ltbQuoteSummary_incomingQuotes.Items.Remove(quote_no);
+                listbxVerifiedQuotes.Items.Add(quote_no);
             }
             catch (Exception h)
             {
@@ -114,6 +116,83 @@ namespace SeleleTravel
                 MessageBox.Show(h.ToString());
             }
 
+        }
+
+        private void TbItem_QuoteSummary_Initialized(object sender, EventArgs e)
+        {
+            //Query for retrieving unverifified quotes
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT quote_no FROM quote WHERE verified = 'No'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                        ltbQuoteSummary_incomingQuotes.Items.Add($"{query[0]}");
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
+
+        private void TbItem_QuoteVerify_Initialized(object sender, EventArgs e)
+        {
+            //Query for retrieving verifified quotes
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT quote_no FROM quote WHERE verified = 'Yes'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                        listbxVerifiedQuotes.Items.Add($"{query[0]}");
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
+
+        private void ListbxVerifiedQuotes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            quote_no = listbxVerifiedQuotes.SelectedItem.ToString();
+            //Query for retrieving quote data
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM quote WHERE quote_no = '{quote_no}'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                        txbQuoteVerify_preview.Text =
+                        $"From {query[7]}" +
+                        $"Quote number: {query[0]}\n" +
+                        $"Services: {query[2].ToString().Replace('|', ' ')}\nTime Quoted: {query[3]}\nQuote Date: {query[6]}\n" +
+                        $"Client ID: {query[9]}\nClient Name: {query[10]}\n" + $"Service fee: R{query[8]}\n" + $"Total amount: R{query[1]}\n";
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
         }
     }
 }

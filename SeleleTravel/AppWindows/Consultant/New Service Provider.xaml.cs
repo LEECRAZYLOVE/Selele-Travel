@@ -102,7 +102,7 @@ namespace SeleleTravel
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"INSERT INTO serviceproviders (agency_id,nameofagency,address,telephone,emailaddress,fax,cellphone,service) VALUES (@agency_id,@nameofagency,@address,@telephone,@emailaddress,@fax,@cellphone,@service)", myConnect))
+                using (var cmd = new NpgsqlCommand($"INSERT INTO agencydetails (agency_id,nameofagency,address,telephone,emailaddress,fax,cellphone,service) VALUES (@agency_id,@nameofagency,@address,@telephone,@emailaddress,@fax,@cellphone,@service)", myConnect))
                 {
                     cmd.Parameters.AddWithValue("agency_id", agency_ID);
                     cmd.Parameters.AddWithValue("nameofagency",name );

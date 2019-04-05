@@ -148,15 +148,15 @@ namespace SeleleTravel
                     break;
 
                 case 5:
+                    ltbConsultant_Search_Results.Items.Clear();
                     try
                     {
-                        ltbConsultant_Search_Results.Items.Clear();
                         myConnect.Open();
-                        NpgsqlCommand cmdAll = new NpgsqlCommand("SELECT quote.quote_no, orders.order_no, voucher.voucher_no, invoice.invoice_no from quote,orders,voucher,invoice where quote.quote_no = orders.quote_no and orders.order_no = voucher.voucher_no and orders.order_no = invoice.order_no", myConnect);
-                        NpgsqlDataReader drAll = cmdAll.ExecuteReader();
-                        while (drAll.Read())
+                        NpgsqlCommand cmdQuotes = new NpgsqlCommand("SELECT quote_no from quote", myConnect);
+                        NpgsqlDataReader drQuotes = cmdQuotes.ExecuteReader();
+                        while (drQuotes.Read())
                         {
-                            ltbConsultant_Search_Results.Items.Add($"{drAll[0].ToString()}|{drAll[1].ToString()}|{drAll[2].ToString()}|{drAll[3].ToString()}");
+                            ltbConsultant_Search_Results.Items.Add(drQuotes[0].ToString());
                         }
                         myConnect.Close();
                     }
@@ -164,6 +164,51 @@ namespace SeleleTravel
                     {
                         MessageBox.Show(h.ToString());
                     }
+                    try
+                    {
+                        myConnect.Open();
+                        NpgsqlCommand cmdOrders = new NpgsqlCommand("SELECT order_no from orders", myConnect);
+                        NpgsqlDataReader drOrders = cmdOrders.ExecuteReader();
+                        while (drOrders.Read())
+                        {
+                            ltbConsultant_Search_Results.Items.Add(drOrders[0].ToString());
+                        }
+                        myConnect.Close();
+                    }
+                    catch (Exception h)
+                    {
+                        MessageBox.Show(h.ToString());
+                    }
+                    try
+                    {
+                        myConnect.Open();
+                        NpgsqlCommand cmdVouchers = new NpgsqlCommand("SELECT voucher_no from voucher", myConnect);
+                        NpgsqlDataReader drVouchers = cmdVouchers.ExecuteReader();
+                        while (drVouchers.Read())
+                        {
+                            ltbConsultant_Search_Results.Items.Add(drVouchers[0].ToString());
+                        }
+                        myConnect.Close();
+                    }
+                    catch (Exception h)
+                    {
+                        MessageBox.Show(h.ToString());
+                    }
+                    //try
+                    //{
+                    //    myConnect.Open();
+                    //    NpgsqlCommand cmdInvoices = new NpgsqlCommand("SELECT invoice_no from invoice", myConnect);
+                    //    NpgsqlDataReader drInvoices = cmdInvoices.ExecuteReader();
+                    //    while (drInvoices.Read())
+                    //    {
+                    //        ltbConsultant_Search_Results.Items.Add(drInvoices[0].ToString());
+                    //    }
+                    //    myConnect.Close();
+                    //}
+                    //catch (Exception h)
+                    //{
+                    //    MessageBox.Show(h.ToString());
+                    //}
                     break;
             }
             //End of Checkbox Searching Section
@@ -216,7 +261,7 @@ namespace SeleleTravel
                     {
                         ltbConsultant_Search_Results.Items.Clear();
                         myConnect.Open();
-                        NpgsqlCommand cmdServiceP = new NpgsqlCommand($"SELECT agency_id, agencyname, address FROM serviceproviders WHERE agency_id = '{NameorID}' OR agencyname = '{NameorID}'", myConnect);
+                        NpgsqlCommand cmdServiceP = new NpgsqlCommand($"SELECT agency_id, agencyname, address FROM agencydetails WHERE agency_id = '{NameorID}' OR agencyname = '{NameorID}'", myConnect);
                         NpgsqlDataReader drServiceP = cmdServiceP.ExecuteReader();
                         while (drServiceP.Read())
                         {
