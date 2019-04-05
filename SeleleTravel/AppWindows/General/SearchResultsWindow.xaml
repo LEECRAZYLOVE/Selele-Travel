@@ -8,7 +8,7 @@
         Title="SearchResults" Height="550" Width="800">
     <Grid>
         <TextBlock x:Name="tbkSearchResults" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="519" Width="792" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
-        <Button x:Name="btnSearchResults_document" Content="View as document and print" Margin="584,470,10,10" Click="BtnSearchResults_document_Click" />
+        <Button x:Name="btnSearchResults_document" Content="View as document and print" Margin="494,470,10,10" Click="BtnSearchResults_document_Click" />
 
     </Grid>
 </Window>

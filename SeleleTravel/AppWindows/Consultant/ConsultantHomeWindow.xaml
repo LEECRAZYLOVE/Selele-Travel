@@ -291,8 +291,7 @@
                                   Grid.Row="1">
                             <ComboBoxItem Content="Staff" />
                             <ComboBoxItem Content="Clients" />
-                            <ComboBoxItem Content="Accommodation" />
-                            <ComboBoxItem Content="Agency/Airline" />
+                            <ComboBoxItem Content="Service Providers" />
                         </ComboBox>
 
                         <DockPanel Grid.Row="2">
@@ -306,7 +305,7 @@
                         <ListBox x:Name="ltbConsultant_Search_Results" 
                                  Grid.Row="3"
                                  FontFamily="Comic Sans MS" 
-                                 Opacity="0.8"/>
+                                 Opacity="0.8" SelectionChanged="LtbConsultant_Search_Results_SelectionChanged" />
 
                     </Grid>
                     

@@ -249,5 +249,10 @@ namespace SeleleTravel
             }
 
         }
+
+        private void cbxFinancial_period_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
     } 
