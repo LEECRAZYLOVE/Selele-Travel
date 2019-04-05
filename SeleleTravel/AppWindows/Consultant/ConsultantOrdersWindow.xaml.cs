@@ -29,7 +29,6 @@ namespace SeleleTravel
         //Variables for the order
         string order_no = "";
         string quote_no = "";
-        DateTime datereceived;
 
         private void BtnConsultant_Orders_addNewOrder_Click(object sender, RoutedEventArgs e)
         {

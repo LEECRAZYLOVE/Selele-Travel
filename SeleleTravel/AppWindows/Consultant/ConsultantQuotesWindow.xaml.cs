@@ -1384,7 +1384,7 @@ namespace SeleleTravel
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceproviders WHERE agencyname = '{agencyname}' and service='Flight'", myConnect))
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceproviders WHERE service='Flight'", myConnect)) //agencyname = '{agencyname}' and
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
                     int k = 0;
@@ -1405,8 +1405,7 @@ namespace SeleleTravel
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            
+        {           
             string agencyname = CheckAccommCombo.Text;
 
            
@@ -1415,7 +1414,7 @@ namespace SeleleTravel
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceproviders WHERE agencyname = '{agencyname}' and service='Accommodation'", myConnect))
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceproviders WHERE service='Accommodation'", myConnect)) //agencyname = '{agencyname}' and
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
                     int k = 0;
@@ -1444,7 +1443,7 @@ namespace SeleleTravel
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceproviders WHERE agencyname = '{agencyname}' and service='Conferences'", myConnect))
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceproviders WHERE service='Conference'", myConnect)) //agencyname = '{agencyname}' and
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
                     int k = 0;
@@ -1595,7 +1594,140 @@ namespace SeleleTravel
             }
         }
 
-        
+        private void CheckCarHireCombo_Initialized(object sender, EventArgs e)
+        {
+            //Query for retrieving all the car hire agency ids
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM agencydetails WHERE service = 'Car Hire'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                        CheckCarHireCombo.Items.Add(query[0].ToString());
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            //MessageBox.Show("Dummy test to check if retrieved password" + passwordDB);
+        }
+
+        private void CheckCabServicesCombo_Initialized(object sender, EventArgs e)
+        {
+            //Query for finding the agency_IDs available
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM agencydetails WHERE service='Taxi Cab'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    int k = 0;
+                    while (query.Read())
+                    {
+
+                        CheckCabServicesCombo.Items.Add(query[k]);
+
+                        k++;
+                    }
+                    Agency_IDs = Agency_IDs + "|" + CheckCabServicesCombo.SelectedItem.ToString();
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
+
+        private void CheckFlightCombo_Initialized(object sender, EventArgs e)
+        {
+            //Query for finding the agency_IDs available
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM agencydetails WHERE service='Flight'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    int k = 0;
+                    while (query.Read())
+                    {
+
+                        CheckFlightCombo.Items.Add(query[k]);
+                        k++;
+                    }
+                    Agency_IDs = Agency_IDs + "|" + CheckFlightCombo.SelectedItem.ToString();
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
+
+        private void CheckAccommCombo_Initialized(object sender, EventArgs e)
+        {
+            //Query for finding the agency_IDs available
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM agencydetails WHERE service='Accommodation'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    int k = 0;
+                    while (query.Read())
+                    {
+
+                        CheckAccommCombo.Items.Add(query[k]);
+                        k++;
+                    }
+                    Agency_IDs = Agency_IDs + "|" + CheckAccommCombo.SelectedItem.ToString();
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
+
+        private void CheckConferenceCombo_Initialized(object sender, EventArgs e)
+        {
+
+            //Query for finding the agency_IDs available
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM agencydetails WHERE service='Conferences'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+                    int k = 0;
+                    while (query.Read())
+                    {
+
+                        CheckConferenceCombo.Items.Add(query[k]);
+                        k++;
+                    }
+                    Agency_IDs = Agency_IDs + "|" + CheckConferenceCombo.SelectedItem.ToString();
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
     }
 
 
