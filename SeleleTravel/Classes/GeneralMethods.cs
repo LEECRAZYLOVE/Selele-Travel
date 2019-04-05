@@ -419,11 +419,8 @@ namespace SeleleTravel
         /// <returns></returns>
         public static string makeAgency_ID(string agencyName, string postalcode)
         {
-
-            string agency_ID = "";
-            agency_ID = agencyName + postalcode;
-
-            return agency_ID;
+            string agency_ID = agencyName.Split(' ')[0];
+            return agency_ID + postalcode;
         }
 
         /// <summary>
