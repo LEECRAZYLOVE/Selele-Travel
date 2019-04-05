@@ -44,7 +44,7 @@
                     <ColumnDefinition Width="7*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Time Period:" FontSize="20"/>
-                <ComboBox x:Name="cbxFinancial_period" Grid.Column="1" Width="200" HorizontalAlignment="Left">
+                <ComboBox x:Name="cbxFinancial_period" Grid.Column="1" Width="200" HorizontalAlignment="Left" SelectionChanged="cbxFinancial_period_SelectionChanged">
                     <ComboBoxItem x:Name="cbxitemFinancial_annually" Content="Annually" Selected="CbxitemFinancial_annually_Selected"/>
                     <ComboBoxItem x:Name="cbxitemFinancial_multipleMonths" Content="Multiple Months" Selected="CbxitemFinancial_multipleMonths_Selected"/>
                     <ComboBoxItem x:Name="cbxitemFinancial_monthly" Content="Monthly" Selected="CbxitemFinancial_monthly_Selected"/>
@@ -119,7 +119,7 @@
 
             <!--Buttons-->
             <Grid Grid.Row="3" VerticalAlignment="Bottom" Height="50" Margin="1">
-                <Button x:Name="btnFinancial_view1" Content="View Summary One" HorizontalAlignment="Left" Padding="5" Click="btnFinancial_view1_Click_1" Margin="5,10,0,0" Height="30" VerticalAlignment="Top"/>
+                <Button x:Name="btnFinancial_view1" Content="View Summary One" HorizontalAlignment="Left" Padding="5" Click="btnFinancial_view1_Click_1" Margin="5,10,0,10"/>
                 <Button x:Name="btnFinancial_view2" Content="View Summary Two" HorizontalAlignment="Right" Padding="5"/>
             </Grid>
 
