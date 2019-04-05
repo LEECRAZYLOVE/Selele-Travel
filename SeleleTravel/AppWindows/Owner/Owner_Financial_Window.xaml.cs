@@ -168,17 +168,13 @@ namespace SeleleTravel
         {
             //checking if date is between certain dates
 
-            //SELECT
-            //FROM table1
-            //WHERE date_col BETWEEN '2012-10-25' and 2012 - 10 - 28
-
             //Query for retrieving quote data between certain dates
-          
+           
                 try
                 {
                     NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                     myConnect.Open();
-                    using (var cmd = new NpgsqlCommand($"SELECT client.clientname FROM client,quote,orders WHERE quote.quote_no=orders.quote_no AND quote.client_no=client.client_no AND quotedate BETWEEN '2019-01-01' AND '2019-01-20' ", myConnect))
+                    using (var cmd = new NpgsqlCommand($"SELECT client.clientname FROM client,quote,orders WHERE quote.quote_no=orders.quote_no AND quote.client_no=client.client_no AND quotedate BETWEEN '{txbYear.Text}-01-01' AND '{txbYear.Text}-12-31' ", myConnect))
                     {
                         NpgsqlDataReader query = cmd.ExecuteReader();
 
@@ -186,7 +182,6 @@ namespace SeleleTravel
                         {
                             lbFinancial_results1.Items.Add($"{query[0]}");
                         }
-
                     }
                     myConnect.Close();
                 }
@@ -195,7 +190,8 @@ namespace SeleleTravel
                     MessageBox.Show(h.ToString());
                 }
 
-            }
+            
+        }
             //try
             //{
             //    NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
