@@ -261,7 +261,7 @@ namespace SeleleTravel
                     {
                         ltbConsultant_Search_Results.Items.Clear();
                         myConnect.Open();
-                        NpgsqlCommand cmdServiceP = new NpgsqlCommand($"SELECT agency_id, agencyname, address FROM serviceproviders WHERE agency_id = '{NameorID}' OR agencyname = '{NameorID}'", myConnect);
+                        NpgsqlCommand cmdServiceP = new NpgsqlCommand($"SELECT agency_id, agencyname, address FROM agencydetails WHERE agency_id = '{NameorID}' OR agencyname = '{NameorID}'", myConnect);
                         NpgsqlDataReader drServiceP = cmdServiceP.ExecuteReader();
                         while (drServiceP.Read())
                         {
