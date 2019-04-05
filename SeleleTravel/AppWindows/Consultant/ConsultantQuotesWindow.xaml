@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeleleTravel"
         mc:Ignorable="d"
-        Title="Consultant_Quotes_Page" Height="870.5" Width="1200">
+        Title="Consultant_Quotes_Page" Height="927.5" Width="1200">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -385,8 +385,8 @@
                 </TabItem>
                 <!--Flight-->
                 <TabItem Header="Flight" Style="{DynamicResource TabItemStyle}">
-                    <Grid Background="#eee">
-                        <StackPanel Margin="0,0,9,0">
+                    <Grid Background="#eee" Height="850" Margin="0,0,-59,0">
+                        <StackPanel Margin="0,0,9,-63" Height="810" VerticalAlignment="Top">
                             <TextBlock Text="Enter flight details" HorizontalAlignment="Center" FontSize="20" Margin="10"/>
                             <!--Airline and textbox-->
                             <DockPanel>
@@ -466,7 +466,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="TOTAL R :" Margin="10"/>
-                                <TextBox x:Name="txbFlight_total" Text="300" TextChanged="AmountChanged" Grid.Column="1" Width="200" Height="40" Margin="10"/>
+                                <TextBox x:Name="txbFlight_total" Text="300" TextChanged="AmountChanged" Grid.Column="1" Width="200" Height="40" Margin="10" FontSize="16"/>
                             </Grid>
                             <Button x:Name="btnFlight_done" Content="Done!" Height="25" Margin="444,0,449,0" Click="btnFlight_done_Click_1"/>
                         </StackPanel>
