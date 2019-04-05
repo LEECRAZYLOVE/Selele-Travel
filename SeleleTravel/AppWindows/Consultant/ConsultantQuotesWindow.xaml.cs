@@ -1504,7 +1504,7 @@ namespace SeleleTravel
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"SELECT quote_no FROM quote WHERE consultant_no='{consultant_no}' AND verified='yes'", myConnect))
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM quote WHERE consultant_no='{consultant_no}' AND verified='Yes' AND sentToClient='No'", myConnect))
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
                     while (query.Read())
@@ -1543,7 +1543,55 @@ namespace SeleleTravel
             {
                 MessageBox.Show(h.ToString());
             }
-            MessageBox.Show("Dummy test to check if retrieved password" +passwordDB);
+            if (passwordDB == txb_password.Password)
+            {
+                //Query for inserting the client
+                List<string> quotenums = new List<string>();
+                try
+                {
+                    try
+                    {
+                        NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                        myConnect.Open();
+                        using (var cmd = new NpgsqlCommand($"SELECT * FROM quote WHERE consultant_no='{consultant_no}' AND verified='Yes' AND sentToClient='No'", myConnect))
+                        {
+                            NpgsqlDataReader query = cmd.ExecuteReader();
+                            while (query.Read())
+                            {
+                                NpgsqlConnection myConnect2 = new NpgsqlConnection(MainWindow.ConnectionString);
+                                myConnect2.Open();
+                                string timesent = Convert.ToString(DateTime.Now.TimeOfDay).Substring(0, 8);
+                                string datesent = DateTime.Today.Date.ToString().Substring(0,10);
+                                string yes = "Yes";
+                                using (var myCommand = new NpgsqlCommand($"UPDATE quote SET timesent='{timesent}',datesent='{datesent}',sentToClient='{yes}' WHERE quote.quote_no='{query[0]}'", myConnect2))
+                                {
+                                    myCommand.Parameters.AddWithValue("timesent", timesent);
+                                    myCommand.Parameters.AddWithValue("datesent", datesent);
+                                    myCommand.Parameters.AddWithValue("sentToClient", yes);
+                                    myCommand.ExecuteNonQuery();
+                                }
+                                ltbVerified_Quotes.Items.Add($"{query[0]}");
+                            }
+                            myConnect.Close();
+                        }
+                    }
+                    catch (Exception h)
+                    {
+                        MessageBox.Show(h.ToString());
+                    }
+                   
+                    //MessageBox.Show($"Successfully added into database. Quote_no is: {quote_no}");
+                }
+                catch (Exception h)
+                {
+                    MessageBox.Show(h.ToString());
+                }
+               
+                    
+
+                   
+                }
+            }
         }
 
         private void CheckCarHireCombo_Initialized(object sender, EventArgs e)
@@ -1681,5 +1729,5 @@ namespace SeleleTravel
             }
         }
     }
-}
+
 
