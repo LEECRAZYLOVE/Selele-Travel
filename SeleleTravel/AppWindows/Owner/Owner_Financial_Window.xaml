@@ -119,7 +119,7 @@
 
             <!--Buttons-->
             <Grid Grid.Row="3" VerticalAlignment="Bottom" Height="50" Margin="1">
-                <Button x:Name="btnFinancial_view1" Content="View Summary One" HorizontalAlignment="Left" Padding="5" Click="btnFinancial_view1_Click_1" Margin="5,10,0,10"/>
+                <Button x:Name="btnFinancial_view1" Content="View Summary One" HorizontalAlignment="Left" Padding="5" Click="btnFinancial_view1_Click_1" Margin="5,10,0,0" Height="30" VerticalAlignment="Top"/>
                 <Button x:Name="btnFinancial_view2" Content="View Summary Two" HorizontalAlignment="Right" Padding="5"/>
             </Grid>
 

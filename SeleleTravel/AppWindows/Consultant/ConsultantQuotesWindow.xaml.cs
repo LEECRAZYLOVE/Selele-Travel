@@ -1258,7 +1258,7 @@ namespace SeleleTravel
                     cmd.Parameters.AddWithValue("amount", quoteAmount);
                     cmd.Parameters.AddWithValue("service", service);
                     cmd.Parameters.AddWithValue("timequoted", timeQuoted);
-                    cmd.Parameters.AddWithValue("quotedate", quoteDate.ToString().Substring(0, 9));
+                    cmd.Parameters.AddWithValue("quotedate", quoteDate.ToString().Substring(0, 10));
                     cmd.Parameters.AddWithValue("consultant_no", consultant_no);
                     cmd.Parameters.AddWithValue("client_no", client_no);
                     cmd.Parameters.AddWithValue("clientname", clientname);

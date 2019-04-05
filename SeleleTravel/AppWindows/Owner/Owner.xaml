@@ -148,16 +148,16 @@
             </TabItem>
         </TabControl>
         <Canvas HorizontalAlignment="Left" Margin="984,114,0,62" Width="409" Background="White">
-            <Button x:Name="btnClientAccount_findClient" Content="Find" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Canvas.Left="339" Canvas.Top="56"/>
+            <Button x:Name="btnClientAccount_findClient" Content="Find" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Canvas.Left="314" Margin="0" Canvas.Top="10" Click="btnClientAccount_findClient_Click"/>
             <Label x:Name="label" Content="Client Accounts" Canvas.Left="10" Canvas.Top="10"/>
-            <Label x:Name="label1" Content="Enter Client ID/Name:" Canvas.Left="10" Canvas.Top="50"/>
-            <TextBox x:Name="txbClientAccount_paid" Height="22" Canvas.Left="180" TextWrapping="Wrap" Text="" Canvas.Top="302" Width="154"/>
+            <Label x:Name="label1" Content="Enter Client ID" Canvas.Left="10" Canvas.Top="50"/>
+            <TextBox x:Name="txbClientAccount_paid" FontSize="10" Height="22" Canvas.Left="245" TextWrapping="Wrap" Text="" Canvas.Top="319" Width="154" Margin="0"/>
             <Label x:Name="label2" Content="How much did they pay?:" Canvas.Left="10" Canvas.Top="298"/>
-            <Button x:Name="btnClientAccount_update" Content="UODATE CLIENT ACCOUNT" Canvas.Left="10" Canvas.Top="344" Width="389"/>
-            <TextBox x:Name="txbClientAccount_clientNameorID" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194" Canvas.Left="140" Canvas.Top="53"/>
-            <ListBox x:Name="lbClientAccount_results" HorizontalAlignment="Left" Height="212" VerticalAlignment="Top" Width="389" Canvas.Left="10" Canvas.Top="81"/>
+            <Button x:Name="btnClientAccount_update" Content="UODATE CLIENT ACCOUNT" Canvas.Left="10" Canvas.Top="344" Width="389" Click="btnClientAccount_update_Click"/>
+            <TextBox x:Name="txbClientAccount_clientNameorID" FontSize="10" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194" Canvas.Left="180" Canvas.Top="70" Margin="0"/>
+            <ListBox x:Name="lbClientAccount_results" FontSize="10" HorizontalAlignment="Left" Height="195" VerticalAlignment="Top" Width="409" Canvas.Top="98" SelectionChanged="lbClientAccount_results_SelectionChanged"/>
             <Label x:Name="label3" Content="Reminders" Canvas.Left="10" Canvas.Top="392"/>
-            <ListBox x:Name="listBox" Height="165" Canvas.Left="10" Canvas.Top="423" Width="389"/>
+            <ListBox x:Name="listBox" FontSize="10" Height="165" Canvas.Left="10" Canvas.Top="423" Width="389"/>
         </Canvas>
     </Grid>
 </Window>
