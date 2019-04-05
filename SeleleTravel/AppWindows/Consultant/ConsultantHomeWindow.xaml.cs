@@ -261,11 +261,11 @@ namespace SeleleTravel
                     {
                         ltbConsultant_Search_Results.Items.Clear();
                         myConnect.Open();
-                        NpgsqlCommand cmdServiceP = new NpgsqlCommand($"SELECT agency_id, agencyname, address FROM serviceproviders WHERE agency_id = '{NameorID}' OR agencyname = '{NameorID}'", myConnect);
+                        NpgsqlCommand cmdServiceP = new NpgsqlCommand($"SELECT agency_id, nameofagency, address FROM agencydetails WHERE agency_id = '{NameorID}' OR nameofagency = '{NameorID}'", myConnect);
                         NpgsqlDataReader drServiceP = cmdServiceP.ExecuteReader();
                         while (drServiceP.Read())
                         {
-                            ltbConsultant_Search_Results.Items.Add($"{drServiceP[1]} {drServiceP[2]}, {drServiceP[0]}");
+                            ltbConsultant_Search_Results.Items.Add($"{drServiceP[1]}, {drServiceP[2]}, {drServiceP[0]}");
                         }
                         myConnect.Close();
                     }
@@ -428,44 +428,39 @@ namespace SeleleTravel
             }
         }
 
-        /// <summary>
-        /// Go to message
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void LblConsultant_inboxList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // get the index of the selected item
-            int indexPath = lblConsultant_inboxList.SelectedIndex;
-            if (indexPath >= 0)
-            {
-                // the textbox that has the details
-                TextBlock id = (TextBlock)lblConsultant_inboxList.SelectedItem;
+        //private void LtbConsultant_Search_Results_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    // get the index of the selected item
+        //    int indexPath = lblConsultant_inboxList.SelectedIndex;
+        //    if (indexPath >= 0)
+        //    {
+        //        // the textbox that has the details
+        //        TextBlock id = (TextBlock)lblConsultant_inboxList.SelectedItem;
 
-                // change the font
-                id.FontSize = 16;
+        //        // change the font
+        //        id.FontSize = 16;
 
-                // get the ID
-                lblConsultantID.Content = id.Text;
+        //        // get the ID
+        //        lblConsultantID.Content = id.Text;
 
-                // Assign the new button
-                lblConsultant_inboxList.Items.RemoveAt(indexPath);
-                lblConsultant_inboxList.Items.Insert(indexPath, id);
+        //        // Assign the new button
+        //        lblConsultant_inboxList.Items.RemoveAt(indexPath);
+        //        lblConsultant_inboxList.Items.Insert(indexPath, id);
 
-                // get the ID of the reciever 
-                string idContent = currentStaffID.ToLower();
+        //        // get the ID of the reciever 
+        //        string idContent = currentStaffID.ToLower();
 
-                // get the index of the entry
-                int idNum = Convert.ToInt32(id.Tag);
+        //        // get the index of the entry
+        //        int idNum = Convert.ToInt32(id.Tag);
 
-                // read the selected entry
-                readSelectedID(idContent, idNum);
+        //        // read the selected entry
+        //        readSelectedID(idContent, idNum);
 
-                // enable
-                composeMessageWindow.txbMessage_message.IsEnabled = true;
-                composeMessageWindow.btnMessage_send.IsEnabled = true;
-            }
-        }
+        //        // enable
+        //        composeMessageWindow.txbMessage_message.IsEnabled = true;
+        //        composeMessageWindow.btnMessage_send.IsEnabled = true;
+        //    }
+        //}
 
         /// <summary>
         /// Going to the Search results window if anything is picked from the list
@@ -570,6 +565,7 @@ namespace SeleleTravel
 
             }
             //End display staff, client or service provider
+
         }
     }
 }

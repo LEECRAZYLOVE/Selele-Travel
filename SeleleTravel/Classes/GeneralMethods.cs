@@ -497,7 +497,7 @@ namespace SeleleTravel
         }
 
         /// <summary>
-        /// This will generate a quote summary to view in all the relevant windows
+        /// This will generate a quote summary to view in all of the relevant windows
         /// </summary>
         /// <param name="QuoteNo"></param>
         /// <param name="positions[j]"></param>
@@ -647,7 +647,7 @@ namespace SeleleTravel
         }
 
         /// <summary>
-        /// displaying and extracting the service fee, VAT and total for the quote
+        /// Displaying and extracting the service fee, VAT and total for the quote
         /// </summary>
         /// <param name="QuoteNo"></param>
         /// <returns></returns>
@@ -674,6 +674,112 @@ namespace SeleleTravel
                 MessageBox.Show(h.ToString());
             }
             return outputQuoteSummary;
+        }
+
+        /// <summary>
+        /// This will generate an order summary to view in all of the relevant windows
+        /// </summary>
+        /// <param name="OrderNo"></param>
+        /// <returns></returns>
+        public static string orderSummary(string OrderNo)
+        {
+            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            string outputOrderSummary = "";
+            try
+            {
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT order_no, quote_no, daterecieved, orderdate FROM orders WHERE order_no = '{OrderNo}'", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    outputOrderSummary = $"\t\t Order No: \t\t\t\t\t\t\t\t {dr[0]} \n " +
+                    $"\t\t Quote No: \t\t\t\t\t\t\t\t {dr[1]} \n " +
+                    $"\t\t Date Received   \t\t\t\t\t\t\t\t\t {dr[2]} \n " +
+                    $"\t\t Date of Order:{dr[3]}";
+                }
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            return outputOrderSummary;
+        }
+
+        /// <summary>
+        /// This will generate a voucher summary to view in all of the relevant windows
+        /// </summary>
+        /// <param name="VoucherNo"></param>
+        /// <returns></returns>
+        public static string voucherSummary(string VoucherNo)
+        {
+            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            string outputVoucherSummary = "";
+            try
+            {
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT voucher_no, order_no, client_id, agency_id, staff_id, amount FROM voucher WHERE voucher_no = '{VoucherNo}'", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    outputVoucherSummary = $"\t\t Voucher No: \t\t\t\t\t\t\t\t {dr[0]} \n " +
+                    $"\t\t Order No: \t\t\t\t\t\t\t\t {dr[1]} \n " +
+                    $"\t\t Client ID: \t\t\t\t\t\t\t\t\t {dr[2]} \n " +
+                    $"\t\t Agency IDs: {dr[3]} \n " +
+                    $"\t\t Staff ID: {dr[4]} \n " +
+                    $"\t\t Amount: {dr[5]}";
+                    }
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            return outputVoucherSummary;
+        }
+
+        /// <summary>
+        /// This will generate an agency details summary to view in all of the relevant windows
+        /// </summary>
+        /// <param name="AgencyId"></param>
+        /// <returns></returns>
+        public static string agencydetailsSummary(string AgencyId)
+        {
+            NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            string outputAgencySummary = "";
+            try
+            {
+                myConnect.Open();
+                NpgsqlCommand myCommand = new NpgsqlCommand($"SELECT nameofagency, agency_id, service, address, telephone, cellphone, emailaddress, faxe FROM voucher WHERE voucher_no = '{AgencyId}'", myConnect);
+                NpgsqlDataReader dr = myCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    outputAgencySummary = $"\t\t Name: \t\t\t\t\t\t\t\t {dr[0]} \n " +
+                    $"\t\t Service Provider ID: \t\t\t\t\t\t\t\t {dr[1]} \n " +
+                    $"\t\t Agency ID: {dr[3]} \n " +
+                    $"\t\t Service: \t\t\t\t\t\t\t\t\t {dr[2]} \n " +
+                    $"\t\t Address: {dr[4]} \n " +
+                    $"\t\t Email: {dr[5]} \n " +
+                    $"\t\t Fax: {dr[6]}";
+                }
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+            return outputAgencySummary;
+        }
+
+        /// <summary>
+        /// This will generate a client detail summary to view in all of the relevant windows
+        /// </summary>
+        /// <param name="ClientID"></param>
+        /// <param name="EmployeeType"></param>
+        /// <returns></returns>
+        public static string clientSummary(string ClientID, string EmployeeType)
+        {
+            return "";
         }
 
         /// <summary>
