@@ -168,35 +168,37 @@ namespace SeleleTravel
         {
             //checking if date is between certain dates
 
-            //Query for retrieving quote data between certain dates
-           
-                try
-                {
-                    NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-                    myConnect.Open();
-                    using (var cmd = new NpgsqlCommand($"SELECT client.clientname FROM client,quote,orders WHERE quote.quote_no=orders.quote_no AND quote.client_no=client.client_no AND quotedate BETWEEN '{txbYear.Text}-01-01' AND '{txbYear.Text}-12-31' ", myConnect))
-                    {
-                        NpgsqlDataReader query = cmd.ExecuteReader();
+            ////Query for retrieving quote data between certain for a certain year
+           //DO NOT DELETE!!!!
+            //    try
+            //    {
+            //        NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            //        myConnect.Open();
+            //        using (var cmd = new NpgsqlCommand($"SELECT quote.clientname FROM quote,orders WHERE quote.quote_no=orders.quote_no AND quotedate BETWEEN '{txbYear.Text}-01-01' AND '{txbYear.Text}-12-31' ", myConnect))
+            //        {
+            //            NpgsqlDataReader query = cmd.ExecuteReader();
 
-                        while (query.Read())
-                        {
-                            lbFinancial_results1.Items.Add($"{query[0]}");
-                        }
-                    }
-                    myConnect.Close();
-                }
-                catch (Exception h)
-                {
-                    MessageBox.Show(h.ToString());
-                }
-
+            //            while (query.Read())
+            //            {
+            //                lbFinancial_results1.Items.Add($"{query[0]}");
+            //            }
+            //        }
+            //        myConnect.Close();
+            //    }
+            //    catch (Exception h)
+            //    {
+            //        MessageBox.Show(h.ToString());
+            //    }
             
-        }
+            ////Query for retrieving quote data between certain for a between two dates
+
             //try
             //{
             //    NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
             //    myConnect.Open();
-            //    using (var cmd = new NpgsqlCommand($"SELECT * FROM quote,orders WHERE quote.quote_no=orders.quote_no AND quotedate BETWEEN '2019-01-01' AND '2019-01-20' ", myConnect))
+            //    string startDate=dpMonthly_from.ToString().Substring(0, 10).Replace('/', '-');
+            //    string endDate = dpMonthly_to.ToString().Substring(0, 10).Replace('/', '-');
+            //    using (var cmd = new NpgsqlCommand($"SELECT quote.clientname FROM quote,orders WHERE quote.quote_no=orders.quote_no AND quotedate BETWEEN '{startDate}' AND '{endDate}' ", myConnect))
             //    {
             //        NpgsqlDataReader query = cmd.ExecuteReader();
 
@@ -204,7 +206,6 @@ namespace SeleleTravel
             //        {
             //            lbFinancial_results1.Items.Add($"{query[0]}");
             //        }
-                    
             //    }
             //    myConnect.Close();
             //}
@@ -212,17 +213,65 @@ namespace SeleleTravel
             //{
             //    MessageBox.Show(h.ToString());
             //}
+            ////Query for retrieving quote data between certain for a between multiple months
+
+            //try
+            //{
+            //    NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            //    myConnect.Open();
+            //    string startDate = dpMonthly_from.ToString().Substring(0, 10).Replace('/', '-');
+            //    string endDate = dpMonthly_to.ToString().Substring(0, 10).Replace('/', '-');
+            //    using (var cmd = new NpgsqlCommand($"SELECT quote.clientname FROM quote,orders WHERE quote.quote_no=orders.quote_no AND quotedate BETWEEN '{startDate}' AND '{endDate}' ", myConnect))
+            //    {
+            //        NpgsqlDataReader query = cmd.ExecuteReader();
+
+            //        while (query.Read())
+            //        {
+            //            lbFinancial_results1.Items.Add($"{query[0]}");
+            //        }
+            //    }
+            //    myConnect.Close();
+            //}
+            //catch (Exception h)
+            //{
+            //    MessageBox.Show(h.ToString());
+            //}
+            //Query for retrieving quote data on a certain date
+
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                string dateSelected = dpWeekly_day.ToString().Substring(0, 10).Replace('/', '-');
+                
+                using (var cmd = new NpgsqlCommand($"SELECT client.clientname,client.paid,client.owe FROM client,quote,orders WHERE quote.quote_no=orders.quote_no AND quotedate='{dateSelected}' AND client.clientname=quote.clientname ", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                        lbFinancial_results1.Items.Add($"Client name:{query[0]},Paid:{query[1]},Owe:{query[2]}");
+                    }
+                }
+                myConnect.Close();
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
       
 
         private void lbFinancial_results1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //if the entity is clients then:
           string  clientname = lbFinancial_results1.SelectedItem.ToString();
             //Query for retrieving quote data
             try
             {
                 NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
                 myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"SELECT * FROM client WHERE clientname = '{clientname}'", myConnect))
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM quote WHERE clientname = '{clientname}'", myConnect))
                 {
                     NpgsqlDataReader query = cmd.ExecuteReader();
 

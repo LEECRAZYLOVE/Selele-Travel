@@ -91,37 +91,37 @@ namespace SeleleTravel
               /// <param name="last_ID"> ID of the last item </param>
               public void readSome(string idOfUser)
               {
-                     using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
-                     {
-                            // open the connection
-                            conn.Open();
+                     //using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+                     //{
+                     //       // open the connection
+                     //       conn.Open();
 
-                            // Last num in the list of the messages
-                            int lastNum = lbOwner_inboxList.Items.Count;
+                     //       // Last num in the list of the messages
+                     //       int lastNum = lbOwner_inboxList.Items.Count;
 
-                            // Retrieve all rows
-                            using (var cmd = new NpgsqlCommand($"SELECT * FROM {idOfUser} WHERE tb_ID > {lastNum}", conn))
-                            using (var reader = cmd.ExecuteReader())
-                            {
-                                   while (reader.Read())
-                                   {
-                                          TextBlock theTextBlock = new TextBlock()
-                                          {
-                                                 Text = Convert.ToString(reader.GetValue(2)),
-                                                 Tag = Convert.ToString(reader.GetValue(0)),
-                                                 TextAlignment = TextAlignment.Center,
-                                                 FontSize = 25,
-                                                 Focusable = false,
-                                                 IsEnabled = false,
-                                                 Margin = new Thickness(2, 2, 2, 2)
-                                          };
+                     //       // Retrieve all rows
+                     //       using (var cmd = new NpgsqlCommand($"SELECT * FROM {idOfUser} WHERE tb_ID > {lastNum}", conn))
+                     //       using (var reader = cmd.ExecuteReader())
+                     //       {
+                     //              while (reader.Read())
+                     //              {
+                     //                     TextBlock theTextBlock = new TextBlock()
+                     //                     {
+                     //                            Text = Convert.ToString(reader.GetValue(2)),
+                     //                            Tag = Convert.ToString(reader.GetValue(0)),
+                     //                            TextAlignment = TextAlignment.Center,
+                     //                            FontSize = 25,
+                     //                            Focusable = false,
+                     //                            IsEnabled = false,
+                     //                            Margin = new Thickness(2, 2, 2, 2)
+                     //                     };
 
-                                          lbOwner_inboxList.Items.Insert(0, theTextBlock);
-                                   }
-                                   lbOwner_inboxList.Items.Refresh();
-                            }
+                     //                     lbOwner_inboxList.Items.Insert(0, theTextBlock);
+                     //              }
+                     //              lbOwner_inboxList.Items.Refresh();
+                     //       }
 
-                     }
+                     //}
               }
 
               /// <summary>
@@ -130,22 +130,22 @@ namespace SeleleTravel
               /// <param name="idOfUser">Id of sender </param>
               public void readSelectedID(string idOfUser, int itemIndex)
               {
-                     using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
-                     {
-                            // open the connection
-                            conn.Open();
+                     //using (var conn = new NpgsqlConnection(MainWindow.ChatConnectionString))
+                     //{
+                     //       // open the connection
+                     //       conn.Open();
 
-                            // Last num in the list of the messages
-                            int lastNum = lbOwner_inboxList.Items.Count;
+                     //       // Last num in the list of the messages
+                     //       int lastNum = lbOwner_inboxList.Items.Count;
 
-                            // Retrieve the specific message with the given id rows 
-                            using (var cmd = new NpgsqlCommand($"SELECT message FROM {idOfUser} WHERE tb_ID = {itemIndex}", conn))
-                            using (var reader = cmd.ExecuteReader())
-                            {
-                                   reader.Read();
-                                   tbkOwner_inboxMessages.Text = Convert.ToString(reader.GetValue(0));
-                            }
-                     }
+                     //       // Retrieve the specific message with the given id rows 
+                     //       using (var cmd = new NpgsqlCommand($"SELECT message FROM {idOfUser} WHERE tb_ID = {itemIndex}", conn))
+                     //       using (var reader = cmd.ExecuteReader())
+                     //       {
+                     //              reader.Read();
+                     //              tbkOwner_inboxMessages.Text = Convert.ToString(reader.GetValue(0));
+                     //       }
+                     //}
               }
 
               ///// <summary>
@@ -313,5 +313,78 @@ namespace SeleleTravel
                      }
 
               }
-       }
+
+        private void btnClientAccount_update_Click(object sender, RoutedEventArgs e)
+        {
+            NpgsqlConnection myConnect2 = new NpgsqlConnection(MainWindow.ConnectionString);
+            myConnect2.Open();
+            double amountpaid =Convert.ToDouble( txbClientAccount_paid.Text);
+            //var cmd = new NpgsqlCommand($"Select paid,owe FROM client WHERE client_no={txbClientAccount_clientNameorID.Text}");
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"Select paid,owe FROM client WHERE client_no={txbClientAccount_clientNameorID.Text}", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                        using (var myCommand = new NpgsqlCommand($"UPDATE client SET paid= paid+'{amountpaid}',owe=owe-'{amountpaid}' WHERE client.client_no='{txbClientAccount_clientNameorID.Text}'", myConnect2))
+                        {
+                            myCommand.Parameters.AddWithValue("paid", Convert.ToDouble($"{query[0]}")+amountpaid);
+                            myCommand.Parameters.AddWithValue("owe", Convert.ToDouble($"{query[0]}") - amountpaid);
+                            myCommand.ExecuteNonQuery();
+                        }
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+           
+        }
+
+        private void btnClientAccount_findClient_Click(object sender, RoutedEventArgs e)
+        {
+            string client_no = txbClientAccount_clientNameorID.Text;
+            //Query for retrieving client data
+            try
+            {
+                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+                myConnect.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM client WHERE client_no = '{client_no}'", myConnect))
+                {
+                    NpgsqlDataReader query = cmd.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                        lbClientAccount_results.Items.Add($"Client number: {query[0]}");
+                        lbClientAccount_results.Items.Add($"Client name: { query[1]}\n");
+                        lbClientAccount_results.Items.Add($"Cellphone: {query[2]}");
+                        lbClientAccount_results.Items.Add($"Address: {query[3]}");
+                        lbClientAccount_results.Items.Add($"Emailaddress: {query[4]}");
+                        lbClientAccount_results.Items.Add($"Telephone: {query[5]}");
+                        lbClientAccount_results.Items.Add($"fax: {query[6]}");
+                        lbClientAccount_results.Items.Add($"paid: {query[7]}");
+                        lbClientAccount_results.Items.Add($"owe: {query[8]}");
+                        lbClientAccount_results.Items.Add($"Brought forward: {query[9]}");
+                        lbClientAccount_results.Items.Add($"Dateadded: {query[10]}");
+                    }
+                    myConnect.Close();
+                }
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show(h.ToString());
+            }
+        }
+
+        private void lbClientAccount_results_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+    }
 }
