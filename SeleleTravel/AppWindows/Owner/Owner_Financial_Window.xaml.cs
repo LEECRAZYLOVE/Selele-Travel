@@ -26,8 +26,8 @@ namespace SeleleTravel
         {
             InitializeComponent();
 
-            lbFinancial_clientList.Visibility = Visibility.Visible;
-            lbFinancial_servicesList.Visibility = Visibility.Hidden;
+            //lbFinancial_clientList.Visibility = Visibility.Visible;
+            //lbFinancial_servicesList.Visibility = Visibility.Hidden;
             cbxFinancial_period.Visibility = Visibility.Visible;
             txbYear.Visibility = Visibility.Hidden;
             cbxMultipleMonths_from.Visibility = Visibility.Hidden;
@@ -51,8 +51,8 @@ namespace SeleleTravel
 
         private void CbxitemFinancial_clients_Selected(object sender, RoutedEventArgs e)
         {
-            lbFinancial_clientList.Visibility = Visibility.Visible;
-            lbFinancial_servicesList.Visibility = Visibility.Hidden;
+            //lbFinancial_clientList.Visibility = Visibility.Visible;
+            //lbFinancial_servicesList.Visibility = Visibility.Hidden;
             //cbxFinancial_period.Visibility = Visibility.Visible;
             txbYear.Visibility = Visibility.Hidden;
             cbxMultipleMonths_from.Visibility = Visibility.Hidden;
@@ -65,8 +65,8 @@ namespace SeleleTravel
 
         private void CbxitemFinancial_services_Selected(object sender, RoutedEventArgs e)
         {
-            lbFinancial_clientList.Visibility = Visibility.Hidden;
-            lbFinancial_servicesList.Visibility = Visibility.Visible;
+            //lbFinancial_clientList.Visibility = Visibility.Hidden;
+            //lbFinancial_servicesList.Visibility = Visibility.Visible;
             //cbxFinancial_period.Visibility = Visibility.Visible;
             txbYear.Visibility = Visibility.Hidden;
             cbxMultipleMonths_from.Visibility = Visibility.Hidden;

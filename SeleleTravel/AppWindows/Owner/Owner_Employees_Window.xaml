@@ -159,7 +159,6 @@
                                 <TextBox x:Name="txbNewEmployee_areaCode"
                                          Tag="Area Code"
                                          Grid.Column="1"
-                                         TextChanged="AmountChanged_WHOLENumber" 
                                          Text="5247" Margin="5"/>
                             </Grid>
 

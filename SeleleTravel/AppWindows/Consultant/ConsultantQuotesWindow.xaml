@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="Consultant_Quotes_Page" 
         Height="800" Width="1350">
-    
+
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <Grid Background="#FFFFF485">
             <TabControl x:Name="Consultant_tabControl" 
                         Background="#FFFFF485">
-               
+
                 <!--Client Details-->
                 <TabItem Header="Client Details" 
                          Width="Auto"
@@ -199,7 +199,7 @@
 
                             </Grid>
                         </Border>
-                        
+
                         <Border BorderBrush="{StaticResource seleleGreenBrush}"
                                 BorderThickness="3"
                                 CornerRadius="10"
@@ -251,11 +251,11 @@
 
                             </Grid>
                         </Border>
-                        
+
                     </Grid>
 
                 </TabItem>
-                
+
                 <!--Car Hire -->
                 <TabItem Header="Car Hire" 
                          Width="Auto"
@@ -309,13 +309,13 @@
                                     Tag="Drop Off Location"
                                      Margin="5"
                                     BorderBrush="Black"/>
-                            
+
                             <Button Content="Check Car Hire"
                                     Grid.Column="2" 
                                     Grid.Row="0" 
                                     Margin="5"
                                     Click="BtnCheckCarHire_Click"/>
-                            
+
                             <ComboBox x:Name="CheckCarHireCombo" 
                                       Grid.Column="2" 
                                       Grid.Row="1"
@@ -417,7 +417,7 @@
                     </Grid>
 
                 </TabItem>
-                
+
                 <!--Taxi Cab-->
                 <TabItem Header="Taxi Cab"
                          Width="Auto"
@@ -548,7 +548,7 @@
                                     Grid.Row="3"/>
 
                         </Grid>
-                    
+
                     </Grid>
 
                 </TabItem>
@@ -678,18 +678,18 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                
+
                                 <ComboBox x:Name="CheckFlightCombo" 
                                           Margin="5"
                                           Grid.Row="0"/>
-                                
+
                                 <Button Content="Check Flight"
                                         Grid.Row="1"
                                         Margin="5" 
                                         Click="Button_Click_2"/>
 
                             </Grid>
-                            <TextBox x:Name="txbFlight_passengers"
+                            <TextBox x:Name="txbFlight_passengerName"
                                          TextWrapping="Wrap"
                                          Tag="Passenger Name"
                                          Grid.Row="1"
@@ -852,7 +852,7 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                
+
                                 <ComboBox x:Name="CheckConferenceCombo"
                                           Grid.Row="0"
                                           Margin="5"/>
@@ -879,10 +879,10 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Label x:Name="label45" 
-                                   Content="Date:" 
+                                   Content="Start:" 
                                    Grid.Column="0"/>
 
-                                    <DatePicker x:Name="dpConference_date"
+                                    <DatePicker x:Name="dpConference_startDate"
                                         FontSize="{StaticResource FontSizeRegular}"
                                         Grid.Column="1"/>
 
@@ -890,18 +890,25 @@
 
                                 <TextBox x:Name="txbConference_time" 
                                  Tag="Time: HH:mm"
-                                 Grid.Row="5"
-                                 TextWrapping="Wrap"/>
+                                 Grid.Row="9"
+                                 TextWrapping="Wrap" Margin="0,72,5,-109"/>
 
                                 <TextBox x:Name="txbConference_total" 
                                  Tag="TOTAL in rands" 
-                                 Grid.Row="6"
-                                 TextChanged="AmountChanged"/>
+                                 Grid.Row="9"
+                                 TextChanged="AmountChanged" Margin="-1,112,6,-153"/>
 
                                 <Button x:Name="btnConference_done"
                                         Content="Done"
-                                        Grid.Row="7"
-                                        Click="btnConference_done_Click_1"/>
+                                        Grid.Row="9"
+                                        Click="btnConference_done_Click_1" RenderTransformOrigin="0.499,1.49" Margin="0,179,5,-232"/>
+                                <DatePicker x:Name="dpConference_endDate"
+                            FontSize="{StaticResource FontSizeRegular}"
+    Margin="54,7,5,-53" Grid.Row="9"
+    />
+                                <Label x:Name="label45_Copy2" 
+                                        Content="End:" 
+                                        Grid.Column="0" Margin="-1,7,381,-42" Grid.Row="9"/>
 
                             </Grid>
 
@@ -918,7 +925,7 @@
 
 
                 </TabItem>
-                
+
                 <!--Events-->
                 <TabItem Header="Events"
                          Width="Auto"
@@ -926,46 +933,63 @@
                          FontSize="{StaticResource FontSizeRegular}"
                          Style="{DynamicResource TabItemStyle}">
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="565*"/>
+                                <ColumnDefinition Width="97*"/>
                             </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
-                            <Grid Grid.Column="0">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-
-                                <TextBox x:Name="txbEvents_name" 
+                            <TextBox x:Name="txbEvents_name" 
                                      Tag="Name" 
                                          Margin="5"
                                      Grid.Row="0"
-                                     TextWrapping="Wrap" />
-
-                                <TextBox x:Name="txbEvents_total"
+                                     TextWrapping="Wrap" Grid.ColumnSpan="2" />
+                            <Label x:Name="label45_Copy1" 
+                        Content="Start:" 
+                        Margin="-10,12,493.5,10" Grid.Row="2"/>
+                            <DatePicker x:Name="dpEvents_startDate"
+                            FontSize="{StaticResource FontSizeRegular}"
+                Height="48" Margin="71,10,121.5,15" Grid.Row="2" Width="372"
+                />
+                            <TextBox x:Name="txbEvents_total"
                                      Tag="TOTAL"
                                      TextChanged="AmountChanged"
-                                         Margin="5"
-                                     Grid.Row="1"
-                                     TextWrapping="Wrap"/>
+                                         Margin="5,144,5,-122"
+                                     Grid.Row="2"
+                                     TextWrapping="Wrap" Grid.ColumnSpan="2"/>
 
-                                <Button x:Name="btnEvents_done"
+                            <Button x:Name="btnEvents_done"
                                     Content="Done!" 
                                     Grid.Row="2"
-                                        Margin="5"
-                                         Click="BtnEvents_done_Click"/>
-                                
-                            </Grid>
+                                        Margin="5,201,5,-191"
+                                         Click="BtnEvents_done_Click" Grid.ColumnSpan="2"/>
+                            <DatePicker x:Name="dpEvents_endDate"
+                                FontSize="{StaticResource FontSizeRegular}"
+                                Height="48" Margin="71,72,121.5,-47" Grid.Row="2" Width="372"
+                />
+                            <Label x:Name="label45_Copy" 
+                                Content="End:" 
+                                Margin="-13,66,496,-44" Grid.Row="2"/>
 
-                            <TextBox x:Name="txbEvents_specifications" 
+                        </Grid>
+
+                        <TextBox x:Name="txbEvents_specifications" 
                                  Tag="Specifications"
                                  AcceptsReturn="True" 
                                  Grid.Column="1"
                                  TextWrapping="Wrap" 
                                  Margin="5"/>
-                        </Grid>
+                    </Grid>
                 </TabItem>
 
                 <!--Quote Summary-->
@@ -983,7 +1007,7 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <!--Display for left-hand-side-->
                         <TextBlock x:Name="txbQuote_quoteSummary" 
                                    Margin="5" 
@@ -1056,7 +1080,7 @@
                         </Grid>
                     </Grid>
                 </TabItem>
-                
+
                 <!--Send Quotes-->
                 <TabItem Header="Send Quotes"
                          Width="Auto"
@@ -1138,7 +1162,7 @@
                                 <Label Content="Password :" 
                                         Margin="5"
                                         Grid.Row="0"/>
-                                <PasswordBox x:Name="pdbAuthorizations_password" 
+                                <PasswordBox x:Name="txb_password" 
                                              Grid.Row="1"
                                              Margin="5"/>
                                 <Button x:Name="btnAuthorizations_Authorize" 
@@ -1146,7 +1170,7 @@
                                         Content="Send to clients" 
                                         Margin="5"
                                         Click="Button_Click_6"/>
-                                
+
                                 <Button x:Name="button" 
                                         Content="Get verified Quotes"
                                         Grid.Row="3"
@@ -1156,8 +1180,31 @@
                         </Border>
                     </Grid>
                 </TabItem>
-            
+                <DatePicker x:Name="dpEvents_startDate_Copy"
+                    FontSize="{StaticResource FontSizeRegular}"
+                    Height="48" Width="372"
+                />
+
             </TabControl>
+            <Canvas Margin="71,142,892,579">
+                <Grid Height="48" Width="372">
+                    <StackPanel Orientation="Vertical"/>
+                </Grid>
+            </Canvas>
+            <Canvas Margin="71,89,892,632">
+                <Grid Height="48" Width="372">
+                    <StackPanel Orientation="Vertical">
+
+                    </StackPanel>
+                </Grid>
+            </Canvas>
+            <Canvas Margin="10,89,1263,643">
+                <Grid Height="37" Width="55">
+
+
+                </Grid>
+
+            </Canvas>
 
         </Grid>
     </ScrollViewer>

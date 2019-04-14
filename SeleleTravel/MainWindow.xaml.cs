@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using Npgsql;
+using System.Net.Mail;
+using System.Text;
 
 namespace SeleleTravel
 {
@@ -44,6 +46,34 @@ namespace SeleleTravel
 
         private void btn_bossSide_Click(object sender, RoutedEventArgs e)
         {
+            //SmtpClient client = new SmtpClient();
+            //client.Port = 25;
+            //client.Host = "smtp.gmail.com";
+            //client.EnableSsl = true;
+            //client.Timeout = 10000;
+            //client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //client.UseDefaultCredentials = false;
+            //client.Credentials = new System.Net.NetworkCredential("crazedoutlee@gmail.com", "10Crazylee");
+
+            //MailMessage mm = new MailMessage("g17s9264@campus.ru.ac.za", "seleletravel@live.com");
+            //mm.BodyEncoding = UTF8Encoding.UTF8;
+            //mm.Subject = "this is a test email 2.";
+            //mm.Body = "this is my test email body";
+            //mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+
+            //client.Send(mm);
+
+
+            //MailMessage mail = new MailMessage("crazedoutlee@gmail.com", "g17s9264@campus.ru.ac.za");
+            //SmtpClient client = new SmtpClient();
+            //client.Port = 25;
+            //client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //client.UseDefaultCredentials = false;
+            //client.Host = "smtp.gmail.com";
+            //mail.Subject = "this is a test email 2.";
+            //mail.Body = "this is my test email body";
+            //client.Send(mail);
+
             Hide();
             loadLogInWindow(LoadWindow.Owner);
         }

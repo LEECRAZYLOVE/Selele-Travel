@@ -235,11 +235,6 @@ namespace SeleleTravel
 
               }
 
-              private void BtnOwner_logOut_Click(object sender, RoutedEventArgs e)
-              {
-                     GeneralMethods.logOut(this);
-              }
-
               /// <summary>
               /// Read the selected mesage
               /// </summary>
@@ -258,7 +253,7 @@ namespace SeleleTravel
                             id.FontSize = 16;
 
                             // get the ID
-                            txbMessageFrom.Content += id.Text;
+                            //txbMessageFrom.Content += id.Text;
 
                             // Assign the new button
                             lbOwner_inboxList.Items.RemoveAt(indexPath);
@@ -385,6 +380,11 @@ namespace SeleleTravel
         private void lbClientAccount_results_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void BtnOwner_logOut_Click_1(object sender, RoutedEventArgs e)
+        {
+            GeneralMethods.logOut(this);
         }
     }
 }

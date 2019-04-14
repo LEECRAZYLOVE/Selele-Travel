@@ -181,7 +181,8 @@
                                    Margin="5"
                                    Grid.Row="0"/>
 
-                            <TextBlock Background="#fff"
+                            <TextBlock Name="txbQuoteVerify_preview"
+                                       Background="#fff"
                                        Grid.Row="1" 
                                        Margin="5"/>
 

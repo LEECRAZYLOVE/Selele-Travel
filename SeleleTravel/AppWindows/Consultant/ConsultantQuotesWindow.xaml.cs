@@ -1170,7 +1170,7 @@ namespace SeleleTravel
 
         private void BtnFlight_addPassenger_Click_1(object sender, RoutedEventArgs e)
         {
-            string passangerName = txbFlight_passangerName.Text;
+            string passangerName = txbFlight_passengerName.Text;
             ltbFlight_passengersOutput.Items.Add(passangerName);
             ltbFlight_passengersOutput.Items.Refresh();
             _passengers.Add(passangerName);
@@ -1227,7 +1227,7 @@ namespace SeleleTravel
 
         private void btnFlight_addPassenger_Click_1(object sender, RoutedEventArgs e)
         {
-            string passangerName = txbFlight_passangerName.Text;
+            string passangerName = txbFlight_passengerName.Text;
             ltbFlight_passengersOutput.Items.Add(passangerName);
             ltbFlight_passengersOutput.Items.Refresh();
 
@@ -1349,29 +1349,29 @@ namespace SeleleTravel
             string agencyname = txbCab_agency.Text;
 
             //Query for finding the agency_IDs available
-            try
-            {
-                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-                myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceprovider WHERE agencyname = '{agencyname}' and service='Taxi Cab'", myConnect))
-                {
-                    NpgsqlDataReader query = cmd.ExecuteReader();
-                    int k = 0;
-                    while (query.Read())
-                    {
+            //try
+            //{
+            //    NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            //    myConnect.Open();
+            //    using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM serviceprovider WHERE agencyname = '{agencyname}' and service='Taxi Cab'", myConnect))
+            //    {
+            //        NpgsqlDataReader query = cmd.ExecuteReader();
+            //        int k = 0;
+            //        while (query.Read())
+            //        {
 
-                        CheckCabServicesCombo.Items.Add(query[k]);
+            //            CheckCabServicesCombo.Items.Add(query[k]);
 
-                        k++;
-                    }
-                    Agency_IDs = Agency_IDs + "|" + CheckCabServicesCombo.SelectedItem.ToString();
-                    myConnect.Close();
-                }
-            }
-            catch (Exception h)
-            {
-                MessageBox.Show(h.ToString());
-            }
+            //            k++;
+            //        }
+            //        Agency_IDs = Agency_IDs + "|" + CheckCabServicesCombo.SelectedItem.ToString();
+            //        myConnect.Close();
+            //    }
+            //}
+            //catch (Exception h)
+            //{
+            //    MessageBox.Show(h.ToString());
+            //}
 
         }
 
@@ -1622,29 +1622,29 @@ namespace SeleleTravel
         private void CheckCabServicesCombo_Initialized(object sender, EventArgs e)
         {
             //Query for finding the agency_IDs available
-            try
-            {
-                NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
-                myConnect.Open();
-                using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM agencydetails WHERE service='Taxi Cab'", myConnect))
-                {
-                    NpgsqlDataReader query = cmd.ExecuteReader();
-                    int k = 0;
-                    while (query.Read())
-                    {
+            //try
+            //{
+            //    NpgsqlConnection myConnect = new NpgsqlConnection(MainWindow.ConnectionString);
+            //    myConnect.Open();
+            //    using (var cmd = new NpgsqlCommand($"SELECT agency_id FROM agencydetails WHERE service='Taxi Cab'", myConnect))
+            //    {
+            //        NpgsqlDataReader query = cmd.ExecuteReader();
+            //        int k = 0;
+            //        while (query.Read())
+            //        {
 
-                        CheckCabServicesCombo.Items.Add(query[k]);
+            //            CheckCabServicesCombo.Items.Add(query[k]);
 
-                        k++;
-                    }
-                    Agency_IDs = Agency_IDs + "|" + CheckCabServicesCombo.SelectedItem.ToString();
-                    myConnect.Close();
-                }
-            }
-            catch (Exception h)
-            {
-                MessageBox.Show(h.ToString());
-            }
+            //            k++;
+            //        }
+            //        Agency_IDs = Agency_IDs + "|" + CheckCabServicesCombo.SelectedItem.ToString();
+            //        myConnect.Close();
+            //    }
+            //}
+            //catch (Exception h)
+            //{
+            //    MessageBox.Show(h.ToString());
+            //}
         }
 
         private void CheckFlightCombo_Initialized(object sender, EventArgs e)

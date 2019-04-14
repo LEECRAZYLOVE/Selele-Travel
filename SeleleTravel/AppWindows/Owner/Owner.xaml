@@ -65,8 +65,7 @@
                     FontSize="{StaticResource FontSizeLarge}" 
                     BorderThickness="1"
                     BorderBrush="#FF1F1515" 
-                    Click="BtnConsultant_logOut_Click" 
-                    Margin="20" >
+                    Margin="20" Click="BtnOwner_logOut_Click_1" >
 
                 <Button.Background>
                     <ImageBrush ImageSource="..\..\images\SeleleLogoBalls.png" Stretch="Uniform">
@@ -136,7 +135,7 @@
                                 Grid.Row="1"
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Background="{StaticResource seleleBlueBrush}"
-                                Click="BtnOwner_Employees_Click"/>
+                                Click="BtnOwner_Employees_Click" Margin="5,43,5,69" Grid.RowSpan="2"/>
 
                         <!-- Compose Message -->
                         <Button x:Name="btnOwner_composeMessage" 
@@ -144,25 +143,15 @@
                                 Grid.Row="2"
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Background="{StaticResource seleleBlueBrush}"
-                                Click="BtnOwner_composeMessage_Click"/>
+                                Click="BtnOwner_composeMessage_Click" Margin="0,75,10,36" Grid.RowSpan="2"/>
 
                         <!-- Proof of Payments -->
                         <Button x:Name="btnOwner_paymentProofs"
-                                Grid.Row="3"
+                                Grid.Row="4"
                                 Content="Proof of Payments" 
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Background="{StaticResource seleleBlueBrush}"
-                                Click="BtnOwner_paymentProofs_Click"/>
-
-                        <!-- New Quotes -->
-                        <Button x:Name="btnConsultant_Quotes" 
-                                Content=" New Quotes" 
-                                Grid.Row="4"
-                                BorderThickness="2" 
-                                BorderBrush="{StaticResource ForegroundDarkBrush}" 
-                                FontSize="{StaticResource FontSizeLarge}"
-                                Background="{StaticResource seleleBlueBrush}"
-                                Click="btnConsultant_Quotes_Click"/>
+                                Click="BtnOwner_paymentProofs_Click" Margin="0,10,10,11"/>
 
                     </Grid>
 
@@ -194,7 +183,7 @@
                                FontSize="{StaticResource FontSizeRegular}" 
                                 />
 
-                        <ListBox x:Name="lblConsultant_inboxList" 
+                        <ListBox x:Name="lbOwner_inboxList" 
                                  Grid.Row="1"
                                  Background="#FFD5D9E6" 
                                  Opacity="0.5" >

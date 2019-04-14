@@ -148,7 +148,7 @@ namespace SeleleTravel
                             using (var reader = cmd.ExecuteReader())
                             {
                                    reader.Read();
-                                   tbkManager_inboxMessages.Text = Convert.ToString(reader.GetValue(0));
+                                   //tbkManager_inboxMessages.Text = Convert.ToString(reader.GetValue(0));
                             }
 
 
@@ -299,7 +299,7 @@ namespace SeleleTravel
               private void btnManager_search_Click_1(object sender, RoutedEventArgs e)
               {
                      //New edit
-                     string filter = cbbManager_Search_entities.SelectionBoxItem.ToString();
+                     string filter = cbxManager_Search_entities.SelectionBoxItem.ToString();
                      string search = txbManager_search.Text;
               }
 
@@ -384,7 +384,7 @@ namespace SeleleTravel
                             id.FontSize = 16;
 
                             // get the ID
-                            txbMessageFrom.Content = id.Text;
+                            //txbMessageFrom.Content = id.Text;
 
                             // Assign the new button
                             lbManager_inboxList.Items.RemoveAt(indexPath);
@@ -428,5 +428,10 @@ namespace SeleleTravel
                             theLoadingTime.Tick += TheLoadingTime_Tick;
                      }
               }
-       }
+
+        private void BtnConsultant_logOut_Click(object sender, RoutedEventArgs e)
+        {
+            GeneralMethods.logOut(this);
+        }
+    }
 }

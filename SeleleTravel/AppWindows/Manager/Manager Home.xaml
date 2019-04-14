@@ -191,7 +191,7 @@
                                FontSize="{StaticResource FontSizeRegular}" 
                                 />
 
-                        <ListBox x:Name="lblConsultant_inboxList" 
+                        <ListBox x:Name="lbManager_inboxList" 
                                  Grid.Row="1"
                                  Background="#FFD5D9E6" 
                                  Opacity="0.5" >
@@ -251,7 +251,7 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBox x:Name="txbOwner_search"
+                        <TextBox x:Name="txbManager_search"
                                  Text="Name or ID..."
                                  TextWrapping="Wrap"
                                  BorderBrush="Black" 
@@ -277,7 +277,7 @@
                                Grid.Row="0"
                                />
 
-                        <ComboBox x:Name="cbxConsultant_Search_entities" 
+                        <ComboBox x:Name="cbxManager_Search_entities" 
                                   Grid.Row="1">
                             <ComboBoxItem Content="Staff" />
                             <ComboBoxItem Content="Clients" />
@@ -286,14 +286,14 @@
                         </ComboBox>
 
                         <DockPanel Grid.Row="2">
-                            <CheckBox x:Name="ckbOwner_Search_quotes" Content="Quotes" Margin="15 5"/>
-                            <CheckBox x:Name="ckbOwner_Search_orders" Content="Orders" Margin="15 5" />
-                            <CheckBox x:Name="ckbOwner_Search_vouchers" Content="Vouchers" Margin="15 5"/>
-                            <CheckBox x:Name="ckbOwner_Search_invoices" Content="Invoices" Margin="15 5" />
-                            <CheckBox x:Name="ckbOwner_Search_all" Content="All" Margin="15 5"/>
+                            <CheckBox x:Name="ckbManager_Search_quotes" Content="Quotes" Margin="15 5"/>
+                            <CheckBox x:Name="ckbManager_Search_orders" Content="Orders" Margin="15 5" />
+                            <CheckBox x:Name="ckbManager_Search_vouchers" Content="Vouchers" Margin="15 5"/>
+                            <CheckBox x:Name="ckbManager_Search_invoices" Content="Invoices" Margin="15 5" />
+                            <CheckBox x:Name="ckbManager_Search_all" Content="All" Margin="15 5"/>
                         </DockPanel>
 
-                        <ListBox x:Name="ltbConsultant_Search_Results" 
+                        <ListBox x:Name="ltbManager_Search_Results" 
                                  Grid.Row="3"
                                  FontSize="{StaticResource FontSizeLarge}"
                                  Opacity="0.8"/>
